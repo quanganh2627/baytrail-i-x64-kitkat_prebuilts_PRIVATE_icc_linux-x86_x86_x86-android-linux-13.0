@@ -139,12 +139,6 @@ extern int __ICL_INTRINCC _may_i_use_cpu_feature(unsigned __int64);
 #define _FEATURE_RTM                 0x00400000ULL
 #define _FEATURE_AVX2                0x00800000ULL
 
-#ifndef __SUPPRESS_FOR_PRODUCT
-#define _FEATURE_AVX3                0x01000000ULL
-#define _FEATURE_LRB                 0x02000000ULL
-#define _FEATURE_LRB2                0x04000000ULL
-#define _FEATURE_LRB3                0x08000000ULL
-#endif // !__SUPPRESS_FOR_PRODUCT
 
 /* Implement RDTSC and RDPMC */
 extern __int64 __ICL_INTRINCC _rdtsc(void);
@@ -1615,7 +1609,8 @@ extern void __ICL_INTRINCC _fxrstor64(void *);
 #endif
 
 /*
- * Perform one attempt to generate a hardware generated random value.
+ * Perform one attempt to generate a hardware generated random value
+ * accordingly to the NIST SP 800-90A standard.
  * The generated value is written to the given memory location and the success
  * status is returned: 1 if the hardware could generate a valid random number
  * and 0 otherwise.
@@ -2192,6 +2187,58 @@ extern unsigned int     __ICL_INTRINCC _xbegin(void);
 extern void             __ICL_INTRINCC _xend(void);
 extern void             __ICL_INTRINCC _xabort(const unsigned int);
 extern unsigned char    __ICL_INTRINCC _xtest(void);
+
+/*
+ * Perform one attempt to generate a hardware generated random value
+ * accordingly to the NIST SP 800-90B/C standards.
+ * The generated value is written to the given memory location and the success
+ * status is returned: 1 if the hardware could generate a valid random number
+ * and 0 otherwise.
+ */
+extern int __ICL_INTRINCC _rdseed16_step(unsigned short *);
+extern int __ICL_INTRINCC _rdseed32_step(unsigned int *);
+extern int __ICL_INTRINCC _rdseed64_step(unsigned __int64 *);
+
+
+/*
+ * Perform add with carry operation via adc instruction.
+ */ 
+extern unsigned char __ICL_INTRINCC _addcarry_u32(unsigned char /*c_in*/,
+                                                  unsigned int /*src1*/,
+                                                  unsigned int /*src2*/,
+                                                  unsigned int */*out*/);
+
+extern unsigned char __ICL_INTRINCC _addcarry_u64(unsigned char /*c_in*/,
+                                                  unsigned __int64 /*src1*/,
+                                                  unsigned __int64 /*src2*/,
+                                                  unsigned __int64 */*out*/);
+
+/*
+ * Perform subtract with borrow operation via sbb instruction.
+ */ 
+extern unsigned char __ICL_INTRINCC _subborrow_u32(unsigned char /*b_in*/,
+                                                   unsigned int /*src1*/,
+                                                   unsigned int /*src2*/,
+                                                   unsigned int */*out*/);
+
+extern unsigned char __ICL_INTRINCC _subborrow_u64(unsigned char /*b_in*/,
+                                                   unsigned __int64 /*src1*/,
+                                                   unsigned __int64 /*src2*/,
+                                                   unsigned __int64 */*out*/);
+/*
+ * Perform add with carry operation via instruction affecting
+ * either OF or CF flag but not both at the same time to indicate
+ * carry out condition.
+ */ 
+extern unsigned char __ICL_INTRINCC _addcarryx_u32(unsigned char /*c_in*/,
+                                                   unsigned int /*src1*/,
+                                                   unsigned int /*src2*/,
+                                                   unsigned int */*out*/);
+
+extern unsigned char __ICL_INTRINCC _addcarryx_u64(unsigned char /*c_in*/,
+                                                   unsigned __int64 /*src1*/,
+                                                   unsigned __int64 /*src2*/,
+                                                   unsigned __int64 */*out*/);
 
 #ifdef __cplusplus
 }

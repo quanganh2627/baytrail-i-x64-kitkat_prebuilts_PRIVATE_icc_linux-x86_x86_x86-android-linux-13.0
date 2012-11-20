@@ -7,7 +7,7 @@
 # whole or in part without explicit written authorization from the Company.
 #
 
-INSTALL_DIR=<INSTALLDIR>
+INSTALL_DIR=/nfs/ins/proj/icl/embedded/public/android/builds/20121115_13.0
 
 # Check if script is sourced:
 case $0 in

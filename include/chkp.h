@@ -62,9 +62,9 @@ typedef enum
     __CHKP_REPORT_OOB_STATS,      // Emit statics on OOB errors (currently
                                   // this is just a count of the OOB errors)
     __CHKP_REPORT_USE_ENV_VAR     // Use value in environment variable 
-                                  // CHKP_REPORT_MODE to set report mode. If
-                                  // the environment variable is unset, the
-                                  // default report mode is used
+                                  // INTEL_CHKP_REPORT_MODE to set the report
+                                  // mode.  If the environment variable is not
+                                  // set, the default report mode is used
 } __chkp_report_option_t;
 
 // This function type is the type of a user defined function that is called

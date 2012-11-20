@@ -1,1 +1,14 @@
-#include <stdatomic.h>
+#ifndef __USE_INTEL_ATOMICS
+  #if _MSC_VER > 0 && _MSC_VER < 1700
+    #define __USE_INTEL_ATOMICS 1
+  #endif
+  #if __GNUC__ > 0 && (__GNUC__ < 4 || __GNUC__ == 4 && __GNUC_MINOR__ < 5)
+    #define __USE_INTEL_ATOMICS 1
+  #endif
+#endif
+
+#if __USE_INTEL_ATOMICS
+  #include <stdatomic.h>
+#else
+  #include_next <atomic>
+#endif

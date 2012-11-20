@@ -294,26 +294,6 @@ typedef enum {
     _MM_UPCONV_PS_UINT16,       /* uint16  => float32 */
     _MM_UPCONV_PS_SINT16        /* sint16  => float32 */
 
-#ifndef __SUPPRESS_FOR_PRODUCT
-    ,
-    /* Graphics */
-
-    _MM_UPCONV_PS_SRGB8,        /* srgb8   => float32 */
-    _MM_UPCONV_PS_UNORM8,       /* unorm8  => float32 */
-    _MM_UPCONV_PS_SNORM8,       /* snorm8  => float32 */
-    _MM_UPCONV_PS_UNORM16,      /* unorm16 => float32 */
-    _MM_UPCONV_PS_SNORM16,      /* snorm16 => float32 */
-
-    /* Packed graphics */
-
-    _MM_UPCONV_PS_UNORM10A,     /* unorm10A10B10C2D A => float32 */
-    _MM_UPCONV_PS_UNORM10B,     /* unorm10A10B10C2D B => float32 */
-    _MM_UPCONV_PS_UNORM10C,     /* unorm10A10B10C2D C => float32 */
-    _MM_UPCONV_PS_UNORM2D,      /* unorm10A10B10C2D D => float32 */
-    _MM_UPCONV_PS_FLOAT11A,     /* float11A11B10C A   => float32 */
-    _MM_UPCONV_PS_FLOAT11B,     /* float11A11B10C B   => float32 */
-    _MM_UPCONV_PS_FLOAT10C      /* float11A11B10C C   => float32 */
-#endif /* __SUPPRESS_FOR_PRODUCT */
 
 } _MM_UPCONV_PS_ENUM;
 
@@ -432,16 +412,6 @@ typedef enum {
     _MM_DOWNCONV_PS_UINT16,       /* float32 => uint16  */
     _MM_DOWNCONV_PS_SINT16        /* float32 => sint16  */
 
-#ifndef __SUPPRESS_FOR_PRODUCT
-     ,
-     /* Graphics */
-
-     _MM_DOWNCONV_PS_FLOAT16RZ,   /* float32 => float16rz */
-     _MM_DOWNCONV_PS_UNORM8,      /* float32 => unorm8  */
-     _MM_DOWNCONV_PS_SNORM8,      /* float32 => snorm8  */
-     _MM_DOWNCONV_PS_UNORM16,     /* float32 => unorm16 */
-     _MM_DOWNCONV_PS_SNORM16      /* float32 => snorm16 */
-#endif /* __SUPPRESS_FOR_PRODUCT */
 
 } _MM_DOWNCONV_PS_ENUM;
 
@@ -2643,162 +2613,6 @@ extern __mmask16 __ICL_INTRINCC _mm512_kextract_64(__int64,
 #define _mm512_kmerge2l1h(k1, k2) _mm512_kswapb((k1), (k2))
 #define _mm512_kmerge2l1l(k1, k2) _mm512_kmovlhb((k1), (k2))
 
-#ifndef __SUPPRESS_FOR_PRODUCT
-/* Constants for cvtins_ps2u10. */
-typedef enum {
-    _MM_UNORM10A,
-    _MM_UNORM10B,
-    _MM_UNORM10C,
-    _MM_UNORM2D
-} _MM_UNORM10_FIELD_ENUM;
-
-/* Constants for cvtins_ps2f11. */
-typedef enum {
-    _MM_FLOAT11A,
-    _MM_FLOAT11B,
-    _MM_FLOAT10C,
-    _MM_FLOAT11NONE
-} _MM_FLOAT11_FIELD_ENUM;
-
-extern __m512i __ICL_INTRINCC _mm512_bitinterleave11_epi32(__m512i, __m512i);
-extern __m512i __ICL_INTRINCC _mm512_mask_bitinterleave11_epi32(__m512i,
-                                                                __mmask16,
-                                                                __m512i,
-                                                                __m512i);
-
-extern __m512i __ICL_INTRINCC _mm512_bitinterleave21_epi32(__m512i, __m512i);
-extern __m512i __ICL_INTRINCC _mm512_mask_bitinterleave21_epi32(__m512i,
-                                                                __mmask16,
-                                                                __m512i,
-                                                                __m512i);
-
-extern __m512i __ICL_INTRINCC _mm512_clampz_epi32(__m512i, __m512i);
-extern __m512i __ICL_INTRINCC _mm512_mask_clampz_epi32(__m512i, __mmask16,
-                                                       __m512i, __m512i);
-
-extern __m512 __ICL_INTRINCC _mm512_clampz_ps(__m512, __m512);
-extern __m512 __ICL_INTRINCC _mm512_mask_clampz_ps(__m512, __mmask16,
-                                                   __m512, __m512);
-
-extern __m512d __ICL_INTRINCC _mm512_clampz_pd(__m512d, __m512d);
-extern __m512d __ICL_INTRINCC _mm512_mask_clampz_pd(__m512d, __mmask8,
-                                                    __m512d, __m512d);
-
-extern __m512 __ICL_INTRINCC _mm512_cvtins_ps2f11(__m512, __m512,
-                                                  int /* rounding */,
-                                                  _MM_FLOAT11_FIELD_ENUM);
-extern __m512 __ICL_INTRINCC _mm512_cvtins_roundps_f11(__m512, __m512,
-                                                       int /* rounding */,
-                                                       _MM_FLOAT11_FIELD_ENUM);
-
-extern __m512 __ICL_INTRINCC _mm512_mask_cvtins_ps2f11(__m512, __mmask16,
-                                                       __m512,
-                                                       int /* rounding */,
-                                                       _MM_FLOAT11_FIELD_ENUM);
-
-extern __m512 __ICL_INTRINCC _mm512_mask_cvtins_roundps_f11(__m512, __mmask16,
-                                                     __m512,
-                                                     int /* rounding */,
-                                                     _MM_FLOAT11_FIELD_ENUM);
-
-extern __m512 __ICL_INTRINCC _mm512_cvtins_ps2u10(__m512, __m512,
-                                                  _MM_UNORM10_FIELD_ENUM);
-extern __m512 __ICL_INTRINCC _mm512_cvtinsps_u10(__m512, __m512,
-                                                 _MM_UNORM10_FIELD_ENUM);
-extern __m512 __ICL_INTRINCC _mm512_mask_cvtins_ps2u10(__m512, __mmask16,
-                                                       __m512,
-                                                       _MM_UNORM10_FIELD_ENUM);
-extern __m512 __ICL_INTRINCC _mm512_mask_cvtinsps_u10(__m512, __mmask16,
-                                                      __m512,
-                                                      _MM_UNORM10_FIELD_ENUM);
-
-extern __m512 __ICL_INTRINCC _mm512_cvt_ps2srgb8(__m512);
-extern __m512 __ICL_INTRINCC _mm512_mask_cvt_ps2srgb8(__m512, __mmask16,
-                                                      __m512);
-
-#define _mm512_cvtps_srgb8(v2) _mm512_cvt_ps2srgb8((v2))
-#define _mm512_mask_cvtps_srgb8(v1_old, k1, v2) \
-    _mm512_mask_cvt_ps2srgb8((v1_old), (k1), (v2))
-
-extern __m512 __ICL_INTRINCC _mm512_exp2lut_ps(__m512);
-extern __m512 __ICL_INTRINCC _mm512_mask_exp2lut_ps(__m512, __mmask16, __m512);
-
-extern __m512 __ICL_INTRINCC _mm512_fixup_ps(__m512, __m512, int);
-extern __m512 __ICL_INTRINCC _mm512_mask_fixup_ps(__m512, __mmask16,
-                                                  __m512, int);
-
-extern __m512  __ICL_INTRINCC _mm512_fixupv_ps(__m512, __m512, __m512i);
-extern __m512  __ICL_INTRINCC _mm512_mask_fixupv_ps(__m512, __mmask16,
-                                                    __m512, __m512i);
-
-extern __m512i __ICL_INTRINCC _mm512_insertfieldv_epi32(__m512i, __m512i,
-                                                        __m512i);
-
-extern __m512i __ICL_INTRINCC _mm512_mask_insertfieldv_epi32(__m512i,
-                                                             __mmask16,
-                                                             __m512i,
-                                                             __m512i);
-
-extern __m512  __ICL_INTRINCC _mm512_fnmadd1_round_ps(__m512, __m512,
-                                                      int /* rounding */);
-extern __m512  __ICL_INTRINCC _mm512_mask_fnmadd1_round_ps(__m512, __mmask16,
-                                                           __m512, __m512,
-                                                           int /* rounding */);
-#define _mm512_fnmadd1_ps(v1, v2) \
-    _mm512_fnmadd1_round_ps((v1), (v2), _MM_FROUND_CUR_DIRECTION)
-
-#define _mm512_mask_fnmadd1_ps(v_old, k1, v1, v2) \
-    _mm512_mask_fnmadd1_round_ps((v_old), (k1), (v1), (v2), \
-                                 _MM_FROUND_CUR_DIRECTION)
-
-extern __m512d __ICL_INTRINCC _mm512_fnmadd1_round_pd(__m512d, __m512d,
-                                                      int /* rounding */);
-extern __m512d __ICL_INTRINCC _mm512_mask_fnmadd1_round_pd(__m512d, __mmask8,
-                                                           __m512d, __m512d,
-                                                           int /* rounding */);
-#define _mm512_fnmadd1_pd(v1, v2) \
-    _mm512_fnmadd1_round_pd((v1), (v2), _MM_FROUND_CUR_DIRECTION)
-
-#define _mm512_mask_fnmadd1_pd(v_old, k1, v1, v2) \
-    _mm512_mask_fnmadd1_round_pd((v_old), (k1), (v1), (v2), \
-                                 _MM_FROUND_CUR_DIRECTION)
-
-extern __m512i __ICL_INTRINCC _mm512_rotatefield_pi(__m512i,
-                                                    int /* rotation */,
-                                                    int /* bit_idx_low */,
-                                                    int /* bit_idx_high */);
-extern __m512i __ICL_INTRINCC _mm512_mask_rotatefield_pi(__m512i, __mmask16,
-                                                  __m512i,
-                                                  int /* rotation */,
-                                                  int /* bit_idx_low */,
-                                                  int /* bit_idx_high */);
-
-extern __m512i __ICL_INTRINCC _mm512_rotatefieldv_epi32(__m512i, __m512i);
-extern __m512i __ICL_INTRINCC _mm512_mask_rotatefieldv_epi32(__m512i,
-                                                             __mmask16,
-                                                             __m512i,
-                                                             __m512i);
-
-extern unsigned short    __ICL_INTRINCC _mm_bitinterleave11_16(unsigned short,
-                                                               unsigned short);
-extern unsigned int      __ICL_INTRINCC _mm_bitinterleave11_32(unsigned int,
-                                                               unsigned int);
-extern unsigned __int64  __ICL_INTRINCC _mm_bitinterleave11_64(
-                                                            unsigned __int64,
-                                                            unsigned __int64);
-
-extern unsigned short    __ICL_INTRINCC _mm_bitinterleave21_16(unsigned short,
-                                                               unsigned short);
-extern unsigned int      __ICL_INTRINCC _mm_bitinterleave21_32(unsigned int,
-                                                               unsigned int);
-extern unsigned __int64  __ICL_INTRINCC _mm_bitinterleave21_64(
-                                                            unsigned __int64,
-                                                            unsigned __int64);
-
-extern unsigned short    __ICL_INTRINCC _mm_quadmask16_16(unsigned short);
-extern unsigned int      __ICL_INTRINCC _mm_quadmask16_32(unsigned int);
-extern unsigned __int64  __ICL_INTRINCC _mm_quadmask16_64(unsigned __int64);
-#endif /* __SUPPRESS_FOR_PRODUCT */
 
 #ifdef __cplusplus
 };
