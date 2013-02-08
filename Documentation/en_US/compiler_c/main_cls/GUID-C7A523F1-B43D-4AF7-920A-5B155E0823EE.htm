@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="vec-threshold, Qvec-threshold">
+<meta name="abstract" content="Sets a threshold for the vectorization of loops.">
+<meta name="description" content="Sets a threshold for the vectorization of loops.">
+<meta name="DC.subject" content="-vec-threshold compiler option, /Qvec-threshold compiler option, vectorization, option setting threshold for loops">
+<meta name="keywords" content="-vec-threshold compiler option, /Qvec-threshold compiler option, vectorization, option setting threshold for loops">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C7A523F1-B43D-4AF7-920A-5B155E0823EE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>vec-threshold, Qvec-threshold</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_vec_threshold"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_vec_threshold"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C7A523F1-B43D-4AF7-920A-5B155E0823EE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">vec-threshold, Qvec-threshold</h1>
+<!--Sets a threshold for the vectorization of loops. --><div><p>Sets a threshold for the vectorization of loops. </p>
+
+<div class="section" id="GUID-42819E1D-ECCB-4984-942E-3F9626BE771E"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Threshold For Vectorization</strong>
+</p>
+
+<p class="ide">Linux: 
+								None</p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-F0C7B793-2469-4B19-81DB-C5C012E3E6B0"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-484355EF-B51F-4DF5-8795-A33196F4D2FE"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-vec-threshold</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qvec-threshold</span><span class="delim">[[</span><span class="oper">:]</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-2AF40456-02EA-42C6-9FE0-0C9F99334A1F"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is an integer whose value is the
+threshold for the vectorization of loops. Possible values are 0 through 100.</p>
+<p>If <var>n</var> is 0, loops get vectorized always, regardless of computation work volume.</p>
+<p>If <var>n</var> is 100, loops get vectorized when performance gains are predicted based on
+the compiler analysis data. Loops get vectorized only if profitable vector-level
+parallel execution is almost certain.</p>
+<p>The intermediate 1 to 99 values represent the percentage probability for profitable speed-up. For example, <var>n</var>=50 directs the compiler to vectorize
+only if there is a 50% probability of the code speeding up if executed in vector form.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-3E4B70B1-544A-49FC-AA71-89AC7370D476"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-vec-threshold100</span> <br><span> or <span class="option">/Qvec-threshold100</span></span></p></td>
+<td valign="top" class="noborder"><p>Loops get vectorized only
+if profitable vector-level parallel execution is almost certain. This is also the default if you do not specify  <var>n</var>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-B5588BF1-8FA3-4B8E-8866-A16CFDA424F1"><h2>Description</h2><p>This option sets a threshold for the vectorization of loops based on the probability of profitable execution of the vectorized loop in parallel. </p>
+<p>This option is useful for loops whose computation work volume cannot be determined at compile-time. The threshold is usually relevant when the loop trip count is unknown at compile-time.  </p>
+<p>The compiler applies a heuristic that tries to balance the overhead of creating multiple threads versus the amount of work available to be shared amongst the threads.</p>
+</div>
+
+<div class="section" id="GUID-EA97D782-55A3-4C7A-8A49-163E653B31F3"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

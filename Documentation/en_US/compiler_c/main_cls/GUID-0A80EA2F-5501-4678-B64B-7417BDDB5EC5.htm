@@ -1,0 +1,134 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Intel Shared Libraries">
+<meta name="DC.subject" content="-fpic compiler option, -dynamiclib compiler option, -shared-intel compiler option, -shared compiler option, libraries, shared">
+<meta name="keywords" content="-fpic compiler option, -dynamiclib compiler option, -shared-intel compiler option, -shared compiler option, libraries, shared">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0A80EA2F-5501-4678-B64B-7417BDDB5EC5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Intel Shared Libraries</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_shared_libs_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_shared_libs_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0A80EA2F-5501-4678-B64B-7417BDDB5EC5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Intel Shared Libraries</h1>
+ 
+   
+  <div> 
+    <p>By default, the Intel&reg; C++ Compiler links Intel&reg; C++ libraries dynamically. The GNU*, Linux* OS, and OS X* system libraries are also linked dynamically. 
+    </p>
+ 
+    <div class="section" id="GUID-FB727DAD-E311-434F-A305-E70D5789C933"><h2 class="sectiontitle">Options for Shared Libraries (Linux* OS)</h2> 
+       
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D0634D23-FB19-4B9E-94C3-3524BFC5C338" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="20%" id="d27435e70"> 
+                <p>Option 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="80%" id="d27435e76"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d27435e70 "> 
+                <p><span class="option">-shared-intel</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d27435e76 "> 
+                <p>Use the 
+                <span class="option">-shared-intel</span> option to link Intel&reg; C++ libraries dynamically (default). This has the advantage of reducing the size of the application binary, but it also requires the libraries to be on the application's target system. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d27435e70 "> 
+                <p><span class="option">-shared</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d27435e76 "> 
+                <p>The 
+                <span class="option">-shared</span> option instructs the compiler to build a Dynamic Shared Object (DSO) instead of an executable. For more details, refer to the 
+                <span class="keyword">ld</span> man page documentation. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d27435e70 "> 
+                <p><span class="option">-fpic</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d27435e76 "> 
+                <p>Use the 
+                <span class="option">-fpic</span> option when building shared libraries. It is required for the compilation of each object file included in the shared library. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

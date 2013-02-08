@@ -1,0 +1,163 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Exception Handling">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, exception handling">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, exception handling">
+<meta name="DC.Relation" scheme="URI" content="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4E7C022C-557B-4366-9F67-30AAD4C2C6E1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Exception Handling</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_except"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4E7C022C-557B-4366-9F67-30AAD4C2C6E1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Exception Handling</h1>
+
+<div>
+<p>Intel&reg; Cilk&#8482; Plus attempts to reproduce, as closely as possible, the
+semantics of C++ exception handling. This generally requires
+limiting parallelism while exceptions are pending, and programs
+should not depend on parallelism during exception handling. The
+exception handling logic is as follows:</p>
+
+<ul type="disc" id="GUID-5D91CF42-8F9D-4FD9-B984-5925882F0A51"><li><p> If an
+exception is thrown and not caught in a spawned child, then that
+exception is rethrown in the parent at the next sync point.</p>
+
+</li>
+<li><p> If the parent
+or another child also throws an exception, then the first exception
+that would have been thrown in the serial execution order takes
+precedence. The logically-later exceptions are discarded. There is
+currently no mechanism for collecting multiple exceptions thrown in
+parallel.</p>
+
+</li>
+</ul>
+<p>Throwing an exception does not abort existing children or
+siblings of the strand in which the exception is thrown; these
+strands will run normally to completion.</p>
+
+<p>If a  try
+block contains a  <span class="keyword">cilk_spawn</span> and/or a  <span class="keyword">cilk_sync</span>, then
+there is an implicit  <span class="keyword">cilk_sync</span> just before entering the  try block and an
+implicit  <span class="keyword">cilk_sync</span> at the end of the  try block (after
+destructors are invoked). A sync is executed automatically before
+exiting a  try
+block, function block, or  <span class="keyword">cilk_for</span> body via an exception. (Note that
+the scope of a sync within a  <span class="keyword">cilk_for</span> is limited to spawns within the
+same loop.) A function has no active children when it begins
+execution of a  catch block. These implicit syncs exist to
+ensure that the same  catch clauses run as would have run in a
+serial execution of the program.</p>
+
+<p>Implicit syncs may limit the parallelism of your program. The
+sync before a try block, in particular, may prematurely sync a
+spawn that occurs before the try block as in the following
+example:</p>
+<pre>void func() {
+   cilk_spawn f();
+   try { // oops! implicit sync prevents parallel execution of f()
+     cilk_spawn g();
+     h();
+   }
+   catch (...) {
+     // Handle exceptions from g() or h(), but not f()
+   }
+}</pre>
+
+<p>If this is a problem for your program, there are a few ways to
+prevent the implicit sync:</p>
+
+<ul type="disc" id="GUID-23C3D58A-C98D-47CD-96E7-C452C64E343D"><li><p> Move the body
+of your  try
+block into a separate function. By moving the  <span class="keyword">cilk_spawn</span> lexically
+out of the  try
+block, you eliminate the automatic generation of  <span class="keyword">cilk_sync</span> at both
+the start and end of the try block. The previous example could be
+rewritten as follows:</p>
+<pre>void gh()
+{
+   cilk_spawn g();
+   h();
+}
+
+void func() {
+   cilk_spawn f();
+   try { // no cilk_spawn in body, so no implicit sync
+     gh();
+   }
+   catch (...) {
+     // Handle exceptions from gh(), but not f()
+   }
+}
+</pre>
+</li>
+<li><p> Enclose the
+entire try/catch statement or just the body of the try block into a
+ <span class="keyword">cilk_for</span> loop
+that executes only once. The body of a  <span class="keyword">cilk_for</span> loop is an isolated context such
+that spawns and syncs do not interact with the surrounding
+function. If you do this a lot, a macro can come in handy. The
+above example could be rewritten as follows:</p>
+
+<pre>#define CILK_TRY cilk_for (int _temp = 0; _temp &lt; 1; ++_temp) try
+
+void func() {
+   cilk_spawn f();
+   CILK_TRY { // try is within cilk_for, so does not sync f()
+     cilk_spawn g();
+     h();
+   }
+   catch (...) {
+     // Handle exceptions from g() or h(), but not f()
+   }
+}
+</pre></li>
+</ul>
+<p>
+<strong>Windows* Structured Exception
+Handling</strong></p>
+
+<p>There are restrictions when using Microsoft Windows* structured
+exception handling (specifically, the  <span class="option">/EHa </span>compiler option and the  <samp class="codeph">__try, __except,
+ __finally</samp> and
+ <samp class="codeph">__leave</samp>
+extensions to C/C++). Structured exception handling (SEH) will fail
+if an SEH exception is thrown after a steal occurs and before the
+corresponding  <span class="keyword">cilk_sync</span>. The runtime recognizes this
+condition and terminates the program with an appropriate error
+code.</p>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">Intel&reg; Cilk&#8482; Plus Execution Model</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

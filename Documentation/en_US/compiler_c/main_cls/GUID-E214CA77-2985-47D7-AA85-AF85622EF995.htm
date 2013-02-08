@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="o">
+<meta name="abstract" content="Specifies the name for an output file.">
+<meta name="description" content="Specifies the name for an output file.">
+<meta name="DC.subject" content="-o compiler option, output files, option specifying name for">
+<meta name="keywords" content="-o compiler option, output files, option specifying name for">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC.htm#GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E214CA77-2985-47D7-AA85-AF85622EF995">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>o</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_o_lcase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_o_lcase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E214CA77-2985-47D7-AA85-AF85622EF995">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">o</h1>
+<!--Specifies the name for an output file.--><div><p>Specifies the name for an output file.</p>
+
+<div class="section" id="GUID-6B5AFC0A-48D3-4671-B38C-F3C04527ED99"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-B35A7481-BAD1-43EC-A070-10F37C9D7886"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-BF1F4033-54AA-4669-AE20-02B416F8F328"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-o</span><span class="var"> filename</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-0D8A4D8D-94AC-46EC-8889-359CAE95CFD4"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is the name for the output file. The space before <var>filename</var> is optional.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-942901E9-C2F7-46BC-BD26-1746B83F704C"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler uses the default file name for an output file.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AB637777-8B19-49C7-B5D1-E15AA539884E"><h2>Description</h2><p>This option specifies the name for an output file as follows:</p>
+<ul type="disc" id="GUID-0F85B267-AC77-4562-8396-DE2328CB79D9"><li><p>If <span class="option">-c</span> is specified, it specifies the name of the generated object file.</p>
+</li>
+<li><p>If <span class="option">-S</span> is specified, it specifies the name of the generated assembly listing file.</p>
+</li>
+<li><p>If <span class="option">-P</span> is specified, it specifies the name of the generated preprocessor file.</p>
+</li>
+</ul>
+<p>Otherwise, it specifies the name of the executable file.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>If you misspell a compiler option beginning with "o", such as <span class="option">-openmp</span>, <span class="option">-opt-report</span>, etc., the compiler interprets the misspelled option as an <span class="option">-o</span> <var>filename</var> option. For example, say you misspell "<span class="option">-opt-report</span>" as " <span class="option">-opt-reprt</span>"; in this case, the compiler interprets the misspelled option as "<span class="option">-o</span> pt-reprt", where pt-reprt is the output file name.</p>
+</div></div>
+
+
+<div class="section" id="GUID-AB8A2B7D-105E-47AA-8882-F3CD82DE80F1"><h2>Alternate Options</h2> <p>Linux and OS X: None</p>
+ <p>Windows: <span><span class="option">/Fe</span></span></p>
+
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC.htm#GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC"><span class="option">Fe</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

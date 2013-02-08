@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_xsetbv()">
+<meta name="abstract" content="Writes the given value to a specified extended control register.">
+<meta name="description" content="Writes the given value to a specified extended control register.">
+<meta name="DC.subject" content="intrinsics, for managing extended processor states and registers, _xsetbv()">
+<meta name="keywords" content="intrinsics, for managing extended processor states and registers, _xsetbv()">
+<meta name="DC.Relation" scheme="URI" content="GUID-4861A494-8924-4E66-BD34-A9B3FADAA22A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0121143D-8D0A-4A9D-815B-D5703E043B31">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_xsetbv()</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_manextxsetbv"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0121143D-8D0A-4A9D-815B-D5703E043B31">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"> _xsetbv()</h1>
+
+<!-- Writes the given value to a specified extended control register.-->
+
+<div><p> Writes the given value to a specified extended control register.</p>
+
+
+
+<div class="section" id="GUID-678D2CDD-070F-4ABF-AC26-22748CF4A70E"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern void _xsetbv(unsigned int xcr, unsigned __int64 val);</span></p></td></tr></table>
+</div>
+
+<div class="section" id="GUID-C34C4262-EBC5-475C-883F-C1C9170ABA04"><h2>Arguments</h2><dl id="GUID-43CE9A1B-CF52-48AA-9A78-F7A1D036632F"><dt class="dlterm"> <var>xcr</var></dt>
+<dd> <p>An extended control register to be written. Currently, only the value '0' is allowed.</p>
+</dd>
+</dl>
+
+
+<dl id="GUID-4624C0ED-3CE4-4A00-A2C2-146E831153F0"><dt class="dlterm"> <var>val</var></dt>
+<dd> <p>Value to be written to the specified extended control register.</p>
+</dd>
+</dl>
+</div>
+
+
+<div class="section" id="GUID-EF2CC45B-4CCD-423A-BDC3-56F1CA2C6BF5"><h2>Description</h2>
+<p> This intrinsic writes the given value to the specified extended control register. Currently, the only control register allowed/defined is <span class="keyword">(XCR0) XFEATURE_ENABLED_MASK</span> register. The corresponding constant is defined in the <span class="filepath">immintrin.h</span> file to refer to this register: <pre>#define _XCR_XFEATURE_ENABLED_MASK 0</pre>This intrinsic maps to <span class="option">XSETBV</span> instruction.</p>
+
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-4861A494-8924-4E66-BD34-A9B3FADAA22A.htm">Intrinsics for Reading and Writing the Content of Extended Control Registers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

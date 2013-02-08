@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="Weffc++, Qeffc++">
+<meta name="abstract" content="Enables warnings based on certain C++ programming guidelines.">
+<meta name="description" content="Enables warnings based on certain C++ programming guidelines.">
+<meta name="DC.subject" content="-Weffc++ compiler option, /Qeffc++ compiler option">
+<meta name="keywords" content="-Weffc++ compiler option, /Qeffc++ compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-05E1F226-8025-42C4-86E5-0C68DFEEDE60">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Weffc++, Qeffc++</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_weff"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_weff"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-05E1F226-8025-42C4-86E5-0C68DFEEDE60">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">Weffc++, Qeffc++</h1>
+<!--Enables warnings based on certain C++ programming guidelines.--><div><p>Enables warnings based on certain C++ programming guidelines.</p>
+
+<div class="section" id="GUID-A26EEB29-5B81-481E-A45F-E8E4C9C5699D"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Enable Warnings for Style Guideline Violations</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Diagnostics &gt; Report Effective C++ Violations</strong></p>
+</div>
+<div class="section" id="GUID-31A0F485-114C-4B18-A526-3E13DC22CCE2"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-8C3CE088-41B1-4E2F-9086-C59AF541B95A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-Weffc++</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qeffc++</span></p></td></tr></table></div>
+<div class="section" id="GUID-5AE3ABA3-0E86-49D2-9C99-AC6F7D48D106"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-1C43F823-4F69-4808-9E4A-0B7EEC0B1642"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Diagnostics are not enabled.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-2FA8D522-EB88-496B-AF70-FD7F1297A724"><h2>Description</h2><p>This option enables warnings based on certain programming guidelines developed by Scott Meyers in his books on effective C++ programming. With this option, the compiler emits warnings for these guidelines:</p>
+<ul type="disc" id="GUID-8ACC4CB1-2FFF-4EF3-81FC-7DA925CB4F7C"><li>
+<p>Use <span class="keyword">const</span> and <span class="keyword">inline</span> rather than <span class="keyword">#define</span>. Note that you will only get this in user code, not system header code.</p>
+</li>
+<li><p>Use <span class="keyword">&lt;iostream&gt;</span> rather than <span class="keyword">&lt;stdio.h&gt;</span>.</p>
+</li>
+<li><p>Use <span class="keyword">new</span> and <span class="keyword">delete</span> rather than <span class="keyword">malloc</span> and <span class="keyword">free</span>.</p>
+</li>
+<li><p>Use C++ style comments in preference to C style comments. C comments in system headers are not diagnosed.</p>
+</li>
+<li><p>Use <span class="keyword">delete</span> on pointer members in destructors. The compiler diagnoses any pointer that does not have a <span class="keyword">delete</span>.</p>
+</li>
+<li><p>Make sure you have a user copy constructor and assignment operator in classes containing pointers.</p>
+</li>
+<li><p>Use initialization rather than assignment to members in constructors.</p>
+</li>
+<li><p>Make sure the initialization list ordering matches the declartion list ordering in constructors.</p>
+</li>
+<li><p>Make sure base classes have virtual destructors.</p>
+</li>
+<li><p>Make sure <span class="keyword">operator=</span> returns <span class="keyword">*this</span>.</p>
+</li>
+<li><p>Make sure prefix forms of increment and decrement return a <span class="keyword">const</span> object.</p>
+</li>
+<li><p>Never overload operators <span class="keyword">&amp;&amp;</span>, <span class="keyword">||</span>, and <span class="keyword">,</span>.</p>
+</li>
+</ul>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>The warnings generated by this compiler option are based on the following books from Scott Meyers:<ul type="disc" id="GUID-FF6D603D-DD99-45EE-A652-DEBFA12682BB"><li><p>Effective C++ Second Edition - 50 Specific Ways to Improve Your Programs and Designs</p>
+</li>
+<li><p>More Effective C++ - 35 New Ways to Improve Your Programs and Designs</p>
+</li>
+</ul>
+</p>
+</div></div>
+
+<div class="section" id="GUID-400D62EB-C625-4E03-87A2-0FAD8CF8A0E3"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Using Shared Memory">
+<meta name="DC.subject" content="shared memory, memory, shared, shared variables, shared functions, variables, shared, functions, shared">
+<meta name="keywords" content="shared memory, memory, shared, shared variables, shared functions, variables, shared, functions, shared">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3.htm#GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3">
+<meta name="DC.Relation" scheme="URI" content="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505.htm#GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8E5078C5-85F8-40BD-932E-49E935943EBA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Shared Memory</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_using_shared_mem"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8E5078C5-85F8-40BD-932E-49E935943EBA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Shared Memory</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <div class="section" id="GUID-CA6E2E38-A534-4E9E-94B9-E574019E73B3"><h2 class="sectiontitle"> About Using Shared Memory</h2> 
+		 
+		<p>The offload runtime system maintains a section of memory at the same virtual address on the CPU and the coprocessor. The keyword 
+		  <span class="keyword">_Cilk_shared</span> enables you to use this shared memory as follows: 
+		</p>
+ 
+		<ul type="disc" id="GUID-A6634541-B55C-44EB-B3AF-BDBEC7C556EA"> 
+		  <li id="LI_C9EFEFF13F1447A6BFA70BE0A6705313"><a name="LI_C9EFEFF13F1447A6BFA70BE0A6705313"><!-- --></a> 
+			 <p>It places variables in this shared memory address range. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li id="LI_9D3DA80700D6461CA3633A29911E5907"><a name="LI_9D3DA80700D6461CA3633A29911E5907"><!-- --></a> 
+			 <p>It specifies that a function is defined on both the CPU and the coprocessor. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-F65D3136-07B5-4590-8C87-4DD447EE61A1"><h2 class="sectiontitle"> About Shared Variables</h2> 
+		 
+		<p> The compiler allocates shared variables such that: 
+		</p>
+ 
+		<ul type="disc" id="GUID-53AE7D52-6822-454F-A34A-E783CD2BCD4A"> 
+		  <li id="LI_E04002DB87DE449E8E3CF0DBC1002EC1"><a name="LI_E04002DB87DE449E8E3CF0DBC1002EC1"><!-- --></a> 
+			 <p>their virtual addresses are the same on the CPU and the coprocessor 
+			 </p>
+ 
+		  </li>
+ 
+		  <li id="LI_7E36021BCC364729B0EBD298A359C79D"><a name="LI_7E36021BCC364729B0EBD298A359C79D"><!-- --></a> 
+			 <p>their values are synchronized between the CPU and the coprocessor at a predefined point 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>Pointers to shared variables have the same value on the CPU and the coprocessor, because shared variables have the same addresses. So offloaded code can easily operate on linked data structures. Memory is synchronized between the CPU and the coprocessor only at offload call sites. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-74C3C4A1-0909-42E6-A4ED-AFF5880246DC"><h2 class="sectiontitle">Conditional Control with Shared Variables</h2> 
+		 
+		<p>You cannot conditionally control shared variables when you compile them to run on Intel&reg; MIC Architecture. 
+		</p>
+ 
+		<p> When a variable is marked 
+		  <samp class="codeph">_Cilk_shared</samp>, the memory allocation for the variable is dynamic instead of static, and only the host allocates the memory, within the memory space that the host and the coprocessor share. When the program is compiled, the host generates code to create the shared memory dynamically, so if the host does not see the shared variable, it doesn't allocate any memory for the variable. Since the memory is not allocated in the shared space, when the coprocessor tries to access this memory an illegal access occurs. 
+		</p>
+ 
+		<p>Because the host allocates memory for the shared variable, the variable must be visible on the host even if the host does not use the variable. 
+		</p>
+ 
+		<p>For example, the following code is incorrect because the variable is only conditionally compiled for the coprocessor. Therefore, no code is generated on the host to allocate memory for the variable. 
+		</p>
+ 
+		<pre>#ifdef __MIC__
+_Cilk_shared int res;
+#endif
+</pre> 
+		<p> If you compile the variable conditionally for the coprocessor, the 
+		  <samp class="codeph">_Cilk_shared</samp> keyword is not necessary because the host does not access the variable. Use 
+		  <samp class="codeph">_Cilk_shared</samp> only when sharing data between the host and the coprocessor. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-22E60616-5822-4647-A60E-7BA5547C9122"><h2 class="sectiontitle"> About Shared Functions</h2> 
+		 
+		<p> When you do not use the<span class="keyword"> no-offload</span> option, the compiler builds two binary files: 
+		</p>
+ 
+		<ul type="disc" id="GUID-E91C5340-3BE3-48B8-99F4-EE1EB5C254BC"> 
+		  <li id="LI_026292CD6C4E4199B7C4096D1FB8CB94"><a name="LI_026292CD6C4E4199B7C4096D1FB8CB94"><!-- --></a> 
+			 <p>A CPU version: Includes all functions in the source code, whether marked 
+				<span class="keyword">_Cilk_shared</span> or not. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li id="LI_4CEE8B70B6A748A7A5A261BF44EAEA4E"><a name="LI_4CEE8B70B6A748A7A5A261BF44EAEA4E"><!-- --></a> 
+			 <p>A coprocessor version: Includes only functions marked 
+				<span class="keyword">_Cilk_shared</span> in the source code. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 <div class="section" id="GUID-21C2CFD5-7FAE-4336-A5ED-6581CF98215C"><h2 class="sectiontitle">Shared Memory Management Functions</h2> 
+		 
+		<p> The functions described below are available for allocating and freeing shared memory to work with the 
+		  <span class="keyword">_Cilk_shared</span> and 
+		  <span class="keyword">_Cilk_offload</span> keywords. These functions revert to the standard malloc or free versions if Intel&reg; MIC Architecture-based hardware is not installed in the system, or if the Intel&reg; MIC Architecture driver is not loaded. 
+		</p>
+ 
+		<ul type="disc" id="GUID-9E238809-6B74-4525-BEE4-F28F6135DE62"> 
+		  <li id="LI_B39BB922780B47C5800E111725B490DD"><a name="LI_B39BB922780B47C5800E111725B490DD"><!-- --></a> 
+			 <p><samp class="codeph"> void *_Offload_shared_malloc(size_t 
+				  <var>size</var>);</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li id="LI_6879C748311445B2B84FBC62C5106038"><a name="LI_6879C748311445B2B84FBC62C5106038"><!-- --></a> 
+			 <p> 
+				<samp class="codeph">void *_Offload_shared_aligned_malloc(size_t 
+				  <var>size</var>, size_t 
+				  <var>alignment</var>);</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li id="LI_5D80870F32294F0BBDA6B1815E7D8650"><a name="LI_5D80870F32294F0BBDA6B1815E7D8650"><!-- --></a> 
+			 <p><samp class="codeph"> _Offload_shared_free(void *p);</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li id="LI_B6F397E9C42E4926B6B767980A9DF732"><a name="LI_B6F397E9C42E4926B6B767980A9DF732"><!-- --></a> 
+			 <p><samp class="codeph"> _Offload_shared_aligned_free(void *p);</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-2C4253AD-B73F-4B52-B7F0-CD21A0790841"><h2 class="sectiontitle"> Shared Memory Allocator</h2> 
+		 
+		<p> By default, containers provided in the standard C++ library allocate non-shared memory. When an object of such a container is marked 
+		  <span class="keyword">_Cilk_shared</span>, its data members are allocated in shared memory. However, any memory that its data accesses is not shared. To enable sharing of this memory, use the 
+		  <samp class="codeph">shared_allocator&lt;T&gt;</samp> class template. The 
+		  <samp class="codeph">shared_allocator&lt;T&gt;</samp> class template is defined in 
+		  <span class="filepath">offload.h</span>. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="example" id="EXAMPLE_35192C81ABDD43AF8B0D85D9B58DD30C"><a name="EXAMPLE_35192C81ABDD43AF8B0D85D9B58DD30C"><!-- --></a><h2 class="sectiontitle">Example: Shared Memory Allocator</h2> 
+		 
+		<pre><span>#include &lt;vector&gt;
+#include &lt;offload.h&gt;
+#include &lt;stdio.h&gt;
+
+using namespace std;
+
+// typedef vector to use the offload shared allocator 
+typedef vector&lt;int, __offload::shared_allocator&lt;int&gt; &gt; shared_vec_int;
+
+_Cilk_shared shared_vec_int * _Cilk_shared v;
+
+_Cilk_shared int test_result() {
+
+int result = 1;
+
+for (int i = 0; i &lt; 5; i++) {
+      if ((*v)[i] != i) {
+        result = 0;
+      }
+  }
+
+  return result;
+}
+
+int main()
+{
+  int result;
+
+  // Use placement new to construct an object in the shared memory space.
+  v = new (_Offload_shared_malloc(sizeof(vector&lt;int&gt;))) _Cilk_shared vector&lt;int,
+                                              __offload::shared_allocator&lt;int&gt; &gt;(5);
+
+  for (int i = 0; i &lt; 5; i++) {
+      (*v)[i] = i;
+  }
+  result = _Cilk_offload test_result();
+
+  if (result != 1)
+      printf("Failed\n");
+  else
+      printf("Passed\n");
+
+  return 0;
+}
+</span></pre> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3.htm#GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3">_Cilk_shared Keyword 
+		  </a>  
+		  </div>
+<div><a href="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505.htm#GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505">_Cilk_offload Keyword 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="MMX&#8482; Technology Shift Intrinsics">
+<meta name="DC.subject" content="intrinsics, MMX&#8482; Technology, shift operations, srl_pi16, srl_pi32, srli_pi32, srl_pi64, srli_pi64, srli_pi16, sra_pi32, srai_pi32, srai_pi16, sll_pi32, slli_pi16, sll_pi16, sra_pi16, slli_pi32, slli_pi64">
+<meta name="keywords" content="intrinsics, MMX&#8482; Technology, shift operations, srl_pi16, srl_pi32, srli_pi32, srl_pi64, srli_pi64, srli_pi16, sra_pi32, srai_pi32, srai_pi16, sll_pi32, slli_pi16, sll_pi16, sra_pi16, slli_pi32, slli_pi64">
+<meta name="DC.Relation" scheme="URI" content="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A48E45C5-912F-4D73-9AED-4C857A77517A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>MMX&#8482; Technology Shift Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mmx_shift"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A48E45C5-912F-4D73-9AED-4C857A77517A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">MMX&#8482; Technology Shift Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-8C4B8738-1FC2-46DC-AB99-357EDFB5F54C"> 
+      <p>The prototypes for MMX&#8482; technology shift intrinsics are in the 
+        <span class="filepath">mmintrin.h</span> header file. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DE711F0B-A50B-42C5-9FAE-70718331199E" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d543545e83"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d543545e89"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d543545e95"> 
+                <p>Corresponding<br> MMX&#8482; Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_sll_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSLLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_slli_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSLLWI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_sll_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSLLD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_slli_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSLLDI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_sll_pi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSLLQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_slli_pi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSLLQI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_sra_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Arithmetic shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRAW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srai_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Arithmetic shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRAWI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_sra_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Arithmetic shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRAD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srai_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Arithmetic shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRADI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srl_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srli_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRLWI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srl_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRLD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srli_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRLDI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srl_pi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRLQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e83 "> 
+                <p><span class="option"> _mm_srli_pi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d543545e89 "> 
+                <p>Logical shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d543545e95 "> 
+                <p><span class="keyword">PSRLQI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C58DF888-82CF-4F55-A667-6C5CA57FA780"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sll_pi16(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts four 16-bit values in 
+        <span class="keyword">m</span> left the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-03D2EEBE-737D-4DD7-B929-D68B24881CE1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_slli_pi16(__m64 m, int count)</span></p></div> 
+      <p>Shifts four 16-bit values in 
+        <span class="keyword">m</span> left the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D4BAD0F1-C2EE-4ABB-A479-9C39F62D8B00"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sll_pi32(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts two 32-bit values in 
+        <span class="keyword">m</span> left the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FC0681F8-D1F7-4F99-BE28-6134EAFB34FE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_slli_pi32(__m64 m, int count)</span></p></div> 
+      <p>Shifts two 32-bit values in 
+        <span class="keyword">m</span> left the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3F081AE9-CBCF-476B-BA78-A2B914BED804"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sll_pi64(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts the 64-bit value in 
+        <span class="keyword">m</span> left the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8BDF9EAE-8542-4BCF-A86B-F016A3CCB4A8"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_slli_pi64(__m64 m, int count)</span></p></div> 
+      <p>Shifts the 64-bit value in 
+        <span class="keyword">m</span> left the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4D24822E-1A77-4A8A-B14D-D0F35DF40CB6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sra_pi16(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts four 16-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in the sign bit. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6F211981-B337-46AE-B363-FEF764CE15E1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srai_pi16(__m64 m, int count)</span></p></div> 
+      <p>Shifts four 16-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in the sign bit. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2A3DB421-D1DC-4887-9F9A-F90F77CC0628"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sra_pi32(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts two 32-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in the sign bit. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3F0B08D7-5238-4D30-B8BE-53EC00F5F7E7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srai_pi32(__m64 m, int count)</span></p></div> 
+      <p>Shifts two 32-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in the sign bit. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5893A7AA-CD62-48A3-9E23-E6959F906331"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srl_pi16(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts four 16-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2EFDD523-05D8-4CC9-876B-774C2357990A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srli_pi16(__m64 m, int count)</span></p></div> 
+      <p>Shifts four 16-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E6912B67-98C3-43FA-92F2-9D0DEAD24F5C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srl_pi32(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts two 32-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-72A3B3DD-A152-4859-B0DC-0A87A3966C70"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srli_pi32(__m64 m, int count)</span></p></div> 
+      <p>Shifts two 32-bit values in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-36F70C0B-0475-4E5D-BAEA-C73988DABBC6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srl_pi64(__m64 m, __m64 count)</span></p></div> 
+      <p>Shifts the 64-bit value in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0653A50B-AE7F-43C0-AE41-6C57862E43A0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_srli_pi64(__m64 m, int count)</span></p></div> 
+      <p>Shifts the 64-bit value in 
+        <span class="keyword">m</span> right the amount specified by 
+        <span class="keyword">count</span> while shifting in zeros. For the best performance, 
+        <span class="keyword">count</span> should be a constant. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">MMX&#8482; Technology Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

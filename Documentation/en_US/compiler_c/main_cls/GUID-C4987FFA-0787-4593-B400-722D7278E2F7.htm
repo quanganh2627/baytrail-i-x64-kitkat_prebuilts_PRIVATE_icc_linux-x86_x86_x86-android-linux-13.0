@@ -1,0 +1,4603 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Classes Quick Reference">
+<meta name="DC.subject" content="Class Libraries, Quick reference">
+<meta name="keywords" content="Class Libraries, Quick reference">
+<meta name="DC.Relation" scheme="URI" content="GUID-8FAC8E44-EFD8-4A49-95E5-D051DA1C3A05.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C4987FFA-0787-4593-B400-722D7278E2F7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Classes Quick Reference</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_ref"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C4987FFA-0787-4593-B400-722D7278E2F7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Classes Quick Reference</h1>
+ 
+   
+  <div> 
+    <p>This appendix contains tables listing operators to perform various SIMD operations, corresponding intrinsics to perform those operations, and the classes that implement those operations. The classes listed here belong to the Intel C++ Class Libraries for SIMD Operations. 
+    </p>
+ 
+    <p>In the following tables, 
+    </p>
+ 
+    <ul type="disc" id="GUID-2245415B-1389-4010-8C12-76B0AA0381E9"> 
+      <li> 
+        <p>N/A indicates that the operator is not implemented in that particular class. Thus, in the Logical Operations table, the 
+          <span class="keyword">Andnot</span> operator is not implemented in the 
+          <span class="keyword">F32vec4</span> and 
+          <span class="keyword">F32vec1</span> classes. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>All other entries under Classes indicate that those operators are implemented in those particular classes, and the entries under the Classes columns provide the suffix for the corresponding intrinsic. For example, consider the Arithmetic Operations Part1 table, where the corresponding intrinsic is 
+  <span class="option">_mm_add_[x]</span> and the entry 
+  <span class="keyword">epi16</span> is under the 
+  <span class="keyword">I16vec8</span> column. It means that the 
+  <span class="keyword">I16vec8</span> class implements the addition operators and the corresponding intrinsic is 
+  <span class="option">_mm_add_epi16</span>. 
+  </p>
+ 
+  </li>
+ 
+  </ul>
+ 
+  <p><strong>Logical Operations:</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-78319598-FE15-40A9-9FEE-68A4851026C9" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e105"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e111"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="5" align="left" valign="top" id="d648682e119"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e128"> 
+            <p><span class="keyword">I128vec1</span>,<br><span class="keyword">I64vec2</span>,<br><span class="keyword">I32vec4</span>,<br><span class="keyword">I16vec8</span>,<br><span class="keyword">I8vec16</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e153"> 
+            <p><span class="keyword">I64vec1</span>,<br><span class="keyword">I32vec2</span>,<br><span class="keyword">I16vec4</span>,<br><span class="keyword">I8vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e173"> 
+            <p><span class="keyword">F64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e181"> 
+            <p><span class="keyword">F32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e189"> 
+            <p><span class="keyword">F32vec1</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e105 "> 
+            <p><span class="keyword">&amp;, &amp;=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e111 "> 
+            <p><span class="option">_mm_and_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e128 d648682e153 d648682e173 "> 
+            <p><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e181 "> 
+            <p><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e189 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e105 "> 
+            <p><span class="keyword">|, |=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e111 "> 
+            <p><span class="option">_mm_or_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e128 d648682e153 d648682e173 "> 
+            <p><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e181 "> 
+            <p><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e189 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e105 "> 
+            <p><span class="keyword">^, ^=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e111 "> 
+            <p><span class="option">_mm_xor_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e128 d648682e153 d648682e173 "> 
+            <p><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e181 "> 
+            <p><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e189 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e105 "> 
+            <p><span class="keyword">Andnot</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e111 "> 
+            <p><span class="option">_mm_andnot_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e128 d648682e153 d648682e173 "> 
+            <p><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e181 "> 
+            <p><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 d648682e189 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e119 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Arithmetic Operations: Part 1</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5A917AB3-3E9A-462C-AE44-AAFEB7D4BF4C" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="30%" id="d648682e467"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="30%" id="d648682e473"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="4" align="left" valign="top" id="d648682e481"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e490"> 
+            <p><span class="keyword">I64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e498"> 
+            <p><span class="keyword">I32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e506"> 
+            <p><span class="keyword">I16vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e514"> 
+            <p><span class="keyword">I8vec16</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">+, +=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_add_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p><span class="keyword">epi64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">-, -=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_sub_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p><span class="keyword">epi64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">*, *=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_mullo_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">/, /=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_div_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">mul_high</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_mulhi_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">mul_add</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_madd_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">sqrt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_sqrt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">rcp</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_rcp_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">rcp_nr</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_rcp_[x]</span><br><span class="option">_mm_add_[x]</span><br><span class="option">_mm_sub_[x]</span><br><span class="option">_mm_mul_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">rsqrt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_rsqrt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e467 "> 
+            <p><span class="keyword">rsqrt_nr</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e473 "> 
+            <p><span class="option">_mm_rsqrt_[x]</span><br><span class="option">_mm_sub_[x]</span><br><span class="option">_mm_mul_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e490 d648682e498 d648682e506 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 d648682e514 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e481 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Arithmetic Operations: Part 2</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5195F265-524D-4DFA-A8C6-0A60E2DC5C11" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="20%" id="d648682e1081"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="20%" id="d648682e1087"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="6" align="left" valign="top" id="d648682e1095"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1104"> 
+            <p><span class="keyword">I32vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1112"> 
+            <p><span class="keyword">I16vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1120"> 
+            <p><span class="keyword">I8vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1128"> 
+            <p><span class="keyword">F64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1136"> 
+            <p><span class="keyword">F32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1145"> 
+            <p><span class="keyword">F32vec1</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">+, +=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_add_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">-, -=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_sub_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">*, *=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_mullo_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">/, /=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_div_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">mul_high</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_mulhi_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">mul_add</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_madd_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">sqrt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_sqrt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">rcp</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_rcp_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">rcp_nr</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_rcp_[x]</span><br><span class="option">_mm_add_[x]</span><br><span class="option">_mm_sub_[x]</span><br><span class="option">_mm_mul_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">rsqrt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_rsqrt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1081 "> 
+            <p><span class="keyword">rsqrt_nr</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e1087 "> 
+            <p><span class="option">_mm_rsqrt_[x]</span><br><span class="option">_mm_sub_[x]</span><br><span class="option">_mm_mul_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1104 d648682e1112 d648682e1120 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1128 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1136 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 d648682e1145 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1095 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Shift Operations: Part 1</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-34336342-DB34-4CBE-B5EF-310C8458A7E8" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e1892"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e1898"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="5" align="left" valign="top" id="d648682e1906"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1915"> 
+            <p><span class="keyword">I128vec1</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1923"> 
+            <p><span class="keyword">I64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1931"> 
+            <p><span class="keyword">I32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1939"> 
+            <p><span class="keyword">I16vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e1947"> 
+            <p><span class="keyword">I8vec16</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e1892 "> 
+            <p><span class="keyword">&gt;&gt;,&gt;&gt;=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e1898 "> 
+            <p><span class="option">_mm_srl_[x]</span><br><span class="option">_mm_srli_[x]</span><br><span class="option">_mm_sra__[x]</span><br><span class="option">_mm_srai_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 d648682e1915 d648682e1923 d648682e1931 "> 
+            <p>N/A<br>N/A<br>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 d648682e1939 "> 
+            <p><span class="keyword">epi64</span><br><span class="keyword">epi64</span><br>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 d648682e1947 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">epi32</span><br><span class="keyword">epi32</span><br><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">epi16</span><br><span class="keyword">epi16</span><br><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 "> 
+            <p>N/A<br>N/A<br>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e1892 "> 
+            <p><span class="keyword">&lt;&lt;, &lt;&lt;=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e1898 "> 
+            <p><span class="option">_mm_sll_[x]</span><br><span class="option">_mm_slli_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 d648682e1915 d648682e1923 d648682e1931 "> 
+            <p>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 d648682e1939 "> 
+            <p><span class="keyword">epi64</span><br><span class="keyword">epi64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 d648682e1947 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e1906 "> 
+            <p>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Shift Operations: Part 2</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CC1B1C83-54D4-48A2-878F-15ABC16FFB5C" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="30%" id="d648682e2162"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="30%" id="d648682e2168"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="4" align="left" valign="top" id="d648682e2176"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2185"> 
+            <p><span class="keyword">I64vec1</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2193"> 
+            <p><span class="keyword">I32vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2201"> 
+            <p><span class="keyword">I16vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2209"> 
+            <p><span class="keyword">I8vec8</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e2162 "> 
+            <p><span class="keyword">&gt;&gt;,&gt;&gt;=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e2168 "> 
+            <p><span class="option">_mm_srl_[x]</span><br><span class="option">_mm_srli_[x]</span><br><span class="option">_mm_sra__[x]</span><br><span class="option">_mm_srai_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 d648682e2185 d648682e2193 d648682e2201 "> 
+            <p><span class="keyword">si64</span><br><span class="keyword">si64</span><br>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 d648682e2209 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">pi32</span><br><span class="keyword">pi32</span><br><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">pi16</span><br><span class="keyword">pi16</span><br><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 "> 
+            <p>N/A<br>N/A<br>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e2162 "> 
+            <p><span class="keyword">&lt;&lt;, &lt;&lt;=</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d648682e2168 "> 
+            <p><span class="option">_mm_sll_[x]</span><br><span class="option">_mm_slli_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 d648682e2185 d648682e2193 d648682e2201 "> 
+            <p><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 d648682e2209 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2176 "> 
+            <p>N/A<br>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Comparison Operations: Part 1</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-204382B5-F550-49EF-A16D-440D5DF7DE08" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="20%" id="d648682e2407"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="20%" id="d648682e2413"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="6" align="left" valign="top" id="d648682e2421"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2430"> 
+            <p><span class="keyword">I32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2438"> 
+            <p><span class="keyword">I16vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2446"> 
+            <p><span class="keyword">I8vec16</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2454"> 
+            <p><span class="keyword">I32vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2462"> 
+            <p><span class="keyword">I16vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e2471"> 
+            <p><span class="keyword">I8vec8</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpeq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpneq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span><br><span class="option">_mm_andnot_[y]*</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpgt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpgt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpge_[x]</span><br><span class="option">_mm_andnot_[y]*</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmplt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmplt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmple</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmple_[x]</span><br><span class="option">_mm_andnot_[y]*</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpngt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpngt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpnge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpnge_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmnpnlt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpnlt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2407 "> 
+            <p><span class="keyword">cmpnle</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e2413 "> 
+            <p><span class="option">_mm_cmpnle_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2430 d648682e2438 d648682e2446 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2462 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 d648682e2471 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e2421 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p>* Note that 
+  <span class="option">_mm_andnot_[y]</span> intrinsics do not apply to the fvec classes. 
+  </p>
+ 
+  <p><strong>Comparison Operations: Part 2</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6FBDADDB-97D5-4DE5-8A2D-752E0B3CFB7F" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="33.33333333333333%" id="d648682e3225"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="33.33333333333333%" id="d648682e3231"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="3" align="left" valign="top" id="d648682e3239"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="11.11111111111111%" id="d648682e3248"> 
+            <p><span class="keyword">F64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="11.11111111111111%" id="d648682e3256"> 
+            <p><span class="keyword">F32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="11.11111111111111%" id="d648682e3264"> 
+            <p><span class="keyword">F32vec1</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpeq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpneq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span><br><span class="option">_mm_andnot_[y]*</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpgt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpgt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpge_[x]</span><br><span class="option">_mm_andnot_[y]*</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmplt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmplt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmple</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmple_[x]</span><br><span class="option">_mm_andnot_[y]*</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpngt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpngt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpnge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpnge_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmnpnlt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpnlt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3225 "> 
+            <p><span class="keyword">cmpnle</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e3231 "> 
+            <p><span class="option">_mm_cmpnle_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 d648682e3248 d648682e3256 d648682e3264 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e3239 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Conditional Select Operations: Part 1</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-945F2D25-81EA-4D9B-B0EB-29334C491FD6" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="20%" id="d648682e3749"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="20%" id="d648682e3755"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="6" align="left" valign="top" id="d648682e3763"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e3772"> 
+            <p><span class="keyword">I32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e3780"> 
+            <p><span class="keyword">I16vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e3788"> 
+            <p><span class="keyword">I8vec16</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e3796"> 
+            <p><span class="keyword">I32vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e3804"> 
+            <p><span class="keyword">I16vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e3813"> 
+            <p><span class="keyword">I8vec8</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_eq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_neq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_gt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmpgt_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_ge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmpge_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_lt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmplt_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_le</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmple_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p><span class="keyword">epi32</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p><span class="keyword">epi16</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p><span class="keyword">epi8</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span><br><span class="keyword">si128</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p><span class="keyword">pi32</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi16</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p><span class="keyword">pi8</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span><br><span class="keyword">si64</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_ngt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmpgt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_nge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmpge_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_nlt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmplt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3749 "> 
+            <p><span class="keyword">select_nle</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d648682e3755 "> 
+            <p><span class="option">_mm_cmple_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3772 d648682e3780 d648682e3788 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3796 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3804 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 d648682e3813 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e3763 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p>* Note that 
+  <span class="option">_mm_andnot_[y]</span> intrinsics do not apply to the 
+  <span class="keyword">fvec</span> classes. 
+  </p>
+ 
+  <p><strong>Conditional Select Operations: Part 2</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6FE631F2-C671-4570-A6FA-B91BA9D6A9DF" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="33.33333333333333%" id="d648682e4872"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="33.33333333333333%" id="d648682e4878"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="3" align="left" valign="top" id="d648682e4886"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="11.11111111111111%" id="d648682e4895"> 
+            <p><span class="keyword">F64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="11.11111111111111%" id="d648682e4903"> 
+            <p><span class="keyword">F32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="11.11111111111111%" id="d648682e4911"> 
+            <p><span class="keyword">F32vec1</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_eq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_neq</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmpeq_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_gt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmpgt_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_ge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmpge_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_lt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmplt_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_le</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmple_[x]</span><br><span class="option">_mm_and_[y]</span><br><span class="option">_mm_andnot_[y]*</span><br><span class="option">_mm_or_[y]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_ngt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmpgt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_nge</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmpge_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_nlt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmplt_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4872 "> 
+            <p><span class="keyword">select_nle</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d648682e4878 "> 
+            <p><span class="option">_mm_cmple_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 d648682e4895 d648682e4903 d648682e4911 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="11.11111111111111%" headers="d648682e4886 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Packing and Unpacking Operations: Part 1</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-79AF4A59-19AD-4BFB-A433-37987D07B1FA" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e5440"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e5446"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="5" align="left" valign="top" id="d648682e5454"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5463"> 
+            <p><span class="keyword">I64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5471"> 
+            <p><span class="keyword">I32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5479"> 
+            <p><span class="keyword">I16vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5487"> 
+            <p><span class="keyword">I8vec16</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5495"> 
+            <p><span class="keyword">I32vec2</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5440 "> 
+            <p><span class="keyword">unpack_high</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5446 "> 
+            <p><span class="option">_mm_unpackhi_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5463 d648682e5471 d648682e5479 "> 
+            <p><span class="keyword">epi64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5487 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5495 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5440 "> 
+            <p><span class="keyword">unpack_low</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5446 "> 
+            <p><span class="option">_mm_unpacklo_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5463 d648682e5471 d648682e5479 "> 
+            <p><span class="keyword">epi64</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5487 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5495 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5440 "> 
+            <p><span class="keyword">pack_sat</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5446 "> 
+            <p><span class="option">_mm_packs_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5463 d648682e5471 d648682e5479 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5487 "> 
+            <p><span class="keyword">epi32</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5495 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">pi32</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5440 "> 
+            <p><span class="keyword">packu_sat</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5446 "> 
+            <p><span class="option">_mm_packus_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5463 d648682e5471 d648682e5479 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5487 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5495 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5440 "> 
+            <p><span class="keyword">sat_add</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5446 "> 
+            <p><span class="option">_mm_adds_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5463 d648682e5471 d648682e5479 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5487 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5495 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5440 "> 
+            <p><span class="keyword">sat_sub</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5446 "> 
+            <p><span class="option">_mm_subs_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5463 d648682e5471 d648682e5479 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5487 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 d648682e5495 "> 
+            <p><span class="keyword">epi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p><span class="keyword">epi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5454 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Packing and Unpacking Operations: Part 2</strong> 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4EDD1018-664D-45EE-8265-D2CD1E18830C" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e5875"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d648682e5881"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" colspan="5" align="left" valign="top" id="d648682e5889"> 
+            <p>Classes 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5898"> 
+            <p><span class="keyword">I16vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5906"> 
+            <p><span class="keyword">I8vec8</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5914"> 
+            <p><span class="keyword">F64vec2</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5922"> 
+            <p><span class="keyword">F32vec4</span> 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="10%" id="d648682e5930"> 
+            <p><span class="keyword">F32vec1</span> 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5875 "> 
+            <p><span class="keyword">unpack_high</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5881 "> 
+            <p><span class="option">_mm_unpackhi_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5898 d648682e5906 d648682e5914 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5922 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5930 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5875 "> 
+            <p><span class="keyword">unpack_low</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5881 "> 
+            <p><span class="option">_mm_unpacklo_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5898 d648682e5906 d648682e5914 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5922 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5930 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5875 "> 
+            <p><span class="keyword">pack_sat</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5881 "> 
+            <p><span class="option">_mm_packs_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5898 d648682e5906 d648682e5914 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5922 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5930 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5875 "> 
+            <p><span class="keyword">packu_sat</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5881 "> 
+            <p><span class="option">_mm_packus_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5898 d648682e5906 d648682e5914 "> 
+            <p><span class="keyword">pu16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5922 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5930 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p>N/A 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5875 "> 
+            <p><span class="keyword">sat_add</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5881 "> 
+            <p><span class="option">_mm_adds_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5898 d648682e5906 d648682e5914 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5922 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5930 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p><span class="keyword">ps</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p><span class="keyword">ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5875 "> 
+            <p><span class="keyword">sat_sub</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="25%" headers="d648682e5881 "> 
+            <p><span class="option">_mm_subs_[x]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5898 d648682e5906 d648682e5914 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5922 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 d648682e5930 "> 
+            <p><span class="keyword">pi16</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p><span class="keyword">pi8</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="10%" headers="d648682e5889 "> 
+            <p><span class="keyword">pd</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p><strong>Conversions Operations:</strong> 
+  </p>
+ 
+  <p>Conversion operations can be performed using intrinsics only. There are no classes implemented to correspond to these intrinsics. 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F93F7674-495A-452A-918C-940C70A54BE9" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="50%" id="d648682e6307"> 
+            <p>Operators 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="50%" id="d648682e6313"> 
+            <p>Corresponding<br>Intrinsic 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">F64vec2ToInt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvttsd_si32</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">F32vec4ToF64vec2</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvtps_pd</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">F64vec2ToF32vec4</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvtpd_ps</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">IntToF64vec2</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvtsi32_sd</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">F32vec4ToInt</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvtt_ss2si</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">F32vec4ToIs32vec2</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvttps_pi32</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">IntToF32vec4</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvtsi32_ss</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6307 "> 
+            <p><span class="keyword">Is32vec2ToF32vec4</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d648682e6313 "> 
+            <p><span class="option">_mm_cvtpi32_ps</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8FAC8E44-EFD8-4A49-95E5-D051DA1C3A05.htm">Intel C++ Class Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

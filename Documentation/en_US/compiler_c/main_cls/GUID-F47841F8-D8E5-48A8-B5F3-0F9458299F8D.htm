@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fasynchronous-unwind-tables">
+<meta name="abstract" content="Determines whether unwind information is precise at an instruction boundary or at a call boundary.">
+<meta name="description" content="Determines whether unwind information is precise at an instruction boundary or at a call boundary.">
+<meta name="DC.subject" content="-fasynchronous-unwind-tables compiler option, -fno-asynchronous-unwind-tables compiler option, unwind information, option determining where precision occurs">
+<meta name="keywords" content="-fasynchronous-unwind-tables compiler option, -fno-asynchronous-unwind-tables compiler option, unwind information, option determining where precision occurs">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E65FC029-9273-4CDD-8C4C-3372B9A60DC7.htm#GUID-E65FC029-9273-4CDD-8C4C-3372B9A60DC7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F47841F8-D8E5-48A8-B5F3-0F9458299F8D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fasynchronous-unwind-tables</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fasynchronous_unwind_tables"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fasynchronous_unwind_tables"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F47841F8-D8E5-48A8-B5F3-0F9458299F8D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fasynchronous-unwind-tables</h1>
+<!-- Determines whether unwind information is precise at an instruction boundary or at a call boundary. --><div><p> Determines whether unwind information is precise at an instruction boundary or at a call boundary. </p>
+
+<div class="section" id="GUID-755CCF0C-335A-4857-8D20-98483398BE4A"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-8176E9F6-DF48-4F0B-A3B5-EE5892FB6EE5"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-519545B2-1384-405E-8AD7-1CB6EA28E65E"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fasynchronous-unwind-tables</span></p><p><span class="kwd">-fno-asynchronous-unwind-tables</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-C307BA88-2110-446E-A43E-69C913DD23AA"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-F7856EE2-CE0F-4AF7-B84B-08B1A97A9B35"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>Intel&reg; 64 architecture: <span class="option">-fasynchronous-unwind-tables</span></p></td>
+<td valign="top" class="noborder"><p> The unwind table generated is precise at  an instruction boundary, enabling accurate unwinding at any instruction.</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p>IA-32 architecture: <span class="option">-fno-asynchronous-unwind-tables</span></p></td>
+<td valign="top" class="noborder"><p> The unwind table generated is precise at call boundaries only.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-FC6A8010-F434-447C-A9DC-4DB1446512D4"><h2>Description</h2><p> This option determines whether unwind information is precise at an instruction boundary or at a call boundary. The compiler generates an unwind table in DWARF2 or DWARF3 format, depending on which format is supported on your system.</p>
+<p> If <span class="option">-fno-asynchronous-unwind-tables</span> is specified, the unwind table is precise at call boundaries only. In this case, the compiler will avoid creating unwind tables for routines such as the following:</p>
+<ul type="disc" id="GUID-813F8DA4-8F2A-4378-92FA-C64C86503DAC"><li><p> A C++ routine that does not declare objects with destructors and does not contain calls to routines that might throw an exception.</p>
+</li>
+<li><p> A C/C++ or Fortran routine compiled without <span class="option">-fexceptions</span>, and on Intel&reg; 64 architecture, without <span class="option">-traceback</span>.</p>
+</li>
+<li><p> A C/C++ or Fortran routine compiled with <span class="option">-fexceptions</span> that does not contain calls to routines that might throw an exception.</p>
+</li>
+</ul>
+</div>
+
+<div class="section" id="GUID-4021EA5F-7C49-4719-AD46-2FF439A620B8"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E65FC029-9273-4CDD-8C4C-3372B9A60DC7.htm#GUID-E65FC029-9273-4CDD-8C4C-3372B9A60DC7">fexceptions</a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

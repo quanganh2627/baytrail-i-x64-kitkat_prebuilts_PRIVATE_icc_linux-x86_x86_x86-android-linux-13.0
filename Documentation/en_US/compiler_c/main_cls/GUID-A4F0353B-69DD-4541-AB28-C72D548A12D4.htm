@@ -1,0 +1,144 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag-enable sc, Qdiag-enable:sc">
+<meta name="abstract" content="Enables static analysis diagnostics. You can determine which diagnostics to emit based on severity or you can specify an analysis mode for diagnostic messages.">
+<meta name="description" content="Enables static analysis diagnostics. You can determine which diagnostics to emit based on severity or you can specify an analysis mode for diagnostic messages.">
+<meta name="DC.subject" content="-diag-enable sc compiler option, -diag-disable sc compiler option, -diag-enable sc-mode compiler option, /Qdiag-enable:sc compiler option, /Qdiag-enable:sc-mode compiler option, /Qdiag-disable:sc compiler option, static analysis, option enabling, option specifying level of messages, diagnostic messages, option controlling static analysis">
+<meta name="keywords" content="-diag-enable sc compiler option, -diag-disable sc compiler option, -diag-enable sc-mode compiler option, /Qdiag-enable:sc compiler option, /Qdiag-enable:sc-mode compiler option, /Qdiag-disable:sc compiler option, static analysis, option enabling, option specifying level of messages, diagnostic messages, option controlling static analysis">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Relation" scheme="URI" content="GUID-4642611D-145C-489A-A9A8-21293BB17507.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-891680A4-8EE8-4C8A-B97F-90859D193B02.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-82B74BDE-4211-423B-8ECA-47CAFACFB8E1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2DF57041-B0AA-49CC-AB26-A2F729CEDFD5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A4F0353B-69DD-4541-AB28-C72D548A12D4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag-enable sc, Qdiag-enable:sc</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag_enable_sc"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag_enable_sc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A4F0353B-69DD-4541-AB28-C72D548A12D4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">diag-enable sc, Qdiag-enable:sc</h1>
+<!--Enables static analysis diagnostics. You can determine which diagnostics to emit based on severity or you can specify an analysis mode for diagnostic messages. --><div><p>Enables static analysis diagnostics. You can determine which diagnostics to emit based on severity or you can specify an analysis mode for diagnostic messages. </p>
+<div class="section" id="GUID-2734D84F-4831-4A13-96E5-EBB74A02EB34"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-diag-enable sc</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">-diag-enable sc-</span><span class="var">mode</span></p><p><span class="kwd">-diag-disable sc</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-enable:sc</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">/Qdiag-enable:sc-</span><span class="var">mode</span></p><p><span class="kwd">/Qdiag-disable:sc</span></p></td></tr></table></div>
+<div class="section" id="GUID-5639DAAE-4956-4F97-80F3-57A59322AC9A"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the level of severity to report. Possible values are:  </p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+<td valign="top" class="noborder"><p>Reports only diagnostics with a severity level of "critical". Diagnostics with a severity level of "error" or "warning" are not displayed.</p>
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+<td valign="top" class="noborder"><p>Reports all diagnostics with a severity level of "critical" and "error". Diagnostics with a severity level of "warning" are not reported. This is the default.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">3</span></p></td>
+<td valign="top" class="noborder"><p>Reports all diagnostics regardless of the severity level.</p>
+</td>
+</tr></table>
+<p>This value is equivalent to deprecated option <span class="option">sv[n]</span>.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><var>mode</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the analysis mode. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">full</span></p></td>
+<td valign="top" class="noborder"><p></p>
+<p>This mode attempts to find all program weaknesses, even at the expense of more false positives. This mode is recommended when using the tool for security assurance. </p>
+<p> This is the default if <span class="option">-diag-enable sc{[1|2|3]}</span> (Linux* OS and OS X*) or
+<span class="option">/Qdiag-enable:sc{[1|2|3]}</span> (Windows* OS) is present. Otherwise, the default is
+None (static analysis diagnostics are
+disabled).</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">concise</span></p></td>
+<td valign="top" class="noborder"><p> This mode attempts to reduce false positives
+somewhat more than reducing false negatives. This mode is recommended when using the tool for general error
+detection.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">precise</span></p></td>
+<td valign="top" class="noborder"><p>This mode attempts to avoid all false positives, even at the expense of substantially reduced error checking. This mode is recommended when using the tool for acceptance screening.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+<div class="section" id="GUID-E5CDCFBC-FCF6-484E-9FFD-EB877FDF954E"><h2>Default</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr> <td valign="top" width="30%" class="noborder"><p><span class="option">-diag-disable sc</span> and <span class="option">/Qdiag-disable:sc</span></p></td>
+<td valign="top" class="noborder"><p>Static analysis diagnostics are disabled.</p>
+</td>
+</tr></table>
+</div>
+<div class="section" id="GUID-DAB27780-B4A8-4AA3-A56C-3FCE5D77874E"><h2>Description</h2><p>This option enables static analysis diagnostics. </p>
+<p>If you specify <var>n</var> for the option, you can determine which diagnostics to emit based on severity.  If you specify <var>mode</var>, you can also specify an analysis mode for diagnostic messages. </p>
+<p>To disable static analysis, specify <span class="option">/Qdiag-disable:sc</span> (Windows* OS) or option <span class="option">-diag-disable sc</span> (Linux* OS). </p>
+<p>You can also specify the following options that affect the diagnostics:</p>
+<ul type="disc" id="GUID-9DECFAE0-0AF6-41CE-9CD9-51116FF04E45"><li><p><span class="option">-diag-error sc</span> (Linux OS) or <span class="option">/Qdiag-error:sc</span> (Windows OS)</p>
+<p>This changes all Static Analysis diagnostics to errors.</p>
+</li>
+<li><p><span class="option">-diag-warning sc</span> (Linux OS) or <span class="option">/Qdiag-warning:sc</span> (Windows OS)</p>
+<p>This changes all Static Analysis diagnostics to warnings.</p>
+</li>
+<li><p><span class="option">-diag-remark sc</span> (Linux OS) or <span class="option">/Qdiag-remark:sc</span> (Windows OS)</p>
+<p>This changes all Static Analysis diagnostics to remarks (comments).</p>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-5967685B-CBAF-4BFC-B3F6-29AB1EE73716"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Diagnostics &gt; Level of Static  Analysis </strong>(<span class="option">/Qdiag-enable:sc{1|2|3}
+</span>)</p>
+<p class="ide"><strong>Diagnostics &gt; Mode of Static Analysis</strong> (<span class="option">/Qdiag-enable:sc-{full|concise|precise}</span>)</p>
+
+ <p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Level of Static Analysis</strong> (<span class="option">-diag-enable sc{1|2|3}</span> or <span class="option">-diag-disable sv</span>)</p>
+
+<p class="ide"><strong>Compilation Diagnostics &gt; Mode of Static Analysis</strong> (<span class="option">-diag-enable sc-{full|concise|precise}</span>)</p>
+
+ 
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-5486ACBF-10F9-4448-92C5-0636DADAFC87"><h2>Alternate Options</h2><p>None</p>
+</div>
+<div class="example"><h2>Example</h2><p>The following example shows how to produce static analysis
+ diagnostic messages for all critical errors:</p>
+<pre>-diag-enable sc1      ! Linux systems</pre><pre>/Qdiag-enable:sc1     ! Windows systems</pre><p>The following example shows how to cause static analysis
+
+diagnostics (and default diagnostics) to be sent to a file: </p>
+<pre>-diag-enable sc -diag-file=stat_ver_msg   ! Linux systems </pre><pre>/Qdiag-enable:sc /Qdiag-file:stat_ver_msg ! Windows systems</pre><p>Note that you need to enable static analysis
+ diagnostics before you can send them to a file. In this case, the diagnostics are sent to file <samp class="codeph">stat_ver_msg.diag</samp>. If a file name is not specified, the diagnostics are sent to <samp class="codeph">name-of-the-first-source-file.diag</samp>.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7"><span class="option">diag, Qdiag</span></a>  compiler option</div>
+<div><a href="GUID-4642611D-145C-489A-A9A8-21293BB17507.htm"><span class="option">diag-sc-dir, Qdiag-sc-dir</span></a>  compiler option</div>
+<div><a href="GUID-891680A4-8EE8-4C8A-B97F-90859D193B02.htm"><span class="option">diag-enable sc-single-file, Qdiag-enable sc-single-file</span></a>  compiler option</div>
+<div><a href="GUID-82B74BDE-4211-423B-8ECA-47CAFACFB8E1.htm"><span class="option">diag-enable sc-enums, Qdiag-enable sc-enums</span></a>  compiler option</div>
+<div><a href="GUID-2DF57041-B0AA-49CC-AB26-A2F729CEDFD5.htm">Using Static Analysis</a>  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

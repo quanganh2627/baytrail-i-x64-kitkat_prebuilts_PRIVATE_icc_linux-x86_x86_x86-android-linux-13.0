@@ -1,0 +1,213 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Interval Profile Dumping">
+<meta name="DC.subject" content="PGO API, _PGOPTI_Set_Interval_Prof_Dump, dumping profile information, endian data, PROF_DUMP_INTERVAL, interprocedural optimizations, initiating, profile-guided optimization, interval profile dumping, profile-optimized code, dumping">
+<meta name="keywords" content="PGO API, _PGOPTI_Set_Interval_Prof_Dump, dumping profile information, endian data, PROF_DUMP_INTERVAL, interprocedural optimizations, initiating, profile-guided optimization, interval profile dumping, profile-optimized code, dumping">
+<meta name="DC.Relation" scheme="URI" content="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-20D09B15-2378-4275-9F99-A9AA68F79991">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Interval Profile Dumping</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pigs_int"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pigs_int"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-20D09B15-2378-4275-9F99-A9AA68F79991">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Interval Profile Dumping</h1>
+ 
+   
+  <div> 
+	 <p>The 
+		<span class="keyword">_PGOPTI_Set_Interval_Prof_Dump()</span> function activates Interval Profile Dumping and sets the approximate frequency at which dumps occur. This function is used in non-terminating applications. 
+	 </p>
+ 
+	 <p>The prototype of the function call is listed below. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-53B68981-4C2E-4430-85C8-7EAF4E12FC98" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d98233e70"> 
+				  <p>Syntax 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d98233e70 "> 
+				  <p><samp class="codeph">void _PGOPTI_Set_Interval_Prof_Dump(int interval);</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>This function is used in non-terminating applications. 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">interval</span> parameter specifies the time interval at which profile dumping occurs and is measured in milliseconds. For example, if interval is set to 5000, then a profile dump and reset will occur approximately every 5 seconds. The interval is approximate because the time-check controlling the dump and reset is only performed upon entry to any instrumented function in your application. 
+	 </p>
+ 
+	 <p>Setting the interval to zero or a negative number will disable interval profile dumping, and setting a very small value for the interval may cause the instrumented application to spend nearly all of its time dumping profile information. Be sure to set interval to a large enough value so that the application can perform actual work and substantial profile information is collected. 
+	 </p>
+ 
+	 <p>The following example demonstrates one way of using interval profile dumping in non-terminating code. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-624FA817-7D81-4368-B358-D052C692D4BD" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" valign="top" id="d98233e118"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d98233e118 "> 
+				  <pre>#include &lt;stdio.h&gt;</pre> 
+				  <pre>// The next include is to access</pre> 
+				  <pre>// _PGOPTI_Set_Interval_Prof_Dump_All</pre> 
+				  <pre>#include &lt;pgouser.h&gt;</pre> 
+				  <pre>int returnValue()</pre> 
+				  <pre>{ return 100; }</pre> 
+				  <pre>int main()</pre> 
+				  <pre>{</pre> 
+				  <pre>  int ans;</pre> 
+				  <pre>  printf("CTRL-C to quit.\n");</pre> 
+				  <pre>  _PGOPTI_Set_Interval_Prof_Dump(5000);</pre> 
+				  <pre>  while (1)</pre> 
+				  <pre>    ans = returnValue();</pre> 
+				  <pre>}</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>You can compile the code shown above by entering commands similar to the following: 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E058693C-BF8B-474A-88DE-C9002623CF46" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" id="d98233e193"> 
+				  <p>Operating System 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="top" id="d98233e199"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" headers="d98233e193 "> 
+				  <p>Linux* and OS X* 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d98233e199 "> 
+				  <p><samp class="codeph">icc -prof-gen -o intrumented_number number.c</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" headers="d98233e193 "> 
+				  <p>Windows* 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d98233e199 "> 
+				  <p><samp class="codeph">icl /Qprof-gen /Feinstrumented_number number.c</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>When compiled, the code shown above will dump profile information a .dyn file about every five seconds until the program is ended. 
+	 </p>
+ 
+	 <p>You can use the 
+		<a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> tool to merge the .dyn files. 
+	 </p>
+ 
+	 <div class="section" id="GUID-132680D8-7875-41A8-A766-F3EB4ECE6DB0"><h2 class="sectiontitle">Recommended usage</h2> 
+		 
+		<p>Call this function at the start of a non-terminating user application to initiate interval profile dumping. Note that an alternative method of initiating interval profile dumping is by setting the environment variable 
+		  <a href="GUID-8D2D02AE-724C-4839-9763-62695F7E0B9E.htm#GUID-8D2D02AE-724C-4839-9763-62695F7E0B9E">API Support Overview</a> to the desired interval value prior to starting the application<span class="keyword">.</span> 
+		</p>
+ 
+		<p>Using interval profile dumping, you should be able to profile a non-terminating application with minimal changes to the application source code. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">PGO API Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

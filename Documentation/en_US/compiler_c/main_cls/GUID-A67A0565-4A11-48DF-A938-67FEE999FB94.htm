@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30523)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30523">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30523">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-96ACF1E4-E130-4EBD-9C4D-43CFEA0E38A2.htm#GUID-96ACF1E4-E130-4EBD-9C4D-43CFEA0E38A2">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A67A0565-4A11-48DF-A938-67FEE999FB94">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30523)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30523"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30523"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A67A0565-4A11-48DF-A938-67FEE999FB94">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30523)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-08320E1B-BC58-4969-B1CA-A2D047027AD6"><h2 class="sectiontitle">Message</h2><p>Assign a value to the variable(s) "%s" at the beginning of the body of the loop in line %d. This will allow the loop to be parallelized.</p>
+</div>
+
+
+<div class="section" id="GUID-4E783F1F-D2C7-478D-A0D2-FF18D758CA65"><h2 class="sectiontitle">Advice</h2>
+<p>Check to see if you can unconditionally initialize the scalar variables at the beginning of the specified loop. If so, do the code change for such initialization (standard), or list the variables in the private clause of a <span>parallel pragma </span> (advanced). This allows the parallelizer to privatize those variables for each iteration and to parallelize the loop. </p>
+</div>
+
+
+<div class="section" id="GUID-A47E92FD-5E0A-46FA-8417-1A6389FDA2FC"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>#define N 100000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>&nbsp;</pre>
+<pre>void foo(int cond1, int cond2){</pre>
+<pre>  int i, t=7;</pre>
+<pre>  for (i=0; i&lt;N; i++){</pre>
+<pre>    if (cond1) {</pre>
+<pre>      t = i;</pre>
+<pre>    }</pre>
+<pre>    if (cond2) {</pre>
+<pre>      A[i] = t;</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre>}</pre>
+</div>
+
+
+<p>In this case, the compiler does not parallelize the loop because it cannot privatize the variable t without further information. If you know that cond2 always implies cond1, then you can assist the parallelizer by ensuring that any iteration that uses t, also writes to t before it's use in the same iteration. One of the ways to do this is to assign a value to t at the top of every iteration. Another way is to list the variables to be privatized in the private clause of a parallel pragma.</p>
+<p>If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>#define N 100000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>&nbsp;</pre>
+<pre>void foo(int cond1, int cond2){</pre>
+<pre>  int i, t=7;</pre>
+<pre>#pragma private (t)</pre>
+<pre>  for (i=0; i&lt;N; i++){</pre>
+<pre>    if (cond1) {</pre>
+<pre>      t = i;</pre>
+<pre>    }</pre>
+<pre>    if (cond2) {</pre>
+<pre>      A[i] = t;</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+
+
+
+
+
+<div class="section" id="GUID-C9F5AA4F-E8A6-495E-8FF6-3840573AC13E"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that in the original program, any variables <span>read</span>
+ in any iteration of the loop have been defined earlier in the same iteration or have been privitized by means of the private clause of a <span>parallel pragma</span>.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-96ACF1E4-E130-4EBD-9C4D-43CFEA0E38A2.htm#GUID-96ACF1E4-E130-4EBD-9C4D-43CFEA0E38A2">GAP Message (Diagnostic ID 30521)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

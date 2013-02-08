@@ -1,0 +1,520 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Macro Functions to Read and Write Control Registers">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, macros, read control register, write control register, Intel&reg; Streaming SIMD Extensions, macro functions, shuffle function">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, macros, read control register, write control register, Intel&reg; Streaming SIMD Extensions, macro functions, shuffle function">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F9665B6-3B6D-4902-B555-A85291CB3867.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9D8B1FC3-0999-4274-A8E1-6228911467CF.htm#GUID-9D8B1FC3-0999-4274-A8E1-6228911467CF">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DD59AB3B-27FC-4AAE-8459-D669F5641573">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Macro Functions to Read and Write Control Registers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_macro_readwrite_reg"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DD59AB3B-27FC-4AAE-8459-D669F5641573">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Macro Functions to Read and Write Control Registers</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-3CECB861-C2EA-4DFC-BD17-BF99E5FFCE9D"> 
+      <p>The following macro functions enable you to read and write bits to and from the control register. 
+      </p>
+ 
+      </div>
+ 
+    <div class="section" id="GUID-C1940086-3FD1-476D-9FE2-2469D0D3E11E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F72203BD-95D5-4E7E-9880-690C5B26F6FD" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d764676e60"> 
+                <p>Exception State Macros 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d764676e66"> 
+                <p>Macro Arguments 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e60 "> 
+                <p><span class="option">_MM_SET_EXCEPTION_STATE(x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e66 "> 
+                <p><span class="option">_MM_EXCEPT_INVALID</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e60 "> 
+                <p><span class="option">_MM_GET_EXCEPTION_STATE()</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e66 "> 
+                <p><span class="option">_MM_EXCEPT_DIV_ZERO</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e60 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e66 "> 
+                <p><span class="option">_MM_EXCEPT_DENORM</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e60 "> 
+                <p><strong>Macro Definitions</strong> 
+                </p>
+ 
+                <p>Write to and read from the six least significant control register bits, respectively. 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e66 "> 
+                <p><span class="option">_MM_EXCEPT_OVERFLOW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e60 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e66 "> 
+                <p><span class="option">_MM_EXCEPT_UNDERFLOW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e60 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e66 "> 
+                <p><span class="option">_MM_EXCEPT_INEXACT</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7FE55FA6-8823-4873-B6EE-2F747BD9CB37"> 
+      <p>The following example tests for a divide-by-zero exception. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-030CA6E5-AB89-4CB0-AAA6-06AAC370E0B2"><h2 class="sectiontitle">Exception State Macros with _MM_EXCEPT_DIV_ZERO</h2> 
+       
+      <div class="fignone" id="GUID-C4EE3D50-1C93-45C8-AC06-FDD8BFBE243D"><br><img src="GUID-BB9AD879-FBB7-4219-B838-A896526F4361-low.gif" width="333" height="67"><br> 
+      </div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C6ADC663-E456-49C4-90AA-B2797909207A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d764676e217"> 
+                <p>Exception Mask Macros 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d764676e223"> 
+                <p>Macro Arguments 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e217 "> 
+                <p><span class="option">_MM_SET_EXCEPTION_MASK(x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e223 "> 
+                <p><span class="option">_MM_MASK_INVALID</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e217 "> 
+                <p><span class="option">_MM_GET_EXCEPTION_MASK ()</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e223 "> 
+                <p><span class="option">_MM_MASK_DIV_ZERO</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e217 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e223 "> 
+                <p><span class="option">_MM_MASK_DENORM</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e217 "> 
+                <p><strong>Macro Definitions</strong> 
+                </p>
+ 
+                <p>Write to and read from bit 7 – 12 control register bits, respectively. 
+                  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+                    <p>All six exception mask bits are always affected. Bits not set explicitly are cleared. 
+                    </p>
+ 
+                  </div> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e223 "> 
+                <p><span class="option">_MM_MASK_OVERFLOW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e217 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e223 "> 
+                <p><span class="option">_MM_MASK_UNDERFLOW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e217 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e223 "> 
+                <p><span class="option">_MM_MASK_INEXACT</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6D7A96AE-67EE-4998-9791-8E9C06B46FB8"> 
+      <p>To mask the overflow and underflow exceptions and unmask all other exceptions, use the macros as follows: 
+        <pre>_MM_SET_EXCEPTION_MASK(MM_MASK_OVERFLOW | _MM_MASK_UNDERFLOW)</pre> 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-280BC906-EB4A-4B51-91DD-76A4F1835ABF"> 
+      <p>The following table lists the macros to set and get rounding modes, and the macro arguments that can be passed with the macros. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C007D975-3C0B-46DD-954E-B3B383A80AD0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d764676e382"> 
+                <p>Rounding Mode 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d764676e388"> 
+                <p>Macro Arguments 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e382 "> 
+                <p><span class="option">_MM_SET_ROUNDING_MODE(x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e388 "> 
+                <p><span class="option">_MM_ROUND_NEAREST</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e382 "> 
+                <p><span class="option">_MM_GET_ROUNDING_MODE()</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e388 "> 
+                <p><span class="option">_MM_ROUND_DOWN</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e382 "> 
+                <p><strong>Macro Definition</strong> 
+                </p>
+ 
+                <p>Write to and read from bits 13 and 14 of the control register. 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e388 "> 
+                <p><span class="option">_MM_ROUND_UP</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e382 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e388 "> 
+                <p><span class="option">_MM_ROUND_TOWARD_ZERO</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+      <p>To test the rounding mode for round toward zero, use the 
+        <span class="keyword">_MM_ROUND_TOWARD_ZERO 
+        </span>macro as follows. 
+      </p>
+ 
+      <pre>if (_MM_GET_ROUNDING_MODE() == _MM_ROUND_TOWARD_ZERO) {</pre> 
+      <pre>/* Rounding mode is round toward zero */</pre> 
+      <pre>}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-16EEC465-1433-4A31-AF39-9D908484A537"> 
+      <p>The following table lists the macros to set and get the flush-to-zero mode and the macro arguments that can be used. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7BB22075-C7C7-4C27-9007-6497329D3866" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d764676e512"> 
+                <p>Flush-to-Zero Mode 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d764676e518"> 
+                <p>Macro Arguments 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e512 "> 
+                <p><span class="option">_MM_SET_FLUSH_ZERO_MODE(x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e518 "> 
+                <p><span class="option">_MM_FLUSH_ZERO_ON</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e512 "> 
+                <p><span class="option">_MM_GET_FLUSH_ZERO_MODE()</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e518 "> 
+                <p><span class="option">_MM_FLUSH_ZERO_OFF</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d764676e512 "> 
+                <p><strong>Macro Definition</strong> 
+                </p>
+ 
+                <p><strong></strong> Write to and read from bit 15 of the control register. 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d764676e518 "> 
+                <p> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+      <p>To disable the flush-to-zero mode, use the 
+        <span class="keyword">_MM_FLUSH_ZERO_OFF</span> macro. 
+      </p>
+ 
+      <p> 
+        <pre>_MM_SET_FLUSH_ZERO_MODE(_MM_FLUSH_ZERO_OFF)</pre> 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F9665B6-3B6D-4902-B555-A85291CB3867.htm">Macro Functions</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-9D8B1FC3-0999-4274-A8E1-6228911467CF.htm#GUID-9D8B1FC3-0999-4274-A8E1-6228911467CF">Intrinsics to Read and Write Registers 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

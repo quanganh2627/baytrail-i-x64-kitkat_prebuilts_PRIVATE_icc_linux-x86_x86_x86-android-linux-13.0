@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_alignr_epi8">
+<meta name="abstract" content="Aligns elements of two source vectors depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is VPALIGNRB.">
+<meta name="description" content="Aligns elements of two source vectors depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is VPALIGNRB.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, miscellaneous operations, _mm256_alignr_epi8 (VPALIGNRB)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, miscellaneous operations, _mm256_alignr_epi8 (VPALIGNRB)">
+<meta name="DC.Relation" scheme="URI" content="GUID-53C8406E-757B-4E75-AD34-7E9250B62D74.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F6BB4149-C9DD-4156-8F26-4CC4D7CFED86">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_alignr_epi8</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_alignr"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_alignr_epi8"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F6BB4149-C9DD-4156-8F26-4CC4D7CFED86">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_alignr_epi8</span></h1>
+
+<!--Aligns elements of two source vectors depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is  VPALIGNRB .-->
+
+
+<div><p>Aligns elements of two source vectors depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPALIGNRB</span>.</p>
+
+
+    <div class="section" id="GUID-EAC48279-D2E1-41DD-93D1-35F4D9A5B0C7"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_alignr_epi8(__m256i s1, __m256i s2, const int mask);</span></p></td></tr></table></div>
+
+
+    <div class="section" id="GUID-13363D29-25E6-4C17-B3D7-53EBCFC0A85C"><h2>Arguments</h2>
+      <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+        <tr>
+          <td valign="top" width="30%" class="noborder"><p>
+            <var>s1</var>
+          </p></td>
+
+          <td valign="top" class="noborder">
+            <p>integer source vector used for the operation</p>
+
+          </td>
+
+        </tr>
+        <tr>
+          <td valign="top" width="30%" class="noborder"><p>
+            <var>s2</var>
+          </p></td>
+
+          <td valign="top" class="noborder">
+            <p>integer source vector used for the operation</p>
+
+          </td>
+
+        </tr>
+        <tr>
+          <td valign="top" width="30%" class="noborder"><p>
+            <var>mask</var>
+          </p></td>
+
+          <td valign="top" class="noborder">
+            <p>8-bit immediate bits used for the operation</p>
+
+          </td>
+
+        </tr>
+      </table>
+
+    </div>
+
+
+    <div class="section" id="GUID-C170ED27-3E30-4F47-87D3-0B91130031AC"><h2>Description</h2>
+
+      <p>Performs an alignment operation by concatenating two blocks of 16-byte data from the first
+        and second source vectors, <var>s1</var> and <var>s2</var>, into an
+        intermediate 32-byte composite, shifting the composite at byte granularity to the right by a
+        constant immediate specified by mask, and extracting the right-aligned 16-byte result into
+        the destination vector. The immediate value is considered unsigned.</p>
+
+   <br><img src="GUID-939E778B-8FA4-4A04-8F2A-560498002061-low.gif"><br>
+    </div>
+
+
+
+
+    <div class="section" id="GUID-8958B9DC-F550-4AB1-82C2-21624DCDADE6"><h2>Returns</h2>
+      <p> Result of the alignment operation. </p>
+
+    </div>
+
+  </div>
+
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-53C8406E-757B-4E75-AD34-7E9250B62D74.htm">Intrinsics for Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

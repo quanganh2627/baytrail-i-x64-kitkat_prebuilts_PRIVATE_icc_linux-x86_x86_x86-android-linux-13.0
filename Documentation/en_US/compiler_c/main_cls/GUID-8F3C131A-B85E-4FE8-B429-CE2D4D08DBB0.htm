@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_i64gather_epi32,_mm256_i64gather_epi32">
+<meta name="abstract" content="Gathers 2/4 doubleword values from memory referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is VPGATHERQD.">
+<meta name="description" content="Gathers 2/4 doubleword values from memory referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is VPGATHERQD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, GATHER operations, _mm_i64gather_epi32 (VPGATHERQD), _mm256_i64gather_epi32 (VPGATHERQD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, GATHER operations, _mm_i64gather_epi32 (VPGATHERQD), _mm256_i64gather_epi32 (VPGATHERQD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8F3C131A-B85E-4FE8-B429-CE2D4D08DBB0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_i64gather_epi32,_mm256_i64gather_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_i64gather_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_i64gather_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8F3C131A-B85E-4FE8-B429-CE2D4D08DBB0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm_i64gather_epi32,_mm256_i64gather_epi32</span></h1>
+<!--Gathers 2/4 doubleword values from memory referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is  VPGATHERQD .--><div><p>Gathers 2/4 doubleword values from memory referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERQD</samp>.</p>
+
+
+<div class="section" id="GUID-EC7B4D6E-691C-43EF-8E29-D948A4B7B7C7"><h2>Syntax</h2>
+  
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m128i _mm_i64gather_epi32(int const * base, __m128i vindex, const int scale);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m128i _mm256_i64gather_epi32(int const * base, __m256i vindex, const int scale);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-8A57936F-B8DF-4560-A76A-810C50D4EAA0"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var> base </var></p></td>
+
+      <td valign="top" class="noborder"><p>  the base address used to reference the loaded dword elements.</p>
+</td>
+
+    </tr>
+	<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>   vindex </var></p></td>
+
+      <td valign="top" class="noborder"><p>the vector of qword indices used to reference the loaded dword elements.</p>
+</td>
+
+    </tr>
+ 	<tr><td valign="top" width="30%" class="noborder"><p><var>scale </var></p></td>
+	<td valign="top" class="noborder"><p> 32-bit scale used to address the loaded dword elements; it is multiplied by the corresponding element from '<var>vindex</var>'.</p>
+</td>
+</tr></table>
+
+	</div>
+
+
+<div class="section" id="GUID-AE2D209F-C900-4987-8E07-47E174283467"><h2>Description</h2>
+<p>The intrinsics load 2/4 doubleword values from memory  using the base address, qword indices, and 32-bit scale.  The intrinsic <samp class="codeph">_mm_i64gather_epi32()</samp> also sets the upper 64-bits of the result to '<span>0</span>'.</p>
+
+<p> Below is the pseudo-code for the intrinsics:</p>
+<p> <samp class="codeph">_mm_i64gather_epi32()</samp>:</p>
+<pre>result[31:0] = mem[base+vindex[63:0]*scale];
+result[63:32] = mem[base+vindex[127:64]*scale];
+result[127:64] = 0;</pre><p> <samp class="codeph">_mm256_i64gather_epi32()</samp>:</p>
+<pre>result[31:0] = mem[base+vindex[63:0]*scale];
+result[63:32] = mem[base+vindex[127:64]*scale];
+result[95:64] = mem[base+vindex[191:128]*scale];
+result[127:96] = mem[base+vindex[255:192]*scale];</pre></div>
+
+
+
+
+<div class="section" id="GUID-8E3B5047-5130-4068-AFA7-0C4C5EDA40A0"><h2>Returns</h2><p>A 128/256-bit vector with
+unconditionally gathered integer32 values.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC.htm">Intrinsics for GATHER Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

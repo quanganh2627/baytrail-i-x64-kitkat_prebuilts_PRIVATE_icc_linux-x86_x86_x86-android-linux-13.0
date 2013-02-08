@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Logging Stdout and Stderr from Offloaded Code">
+<meta name="DC.subject" content="log file from offloaded code">
+<meta name="keywords" content="log file from offloaded code">
+<meta name="DC.Relation" scheme="URI" content="GUID-D46526BF-F44C-4FE6-96C2-E1334E3BAAF9.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-323C1F3E-AC93-47CD-8E7C-93FE3D9680FC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Logging Stdout and Stderr from Offloaded Code</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_logging_offloaded_code"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-323C1F3E-AC93-47CD-8E7C-93FE3D9680FC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Logging Stdout and Stderr from Offloaded Code</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p> Capturing C/C++ program output to stdout and stderr from writes performed inside offloaded code may require calling 
+		<samp class="codeph">fflush()</samp>. This function is under the control of the coprocessor offload interface (COI) layer, not the compiler or compiler run-time libraries. 
+	 </p>
+ 
+	 <p>Writes performed in offloaded code may be buffered when they are directed to a file, while writes to the console happen immediately. If the application exits prior to the buffer threshold being reached then the output data may be lost. Therefore, I/O to a file requires an additional explicit 
+		<samp class="codeph">fflush()</samp> on the coprocessor to capture this output data, as shown in the sample.c example below. 
+	 </p>
+ 
+	 <div class="example"><h2 class="sectiontitle">Example</h2> 
+		 
+		<pre>sample.c:
+
+#pragma offload_attribute(push,target(mic))
+#include &lt;stdio.h&gt;
+
+void sub()
+{
+  printf("hello from MIC\n");
+  fflush(0);
+}
+
+#pragma offload_attribute(pop)
+
+int main(int argc, char* argv[])
+{
+   printf("hello from main\n");
+   #pragma offload target(mic)
+   sub();
+}</pre> 
+		<p>Compile and execute the above example as follows: 
+		</p>
+ 
+		<pre>$ icc -offload-build –o sample sample.c
+$ ./sample &gt; log.txt
+$ cat log.txt hello from MIC hello from main
+</pre> 
+		<p>When calling 
+		  <samp class="codeph">fflush()</samp>, you can control directing stdout and stderr to the same or separate output files. 
+		</p>
+ 
+		<p>For example, to send the stdout (1) and stderr (2) to 
+		  <span class="filepath">log.txt</span>, enter: 
+		</p>
+ 
+		<p><samp class="codeph">$ ./sample &gt; log.txt 2&gt;&amp;1</samp> 
+		</p>
+ 
+		<p>To redirect stdout to one file and stderr to another, use: 
+		</p>
+ 
+		<p><samp class="codeph">$ ./sample &gt; log.txt 2&gt; log_err.txt</samp> 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D46526BF-F44C-4FE6-96C2-E1334E3BAAF9.htm">Building for Intel&reg; MIC Architecture</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

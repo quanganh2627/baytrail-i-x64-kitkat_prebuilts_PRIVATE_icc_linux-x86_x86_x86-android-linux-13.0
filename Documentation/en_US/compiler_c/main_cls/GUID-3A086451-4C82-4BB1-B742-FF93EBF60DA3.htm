@@ -1,0 +1,177 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prefetch/noprefetch">
+<meta name="abstract" content="Invites the compiler to issue data prefetches from memory (prefetch) or disables data prefetching (noprefetch). This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Invites the compiler to issue data prefetches from memory (prefetch) or disables data prefetching (noprefetch). This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="pragma prefetch, pragma noprefetch">
+<meta name="keywords" content="pragma prefetch, pragma noprefetch">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3A086451-4C82-4BB1-B742-FF93EBF60DA3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prefetch/noprefetch</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_prefetch_noprefetch"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3A086451-4C82-4BB1-B742-FF93EBF60DA3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>prefetch/noprefetch</span></h1>
+
+<!--Invites the compiler to issue data prefetches from memory (prefetch) or disables data prefetching (noprefetch). This  pragma only applies to Intel&reg; MIC Architecture.-->
+<div><p>Invites the compiler to issue data prefetches from memory (prefetch) or disables data prefetching (noprefetch). This  pragma only applies to Intel&reg; MIC Architecture.</p>
+
+<div class="section" id="GUID-1EE7AB04-98CC-4FF9-82DF-05229475EF1D"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma prefetch</span></p><p><span class="kwd">#pragma prefetch </span><span class="delim">[</span><span class="var">var1 </span><span class="delim">[</span><span class="sep">:</span><span class="var"> hint1 </span><span class="delim">[</span><span class="sep">:</span><span class="var"> distance1</span><span class="delim">]]</span><span class="delim"> [</span><span class="sep">,</span><span class="var"> var2 </span><span class="delim">[</span><span class="sep">:</span><span class="var"> hint2 </span><span class="delim">[</span><span class="sep">:</span><span class="var"> distance2</span><span class="delim">]]]</span><span class="var">...</span><span class="delim">]</span></p><p><span class="kwd">#pragma noprefetch </span><span class="delim">[</span><span class="var">var1</span><span class="delim"> [</span><span class="sep">,</span><span class="var"> var2</span><span class="delim">]</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-69A02080-82AC-458F-B329-0D826180E2E4"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>var</var></p></td>
+
+      <td valign="top" class="noborder"><p>Optional memory reference (data to be prefetched)</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>hint</var></p></td>
+
+      <td valign="top" class="noborder"><p>Optional hint to the compiler to specify the type of prefetch. Possible values are the constants defined in the header <span class="filepath">xmmintrin.h</span>:</p>
+
+                                      <ul type="disc" id="GUID-B3BA5F2A-EFA9-4310-850F-9441067E8D93">
+                                        <li><p><samp class="codeph">_MM_HINT_T0</samp>
+ - for integer data that will be reused</p>
+</li>
+
+                                        <li><p><samp class="codeph">_MM_HINT_NT1</samp>
+ - for integer and floating point data that will be reused from L2 cache</p>
+</li>
+
+                                        <li><p><samp class="codeph">_MM_HINT_NT2</samp>
+ - for data that will be reused from L3 cache</p>
+</li>
+
+                                        <li><p><samp class="codeph">_MM_HINT_NTA</samp>
+ - for data that will not be reused</p>
+</li>
+
+                                      </ul>
+
+                                      <p>To use this argument, you must also specify <var>var</var>.</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>distance</var></p></td>
+
+      <td valign="top" class="noborder"><p>Optional integer argument with a value greater than 0. It indicates the number of loop iterations ahead of which a prefetch is issued, before the corresponding load or store instruction. To use this argument, you must also specify <var>var</var> and <var>hint</var>.</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-B1C9809D-C818-4798-A9C7-7926B1B6B5AF"><h2>Description</h2>
+<p> The <span class="keyword">prefetch</span> pragma hints to the compiler to generate data prefetches for some memory references. This affects the heuristics used in the compiler. Prefetching data can minimize the effects of memory latency.</p>
+
+<p>If you specify <samp class="codeph">#pragma prefetch</samp> with no arguments, all arrays accessed in the immediately following loop are prefetched.</p>
+
+<p>If the loop includes the expression <samp class="codeph">A(j)</samp>, placing <samp class="codeph">#pragma prefetch A</samp> in front of the loop instructs the compiler to insert prefetches for <samp class="codeph">A(j + d)</samp> within the loop. Here, <var>d</var> is the number of iterations ahead of which to prefetch the data, and is determined by the compiler.</p>
+
+<p> To use these directives, compiler
+option <span class="option">-opt-prefetch</span> (turned on by default if the compiler general
+optimization level is O2 or higher) must be set.</p>
+
+
+
+
+<p></p>
+
+<p>The <span class="keyword">noprefetch</span> pragma hints to the compiler not to generate data prefetches for some memory references. This affects the heuristics used in the compiler.</p>
+
+</div>
+
+
+<div class="section" id="GUID-5BEFA072-4723-46D2-8609-D45736A336DA"><h2>Example</h2><p><strong>Example 1: Using <samp class="codeph">prefetch</samp> pragma</strong></p>
+<p>The following example demonstrates how to use the <span class="keyword">prefetch</span> pragma:</p>
+<pre>#pragma prefetch htab_p:1:30 
+#pragma prefetch htab_p:0:6
+
+// Issue vprefetch1 for htab_p with a distance of 30 vectorized iterations ahead
+// Issue vprefetch0 for htab_p with a distance of 6 vectorized iterations ahead
+// If pragmas are not present, compiler chooses both distance values 
+
+      for (j=0; j&lt;2*N; j++) {
+                  htab_p[i*m1 + j] = -1;
+      }
+</pre>
+<p><strong>Example 2: Using <samp class="codeph">noprefetch</samp> and <samp class="codeph">prefetch</samp> pragmas</strong></p>
+
+<p>The following example demonstrates how to use the <span class="keyword">noprefetch</span> and <span class="keyword">prefetch</span> pragmas together:</p>
+
+
+<pre>#pragma noprefetch b </pre>
+<pre>#pragma prefetch a</pre>
+<pre>for(i=0; i&lt;m; i++)</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;a[i]=b[i]+1;</pre>
+<pre>}</pre>
+
+<p><strong>Example 3: Using <samp class="codeph">noprefetch</samp> and <samp class="codeph">prefetch</samp> pragmas</strong></p>
+
+<p>The following is yet another example of how to use the <span class="keyword">noprefetch</span> and <span class="keyword">prefetch</span> pragmas:</p>
+
+
+<pre>for (i=i0; i!=i1; i+=is) {</pre>
+<pre>&nbsp;</pre>
+<pre>float sum = b[i];</pre>
+<pre>int ip = srow[i];</pre>
+<pre>int c = col[ip];</pre>
+<pre>&nbsp;</pre>
+<pre>#pragma noprefetch col</pre>
+<pre>#pragma prefetch value:1:80</pre>
+<pre>#pragma prefetch x:1:40</pre>
+<pre>&nbsp;</pre>
+<pre>for(; ip&lt;srow[i+1]; c=col[++ip])</pre>
+<pre>&nbsp;&nbsp;sum -= value[ip] * x[c];</pre>
+<pre>&nbsp;&nbsp;y[i] = sum;</pre>
+<pre>}</pre>
+
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

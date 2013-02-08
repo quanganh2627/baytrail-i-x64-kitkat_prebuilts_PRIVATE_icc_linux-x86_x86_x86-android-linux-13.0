@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="guide-vec, Qguide-vec">
+<meta name="abstract" content="Lets you set a level of guidance for auto-vectorization.">
+<meta name="description" content="Lets you set a level of guidance for auto-vectorization.">
+<meta name="DC.subject" content="-guide-vec compiler option, /Qguide-vec compiler option, auto-vectorization, option setting guidance for">
+<meta name="keywords" content="-guide-vec compiler option, /Qguide-vec compiler option, auto-vectorization, option setting guidance for">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm#GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43">
+<meta name="DC.Relation" scheme="URI" content="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E">
+<meta name="DC.Relation" scheme="URI" content="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>guide-vec, Qguide-vec</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_guide_vec"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_guide_vec"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">guide-vec, Qguide-vec</h1>
+<!--Lets you set a level of guidance for auto-vectorization.  --><div><p>Lets you set a level of guidance for auto-vectorization.  </p>
+
+<div class="section" id="GUID-F325C9AF-2BCE-4208-BCA1-E61DA39CE0E8"><h2>IDE Equivalent</h2>
+None
+
+</div>
+<div class="section" id="GUID-330F32B3-0933-475C-8483-5B4ABA849384"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-2A596CBC-8F95-496D-8C95-2070099AA681"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-guide-vec</span><span class="delim">[</span><span class="oper">=</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qguide-vec</span><span class="delim">[</span><span class="oper">:</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-77DCD2DC-CCB6-42B1-9A3F-53BFE7466203"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional value specifying the level of guidance to be provided.</p>
+<p>The values available are 1 and 2. Value 1 indicates a standard level of guidance. Value 2 indicates a more advanced level of guidance. If <var>n</var> is omitted, the default is 2.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-F703EB86-AC11-479C-B026-979EF82FF7F4"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> OFF</p></td>
+<td valign="top" class="noborder"><p>You do not receive guidance about how to improve optimizations for vectorization.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-FF7CDB4B-ABD2-4503-8203-2329BE3ED7C3"><h2>Description</h2>
+<p> This option lets you set a level of guidance
+for auto-vectorization. It causes the compiler to generate
+messages suggesting ways to improve that optimization.</p>
+
+
+</div>
+
+<div class="section" id="GUID-1470A5BD-2FBE-4B48-A508-390D8C014D67"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm#GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE"><span class="option">guide, Qguide</span></a>  compiler option</div>
+<div><a href="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43"><span class="option">guide-data-trans, Qguide-data-trans</span></a>  compiler option</div>
+<div><a href="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E"><span class="option">guide-par, Qguide-par</span></a>  compiler option</div>
+<div><a href="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59"><span class="option">guide-file, Qguide-file</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

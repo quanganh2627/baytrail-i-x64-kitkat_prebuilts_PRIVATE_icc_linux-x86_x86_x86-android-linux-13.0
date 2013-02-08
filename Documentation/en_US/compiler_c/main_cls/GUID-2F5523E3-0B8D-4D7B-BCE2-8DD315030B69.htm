@@ -1,0 +1,496 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Logical Operators">
+<meta name="DC.subject" content="Class Libraries, floating-point vector classes, logical operators">
+<meta name="keywords" content="Class Libraries, floating-point vector classes, logical operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2F5523E3-0B8D-4D7B-BCE2-8DD315030B69">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Logical Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_fp_log"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2F5523E3-0B8D-4D7B-BCE2-8DD315030B69">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Logical Operators</h1>
+ 
+   
+  <div> 
+    <p>The following table lists the logical operators of the Fvec classes and generic syntax. The logical operators for 
+      <span class="keyword">F32vec1</span> classes use only the lower 32 bits. 
+    </p>
+ 
+    <p><strong>Fvec Logical Operators Return Value Mapping</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-072E8C95-09A6-47F6-A74C-DDB3A04F2DF8" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="33%" id="d149604e59"> 
+              <p>Bitwise Operation 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="33%" id="d149604e65"> 
+              <p>Operators 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="34%" id="d149604e71"> 
+              <p>Generic Syntax 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e59 "> 
+              <p><samp class="codeph">AND</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e65 "> 
+              <p><samp class="codeph">&amp;<br>&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="34%" headers="d149604e71 "> 
+              <p><samp class="codeph">R = A &amp; B;<br>R &amp;= A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e59 "> 
+              <p><samp class="codeph">OR</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e65 "> 
+              <p><samp class="codeph">|<br>|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="34%" headers="d149604e71 "> 
+              <p><samp class="codeph">R = A | B;<br>R |= A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e59 "> 
+              <p><samp class="codeph">XOR</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e65 "> 
+              <p><samp class="codeph">^<br>^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="34%" headers="d149604e71 "> 
+              <p><samp class="codeph">R = A ^ B;<br>R ^= A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e59 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d149604e65 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="34%" headers="d149604e71 "> 
+              <p><samp class="codeph">R = andnot(A);</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>The following table lists standard logical operators syntax and corresponding intrinsics. Note that there is no corresponding scalar intrinsic for the 
+      <span class="keyword">F32vec1</span> classes, which accesses the lower 32 bits of the packed vector intrinsics. 
+    </p>
+ 
+    <p><strong>Logical Operations for Fvec Classes</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8ABCA5ED-1E43-4613-9D72-35C5DF048F49" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d149604e234"> 
+              <p>Operation 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d149604e240"> 
+              <p>Returns 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d149604e246"> 
+              <p>Example Syntax Usage 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d149604e252"> 
+              <p>Intrinsic 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p><samp class="codeph">AND</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>4 floats 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F32vec4 &amp; = F32vec4 A &amp; F32vec4 B;</samp><br><samp class="codeph">F32vec4 &amp; &amp;= F32vec4 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_and_ps</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>2 doubles 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F64vec2 R = F64vec2 A &amp; F32vec2 B;</samp><br><samp class="codeph">F64vec2 R &amp;= F64vec2 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_and_pd</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>1 float 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F32vec1 R = F32vec1 A &amp; F32vec1 B;</samp><br><samp class="codeph">F32vec1 R &amp;= F32vec1 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_and_ps</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p><samp class="codeph">OR</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>4 floats 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F32vec4 R = F32vec4 A | F32vec4 B;</samp><br><samp class="codeph">F32vec4 R |= F32vec4 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_or_ps</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>2 doubles 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F64vec2 R = F64vec2 A | F32vec2 B;</samp><br><samp class="codeph">F64vec2 R |= F64vec2 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_or_pd</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>1 float 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F32vec1 R = F32vec1 A | F32vec1 B;</samp><br><samp class="codeph">F32vec1 R |= F32vec1 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_or_ps</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p><samp class="codeph">XOR</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>4 floats 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F32vec4 R = F32vec4 A ^ F32vec4 B;</samp><br><samp class="codeph">F32vec4 R ^= F32vec4 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_xor_ps</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>2 doubles 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F64vec2 R = F64vec2 A ^ F364vec2 B;</samp><br><samp class="codeph">F64vec2 R ^= F64vec2 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_xor_pd</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>1 float 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F32vec1 R = F32vec1 A ^ F32vec1 B;</samp><br><samp class="codeph">F32vec1 R ^= F32vec1 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_xor_ps</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e234 "> 
+              <p><samp class="codeph">ANDNOT</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e240 "> 
+              <p>2 doubles 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e246 "> 
+              <p><samp class="codeph">F64vec2 R = andnot(F64vec2 A,</samp><br><samp class="codeph">F64vec2 B);</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d149604e252 "> 
+              <p><span class="option">_mm_andnot_pd</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">Floating-point Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

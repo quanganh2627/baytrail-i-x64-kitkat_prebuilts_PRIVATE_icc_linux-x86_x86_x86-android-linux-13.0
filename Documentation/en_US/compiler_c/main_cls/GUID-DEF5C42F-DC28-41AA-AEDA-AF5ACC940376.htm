@@ -1,0 +1,257 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Cacheability Support Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, cacheability support operations, stream_pi, stream_ps, sfence, prefetch, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, cacheability support operations, stream_pi, stream_ps, sfence, prefetch, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA.htm#GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DEF5C42F-DC28-41AA-AEDA-AF5ACC940376">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Cacheability Support Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_cacheability"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DEF5C42F-DC28-41AA-AEDA-AF5ACC940376">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Cacheability Support Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-978EF613-BA4C-47A8-A599-DB06D4D605E2"> 
+      <p>The prototypes for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics for cacheability support are in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-32C4D95A-8E78-47ED-92C2-FCA292953588"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-674ACBF0-D61E-46C9-A504-3C4FC4833326" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d768490e67"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d768490e73"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d768490e79"> 
+                <p>Corresponding<br>Intel&reg; SSE Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e67 "> 
+                <p><span class="option"> _mm_prefetch</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e73 "> 
+                <p>Load 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d768490e79 "> 
+                <p><span class="keyword">PREFETCH</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e67 "> 
+                <p><span class="option"> _mm_stream_pi</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e73 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d768490e79 "> 
+                <p><span class="keyword">MOVNTQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e67 "> 
+                <p><span class="option"> _mm_stream_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e73 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d768490e79 "> 
+                <p><span class="keyword">MOVNTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e67 "> 
+                <p><span class="option"> _mm256_stream_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e73 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d768490e79 "> 
+                <p><span class="keyword">VMOVNTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e67 "> 
+                <p><span class="option"> _mm_sfence</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d768490e73 "> 
+                <p>Store fence 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d768490e79 "> 
+                <p><span class="keyword">SFENCE</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FF6E6BE8-7B70-460E-B5DF-667A538CE7B3"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_prefetch(char const*a, int sel)</span></p></div> 
+      <p>Loads one cache line of data from address 
+        <span class="keyword">a</span> to a location "closer" to the processor. The value 
+        <span class="keyword">sel</span> specifies the type of prefetch operation: the constants 
+      <span class="option">_MM_HINT_T0</span>, 
+      <span class="option">_MM_HINT_T1</span>, 
+      <span class="option">_MM_HINT_T2</span>, and 
+      <span class="option">_MM_HINT_NTA</span> should be used for systems based on IA-32 architecture, and correspond to the type of 
+      <span class="keyword">prefetch</span> instruction.</p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-775DE9E2-8554-4CD7-A3F0-2560AA471924"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_stream_pi(__m64 *p, __m64 a)</span></p></div> 
+      <p>Stores the data in 
+        <span class="keyword">a</span> to the address 
+        <span class="keyword">p</span> without polluting the caches. This intrinsic requires you to empty the multimedia state for the 
+        <span class="keyword">MMX&#8482;</span> register. See the topic 
+        <a href="GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA.htm#GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA">The EMMS Instruction: Why You Need It.</a> 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4E153C2A-582D-4EEE-8624-B04DE860377E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_stream_ps(float *p, __m128 a)</span></p></div> 
+      <p>Stores the data in 
+        <span class="keyword">a</span> to the address 
+        <span class="keyword">p</span> without polluting the caches. The address must be 16-byte-aligned. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ACBA504E-3464-4E9B-BE7A-74296F6E151C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm256_stream_ps(float *p, __m256 a)</span></p></div> 
+      <p>Stores the data in 
+        <span class="keyword">a</span> to the address 
+        <span class="keyword">p</span> without polluting the caches. The address must be 32-byte (VEX.256 encoded version) aligned. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ED5292CE-88BA-4A8C-8BE2-37D7AC5784E8"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_sfence(void)</span></p></div> 
+      <p>Guarantees that every preceding store is globally visible before any subsequent store. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA.htm#GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA">The EMMS Instruction: Why You Need It 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

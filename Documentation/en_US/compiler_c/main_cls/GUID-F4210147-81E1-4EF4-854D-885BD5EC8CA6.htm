@@ -1,0 +1,1084 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="gcc Compatibility">
+<meta name="DC.subject" content="gcc* compatibility, gcc* language extensions, g++* language extensions, GNU C++ compatibility, language extensions, g++*, gcc*">
+<meta name="keywords" content="gcc* compatibility, gcc* language extensions, g++* language extensions, GNU C++ compatibility, language extensions, g++*, gcc*">
+<meta name="DC.Relation" scheme="URI" content="GUID-4F6AE26A-EC50-4571-96A9-54E885B612C7.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F4210147-81E1-4EF4-854D-885BD5EC8CA6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>gcc Compatibility</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_gcc_compat_comm"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_gcc_compat_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F4210147-81E1-4EF4-854D-885BD5EC8CA6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">gcc Compatibility</h1>
+ 
+   
+  <div> 
+	 <p>C language object files created with the Intel&reg; C++ Compiler are binary compatible with the GNU gcc* compiler and glibc*, the GNU C language library. You can use the Intel compiler or the gcc compiler to pass object files to the linker. However, to correctly pass the Intel libraries to the linker, use the Intel compiler. 
+	 </p>
+ 
+	 <p>The Intel C++ Compiler supports many of the language extensions provided by the GNU compilers. 
+	 </p>
+ 
+	 <div class="section" id="GUID-5D196EB4-B35F-48E1-9405-69FFD214AC1A"><h2 class="sectiontitle">gcc Extensions to the C Language</h2> 
+		 
+		<p>GNU C includes several, non-standard features not found in ISO standard C. This version of the Intel C++ Compiler supports most of these extensions listed in the following table. See http://www.gnu.org for more information. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2EF322BB-70F2-4D1C-8101-E461C1A30502" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" align="left" valign="top" width="75.06234413965088%" id="d837972e80"> 
+					 <p>gcc Language Extension 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" width="24.93765586034913%" id="d837972e86"> 
+					 <p>Intel Support 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Statements and Declarations in Expressions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Locally Declared Labels 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Labels as Values 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Nested Functions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Constructing Function Calls 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Naming an Expression's Type 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Referring to a Type with typeof 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Generalized Lvalues 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Conditionals with Omitted Operands 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Double-Word Integers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Complex Numbers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Hex Floats 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Arrays of Length Zero 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Arrays of Variable Length 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Macros with a Variable Number of Arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Slightly Looser Rules for Escaped Newlines 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>String Literals with Embedded Newlines 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Non-Lvalue Arrays May Have Subscripts 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Arithmetic on void-Pointers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Arithmetic on Function-Pointers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Non-Constant Initializers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Compound Literals 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Designated Initializers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Cast to a Union Type 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Case Ranges 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Mixed Declarations and Code 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Declaring Attributes of Functions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Attribute Syntax 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Prototypes and Old-Style Function Definitions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>C++ Style Comments 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Dollar Signs in Identifier Names 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>ESC Character in Constants 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Specifying Attributes of Variables 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Specifying Attributes of Types 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Inquiring on Alignment of Types or Variables 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Inline Function is As Fast As a Macro 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Assembler Instructions with C Expression Operands 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Controlling Names Used in Assembler Code 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Variables in Specified Registers 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Alternate Keywords 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Incomplete enum Types 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Function Names as Strings 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Getting the Return or Frame Address of a Function 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Using Vector Instructions Through Built-in Functions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Other built-in functions provided by GCC 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Built-in Functions Specific to Particular Target Machines 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Pragmas Accepted by GCC 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Unnamed struct/union fields within structs/unions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Built-in integer data types, 
+						<span class="keyword">__int128</span> and 
+						<span class="keyword">__uint128</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 "> 
+					 <p>Yes 
+					 </p>
+
+					 <div class="Note"><h3 class="NoteTipHead">Note</h3>
+						<p>Intel&reg; C++ Compiler supports representation of full __int128 [or int128?] literals. 
+						</p>
+
+					 </div> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.06234413965088%" headers="d837972e80 "> 
+					 <p>Decimal floating types 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.93765586034913%" headers="d837972e86 ">Yes 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-414BDD14-4AB6-4800-9B19-E81588D401AF"><h2 class="sectiontitle">g++* Extensions to the C++ Language</h2> 
+		 
+		<p>GNU C++ includes several, non-standard features not found in ISO standard C++. This version of the Intel C++ Compiler supports many of these extensions listed in the following table. See http://www.gnu.org for more information. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-469117DD-6B46-4DAE-A2E7-A34D86438759" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" align="left" valign="top" width="75.18610421836229%" id="d837972e887"> 
+					 <p>g++ Language Extension 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" width="24.813895781637722%" id="d837972e893"> 
+					 <p>Intel Support 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Minimum and Maximum operators in C++ 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>When is a Volatile Object Accessed? 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Restricting Pointer Aliasing 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Vague Linkage 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Declarations and Definitions in One Header 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Where's the Template? 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>extern template supported 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Extracting the function pointer from a bound pointer to member function 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>Yes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>C++-Specific Variable, Function, and Type Attributes 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>Yes 
+					 </p>
+
+					 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+						<p> The Intel&reg; C++ Compiler is now compatible with gcc v4.5.
+						</p>
+ 
+					 </div> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Java Exceptions 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Deprecated Features 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="75.18610421836229%" headers="d837972e887 "> 
+					 <p>Backwards Compatibility 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="24.813895781637722%" headers="d837972e893 "> 
+					 <p>No 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>Statement expressions are supported, except the following are prohibited inside them: 
+		<ul type="disc" id="GUID-B6782C87-D13A-40C7-8818-8EFCF43EF86D"> 
+		  <li> 
+			 <p>dynamically-initialized local static variables 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>local non-POD class definitions 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>try/catch 
+			 </p>
+ 
+		  </li>
+ 
+		  <li>variable length arrays 
+		  </li>
+ 
+		</ul>
+Also, branching out of a statement expression and statement expressions in constructor initializers are not allowed. Variable-length arrays are no longer allowed in statement expressions. 
+		</p>
+ 
+	 </div> 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>The Intel C++ Compiler supports gcc-style inline ASM if the assembler code uses AT&amp;T* System V/386 syntax. 
+		</p>
+ 
+	 </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-4F6AE26A-EC50-4571-96A9-54E885B612C7.htm">gcc* Compatibility</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

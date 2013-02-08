@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_zeroupper">
+<meta name="abstract" content="Zeroes the upper bits of the YMM registers. The corresponding Intel&reg; AVX instruction is VZEROUPPER.">
+<meta name="description" content="Zeroes the upper bits of the YMM registers. The corresponding Intel&reg; AVX instruction is VZEROUPPER.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_zeroupper (VZEROUPPER)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_zeroupper (VZEROUPPER)">
+<meta name="DC.Relation" scheme="URI" content="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-663D3DBD-D33F-46C5-B833-868AD9CE8E2A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_zeroupper</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_zeroupper"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-663D3DBD-D33F-46C5-B833-868AD9CE8E2A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_zeroupper</span></h1>
+
+
+<!--Zeroes the upper bits of the YMM registers. The corresponding Intel&reg; AVX instruction is  VZEROUPPER .--><div><p>Zeroes the upper bits of the YMM registers. The corresponding Intel&reg; AVX instruction is <span class="keyword">VZEROUPPER</span>.</p>
+
+
+<div class="section" id="GUID-AD9ABF13-0521-43A8-ABE1-18DFA145B409"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void _mm256_zeroupper(void);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-CEF5DA20-61E4-4BA5-A2A7-9749AE57CF5A"><h2>Arguments</h2><p>None</p>
+
+  
+</div>
+
+
+<div class="section" id="GUID-2EB901FB-1F5B-4F8B-A3E3-4D83F4CC83CA"><h2>Description</h2>
+<p>Zeroes the upper 128 bits of all <samp class="codeph">YMM</samp> registers. The lower 128 bits that correspond to the <samp class="codeph">XMM</samp> registers are left unmodified.</p>
+<p>This intrinsic is useful to clear the upper bits of the <samp class="codeph">YMM</samp> registers when transitioning between Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) instructions and legacy Intel&reg; Supplemental SIMD Extensions (Intel&reg; SSE) instructions. There is no transition penalty if an application clears the upper bits of all <samp class="codeph">YMM</samp> registers (sets to ‘0’) via <span class="keyword">VZEROUPPER</span>, the corresponding instruction for this intrinsic, before transitioning between Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) instructions and legacy Intel&reg; Supplemental SIMD Extensions (Intel&reg; SSE) instructions.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-DD3C744C-230D-4587-92B2-BBC92327B35D"><h2>Returns</h2><p> Result of the operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">Intrinsics for Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

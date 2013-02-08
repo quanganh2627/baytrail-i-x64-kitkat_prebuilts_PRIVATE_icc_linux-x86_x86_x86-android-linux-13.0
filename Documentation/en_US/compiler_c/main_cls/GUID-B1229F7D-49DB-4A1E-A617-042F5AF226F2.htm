@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="OpenMP* Defaults">
+<meta name="DC.subject" content="OpenMP*, defaults">
+<meta name="keywords" content="OpenMP*, defaults">
+<meta name="DC.Relation" scheme="URI" content="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Relation" scheme="URI" content="GUID-371AAA48-F691-4F8A-998C-4BD761817B12.htm#GUID-371AAA48-F691-4F8A-998C-4BD761817B12">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B1229F7D-49DB-4A1E-A617-042F5AF226F2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Defaults</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_omp_defaults"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-B1229F7D-49DB-4A1E-A617-042F5AF226F2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Defaults</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>The OpenMP* runtime has the following default on Intel&reg; MIC Architecture: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-5B0F94C0-7F03-4CCA-BD91-36C034603F07"> 
+		<li> 
+		  <p>The OpenMP* runtime creates four threads per core by default under the 
+			 <span><span>coprocessor OS</span></span>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>If you do not specify the number of threads, the OpenMP* runtime uses the number of logical processors available in the affinity mask of the thread that initially goes parallel. In the offload environment this behavior normally is set to avoid the last physical core in the machine, which is where logical processors 0 and N-3, N-2, N-1 run. Therefore, on a coprocessor with 32 cores, for offloaded code, the runtime defaults to creating 124 OpenMP* threads. 
+		  </p>
+ 
+		  <p> To override this behavior, and explicitly use all 128 threads to run offloaded code, use an explicit affinity and the 
+			 <samp class="codeph">norespect</samp> modifier in the affinity specification, to force the runtime to ignore the affinity mask it was given. 
+		  </p>
+ 
+		  <p> When natively executing code on the coprocessor, no initial affinity mask is set, and the OpenMP* runtime defaults to using all available hardware threads. For example, it will use 128 threads on a 32 core machine. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">OpenMP* Considerations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4">Thread Affinity Interface 
+		  </a></div>
+<div><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">Setting Environment Variables 
+		  </a></div>
+<div><a href="GUID-371AAA48-F691-4F8A-998C-4BD761817B12.htm#GUID-371AAA48-F691-4F8A-998C-4BD761817B12">Setting the Number of OpenMP* Threads on the Coprocessor 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

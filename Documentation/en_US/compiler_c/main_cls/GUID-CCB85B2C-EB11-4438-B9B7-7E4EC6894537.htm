@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30528)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30528">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30528">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-09D357EF-F6EA-4160-9A7A-CA9C7415B0B8.htm#GUID-09D357EF-F6EA-4160-9A7A-CA9C7415B0B8">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CCB85B2C-EB11-4438-B9B7-7E4EC6894537">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30528)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30528"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30528"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CCB85B2C-EB11-4438-B9B7-7E4EC6894537">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30528)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-7127EF3B-C229-40F9-9137-16A766BCB82E"><h2 class="sectiontitle">Message</h2><p>Add "%s" to the declaration of routine "%s" in order to parallelize the loop at line %d. Alternatively, adding "%s" achieves a similar effect.</p>
+</div>
+
+
+<div class="section" id="GUID-8FA7F929-25A2-4B9D-A5F9-DBDB66DAE959"><h2 class="sectiontitle">Advice</h2>
+<p>Make sure that the routine specified is indeed <span>a const function</span> or <span>a concurrency-safe function</span>  before following the advice to add the annotation.</p>
+<p>If the routine is not one of these kinds of functions, then another thing you can try is to inline it with <span>#pragma forceinline recursive</span>. This action may or may not be beneficial.</p>
+</div>
+
+
+<div class="section" id="GUID-1E8BA3AE-4878-42E8-AB0F-E7507A1F5421"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>#define N 10000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>int bar(int);</pre>
+<pre>void foo(){</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0;i&lt;N;i++){</pre>
+<pre>    A[i] = B[i] * bar(i);</pre>
+<pre>  }</pre>
+<pre>}</pre>
+</div>
+
+
+<p>In this case, the compiler does not parallelize the loop because it is not safe to do so without further information about routine bar, which is being called. </p>
+<p>If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>#define N 10000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>void foo(){</pre>
+<pre>  int i;</pre>
+<pre>#pragma forceinline recursive</pre>
+<pre>  for (i=0;i&lt;N;i++){</pre>
+<pre>    A[i] = B[i] * bar(i);</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-1F2A399C-2346-4866-9E30-6E33ADF09993"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the routine satisfies the semantics of this declaration. Another way to help the loop being parallelized is to inline the routine with the <span>forceinline recursive pragma</span>, but this method does not guarantee parallelization.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-09D357EF-F6EA-4160-9A7A-CA9C7415B0B8.htm#GUID-09D357EF-F6EA-4160-9A7A-CA9C7415B0B8">GAP Message (Diagnostic ID 30526)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

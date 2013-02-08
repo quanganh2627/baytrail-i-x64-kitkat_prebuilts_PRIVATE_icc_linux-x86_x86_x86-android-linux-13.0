@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_pext_u32/64">
+<meta name="abstract" content="Transfer either contiguous or non-contiguous bits in the first source operand to contiguous low order bit positions in the destination according to the mask values. The corresponding Intel&reg; AVX2 instruction is PEXT.">
+<meta name="description" content="Transfer either contiguous or non-contiguous bits in the first source operand to contiguous low order bit positions in the destination according to the mask values. The corresponding Intel&reg; AVX2 instruction is PEXT.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, bit manipulation operations, _pext_u32 (PEXT), _pext_u64 (PEXT)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, bit manipulation operations, _pext_u32 (PEXT), _pext_u64 (PEXT)">
+<meta name="DC.Relation" scheme="URI" content="GUID-E6E297BB-E575-4525-AE1C-DFD7D5B662F5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E5B90781-E387-425E-8DDD-67BFE6B42226">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_pext_u32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_tzcnt_u"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._pext_u32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._pext_u64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E5B90781-E387-425E-8DDD-67BFE6B42226">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_pext_u32/64 </span></h1>
+<!-- Transfer either contiguous or non-contiguous bits in the first source operand to contiguous low order bit positions in the destination according to the mask values. The corresponding Intel&reg; AVX2 instruction is  PEXT .--><div><p> Transfer either contiguous or non-contiguous bits in the first source operand to contiguous low order bit positions in the destination according to the mask values. The corresponding Intel&reg; AVX2 instruction is <span class="option">PEXT</span>.</p>
+
+
+<div class="section" id="GUID-D163F3C0-893F-44F7-B518-FD8551EB4594"><h2>Syntax</h2>     
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern unsigned int _pext_u32(unsigned int source, unsigned int mask);</span></p></td></tr></table>  
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern unsigned __int64 _pext_u64(unsigned __int64 s1, unsigned __int64 mask);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-615B7807-0966-44C5-80AC-24EA3F25604B"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>source</var></p></td>
+
+      <td valign="top" class="noborder"><p>the source operand from where the bits are transferred</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>mask value according to which the bits are transferred</p>
+</td>
+
+    </tr></table>
+</div>
+
+
+<div class="section" id="GUID-DC1B1C0A-75D8-4597-B72A-794B8F5F8D05"><h2>Description</h2>
+<p>The intrinsics  use a mask in the second source operand to transfer either contiguous or non-contiguous bits in the first source operand to contiguous, low-order bit positions in the destination. For each bit set in the mask, the intrinsic extracts the corresponding bits from the first source operand and writes them into contiguous lower bits of the destination. The remaining upper bits of the destination are set to 0.</p>
+</div>
+
+
+<div class="section" id="GUID-0846A2BB-0816-40B6-9006-AF16BDEEC193"><h2>Returns</h2><p>Result of the operation</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E6E297BB-E575-4525-AE1C-DFD7D5B662F5.htm">Intrinsics for Operations to Manipulate Integer Data at Bit-Granularity</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

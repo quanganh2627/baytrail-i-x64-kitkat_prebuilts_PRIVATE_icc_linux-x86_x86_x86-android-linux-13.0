@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="The EMMS Instruction: Why You Need It">
+<meta name="DC.subject" content="intrinsics, MMX&#8482; Technology, EMMS instruction, about, EMMS Instruction">
+<meta name="keywords" content="intrinsics, MMX&#8482; Technology, EMMS instruction, about, EMMS Instruction">
+<meta name="DC.Relation" scheme="URI" content="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>The EMMS Instruction: Why You Need It</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mmx_emms_why"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">The EMMS Instruction: Why You Need It </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-FC07289A-74CD-409D-9462-9354672187C3"> 
+      <p>Using EMMS is like emptying a container to accommodate new content. The EMMS instruction clears the MMX&#8482; registers and sets the value of the floating-point tag word to empty. 
+      </p>
+ 
+      <p>You should clear the MMX registers before issuing a floating-point instruction because floating-point convention specifies that the floating-point stack be cleared after use. Insert the EMMS instruction at the end of all MMX&#8482; code segments to avoid a floating-point overflow exception. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F0F2A547-F67B-4831-8C15-DA0912353459"><h2 class="sectiontitle">Why You Need EMMS to Reset After an MMX&#8482; Instruction</h2> 
+       
+      <div class="fignone" id="GUID-D8C7C121-7BD5-40D1-8DF0-F4503C3D3E3C"><br><img src="GUID-BD133D1E-C84A-4566-8456-B9ECB26294BB-low.jpg"><br> 
+      </div>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Caution</h3> 
+        <p>Failure to empty the multimedia state after using an MMX&#8482; technology instruction and before using a floating-point instruction can result in unexpected execution or poor performance. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">MMX&#8482; Technology Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

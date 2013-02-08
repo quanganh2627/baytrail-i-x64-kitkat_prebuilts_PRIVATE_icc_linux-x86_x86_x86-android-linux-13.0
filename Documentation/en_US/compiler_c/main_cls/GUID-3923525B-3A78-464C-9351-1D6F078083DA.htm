@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fabi-version">
+<meta name="abstract" content="Instructs the compiler to select a specific ABI implementation.">
+<meta name="description" content="Instructs the compiler to select a specific ABI implementation.">
+<meta name="DC.subject" content="-fabi-version compiler option">
+<meta name="keywords" content="-fabi-version compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-45B8DF44-5AFD-436F-9042-6668A6171892.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3923525B-3A78-464C-9351-1D6F078083DA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fabi-version</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fabi-version"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fabi-version"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3923525B-3A78-464C-9351-1D6F078083DA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fabi-version</h1>
+<!--Instructs the compiler to select a specific ABI implementation. --><div><p>Instructs the compiler to select a specific ABI implementation. </p>
+
+<div class="section" id="GUID-6F6DE953-6C8A-47A3-8286-031E5680E74D"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Preprocessor &gt; gcc Compatibility Options</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-240CB176-CCF7-4BBC-88DF-E3F7B024CA46"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-61D7A467-2C55-4E43-8A71-29AA306111BD"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fabi-version=</span><span class="var">n</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-9357C1D5-B2CF-4A9D-8651-5AE94635F9BC"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the ABI implementation. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">0</span></p></td>
+<td valign="top" class="noborder"><p>Requests the latest ABI implementation.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+<td valign="top" class="noborder"><p>Requests the ABI implementation used in gcc 3.2 and gcc 3.3.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+<td valign="top" class="noborder"><p>Requests the ABI implementation used in gcc 3.4 and higher.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-B1F45139-43E4-41E6-9749-355FD3C43FF1"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>Varies</p></td>
+<td valign="top" class="noborder"><p>The compiler uses the ABI implementation that corresponds to the installed version of gcc.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-24BCE841-A505-4626-B39B-C766245311C6"><h2>Description</h2><p>This option tells the compiler to select a specific ABI implementation. This option is compatible with gcc option <span class="option">-fabi-version</span>. If you have multiple versions of gcc installed, the compiler may change the value of <var>n</var> depending on which gcc is detected in your path.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>gcc 3.2 and 3.3 are not fully ABI-compliant, but gcc 3.4 is highly ABI-compliant.</p>
+</div><div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Do not mix different values for <span class="option">-fabi-version</span> in one link.</p>
+</div></div>
+
+<div class="section" id="GUID-A47A25AB-B076-4DB0-AF1D-900CC041595E"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-45B8DF44-5AFD-436F-9042-6668A6171892.htm">Compatibility Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

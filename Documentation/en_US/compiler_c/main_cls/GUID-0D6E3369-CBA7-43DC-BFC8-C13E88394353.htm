@@ -1,0 +1,248 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Negation Intrinsics">
+<meta name="DC.subject" content="intrinsics, SSSE3, negation operations, Supplemental Streaming SIMD Extensions 3, negation intrinsics, _mm_sign_epi8, _mm_sign_epi16, _mm_sign_epi32, _mm_sign_pi8, _mm_sign_pi16, _mm_sign_pi32">
+<meta name="keywords" content="intrinsics, SSSE3, negation operations, Supplemental Streaming SIMD Extensions 3, negation intrinsics, _mm_sign_epi8, _mm_sign_epi16, _mm_sign_epi32, _mm_sign_pi8, _mm_sign_pi16, _mm_sign_pi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0D6E3369-CBA7-43DC-BFC8-C13E88394353">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Negation Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_tni_neg"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0D6E3369-CBA7-43DC-BFC8-C13E88394353">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Negation Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-5885E322-C6AB-4529-81AD-73EA65CA5771"> 
+      <p>These Supplemental Streaming SIMD Extensions 3 (SSSE3) intrinsics are used for negation. The prototypes for these intrinsics are in 
+        <span class="filepath">tmmintrin.h</span>. You can also use the 
+        <span class="filepath">ia32intrin.h</span> header file for these intrinsics. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F3DE32F1-8A3E-44CD-8CA0-31CFDF087402"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_sign_epi8 (__m128i a, __m128i b);</span></p></div> 
+      <p>Negates packed bytes in 
+        <var>a</var> if corresponding sign in 
+        <var>b</var> is less than zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-49CB9AD7-6B65-41A4-A319-0A8A71444472"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 8-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 16; i++){
+ if (b[i] &lt; 0){ 
+  r[i] =  -a[i];
+ }
+ else
+ if (b[i] == 0){
+  r[i] = 0;
+ }
+ else { 
+  r[i] = a[i];
+ }
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-89E70E05-3F52-4020-B5B8-94E0FAA7B0E9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_sign_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Negates packed words in 
+        <var>a</var> if corresponding sign in 
+        <var>b</var> is less than zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2ECAE1B1-DC54-4DEF-A220-5D0FCFF8D4CA"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 16-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++){
+ if (b[i] &lt; 0){
+  r[i] =  -a[i];
+ }
+else 
+ if (b[i] == 0){
+  r[i] = 0;
+ }
+ else
+ {
+  r[i] = a[i];
+ }
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E6E7E9A9-066E-4489-A396-A3AAC34F7C65"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_sign_epi32 (__m128i a, __m128i b);</span></p></div> 
+      <p>Negates packed doublewords in 
+        <var>a</var> if corresponding sign in 
+        <var>b</var> is less than zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C14B4C02-E7FA-4C4A-A03B-A916F77A5CD6"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 32-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++){
+ if (b[i] &lt; 0){
+  r[i] = -a[i];
+ }
+ else
+ if (b[i] == 0){
+  r[i] = 0;
+ }
+ else {
+  r[i] = a[i];
+ }
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CE8EFCB1-4740-4593-904F-17A1BA2F2744"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_sign_pi8 (__m64 a, __m64 b);</span></p></div> 
+      <p>Negates packed bytes in 
+        <var>a</var> if corresponding sign in 
+        <var>b</var> is less than zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2A0426C7-B861-4332-B32A-DFDCD26009EB"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 8-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 16; i++){
+ if (b[i] &lt; 0){
+  r[i] =  -a[i];
+ }
+ else
+ if (b[i] == 0){
+  r[i] = 0;
+ }
+ else {
+  r[i] = a[i];
+ }
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1F6A8412-C4F5-4F68-BAAC-28FACFCFA4DD"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_sign_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Negates packed words in 
+        <var>a</var> if corresponding sign in 
+        <var>b</var> is less than zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-571D352E-6867-4822-B3DA-11AA47D71E6D"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 16-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++){
+ if (b[i] &lt; 0){
+  r[i] =  -a[i];
+  }
+ else
+ if (b[i] == 0){
+  r[i] = 0;
+  }
+ else {
+  r[i] = a[i];
+  }
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C478CDAA-8309-4636-AB0C-485B0182A709"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_sign_pi32 (__m64 a, __m64 b);</span></p></div> 
+      <p>Negates packed doublewords in 
+        <var>a</var> if corresponding sign in 
+        <var>b</var> is less than zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-670EDF1C-3109-4C0C-8E13-3A8B2836F2D0"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 32-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++){
+ if (b[i] &lt; 0){
+  r[i] =  -a[i];
+ }
+ else
+ if (b[i] == 0){
+  r[i] = 0;
+ }
+ else {
+  r[i] = a[i];
+ }
+}</pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">Intrinsics for Intel&reg; Supplemental Streaming SIMD Extensions 3 (SSSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

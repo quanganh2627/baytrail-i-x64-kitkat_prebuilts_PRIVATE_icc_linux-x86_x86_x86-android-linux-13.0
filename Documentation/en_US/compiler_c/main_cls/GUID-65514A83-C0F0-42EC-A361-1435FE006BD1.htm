@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Intrinsics for Managing Extended Processor States and Registers">
+<meta name="DC.subject" content="extended processor states, managing, extended control registers">
+<meta name="keywords" content="extended processor states, managing, extended control registers">
+<meta name="DC.Relation" scheme="URI" content="GUID-80BF143F-A541-419A-AD92-0B5863C246D7.htm">
+<meta name="DC.Relation" scheme="URI" content="http://software.intel.com/en-us/avx/">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-65514A83-C0F0-42EC-A361-1435FE006BD1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Intrinsics for Managing Extended Processor States and Registers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_manextovr"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-65514A83-C0F0-42EC-A361-1435FE006BD1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Intrinsics for Managing Extended Processor States and Registers</h1>
+ 
+   
+  <div> 
+    <p> The Intel&reg; C++ Compiler provides twelve intrinsics for managing the extended processor states and extended registers. These intrinsics are available for the IA-32 and Intel&reg; 64 architectures running on Windows*, Linux*, and OS X* operating systems. 
+    </p>
+ 
+    <p> The prototypes for these intrinsics are available in the 
+      <span class="filepath">immintrin.h</span> file. 
+    </p>
+ 
+    <p> The intrinsics map directly to the hardware system instructions described in "Intel&reg; 64 and IA-32 Architectures Software Developer's Manual, volumes 1, 2a, and 2b" and "<a href="http://software.intel.com/en-us/avx/" target="_blank">Intel&reg; Advanced Vector Extensions Programming Reference</a>". 
+    </p>
+ 
+    <div class="section" id="GUID-EB9B5AA0-1B1F-49E5-9E61-C9AFCF52A585"><h2>Functional Overview</h2> 
+      <p> The intrinsics for managing the extended processor states and extended registers include: 
+      </p>
+ 
+      <ul type="disc" id="GUID-259412E2-3652-4852-AA72-3E9ED6B22F7D"> 
+        <li> 
+          <p> Two intrinsics to read from and write to the specified extended control register. These intrinsics map to 
+            <samp class="codeph">XGETBV</samp> and 
+            <samp class="codeph">XSETBV</samp> instructions. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p> Four intrinsics to save and restore the current state of the 
+            <span class="keyword">x87 FPU</span>, 
+            <span class="keyword">MMX</span>, 
+            <span class="keyword">XMM</span>, and 
+            <span class="keyword">MXCSR</span> registers. These intrinsics map to 
+            <samp class="codeph">FXSAVE</samp>, 
+            <samp class="codeph">FXSAVE64</samp>, 
+            <samp class="codeph">FXRSTOR</samp>, and 
+            <samp class="codeph">FXRSTOR64</samp> instructions. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p> Six intrinsics to save and restore the current state of the 
+            <span class="keyword">x87 FPU</span>, 
+            <span class="keyword">MMX</span>, 
+            <span class="keyword">XMM</span>, 
+            <span class="keyword">YMM</span>, and 
+            <span class="keyword">MXCSR</span> registers. These intrinsics map to 
+            <samp class="codeph">XSAVE</samp>, 
+            <samp class="codeph">XSAVE64</samp>, 
+            <samp class="codeph">XSAVEOPT</samp>, 
+            <samp class="codeph">XSAVEOPT64</samp>, 
+            <samp class="codeph">XRSTOR</samp>, and 
+            <samp class="codeph">XRSTOR64</samp> instructions. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-80BF143F-A541-419A-AD92-0B5863C246D7.htm">Intrinsics for Managing Extended Processor States and Registers</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="http://software.intel.com/en-us/avx/" target="_blank">Intel&reg; Advanced Vector Extensions Programming Reference
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

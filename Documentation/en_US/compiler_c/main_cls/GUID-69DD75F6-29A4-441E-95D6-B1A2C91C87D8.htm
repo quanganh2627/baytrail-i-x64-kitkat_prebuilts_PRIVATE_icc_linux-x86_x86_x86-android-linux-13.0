@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag-dump, Qdiag-dump">
+<meta name="abstract" content="Tells the compiler to print all enabled diagnostic messages and stop compilation.">
+<meta name="description" content="Tells the compiler to print all enabled diagnostic messages and stop compilation.">
+<meta name="DC.subject" content="-diag-dump compiler option, /Qdiag-dump compiler option">
+<meta name="keywords" content="-diag-dump compiler option, /Qdiag-dump compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag-dump, Qdiag-dump</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag_dump"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag_dump"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">diag-dump, Qdiag-dump</h1>
+<!--Tells the compiler to print all enabled diagnostic messages and stop compilation.--><div><p>Tells the compiler to print all enabled diagnostic messages and stop compilation.</p>
+
+<div class="section" id="GUID-61B1F8B7-CBB9-4E9D-B506-D583147F1B35"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-B0568A98-31C1-4395-8AAA-01FC8D381ECD"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-EE331283-9F3D-4652-860B-E3325E190CEE"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-diag-dump</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-dump</span></p></td></tr></table></div>
+<div class="section" id="GUID-CA893630-8EAB-4014-9B30-82FE898E3148"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-2C99B8F8-C421-4C38-971D-632A897053BD"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler issues certain diagnostic messages by default.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-CA1D6CE6-2AB7-4F2E-86E4-4B232CF381C2"><h2>Description</h2><p>This option tells the compiler to print all enabled diagnostic messages and stop compilation. The diagnostic messages are output to <span class="keyword">stdout</span>.</p>
+<p>This option prints the enabled diagnostics from all possible diagnostics that the compiler can issue, including any default diagnostics.</p>
+<p>If <span class="option">-diag-enable</span><var> diag-list</var> (Linux OS and OS X) or <span class="option">/Qdiag-enable</span><var> diag-list</var> (Windows OS) is specified, the print out will include the <var>diag-list</var> diagnostics.</p>
+</div>
+
+<div class="section" id="GUID-08D5742C-0E75-4F50-8D39-776219C10990"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_6E776BE9B0834414A57DBF5FCE0AA8B5"><a name="EXAMPLE_6E776BE9B0834414A57DBF5FCE0AA8B5"><!-- --></a><h2>Example</h2><p>The following example adds vectorizer diagnostic messages to the printout of default diagnostics:</p>
+<pre>-diag-enable vec -diag-dump&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux and OS X systems</pre><pre>/Qdiag-enable:vec /Qdiag-dump&nbsp;&nbsp;&nbsp;&nbsp;! Windows systems</pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7"><span class="option">diag, Qdiag</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

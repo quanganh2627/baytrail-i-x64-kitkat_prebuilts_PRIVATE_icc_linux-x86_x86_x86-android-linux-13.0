@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_round_ps">
+<meta name="abstract" content="Rounds off single-precision floating point values to nearest upper/lower integer depending on rounding mode. The corresponding Intel&reg; AVX instruction isVROUNDPS.">
+<meta name="description" content="Rounds off single-precision floating point values to nearest upper/lower integer depending on rounding mode. The corresponding Intel&reg; AVX instruction isVROUNDPS.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_round_ps (VROUNDPS)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_round_ps (VROUNDPS)">
+<meta name="DC.Relation" scheme="URI" content="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-03A82BD0-4F2F-4D24-976F-36D158924DE9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_round_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_round_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-03A82BD0-4F2F-4D24-976F-36D158924DE9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_round_ps</span></h1>
+
+
+<!--Rounds off single-precision floating point values to nearest upper/lower integer depending on rounding mode. The corresponding Intel&reg; AVX instruction is VROUNDPS .--><div><p>Rounds off single-precision floating point values to nearest upper/lower integer depending on rounding mode. The corresponding Intel&reg; AVX instruction is<span class="keyword">VROUNDPS</span>.</p>
+
+
+<div class="section" id="GUID-30582A6E-DD9E-44EA-B26E-B2C5FF083932"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _mm256_round_ps(__m256 a, int iRoundMode
+);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-CD552080-B31D-4C4A-AC84-664B6D9214F3"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector </p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>iRoundMode</var></p></td>
+
+       <td valign="top" class="noborder"><p>A hexadecimal value dependent on rounding mode: </p>
+<ul type="disc" id="GUID-06BA1200-C282-4383-9ACE-B196BDE770A9"><li>For rounding off to upper integer, the value is <samp class="codeph">0x0A</samp></li>
+<li>	For rounding off to lower integer, the value is <samp class="codeph">0x09</samp></li>
+</ul>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-F3590554-8298-4BF1-AF5D-8CA3DCCF6E6F"><h2>Description</h2>
+<p>Rounds off the elements of a float32 vector <var>a</var> to the nearest upper/lower integer value. Two shortcuts, in the form of <samp class="codeph">#defines</samp>, are used to achieve these two separate operations:</p>
+<p>
+		<pre>#define _mm256_ceil_ps(a)   _mm256_round_ps((a), 0x0A)
+#define _mm256_floor_ps(a)  _mm256_round_ps((a), 0x09)</pre></p>
+<p>These <samp class="codeph">#defines</samp> tells the preprocessor to replace all instances of <span class="option">_mm256_ceil_ps(a</span>) with <span class="option">_mm256_round_ps((a), 0x0A)</span> and all instances of <span class="option">_mm256_floor_ps(a)</span> with <span class="option">_mm256_round_ps((a), 0x09)</span>.</p>
+<p>For example, if you write the following:</p>
+
+	<p><pre>__m256 a, b;
+a = _mm256_ceil_ps(b);</pre>
+	</p>
+<p>the preprocessor will modify it to:</p>
+<p><pre>a = _mm256_round_ps(b, 0x0a);</pre></p>
+<p>The Precision Floating Point Exception is signaled according to the (immediate operand) <var>iRoundMode</var> value.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-726D0FC0-F8CF-48A0-B713-AF8F519CFE8F"><h2>Returns</h2><p>Result of the rounding off operation as a vector with single-precision floating point values. 
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">Intrinsics for Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

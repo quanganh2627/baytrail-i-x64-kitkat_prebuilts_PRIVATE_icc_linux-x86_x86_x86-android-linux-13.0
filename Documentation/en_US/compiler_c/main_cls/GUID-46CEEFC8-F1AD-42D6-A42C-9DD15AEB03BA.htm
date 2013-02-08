@@ -1,0 +1,176 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Applying the target Attribute to Multiple Declarations">
+<meta name="DC.subject" content="target, applying to multiple declarations, attribute, applying target">
+<meta name="keywords" content="target, applying to multiple declarations, attribute, applying target">
+<meta name="DC.Relation" scheme="URI" content="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-46CEEFC8-F1AD-42D6-A42C-9DD15AEB03BA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Applying the target Attribute to Multiple Declarations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_apply_trgt_attr_mul_dclrtns"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-46CEEFC8-F1AD-42D6-A42C-9DD15AEB03BA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Applying the 
+	 <span class="keyword">target</span> Attribute to Multiple Declarations</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <div class="section" id="GUID-8548DA00-5F88-4C27-9DE1-11B174537174"> 
+		<p>When you have several data and function declarations, rather than specifying each declaration with its own target attribute. you can enclose a group of data and function declarations between the 
+		  <samp class="codeph">push</samp> and 
+		  <samp class="codeph">pop</samp> variants of the 
+		  <samp class="codeph">offload_attribute</samp> pragma. 
+		</p>
+ 
+		<p>When offloaded code makes use of declarations from C standard headers, Intel&reg; Threading Building Blocks (Intel&reg; TBB), Intel&reg; Cilk&#8482; Plus, or user-written 
+		  <samp class="codeph">#include</samp> declarations, you must enclose those declarations within the 
+		  <samp class="codeph">offload_attribute</samp> pragma, with a specified target-name corresponding to the offload model under which the declarations are used. 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p> The code represented by the external routine in the header files must exist on the coprocessor either as a system library or as a user library that can run on Intel&reg; MIC Architecture. 
+		  </p>
+ 
+		</div> 
+		<p>Enclose the calls to the include files when offloading using a pragma as follows: 
+		</p>
+ 
+		<pre>#pragma offload_attribute(push, target(mic))
+...
+#pragma offload_attribute(pop) </pre> 
+		<p>Enclose the calls to the include files when offloading using shared virtual memory as follows: 
+		</p>
+ 
+		<pre> #pragma offload_attribute(push, _Cilk_shared)
+...
+#pragma offload_attribute(pop)</pre> 
+		<p>You can only use functions and data under a single offload model within your program, so any include file you call can only be marked for use under a single offload model. Consequently, you cannot use the keyword 
+		  <span class="keyword"> _Cilk_offload</span> with any include file enclosed between 
+		  <samp class="codeph">#pragma offload_attribute(push, target(mic))</samp> and 
+		  <samp class="codeph">#pragma offload_attribute(pop)</samp>. 
+		</p>
+ 
+		<p>Conversely, you cannot use the the 
+		  <samp class="codeph">#pragma offload</samp> statement with any include file enclosed between 
+		  <samp class="codeph">#pragma offload_attribute(push, _Cilk_shared)</samp> and 
+		  <samp class="codeph">#pragma offload_attribute(pop)</samp> 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>There is one important exception for the virtual shared memory model: Do not enclose C standard headers within 
+			 <samp class="codeph">#pragma offload_attribute(push, _Cilk_shared)</samp> and 
+			 <samp class="codeph">#pragma offload_attribute(pop)</samp>. Such decoration is unnecessary and may lead to undefined symbols at run-time. 
+		  </p>
+ 
+		</div> 
+	 </div>
+ 
+	 <div class="section" id="GUID-58F85DC6-2044-4A62-BC4E-F359DE8AD08B"><h2>Example</h2> 
+		<p>The functions 
+		  <samp class="codeph">function_1</samp> and 
+		  <samp class="codeph">function_2</samp> each need the 
+		  <samp class="codeph">target</samp> attribute, as do all the declarations within some include files. It is convenient to put the 
+		  <samp class="codeph">offload_attribute</samp> pragma around all those declarations. 
+		</p>
+ 
+		<pre>#pragma offload_attribute(push,target(mic))
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+void function_1();
+void function_2();
+#pragma offload_attribute(pop)
+
+
+int main()
+{
+	#pragma offload target(mic)
+	{
+		function_1();
+		printf("...");
+	}
+	...
+	#pragma offload target(mic)
+	function_2();
+	...
+}
+</pre> 
+		<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d217981e157"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d217981e157 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">Programming for Intel&reg; MIC Architecture</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm">offload_attribute 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

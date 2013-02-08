@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Lock Contention">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, locks">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, locks">
+<meta name="DC.Relation" scheme="URI" content="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B5829666-A76A-4B4C-A17A-153041F896FB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Lock Contention</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_contention"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B5829666-A76A-4B4C-A17A-153041F896FB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Lock Contention</h1>
+
+<div>
+<p>Parallel strands are not able to run in parallel if they
+concurrently attempt to access a shared lock. In some programs,
+locks can eliminate virtually all of the performance benefit of
+parallelism. In extreme cases, such programs can even run
+significantly slower than the corresponding single-processor serial
+program. Consider using a reducer if possible.</p>
+
+<p>If you must use locks, consider observing these guidelines:</p>
+
+<ul type="disc" id="GUID-330124D9-9D18-4BEF-8ABD-000D532F6271"><li><p>Hold a
+synchronization object (lock) for as short a time as possible.
+Acquire the lock, update the data, and release the lock. Do not
+perform extraneous operations while holding the lock. If the
+application must hold a synchronization object for a long time,
+then reconsider whether it is a good candidate for parallelization.
+This guideline also helps to ensure that the acquiring strand
+always releases the lock.</p>
+</li>
+<li><p>Release a lock
+at the same scope level as it was acquired. Separating the
+acquisition and release of a synchronization object obfuscates the
+duration that the object is being held and can lead to failure to
+release a synchronization object and deadlocks. This guideline also
+ensures that the acquiring strand also releases the lock.</p>
+</li>
+<li><p>Do not hold a
+lock across a  <span class="keyword">cilk_spawn</span> or  <span class="keyword">cilk_sync</span> boundary. This includes across a
+ <span class="keyword">cilk_for</span> loop.
+See the following section for more explanation.</p>
+</li>
+<li><p>Avoid
+deadlocks by ensuring that a lock sequence is always acquired in
+the same order. Releasing the locks in the opposite order is not
+necessary but can improve performance.</p>
+</li>
+</ul>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">Introduction to Using Locks</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

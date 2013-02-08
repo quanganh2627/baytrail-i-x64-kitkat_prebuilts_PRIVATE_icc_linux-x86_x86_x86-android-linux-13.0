@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Intrinsics for Intel&reg; Advanced Vector Extensions 2 Instructions">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, overview, Advanced Vector Extensions 2, AVX2">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, overview, Advanced Vector Extensions 2, AVX2">
+<meta name="DC.Relation" scheme="URI" content="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">
+<meta name="DC.Relation" scheme="URI" content="http://software.intel.com/en-us/avx/">
+<meta name="DC.Relation" scheme="URI" content="GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9.htm#GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5922A85B-1237-423F-866C-82560B230BBB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Intrinsics for Intel&reg; Advanced Vector Extensions 2 Instructions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_overview"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5922A85B-1237-423F-866C-82560B230BBB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Intrinsics for Intel&reg; Advanced Vector Extensions 2 Instructions</h1>
+ 
+   
+  <div> 
+    <p>Intel&reg; Advanced Vector Extensions 2 (Intel&reg; AVX2) extends Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) by promoting most of the 128-bit SIMD integer instructions with 256-bit numeric processing capabilities. The Intel&reg; AVX2 instructions follow the same programming model as the Intel&reg; AVX instructions. 
+    </p>
+ 
+    <p>Intel&reg; AVX2 also provides enhanced functionality for broadcast/permute operations on data elements, vector shift instructions with variable-shift count per data element, and instructions to fetch non-contiguous data elements from memory. 
+    </p>
+ 
+    <p>Intel&reg; AVX2 intrinsics have vector variants that use 
+      <samp class="codeph">__m128</samp>, 
+      <samp class="codeph">__m128i</samp>, 
+      <samp class="codeph">__m256</samp>, and 
+      <samp class="codeph">__m256i</samp> data types. 
+    </p>
+ 
+    <p>The prototypes for the Intel&reg; AVX2 intrinsics are available in the 
+      <span class="filepath">immintrin.h</span> file. 
+    </p>
+ 
+    <p>The Intel&reg; AVX2 intrinsics are supported on the IA-32 and Intel&reg; 64 architectures built from 32nm process technology. They map directly to the Intel&reg; AVX2 new instructions and other enhanced 128-bit SIMD instructions. 
+    </p>
+ 
+    <div class="section" id="GUID-40FB7B47-CB5C-4456-A1B4-15BB71A103A9"><h2 class="sectiontitle">Functional Overview</h2> 
+       
+      <p>Intel&reg; AVX2 instructions promote the vast majority of 128-bit integer SIMD instruction sets to operate with 256-bit wide YMM registers. Intel&reg; AVX2 instructions are encoded using the VEX prefix and require the same operating system support as Intel&reg; AVX. Generally, most of the promoted 256-bit vector integer instructions follow the 128-bit lane operation, similar to the promoted 256-bit floating-point SIMD instructions in Intel&reg; AVX. 
+      </p>
+ 
+      <p>The Intel&reg; AVX2 instructions may be broadly categorized as follows: 
+      </p>
+ 
+      <ul type="disc" id="GUID-40843DF8-85F9-4AF0-9005-991AD83F69B5"> 
+        <li><strong>Intel&reg; AVX complementary integer instructions:</strong> Intel&reg; AVX2 instructions complement the Intel&reg; AVX instructions that are typed for integer operations with a full complement of equivalent instruction set for operating with integer data elements. 
+        </li>
+ 
+        <li><strong><span class="keyword">BROADCAST</span> and 
+            <span class="keyword">PERMUTE</span> instructions:</strong> These instructions provide cross-lane functionality for floating-point and integer operations. In addition, some of the Intel&reg; AVX2 256-bit vector integer instructions promoted from legacy SSE instruction sets also exhibiting cross-lane behavior fall into this category; for example, instructions of the 
+          <span class="keyword">VPMOVZ/VPMOVS</span> family. 
+        </li>
+ 
+        <li><strong><span class="keyword">SHIFT</span> instructions:</strong> Intel&reg; AVX2 vector SHIFT instructions operate with per-element shift count and support data element sizes of 32- and 64-bits. 
+        </li>
+ 
+        <li><strong><span class="keyword">GATHER</span> instructions:</strong> The Intel&reg; AVX2 vector GATHER instructions are used for fetching non-contiguous data elements from memory using vector-index memory addressing. They introduce a new memory addressing form consisting of a base register and multiple indices specified by a vector register (<span class="keyword">XMM</span> or 
+          <span class="keyword">YMM</span>). Data element sizes of 32- and 64-bits are supported as well as data types for floating-point and integer elements. 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">Intrinsics for Intel&reg; Advanced Vector Extensions 2</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="http://software.intel.com/en-us/avx/" target="_blank">Intel&reg; AVX site at http://software.intel.com/en-us/avx/ 
+        </a></div>
+<div><a href="GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9.htm#GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9">Details about the Intel&reg; AVX Intrinsics 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

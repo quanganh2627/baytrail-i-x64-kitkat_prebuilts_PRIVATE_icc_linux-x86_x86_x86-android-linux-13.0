@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="D">
+<meta name="abstract" content="Defines a macro name that can be associated with an optional value.">
+<meta name="description" content="Defines a macro name that can be associated with an optional value.">
+<meta name="DC.subject" content="/D compiler option, -D compiler option, macro names, option associating with an optional value">
+<meta name="keywords" content="/D compiler option, -D compiler option, macro names, option associating with an optional value">
+<meta name="DC.Relation" scheme="URI" content="GUID-3C8AB042-5B7B-46C5-95AE-A30F2B536FE0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-37D702BD-347E-42FE-8F8E-1E9BFC477453">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>D</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_d_ucase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_d_ucase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-37D702BD-347E-42FE-8F8E-1E9BFC477453">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">D</h1>
+<!--Defines a  macro name  that can be associated with an optional value.--><div><p>Defines a <span>macro name</span> that can be associated with an optional value.</p>
+
+<div class="section" id="GUID-1A3BA734-8B64-4128-AB4F-146785F26576"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Preprocessor &gt; Preprocessor Definitions</strong></p>
+ <p class="ide">Linux: 
+								<strong>Preprocessor &gt; Preprocessor Definitions</strong></p>
+ <p class="ide">OS X: 
+								<strong>Preprocessor &gt; Preprocessor Definitions</strong></p>
+</div>
+<div class="section" id="GUID-AE852578-5782-477E-9E9B-054496D0B4BA"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-5BE05522-4519-4104-A88A-2DDDC93AA76E"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-D</span><span class="var">name</span><span class="delim">[</span><span class="oper">=</span><span class="var">value</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/D</span><span class="var">name</span><span class="delim">[</span><span class="oper">=</span><span class="var">value</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-44F9EDD6-7243-4856-A64D-DB9B9D77783E"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>name</var></p></td>
+<td valign="top" class="noborder"><p>Is the name of the <span>macro</span>.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><var>value</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional integer or an optional character string delimited by double quotes; for example, <span class="option">D</span><var>name=string</var>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-83B889DD-E530-4BB2-8418-002149E51580"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span>OFF</span></p></td>
+<td valign="top" class="noborder"><p>Only default symbols or macros are defined.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-224CC724-4256-4F70-A939-7B96D9D53A98"><h2>Description</h2><p>Defines a <span>macro name</span> that can be associated with an optional value. <span>This option is equivalent to a #define preprocessor directive.</span></p>
+<p>If a <var>value</var> is not specified, <em>name</em>&nbsp; is defined as "1".</p>
+<p>If you specify <span class="option">noD</span>, all preprocessor definitions apply only to fpp and not to Intel&reg; Fortran conditional compilation directives. To use this option, you must also specify option <span class="option">fpp</span>. </p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>On Linux* and OS X* systems, if you are not specifying a <var>value</var>, do not use <span class="option">D</span> for <var>name</var>, because it will conflict with the <span class="option">-DD</span> option.</p>
+</div></div>
+
+<div class="section" id="GUID-643D8E51-72C8-4FEF-AF0D-C2A830F60458"><h2>Alternate Options</h2><p>None</p>
+</div>
+<div class="example" id="EXAMPLE_34A68C966844419B9FCBC5C5F87A4279"><a name="EXAMPLE_34A68C966844419B9FCBC5C5F87A4279"><!-- --></a><h2>Example</h2><p>To define a macro called 
+
+SIZE
+
+with the value 100, enter the following command:
+</p>
+
+<p>On Windows* systems:</p>
+<pre>icl /DSIZE=100 prog1.cpp</pre><p>On Linux* and OS X* systems:</p>
+<pre>icpc -DSIZE=100 prog1.cpp</pre><p>If you define a macro, but do not assign a value, the compiler
+defaults to 1 for the value of the macro.
+</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3C8AB042-5B7B-46C5-95AE-A30F2B536FE0.htm">Preprocessor Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

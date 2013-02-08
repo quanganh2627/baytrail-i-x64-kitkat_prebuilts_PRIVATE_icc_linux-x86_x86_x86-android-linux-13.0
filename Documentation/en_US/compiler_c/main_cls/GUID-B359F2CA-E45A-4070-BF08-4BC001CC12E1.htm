@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="minstruction, Qinstruction">
+<meta name="abstract" content="Determines whether MOVBE instructions are generated for Intel processors.">
+<meta name="description" content="Determines whether MOVBE instructions are generated for Intel processors.">
+<meta name="DC.subject" content="/Qinstruction compiler option, MOVBE instructions, option generating, -minstruction compiler option">
+<meta name="keywords" content="/Qinstruction compiler option, MOVBE instructions, option generating, -minstruction compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>minstruction, Qinstruction</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_minstruction"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_minstruction"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">minstruction, Qinstruction</h1>
+<!--Determines whether MOVBE instructions are generated for Intel processors.--><div><p>Determines whether MOVBE instructions are generated for Intel processors.</p>
+
+<div class="section" id="GUID-4EAA8CB4-FBC2-43B0-998F-34E26CD4C963"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-078976D6-A9AB-49E4-89CF-C8766D38E35C"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-6C64E0E0-C786-4B7A-9FC8-54B984EDDA20"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-minstruction</span><span class="oper">=</span><span class="kwd">[no]movbe</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qinstruction</span><span class="oper">:</span><span class="kwd">[no]movbe</span></p></td></tr></table></div>
+<div class="section" id="GUID-E2C2C863-184C-47A2-A78B-51ED6EBAE200"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-721DDD75-E458-4E37-91FF-81CF66A30DDA"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">–minstruction=nomovbe</span><br><span> or<span class="option">/Qinstruction:nomovbe</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler does not generate MOVBE instructions for Intel&reg; Atom&#8482; processors.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C688E26E-9152-40DA-874E-6CF8D6180EF1"><h2>Description</h2><p>This option determines whether MOVBE instructions are generated for Intel processors. To use this option, you must also specify <span class="option">-xSSSE3_ATOM</span> (Linux* OS and OS X*) or <span class="option">/QxSSSE3_ATOM</span> (Windows* OS).</p>
+<p>If <span class="option">-minstruction=movbe</span> or <span class="option">/Qinstruction:movbe</span> is specified, the following occurs:</p>
+<ul type="disc" id="GUID-494E528F-7FE9-4976-B197-9B7BDDDDAF61"><li><p>MOVBE instructions are generated that are specific to the Intel&reg; Atom&#8482; processor.</p>
+</li>
+<li><p>The options are ON by default when <span class="option">-xSSSE3_ATOM</span> or <span class="option">/QxSSSE3_ATOM</span> is specified.</p>
+</li>
+<li><p>Generated executables can only be run on Intel&reg; Atom&#8482; processors or processors that support Supplemental Streaming SIMD Extensions 3 (SSSE3) and MOVBE.</p>
+</li>
+</ul>
+<p>If <span class="option">-minstruction=nomovbe</span> or <span class="option">/Qinstruction:nomovbe</span> is specified, the following occurs:</p>
+<ul type="disc" id="GUID-B896C1DE-4966-4962-814A-89298CA8212C"><li><p>The compiler optimizes code for the Intel&reg; Atom&#8482; processor, but it does not generate MOVBE instructions.</p>
+</li>
+<li><p>Generated executables can be run on non-Intel&reg; Atom&#8482; processors that support Intel&reg;
+SSE3.</p>
+</li>
+</ul>
+</div>
+
+<div class="section" id="GUID-835E0E36-EADF-49E8-9C2A-FFEB8B8E924E"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">x</span>, <span class="option">Qx</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

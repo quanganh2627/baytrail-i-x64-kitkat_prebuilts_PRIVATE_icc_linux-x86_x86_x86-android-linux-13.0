@@ -1,0 +1,146 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30754)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30754 (Linux* only)">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30754 (Linux* only)">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4B00BB89-EEF0-4C91-82F8-8E9618C0857C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30754)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30754"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30754"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4B00BB89-EEF0-4C91-82F8-8E9618C0857C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30754)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-735B81C6-B6CB-4B2B-9E83-9968AD67569D"><h2 class="sectiontitle">Message</h2><p>Aligning the fields '%s' in the structure '%s' on an 8-byte boundary may improve performance. Default alignment of double precision floating point data is 4-byte on the Linux IA32 platform. [ALTERNATIVE] Reordering fields of the structure may help to align double precision floating point data on an 8-byte boundary. [ALTERNATIVE] Another way is to use __attribute__((aligned(8))) for the fields '%s' in the structure '%s' to allocate the fields on an 8-byte boundary. </p>
+<p>This messsage is only available on Linux* systems.</p>
+</div>
+
+
+<div class="section" id="GUID-4A01DA55-80D6-4D32-A278-FF635BAD70AD"><h2 class="sectiontitle">Advice</h2>
+<p>You must reorder the fields of a class or structure type to make "double" fields 8-byte aligned. On Linux* systems on IA-32 architecture, "double" fields are not required to be 8-byte aligned. This should enable optimizations like vectorization to generate better code. You must verify that the application code does not rely on the structure fields to be laid out in a specific order.</p>
+</div>
+
+
+<div class="section" id="GUID-09B0CA49-1AFD-4C2F-AEDA-AC3CD1EE7F64"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>//alignment.c</pre>
+<pre>#include &lt;stdlib.h&gt;</pre>
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>#define N 1000</pre>
+<pre>&nbsp;</pre>
+<pre>struct S {</pre>
+<pre>    int i;</pre>
+<pre>    double d1;</pre>
+<pre>    double d2;</pre>
+<pre>    double d3;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>struct S *sp;</pre>
+<pre>&nbsp;</pre>
+<pre>static struct S*</pre>
+<pre>alloc_s(int num)</pre>
+<pre>{</pre>
+<pre>    struct S * temp;</pre>
+<pre>&nbsp;</pre>
+<pre>    temp = calloc(num, sizeof(struct S));</pre>
+<pre>    return temp;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>struct S temp;</pre>
+<pre>&nbsp;</pre>
+<pre>static void</pre>
+<pre>swap_s(int i, int j)</pre>
+<pre>{</pre>
+<pre>    memcpy(&amp;temp, sp + i, sizeof(struct S));</pre>
+<pre>    memcpy(sp + i, sp + j, sizeof(struct S));</pre>
+<pre>    memcpy(sp+ j, &amp;temp, sizeof(struct S));</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>static void</pre>
+<pre>init_s(int num)</pre>
+<pre>{</pre>
+<pre>    int ii;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; num; ii++) {</pre>
+<pre>        sp[ii].i = ii;</pre>
+<pre>        sp[ii].d1 = (double) ii + 1;</pre>
+<pre>        sp[ii].d2 = (double) ii + 2;</pre>
+<pre>        sp[ii].d3 = (double) ii + 3;</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>main()</pre>
+<pre>{</pre>
+<pre>    int ii;</pre>
+<pre>    double d = 0.0;</pre>
+<pre>&nbsp;</pre>
+<pre>    sp = alloc_s(N);</pre>
+<pre>&nbsp;</pre>
+<pre>    for(ii = 0; ii &lt; N -1; ii += 2) {</pre>
+<pre>        swap_s(ii, ii+1);</pre>
+<pre>    }</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N ; ii++) {</pre>
+<pre>        sp[ii].d1 = sp[ii].d1 * sp[ii].d2 * sp[ii].d3;</pre>
+<pre>        d += sp[ii].d1;</pre>
+<pre>    }</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N ; ii++) {</pre>
+<pre>        printf(" %d:  %g   %g  %g  \n", sp[ii].i, sp[ii].d1, sp[ii].d2, sp[ii].d3);</pre>
+<pre>    }</pre>
+<pre>}</pre>
+</div>
+
+
+
+
+<p>In this case, when the program is compiled, the compiler generates a message saying that aligning the fields 'd1, d2, d3' in the structure 'S' on an 8-byte boundary may improve performance. </p>
+<p>Alternatively, '__attribute__((aligned(8)))' can be used to align 'd1, d2, d3' on an 8-byte boundary. One possible way to do this is shown below:</p>
+<pre>struct S {</pre><pre>    int i;</pre><pre>    __attribute__((aligned(8)))  double d1;</pre><pre>    double d2;</pre><pre>    double d3;</pre><pre>};</pre><div class="section" id="GUID-F8097AEA-B51B-4A1B-AD82-755465131C32"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the restructured code satisfies the original program semantics. Note that size of the structure may change due to the alignment changes. Make sure that the change in the structure layout satisfies the original program semantics.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

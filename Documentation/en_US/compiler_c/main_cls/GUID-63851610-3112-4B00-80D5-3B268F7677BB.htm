@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking Custom Memory Allocators">
+<meta name="DC.subject" content="pointer checker, checking custom memory allocator">
+<meta name="keywords" content="pointer checker, checking custom memory allocator">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-63851610-3112-4B00-80D5-3B268F7677BB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking Custom Memory Allocators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_check_custmem"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_check_custmem"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-63851610-3112-4B00-80D5-3B268F7677BB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Checking Custom Memory Allocators</h1>
+ 
+   
+  <div> 
+	 <p>Many C and C++ applications use standard memory allocation functions to allocate large chunks of memory and then define their own custom memory allocation functions to allocate these large chunks of memory into smaller chunks. If you use the pointer checker on a module that contains custom memory allocation functions, every memory allocation from these custom functions will have the bounds information from the large chunk of memory. 
+	 </p>
+ 
+	 <p>To create the correct bounds information for a pointers in a custom memory allocator function, use the 
+		<span class="keyword">__chkp_make_bounds()</span> intrinsic function. 
+	 </p>
+ 
+	 <p>For example, consider the case where you create a custom memory allocator function that returns a pointer. To add the exact bounds information to the return pointer, use the 
+		<span class="keyword">__chkp_make_bounds()</span> intrinsic function in the return value: 
+		<pre>void *myalloc(size_t size)
+{
+	
+	  // Code to do allocate the large chunk of memory
+   // into small chunks.
+
+	  // Add bounds information to the pointer
+   return __chkp_make_bounds(p, size);
+
+}</pre> 
+	 </p>
+ 
+	 <p>If you override the 
+		<samp class="codeph">new</samp> operator in C++, you can use the same technique to give bounds information to the return pointer. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

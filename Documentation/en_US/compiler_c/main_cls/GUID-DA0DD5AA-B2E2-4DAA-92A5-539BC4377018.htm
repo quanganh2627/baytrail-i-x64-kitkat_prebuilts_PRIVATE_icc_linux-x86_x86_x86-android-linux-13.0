@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_blendv_pd">
+<meta name="abstract" content="Performs conditional blend/merge of float64 vectors. The corresponding Intel&reg; AVX instruction is VBLENDVPD.">
+<meta name="description" content="Performs conditional blend/merge of float64 vectors. The corresponding Intel&reg; AVX instruction is VBLENDVPD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, blend and conditional merge operations, _mm256_blendv_pd (VBLENDVPD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, blend and conditional merge operations, _mm256_blendv_pd (VBLENDVPD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-12D6837C-30EE-420C-A8DE-FDAC8B0333B2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DA0DD5AA-B2E2-4DAA-92A5-539BC4377018">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_blendv_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_blendv_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DA0DD5AA-B2E2-4DAA-92A5-539BC4377018">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_blendv_pd</span></h1>
+
+
+<!-- Performs conditional blend/merge of float64 vectors. The corresponding Intel&reg; AVX instruction is  VBLENDVPD .--><div><p> Performs conditional blend/merge of float64 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VBLENDVPD</span>.</p>
+
+
+<div class="section" id="GUID-061E878A-9834-42A4-B873-E70D0DDF1F46"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256d _mm256_blendv_pd(__m256d m1, __m256d m2, __m256d mask);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-D580B8E0-4183-4623-B454-26E7F0FAF6DB"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m1</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m2</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector with mask for the operation</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-80BB5ADD-96D1-4F7D-9F88-21D5F387AF4B"><h2>Description</h2>
+<p>Performs a conditional merge of four packed double-precision floating point elements (float64 elements) of two vectors according to the most significant bits of the <var>mask</var> parameter elements.</p>
+<p>The <var>mask</var> parameter defines a mask for the operation. The most significant bit of the corresponding double-precision floating-point elements in the <var>mask</var> determines whether the corresponding double-precision floating-point element in the resulting vector is copied from the second source or first source. </p>
+<p>If the bit in the <var>mask</var> is “1” then the corresponding element of the second source vector is copied into the resulting vector. If the bit is “0” then the corresponding element of the first source vector is copied into the resulting vector. Thus a merging/blending of the elements of the two source vectors occurs when this intrinsic is used.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-094C89E0-1462-42FA-A958-CE2BEC6F2E9C"><h2>Returns</h2><p>Result of the blend operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-12D6837C-30EE-420C-A8DE-FDAC8B0333B2.htm">Intrinsics for Blend and Conditional Merge Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

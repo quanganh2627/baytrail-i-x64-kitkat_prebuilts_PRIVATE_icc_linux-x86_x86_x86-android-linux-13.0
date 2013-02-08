@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Alignment Support">
+<meta name="DC.subject" content="intrinsics, data alignment">
+<meta name="keywords" content="intrinsics, data alignment">
+<meta name="DC.Relation" scheme="URI" content="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A8921E64-6201-4018-BAE8-DE58E4E6ECB3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Alignment Support</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intref_alignment_support"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A8921E64-6201-4018-BAE8-DE58E4E6ECB3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Alignment Support</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-BC236274-6E53-4350-B459-7928C82FB2A8"> 
+      <p>Aligning data improves the performance of intrinsics. When using the Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics, you should align data to 16 bytes in memory operations. Specifically, you must align 
+      <span class="option">__m128</span> objects as addresses passed to the 
+      <span class="option">_mm_load</span> and 
+      <span class="option">_mm_store</span> intrinsics. If you want to declare arrays of floats and treat them as 
+      <span class="option">__m128</span> objects by casting, you need to ensure that the float arrays are properly aligned. 
+      </p>
+ 
+      <p>Use 
+      <span class="option">__declspec(align)</span> to direct the compiler to align data more strictly than it otherwise would. For example, a data object of type 
+      <span class="keyword">int</span> is allocated at a byte address which is a multiple of 4 by default. However, by using 
+      <span class="option">__declspec(align)</span>, you can direct the compiler to instead use an address which is a multiple of 8, 16, or 32 with the following restriction on IA-32 architecture: 
+      </p>
+ 
+      <ul type="disc" id="GUID-13202AB4-82FB-4511-80A5-EBA7C87336D9"> 
+        <li> 
+          <p>16-byte addresses can be locally or statically allocated 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>You can use this data alignment support as an advantage in optimizing cache line usage. By clustering small objects that are commonly used together into a 
+        <span class="keyword">struct</span>, and forcing the 
+        <span class="keyword">struct</span> to be allocated at the beginning of a cache line, you can effectively guarantee that each object is loaded into the cache as soon as any one is accessed, resulting in a significant performance benefit. 
+      </p>
+ 
+      <p>The syntax of this extended-attribute is as follows: 
+      </p>
+ 
+      <p><span class="option">align(n)</span> 
+      </p>
+ 
+      <p>where 
+        <var>n</var> is an integral power of 2, up to 4096. The value specified is the requested alignment. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>If a value is specified that is less than the alignment of the affected data type, it has no effect. In other words, data is aligned to the maximum of its own alignment or the alignment specified with 
+        <span class="option">__declspec(align)</span>. 
+        </p>
+ 
+      </div> 
+      <p>You can request alignments for individual variables, whether of static or automatic storage duration. (Global and static variables have static storage duration; local variables have automatic storage duration by default.) You cannot adjust the alignment of a parameter, nor a field of a 
+        <span class="keyword">struct</span> or 
+        <span class="keyword">class</span>. You can, however, increase the alignment of a 
+        <span class="keyword">struct</span> (or 
+        <span class="keyword">union</span> or 
+        <span class="keyword">class</span>), in which case every object of that type is affected. 
+      </p>
+ 
+      <p>As an example, suppose that a function uses local variables 
+        <span class="keyword">i</span> and 
+        <span class="keyword">j</span> as subscripts into a 2-dimensional array. They might be declared as follows:<br><samp class="codeph">int i, j;</samp> 
+      </p>
+ 
+      <p>These variables are commonly used together. But they can fall in different cache lines, which could be detrimental to performance. You can instead declare them as follows:<br><samp class="codeph">__declspec(align(16)) struct { int i, j; } sub;</samp> 
+      </p>
+ 
+      <p>The compiler now ensures that they are allocated in the same cache line. In C++, you can omit the 
+        <span class="keyword">struct</span> variable name (written as sub in the previous example). In C, however, it is required, and you must write references to 
+        <span class="keyword">i</span> and 
+        <span class="keyword">j</span> as 
+        <span class="keyword">sub.i</span> and 
+        <span class="keyword">sub.j</span>. 
+      </p>
+ 
+      <p>If you use many functions with such subscript pairs, it is more convenient to declare and use a 
+        <span class="keyword">struct</span> type for them, as in the following example:<samp class="codeph"><strong> typedef struct __declspec(align(16)) { int i, j; } Sub;</strong></samp> 
+      </p>
+ 
+      <p>By placing the 
+      <span class="option">__declspec(align)</span> after the keyword 
+      <span class="keyword">struct</span>, you are requesting the appropriate alignment for all objects of that type. Note that allocation of parameters is unaffected by 
+      <span class="option">__declspec(align)</span>. (If necessary, you can assign the value of a parameter to a local variable with the appropriate alignment.) 
+      </p>
+ 
+      <p>You can also force alignment of global variables, such as arrays: 
+      </p>
+ 
+      <p class="LeftIndent"><span class="option">__declspec(align(16)) float array[1000];</span> 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">Data Alignment, Memory Allocation Intrinsics, and Inline Assembly</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

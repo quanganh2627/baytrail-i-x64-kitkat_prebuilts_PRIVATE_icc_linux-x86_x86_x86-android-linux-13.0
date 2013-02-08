@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Pointer Checker Overview">
+<meta name="DC.subject" content="pointer checker, overview">
+<meta name="keywords" content="pointer checker, overview">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0E78B58-DFB6-408A-B065-7908D86E3711.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9937FAF4-5E87-4D24-BECC-A4B3A0C04511.htm#GUID-9937FAF4-5E87-4D24-BECC-A4B3A0C04511">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E5D3E6A2-ECD4-4FFA-95DC-9ECFDD97EE20">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Pointer Checker Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_pls_overview"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_pls_overview"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-E5D3E6A2-ECD4-4FFA-95DC-9ECFDD97EE20">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Pointer Checker Overview</h1>
+ 
+   
+  <div> 
+	 <p>The pointer checker is a debugging feature that helps you find buffer overruns occurring in Windows* OS or Linux* OS based applications. The feature performs bounds checking for memory accesses through pointers and identifies any out-of-bounds access in pointer checker enabled code. The pointer checker can also detect dangling pointers , that is, pointers that point to memory that has been freed. When this detection is enabled, using a dangling pointer in an indirect access will also cause an out-of-bounds error. 
+	 </p>
+ 
+	 <p>The pointer checker is not supported on OS X* systems. 
+	 </p>
+ 
+	 <p> The C and C++ languages define semantics for memory access for pointers. However, many applications still make out-of-bounds memory accesses and these accesses can go undetected, risking data corruption and increasing vulnerability to malicious attacks. The pointer checker provides full checking of all memory accesses through pointers and catches out-of-bounds memory accesses before memory corruption occurs. When you compile your code with the pointer checker enabled, it identifies and reports out-of-bounds memory accesses. 
+	 </p>
+ 
+	 <p>The pointer checker is designed for use during application testing and debugging. Because it adds overhead in terms of the size and execution time of a program, you will want to deploy programs with the pointer checker disabled. 
+	 </p>
+ 
+	 <p> Your application can contain both pointer checker enabled code as well as code that is not enabled. The pointer checker allows this co-existence because it does not change the data structure layout of functions during its checking. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A0E78B58-DFB6-408A-B065-7908D86E3711.htm">Pointer Checker</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-9937FAF4-5E87-4D24-BECC-A4B3A0C04511.htm#GUID-9937FAF4-5E87-4D24-BECC-A4B3A0C04511">Pointer Checker Feature Summary 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

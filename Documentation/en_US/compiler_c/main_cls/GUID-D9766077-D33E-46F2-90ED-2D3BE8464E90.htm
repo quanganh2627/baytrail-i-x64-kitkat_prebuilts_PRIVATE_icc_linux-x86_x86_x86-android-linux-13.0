@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_insertf128_pd">
+<meta name="abstract" content="Inserts 128 bits of packed float64 values. The corresponding Intel&reg; AVX instruction is VINSERTF128.">
+<meta name="description" content="Inserts 128 bits of packed float64 values. The corresponding Intel&reg; AVX instruction is VINSERTF128.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_insertf128_pd (VINSERTF128)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_insertf128_pd (VINSERTF128)">
+<meta name="DC.Relation" scheme="URI" content="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D9766077-D33E-46F2-90ED-2D3BE8464E90">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_insertf128_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_insertf128_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D9766077-D33E-46F2-90ED-2D3BE8464E90">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_insertf128_pd</span></h1>
+
+
+<!--Inserts 128 bits of packed float64 values. The corresponding Intel&reg; AVX instruction is  VINSERTF128 .--><div><p>Inserts 128 bits of packed float64 values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VINSERTF128</span>.</p>
+
+
+<div class="section" id="GUID-A6A98870-19FE-41C7-B05E-F77E4DF23709"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256d _mm256_insertf128_pd(__m256d a, __m128d b, int offset);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-D54C7DF1-2568-46C1-B950-1995C99A27AD"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>256-bit float64 source vector</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>128-bit float64 source vector </p>
+</td>
+
+    </tr>
+ <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>offset </var></p></td>
+
+      <td valign="top" class="noborder"><p>an integer value that represents the 128-bit offset where the insertion must start </p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-D953DE3A-D183-4822-9155-AB2517704E43"><h2>Description</h2>
+<p>Performs an insertion of 128 bits of packed double-precision floating-point values (float64 values) from the second source vector <var>b</var> into a destination at a 128-bit offset specified by the <var>offset</var> parameter. The remaining portions of the destination are written by the corresponding elements of the first source vector <var>a</var>.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-5BA55B63-6791-481F-AB31-4A9C3637BD77"><h2>Returns</h2><p> Result of the insertion operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">Intrinsics for Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="save-temps, Qsave-temps">
+<meta name="abstract" content="Tells the compiler to save intermediate files created during compilation.">
+<meta name="description" content="Tells the compiler to save intermediate files created during compilation.">
+<meta name="DC.subject" content="intermediate files, option saving during compilation, /Qsave-temps compiler option, -save-temps compiler option">
+<meta name="keywords" content="intermediate files, option saving during compilation, /Qsave-temps compiler option, -save-temps compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-BC283ACB-C0A8-4BE1-8D86-1974292A3367.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-89BDC7B8-B4B4-4BDF-A28F-57111ED8A516">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>save-temps, Qsave-temps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_save_temps"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_save_temps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-89BDC7B8-B4B4-4BDF-A28F-57111ED8A516">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">save-temps, Qsave-temps</h1>
+<!--Tells the compiler to save intermediate files created during compilation.--><div><p>Tells the compiler to save intermediate files created during compilation.</p>
+
+<div class="section" id="GUID-1D7E0276-EE20-4D2D-8F31-A3F0C9CC86FF"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-FA1C6C74-C715-4A5D-BEDB-45DD068733FC"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-7438FC0A-E5D2-4A9B-B7C0-8FD11E3A354A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-save-temps</span></p><p><span class="kwd">-no-save-temps</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qsave-temps</span></p><p><span class="kwd">/Qsave-temps-</span></p></td></tr></table></div>
+<div class="section" id="GUID-A62FB2E5-1DD7-42EA-8C47-1DD4657D5B8B"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-6E0C351B-13CC-4051-ACEA-BE2D4714B58D"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>Linux* OS and OS X*: <span class="option">-no-save-temps</span><br><span>Windows* OS: .obj files are saved</span></p></td>
+<td valign="top" class="noborder"><p>On Linux and OS X systems, the compiler deletes intermediate files after compilation is completed. <span>On Windows systems, the compiler saves only intermediate object files after compilation is completed.</span></p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E95077C9-5E4C-48BE-8B68-B302B450D47B"><h2>Description</h2><p>This option tells the compiler to save intermediate files created during compilation. The names of the files saved are based on the name of the source file; the files are saved in the current working directory.</p>
+<p>If <span class="option">-save-temps</span> or <span class="option">/Qsave-temps</span> is specified, the following occurs:</p>
+<ul type="disc" id="GUID-3D5ACD58-71BE-45E5-A958-D35B6364BD7C"><li><p>The object .o file (Linux OS and OS X) or .obj file (Windows OS) is saved.</p>
+</li>
+<li><p>The assembler .s file (Linux OS and OS X) or .asm file (Windows OS) is saved if you specified -use-asm (Linux OS and OS X) or /Quse-asm (Windows OS).</p>
+</li>
+</ul>
+<p>If <span class="option">-no-save-temps</span> is specified on Linux  or OS X systems, the following occurs:</p>
+<ul type="disc" id="GUID-9DC293E6-7FB4-43C6-A91B-63D75F339E80"><li><p>The .o file is put into <span class="option">/tmp</span> and deleted after calling <span class="option">ld</span>.</p>
+</li>
+<li><p>The preprocessed file is not saved after it has been used by the compiler.</p>
+</li>
+</ul>
+<p>If <span class="option">/Qsave-temps-</span> is specified on Windows systems, the following occurs:</p>
+<ul type="disc" id="GUID-B02F302D-D41F-4A88-A05B-D5041D09B4FA"><li><p>The .obj file is not saved after the linker step.</p>
+</li>
+<li><p>The preprocessed file is not saved after it has been used by the compiler.</p>
+</li>
+</ul>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This option only saves intermediate files that are normally created during compilation.</p>
+</div></div>
+
+<div class="section" id="GUID-76DB939F-7FD7-4FBB-A036-2D4EE9990D69"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_E2482E422C084168B4097B37BC032E7E"><a name="EXAMPLE_E2482E422C084168B4097B37BC032E7E"><!-- --></a><h2>Example</h2><p>If you compile program <span class="filepath">my_foo.c</span> on a Linux or OS X system and you specify option <span class="option">-save-temps</span> and option <span class="option">-use-asm</span>, the compilation will produce files <span class="filepath">my_foo.o</span> and <span class="filepath">my_foo.s</span>.</p>
+<p>If you compile program <span class="filepath">my_foo.c</span> on a Windows system and you specify option <span class="option">/Qsave-temps</span> and option <span class="option">/Quse-asm</span>, the compilation will produce files <span class="filepath">my_foo.o</span> and <span class="filepath">my_foo.asm</span>.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BC283ACB-C0A8-4BE1-8D86-1974292A3367.htm">Miscellaneous Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

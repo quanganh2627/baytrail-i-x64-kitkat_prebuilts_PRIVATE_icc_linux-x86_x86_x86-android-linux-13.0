@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ftz, Qftz">
+<meta name="abstract" content="Flushes denormal results to zero.">
+<meta name="description" content="Flushes denormal results to zero.">
+<meta name="DC.subject" content="denormal results, option flushing to zero, /Qftz compiler option, -ftz compiler option">
+<meta name="keywords" content="denormal results, option flushing to zero, /Qftz compiler option, -ftz compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3A5C3E47-250D-4178-A0D4-6C4ACDDA5EB8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ftz, Qftz</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ftz"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ftz"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3A5C3E47-250D-4178-A0D4-6C4ACDDA5EB8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ftz, Qftz</h1>
+<!--Flushes denormal results to zero.--><div><p>Flushes denormal results to zero.</p>
+
+<div class="section" id="GUID-F91402F2-42F1-4321-B177-63F5EB6F7ABE"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Flush Denormal Results to Zero</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Floating-Point &gt; Flush Denormal Results to Zero</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Floating-Point &gt; Flush Denormal Results to Zero</strong></p>
+</div>
+<div class="section" id="GUID-507069A9-E21D-453D-AC5B-6AD27270FFAB"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-6DC48D8A-2FDF-4B47-A764-88A149DD4D05"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ftz</span></p><p><span class="kwd">-no-ftz</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qftz</span></p><p><span class="kwd">/Qftz-</span></p></td></tr></table></div>
+<div class="section" id="GUID-DB3EF6A2-7A57-47DC-A446-30D869A8304A"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-8D0186A5-74ED-4133-91D1-FC9758228557"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-ftz</span> or <span class="option">/Qftz</span></p></td>
+<td valign="top" class="noborder"><p>Denormal results are flushed to zero.</p>
+<p>Every optimization option <span class="option">O</span> level, except <span class="option">O0</span>, sets <span class="option">-ftz</span> and <span class="option">/Qftz</span>.
+</p>
+</td>
+</tr></table>
+
+
+</div>
+
+<div class="section" id="GUID-526D7D81-E564-457B-A134-41ABF6BAB1F0"><h2>Description</h2><p>This option flushes denormal results to zero when the application is in the gradual underflow mode. It may improve performance if the denormal values are not critical to your application's behavior.</p>
+
+<p>This option sets or resets the FTZ and the DAZ hardware flags. If FTZ is ON, denormal results from floating-point calculations will be set to the value zero. If FTZ is OFF, denormal results remain as is. If DAZ is ON, denormal values used as input to floating-point instructions will be treated as zero. If DAZ is OFF, denormal instruction inputs remain as is.  Systems using Intel&reg; 64 architecture have both FTZ and DAZ. FTZ and DAZ are not supported on all IA-32 architectures. </p>
+<p>When <span class="option">-ftz</span> (Linux OS and OS X) or <span class="option">/Qftz</span> (Windows OS) is used in combination with an SSE-enabling option on systems using IA-32 architecture (for example, <span class="option">xN</span> or <span class="option">QxN</span>), the compiler will insert code in the main routine to set FTZ and DAZ. When <span class="option">-ftz</span> or <span class="option">/Qftz</span> is used without such an option, the compiler will insert code to conditionally set FTZ/DAZ based on a run-time processor check. <span class="option">-no-ftz</span> (Linux OS and OS X) or <span class="option">/Qftz-</span> (Windows OS) will prevent the compiler from inserting any code that might set FTZ or DAZ. </p>
+<p>This option only has an effect when the main program is being compiled. It sets the FTZ/DAZ mode for the process. The initial thread and any threads subsequently created by that process will operate in FTZ/DAZ mode.</p>
+<p>If this option produces undesirable results of the numerical behavior of your program, you can turn the FTZ/DAZ mode off by using <span class="option">-no-ftz</span> or <span class="option">/Qftz-</span> in the command line while still benefiting from the <span class="option">O3</span> optimizations.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Options <span class="option">-ftz</span> and <span class="option">/Qftz</span> are performance options. Setting these options does not guarantee that all denormals in a program are flushed to zero. They only cause denormals generated at run time to be flushed to zero.</p>
+</div></div>
+
+<div class="section" id="GUID-91928183-B5EF-4700-87F2-62188BD3D1CC"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_D3BFEB33A5FF4D7D87CC8EDF2F64A408"><a name="EXAMPLE_D3BFEB33A5FF4D7D87CC8EDF2F64A408"><!-- --></a><h2>Example</h2><p>To see sample code showing the state of the FTZ and DAZ flags, see Setting the FTZ and DAZ Flags.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">x, Qx</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

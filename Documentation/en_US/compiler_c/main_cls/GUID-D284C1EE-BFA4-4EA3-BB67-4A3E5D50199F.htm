@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Programming Guidelines for Vectorization">
+<meta name="DC.subject" content="Streaming SIMD Extensions, diagnostics, general compiler directives, for vectorization, loop unrolling, mixing vectorizable types in a loop, threshold control for auto-parallelization, reordering, unvectorizable copy, vector copy, programming guidelines, vectorizing">
+<meta name="keywords" content="Streaming SIMD Extensions, diagnostics, general compiler directives, for vectorization, loop unrolling, mixing vectorizable types in a loop, threshold control for auto-parallelization, reordering, unvectorizable copy, vector copy, programming guidelines, vectorizing">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330.htm#GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330">
+<meta name="DC.Relation" scheme="URI" content="GUID-F6ADE969-EC9D-4670-AB1A-93CD4CF4BE94.htm#GUID-F6ADE969-EC9D-4670-AB1A-93CD4CF4BE94">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D284C1EE-BFA4-4EA3-BB67-4A3E5D50199F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Programming Guidelines for Vectorization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_keys"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_keys"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D284C1EE-BFA4-4EA3-BB67-4A3E5D50199F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Programming Guidelines for Vectorization</h1>
+
+
+
+<div>
+<p>The goal of including the vectorizer component in the Intel&reg; compiler is to exploit single-instruction multiple data (SIMD) processing automatically. Users can help however, by supplying the compiler with additional information; for example, by using auto-vectorizer hints or <span>pragmas.</span></p>
+<p>Using the <span class="option">-vec</span> (Linux*) or the <span class="option">/Qvec</span> (Windows*) option enables vectorization at default optimization levels for both Intel&reg; microprocessors and non-Intel microprocessors. Vectorization may call library routines that can result in additional performance gain on Intel microprocessors than on non-Intel microprocessors. The vectorization can also be affected by certain options, such as<span class="option"> /arch</span> or <span class="option">/Qx</span> (Windows) or <span class="option">-m</span> or <span class="option">-x</span> (Linux and OS X).</p>
+
+
+<div class="section" id="GUID-31F708B1-1C6B-44AD-9E5D-142233BC0D79"><h2 class="sectiontitle">Guidelines <span>to Vectorize Innermost Loops</span></h2>
+
+<p> Follow these guidelines to vectorize innermost loop bodies.</p>
+
+<p>Use:</p>
+
+
+<ul type="disc" id="GUID-F51DCCD7-5B38-4F43-93A7-9C06560BC816">
+  <li><p>straight-line code (a single basic block)</p>
+</li>
+
+  <li><p>vector data only; that is, arrays and invariant expressions on the right hand side of assignments. Array references can appear on the left hand side of assignments.</p>
+</li>
+
+  <li><p>only assignment statements</p>
+</li>
+
+</ul>
+
+
+<p>Avoid:</p>
+
+
+<ul type="disc" id="GUID-4D6D1097-3C84-4668-8478-CEAF7D153E30">
+  <li><p>function calls (other than math library calls)</p>
+</li>
+
+  <li><p>unvectorizable operations (either because the loop cannot be vectorized, or because an operation is emulated through a number of instructions)</p>
+</li>
+
+  <li><p>mixing vectorizable types in the same loop (leads to lower resource utilization)</p>
+</li>
+
+  <li><p>data-dependent loop exit conditions (leads to loss of vectorization)</p>
+</li>
+
+</ul>
+
+
+<p>To make your code vectorizable, you will often need to make some changes to your loops. However, you should make only those changes needed to enable vectorization. In particular, you should avoid these common changes:</p>
+
+
+<ul type="disc" id="GUID-121D398F-3C5C-460A-AEBD-93E5BA399DB1">
+  <li><p>loop unrolling; the compiler does it automatically.</p>
+</li>
+
+  <li><p>decomposing one loop with several statements in the body into several single-statement loops.</p>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="section" id="GUID-6F14DD57-D6C0-4A96-8239-6AD2A4639C1F"><h2 class="sectiontitle">Restrictions</h2>
+
+<p>There are a number of restrictions that you should consider. Vectorization depends on two major factors: hardware and style of source code.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DC610AC6-6BC9-4CAC-9A14-0AF8FE9656B5" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" width="28.735632183908045%" id="d731248e163"><p>Factor</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="71.26436781609196%" id="d731248e167"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="28.735632183908045%" headers="d731248e163 "><p>Hardware</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="71.26436781609196%" headers="d731248e167 "><p>The compiler is limited by restrictions imposed by the underlying hardware. In the case of Streaming SIMD Extensions, the vector memory operations are limited to stride-1 accesses with a preference to 16-byte-aligned memory references. This means that if the compiler abstractly recognizes a loop as vectorizable, it still might not vectorize it for a distinct target architecture.</p>
+</td>
+
+</tr>
+
+
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="28.735632183908045%" headers="d731248e163 "><p>Style of source code</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="71.26436781609196%" headers="d731248e167 "><p>The style in which you write source code can inhibit vectorization. For example, a common problem with global pointers is that they often prevent the compiler from being able to prove that two memory references refer to distinct locations. Consequently, this prevents certain reordering transformations.</p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>Many stylistic issues that prevent automatic vectorization by compilers are found in loop structures. The ambiguity arises from the complexity of the keywords, operators, data references, pointer arithmetic, and memory operations within the loop bodies.</p>
+
+<p>However, by understanding these limitations and by knowing how to interpret diagnostic messages, you can modify your program to overcome the known limitations and enable effective vectorization. </p>
+
+
+</div>
+
+
+<div class="section" id="GUID-43761914-9DD2-49B4-834F-68C08FCC7955"><h2 class="sectiontitle">Guidelines for Writing Vectorizable Code</h2><p>Follow these guidelines to write vectorizable code:<ul type="disc" id="GUID-40511111-4297-4DBC-9B7B-D7653C17EFB8"><li>Use simple <span class="keyword">for</span> loops. Avoid complex loop termination conditions – the upper iteration limit must be invariant within the loop. For the innermost loop in a nest of loops, you could set the upper limit iteration to be a function of the outer loop indices.</li>
+<li>Write straight-line code. Avoid branches such as <span class="keyword">switch</span>, <span class="keyword">goto</span> or <span class="keyword">return</span> statements, most function calls,  or <span class="keyword">if</span> constructs that can not be treated as masked assignments.</li>
+<li>Avoid dependencies between loop iterations or at the least, avoid read-after-write dependencies.</li>
+<li>Try to use array notations instead of the use of pointers.  C programs in particular impose very few restrictions on the use of pointers; aliased pointers may lead to unexpected dependencies. Without help, the compiler often cannot tell whether it is safe to vectorize code containing pointers.</li>
+<li>Wherever possible, use the loop index directly in array subscripts instead of incrementing a separate counter for use as an array address.</li>
+<li>Use efficient memory accesses; recommended that you<ul type="disc" id="GUID-CE213AFA-1279-4162-8EFF-C6F1C89D1A0E"><li>Favor inner loops with unit stride.</li>
+<li>Minimize indirect addressing.</li>
+<li>Align your data to 16 byte boundaries (for Streaming SIMD Extensions (SSE) instructions).</li>
+</ul>
+</li>
+<li>Choose a suitable data layout with care. Most multimedia extension instruction sets are rather sensitive to alignment. The data movement instructions of SSE, for example, operate much more efficiently on data that is aligned at a 16-byte boundary in memory. Therefore, the success of a vectorizing compiler also depends on its ability to select an appropriate data layout which, in combination with code restructuring (like loop peeling), results in aligned memory accesses throughout the program.</li>
+<li>Use aligned data structures: Data structure alignment is the adjustment of any data object in relation with other objects. You can use the declaration, <span class="option">declspec(align(base,offset))</span>, where <samp class="codeph">0 &lt;= offset &lt; base</samp> and <samp class="codeph">base</samp> is a power of two, to allocate a data structure at offset from a certain base. However, if incoming access patterns are guaranteed to be aligned at a 16-byte boundary, you can avoid the overhead with the hint <span class="option">__assume_aligned(x, 16);</span> in the function to convey this information to the compiler. <div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Use this hint with care. Incorrect usage of aligned data movements result in an exception for SSE. </p>
+</div></li>
+<li>Use structure of arrays (SoA) instead of array of structures (AoS): An array is the most common type of data structure that contains a contiguous collection of data items that can be accessed by an ordinal index. You can organize this data as an array of structures (AoS) or as a structure of arrays (SoA). While AoS organization is excellent for encapsulation it can be a hindrance for use of vector processing. To make vectorization of the resulting code more effective, you can also select appropriate data structures.</li>
+</ul>
+</p>
+</div>
+<div class="section" id="GUID-E3C0415A-1135-40A2-BF63-54B6B3A1997D"><h2 class="sectiontitle">Using Aligned Data Structures </h2><p>Data structure alignment is the adjustment of any data object with relation to other objects. Intel&reg; Compilers may align individual variables to start at certain addresses to speed up memory access. Misaligned memory accesses can incur large performance losses on certain target processors that do not support them in hardware. </p>
+<p>Alignment is a property of a memory address, expressed as the numeric address modulo of powers of two. In addition to its address, a single datum also has a size. A datum is called 'naturally aligned' if its address is aligned to its size, otherwise it is called 'misaligned'. For example, an 8-byte floating-point datum is naturally aligned if the address used to identify it is aligned to 8. </p>
+<p>A data structure is a way of storing data in a computer so that it can be used efficiently. Often, a carefully chosen data structure allows a more efficient algorithm to be used. A well-designed data structure allows a variety of critical operations to be performed, using as little resources - both execution time and memory space - as possible.<pre>struct MyData{</pre><pre>short   Data1;</pre><pre>short   Data2;</pre><pre>short   Data3;</pre><pre>};</pre></p>
+<p>In the example data structure above, if the type <samp class="codeph">short</samp> is stored in two bytes of memory then each member of the data structure is aligned to a boundary of 2 bytes. <samp class="codeph">Data1</samp> would be at offset <samp class="codeph">0</samp>, <samp class="codeph">Data2</samp> at offset <samp class="codeph">2</samp> and <samp class="codeph">Data3</samp> at offset <samp class="codeph">4</samp>. The size of this structure is 6 bytes. The type of each member of the structure usually has a required alignment, meaning that it is aligned on a pre-determined boundary, unless you request otherwise.  In cases where the compiler has taken sub-optimal alignment decisions, you can use the declaration <span class="option">declspec(align(base,offset))</span>, where <samp class="codeph">0 &lt;= offset &lt; base</samp> and <samp class="codeph">base</samp> is a power of two, to allocate a data structure at offset from a certain base.</p>
+<p>Consider as an  example, that most of the execution time of an application is spent in a loop of the following form: <pre>double a[N], b[N];</pre><pre>...</pre><pre>for (i = 0; i &lt; N; i++){</pre><pre>  a[i+1] = b[i] * 3;</pre><pre>}</pre></p>
+<p>If  the first element of both arrays is aligned at a 16-byte boundary, then either an unaligned load of elements from <samp class="codeph">b</samp> or an unaligned store of elements into <samp class="codeph">a</samp> must be used after vectorization. <div class="Note"><h3 class="NoteTipHead">Note</h3><p>In this case, peeling off an iteration will not help.</p>
+</div> However, you can enforce the alignment shown below, which results in two aligned access patterns after vectorization (assuming an 8-byte size for doubles): </p>
+<pre>__declspec(align(16, 8))  double a[N];</pre><pre>__declspec(align(16, 0))  double b[N];</pre><pre>/* or simply "align(16)"  */</pre><p>If pointer variables are used, the compiler is usually not able to determine the alignment of access patterns at compile time. Consider the following simple <samp class="codeph">fill()</samp> function:<pre>void fill(char *x) {</pre><pre>int i;</pre><pre>for (i = 0; i &lt; 1024; i++){</pre><pre>  x[i] = 1;</pre><pre>  }</pre><pre>}</pre> </p>
+<p>Without more information, the compiler cannot make any assumption on the alignment of the memory region accessed by the above loop. At this point, the compiler may decide to vectorize this loop using unaligned data movement instructions or, generate the run-time alignment optimization shown here:<pre>peel = x &amp; 0x0f;</pre><pre>if (peel != 0) {</pre><pre>  peel = 16 - peel;</pre><pre>/* runtime peeling loop */</pre><pre>  for (i = 0; i &lt; peel; i++){</pre><pre>    x[i] = 1;</pre><pre>   }</pre><pre>}</pre><pre>/* aligned access */</pre><pre>for (i = peel; i &lt; 1024; i++){ </pre><pre>  x[i] = 1;</pre><pre>}</pre></p>
+<p>Run-time optimization provides a generally effective way to obtain aligned access patterns at the expense of a slight increase in code size and testing. However, if incoming access patterns are guaranteed to be aligned at a 16-byte boundary, you can avoid this overhead with the hint <span class="option">__assume_aligned(x, 16);</span> in the function to convey this information to the compiler.<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Use this hint with care. Incorrect use of aligned data movements result in an exception for SSE.</p>
+</div>  </p>
+</div>
+<div class="section" id="GUID-EA0CBEDE-717D-415A-8E15-18FE46155D69"><h2 class="sectiontitle">Using Structure of Arrays versus Array of Structures</h2><p>The most common and well-known data structure is the array that contains a contiguous collection of data items, which can be accessed by an ordinal index. This data can be organized as an array of structures (AoS) or as a structure of arrays (SoA). While AoS organization works excellently  for encapsulation, for vector processing it  works poorly. </p>
+<p>You can select appropriate data structures to make vectorization of the resulting code more effective. To illustrate this point, compare the traditional array of structures (AoS) arrangement for storing the <samp class="codeph">r</samp>, <samp class="codeph">g</samp>, <samp class="codeph">b</samp> components of a set of three-dimensional points with the alternative structure of arrays (SoA) arrangement for storing this set.</p>
+<p>Point Structure:<br><div class="imagecenter"><img src="GUID-910E56B1-5B07-48D9-A1B6-DC7CD169E110-low.jpg" alt="AoS example" align="center"></div><br><pre>// Point structure with data in AoS arrangement</pre><pre>struct Point{</pre><pre>float r;</pre><pre>float g;</pre><pre>float b;</pre><pre>}</pre></p>
+<p>Points Structure:<br><div class="imagecenter"><img src="GUID-7A799490-511D-40E3-9984-8C3DA40AD6D9-low.jpg" alt="SoA example" align="center"></div><br><pre>// Points structure with data in SoA arrangement</pre><pre>struct Points{</pre><pre>float* x;</pre><pre>float* y;</pre><pre>float* z;</pre><pre>}</pre><br><div class="imagecenter"><img src="GUID-B3364095-AEB5-4422-9EB5-69D448B2AE48-low.jpg" alt="SoA example rearranged" align="center"></div><br></p>
+<p>With the AoS arrangement, a loop that visits all components of an RGB point before moving to the next point exhibits a good locality of reference because all elements in the fetched cache lines are utilized. The disadvantage of the AoS arrangement is that each individual memory reference in such a loop exhibits a non-unit stride, which, in general, adversely affects vector performance. Furthermore, a loop that visits only one component of all points exhibits less satisfactory locality of reference because many of the elements in the fetched cache lines remain unused. </p>
+<p>In contrast, with the SoA arrangement the unit-stride memory references are more amenable to effective vectorization and still exhibit good locality of reference within each of the three data streams. Consequently, an application that uses the SoA arrangement may ultimately outperform an application based on the AoS arrangement when compiled with a vectorizing compiler, even if this performance difference is not directly apparent during the early implementation phase. </p>
+<p>Before you start vectorization, try out some simple rules:<ul type="disc" id="GUID-6626327F-0967-44B2-AE45-2CB0DB291D47"><li>Make your data structures vector-friendly.</li>
+<li>Make sure that inner loop indices correspond to the outermost (last) array index  in your data (row-major order).
+</li>
+<li>Use structure of arrays over array of structures.</li>
+</ul>
+</p>
+<p>For instance when dealing with three-dimensional coordinates, use three separate arrays for each component (SoA), instead of using one array of three-component structures (AoS). To avoid dependencies between loops that will eventually prevent vectorization, use three separate arrays for each component (SoA), instead of one array of three-component structures (AoS). When you use the  AoS arrangement, each iteration produces one result by computing XYZ, but it can at best use only 75% of the SSE unit because the forth component is not used. Sometimes, the compiler? may use only one component (25%). When you use the  SoA arrangement, each iteration produces four results by computing XXXX, YYYY and ZZZZ, using 100% of the SSE unit. A drawback for the SoA arrangement  is that your code will likely be three times as long. On the other hand, the compiler might not be able to vectorize AoS arranged code at all.</p>
+<p>If your original data layout is in AoS format, you may even want to consider a conversion to SoA on the fly, before the critical loop. If it gets vectorized, it may be worth the effort! </p>
+<p>To summarize:<ul type="disc" id="GUID-752461EE-28E1-46B0-981C-AF9316C06680"><li>Use the smallest data types that gives the needed precision to maximize potential SIMD width.   (If only 16-bits are needed, using a <samp class="codeph">short</samp> rather than an <samp class="codeph">int</samp> can make the difference between 8-way or four-way SIMD parallelism, respectively.)</li>
+<li>Avoid mixing data types to minimize type conversions.</li>
+<li>Avoid operations not supported in SIMD hardware.</li>
+<li>Use all the instruction sets available for your processor. Use the appropriate command line option for your processor type, or select the appropriate IDE option:<ul type="disc" id="GUID-85C63FB6-1DE2-4039-8CF0-B846E64855D6"><li>Go to <strong>Project &gt; Properties &gt; C/C++ &gt; Code Generation &gt; Intel Processor-Specific Optimization</strong>, if your application runs only on Intel processors, or <strong>Project &gt; Properties &gt; C/C++ &gt; Code Generation &gt; Enable Enhanced Instruction Set</strong>, if your application runs on compatible, non-Intel processors.</li>
+</ul>
+   </li>
+<li>	Vectorizing compilers usually have some built-in efficiency heuristics to decide whether vectorization is likely to improve performance. The Intel&reg; C/C++ Compiler disables vectorization of loops with many unaligned or non-unit stride data access patterns. However, if experimentation reveals that vectorization improves performance, you can override this behavior using the  <span class="option">#pragma vector always</span> hint before the loop; the compiler vectorizes any loop regardless of the outcome of the efficiency analysis (provided, of course, that vectorization is safe). </li>
+</ul>
+</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330.htm#GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330">Vectorization and Loops</a></div>
+<div><a href="GUID-F6ADE969-EC9D-4670-AB1A-93CD4CF4BE94.htm#GUID-F6ADE969-EC9D-4670-AB1A-93CD4CF4BE94">Loop Constructs</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

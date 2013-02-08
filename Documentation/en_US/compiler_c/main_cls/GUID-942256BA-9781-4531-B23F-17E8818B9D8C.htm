@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Common Performance Pitfalls">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, performance pitfalls">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, performance pitfalls">
+<meta name="DC.Relation" scheme="URI" content="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-942256BA-9781-4531-B23F-17E8818B9D8C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Common Performance Pitfalls</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_perf_pitfalls"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-942256BA-9781-4531-B23F-17E8818B9D8C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Common Performance Pitfalls</h1>
+
+<div>
+<p>If a program has sufficient parallelism and burdened parallelism
+but still doesn't achieve good speedup, the performance could be
+affected by other factors. Here are a few common factors, some of
+which are discussed elsewhere.</p>
+
+<ul type="disc" id="GUID-3C532B2F-6034-4757-B5C7-DE73772F3FE3"><li><p><strong>cilk_for Grainsize
+Setting</strong>. If the grain
+size is too large, the program's logical parallelism decreases. If
+the grain size is too small, overhead associated with each spawn
+could compromise the parallelism benefits. The Intel compiler and
+runtime system use a default formula to calculate the grain size.
+The default works well under most circumstances. If your program uses  cilk_for, experiment with different grain
+sizes to tune performance.</p>
+</li>
+<li><p><strong> Lock
+contention</strong>. Locks
+generally reduce program parallelism and therefore affect
+performance. Lock usage can be analyzed using performance and
+profiling tools.</p>
+
+</li>
+<li><p> <strong>Cache efficiency and memory
+bandwidth</strong>. Covered
+later in this section.</p>
+
+</li>
+<li><p><strong>False sharing</strong>. Covered later in this section.</p>
+</li>
+<li><p><strong>Atomic
+operations</strong>. Atomic
+operations, provided by compiler intrinsics, lock cache lines.
+Therefore, these operations can impact performance the same way
+that lock contention does. Also, since an entire cache line is
+locked, there can be false sharing.</p>
+</li>
+</ul>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_maskload_pd, _mm_maskload_pd">
+<meta name="abstract" content="Loads packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is VMASKMOVPD.">
+<meta name="description" content="Loads packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is VMASKMOVPD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, load operations, _mm256_maskload_pd (VMASKMOVPD), _mm_maskload_pd (VMASKMOVPD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, load operations, _mm256_maskload_pd (VMASKMOVPD), _mm_maskload_pd (VMASKMOVPD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D8B566D6-A3A8-4520-99BD-9C42E134FDEE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_maskload_pd, _mm_maskload_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_maskload_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D8B566D6-A3A8-4520-99BD-9C42E134FDEE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_maskload_pd, _mm_maskload_pd</span></h1>
+
+
+<!-- Loads packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is  VMASKMOVPD .--><div><p> Loads packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMASKMOVPD</span>.</p>
+
+
+<div class="section" id="GUID-90C640FB-BB1E-4383-9E56-26B962A01782"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256d _mm256_maskload_pd(double const *a, __m256i mask);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128d _mm_maskload_pd(double const *a, __m128i mask);
+</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-C7E0FF9E-946D-4942-906F-D5519A868B24"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>*a</var></p></td>
+
+      <td valign="top" class="noborder"><p>pointer to a 256/128-bit memory location that can hold constant float64 values
+</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer value calculated based on the most-significant-bit of each quadword of a mask register</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-42C3C4E4-1A36-44B7-81C6-80692D0E8BE6"><h2>Description</h2>
+<p>Loads packed double-precision floating point (float64) values from the 256/128-bit memory location pointed to by <var>a</var>, into a destination register using the  <var>mask</var> value. </p>
+<p>The <var>mask</var> is calculated from the most significant bit of each qword of the <var>mask</var> register. If any of the bits of the <var>mask</var> is set to zero, the corresponding value from the memory location is not loaded, and the corresponding field of the destination vector is set to zero.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-201E4821-F2C6-4874-9059-F91B5ECEB7DB"><h2>Returns</h2><p> A 256/128-bit register with float64 values.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44.htm">Intrinsics for Load Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

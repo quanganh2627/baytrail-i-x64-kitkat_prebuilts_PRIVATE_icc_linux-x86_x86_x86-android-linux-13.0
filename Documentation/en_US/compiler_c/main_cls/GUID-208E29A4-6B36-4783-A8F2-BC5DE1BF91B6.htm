@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Dumping and Resetting Profile Information">
+<meta name="DC.subject" content="PGO API, _PGOPTI_Prof_Dump_And_Reset, dyn files, explicit-shape arrays, .dyn, profile-guided optimization, dumping profile information, resetting profile information, report generation, profile information">
+<meta name="keywords" content="PGO API, _PGOPTI_Prof_Dump_And_Reset, dyn files, explicit-shape arrays, .dyn, profile-guided optimization, dumping profile information, resetting profile information, report generation, profile information">
+<meta name="DC.Relation" scheme="URI" content="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-208E29A4-6B36-4783-A8F2-BC5DE1BF91B6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Dumping and Resetting Profile Information</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pigs_drs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pigs_drs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-208E29A4-6B36-4783-A8F2-BC5DE1BF91B6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Dumping and Resetting Profile Information</h1>
+
+
+
+
+<div>
+<p>The <span class="keyword">_PGOPTI_Prof_Dump_And_Reset()</span> function dumps the profile information to a new .dyn file and then resets the dynamic profile counters. Then the execution of the instrumented application continues.</p>
+
+<p>The prototype of the function call is listed below.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8C89D540-BE78-4C22-8EC5-93E1B85398BD" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d98064e69"><p>Syntax</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d98064e69 "><p><samp class="codeph">void _PGOPTI_Prof_Dump_And_Reset(void);</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<p>This function is used in non-terminating applications and may be called more than once. Each call will dump the profile information to a new .dyn file.</p>
+
+
+<div class="section" id="GUID-D6F4FC1E-601B-400B-9042-588224809C95"><h2 class="sectiontitle">Recommended Usage</h2>
+
+<p>Periodic calls to this function enables a non-terminating application to generate one or more profile information files (<span class="filepath">.dyn</span> files). These files are merged during the<a href="GUID-42C5C93F-5F77-4B14-8A27-95798BC30CE3.htm#GUID-42C5C93F-5F77-4B14-8A27-95798BC30CE3"> feedback phase</a> of profile-guided optimizations. The direct use of this function enables your application to control precisely when the profile information is generated.</p>
+
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">PGO API Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

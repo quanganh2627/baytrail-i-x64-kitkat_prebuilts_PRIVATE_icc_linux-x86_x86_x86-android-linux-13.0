@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="RTC">
+<meta name="abstract" content="Enables checking for certain run-time conditions.">
+<meta name="description" content="Enables checking for certain run-time conditions.">
+<meta name="DC.subject" content="/RTC compiler option">
+<meta name="keywords" content="/RTC compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-65F1FC0F-16CB-441E-8E38-3A49DED905F6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>RTC</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_rtc"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_rtc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-65F1FC0F-16CB-441E-8E38-3A49DED905F6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">RTC</h1>
+<!--Enables checking for certain run-time conditions. --><div><p>Enables checking for certain run-time conditions. </p>
+
+<div class="section" id="GUID-54B6647A-CDE0-4CF5-A459-D776B8DCC23E"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Code Generation &gt; Basic Runtime Checks / Smaller Type Check</strong></p>
+
+<p class="ide">Linux: 
+								None</p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-DE772B78-1D94-4674-92FB-D4F816DB914D"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-0E07CB88-AC07-48DB-AC8F-FE79B6D58B45"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/RTC</span><span class="var">option</span></p></td></tr></table></div>
+<div class="section" id="GUID-96250688-AD89-43E7-B305-BE44BDC33EFB"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>option</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the condition to check. Possible values are 1, s, u, or c.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-515DECB1-E344-4EBA-8CC4-9BB55FC5257D"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>No checking is performed for these run-time conditions.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-4D8ABF33-B08B-4BC4-AD62-B3751A794588"><h2>Description</h2><p>This option enables checking for certain run-time conditions. Using the <span class="option">/RTC</span> option sets <span class="keyword">__MSVC_RUNTIME_CHECKS</span> = 1.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9DEDED44-43EA-4461-8873-B8CF60CFBB84" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr><th class="noborder" align="left" valign="top" width="20%" id="d324857e93"><p>Option</p>
+</th>
+<th class="noborder" align="left" valign="top" width="80%" id="d324857e96"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="noborder" valign="top" width="20%" headers="d324857e93 "><p><span class="option">/RTC1</span></p>
+</td>
+<td class="noborder" valign="top" width="80%" headers="d324857e96 "><p>This is the same as specifying <span class="option">/RTCsu</span>.</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="20%" headers="d324857e93 "><p><span class="option">/RTCs</span></p>
+</td>
+<td class="noborder" valign="top" width="80%" headers="d324857e96 "><p>Enables run-time checks of the stack frame.</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="20%" headers="d324857e93 "><p><span class="option">/RTCu</span></p>
+</td>
+<td class="noborder" valign="top" width="80%" headers="d324857e96 "><p>Enables run-time checks for unintialized variables.</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="20%" headers="d324857e93 "><p><span class="option">/RTCc</span></p>
+</td>
+<td class="noborder" valign="top" width="80%" headers="d324857e96 "><p>Enables checks for converting to smaller types.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="section" id="GUID-C698F835-9217-4E96-A8AE-294074733E33"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

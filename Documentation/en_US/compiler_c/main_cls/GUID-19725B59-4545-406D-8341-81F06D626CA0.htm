@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Getting Started">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, getting started, description, array notations, elemental functions">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, getting started, description, array notations, elemental functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-9AC25C75-112B-4136-82D8-96348475602E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-19725B59-4545-406D-8341-81F06D626CA0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Getting Started</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_gettingstarted"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-19725B59-4545-406D-8341-81F06D626CA0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Getting Started</h1>
+ 
+   
+  <div> 
+	 <p>Intel&reg; Cilk&#8482; Plus adds fine-grained task support to C and C++, making it easy to add parallelism to both new and existing software to efficiently exploit multiple processors 
+		<span><span>and the vector instructions available on modern CPUs.</span></span> It provides simple language extensions to express data and task parallelism to the C and C++ language implemented by the Intel&reg; C++ Compiler. 
+	 </p>
+ 
+	 <p>Intel&reg; Cilk&#8482; Plus is made up of these main features: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-02728711-E7C2-46A6-9E5D-1463FE1EAA3B"> 
+		<li><strong>Task Parallelism</strong> 
+		  <ul type="disc" id="GUID-3C110DD0-071F-45EB-B6D8-4614D655E744"> 
+			 <li> 
+				<p><strong>keywords</strong>, for expression of task parallelism. For more information on supplied keywords, see 
+				  <a href="GUID-C602B2A1-F728-4B23-932A-8477BDA6FDE6.htm#GUID-C602B2A1-F728-4B23-932A-8477BDA6FDE6">Introduction to Keywords</a>. 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p><strong>reducers</strong>, which eliminate contention for shared variables among tasks by automatically creating views of them for each task and reducing them back to a shared value after task completion. For more information on reducers, see 
+				  <a href="GUID-73A68BC2-BDCD-4922-8CAB-B5AAAFF90CFF.htm#GUID-73A68BC2-BDCD-4922-8CAB-B5AAAFF90CFF">Introduction to Reducers</a>. 
+				</p>
+ 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+		<li><strong> Data Parallelism</strong> 
+		  <ul type="disc" id="GUID-2F616EE8-56CF-41B7-8DB1-0F8C70AFEDD9"> 
+			 <li> 
+				<p><strong>array notations</strong>, which provide data parallelism for sections of arrays or whole arrays. For more information on array notations, see 
+				  <a href="GUID-713DA73F-69CA-447E-A3C2-043C7EBC9420.htm#GUID-713DA73F-69CA-447E-A3C2-043C7EBC9420">C/C++ Extensions for Array Notations Overview</a>. 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p><strong>elemental functions</strong>, which enable data parallelism of whole functions or operations which can then be applied to whole or parts of arrays or scalars. For more information on elemental functions, see 
+				  <a href="GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF.htm#GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF">Elemental Functions</a>. 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p><div>the 
+				  <strong>simd pragma, 
+				  </strong>which is used to guide the compiler to vectorize more loops. Vectorization using the simd pragma complements (but does not replace) the fully automatic approach. For more information on #pragma simd, see 
+				  <a href="GUID-1EA04294-988E-4152-B584-B028FD6FAC48.htm#GUID-1EA04294-988E-4152-B584-B028FD6FAC48">simd</a>. 
+				</div></p>
+ 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p>Intel&reg; Cilk&#8482; Plus is particularly well suited for, but not limited to,"divide and conquer" algorithms. This strategy solves problems by breaking them into sub-problems (tasks) that can be solved independently, then combining the results. Recursive functions are often used for divide and conquer algorithms, and are well supported. 
+	 </p>
+ 
+	 <p>Tasks can either be implemented in separate functions or in iterations of a loop. Certain keywords identify function calls and loops that can run in parallel. The runtime schedules these tasks to run efficiently on the available processors. 
+	 </p>
+ 
+	 <p>In the following sections, the term 
+		<strong>worker</strong> is used to mean an operating system thread used to execute a task in a program. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9AC25C75-112B-4136-82D8-96348475602E.htm">Introduction</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

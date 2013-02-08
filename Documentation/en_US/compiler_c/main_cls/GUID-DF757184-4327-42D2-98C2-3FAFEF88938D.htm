@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_xbegin">
+<meta name="abstract" content="Specifies the start of a restricted transactional memory (RTM) code region and returns a value indicating status. The corresponding Intel&reg; AVX2 instruction is XBEGIN.">
+<meta name="description" content="Specifies the start of a restricted transactional memory (RTM) code region and returns a value indicating status. The corresponding Intel&reg; AVX2 instruction is XBEGIN.">
+<meta name="DC.subject" content="_xbegin">
+<meta name="keywords" content="_xbegin">
+<meta name="DC.Relation" scheme="URI" content="GUID-DF2BFA5A-47E3-45C8-8B2F-061B85AFEF6D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DF757184-4327-42D2-98C2-3FAFEF88938D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_xbegin</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_xbegin"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DF757184-4327-42D2-98C2-3FAFEF88938D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  
+<h1 class="topictitle1"><span>_xbegin</span></h1>
+
+
+<!--Specifies the start of a  restricted transactional memory (RTM) code region and returns a value indicating status. The corresponding Intel&reg; AVX2 instruction is  XBEGIN .-->
+
+
+<div><p>Specifies the start of a  restricted transactional memory (RTM) code region and returns a value indicating status. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">XBEGIN</span>.</p>
+
+
+<div class="section" id="GUID-A6EABD87-1631-4B30-8AA0-1E7F3430556E"><h2>Syntax</h2>
+ <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">unsigned int _xbegin(void);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-BDBB953B-5101-40FA-B83E-13FBFB467E01"><h2>Arguments</h2><p>None.</p>
+
+</div>
+
+
+
+<div class="section" id="GUID-17924E4E-8E6E-435F-A0DE-7844F7FFA7CD"><h2>Description</h2>
+<p>
+Starts a RTM code region and returns a value indicating transaction successfully started or status from a transaction abort.</p>
+<p>If the logical processor was not already in transactional
+execution, then the <samp class="codeph">xbegin</samp> instruction causes the logical processor
+to start transactional execution. The <samp class="codeph">xbegin</samp> instruction
+that transitions the logical processor into transactional execution
+is referred to as the outermost <samp class="codeph">xbegin</samp> instruction. </p>
+
+<p>The <samp class="codeph">xbegin</samp> instruction specifies a relative offset to the fallback code path executed following a transactional abort.  To promote proper program structure, this is not exposed in C++ code and the intrinsic function operates as if it invoked the following model code:
+<pre>__inline unsigned int _xbegin()
+{ 
+  unsigned status;
+  __asm {
+   move   eax, 0xFFFFFFFF 
+   xbegin _txnL1
+ _txnL1:
+   move   status, eax
+ }
+ return status;
+}</pre>
+</p>
+<p>When a transaction is successfully created the function will return <span>0xFFFFFFFF</span>, which is never a valid status code for an aborted transaction. If the transaction aborts for any reason, the logical processor discards all architectural register and memory updates performed during the transaction execution and restores the architectural state to that corresponding to the outermost <samp class="codeph">xbegin</samp> instruction.  The EAX register is then updated with the status code of the aborted transaction, which can be used to transfer control to a fallback handler.</p>
+<p>The instruction
+also specifies a relative offset to compute the address of the
+fallback code path following a transactional abort. On an RTM abort, the logical processor discards all
+architectural register and memory updates performed during the RTM
+execution and restores architectural state to that corresponding to
+the outermost <samp class="codeph">xbegin</samp> instruction. The abort destination operand of the <samp class="codeph">xbegin</samp> instruction is targeted to the following instruction so that there is no change in control flow whether the transaction aborts or not.
+</p>
+
+
+
+
+</div>
+<div class="section" id="GUID-FAD806D3-7FF9-45E4-83E8-64C41BE10E62"><h2>Returns</h2>
+<p>Returns value indicating transaction successfully started or status from a transaction abort.</p>
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DF2BFA5A-47E3-45C8-8B2F-061B85AFEF6D.htm">Intrinsics for Restricted Transactional Memory Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Intrinsics to Convert Half Float Types">
+<meta name="DC.subject" content="intrinsics, half-float conversion, overview">
+<meta name="keywords" content="intrinsics, half-float conversion, overview">
+<meta name="DC.Relation" scheme="URI" content="GUID-F75D10D7-8740-4D3F-B2EC-144C85CCC729.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A90DF672-7FB2-444A-BB2D-3E2C03E64268">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Intrinsics to Convert Half Float Types</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_halffloat_overview"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A90DF672-7FB2-444A-BB2D-3E2C03E64268">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Intrinsics to Convert Half Float Types</h1>
+ 
+   
+  <div> 
+    <p>The half-float or 16-bit float is a popular type in some application domains. The half-float type is regarded as a storage type because although data is often stored as a half-float, computation is never done on values in these type. Usually values are converted to regular 32-bit floats before any computation. 
+    </p>
+ 
+    <p>Support for half-float type is restricted to just conversions to/from 32-bit floats. The main benefits of using half float type are: 
+    </p>
+ 
+    <ul type="disc" id="GUID-5F4317D1-ABFA-4EC6-9E34-EDE526311C86"> 
+      <li>reduced storage requirements 
+      </li>
+ 
+      <li>less consumption of memory bandwidth and cache 
+      </li>
+ 
+      <li>accuracy and precision adequate for many applications 
+      </li>
+ 
+    </ul>
+ 
+    <div class="section" id="GUID-1E5C3B8E-7F8D-4949-AE8D-C7E675DD1A33"><h2 class="sectiontitle">Half Float Intrinsics</h2> 
+       
+      <p>The half-float intrinsics are provided to convert half-float values to 32-bit floats for computation purposes and conversely, 32-bit float values to half-float values for data storage purposes. 
+      </p>
+ 
+      <p>The intrinsics are translated into library calls that do the actual conversions. 
+      </p>
+ 
+      <p>The half-float intrinsics are supported on IA-32 and Intel&reg; 64 architectures running on 
+        <span>/</span><span>Linux*</span><span>/</span> operating systems. The minimum processor requirement is an Intel&reg; Pentium 4 processor and an operating system supporting Intel &reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) instructions. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0996ACFA-605E-4D93-A1D5-5844F3E6A89E"><h2 class="sectiontitle">Role of Immediate Byte in Half Float Intrinsic Operations</h2> 
+       
+      <p>For all half-float intrinsics an immediate byte controls rounding mode, flush to zero, and other non-volatile set values. The format of the 
+        <samp class="codeph">imm8</samp> byte is as shown in the diagram below. 
+      </p>
+ 
+      <p>The 
+        <samp class="codeph">imm8</samp> value is used for special 
+        <samp class="codeph">MXCSR</samp> overrides. 
+      </p>
+ 
+      <div class="fignone" id="GUID-6B86402A-A17C-4567-AC02-772F47C677CA"><img src="GUID-1998A127-BDAC-426D-83C4-DBF9C6F55984-low.jpg" width="499" height="176" align="center"> 
+      </div>
+ 
+      <p></p>
+ 
+      <p>In the diagram, 
+      </p>
+ 
+      <ul type="disc" id="GUID-A690078A-D195-4706-A152-B6FA92555087"> 
+        <li>MBZ = Most significant Bit is Zero; used for error checking 
+        </li>
+ 
+        <li>MS1 = 1 : use MXCSR RC, else use imm8.RC 
+        </li>
+ 
+        <li>SAE = 1 : all exceptions are suppressed 
+        </li>
+ 
+        <li>MS2 = 1 : use MXCSR FTZ/DAZ control, else use imm8.FTZ/DAZ. 
+        </li>
+ 
+      </ul>
+ 
+      <p>The compiler passes the bits to the library function, with error checking - the most significant bit must be zero. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F75D10D7-8740-4D3F-B2EC-144C85CCC729.htm">Intrinsics for Converting Half Floats</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

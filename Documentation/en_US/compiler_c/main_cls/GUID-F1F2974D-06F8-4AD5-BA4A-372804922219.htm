@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Makefiles to Compile Your Application">
+<meta name="DC.subject" content="makefiles, using">
+<meta name="keywords" content="makefiles, using">
+<meta name="DC.Relation" scheme="URI" content="GUID-54318F64-F8B3-4583-845E-327E0A5A6978.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2513D955-A18B-44C4-88E6-104FC801E6FB.htm#GUID-2513D955-A18B-44C4-88E6-104FC801E6FB">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F1F2974D-06F8-4AD5-BA4A-372804922219">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Makefiles to Compile Your Application</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_invoke_make_comm"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_invoke_make_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F1F2974D-06F8-4AD5-BA4A-372804922219">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Makefiles to Compile Your Application</h1>
+ 
+   
+  <div> 
+    <p>This topic describes use of makefiles to compile your application. 
+    </p>
+ 
+    <div class="section" id="GUID-EFDAD6C4-6F17-4D94-B5B0-EA9F0F5284B1"><h2 class="sectiontitle">Using Makefiles to Store Information for Compilation</h2> 
+       
+      <p><strong>Linux* OS and OS X*:</strong> 
+      </p>
+ 
+      <p>To run 
+        <span class="keyword">make</span> from the command line using Intel&reg; C++ Compiler, make sure that 
+        <span class="filepath">/usr/bin</span> is in your path. 
+      </p>
+ 
+      <p>To use the Intel&reg; compiler, your makefile must include the setting 
+        <samp class="codeph">CC=icpc</samp>. Use the same setting on the command line to instruct the makefile to use the Intel&reg; compiler. If your makefile is written for gcc, the GNU* C compiler, you will need to change those command line options not recognized by the Intel&reg; compiler. Run 
+        <span class="keyword">make</span>, using the following syntax: 
+      </p>
+ 
+      <p> 
+        <pre><strong>make -f my_makefile</strong></pre> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6CEE22A3-F4BB-4614-A7F7-8EC75C2BAE05" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="30%" id="d821690e87"> 
+                <p>Argument 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="70%" id="d821690e93"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d821690e87 "> 
+                <p><samp class="codeph">-f</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d821690e93 "> 
+                <p>the 
+                  <span class="keyword">nmake</span> option to specify a particular makefile.
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d821690e87 "> 
+                <p><span class="filepath">my_makefile.mak</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d821690e93 "> 
+                <p>the makefile to use to generate object and executable files.
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d821690e87 "> 
+                <p><span class="keyword">CPP</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d821690e93 "> 
+                <p>the makefile to use to generate object and executable files.
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d821690e87 "> 
+                <p><span class="keyword">LINK32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d821690e93 "> 
+                <p>the linker to use. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The 
+        <span class="keyword">nmake</span> command creates object files (<span class="filepath">.obj</span>) and executable files (<span class="filepath">.exe</span>) from the information provided in the makefile. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54318F64-F8B3-4583-845E-327E0A5A6978.htm">Using the Command Line</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-2513D955-A18B-44C4-88E6-104FC801E6FB.htm#GUID-2513D955-A18B-44C4-88E6-104FC801E6FB">Modifying Your makefile (Linux* OS and OS X*) 
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

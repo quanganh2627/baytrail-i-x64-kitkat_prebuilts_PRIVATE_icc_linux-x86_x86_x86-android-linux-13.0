@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Considerations for Using Locks">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, locks">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, locks">
+<meta name="DC.Relation" scheme="URI" content="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F8D0848E-041E-4B24-AA7C-8FE6E04831A9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Considerations for Using Locks</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_lock_consider_intro"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F8D0848E-041E-4B24-AA7C-8FE6E04831A9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Considerations for Using Locks</h1>
+ 
+   
+  <div> 
+	 <p>You can implement various synchronization mechanisms in the hardware or operating system. 
+	 </p>
+ 
+	 <p> Intel&reg; Cilk&#8482; Plus recognizes the locking mechanisms listed here. 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-33FC7B9E-9F80-4A69-B66A-D21C81B05317"> 
+		<li> 
+		  <p>The Intel&reg; Threading Building Blocks library provides 
+			 <span class="keyword">tbb::mutex</span> to create critical code sections where it is safe to update and access shared memory or other shared resources safely. Intel&reg; Parallel Studio XE tools recognize the lock and do not report a race on a memory access protected by 
+			 <span class="keyword">tbb::mutex</span>. The 
+			 <span class="filepath">qsort-mutex</span> example shows how to use a 
+			 <span class="keyword">tbb::mutex</span>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Windows* OS: Windows 
+			 <span class="keyword">CRITICAL_SECTION</span> objects provide nearly the same functionality as 
+			 <span class="keyword">tbb::mutex</span> objects. Intel&reg; Parallel Studio XE tools will not report races on accesses protected by 
+			 <samp class="codeph">EnterCriticalSection()</samp>, 
+			 <samp class="codeph">TryEnterCriticalSection()</samp>, or 
+			 <samp class="codeph">LeaveCriticalSection()</samp>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Linux* OS/OS X*: Posix* Pthreads mutexes ( 
+			 <samp class="codeph">pthead_mutex_t</samp>) provide nearly the same functionality as 
+			 <span class="keyword">tbb::mutex</span> objects. Intel&reg; Parallel Studio XE tools will not report races on accesses protected by 
+			 <samp class="codeph">pthread_mutex_lock(), pthread_mutex_trylock(),</samp> or 
+			 <samp class="codeph">pthread_mutex_unlock()</samp>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Intel&reg; Parallel Studio XE tools recognize atomic hardware instructions, available to C/C++ programmers through compiler intrinsics 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>The following lock terms and facts are useful: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-8D22B895-AAB1-45B8-9EE0-7AB81145C641"> 
+		<li> 
+		  <p>The following terms are interchangeable: "acquiring", "entering", or"locking" a lock (or "mutex"). 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>A strand (or thread) that acquires a lock is said to "own" the lock. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Only the owning strand can "release", "leave", or "unlock" the lock. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Only one strand can own a lock at a time. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><samp class="codeph">tbb::mutex</samp> is implemented using underlying OS mutex operations. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Lock contention can create performance problems in parallel programs. Additionally, while locks can resolve data races, programs using locks are often non-deterministic. Avoiding locks whenever possible is recommended 
+	 </p>
+ 
+	 <p>These problems (and others) are described in detail in the following sections. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">Introduction to Using Locks</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

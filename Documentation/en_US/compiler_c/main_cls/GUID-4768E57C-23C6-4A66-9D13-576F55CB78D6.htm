@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="inline-max-total-size, Qinline-max-total-size">
+<meta name="abstract" content="Specifies how much larger a routine can normally grow when inline expansion is performed.">
+<meta name="description" content="Specifies how much larger a routine can normally grow when inline expansion is performed.">
+<meta name="DC.subject" content="inlining, option specifying total size routine can grow, /Qinline-max-total-size compiler option, -inline-max-total-size compiler option">
+<meta name="keywords" content="inlining, option specifying total size routine can grow, /Qinline-max-total-size compiler option, -inline-max-total-size compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC">
+<meta name="DC.Relation" scheme="URI" content="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>inline-max-total-size, Qinline-max-total-size</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_inline_max_total_size"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_inline_max_total_size"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">inline-max-total-size, Qinline-max-total-size</h1>
+<!--Specifies how much larger a routine can normally grow when inline expansion is performed.--><div><p>Specifies how much larger a routine can normally grow when inline expansion is performed.</p>
+
+<div class="section" id="GUID-78B011A8-688E-46EE-A1E9-2F66C06716FB"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-911169F6-1392-461E-BE72-791A0FA01FD9"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-66F6FE32-708F-49A4-9A8F-F1916550C68D"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-inline-max-total-size</span><span class="oper">=</span><span class="var">n</span></p><p><span class="kwd">-no-inline-max-total-size</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qinline-max-total-size</span><span class="oper">=</span><span class="var">n</span></p><p><span class="kwd">/Qinline-max-total-size-</span></p></td></tr></table></div>
+<div class="section" id="GUID-74B4981C-C554-4580-AB66-99BE379525F6"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is a positive integer that specifies the permitted increase in the routine's size when inline expansion is performed.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6D4BD481-E534-4FD0-B81B-476E26E527DF"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-inline-max-total-size</span><br><span> or<span class="option">/Qinline-max-total-size-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses default heuristics for inline routine expansion.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-BD5FBCF1-4C0C-4796-A1AA-1AEC44DAC1AD"><h2>Description</h2><p>This option specifies how much larger a routine can normally grow when inline expansion is performed. It limits the potential size of the routine. For example, if 2000 is specified for <var>n</var>, the size of any routine will normally not increase by more than 2000.</p>
+<p>If you specify <span class="option">-no-inline-max-total-size</span> (Linux* OS and OS X*) or <span class="option">/Qinline-max-total-size-</span> (Windows* OS), there is no limit to the size a routine may grow when inline expansion is performed.</p>
+<p>To see compiler values for important inlining limits, specify compiler option <span class="option">-opt-report</span> (Linux OS and OS X) or <span class="option">/Qopt-report</span> (Windows OS).</p>
+<p>To see compiler values for important inlining limits, specify compiler option <span class="option">-opt-report</span> (Linux OS and OS X) or <span class="option">/Qopt-report</span> (Windows OS).</p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>When you use this option to increase the default limit, the compiler may do so much additional inlining that it runs out of memory and terminates with an "out of memory" message.</p>
+</div></div>
+
+<div class="section" id="GUID-FCA8CDCC-D011-4A96-9EAF-D0C6431ACBA2"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">Inlining Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">inline-factor</span>, <span class="option">Qinline-factor</span></a>  compiler option</div>
+<div><a href="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609"><span class="option">opt-report</span>, <span class="option">Qopt-report</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

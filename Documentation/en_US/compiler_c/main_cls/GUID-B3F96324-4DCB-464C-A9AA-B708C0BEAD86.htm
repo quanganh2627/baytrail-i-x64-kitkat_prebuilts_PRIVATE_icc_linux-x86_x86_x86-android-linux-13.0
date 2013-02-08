@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ipo-jobs, Qipo-jobs">
+<meta name="abstract" content="Specifies the number of commands (jobs) to be executed simultaneously during the link phase of Interprocedural Optimization (IPO).">
+<meta name="description" content="Specifies the number of commands (jobs) to be executed simultaneously during the link phase of Interprocedural Optimization (IPO).">
+<meta name="DC.subject" content="IPO, option specifying jobs during the link phase of, /Qipo-jobs compiler option, -ipo-jobs compiler option">
+<meta name="keywords" content="IPO, option specifying jobs during the link phase of, /Qipo-jobs compiler option, -ipo-jobs compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431">
+<meta name="DC.Relation" scheme="URI" content="GUID-9D233AC0-BDB6-405D-A51A-F45CC081C9D4.htm#GUID-9D233AC0-BDB6-405D-A51A-F45CC081C9D4">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B3F96324-4DCB-464C-A9AA-B708C0BEAD86">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ipo-jobs, Qipo-jobs</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ipo_jobs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ipo_jobs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B3F96324-4DCB-464C-A9AA-B708C0BEAD86">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ipo-jobs, Qipo-jobs</h1>
+<!--Specifies the number of commands (jobs) to be executed simultaneously during the link phase of Interprocedural Optimization (IPO).--><div><p>Specifies the number of commands (jobs) to be executed simultaneously during the link phase of Interprocedural Optimization (IPO).</p>
+
+<div class="section" id="GUID-D8926725-B90E-440B-8FA7-94C421C242DF"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-DD2D2305-AE52-4E69-B75A-414C0DB1B6BB"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-DA2EB4E1-8CED-4863-BC47-F9E2B2614E5B"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ipo-jobs</span><span class="var">n</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qipo-jobs:</span><span class="var">n</span></p></td></tr></table></div>
+<div class="section" id="GUID-767A5496-5AFD-4105-BF7B-6968781CBA87"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the number of commands (jobs) to run simultaneously. The number must be greater than or equal to 1.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-65674C12-629F-4C12-910B-FC590DB482BF"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-ipo-jobs1</span><br><span> or<span class="option">/Qipo-jobs:1</span></span></p></td>
+<td valign="top" class="noborder"><p>One command (job) is executed in an interprocedural optimization parallel build.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-95652BF0-CD10-4D5F-B36D-F2415DEC4E3D"><h2>Description</h2><p>This option specifies the number of commands (jobs) to be executed simultaneously during the link phase of Interprocedural Optimization (IPO). It should only be used if the link-time compilation is generating more than one object. In this case, each object is generated by a separate compilation, which can be done in parallel.</p>
+<p>This option can be affected by the following compiler options:</p>
+ <ul type="disc" id="GUID-56B6B09E-666C-4F42-AC43-A9D242C1EF29"><li><p><span class="option">-ipo</span> (Linux* OS and OS X*) or <span class="option">/Qipo</span> (Windows* OS) when applications are large enough that the compiler decides to generate multiple object files.</p>
+</li>
+<li><p><span class="option">-ipo</span><var>n</var> (Linux OS and OS X) or <span class="option">/Qipo</span><var>n</var> (Windows OS) when <var>n</var> is greater than 1.</p>
+</li>
+<li><p><span class="option">-ipo-separate</span> (Linux OS) or <span class="option">/Qipo-separate</span> (Windows OS)</p>
+</li>
+</ul>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Be careful when using this option. On a multi-processor system with lots of memory, it can speed application build time. However, if <var>n</var> is greater than the number of processors, or if there is not enough memory to avoid thrashing, this option can increase application build time.</p>
+</div></div>
+
+<div class="section" id="GUID-908DFA25-5FE9-4A75-BB2D-AE73C27FF61C"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm">Interprocedural Optimization (IPO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">ipo</span>, <span class="option">Qipo</span></a>  compiler option</div>
+<div><a href="GUID-9D233AC0-BDB6-405D-A51A-F45CC081C9D4.htm#GUID-9D233AC0-BDB6-405D-A51A-F45CC081C9D4"><span class="option">ipo-separate</span>, <span class="option">Qipo-separate</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

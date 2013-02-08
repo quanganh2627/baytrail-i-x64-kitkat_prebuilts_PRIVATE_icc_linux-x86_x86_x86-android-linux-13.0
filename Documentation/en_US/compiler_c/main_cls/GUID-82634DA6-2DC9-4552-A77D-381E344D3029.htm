@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Managing Memory Allocation for Pointer Variables">
+<meta name="DC.subject" content="target, memory management, pointer variables, alloc_if, free_if">
+<meta name="keywords" content="target, memory management, pointer variables, alloc_if, free_if">
+<meta name="DC.Relation" scheme="URI" content="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-82634DA6-2DC9-4552-A77D-381E344D3029">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Managing Memory Allocation for Pointer Variables</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_mng_mem_alloc_pntr_vars"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-82634DA6-2DC9-4552-A77D-381E344D3029">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Managing Memory Allocation for Pointer Variables</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>Memory management on the CPU for pointer variables used in offloaded programs is the same as non-offload programs. That is, the offload 
+		<span>pragmas</span> 
+		 do not affect memory allocation and freeing on the CPU. As usual, you, the programmer, must do this. 
+	 </p>
+ 
+	 <p>Memory management on the coprocessor for pointer variables named in 
+		<samp class="codeph">in</samp> and 
+		<samp class="codeph">out</samp> clauses of 
+		<span> #pragma offload</span> 
+		 is done automatically by the compiler and runtime system. 
+	 </p>
+ 
+	 <div class="section" id="GUID-1E59EFE2-56AD-4926-8CDC-7BCD77522BAD"><h2 class="sectiontitle">Coprocessor Memory Management for Input Pointer Variables</h2> 
+		 
+		<p>For 
+		  <samp class="codeph">in</samp> variables of a 
+		  <span> #pragma offload</span> 
+		   the default behavior is to do a fresh memory allocation for each pointer variable. On return from the construct the memory is de-allocated. In order to retain data between offloads, you can use the 
+		  <samp class="codeph"><strong>alloc_if</strong></samp> and 
+		  <samp class="codeph"><strong>free_if</strong></samp> qualifiers to modify the memory allocation defaults on the coprocessor. 
+		</p>
+ 
+		<p>The 
+		  <strong><samp class="codeph">alloc_if</samp></strong> qualifier specifies a 
+		  <span>boolean</span> condition that controls whether the pointer variables in the 
+		  <samp class="codeph">in</samp> clause are allocated a fresh block of memory on the target when the construct is executed on the target. If the expression evaluates to 
+		  <span><samp class="codeph">TRUE</samp></span>, a fresh memory allocation is performed for each variable listed in the clause. If the condition evaluates to 
+		  <span><samp class="codeph">FALSE</samp></span>, the existing pointer values on the target are reused. You must ensure that a block of memory of sufficient size has been previously allocated for the variables on the target by using a 
+		  <samp class="codeph">free_if</samp><strong>(</strong><span><samp class="codeph">FALSE</samp></span><strong>)</strong> clause on an earlier offload. 
+		</p>
+ 
+		<p>The 
+		  <samp class="codeph">free_if</samp> qualifier specifies a 
+		  <span>boolean</span> condition which controls whether to free the memory allocated for the pointer variables in an 
+		  <samp class="codeph">in</samp> clause. If the expression evaluates to 
+		  <span><samp class="codeph">TRUE</samp></span>, the memory pointed to by each variable listed in the clause is freed. If the condition evaluates to 
+		  <span><samp class="codeph">FALSE</samp></span>, no action is taken on the memory pointed to by the variables in the list. A subsequent clause will be able to reuse the allocated memory. 
+		</p>
+ 
+		<p>The 
+		  <samp class="codeph">alloc_if</samp> and 
+		  <samp class="codeph">free_if</samp> 
+		  <span> boolean</span> expressions are evaluated on the CPU at the point the construct is offloaded to the target. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-2E4E3FFA-412F-4962-A3FB-3F977B67A644"><h2 class="sectiontitle">Target Memory Management for Output Pointer Variables</h2> 
+		 
+		<p>By default an 
+		  <samp class="codeph">out</samp> variable is allocated fresh memory on the target at the start of an offload and the memory is freed at the end of the offload. The 
+		  <strong><samp class="codeph">alloc_if</samp></strong> and 
+		  <samp class="codeph">free_if</samp> modifiers change the defaults. The expressions are evaluated on the host and used to control coprocessor memory allocation. 
+		</p>
+ 
+		<p>When the output value is received on the host, no memory allocation is done. The variables listed in 
+		  <samp class="codeph">out</samp> clauses must point to allocated memory of sufficient size to receive the results on the host. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6784B9BE-9C77-457B-B380-52ABABB9893D"><h2 class="sectiontitle">Transferring Data into Pre-allocated Memory on the Target</h2> 
+		 
+		<p> As described in the previous section a pointer variable in an 
+		  <samp class="codeph"><strong>in</strong></samp>, 
+		  <samp class="codeph"><strong>out</strong></samp>, 
+		  <samp class="codeph"><strong>inout</strong></samp>, or 
+		  <samp class="codeph"><strong>nocopy</strong></samp> clause can retain the target memory allocation when you set the 
+		  <samp class="codeph"><strong>free_if</strong></samp> modifier to 
+		  <samp class="codeph"><strong>false</strong></samp>. You can reuse that memory in subsequent offloads by using 
+		  <samp class="codeph"><strong>in</strong></samp>, 
+		  <samp class="codeph"><strong>out</strong></samp>, 
+		  <samp class="codeph"><strong>inout</strong></samp>, or 
+		  <samp class="codeph"><strong>nocopy</strong></samp> and specifying 
+		  <samp class="codeph"><strong>alloc_if(0)</strong></samp>. When target memory is allocated it is associated with the value of the CPU pointer variable used as the destination in the 
+		  <samp class="codeph"><strong>in</strong></samp>, 
+		  <samp class="codeph"><strong>out</strong></samp>, 
+		  <samp class="codeph"><strong>inout</strong></samp>, or 
+		  <samp class="codeph"><strong>nocopy</strong></samp> clause. When target memory is to be reused, it is located using the value of the CPU pointer variable that is the destination of that transfer. The associations between the CPU address used when target memory is allocated and the target memory are automatically maintained by the offload runtime library. The associations are created or dropped along with target memory allocation or deallocation. Create the association at allocation time using 
+		  <samp class="codeph"><strong>alloc_if(1) free_if(0)</strong></samp> and delete the association at de-allocation time using 
+		  <samp class="codeph"><strong>free_if(1)</strong></samp>. 
+		</p>
+ 
+		<p> Pointers to static data on the CPU are special-cased. The 
+		  <samp class="codeph">alloc_if</samp> and 
+		  <samp class="codeph">free_if</samp> modifiers are ignored when the following are both true: 
+		</p>
+ 
+		<ul type="disc" id="GUID-FECFD82A-F4A9-48A1-A67B-328B95B847F9"> 
+		  <li> 
+			 <p>The CPU address used during creation of a target memory association points to statically allocated data. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> The variable is also available in the target binary because it has 
+				<samp class="codeph">__declspec(target(mic))</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p> The target's statically allocated memory is used as the destination of the transfer. This target memory is not dynamically allocated and never freed. 
+		</p>
+ 
+		<p> There is only one block of target memory associated with a CPU address. It is an error to call 
+		  <samp class="codeph">alloc_if(1)</samp> to create a second association for a CPU address before freeing the existing one. The new association overwrites the earlier one, which has the potential for causing memory leaks on the target. 
+		</p>
+ 
+		<p> It is an error to call 
+		  <samp class="codeph">free_if(1)</samp> for a transferred pointer if a matching association is not found. The attempted removal of an association is silently ignored. An association can be made with a CPU address, and a certain length, and another association made with a different CPU address within that range. Since origin addresses are different, you can use 
+		  <samp class="codeph">alloc_if</samp> and 
+		  <samp class="codeph">free_if</samp> to create distinct target allocations. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-43FAC836-79ED-43C2-A964-D4C1FE83F325"><h2 class="sectiontitle">Alignment of Pointer Variables</h2> 
+		 
+		<p>When memory is allocated for a pointer variable on the target, it is aligned at the natural boundary for the type of the data pointed to by the pointer. Sometimes it may be necessary to request that the data be aligned on larger boundaries, for example, when the program expects to use assembly code or intrinsic functions or array notation, that operate on data with more stringent alignment requirements. In these cases, the 
+		  <samp class="codeph">align</samp> modifier may be used to specify an alignment. The operand of the 
+		  <samp class="codeph">align</samp> modifier must be an integral expression which evaluates to a power of two. The expression is evaluated on the host and the region of memory allocated for the pointer on the target is aligned at a boundary that is greater than or equal to the value of the expression. When the output value is received on the host, no memory allocation is done. The variables listed in 
+		  <samp class="codeph">out</samp> clauses must point to allocated memory of sufficient size to receive the results. 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p> For optimal data transfer performance, by default, the target memory address for a transfer through a pointer is made to match the offset within 64 bytes of the CPU data. That is, if the CPU source address is 16 bytes past a 64 byte boundary, the target data address will also be 16 bytes past a 64 byte boundary. 
+		  </p>
+ 
+		  <p>The 
+			 <samp class="codeph">align</samp> modifier overrides this default and aligns the target memory at the requested alignment. To get the benefits of fast data transfer and the necessary alignment on the target, ensure that the CPU data is aligned on the same boundary as the alignment needed on the target. Doing so meets the requirements for fast data transfer and the requirements for target data alignment. 
+		  </p>
+ 
+		</div> 
+	 </div>
+ 
+	 <div class="section" id="GUID-9733A830-231D-4385-9ED9-1D7291D44833"><h2 class="sectiontitle">Examples</h2> 
+		 
+		<p>Consider the following macros, presented here to make the modifiers in the offload clauses more understandable: 
+		</p>
+ 
+		<pre>
+#define ALLOC   alloc_if(1)
+#define FREE    free_if(1)
+#define RETAIN  free_if(0)
+#define REUSE   alloc_if(0)
+</pre> 
+		<p>The following example illustrates the default behavior, which is no data persistence on the coprocessor. 
+		</p>
+ 
+		<p>The compiler allocates and frees data around the offload. No 
+		  <samp class="codeph">alloc</samp> or 
+		  <samp class="codeph">free</samp> modifiers are necessary. 
+		</p>
+ 
+		<pre>#pragma offload target(mic) in( p:length(l) )   
+...</pre> 
+		<p>The following examples illustrate keeping data on the coprocessor between offloads. 
+		</p>
+ 
+		<p>The following code allocates memory for 
+		  <samp class="codeph">p</samp> as part of this offload, and keeps the memory allocated for 
+		  <samp class="codeph">p</samp> after the offload. 
+		</p>
+ 
+		<p>Notice that 
+		  <samp class="codeph">ALLOC</samp> is the default, and you do not need to explicitly specify it. 
+		</p>
+ 
+		<pre>#pragma offload target(mic) in (p:length(l) ALLOC RETAIN) 
+...</pre> 
+		<p>The following code reuses the memory allocated for 
+		  <samp class="codeph">p</samp> previously. It only transfers fresh data into that memory, and after the offload completes, it continues to retain the memory. 
+		</p>
+ 
+		<pre>#pragma offload target(mic) in (p:length(l) REUSE RETAIN) 
+...</pre> 
+		<p>The following code reuses the memory allocated for 
+		  <samp class="codeph">p</samp> previously. However, it frees the memory for 
+		  <samp class="codeph">p</samp> after this offload. 
+		</p>
+ 
+		<p>Notice that 
+		  <samp class="codeph">FREE</samp> is the default, and you do not need to explicitly specify it. 
+		</p>
+ 
+		<pre>#pragma offload target(mic) in (p:length(l) REUSE FREE)</pre> 
+		<p>The following code uses a pointer to create a memory allocation on the target. Then the pointer value is passed to another function. Through the pointer value, the target memory can be reused. Notice that the 
+		  <samp class="codeph">#pragma offload_transfer</samp> statement uses array notation. The 
+		  <samp class="codeph"><var>length</var></samp> modifier is not required when a variable is specified in array notation. 
+		</p>
+ 
+		<pre>// Transfer through a function parameter
+int *p = malloc(…);
+int count;
+void bar()
+{
+	…
+	// Allocate memory on the coprocessor, and transfer data
+	#pragma offload_transfer … in( p[0:count] : RETAIN )
+	foo(p, l);
+}
+foo(int *arg_p, int count)
+{
+	// Transfer will succeed
+	#pragma offload … in( arg_p[0:count] : REUSE )
+	…
+}</pre> 
+		<p>The following transfers static data to the target. The target static data allocation for the matching CPU variable is automatically used. 
+		</p>
+ 
+		<pre>// When bar is called with array_cpu_only, dynamic memory is used on target
+// When bar is called with array_both, the target array_both is used 
+
+__declspec(target(mic)) int array_both[1000];
+int array_cpu_only[1000];
+void foo()
+{
+	bar(&amp;array_cpu_only[0]);
+	bar(&amp;array_both[0]);
+}
+void bar(int *p, int count)
+{
+	#pragma offload … in(p[0:count] REUSE)
+	…
+}</pre> 
+		<p>The following code shows mixing of pointers to statics and pointers to dynamically allocated memory on the CPU. 
+		</p>
+ 
+		<pre>// Associations created by offloading named variables and pointers
+// to dynamically allocated variables are treated the same way
+
+__declspec(target(mic)) int array[1000];
+main()
+{
+	// copies array to mic
+	#pragma offload target(mic) in(array)
+    	{   ...  }
+
+	// bar1 will use dynamically allocated memory on the target 
+    	printf("%e\n", bar2());
+
+	// bar1 will use statically allocated “array”
+   	printf("%e\n", bar1(&amp;array[0], 100));
+}
+float bar2()
+{
+    float * my_p = malloc(100 * sizeof(float));
+    #pragma offload target(mic) in(my_p[0:100] : RETAIN )
+    {  ...  }
+    return bar1(my_p, 100);
+}
+float bar1(float *p, int n)
+{
+    #pragma offload target(mic) nocopy(p[0:n] REUSE RETAIN)
+    {  sum = … &lt;sum of elements in p&gt;  }
+	return sum;
+}</pre> 
+		</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">Offload Using a Pragma</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

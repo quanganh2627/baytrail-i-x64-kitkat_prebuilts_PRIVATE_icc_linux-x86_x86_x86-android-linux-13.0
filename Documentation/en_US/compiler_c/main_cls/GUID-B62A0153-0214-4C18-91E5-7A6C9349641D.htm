@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_fmadd_ss">
+<meta name="abstract" content="Multiply-adds scalar single-precision floating-point values using three float32vectors. The corresponding FMA instruction is VFMADD<XXX&gt;SS, where XXX could be 132, 213, or 231.">
+<meta name="description" content="Multiply-adds scalar single-precision floating-point values using three float32vectors. The corresponding FMA instruction is VFMADD<XXX&gt;SS, where XXX could be 132, 213, or 231.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmadd_ss (VFMADD###), _mm256_fmadd_ss (VFMADD###)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmadd_ss (VFMADD###), _mm256_fmadd_ss (VFMADD###)">
+<meta name="DC.Relation" scheme="URI" content="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B62A0153-0214-4C18-91E5-7A6C9349641D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_fmadd_ss</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_fmadd_ss"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B62A0153-0214-4C18-91E5-7A6C9349641D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span> _mm_fmadd_ss </span></h1>
+
+
+<!--Multiply-adds scalar single-precision floating-point values using three float32vectors. The corresponding FMA instruction is  VFMADD<XXX>SS , where XXX could be 132, 213, or 231.--><div><p>Multiply-adds scalar single-precision floating-point values using three float32vectors. The corresponding FMA instruction is <span class="keyword">VFMADD&lt;XXX&gt;SS</span>, where XXX could be 132, 213, or 231.</p>
+
+
+<div class="section" id="GUID-D5AB7512-0F3D-4C20-93F3-7456428D1391"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128 _mm_fmadd_ss(__m128 a, __m128 b, __m128 c);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-B1CB8A1B-FC82-4497-A707-76E03DDC776F"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>c</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector also used for the operation</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-C3B244F6-3E9A-42A9-A3F4-DEB5A375A44F"><h2>Description</h2>
+<p>Performs a set of scalar SIMD multiply-add computation on scalar single-precision floating-point values in the low 32-bits of three source operands, <var>a</var>, <var>b</var>, and <var>c</var>. The float32 values in two operands, a and b, are multiplied and the infinite precision intermediate result is obtained. The float32 value in the third operand, <var>c</var>, is added to the infinite precision intermediate result. The final result is rounded to the nearest float32 value.
+</p>
+<p>The compiler defaults to using the <span class="keyword">VFMADD213SS</span> instruction and uses the other forms <span class="keyword">VFMADD132SS</span> or <span class="keyword">VFMADD231SS</span>
+only if a low level
+optimization decides it is useful/necessary. For example, the compiler could change the default if it finds that another instruction form saves a
+register or eliminates a move.
+</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-EDC6B9D0-058E-4A62-A25B-D719370DC3E0"><h2>Returns</h2><p> Result of the multiply-add operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">Intrinsics for Fused Multiply Add Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

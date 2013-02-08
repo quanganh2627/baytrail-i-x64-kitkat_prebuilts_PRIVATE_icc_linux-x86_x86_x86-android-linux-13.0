@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="par-num-threads, Qpar-num-threads">
+<meta name="abstract" content="Specifies the number of threads to use in a parallel region.">
+<meta name="description" content="Specifies the number of threads to use in a parallel region.">
+<meta name="DC.subject" content="/Qpar-num-threads compiler option, -par-num-threads compiler option, parallel region, option specifying number of threads to use in">
+<meta name="keywords" content="/Qpar-num-threads compiler option, -par-num-threads compiler option, parallel region, option specifying number of threads to use in">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2A6B9B3B-D468-4E2B-A539-992E84317315">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>par-num-threads, Qpar-num-threads</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_par_num_threads"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_par_num_threads"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2A6B9B3B-D468-4E2B-A539-992E84317315">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">par-num-threads, Qpar-num-threads</h1>
+<!--Specifies the number of threads to use in a parallel region.--><div><p>Specifies the number of threads to use in a parallel region.</p>
+
+<div class="section" id="GUID-6BED26DA-BF00-429A-AD58-1182F1D2054C"><h2>IDE Equivalent</h2>
+
+None
+
+</div>
+<div class="section" id="GUID-F77D7987-A6A6-4D8D-B2C2-550CEADE7C59"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-94C958A8-47DD-4FBF-8FC7-183A95BC68CD"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-par-num-threads</span><span class="oper">=</span><span class="var">n</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-num-threads</span><span class="oper">:</span><span class="var">n</span></p></td></tr></table></div>
+<div class="section" id="GUID-E39BA494-6B59-4D4D-B0B6-2CA47F2CB1B9"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p> Is the number of threads to use. It must be a positive integer.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-DC53D09C-161A-4C87-BFCF-C94F7936D0E9"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p> The number of threads to use is determined by the run-time environment.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-840344BF-B876-4C45-A91A-828591922FB1"><h2>Description</h2><p> This option specifies the number of threads to
+use in a parallel region. It has the same effect as environment
+variable OMP_NUM_THREADS.</p>
+
+<p> This option overrides the environment variable
+when both are specified.</p>
+
+<p> This option only has an effect if the following
+is true:</p>
+
+<ul type="disc" id="GUID-8E1125BB-2623-4F2D-9189-A7B57872A6EE"><li><p>Linux* OS and OS X*: You have specified option <span class="option">-parallel</span> or <span class="option">-openmp</span> (or both).
+
+</p>
+<p> Windows* OS: You have specified option <span class="option">/Qparallel</span> or <span class="option">/Qopenmp</span> (or
+both).
+</p>
+
+</li>
+<li><p>You are compiling the
+main program.
+
+</p>
+</li>
+</ul>
+
+
+</div>
+
+<div class="section" id="GUID-6610F440-A6B1-4AB0-B788-4BB1AE961C2E"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

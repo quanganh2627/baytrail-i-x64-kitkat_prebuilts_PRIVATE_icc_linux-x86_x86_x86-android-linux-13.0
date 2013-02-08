@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Memory and Initialization Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-35AB34A2-22F0-4576-AFBA-99BA929624F2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-699F09BC-038E-4372-BB46-0F98FC24FA5C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7551FE5A-176E-41C0-BD48-99ECDC706D0D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5FFF3988-6EB4-463D-935F-A69678782E95.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-83A568BA-676C-4E51-9E59-816A3B7E6BA5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1548919D-B3B8-42E6-92C1-8EAE61886CD8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4284FE01-6BA7-4459-8973-2DF2DB889B4B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8756C1BE-19F3-4259-AE27-08B08E8F0517.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E5C1ADCA-8457-4BE0-89BD-D356FC2B9F54.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4F4195D6-B145-45F2-A0DA-7BB55BBB389A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D87D425-A392-4742-9F67-8E597189F526.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A536F6EB-5FDF-4237-8CC2-1F08C2F63DF0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-487E7201-9512-432A-B5C7-C7A2D264F608.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C672930A-B042-451A-AB7E-B955F43D3570.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-63A22119-1DC0-467E-87DC-BBB765E3ECBF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FBB9ED76-7163-463C-8D61-8D7076AEC4AF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A04CAC03-ECC2-4D79-AD2A-8D7110B13B16.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E88E23BD-D259-4118-91F1-BFD2AA50029C.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6A684133-93A6-4399-9027-2D0780D2BAD7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Memory and Initialization Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_bk_mi_ops"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-6A684133-93A6-4399-9027-2D0780D2BAD7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Memory and Initialization Intrinsics</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">Vector Intrinsics</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-35AB34A2-22F0-4576-AFBA-99BA929624F2.htm">_mm512_setzero_{pd|ps|epi32}</a><br>
+Zeros all elements in a vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-699F09BC-038E-4372-BB46-0F98FC24FA5C.htm">_mm512_setr_pd</a><br>
+Initializes float64 vector with eight elements. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-7551FE5A-176E-41C0-BD48-99ECDC706D0D.htm">_mm512_setr_ps</a><br>
+Initializes float32 vector with 16 elements. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-5FFF3988-6EB4-463D-935F-A69678782E95.htm">_mm512_set1_pd</a><br>
+Sets elements to equal specified floating-point double values. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-83A568BA-676C-4E51-9E59-816A3B7E6BA5.htm">_mm512_set1_epi64</a><br>
+Sets elements to equal specified long integer value. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-1548919D-B3B8-42E6-92C1-8EAE61886CD8.htm">_mm512_set1_ps</a><br>
+Sets elements to equal specified single-precision floating point value. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-4284FE01-6BA7-4459-8973-2DF2DB889B4B.htm">_mm512_set1_epi32</a><br>
+Sets elements to equal specified integer value. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-8756C1BE-19F3-4259-AE27-08B08E8F0517.htm">_mm512_set[r]4_pd</a><br>
+Sets elements of a float64 vector using specified values in the sequence,  <samp class="codeph">dcbadcba</samp>. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-E5C1ADCA-8457-4BE0-89BD-D356FC2B9F54.htm">_mm512_set[r]4_epi64</a><br>
+Sets elements of an int64 vector using specified values in the sequence of  <samp class="codeph">dcbadcba</samp>. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-4F4195D6-B145-45F2-A0DA-7BB55BBB389A.htm">_mm512_set[r]4_ps</a><br>
+Sets elements of a float32 vector using specified values in the sequence,  <samp class="codeph">dcbadcbadcbadcba</samp>. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-7D87D425-A392-4742-9F67-8E597189F526.htm">_mm512_set[r]4_epi32</a><br>
+Sets elements of an int32 vector using specified values in a 16-element sequence -  <samp class="codeph">dcbadcbadcbadcba</samp>. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-A536F6EB-5FDF-4237-8CC2-1F08C2F63DF0.htm">_mm512_set_ps</a><br>
+Sets all elements to specified single-precision floating-point values. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-487E7201-9512-432A-B5C7-C7A2D264F608.htm">_mm512_set_epi32</a><br>
+Sets all 16 elements to specified integer values. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-C672930A-B042-451A-AB7E-B955F43D3570.htm">_mm512_set_pd</a><br>
+Sets eight elements to specified double-precision floating-point values. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-63A22119-1DC0-467E-87DC-BBB765E3ECBF.htm">_mm512_set[r]_epi64</a><br>
+Sets eight elements to specified long integer values. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-FBB9ED76-7163-463C-8D61-8D7076AEC4AF.htm">_mm512_mask_mov{_ps|_epi32}</a><br>
+Performs a vector masked move operation. No corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-A04CAC03-ECC2-4D79-AD2A-8D7110B13B16.htm">_mm512_mask_mov{_pd|_epi64}</a><br>
+Performs a vector masked move operation. No corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-E88E23BD-D259-4118-91F1-BFD2AA50029C.htm">_mm512_undefined_{ps|pd|epi32}</a><br>
+Makes all elements in a vector undefined. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+</ul>
+</div>
+
+</body>
+</html>

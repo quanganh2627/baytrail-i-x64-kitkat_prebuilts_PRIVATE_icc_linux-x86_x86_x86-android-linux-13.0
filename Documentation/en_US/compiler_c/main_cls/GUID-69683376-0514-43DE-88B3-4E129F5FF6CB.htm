@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fp-trap, Qfp-trap">
+<meta name="abstract" content="Sets the floating-point trapping mode for the main routine.">
+<meta name="description" content="Sets the floating-point trapping mode for the main routine.">
+<meta name="DC.subject" content="-fp-trap compiler option, /Qfp-trap compiler option">
+<meta name="keywords" content="-fp-trap compiler option, /Qfp-trap compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A5C3E47-250D-4178-A0D4-6C4ACDDA5EB8.htm#GUID-3A5C3E47-250D-4178-A0D4-6C4ACDDA5EB8">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0F24533-F8A1-4D1C-B0C5-0DCFC2F136B3.htm#GUID-A0F24533-F8A1-4D1C-B0C5-0DCFC2F136B3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-69683376-0514-43DE-88B3-4E129F5FF6CB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fp-trap, Qfp-trap</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fp_trap"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fp_trap"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-69683376-0514-43DE-88B3-4E129F5FF6CB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fp-trap, Qfp-trap</h1>
+<!--Sets the floating-point trapping mode for the main routine.--><div><p>Sets the floating-point trapping mode for the main routine.</p>
+
+
+<div class="section" id="GUID-5A314045-7506-4C81-A335-BA08EFCEDC6C"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Code Generation &gt; Unmask Floating Point Exceptions</strong></p>
+<p class="ide"><strong>Configuration Properties-&gt;C/C++ &gt; Unmask Floating Point Exceptions</strong></p>
+
+
+
+<p class="ide">Linux: 
+								<strong>Floating Point &gt; Initial Exception Mask</strong></p>
+
+
+<p class="ide">OS X: 
+								<strong>Floating Point &gt; Set Initial Exception Mask</strong></p>
+</div>
+<div class="section" id="GUID-89732A11-3146-4532-AD91-53D6374B8F22"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-78CF47EC-7151-497A-B31F-0E1E041106E1"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fp-trap</span><span class="oper">=</span><span class="var">mode</span><span class="delim">[</span><span class="sep">,</span><span class="var">mode</span><span class="sep">,...</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qfp-trap</span><span class="oper">:</span><span class="var">mode</span><span class="delim">[</span><span class="sep">,</span><span class="var">mode</span><span class="sep">,...</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-AECAA370-E294-4F3D-BEC1-A76133D35D78"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>mode</var></p></td>
+<td valign="top" class="noborder"><p>Is the floating-point trapping mode. If you specify more than one mode value, the list is processed 
+sequentially from left to right. 
+
+Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]divzero</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables the IEEE trap for division by zero.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]inexact
+</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables the IEEE trap for inexact result.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]invalid
+</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables the IEEE trap for invalid operation.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]overflow
+</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables the IEEE trap for overflow.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]underflow
+</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables the IEEE trap for underflow.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]denormal
+</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables the trap for denormal.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">all</span></p></td>
+<td valign="top" class="noborder"><p>Enables all of the above traps.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+<td valign="top" class="noborder"><p>Disables all of the above traps.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">common</span></p></td>
+<td valign="top" class="noborder"><p>Sets the most commonly used IEEE traps: division by zero, invalid operation, 
+and overflow.
+</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C0E7C2F9-0766-4B64-86F0-6119AE06945B"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-fp-trap=none</span> <br><span> or<span class="option">/Qfp-trap:none</span></span></p></td>
+<td valign="top" class="noborder"><p>No traps are enabled when a program starts.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AA6D16D5-9DE0-414F-ACB5-CC81AA42EC31"><h2>Description</h2><p>This option sets the floating-point trapping mode for the main routine.   It does not set a handler for floating-point exceptions.</p>
+<p>The <span class="keyword">[no]</span> form of a <span class="keyword">mode</span> value is only used to modify the meaning of <span class="keyword">mode</span> values <span class="keyword">all</span> and <span class="keyword">common</span>, and can only be used with one of those values. The <span class="keyword">[no]</span>
+ form of the option by itself does not explicitly cause a particular trap to be disabled.</p>
+<p>Use <span class="keyword">mode</span> value <span class="keyword">inexact</span> with caution. This results in the trap being enabled whenever a floating-point value cannot be represented exactly, which can cause unexpected results.</p>
+<p>If <span class="keyword">mode</span> value <span class="keyword">underflow</span> is specified, the compiler ignores the FTZ (flush-to-zero) bit state of Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) floating-point units.</p>
+<p>When a DAZ (denormals are zero) bit is set in an Intel&reg; SSE floating-point unit control word, a denormal operand exception is never generated.</p>
+<p>To set the floating-point trapping mode for all routines, specify option <span class="option">-fp-trap-all</span> (Linux and OS X) or <span class="option">/Qfp-trap-all</span> (Windows).</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Option <span class="option">-[no-]ftz</span> (Linux and OS X) and <span class="option">/Qftz[-]</span> (Windows) can be used to set or reset the FTZ and the DAZ hardware flags.
+</p>
+</div>
+</div>
+
+<div class="section" id="GUID-0BEF376C-5DA8-44A5-8D62-935541A33FAA"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-3A5C3E47-250D-4178-A0D4-6C4ACDDA5EB8.htm#GUID-3A5C3E47-250D-4178-A0D4-6C4ACDDA5EB8"><span class="option">ftz, Qftz</span></a> compiler option</div>
+<div><a href="GUID-A0F24533-F8A1-4D1C-B0C5-0DCFC2F136B3.htm#GUID-A0F24533-F8A1-4D1C-B0C5-0DCFC2F136B3"><span class="option">fp-trap-all, Qfp-trap-all</span></a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

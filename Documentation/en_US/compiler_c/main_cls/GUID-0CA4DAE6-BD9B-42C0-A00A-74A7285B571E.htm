@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fp-stack-check, Qfp-stack-check">
+<meta name="abstract" content="Tells the compiler to generate extra code after every function call to ensure that the floating-point stack is in the expected state.">
+<meta name="description" content="Tells the compiler to generate extra code after every function call to ensure that the floating-point stack is in the expected state.">
+<meta name="DC.subject" content="/Qfp-stack-check compiler option, -fp-stack-check compiler option, floating-point stack, option checking">
+<meta name="keywords" content="/Qfp-stack-check compiler option, -fp-stack-check compiler option, floating-point stack, option checking">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0CA4DAE6-BD9B-42C0-A00A-74A7285B571E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fp-stack-check, Qfp-stack-check</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fp_stack_check"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fp_stack_check"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="option_fpstkchk"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fpstkchk"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0CA4DAE6-BD9B-42C0-A00A-74A7285B571E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fp-stack-check, Qfp-stack-check</h1>
+<!--Tells the compiler to generate extra code after every function call to ensure that the floating-point stack is in the expected state.--><div><p>Tells the compiler to generate extra code after every function call to ensure that the floating-point stack is in the expected state.</p>
+
+<div class="section" id="GUID-0B3CEC9C-04B1-4E5E-9684-BAB20AB3FA99"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Floating Point &gt; Check Floating-point Stack</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Floating Point &gt; Check Floating-point Stack</strong></p>
+</div>
+<div class="section" id="GUID-CF134BD7-A5CC-4F80-84A6-7BEB39E6C664"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-D3027EAD-8C34-4522-9519-3C9AED485008"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fp-stack-check</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qfp-stack-check</span></p></td></tr></table></div>
+<div class="section" id="GUID-DD73E35A-1EE5-4C80-8525-E239ED9795B4"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-71CB2783-D12B-4A92-B472-7C5EFD4DEBE7"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>There is no checking to ensure that the floating-point (FP) stack is in the expected state.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-B870CD0A-A726-43D9-A425-C5594561B4C4"><h2>Description</h2><p>This option tells the compiler to generate extra code after every function call to ensure that the floating-point (FP) stack is in the expected state.</p>
+<p>By default, there is no checking. So when the FP stack overflows, a NaN value is put into FP calculations and the program's results differ. Unfortunately, the overflow point can be far away from the point of the actual bug. This option places code that causes an access violation exception immediately after an incorrect call occurs, thus making it easier to locate these issues. </p>
+</div>
+
+<div class="section" id="GUID-547EBD2A-EDE9-46F3-8114-D7C0F29C02DB"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

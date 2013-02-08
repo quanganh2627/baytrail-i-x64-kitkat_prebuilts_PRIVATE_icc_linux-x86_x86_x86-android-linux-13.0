@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Type Cast Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C4E9820-317B-4A5C-B1D0-A6B6B339B85B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6EC40364-D092-414E-90F1-252FA7218CF0.htm#GUID-6EC40364-D092-414E-90F1-252FA7218CF0">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BBFF1AF1-B17C-4D3F-83FD-0B6106D113DC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Type Cast Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_usg_castingintrin"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BBFF1AF1-B17C-4D3F-83FD-0B6106D113DC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Type Cast Intrinsics</h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>The cast intrinsics are used to satisfy strong type checking. They allow conversion from one type to another with no change in value. 
+    </p>
+ 
+    <p>Consider the 
+      <samp class="codeph">mm512 sllv epi32</samp> intrinsic that takes two int32 vectors and performs a bitwise left shift on the first parameter. The prototype for the intrinsic is as follows: 
+    </p>
+ 
+    <p> 
+      <samp class="codeph">extern __m512i __cdecl _mm512_sllv_epi32(_m512i v2,_m512i v3);</samp> 
+    </p>
+ 
+    <p>Assume that you have a float32 vector and you want to do a bitwise left shift of each element. You cannot pass the 
+      <samp class="codeph">_m512</samp> (float32) data type to the intrinsic because the compiler will generate a type mismatch error. 
+      <pre>_m512i shift;
+_m512 fvec1, fvec2;
+fvec2 = _mm512_sllv_epi32(fvec1, shift); // type mismatch - first parameter is required to be _m512</pre> 
+    </p>
+ 
+    <p>Now consider using one of the cast intrinsics as follows: 
+      <pre>_m512i shift;
+_m512 fvec1, fvec2 ;
+fvec2 = _mm512_castsi512_ps(_mm512_sllv_epi32(_mm512_castpd_si512(fvec1), shift));</pre> where 
+      <samp class="codeph">_mm512_castps_si512(fvec1)</samp> assigns the float32 vector, int32 vector so that it can be processed by the 
+      <samp class="codeph">_mm512_sllv_epi32</samp> intrinsic, and 
+      <samp class="codeph">_mm512_castsi512_ps</samp> assigns the result of the 
+      <samp class="codeph">_mm512_sllv_epi32</samp> from an int32 vector to a float32 vector, 
+      <samp class="codeph">fvec2</samp>. 
+    </p>
+ 
+    <p>The cast intrinsics, therefore, allow you to use existing data types for all possible data types. 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2C4E9820-317B-4A5C-B1D0-A6B6B339B85B.htm">Type Cast Intrinsics</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-6EC40364-D092-414E-90F1-252FA7218CF0.htm#GUID-6EC40364-D092-414E-90F1-252FA7218CF0">_mm512_sllv_epi32 intrinsic 
+        </a> Performs a logical left shift operation of the int32 vector.  &nbsp;Corresponding instruction is  VPSLLVD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

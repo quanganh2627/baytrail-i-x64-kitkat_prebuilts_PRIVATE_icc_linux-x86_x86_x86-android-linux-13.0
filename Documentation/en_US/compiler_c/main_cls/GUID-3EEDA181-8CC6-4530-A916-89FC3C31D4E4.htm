@@ -1,0 +1,526 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Miscellaneous Intrinsics">
+<meta name="DC.subject" content="intrinsics, All Intel Architectures, miscellaneous operations">
+<meta name="keywords" content="intrinsics, All Intel Architectures, miscellaneous operations">
+<meta name="DC.Relation" scheme="URI" content="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3EEDA181-8CC6-4530-A916-89FC3C31D4E4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Miscellaneous Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_allia_misc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3EEDA181-8CC6-4530-A916-89FC3C31D4E4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Miscellaneous Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-C45CDC1C-86DE-4D0B-BAB4-403DA7323C79"> 
+      <p>The following tables list and describe intrinsics that you can use across all Intel architectures, except where noted. These intrinsics are available for both Intel&reg; and non-Intel microprocessors but they may perform additional optimizations for Intel&reg; microprocessors than they perform for non-Intel microprocessors. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-181A1F28-D107-4B6A-8041-FEB0C3DE585F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0AAE57C2-158E-4349-B51C-9B5914C027F8" frame="hsides" border="1" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="40%" id="d199934e54"> 
+                <p>Intrinsic 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="60%" id="d199934e60"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+            <tr> 
+              <th class="row-nocellborder" colspan="2" valign="top" id="d199934e69"> 
+                <p>Intrinsics for all Supported Intel&reg; Architectures 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">__cpuid</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Queries the processor for information about processor type and supported features. The Intel&reg; C++ Compiler supports the Microsoft* implementation of this intrinsic. See the Microsoft documentation for details. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">void *_alloca(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Allocates memory in the local stack frame. The memory is automatically freed upon return from the function. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _bit_scan_forward(int x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Returns the bit index of the least significant set bit of x. If x is 0, the result is undefined. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _bit_scan_reverse(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Returns the bit index of the most significant set bit of x. If x is 0, the result is undefined. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _bswap(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Reverses the byte order of x. Swaps 4 bytes; bits 0-7 are swapped with bits 24-31, bits 8-15 are swapped with bits 16-23. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">__int64 _bswap64(__int64 x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Reverses the byte order of x. Swaps 8 bytes; bits 0-7 are swapped with bits 56-63, bits 8-15 are swapped with bits 48-55, bits 16-23 are swapped with bits 40-47, and bits 24-31 are swapped with bits 32-39. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">unsigned int __cacheSize(unsigned int cacheLevel)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p><span class="option">__cacheSize(n)</span> returns the size in kilobytes of the cache at level n. 1 represents the first-level cache. 0 is returned for a non-existent cache level. For example, an application may query the cache size and use it to select block sizes in algorithms that operate on matrices. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">void _enable(void)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Enables the interrupt. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">void _disable(void)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Disables the interrupt. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _in_byte(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Intrinsic that maps to the IA-32 instruction 
+                  <span class="keyword">IN</span>. Transfer data byte from port specified by argument. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _in_dword(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Intrinsic that maps to the IA-32 instruction 
+                  <span class="keyword">IN</span>. Transfer double word from port specified by argument. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _in_word(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Intrinsic that maps to the IA-32 instruction 
+                  <span class="keyword">IN</span>. Transfer word from port specified by argument. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _inp(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Same as 
+                  <span class="keyword">_in_byte</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _inpd(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Same as 
+                  <span class="keyword">_in_dword</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _inpw(int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Same as 
+                  <span class="keyword">_in_word</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _out_byte(int, int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Intrinsic that maps to the IA-32 instruction 
+                  <span class="keyword">OUT</span>. Transfer data byte in second argument to port specified by first argument. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _out_dword(int, int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Intrinsic that maps to the IA-32 instruction 
+                  <span class="keyword">OUT</span>. Transfer double word in second argument to port specified by first argument. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _out_word(int, int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Intrinsic that maps to the IA-32 instruction 
+                  <span class="keyword">OUT</span>. Transfer word in second argument to port specified by first argument. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _outp(int, int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Same as 
+                  <span class="keyword">_out_byte</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _outpw(int, int)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Same as 
+                  <span class="keyword">_out_word</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _outpd(int, int) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Same as 
+                  <span class="keyword">_out_dword</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _popcnt32(int x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Returns the number of set bits in x. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">int _popcnt64(__int64 x)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Returns the number of set bits in x. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" align="left" valign="top" width="40%" headers="d199934e54 d199934e69 "> 
+                <p><span class="option">__int64 _rdpmc(int p) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e60 d199934e69 "> 
+                <p>Returns the current value of the 40-bit performance monitoring counter specified by p. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+         
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" colspan="2" valign="top" id="d199934e540"> 
+                <p>Intrinsics for IA-32 and Intel&reg; 64 Architectures 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e540 "> 
+                <p><span class="option">__int64 _rdtsc(void)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e540 "> 
+                <p>Returns the current value of the processor's 64-bit time stamp counter. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e540 "> 
+                <p><span class="option">int _setjmp(jmp_buf)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e540 "> 
+                <p>A fast version of 
+                  <span class="keyword">setjmp()</span>, which bypasses the termination handling. Saves the callee-save registers, stack pointer and return address. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="40%" headers="d199934e540 "> 
+                <samp class="codeph">int __pin_value(char *annotation)</samp> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="60%" headers="d199934e540 "> Bypasses code that executes only in PIN mode. Especially useful with Intel&reg; Treading Building Blocks, which adds specified annotations to the object file so that code is executed in PIN mode. 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">Intrinsics for All Intel Architectures</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

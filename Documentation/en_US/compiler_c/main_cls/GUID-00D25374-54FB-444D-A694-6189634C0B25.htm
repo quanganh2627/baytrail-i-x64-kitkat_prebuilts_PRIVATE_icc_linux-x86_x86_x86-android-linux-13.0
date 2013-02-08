@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Inline Function Expansion">
+<meta name="DC.subject" content="CPU time, for inline function expansion, function preemption, general compiler directives, for inlining functions, inlining, preemption, library functions, preempting functions">
+<meta name="keywords" content="CPU time, for inline function expansion, function preemption, general compiler directives, for inlining functions, inlining, preemption, library functions, preempting functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-6608F908-2791-4059-8DD9-936FEAB81936.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-00D25374-54FB-444D-A694-6189634C0B25">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Inline Function Expansion</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_crit"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_crit"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-00D25374-54FB-444D-A694-6189634C0B25">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Inline Function Expansion</h1>
+
+
+
+
+<div>
+<p>Inline function expansion does not require that the applications meet the criteria for whole program analysis normally required by IPO; so this optimization is one of the primary optimizations used in Interprocedural Optimization (IPO). For function calls that the compiler believes are frequently executed, the Intel&reg; compiler often decides to replace the instructions of the call with code for the function itself.</p>
+
+<p>In the compiler, inline function expansion typically favors relatively small user functions over functions that are relatively large. This optimization improves application performance by performing the following:</p>
+
+
+<ul type="disc" id="GUID-140433F9-DEBF-4F1D-91BE-21B3072B7149">
+  <li><p>Removing the need to set up parameters for a function call</p>
+</li>
+
+  <li><p>Eliminating the function call branch</p>
+</li>
+
+  <li><p>Propagating constants</p>
+</li>
+
+</ul>
+
+
+<p>Function inlining can improve execution time by removing the runtime overhead of function calls; however, function inlining can increase code size, code complexity, and compile times. In general, when you instruct the compiler to perform function inlining, the compiler can examine the source code in a much larger context, and the compiler can find more opportunities to apply optimizations.</p>
+
+<p>Specifying <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">-ip</span></a> (Linux* and OS X*) or <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">/Qip</span></a> (Windows*), single-file IPO, causes the compiler to perform inline function expansion for calls to procedures defined within the current source file; in contrast, specifying <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux and OS X) or <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows), multi-file IPO, causes the compiler to perform inline function expansion for calls to procedures defined in other files.</p>
+
+
+<div class="Note"><h3 class="NoteTipHead">Caution</h3>
+<p>Using the <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">-ip</span></a>  and <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux and OS X) or <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">/Qip</span></a> and <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) options can, in some cases, significantly increase compile time and code size.</p>
+
+</div>
+
+<div class="section" id="GUID-2BEDE59B-58B8-46F0-B4E1-00D2AB89841B"><h2 class="sectiontitle">Selecting Routines for Inlining</h2>
+
+<p>The compiler attempts to select the routines whose inline expansions provide the greatest benefit to program performance. The selection is done using default heuristics. <span>The inlining heuristics used by the compiler differ based on whether or not you use options for  Profile-Guided Optimizations (PGO): <a href="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407"><span class="option">-prof-use</span></a> (Linux and OS X) or <a href="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407"><span class="option">/Qprof-use</span></a> (Windows).</span></p>
+
+<p>When you use PGO with <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">-ip</span></a> or <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux and OS X) or <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">/Qip</span></a> or <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows), the compiler uses the following guidelines for applying heuristics:</p>
+
+
+<ul type="disc" id="GUID-326A29A4-EDB5-4C05-8D43-67800223641C">
+  <li><p>The default heuristic focuses on the most frequently executed call sites, based on the profile information gathered for the program.</p>
+</li>
+
+  <li><p>The default heuristic always inlines very small functions that meet the minimum inline criteria.</p>
+</li>
+
+</ul>
+
+
+<p><strong>Using IPO with PGO (Windows)</strong></p>
+
+<p>Combining IPO and PGO typically produces better results than using IPO alone. PGO produces dynamic profiling information that can usually provide better optimization opportunities than the static profiling information used in IPO.</p>
+
+<p>The compiler uses characteristics of the source code to estimate which function calls are executed most frequently. It applies these estimates to the PGO-based guidelines described above. The estimation of frequency, based on static characteristics of the source, is not always accurate.</p>
+
+<p>Avoid using static profile information when combining PGO and IPO; with static profile information, the compiler can only estimate the application performance for the source files being used. Using dynamically generated profile information allows the compiler to accurately determine the real performance characteristics of the application.</p>
+
+</div>
+
+
+<div class="section" id="GUID-DF24CC58-FF08-44FF-AFDC-DF8652B88F2D"><h2 class="sectiontitle">Inline Expansion of Library Functions</h2>
+
+By default, the compiler automatically inlines (expands) a number of standard and math library functions at the point of the call to that function, which usually results in faster computation.<p> Many routines in the <span class="keyword">libirc</span>, <span class="keyword">libm</span>, or the <span class="keyword">svml</span> library are more highly optimized for Intel microprocessors than for non-Intel microprocessors.</p>
+<p>The <span class="option">-fno-builtin</span> (Linux and OS X) or <span class="option">/Oi-</span> (Windows) option disables inlining for intrinsic functions and disables the by-name recognition support of intrinsic functions and the resulting optimizations. Use these options if you redefine standard library routines with your own version and your version of the routine has the same name as the standard library routine.</p>
+
+</div>
+
+
+<div class="section" id="GUID-72C92824-C1BA-4FD6-9865-9E257F1600BE"><h2 class="sectiontitle">Inlining and Function Preemption (Linux)</h2>
+
+<p>You must specify <a href="GUID-DE6C2019-B79F-46AE-A95F-86FF86895539.htm#GUID-DE6C2019-B79F-46AE-A95F-86FF86895539"><span class="option">-fpic</span></a> or <a href="GUID-DE6C2019-B79F-46AE-A95F-86FF86895539.htm#GUID-DE6C2019-B79F-46AE-A95F-86FF86895539"><span class="option">-fPIC</span></a> to use function preemption. By default the compiler does not generate the position-independent code needed for preemption.</p>
+
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6608F908-2791-4059-8DD9-936FEAB81936.htm">Inline Expansion of Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

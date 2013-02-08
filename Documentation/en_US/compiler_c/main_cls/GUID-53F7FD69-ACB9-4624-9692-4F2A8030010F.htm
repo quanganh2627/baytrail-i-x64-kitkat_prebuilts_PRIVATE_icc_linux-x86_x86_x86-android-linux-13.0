@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_mulhi_epu32/ _mm512_mask_mulhi_epu32">
+<meta name="abstract" content="Multiply uint32 vectors and store the high half of the result. The corresponding instruction is VMULHPU. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Multiply uint32 vectors and store the high half of the result. The corresponding instruction is VMULHPU. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_mulhi_epu32, _mm512_mask_mulhi_epu32">
+<meta name="keywords" content="_mm512_mulhi_epu32, _mm512_mask_mulhi_epu32">
+<meta name="DC.Relation" scheme="URI" content="GUID-099AB961-BE89-43A5-9487-E56DA2A1A4CA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-53F7FD69-ACB9-4624-9692-4F2A8030010F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_mulhi_epu32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_mulhi_epu32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-53F7FD69-ACB9-4624-9692-4F2A8030010F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_mulhi_epu32/ _mm512_mask_mulhi_epu32</h1>
+<!--Multiply uint32 vectors and store the high half of the result. The corresponding instruction is 
+ VMULHPU .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Multiply uint32 vectors and store the high half of the result. The corresponding instruction is 
+<samp class="codeph">VMULHPU</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-D88B9BA8-4D10-4EBA-8877-81399AB6D3E5"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_mulhi_epu32(_m512i v2, _m512i v3);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_mask_mulhi_epu32(_m512i v1_old, __mmask16 k1, _m512i v2, _m512i v3);</span></p></td></tr></table></div>
+<div class="section" id="GUID-F9DCE79E-244E-43E0-A066-B8E178605A76"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">uint32 vector multiplied to uint32 vector 
+<samp class="codeph">v3</samp>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">uint32 vector multiplied to uint32 vector 
+<samp class="codeph">v2</samp>; can contain the result of a swizzle/broadcast/conversion process on a memory or uint32 vector
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+
+</table>
+
+
+
+
+
+</div>
+<div class="section" id="GUID-B31CA7C3-B014-4CAC-99B0-7B67B2F647F1"><h2>Description</h2>
+<p>Performs an element-by-element multiplication between uint32 vector 
+<samp class="codeph">v2</samp> and the uint32 vector 
+<samp class="codeph">v3</samp>. The high 32 bits of the result are written into uint32 result vector.</p>
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing. The remaining elements of the resulting vector are filled with corresponding elements from 
+<samp class="codeph">v1_old</samp>.</p>
+</div>
+<div class="section" id="GUID-A1B228C3-BD10-4364-A2A9-12F94E8C9334"><h2>Returns</h2><p>Returns the result of the multiplication operation in an uint32 result vector.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-099AB961-BE89-43A5-9487-E56DA2A1A4CA.htm">Multiplication Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

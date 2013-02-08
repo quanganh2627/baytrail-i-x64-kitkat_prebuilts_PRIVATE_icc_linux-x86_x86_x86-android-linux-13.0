@@ -1,0 +1,1308 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Integer Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, integer operations, min_pu8, movemask_pi8, shuffle_pi16, maskmove_si641, avg_pu8, extract_pi16, avg_pu16, insert_pi16, sad_pu8, mulhi_pu16, min_pi16, max_pu8, max_pi16, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, integer operations, min_pu8, movemask_pi8, shuffle_pi16, maskmove_si641, avg_pu8, extract_pi16, avg_pu16, insert_pi16, sad_pu8, mulhi_pu16, min_pi16, max_pu8, max_pi16, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7A93DCC4-AD1F-42E7-A79F-72A9B894FC0B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Integer Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_integer"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7A93DCC4-AD1F-42E7-A79F-72A9B894FC0B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Integer Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-1F0BE937-3F30-4F53-9351-0A784113BD72"> 
+      <p>The prototypes for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics for integer operations are in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. R, R0, R1...R7 represent the registers in which results are placed. 
+      </p>
+ 
+      <p>Before using these intrinsics, you must empty the multimedia state for the MMX&#8482; technology register. See 
+        <a href="GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA.htm#GUID-3545782D-E3AC-44BE-BAA6-2B436C8BA5AA">The EMMS Instruction: Why You Need It</a> for more details. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C0BB55EA-3494-4717-B07C-8303B02F1599"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8FA54A8F-11DF-4FD6-BA82-9DB4F061BE66" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d379996e96"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d379996e102"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d379996e108"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_extract_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Extract one of four words 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PEXTRW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_insert_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Insert word 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PINSRW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_max_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute maximum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PMAXSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_max_pu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute maximum, unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PMAXUB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_min_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute minimum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PMINSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_min_pu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute minimum, unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PMINUB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_movemask_pi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Create eight-bit mask 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PMOVMSKB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_mulhi_pu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Multiply, return high bits 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PMULHUW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_shuffle_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Return a combination of four words 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PSHUFW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_maskmove_si64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Conditional Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">MASKMOVQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_avg_pu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute rounded average 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PAVGB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_avg_pu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute rounded average 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PAVGW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e96 "> 
+                <p><span class="option"> _mm_sad_pu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d379996e102 "> 
+                <p>Compute sum of absolute differences 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d379996e108 "> 
+                <p><span class="keyword">PSADBW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E9C2C17C-4C61-4ADC-AF67-933FF5F14F34"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_extract_pi16(__m64 a, int n)</span></p></div> 
+      <p>Extracts one of the four words of 
+        <span class="keyword">a</span>. The selector 
+        <span class="keyword">n</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8DE74269-792A-41A3-BA15-88CDB1DEDFC1"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D7D1EA52-4A32-4E95-ABE6-1FD1CD88CC63" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d379996e479"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d379996e479 "> 
+                <p><span class="keyword">(n==0) ? a0 : ( (n==1) ? a1 : ( (n==2) ? a2 : a3 ) )</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E8E73E31-9A67-4B44-90A0-3192DE5CB865"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_insert_pi16(__m64 a, int d, int n)</span></p></div> 
+      <p>Inserts word 
+        <span class="keyword">d</span> into one of four words of 
+        <span class="keyword">a</span>. The selector 
+        <span class="keyword">n</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-34007471-7FDC-4CB6-B92B-74FF6A2B7E81"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C195F0CC-76FE-4400-AA0A-3CB787850930" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e539"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e545"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e551"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e557"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e539 "> 
+                <p><span class="keyword">(n==0) ? d : a0;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e545 "> 
+                <p><span class="keyword">(n==1) ? d : a1;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e551 "> 
+                <p><span class="keyword">(n==2) ? d : a2;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e557 "> 
+                <p><span class="keyword">(n==3) ? d : a3;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2AB585B0-52D1-4636-921B-B900AB5519E9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_max_pi16(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the element-wise maximum of the words in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4930CD3F-B3C5-4004-B9F9-8D34F1964CC5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-005457AE-D65D-4955-A193-5B759157D52C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e637"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e643"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e649"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e655"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e637 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e643 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e649 "> 
+                <p><span class="keyword">min(a2, b2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e655 "> 
+                <p><span class="keyword">min(a3, b3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EFE496A7-EF26-4081-811E-DB0A6DAA5051"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_max_pu8(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the element-wise maximum of the unsigned bytes in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4781D92C-86D8-4836-AC9F-E792F8E48DE4"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-46D186AC-1A3C-4810-BE82-A5B96DCB7E85" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e735"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e741"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e747"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e753"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e735 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e741 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e747 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e753 "> 
+                <p><span class="keyword">min(a7, b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2BE58CA2-72A0-4145-B221-B3EEAFEB4664"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_min_pi16(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the element-wise minimum of the words in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-52864702-372C-4D00-8F3C-1C0AE62E6ED4"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-603FA436-FB9A-4E4E-8FDE-A7663E5B5519" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e834"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e840"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e846"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e852"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e834 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e840 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e846 "> 
+                <p><span class="keyword">min(a2, b2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e852 "> 
+                <p><span class="keyword">min(a3, b3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FEE0641F-A2ED-462E-830B-D1BFC66D91F9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_min_pu8(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the element-wise minimum of the unsigned bytes in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BC360098-7CA5-44D8-A3AF-B4A2E6839615"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3FA9D6D2-C194-440D-84B1-A774A8C4CA72" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e932"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e938"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e944"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e950"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e932 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e938 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e944 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e950 "> 
+                <p><span class="keyword">min(a7, b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-73DDFE3E-EDE6-42FA-8302-598AED8A0F7B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_movemask_pi8(__m64 b)</span></p></div> 
+      <p>Creates an 8-bit mask from the most significant bits of the bytes in 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-18058EAF-EDBE-4A7A-9EB1-200D0962C57D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2E48803C-7385-4A4F-8F4C-B5EE06BFAF6D" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d379996e1024"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d379996e1024 "> 
+                <p><span class="keyword">sign(a7)&lt;&lt;7 | sign(a6)&lt;&lt;6 |... | sign(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9068F33C-540E-40F3-994F-47C76BCE659B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_mulhi_pu16(__m64 a, __m64 b)</span></p></div> 
+      <p>Multiplies the unsigned words in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>, returning the upper 16 bits of the 32-bit intermediate results. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-27A4E7B4-FB29-4AB3-BEA1-2145B429EF04"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4733573D-DAB0-4B66-81DE-BC22782FBE82" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1081"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1087"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1093"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e1099"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1081 "> 
+                <p><span class="keyword">hiword(a0 * b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1087 "> 
+                <p><span class="keyword">hiword(a1 * b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1093 "> 
+                <p><span class="keyword">hiword(a2 * b2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e1099 "> 
+                <p><span class="keyword">hiword(a3 * b3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F081A89E-9DEC-4752-AAD1-10E7B528C4C6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_shuffle_pi16(__m64 a, int n)</span></p></div> 
+      <p>Returns a combination of the four words of 
+        <span class="keyword">a</span>. The selector 
+        <span class="keyword">n</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E31CE01C-0548-4DAD-A6E0-56C268EB4279"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F0F2F934-E804-40DA-8D54-5B63B6E7559C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1179"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1185"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1191"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e1197"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1179 "> 
+                <p><span class="keyword">word (n&amp;0x3) of a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1185 "> 
+                <p><span class="keyword">word ((n&gt;&gt;2)&amp;0x3) of a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1191 "> 
+                <p><span class="keyword">word ((n&gt;&gt;4)&amp;0x3) of a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e1197 "> 
+                <p><span class="keyword">word ((n&gt;&gt;6)&amp;0x3) of a</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-54F2A8E3-EB49-42F0-87E7-416DA75A701C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_maskmove_si64(__m64 d, __m64 n, char *p)</span></p></div> 
+      <p>Conditionally stores byte elements of 
+        <span class="keyword">d</span> to address 
+        <span class="keyword">p</span>. The high bit of each byte in the selector 
+        <span class="keyword">n</span> determines whether the corresponding byte in 
+        <span class="keyword">d</span> will be stored. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2993B5FE-6E24-47C7-81CC-45AA0F2DD8F9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D3F0C4CA-1936-4BFD-B33D-CB0180530888" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1283"> 
+                <p><span class="keyword">if (sign(n0))</span> 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1291"> 
+                <p><span class="keyword">if (sign(n1))</span> 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1299"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e1305"> 
+                <p><span class="keyword">if (sign(n7))</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1283 "> 
+                <p><span class="keyword">p[0] := d0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1291 "> 
+                <p><span class="keyword">p[1] := d1 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1299 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e1305 "> 
+                <p><span class="keyword">p[7] := d7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-68D4C940-B951-4699-8AE5-77D294172E68"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_avg_pu8(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the (rounded) averages of the unsigned bytes in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A68909AF-3B98-46E9-B6AA-2AFDCC5F15CB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F50658C1-9B3D-49BF-9940-8DA5A87632C4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1388"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1394"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1400"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e1406"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1388 "> 
+                <p><span class="keyword">(t &gt;&gt; 1) | (t &amp; 0x01)</span>, where 
+                  <span class="keyword">t = (unsigned char)a0 + (unsigned char)b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1394 "> 
+                <p><span class="keyword">(t &gt;&gt; 1) | (t &amp; 0x01)</span>, where 
+                  <span class="keyword">t = (unsigned char)a1 + (unsigned char)b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1400 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e1406 "> 
+                <p><span class="keyword">((t &gt;&gt; 1) | (t &amp; 0x01))</span>, where 
+                  <span class="keyword">t = (unsigned char)a7 + (unsigned char)b7 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B14435C7-C07D-4C52-8352-E6E50EE73B59"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_avg_pu16(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the (rounded) averages of the unsigned short in 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7255CC40-9660-4F15-AAA5-E866B5A3AC19"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-963BABB2-A8A5-4862-8074-F99714F0D8E1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1495"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1501"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1507"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e1513"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1495 "> 
+                <p><span class="keyword">(t &gt;&gt; 1) | (t &amp; 0x01)</span>, where 
+                  <span class="keyword">t = (unsigned int)a0 + (unsigned int)b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1501 "> 
+                <p><span class="keyword">(t &gt;&gt; 1) | (t &amp; 0x01)</span>, where 
+                  <span class="keyword">t = (unsigned int)a1 + (unsigned int)b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1507 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e1513 "> 
+                <p><span class="keyword">(t &gt;&gt; 1) | (t &amp; 0x01)</span>, where 
+                  <span class="keyword">t = (unsigned int)a7 + (unsigned int)b7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6F8CB026-10C4-4123-B502-D5E027AC471B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sad_pu8(__m64 a, __m64 b)</span></p></div> 
+      <p>Computes the sum of the absolute differences of the unsigned bytes in a and b, returning the value in the lower word. The upper three words are cleared. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C6D5393F-D657-4D5B-88F9-9B5F5FD3D306"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2F21BD41-BF89-4CD4-AE90-8DF0FE442259" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1594"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1600"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d379996e1606"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d379996e1612"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1594 "> 
+                <p><span class="keyword">abs(a0-b0) +... + abs(a7-b7)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1600 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d379996e1606 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d379996e1612 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

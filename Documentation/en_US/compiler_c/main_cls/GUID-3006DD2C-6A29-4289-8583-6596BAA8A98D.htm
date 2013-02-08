@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fargument-alias, Qalias-args">
+<meta name="abstract" content="Determines whether function arguments can alias each other.">
+<meta name="description" content="Determines whether function arguments can alias each other.">
+<meta name="DC.subject" content="-fargument-alias compiler option, /Qalias-args">
+<meta name="keywords" content="-fargument-alias compiler option, /Qalias-args">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-66965DEA-C97F-418A-B0D5-65CBA67BEECA.htm#GUID-66965DEA-C97F-418A-B0D5-65CBA67BEECA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3006DD2C-6A29-4289-8583-6596BAA8A98D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fargument-alias, Qalias-args</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_qalias-args"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_qalias-args"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3006DD2C-6A29-4289-8583-6596BAA8A98D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fargument-alias, Qalias-args</h1>
+<!--Determines whether function arguments can alias each other. --><div><p>Determines whether function arguments can alias each other. </p>
+
+<div class="section" id="GUID-2079437D-58D9-41A0-990B-F8DB5091A0C3"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Data &gt; Enable Argument Aliasing</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Data &gt; Enable Argument Aliasing</strong></p>
+</div>
+<div class="section" id="GUID-25AAC258-8C7A-4768-ADC9-7620A97DF6C9"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-FA9B44F6-CD9E-43DA-B71B-02E8E513C48C"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fargument-alias</span></p><p><span class="kwd">-fargument-noalias</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qalias-args</span></p><p><span class="kwd">/Qalias-args-</span></p></td></tr></table></div>
+<div class="section" id="GUID-E6A9EE16-192E-4237-9B60-5CFF97EA2F8D"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-331D65FD-4CE2-4CE2-AD0E-5F2B378F9D4C"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-fargument-alias</span> <span>or <span class="option">/Qalias-args</span></span></p></td>
+<td valign="top" class="noborder"><p>Function arguments can alias each other and can alias global storage.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-395E0736-C2E6-4C30-A3D7-C5D8E10B35D6"><h2>Description</h2><p>This option determines whether function arguments can alias each other. If you specify <span class="option">–fargument-noalias</span> or <span class="option">/Qalias-args-</span>, function arguments cannot alias each other, but they can alias global storage.</p>
+<p>On Linux and OS X systems, you can also disable aliasing for global storage, by specifying option <span class="option">-fargument-noalias-global</span>.</p>
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-66965DEA-C97F-418A-B0D5-65CBA67BEECA.htm#GUID-66965DEA-C97F-418A-B0D5-65CBA67BEECA"><span class="option">fargument-noalias-global</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

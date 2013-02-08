@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag-error-limit, Qdiag-error-limit">
+<meta name="abstract" content="Specifies the maximum number of errors allowed before compilation stops.">
+<meta name="description" content="Specifies the maximum number of errors allowed before compilation stops.">
+<meta name="DC.subject" content="/Qdiag-error-limit compiler option, -diag-error-limit compiler option">
+<meta name="keywords" content="/Qdiag-error-limit compiler option, -diag-error-limit compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EDB3AC79-BA44-4161-9798-75C6DD212431">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag-error-limit, Qdiag-error-limit</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag_error_limit"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag_error_limit"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="option_error_limit"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EDB3AC79-BA44-4161-9798-75C6DD212431">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">diag-error-limit, Qdiag-error-limit</h1>
+<!--Specifies the maximum number of errors allowed before compilation stops.--><div><p>Specifies the maximum number of errors allowed before compilation stops.</p>
+
+<div class="section" id="GUID-2434BBCD-57D5-45DE-AC79-9DCBDCCDB35D"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Diagnostics &gt; Error Limit</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Set Error Limit</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Diagnostics &gt; Error Limit</strong></p>
+</div>
+<div class="section" id="GUID-4FD7D588-4A3F-4B66-8DAE-F1863A796874"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-E0BAE950-1992-4918-BDA7-EC4A227CA53D"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-diag-error-limit</span><span class="var">n</span></p><p><span class="kwd">-no-diag-error-limit</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-error-limit</span><span class="sep">:</span><span class="var">n</span></p><p><span class="kwd">/Qdiag-error-limit-</span></p></td></tr></table></div>
+<div class="section" id="GUID-43752FAA-7468-4627-B695-B6464ED7576C"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the maximum number of error-level or fatal-level compiler errors allowed.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-FCC579A9-9208-4DC4-9E88-23041410A42B"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>30</p></td>
+<td valign="top" class="noborder"><p>A maximum of 30 error-level and fatal-level messages are allowed.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-D8D60172-07A8-4BC5-9013-5A50CC5E82A2"><h2>Description</h2><p>This option specifies the maximum number of errors allowed before compilation stops. It indicates the maximum number of error-level or fatal-level compiler errors allowed for a file specified on the command line. </p>
+<p>If you specify <span class="option">-no-diag-error-limit</span> (Linux OS and OS X) or <span class="option">/Qdiag-error-limit-</span> (Windows OS) on the command line, there is no limit on the number of errors that are allowed.</p>
+<p>If the maximum number of errors is reached, a warning message is issued and the next file (if any) on the command line is compiled.</p>
+</div>
+
+<div class="section" id="GUID-A737BA36-66B3-40E8-823E-B082B040A1E5"><h2>Alternate Options</h2><p>Linux and OS X: <span class="option">-wn</span> (this is a deprecated option)</p>
+<p>Windows: <span class="option">/Qwn</span> (this is a deprecated option)</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

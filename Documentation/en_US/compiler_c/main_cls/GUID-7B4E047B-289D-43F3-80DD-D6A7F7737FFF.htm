@@ -1,0 +1,176 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Output, Debug, and Precompiled Header (PCH) Options">
+<meta name="DC.Relation" scheme="URI" content="GUID-C049864C-4C7A-4124-8BD3-045B7D82F2FA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-901DA056-846F-4778-B904-4533DE2B5067.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-58EEF536-C4FA-4DBC-9AC1-56137B28DD0D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A9BAC5F9-8DF5-4AE7-B507-2287687FD75A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2AD0960F-AA99-4C35-919D-850EF024FEC9.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-38B01CED-0FC6-4693-A2FD-90A3D1C0DF2D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8BF91C92-D4DE-4B4D-970A-1B76A3143C17.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D8C7575F-412B-4D5D-AA0E-7F3BD94DFD88.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9C616CAD-D903-4A31-8EA5-7BD6BA4333E4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2CE4CAE3-757C-4326-9AE9-CE9E8E36302C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-195F114D-7DB5-4A05-9CCF-F51C0A992381.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EFFE6B89-3549-432B-9C45-F63E9AB9E617.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E639FC3A-8111-4B87-9B22-47C884B4CD76.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-40177E91-B53F-4942-95E2-555E208C5C15.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E5AC06AB-8019-44AE-A213-5DEDE6C7D94D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4080D4B9-D56C-4760-9DA9-AD0E4044C52B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-68D2CD78-DBBC-4B19-847D-20EA9119E730.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2F0279D-21BA-426A-9F29-43BDF5606ECE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5BD860F6-A6E1-4D68-9DC0-9BCDE62204A0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D36F9166-85E9-4FE0-8051-880D926BCAC5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DB4B8DFC-E445-42C6-9A0E-6452F938DE43.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BA3A76A-EBFE-4C1D-8F3C-77CB7E2C23E5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1B8F88EB-845B-4317-8A89-B7B18F084399.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E214CA77-2985-47D7-AA85-AF85622EF995.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BDCEDA06-A3F2-4BA5-995A-9B281543766A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9E1C426C-3725-4527-8BDC-0E5EC791A525.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2A93D226-D843-4D63-AB23-742AB55466FA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1951B847-6362-4297-9E8F-E66D34DB40A7.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0D423113-5A19-4341-BA73-05D7089B3BB8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-65F1FC0F-16CB-441E-8E38-3A49DED905F6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A6D3766C-0412-4C53-BCDF-FA2FB495F76A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8EAC9DBB-9DCE-460D-9602-0B2B760A6C64.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-87AB8149-563E-47B2-B9E3-CD034AAD607A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6DB051C4-DAAF-4F86-B921-1F2C466971C1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-28BF365D-75E3-4542-ACD2-9E3B87979A33.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-366E0C03-6A68-4E46-A904-3E612AFC7DDD.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8A324AA4-F3A0-4875-9E0B-C2D828DC5A07.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0098A263-E185-41DD-9FD1-F5A318AA96D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A0A658B-DFFC-4CDB-8009-45F983FB22BD.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Output, Debug, and Precompiled Header (PCH) Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Output, Debug, and Precompiled Header (PCH) Options</h1>
+
+
+<div></div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C049864C-4C7A-4124-8BD3-045B7D82F2FA.htm">Compiler Option Categories and Descriptions</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-901DA056-846F-4778-B904-4533DE2B5067.htm">c</a><br>
+Prevents linking.</li>
+<li class="ulchildlink"><a href="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE.htm">debug (Linux* OS and OS X*)</a><br>
+Enables or disables generation of debugging information.</li>
+<li class="ulchildlink"><a href="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0.htm">debug (Windows* OS)</a><br>
+Enables or disables generation of debugging information.</li>
+<li class="ulchildlink"><a href="GUID-58EEF536-C4FA-4DBC-9AC1-56137B28DD0D.htm">Fa</a><br>
+Specifies that an assembly listing file should be generated. </li>
+<li class="ulchildlink"><a href="GUID-A9BAC5F9-8DF5-4AE7-B507-2287687FD75A.htm">FA</a><br>
+Specifies the contents of an assembly listing file. </li>
+<li class="ulchildlink"><a href="GUID-2AD0960F-AA99-4C35-919D-850EF024FEC9.htm">fasm-blocks</a><br>
+Enables the use of blocks and entire functions of assembly code within a C or C++ file.</li>
+<li class="ulchildlink"><a href="GUID-38B01CED-0FC6-4693-A2FD-90A3D1C0DF2D.htm">FC</a><br>
+Displays the full path of source files passed to the compiler in diagnostics.</li>
+<li class="ulchildlink"><a href="GUID-8BF91C92-D4DE-4B4D-970A-1B76A3143C17.htm">fcode-asm</a><br>
+Produces an assembly listing with machine code annotations.</li>
+<li class="ulchildlink"><a href="GUID-D8C7575F-412B-4D5D-AA0E-7F3BD94DFD88.htm">Fd</a><br>
+Lets you specify a name for a program database (PDB) file. </li>
+<li class="ulchildlink"><a href="GUID-9C616CAD-D903-4A31-8EA5-7BD6BA4333E4.htm">FD</a><br>
+Generates file dependencies related to the Microsoft* C/C++ compiler.</li>
+<li class="ulchildlink"><a href="GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC.htm">Fe</a><br>
+Specifies the name for a built program or dynamic-link library.</li>
+<li class="ulchildlink"><a href="GUID-2CE4CAE3-757C-4326-9AE9-CE9E8E36302C.htm">fmerge-debug-strings</a><br>
+ Causes the compiler to pool strings used in debugging information.</li>
+<li class="ulchildlink"><a href="GUID-195F114D-7DB5-4A05-9CCF-F51C0A992381.htm">Fo</a><br>
+Specifies the name for an object file.</li>
+<li class="ulchildlink"><a href="GUID-EFFE6B89-3549-432B-9C45-F63E9AB9E617.htm">Fp</a><br>
+Lets you specify an alternate path or file name for precompiled header files.</li>
+<li class="ulchildlink"><a href="GUID-E639FC3A-8111-4B87-9B22-47C884B4CD76.htm">Fr</a><br>
+Invokes the Microsoft C/C++ compiler and tells it to produce a BSCMAKE.sbr file without information on local variables.  This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-40177E91-B53F-4942-95E2-555E208C5C15.htm">FR</a><br>
+Invokes the Microsoft C/C++ compiler and tells it to produce a BSCMAKE .sbr file with complete symbolic information.</li>
+<li class="ulchildlink"><a href="GUID-E5AC06AB-8019-44AE-A213-5DEDE6C7D94D.htm">fsource-asm</a><br>
+Produces an assembly listing with source code annotations.</li>
+<li class="ulchildlink"><a href="GUID-4080D4B9-D56C-4760-9DA9-AD0E4044C52B.htm">ftrapuv, Qtrapuv</a><br>
+Initializes stack local variables to an unusual value to aid error detection.</li>
+<li class="ulchildlink"><a href="GUID-68D2CD78-DBBC-4B19-847D-20EA9119E730.htm">fverbose-asm</a><br>
+Produces an assembly listing with compiler comments, including options and version information.</li>
+<li class="ulchildlink"><a href="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm">g, Zi, Z7</a><br>
+Tells the compiler to generate full debugging information in the object file or a project database (PDB) file. </li>
+<li class="ulchildlink"><a href="GUID-C2F0279D-21BA-426A-9F29-43BDF5606ECE.htm">g0</a><br>
+Disables generation of symbolic debug information. </li>
+<li class="ulchildlink"><a href="GUID-5BD860F6-A6E1-4D68-9DC0-9BCDE62204A0.htm">gdwarf-2</a><br>
+Enables generation of debugging information using the DWARF Version 2 format.</li>
+<li class="ulchildlink"><a href="GUID-D36F9166-85E9-4FE0-8051-880D926BCAC5.htm">gdwarf-3</a><br>
+Enables generation of debugging information using the DWARF Version 3 format.</li>
+<li class="ulchildlink"><a href="GUID-DB4B8DFC-E445-42C6-9A0E-6452F938DE43.htm">Gm</a><br>
+Enables a minimal rebuild.</li>
+<li class="ulchildlink"><a href="GUID-6BA3A76A-EBFE-4C1D-8F3C-77CB7E2C23E5.htm">grecord-gcc-switches</a><br>
+ Causes the command line options that were used to invoke the compiler to be appended to the DW_AT_producer attribute in DWARF debugging information.</li>
+<li class="ulchildlink"><a href="GUID-1B8F88EB-845B-4317-8A89-B7B18F084399.htm">map-opts, Qmap-opts</a><br>
+Maps one or more compiler options to their equivalent on a different operating system.</li>
+<li class="ulchildlink"><a href="GUID-E214CA77-2985-47D7-AA85-AF85622EF995.htm">o</a><br>
+Specifies the name for an output file.</li>
+<li class="ulchildlink"><a href="GUID-BDCEDA06-A3F2-4BA5-995A-9B281543766A.htm">pch</a><br>
+Tells the compiler to use appropriate precompiled header files. </li>
+<li class="ulchildlink"><a href="GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4.htm">pch-create</a><br>
+Tells the compiler to create a precompiled header file. </li>
+<li class="ulchildlink"><a href="GUID-9E1C426C-3725-4527-8BDC-0E5EC791A525.htm">pch-dir</a><br>
+Tells the compiler the location for precompiled header files.</li>
+<li class="ulchildlink"><a href="GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0.htm">pch-use</a><br>
+ Tells the compiler to use a precompiled header file. </li>
+<li class="ulchildlink"><a href="GUID-2A93D226-D843-4D63-AB23-742AB55466FA.htm">print-multi-lib</a><br>
+Prints information about where system libraries should be found.</li>
+<li class="ulchildlink"><a href="GUID-1951B847-6362-4297-9E8F-E66D34DB40A7.htm">Qpchi</a><br>
+Enable precompiled header coexistence to reduce build time.</li>
+<li class="ulchildlink"><a href="GUID-0D423113-5A19-4341-BA73-05D7089B3BB8.htm">Quse-msasm-symbols</a><br>
+Tells the compiler to use a dollar sign ("$") when producing symbol names.</li>
+<li class="ulchildlink"><a href="GUID-65F1FC0F-16CB-441E-8E38-3A49DED905F6.htm">RTC</a><br>
+Enables checking for certain run-time conditions. </li>
+<li class="ulchildlink"><a href="GUID-A6D3766C-0412-4C53-BCDF-FA2FB495F76A.htm">S</a><br>
+Causes the compiler to compile to an assembly file only and not link.</li>
+<li class="ulchildlink"><a href="GUID-8EAC9DBB-9DCE-460D-9602-0B2B760A6C64.htm">use-asm, Quse-asm</a><br>
+Tells the compiler to produce objects through the assembler.</li>
+<li class="ulchildlink"><a href="GUID-87AB8149-563E-47B2-B9E3-CD034AAD607A.htm">use-msasm</a><br>
+Enables the use of blocks and entire functions of assembly code within a C or C++ file. </li>
+<li class="ulchildlink"><a href="GUID-6DB051C4-DAAF-4F86-B921-1F2C466971C1.htm">V (Windows OS*)</a><br>
+Places the text string specified into the object file being generated by the compiler.</li>
+<li class="ulchildlink"><a href="GUID-28BF365D-75E3-4542-ACD2-9E3B87979A33.htm">Y-</a><br>
+Tells the compiler to ignore all other precompiled header files. </li>
+<li class="ulchildlink"><a href="GUID-366E0C03-6A68-4E46-A904-3E612AFC7DDD.htm">Yc</a><br>
+Tells the compiler to create a precompiled header file. </li>
+<li class="ulchildlink"><a href="GUID-8A324AA4-F3A0-4875-9E0B-C2D828DC5A07.htm">Yd</a><br>
+Tells the compiler to add complete debugging information in all object files created from a precompiled header file when option /Zi or /Z7 is specified. This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-0098A263-E185-41DD-9FD1-F5A318AA96D2.htm">Yu</a><br>
+Tells the compiler to use a precompiled header file. </li>
+<li class="ulchildlink"><a href="GUID-5A0A658B-DFFC-4CDB-8009-45F983FB22BD.htm">ZI</a><br>
+Tells the compiler to generate full debugging information in the object file.</li>
+</ul>
+</div>
+
+</body>
+</html>

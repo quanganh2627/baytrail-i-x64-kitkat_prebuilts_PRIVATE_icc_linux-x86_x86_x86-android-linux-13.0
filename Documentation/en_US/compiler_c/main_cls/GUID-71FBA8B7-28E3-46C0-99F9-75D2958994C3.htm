@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="opt-streaming-stores, Qopt-streaming-stores">
+<meta name="abstract" content="Enables generation of streaming stores for optimization.">
+<meta name="description" content="Enables generation of streaming stores for optimization.">
+<meta name="DC.subject" content="streaming stores, option generating for optimization, /Qopt-streaming-stores compiler option, -opt-streaming-stores compiler option">
+<meta name="keywords" content="streaming stores, option generating for optimization, /Qopt-streaming-stores compiler option, -opt-streaming-stores compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D">
+<meta name="DC.Relation" scheme="URI" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-71FBA8B7-28E3-46C0-99F9-75D2958994C3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>opt-streaming-stores, Qopt-streaming-stores</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_opt_streaming_stores"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_opt_streaming_stores"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-71FBA8B7-28E3-46C0-99F9-75D2958994C3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">opt-streaming-stores, Qopt-streaming-stores</h1>
+<!--Enables generation of streaming stores for optimization.--><div><p>Enables generation of streaming stores for optimization.</p>
+
+<div class="section" id="GUID-24194212-3AE9-4EB6-AF4C-B70F1913FF24"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-E393FB6C-AF45-479E-AF2F-0DCAD30BA9EE"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-B20EE809-3B5F-4FFB-8A05-A5611C6260E1"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-opt-streaming-stores </span><span class="var">keyword</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qopt-streaming-stores:</span><span class="var">keyword</span></p></td></tr></table></div>
+<div class="section" id="GUID-197CFF5D-8BEA-440E-8CCB-14482837503A"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Specifies whether streaming stores are generated. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">always</span></p></td>
+<td valign="top" class="noborder"><p>Enables generation of streaming stores for optimization. The compiler optimizes under the assumption that the application is memory bound.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">never</span></p></td>
+<td valign="top" class="noborder"><p>Disables generation of streaming stores for optimization. Normal stores are performed.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">auto</span></p></td>
+<td valign="top" class="noborder"><p>Lets the compiler decide which instructions to use.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-4913913A-76BF-4C6A-A37C-1B861AD72A8C"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-opt-streaming-stores auto</span><br><span> or<span class="option">/Qopt-streaming-stores:auto</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler decides whether to use streaming stores or normal stores.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-DA49F45F-7940-493E-8A11-59A8E34B6633"><h2>Description</h2><p>This option enables generation of streaming stores for optimization. This method stores data with instructions that use a non-temporal buffer, which minimizes memory hierarchy pollution.</p>
+<p>This option may be useful for applications that can benefit from streaming stores.</p>
+</div>
+
+<div class="section" id="GUID-4B0EA9E2-8614-48CA-934E-A7CB36B1954A"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D"><span class="option">ax</span>, <span class="option">Qax</span></a>  compiler option</div>
+<div><a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">x</span>, <span class="option">Qx</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

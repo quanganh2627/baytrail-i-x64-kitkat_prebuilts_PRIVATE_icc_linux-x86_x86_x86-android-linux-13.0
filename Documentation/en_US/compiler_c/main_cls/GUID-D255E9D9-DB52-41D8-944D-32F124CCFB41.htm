@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Writing Target-Specific Code with _Cilk_offload">
+<meta name="DC.subject" content="code, target-specific, target-specific code, writing">
+<meta name="keywords" content="code, target-specific, target-specific code, writing">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BCD20CAF-C7E3-4DD1-A09C-F87479442B53.htm#GUID-BCD20CAF-C7E3-4DD1-A09C-F87479442B53">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Writing Target-Specific Code with _Cilk_offload</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_writing_trgt_code_kwd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Writing Target-Specific Code with 
+	 <span class="keyword">_Cilk_offload</span></h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>You can write offloaded sections of code to take advantage of target-specific intrinsic functions. When the compiler generates code for the coprocessor, it defines the macro 
+		<samp class="codeph">__MIC__</samp>. You can write target-specific code within an 
+		<samp class="codeph">#ifdef __MIC__</samp> section. 
+	 </p>
+ 
+	 <div class="section" id="GUID-D8C6F47D-3492-4162-B43B-29E170A3A86D"><h2>Example</h2> 
+		<p>This example shows how target-specific code may be written within an 
+		  <samp class="codeph">#ifdef __MIC__</samp> section. 
+		</p>
+ 
+		<p>The implementation of the class 
+		  <samp class="codeph">F32vec</samp> is specialized for the CPU and the coprocessor. The offloaded code can use the specialized version if it runs on the coprocessor. If 
+		  <samp class="codeph">function_1</samp> is executed on the CPU, it uses the CPU version of the class 
+		  <samp class="codeph">F32vec</samp>. If it runs on the coprocessor, it uses the definition from 
+		  <span class="filepath">micvec.h</span>. 
+		</p>
+ 
+		<pre>// The class F32vec will be used in offloaded code
+// It needs the target(mic) attribute
+
+#pragma offload_attribute(push,_Cilk_shared)
+
+
+// Use customized versions for CPU and coprocessor
+
+#ifdef __MIC__
+
+	// The Intel&reg; MIC Architecture version of the class is in micvec.h
+	#include &lt;micvec.h&gt;
+
+#else
+	// The CPU version is written inline
+	class F32vec16
+	{
+  		public:
+    		...
+    		friend F32vec16 sqrt(const F32vec16&amp; a);
+	};
+#endif
+
+#pragma offload_attribute(pop)
+
+
+_Cilk_shared void function_3()
+{
+	F32vec16 w = ...;
+	F32vec16 s;
+	s = sqrt(w);
+	...
+}
+</pre> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-BCD20CAF-C7E3-4DD1-A09C-F87479442B53.htm#GUID-BCD20CAF-C7E3-4DD1-A09C-F87479442B53">Special Cases 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

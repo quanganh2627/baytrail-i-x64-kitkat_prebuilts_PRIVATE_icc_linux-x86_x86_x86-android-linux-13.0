@@ -1,0 +1,741 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Remarks, Warnings, and Errors">
+<meta name="DC.subject" content="diagnostics, warnings and errors, error messages">
+<meta name="keywords" content="diagnostics, warnings and errors, error messages">
+<meta name="DC.Relation" scheme="URI" content="GUID-5E9CD3E3-42F0-416F-9A97-7664782EB886.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D060680A-1A18-4574-8291-5C74E6E31335">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Remarks, Warnings, and Errors</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_rem_warn_err"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_rem_warn_err"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D060680A-1A18-4574-8291-5C74E6E31335">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Remarks, Warnings, and Errors</h1>
+ 
+   
+  <div> 
+	 <p>This topic describes compiler remarks, warnings, and errors. The Intel&reg; C++ Compiler displays these messages, along with the erroneous source line, on the standard output. 
+	 </p>
+ 
+	 <div class="section" id="GUID-59FBCF51-06F3-4872-8335-0DAB99967830"><h2 class="sectiontitle">Remarks</h2> 
+		 
+		<p>Remark messages report common but sometimes unconventional use of C or C++. Remarks do not stop translation or linking. Remarks do not interfere with any output files. The following are some representative remark messages: 
+		</p>
+ 
+		<ul type="disc" id="GUID-BD3D72FD-8EAB-48D9-8A6B-27FBA8C0AF49"> 
+		  <li> 
+			 <p><samp class="codeph">function declared implicitly</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">type qualifiers are meaningless in this declaration</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">controlling expression is constant</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-ED65EB57-A372-4927-9ED1-332C27D6CD52"><h2 class="sectiontitle">Warnings</h2> 
+		 
+		<p>Warning messages report legal but questionable use of C or C++. The compiler displays warnings by default. You can suppress warning messages by specifying an appropriate compiler option. Warnings do not stop translation or linking. Warnings do not interfere with any output files. The following are some representative warning messages: 
+		</p>
+ 
+		<ul type="disc" id="GUID-42FAA3B0-6461-43FC-81CD-B6A7BC5E5A59"> 
+		  <li> 
+			 <p><samp class="codeph">declaration does not declare anything</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">pointless comparison of unsigned integer with zero</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">possible use of = where == was intended</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-3A1D92D4-F80B-4686-B0E4-89A87C33596C"> 
+		<p><strong>Additional Warnings</strong> 
+		</p>
+ 
+		<p>The following options produce additional warnings: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EB051990-96A9-44AE-AAE0-6D99B91E4448" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" align="left" valign="top" width="30%" id="d723444e137"> 
+					 <p>Option 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" width="70%" id="d723444e143"> 
+					 <p>Result 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]missing-prototypes</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn for missing prototypes 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "><span class="option">-W[no-]missing-declarations</span> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn for missing declarations 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "><span class="option">-W[no-]unused-variable</span> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn for unused variable 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]pointer-arith</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn for questionable pointer arithmetic 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]uninitialized</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn if a variable is used before being initialized 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]deprecated</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Display warnings related to deprecated features 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]abi</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn if generated code is not C++ ABI compliant 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]unused-function</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn if declared function is not used 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]unknown-pragmas</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn if an unknown 
+						<span class="keyword">#pragma</span> directive is used 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]main</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn if return type of main is not expected 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]comment[s]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn when /* appears in the middle of a /* */ comment 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d723444e137 "> 
+					 <p><span class="option">-W[no-]return-type</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d723444e143 "> 
+					 <p>Warn when a function uses the default 
+						<span class="keyword">int</span> return type<br>Warn when a return statement is used in a void function 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6E3029C4-6EFF-4485-BCAE-DB691932E01B"><h2 class="sectiontitle">Errors</h2> 
+		 
+		<p>These messages report syntactic or semantic misuse of C or C++. The compiler always displays error messages. Errors suppress object code for the module containing the error and prevent linking, but they allow parsing to continue to detect other possible errors. Some representative error messages are: 
+		</p>
+ 
+		<ul type="disc" id="GUID-A7E183D9-EBC2-4B5E-A6AF-FDD3605127C2"> 
+		  <li> 
+			 <p><samp class="codeph">missing closing quote</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">expression must have arithmetic type</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">expected a ";"</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <p>Some remarks, warnings, and errors are numbered and can be disabled using 
+  <span class="option">/Qdiag-disable:list</span> (Windows* OS) or 
+  <span class="option">-diag-disable list</span> (Linux* OS and OS X*). For example: 
+  </p>
+ 
+  <p> 
+	 <pre>/Qdiag-disable:117,230,450 (Windows* OS)</pre> 
+	 <pre>-diag-disable 117,230,450 (Linux* OS and OS X*)</pre> 
+  </p>
+ 
+  <div class="section" id="GUID-9070CEF8-4E6B-4AB0-B471-22EEA766FF58"><h2 class="sectiontitle">Option Summary</h2> 
+	  
+	 <p>Use the following compiler options to control remarks, warnings, and errors: 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BC9A12B0-F65A-4A0C-BAE6-521AA2C67AFD" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="30%" id="d723444e440"> 
+				  <p>Option 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" width="70%" id="d723444e446"> 
+				  <p>Result 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-w, -W0</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Enables diagnostics for errors; disables diagnostics for warnings 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-w1</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Enables diagnostics for warnings and errors 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-w2</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Enables diagnostics for verbose warnings, warnings, and errors 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-w3</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Enables diagnostics for remarks, warnings, and errors. Additional warnings are also enabled above level 2 warnings. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-Wremarks</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Display remarks and comments 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-Wbrief</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Display brief one-line diagnostics 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-Wcheck</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Enable more strict diagnostics 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-Werror-all</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Change all warnings and remarks to errors 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e440 "> 
+				  <p><span class="option">-Werror</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e446 "> 
+				  <p>Change all warnings to errors 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>You can also control the display of diagnostic information with variations of the 
+	 <span class="option">-diag</span> compiler option. This compiler option accepts numerous arguments and values, allowing you wide control over displayed diagnostic messages and reports. 
+	 </p>
+ 
+	 <p>Some of the most common variations include the following: 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B843E52D-9640-4374-8E37-5727C8B0FD20" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="30%" id="d723444e635"> 
+				  <p>Option 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" width="70%" id="d723444e641"> 
+				  <p>Result 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e635 "> 
+				  <p><var>:list</var><span class="option">-diag-enable</span><var> list</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e641 "> 
+				  <p>Enables a diagnostic message or a group of messages 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e635 "> 
+				  <p><var>:list</var><span class="option">-diag-disable</span><var> list</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e641 "> 
+				  <p>Disables a diagnostic message or a group of messages 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e635 "> 
+				  <p><var>:list</var><span class="option">-diag-warning</span><var> list</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e641 "> 
+				  <p>Tells the compiler to change diagnostics to warnings 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e635 "> 
+				  <p><var>:list</var><span class="option">-diag-error</span><var> list</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e641 "> 
+				  <p>Tells the compiler to change diagnostics to errors 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d723444e635 "> 
+				  <p><var>:list</var><span class="option">-diag-remark</span><var> list</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d723444e641 "> 
+				  <p>Tells the compiler to change diagnostics to remarks (comments) 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>The 
+		<var>list</var> items can be specific diagnostic IDs, one of the keywords 
+		<span class="tt">warn</span>, 
+		<span class="tt">remark</span>, or 
+		<span class="tt">error</span>, or a keyword specifying a certain group (<span class="tt">par</span>, 
+		<span class="tt">vec</span>, 
+		<span class="parmname">sc</span>,<span class="tt"> driver</span>, 
+		<span class="tt">thread</span>, 
+		,<span class="tt"> port-win</span>, 
+		<span class="tt">sc</span>,<span class="parmname">openmp</span>). For more information, see 
+	 <span class="option">-diag</span>. 
+	 </p>
+ 
+	 <p>Other diagnostic-related options include the following: 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4D441805-D9E6-4C33-9193-E85D3845EBA7" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="30%" id="d723444e818"> 
+				  <p>Option 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" width="70%" id="d723444e824"> 
+				  <p>Result 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" align="left" valign="top" width="30%" headers="d723444e818 "> 
+				  <p><span class="option">-diag-dump</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="top" width="70%" headers="d723444e824 "> 
+				  <p>Tells the compiler to print all enabled diagnostic messages and stop compilation 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" align="left" valign="top" width="30%" headers="d723444e818 "> 
+				  <p><var>[:file]</var><span class="option">-diag-file</span><var>[=file]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="top" width="70%" headers="d723444e824 "> 
+				  <p>Causes the results of diagnostic analysis to be output to a file 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" align="left" valign="top" width="30%" headers="d723444e818 "> 
+				  <p><var>[:file]</var><span class="option">-diag-file-append</span><var>[=file]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="top" width="70%" headers="d723444e824 "> 
+				  <p>Causes the results of diagnostic analysis to be appended to a file 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" align="left" valign="top" width="30%" headers="d723444e818 "><var>:n</var><span class="option">-diag-error-limit</span><var> n</var> 
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="top" width="70%" headers="d723444e824 "> 
+				  <p>Specifies the maximum number of errors allowed before compilation stops 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5E9CD3E3-42F0-416F-9A97-7664782EB886.htm">Error Handling</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

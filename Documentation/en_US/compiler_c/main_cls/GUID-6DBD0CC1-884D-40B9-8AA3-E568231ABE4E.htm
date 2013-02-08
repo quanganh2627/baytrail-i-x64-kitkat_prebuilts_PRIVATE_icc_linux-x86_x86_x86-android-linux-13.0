@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_xgetbv()">
+<meta name="abstract" content="Reads the content of an extended control register.">
+<meta name="description" content="Reads the content of an extended control register.">
+<meta name="DC.subject" content="intrinsics, for managing extended processor states and registers, _xgetbv()">
+<meta name="keywords" content="intrinsics, for managing extended processor states and registers, _xgetbv()">
+<meta name="DC.Relation" scheme="URI" content="GUID-4861A494-8924-4E66-BD34-A9B3FADAA22A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6DBD0CC1-884D-40B9-8AA3-E568231ABE4E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_xgetbv()</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_manextxgetbv"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6DBD0CC1-884D-40B9-8AA3-E568231ABE4E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"> _xgetbv()</h1>
+
+<!-- Reads the content of an extended control register.-->
+
+<div><p> Reads the content of an extended control register.</p>
+
+
+
+<div class="section" id="GUID-094AEA5F-2B71-4699-AABA-9BDD4FA6A354"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern unsigned __int64 _xgetbv(unsigned int xcr);</span></p></td></tr></table>
+</div>
+
+<div class="section" id="GUID-F6219A61-5399-474D-9B64-E1911EF44ECD"><h2>Arguments</h2><dl id="GUID-1BC835C3-C2EA-4D99-8354-42870572BD1A"><dt class="dlterm"> <var>xcr</var></dt>
+<dd> <p>An extended control register to be read. Currently, only the value '0' is allowed.</p>
+</dd>
+</dl>
+
+
+</div>
+
+
+<div class="section" id="GUID-F564037F-0DC7-4ABF-BA13-0865CA0B9225"><h2>Description</h2>
+<p> This intrinsic reads from extended control registers.  Currently, the only control register allowed/defined is <span class="option">(XCR0) XFEATURE_ENABLED_MASK</span> register. The corresponding constant is defined in the <span class="filepath">immintrin.h</span> file to refer to this register: <pre>#define _XCR_XFEATURE_ENABLED_MASK 0</pre>This intrinsic maps to <span class="option">XGETBV</span> instruction.</p>
+
+</div>
+
+
+<div class="section" id="GUID-436F2FD3-4294-4764-B71A-450807CFAC92"><h2>Returns</h2><p>Returns the content of a specified extended control register.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-4861A494-8924-4E66-BD34-A9B3FADAA22A.htm">Intrinsics for Reading and Writing the Content of Extended Control Registers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="vec, Qvec">
+<meta name="abstract" content="Enables or disables vectorization.">
+<meta name="description" content="Enables or disables vectorization.">
+<meta name="DC.subject" content="/Qvec compiler option, -vec compiler option, vectorization, option disabling">
+<meta name="keywords" content="/Qvec compiler option, -vec compiler option, vectorization, option disabling">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1DF7D7A8-39C9-40A0-98DA-744F3336F25B.htm#GUID-1DF7D7A8-39C9-40A0-98DA-744F3336F25B">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D">
+<meta name="DC.Relation" scheme="URI" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Relation" scheme="URI" content="GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD.htm#GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD">
+<meta name="DC.Relation" scheme="URI" content="GUID-19DD48B5-56E5-4ECD-9BBD-C759D94F1901.htm#GUID-19DD48B5-56E5-4ECD-9BBD-C759D94F1901">
+<meta name="DC.Relation" scheme="URI" content="GUID-C7A523F1-B43D-4AF7-920A-5B155E0823EE.htm#GUID-C7A523F1-B43D-4AF7-920A-5B155E0823EE">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B4045BFB-CB89-4FE2-9FDE-4FC96A4F4A01">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>vec, Qvec</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_vec"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_vec"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B4045BFB-CB89-4FE2-9FDE-4FC96A4F4A01">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">vec, Qvec</h1>
+<!--Enables or disables vectorization.--><div><p>Enables or disables vectorization.</p>
+
+<div class="section" id="GUID-FEC824B3-D2E9-4FE8-9845-034239B44F11"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-4A5334DC-7C7B-4558-A2F0-BFE90B3555C9"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-62901C42-74C4-4A4C-8D66-EEC2D990D310"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-vec</span></p><p><span class="kwd">-no-vec</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qvec</span></p><p><span class="kwd">/Qvec-</span></p></td></tr></table></div>
+<div class="section" id="GUID-1BE726DD-C72F-42F9-AF93-DFB39AF80662"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-FC533113-07C1-47A1-963E-37FC98FD1774"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-vec</span><br><span> or<span class="option">/Qvec</span></span></p></td>
+<td valign="top" class="noborder"><p>Vectorization is enabled.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-59922DF3-CDF6-47A5-9575-A9376E2F0227"><h2>Description</h2><p>This option enables or disables vectorization.</p>
+<p>To disable vectorization, specify <span class="option">-no-vec</span> (Linux* OS and OS X*) or <span class="option">/Qvec-</span> (Windows* OS). </p>
+<p>To disable the SIMD transformations, specify option <span class="option">-no-simd</span> (Linux
+OS and OS X) or <span class="option">/Qsimd-</span> (Windows OS).</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p> Using this option enables vectorization at default optimization levels for both Intel&reg; microprocessors and non-Intel microprocessors.  Vectorization may call library routines that
+can result in additional performance gain on Intel microprocessors than on non-Intel
+microprocessors. The vectorization can also be affected by certain options, such as <span class="option">/arch</span> or <span class="option">/Qx</span> (Windows OS) or <span class="option">-m</span> or <span class="option">-x</span> (Linux
+OS and OS X).</p>
+
+</div></div>
+
+<div class="section" id="GUID-03441709-8A52-4029-B038-D90655D908B8"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-1DF7D7A8-39C9-40A0-98DA-744F3336F25B.htm#GUID-1DF7D7A8-39C9-40A0-98DA-744F3336F25B"><span class="option">simd, Qsimd</span></a> compiler option</div>
+<div><a href="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D"><span class="option">ax, Qax</span></a> compiler option</div>
+<div><a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">x, Qx</span></a> compiler option</div>
+<div><a href="GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD.htm#GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD"><span class="option">vec-report, Qvec-report</span></a> compiler option</div>
+<div><a href="GUID-19DD48B5-56E5-4ECD-9BBD-C759D94F1901.htm#GUID-19DD48B5-56E5-4ECD-9BBD-C759D94F1901"><span class="option">vec-guard-write, Qvec-guard-write</span></a> compiler option</div>
+<div><a href="GUID-C7A523F1-B43D-4AF7-920A-5B155E0823EE.htm#GUID-C7A523F1-B43D-4AF7-920A-5B155E0823EE"><span class="option">vec-threshold, Qvec-threshold</span></a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

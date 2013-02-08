@@ -1,0 +1,290 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Load Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer load operations, loadl_epi64, loadu_si128, load_si128, Intel&reg; Streaming SIMD Extensions 2, integer load intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer load operations, loadl_epi64, loadu_si128, load_si128, Intel&reg; Streaming SIMD Extensions 2, integer load intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-833DE069-7D58-43D8-8B63-7FEF4B84E2DF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Load Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_int_load"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-833DE069-7D58-43D8-8B63-7FEF4B84E2DF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Load Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-40D048A5-E57A-4D64-B77F-ED1127A8E5CB"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer load operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span> and 
+        <span class="keyword">R1</span> represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-059451CF-B155-408C-9E40-7E562DA30117"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6917A3EB-9E80-442F-AA50-57189AD67BD8" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d423883e78"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d423883e84"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d423883e90"> 
+                <p>Corresponding Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d423883e78 "> 
+                <p><span class="option"> _mm_load_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d423883e84 "> 
+                <p>Load 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d423883e90 "> 
+                <p><span class="keyword">MOVDQA</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d423883e78 "> 
+                <p><span class="option"> _mm_loadu_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d423883e84 "> 
+                <p>Load 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d423883e90 "> 
+                <p><span class="keyword">MOVDQU</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d423883e78 "> 
+                <p><span class="option"> _mm_loadl_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d423883e84 "> 
+                <p>Load and zero 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d423883e90 "> 
+                <p><span class="keyword">MOVQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6D6A578D-D583-4DDA-8A3E-305CF00C2463"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_load_si128(__m128i const*p)</span></p></div> 
+      <p>Loads 128-bit value. Address 
+        <span class="keyword">p</span> must be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3BEB36FF-A8FF-4D13-834D-6A1CB441E8AE"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-089C93A6-F8D7-499B-ABF3-1BEA2A20E9A2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d423883e204"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d423883e204 "> 
+                <p><span class="keyword">*p</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E8049934-CDB6-4DFC-A712-2DB319A49732"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_loadu_si128(__m128i const*p)</span></p></div> 
+      <p>Loads 128-bit value. Address 
+        <span class="keyword">p</span> not need be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-20224D97-D6AF-456E-9CE2-2CCDC2FF7C47"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E5AD63D7-FF06-4C33-B2E4-A012AA81F948" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d423883e255"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d423883e255 "> 
+                <p><span class="keyword">*p</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4CDC56AA-0AE8-499B-8DCD-EC7E9CC2B417"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_loadl_epi64(__m128i const*p)</span></p></div> 
+      <p>Load the lower 64 bits of the value pointed to by 
+        <span class="keyword">p</span> into the lower 64 bits of the result, zeroing the upper 64 bits of the result. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FD8DB0CF-167A-4755-81F1-51FDF4C31127"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1F482285-3211-474A-9773-5F8D2044DDAB" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d423883e306"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d423883e312"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d423883e306 "> 
+                <p><span class="keyword">*p[63:0]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d423883e312 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

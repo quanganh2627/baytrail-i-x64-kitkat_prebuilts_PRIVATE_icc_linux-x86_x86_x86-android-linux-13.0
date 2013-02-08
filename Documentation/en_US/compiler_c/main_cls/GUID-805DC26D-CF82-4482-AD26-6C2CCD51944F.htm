@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Non-Computational Operations Functions">
+<meta name="DC.subject" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, non-computational operations, is754version1985, is754version2008, class, isSignMinus, isNormal, isFinite, isZero, isSubnormal, isInfinite, isNaN, isSignaling, isCanonical, radix, totalOrder, totalOrderMag, lowerFlags, raiseFlags, testFlags, testSavedFlags, restoreFlags, saveFlags, getBinaryRoundingDirection, setBinaryRoundingDirection, saveModes, restoreModes, defaultMode">
+<meta name="keywords" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, non-computational operations, is754version1985, is754version2008, class, isSignMinus, isNormal, isFinite, isZero, isSubnormal, isInfinite, isNaN, isSignaling, isCanonical, radix, totalOrder, totalOrderMag, lowerFlags, raiseFlags, testFlags, testSavedFlags, restoreFlags, saveFlags, getBinaryRoundingDirection, setBinaryRoundingDirection, saveModes, restoreModes, defaultMode">
+<meta name="DC.Relation" scheme="URI" content="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-805DC26D-CF82-4482-AD26-6C2CCD51944F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Non-Computational Operations Functions</title>
+</head>
+<body id="GUID-805DC26D-CF82-4482-AD26-6C2CCD51944F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">Non-Computational Operations Functions</h1>
+
+  <div><p>
+Many routines in the libbfp754 library are more highly optimized for Intel&reg; microprocessors 
+than for non-Intel microprocessors.</p>
+<p>The Intel&reg; IEEE 754-2008 Binary Conformance Library supports the following functions for non-computational operations:</p>
+<div class="section" id="IS754VERSION1985"><a name="IS754VERSION1985"><!-- --></a><h2 class="sectiontitle"> is754version1985</h2><p><strong>Description:</strong> The function returns 1 if and only if this programming environment conforms to IEEE Std. 754-1985, otherwise returns 0.</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">int __binary_is754version1985(void);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This function in this library always returns 0.</p>
+</div></div>
+<div class="section" id="IS754VERSION2008"><a name="IS754VERSION2008"><!-- --></a><h2 class="sectiontitle">  is754version2008</h2><p><strong>Description:</strong> The function returns 1 if and only if this programming environment conforms to IEEE Std. 754-2008, otherwise returns 0.</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">int __binary_is754version2008(void);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This function in this library always returns 1.</p>
+</div></div>
+<div class="section" id="CLASS"><a name="CLASS"><!-- --></a><h2 class="sectiontitle">    class</h2><p><strong>Description:</strong> The function returns which class of the ten classes (<samp class="codeph">signalingNaN, quietNaN</samp>, <samp class="codeph">negativeInfinity</samp>, <samp class="codeph">negativeNormal</samp>, <samp class="codeph">negativeSubnormal</samp>, <samp class="codeph">negativeZero</samp>, <samp class="codeph">positiveZero</samp>, <samp class="codeph">positiveSubnormal</samp>, <samp class="codeph">positiveNormal</samp>, <samp class="codeph">positiveInfinity</samp>) the input floating-point number  <samp class="codeph">x</samp> belongs.
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-37559AE2-180A-4B08-BB0C-5E24F529C2B8" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" align="center" valign="top" width="NaN%" id="d414953e154"><p>Return value</p>
+</th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d414953e157"><p>Class</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>0</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">signalingNaN</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>1</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">quietNaN</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>2</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">negativeInfinity</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>3</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">negativeNormal</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>4</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">negativeSubnormal</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>5</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">negativeZero</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>6</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">positiveZero</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>7</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">positiveSubnormal</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>8</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">positiveNormal</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e154 "><p>9</p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e157 "><p><samp class="codeph">positiveInfinity</samp></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary32_class(float x);</samp><br><samp class="codeph">int __binary64_class(double x);</samp></p>
+</div>
+<div class="section" id="ISSIGNMINUS"><a name="ISSIGNMINUS"><!-- --></a><h2 class="sectiontitle">  isSignMinus</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument has negative sign.</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">int __binary32_isSignMinus(float x);</samp><br><samp class="codeph">int __binary64_isSignMinus(double x);</samp></p>
+</div>
+<div class="section" id="ISNORMAL"><a name="ISNORMAL"><!-- --></a><h2 class="sectiontitle">  isNormal</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument is normal (not<samp class="codeph"> zero</samp>, <samp class="codeph">subnormal</samp>, <samp class="codeph">infinite</samp>, or <samp class="codeph">NaN</samp>).</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">int __binary32_isNormal(float
+x);</samp><br><samp class="codeph"> int __binary64_isNormal(double
+x);</samp></p>
+
+
+</div>
+<div class="section" id="ISFINITE"><a name="ISFINITE"><!-- --></a><h2 class="sectiontitle">      isFinite</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument is <samp class="codeph">finite</samp> (not <samp class="codeph">infinite</samp> or <samp class="codeph">NaN</samp>).</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph"></samp><br><samp class="codeph"></samp></p>
+</div>
+<div class="section" id="ISZERO"><a name="ISZERO"><!-- --></a><h2 class="sectiontitle">      isZero</h2><p><strong>Description:</strong> The function returns 1 if and only if
+its argument is ±0.</p>
+ 
+ 
+ 
+<p><strong>Calling interface:
+</strong><br><samp class="codeph"> int __binary32_isZero(float
+x);</samp><br><samp class="codeph"> int __binary64_isZero(double
+x);</samp></p>
+ 
+ 
+</div>
+<div class="section" id="ISSUBNORMAL"><a name="ISSUBNORMAL"><!-- --></a><h2 class="sectiontitle">      isSubnormal</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument is <samp class="codeph">subnormal.</samp></p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">int __binary32_isSubnormal(float
+x);</samp><br><samp class="codeph">int __binary64_isSubnormal(double
+x);</samp></p>
+
+
+</div>
+<div class="section" id="ISINFINITE"><a name="ISINFINITE"><!-- --></a><h2 class="sectiontitle">  isInfinite</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument is <samp class="codeph">infinite</samp></p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph"> int __binary32_isInfinite(float
+x);</samp><br><samp class="codeph">int __binary64_isInfinite(double
+x);</samp></p>
+
+
+</div>
+<div class="section" id="ISNAN"><a name="ISNAN"><!-- --></a><h2 class="sectiontitle">      isNaN</h2><p><strong>Description:</strong>The function returns 1 if and only if its argument is a <samp class="codeph">NaN.</samp></p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">int __binary32_isNaN(float
+x);</samp><br><samp class="codeph"> int __binary64_isNaN(double
+x);</samp></p>
+
+
+</div>
+<div class="section" id="ISSIGNALING"><a name="ISSIGNALING"><!-- --></a><h2 class="sectiontitle">      isSignaling</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument is a signaling <samp class="codeph">NaN</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary32_isSignaling(float
+x);</samp><br><samp class="codeph">int __binary64_isSignaling(double
+x);</samp></p>
+
+
+</div>
+<div class="section" id="ISCANONICAL"><a name="ISCANONICAL"><!-- --></a><h2 class="sectiontitle">      isCanonical</h2><p><strong>Description:</strong> The function returns 1 if and only if its argument is a finite number, <samp class="codeph">infinity</samp>, or <samp class="codeph">NaN</samp> that is canonical.</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph"> int __binary32_isCanonical(float
+x);</samp><br><samp class="codeph"> int __binary64_isCanonical(double
+x);</samp></p>
+
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This function in this library always returns 1, as only canonical floating-point numbers are expected.</p>
+</div></div>
+<div class="section" id="RADIX"><a name="RADIX"><!-- --></a><h2 class="sectiontitle">      radix</h2><p><strong>Description:</strong>The function returns the radix of the format of the input floating-point number.</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph"> int __binary32_radix(float
+x);</samp><br><samp class="codeph"> int __binary64_radix(double
+x);</samp></p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This function in this library always returns 2, as the library is intended for binary floating-point numbers.</p>
+</div>
+</div>
+<div class="section" id="TOTALORDER"><a name="TOTALORDER"><!-- --></a><h2 class="sectiontitle">  totalOrder</h2><p><strong>Description:</strong> The function returns 1 if and only if two floating-point inputs <samp class="codeph">x</samp> and <samp class="codeph">y</samp> is total ordered and 0 otherwise.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph"> int _binary32_totalOrder(float x,
+float y);</samp><br><samp class="codeph">int _binary64_totalOrder(double x,
+double y);</samp></p>
+
+
+</div>
+<div class="section" id="TOTALORDERMAG"><a name="TOTALORDERMAG"><!-- --></a><h2 class="sectiontitle">  totalOrderMag</h2><p><strong>Description:</strong> <samp class="codeph">totalOrderMag(x, y)</samp> is the same as <samp class="codeph">totalOrder(abs(x), abs(y))</samp>.</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph"> int _binary32_totalOrderMag(float
+x, float y);</samp><br><samp class="codeph">int _binary64_totalOrderMag(double
+x, double y);</samp></p>
+
+
+</div>
+<div class="section" id="LOWERFLAGS"><a name="LOWERFLAGS"><!-- --></a><h2 class="sectiontitle">      lowerFlags</h2><p><strong>Description:</strong>The function lowers the flags of the exception group specified by the input.
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A73AB9A7-DD45-45EB-874E-04E676254FF5" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d414953e520"><p><strong>Value</strong></p>
+</th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d414953e524"><p><strong>Exception name</strong></p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e520 "><p><samp class="codeph">1</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e524 "><p><samp class="codeph">__BFP754_INVALID</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e520 "><p><samp class="codeph">2</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e524 "><p><samp class="codeph">__BFP754_DIVBYZERO</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e520 "><p><samp class="codeph">4</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e524 "><p><samp class="codeph">__BFP754_OVERFLOW</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e520 "><p><samp class="codeph">8</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e524 "><p><samp class="codeph">__BFP754_UNDERFLOW</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" align="center" valign="top" width="NaN%" headers="d414953e520 "><p><samp class="codeph">16</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d414953e524 "><p><samp class="codeph">__BFP754_INEXACT</samp></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><strong>Calling interface:
+</strong><br><samp class="codeph">void __binary_lowerFlags(int x);</samp></p>
+</div>
+<div class="section" id="RAISEFLAGS"><a name="RAISEFLAGS"><!-- --></a><h2 class="sectiontitle">  raiseFlags</h2><p><strong>Description:</strong> The function raises the flags of the exception group specified by the input.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">void __binary_raiseFlags(int x);</samp></p>
+</div>
+<div class="section" id="TESTFLAGS"><a name="TESTFLAGS"><!-- --></a><h2 class="sectiontitle">  testFlags    </h2><p><strong>Description:</strong> The function returns 1 if and only if any flag of the exception group specified by the input is raised, and 0 otherwise.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary_testFlags(int x);</samp></p>
+</div>
+<div class="section" id="TESTSAVEDFLAGS"><a name="TESTSAVEDFLAGS"><!-- --></a><h2 class="sectiontitle">      testSavedFlags</h2><p><strong>Description:</strong> The function returns 1 if and only if any flag of the exception group specified by the input <samp class="codeph">y</samp> is raised in <samp class="codeph">x</samp>, and 0 otherwise.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary_testSavedFlags(int x, int y);</samp></p>
+</div>
+<div class="section" id="RESTOREFLAGS"><a name="RESTOREFLAGS"><!-- --></a><h2 class="sectiontitle">      restoreFlags</h2><p><strong>Description:</strong> The function restores the flags to their states represented in <samp class="codeph">x</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">void __binary_restoreFlags(int x);</samp></p>
+</div>
+<div class="section" id="SAVEFLAGS"><a name="SAVEFLAGS"><!-- --></a><h2 class="sectiontitle">  saveFlags</h2><p><strong>Description:</strong> The function returns a representation of the state of all status flags.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary_saveFlags(void);</samp></p>
+</div>
+<div class="section" id="GETBINARYROUNDINGDIRECTION"><a name="GETBINARYROUNDINGDIRECTION"><!-- --></a><h2 class="sectiontitle">  getBinaryRoundingDirection</h2><p><strong>Description:</strong> The function returns an integer representing the rounding direction in use.
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2593EE30-7604-440E-80D5-F7E4591C95B1" frame="border" border="1" cellspacing="0" rules="all">   <thead align="left"><tr> <th class="cellrowborder" valign="top" width="NaN%" id="d414953e673"> <p>Value </p>
+</th>
+ <th class="cellrowborder" valign="top" width="NaN%" id="d414953e678"> <p>Exception name </p>
+</th>
+ </tr>
+</thead>
+<tbody>  <tr> <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e673 "> <p><samp class="codeph">0</samp></p>
+ </td>
+ <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e678 "> <p><samp class="codeph">__BFP754_ROUND_TO_NEAREST_EVEN</samp></p>
+ </td>
+ </tr>
+ <tr> <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e673 "> <p><samp class="codeph">1 </samp></p>
+</td>
+ <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e678 "> <p><samp class="codeph">__BFP754_ROUND_TOWARD_POSITIVE</samp></p>
+ </td>
+ </tr>
+ <tr> <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e673 "> <p><samp class="codeph">2 </samp></p>
+</td>
+ <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e678 "> <p><samp class="codeph">__BFP754_ROUND_TOWARD_NEGATIVE</samp></p>
+ </td>
+ </tr>
+ <tr> <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e673 "> <p><samp class="codeph">3</samp></p>
+ </td>
+ <td class="cellrowborder" valign="top" width="NaN%" headers="d414953e678 "> <p><samp class="codeph">__BFP754_ROUND_TOWARD_ZERO </samp></p>
+</td>
+ </tr>
+ </tbody>
+ </table>
+</div>
+</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary_getBinaryRoundingDirection(void);</samp></p>
+</div>
+<div class="section" id="SETBINARYROUNDINGDIRECTION"><a name="SETBINARYROUNDINGDIRECTION"><!-- --></a><h2 class="sectiontitle">  setBinaryRoundingDirection</h2><p><strong>Description:</strong> The function sets the rounding direction based on input integer.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">void __binary_setBinaryRoundingDirection(int x);</samp></p>
+</div>
+<div class="section" id="SAVEMODES"><a name="SAVEMODES"><!-- --></a><h2 class="sectiontitle">      saveModes</h2><p><strong>Description:</strong> The function saves the values of all dynamic-specifiable modes.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary_saveModes(void);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p><samp class="codeph">saveModes</samp> behaves in the same way as
+<samp class="codeph">getBinaryRoundingDirection</samp> does, as the rounding mode is the only
+dynamic-specifiable mode supported.</p>
+
+
+</div></div>
+<div class="section" id="RESTOREMODES"><a name="RESTOREMODES"><!-- --></a><h2 class="sectiontitle">  restoreModes</h2><p><strong>Description:</strong>The function restores the values of all dynamic-specifiable modes to the input.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary_restoreModes(void);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p><samp class="codeph">restoreModes</samp> behaves in the same way as <samp class="codeph">setBinaryRoundingDirection</samp> does, as the rounding mode is the only dynamic-specifiable mode supported.</p>
+</div></div>
+<div class="section" id="DEFAULTMODE"><a name="DEFAULTMODE"><!-- --></a><h2 class="sectiontitle">  defaultMode</h2><p><strong>Description:</strong> The function sets the values of all dynamic-specifiable modes to default.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">void __binary_defaultMode(void);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p><samp class="codeph">defaultMode</samp> sets the rounding-direction attribute to <samp class="codeph">roundTiesToEven</samp>, as the rounding mode is the only dynamic-specifiable mode supported.</p>
+</div></div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm">Function List</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

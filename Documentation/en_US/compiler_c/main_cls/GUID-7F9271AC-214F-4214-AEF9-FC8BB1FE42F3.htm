@@ -1,0 +1,128 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_Cilk_shared">
+<meta name="abstract" content="Shares a variable or function. This keyword only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Shares a variable or function. This keyword only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="_Cilk_shared, keyword">
+<meta name="keywords" content="_Cilk_shared, keyword">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8E5078C5-85F8-40BD-932E-49E935943EBA.htm#GUID-8E5078C5-85F8-40BD-932E-49E935943EBA">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_Cilk_shared</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optref_shared_kwd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">_Cilk_shared</h1>
+
+<!--Shares a variable or function. This keyword only applies to Intel&reg; MIC Architecture.-->
+
+<div><p>Shares a variable or function. This keyword only applies to Intel&reg; MIC Architecture.</p>
+
+
+<div class="section" id="GUID-001ED6CD-95E2-479A-8F57-6E2D9B625237"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">_Cilk_shared </span><span class="var">type </span><span class="var">variable(s)</span></p><p><span class="kwd">_Cilk_shared </span><span class="var">type </span><span class="var">func_def</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-27B95C1F-C987-4A4A-BD1F-02393AEF03C3"><h2>Arguments</h2><dl id="GUID-779E8339-7E8C-464F-9C29-9ABD811C3D41"><dt class="dlterm"><span class="parmname">type</span></dt>
+<dd><p>The type of the variable or variables being declared.</p>
+</dd>
+<dt class="dlterm"><span class="parmname">variable(s)</span></dt>
+<dd><p>One or more variables.</p>
+</dd>
+<dt class="dlterm">func_def</dt>
+<dd><p>A function definition or declaration.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="GUID-70085B3A-37AB-4C3E-956A-E810E3F13B8F"><h2>Description</h2>
+<p>Using <span class="keyword">_Cilk_shared</span> with a variable allocates the variable to shared memory.</p>
+
+<p>Using  <span class="keyword">_Cilk_shared</span> with a function definition or declaration
+makes the function available to the CPU and
+the coprocessor.</p>
+
+</div>
+<div class="example"><h2>Examples: Variables</h2><p>A shared declaration:<pre>_Cilk_shared int x, y, z;</pre>
+</p>
+
+
+<p>A shared typedef:<pre>typedef _Cilk_shared str_type shr_str_type;
+ shr_str_type a;</pre></p>
+
+
+
+</div>
+<div class="example"><h2>Examples: Pointers</h2><p><var> p</var> is a pointer to a shared int, but the pointer itself is not shared:<pre>int _Cilk_shared *p;
+</pre></p>
+<p><var> p</var> is itself in shared memory:<pre>int * _Cilk_shared p;
+</pre></p>
+</div>
+<div class="example"><h2>Examples: Functions</h2><p>A shared function
+definition:</p>
+<pre>_Cilk_shared void func() {
+x = y + z;
+}</pre>
+
+
+ 
+
+
+<p>A shared function
+declaration:</p>
+<pre>_Cilk_shared int bar();</pre></div>
+<div class="example"><h2>Examples: Functions</h2><p>Using <samp class="codeph">pragma offload-attribute</samp> to apply this attribute to multiple declarations:</p>
+<pre>#pragma offload_attribute(push, _Cilk_shared)
+#include &lt;math.h&gt;
+void function_1();
+void function_2();
+#pragma offload_attribute(pop)
+void function_3();
+
+int main(){
+   _Cilk_offload function_1();
+   
+   function_3();
+   _Cilk_offload function_2();
+
+}
+_Cilk_shared int bar();</pre>
+
+
+ 
+
+
+
+
+		</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-8E5078C5-85F8-40BD-932E-49E935943EBA.htm#GUID-8E5078C5-85F8-40BD-932E-49E935943EBA">Using Shared Memory</a></div></div></div>
+</body>
+</html>

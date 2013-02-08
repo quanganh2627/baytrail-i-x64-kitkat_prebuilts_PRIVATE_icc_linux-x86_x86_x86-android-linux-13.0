@@ -1,0 +1,134 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="FunctionRef">
+<meta name="DC.Title" content="__Offload_report">
+<meta name="abstract" content="Controls printing offload execution time and the amount of data transferred. This function only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Controls printing offload execution time and the amount of data transferred. This function only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="Enter index keyword">
+<meta name="keywords" content="Enter index keyword">
+<meta name="DC.Relation" scheme="URI" content="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DE4441B3-C716-4E80-8511-15FA8ED8B0EE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>__Offload_report</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="__Offload_report"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.__Offload_report"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-DE4441B3-C716-4E80-8511-15FA8ED8B0EE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">  __Offload_report</h1>
+
+  <!-- Controls printing offload execution time and the amount of data transferred.  This function only applies to Intel&reg; MIC Architecture.-->
+  
+  <div><p> Controls printing offload execution time and the amount of data transferred.  This function only applies to Intel&reg; MIC Architecture.</p>
+
+    <div class="section" id="GUID-729F471F-7E4D-41EA-81B1-4B44B7122108"><h2>Syntax</h2>
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__Offload_report</span><span class="delim">(</span><span class="var">integer</span><span class="delim">)</span></p></div>
+    </div>
+
+    
+    <div class="section" id="GUID-4F548A26-87BE-4F09-9CDD-DB8818682413"><h2>Arguments</h2>
+      <table cellpadding="4" cellspacing="0" summary="" border="1" class="ParamTbl"><tr>
+          <th valign="bottom" align="left" id="d767161e58" width="16.528925619834713%">
+            <p>Name</p>
+
+          </th>
+
+          <th valign="bottom" align="left" id="d767161e64" width="37.1900826446281%">
+            <p>Type</p>
+
+          </th>
+
+          <th valign="bottom" align="left" id="d767161e70" width="46.28099173553719%">
+            <p>Description</p>
+
+          </th>
+
+        </tr>
+<tr>
+          <td valign="top" headers="d767161e58">
+            <p>
+              <samp class="codeph"><var>integer</var></samp>
+            </p>
+
+          </td>
+
+          <td valign="top" headers="d767161e64">
+            <p>integer</p>
+
+          </td>
+
+          <td valign="top" headers="d767161e70">
+            <p>Possible values: <samp class="codeph">1</samp> or <samp class="codeph">2</samp>.</p>
+<p><samp class="codeph">1</samp>  prints the offload computation time, in seconds.</p>
+<p><samp class="codeph">2</samp>  prints the offload computation time, in seconds,  and the amount of data transferred, in bytes.</p>
+
+          </td>
+
+        </tr>
+</table>
+
+    </div>
+
+    
+    
+    <div class="section" id="GUID-CE2B8D45-E755-42D2-800F-B073C35A6CFB"><h2>Description</h2>
+      <p> This API enables you to time offload regions and measure the amount of data transferred during their execution.</p>
+<p>Using this API is equivalent to setting the environment variable <samp class="codeph">OFFLOAD_REPORT</samp>.</p>
+
+
+    
+
+
+</div>
+
+    
+    <div class="section" id="GUID-7C9DBB46-CF5D-4FDD-8340-000DC5E8BA3A"><h2>Example</h2>
+      
+      <p>Setting  <samp class="codeph">__Offload_report(1)</samp> prints the offload computation time. For example:</p>
+
+<pre>          [FILE]            filename.c
+          [LINE]            line_no
+          [CPU-TIME]        0.278886
+          [MIC-TIME]        0.000177</pre>
+
+
+<p>Setting  <samp class="codeph">__Offload_report(2)</samp> prints the offload computation time and the amount of data transferred. For example:</p>
+<pre>          [FILE]            filename.c
+          [LINE]            line_no
+          [CPU-TIME]        0.52
+          [CPU-&gt;MIC DATA]   0
+          [MIC-TIME]        0.000151
+          [MIC-&gt;CPU DATA]   4</pre>
+    </div>
+
+  </div>
+
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">Programming for Intel&reg; MIC Architecture</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">Setting Environment Variables 
+		  </a></div></div></div>
+
+</body>
+</html>

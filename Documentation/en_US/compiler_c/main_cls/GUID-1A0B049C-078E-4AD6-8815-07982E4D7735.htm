@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Global Symbols and Visibility Attributes">
+<meta name="DC.subject" content="global symbols">
+<meta name="keywords" content="global symbols">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1A0B049C-078E-4AD6-8815-07982E4D7735">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Global Symbols and Visibility Attributes</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_global_symbols_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_global_symbols_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1A0B049C-078E-4AD6-8815-07982E4D7735">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Global Symbols and Visibility Attributes</h1>
+ 
+   
+  <div> 
+    <p>A global symbol is one that is visible outside the compilation unit (single source file and its include files) in which it is declared. In C/C++, this means anything declared at file level without the 
+      <span class="keyword">static</span> keyword. For example:
+    </p>
+ 
+    <pre>int x = 5;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// global data definition 
+extern int y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// global data reference 
+int five()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// global function definition 
+{ return 5; } 
+extern int four(); // global function reference</pre> 
+    <p>A complete program consists of a main program file and possibly one or more shareable object (.so) files that contain the definitions for data or functions referenced by the main program. Similarly, shareable objects might reference data or functions defined in other shareable objects. Shareable objects are so called because if more than one simultaneously executing process has the shareable object mapped into its virtual memory, there is only one copy of the read-only portion of the object resident in physical memory. The main program file and any shareable objects that it references are collectively called the components of the program.
+    </p>
+ 
+    <p>Each global symbol definition or reference in a compilation unit has a visibility attribute that controls how (or if) it may be referenced from outside the component in which it is defined. There are five possible values for visibility:
+    </p>
+ 
+    <ul type="disc" id="GUID-7F62DF96-7DA5-4CAD-8C06-5369E7401B65"> 
+      <li>
+        <p><samp class="codeph">EXTERNAL</samp> – The compiler must treat the symbol as though it is defined in another component. For a definition, this means that the compiler must assume that the symbol will be overridden (preempted) by a definition of the same name in another component. See Symbol Preemption. If a function symbol has external visibility, the compiler knows that it must be called indirectly and can inline the indirect call stub.
+        </p>
+
+      </li>
+ 
+      <li>
+        <p><samp class="codeph">DEFAULT</samp> – Other components can reference the symbol. Furthermore, the symbol definition may be overridden (preempted) by a definition of the same name in another component.
+        </p>
+
+      </li>
+ 
+      <li>
+        <p><samp class="codeph">PROTECTED</samp> – Other components can reference the symbol, but it cannot be preempted by a definition of the same name in another component.
+        </p>
+
+      </li>
+ 
+      <li>
+        <p><samp class="codeph">HIDDEN</samp> – Other components cannot directly reference the symbol. However, its address might be passed to other components indirectly (for example, as an argument to a call to a function in another component, or by having its address stored in a data item reference by a function in another component).
+        </p>
+
+      </li>
+ 
+      <li>
+        <p><samp class="codeph">INTERNAL</samp> – The symbol cannot be referenced outside its defining component, either directly or indirectly.
+        </p>
+
+      </li>
+ 
+    </ul>
+ 
+    <p>Static local symbols (in C/C++, declared at file scope or elsewhere with the keyword static) usually have HIDDEN visibility--they cannot be referenced directly by other components (or, for that matter, other compilation units within the same component), but they might be referenced indirectly.
+    </p>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3>
+      <p>Visibility applies to references as well as definitions. A symbol reference's visibility attribute is an assertion that the corresponding definition will have that visibility.
+      </p>
+
+    </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

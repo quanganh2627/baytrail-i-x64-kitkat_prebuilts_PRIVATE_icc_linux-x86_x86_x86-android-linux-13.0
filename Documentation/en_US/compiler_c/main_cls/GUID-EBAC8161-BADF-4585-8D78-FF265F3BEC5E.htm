@@ -1,0 +1,607 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Shift Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, shift operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, shift operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EBAC8161-BADF-4585-8D78-FF265F3BEC5E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Shift Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_int_shift"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EBAC8161-BADF-4585-8D78-FF265F3BEC5E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Shift Operators</h1>
+ 
+   
+  <div> 
+    <p>The right shift argument can be any integer or Ivec value, and is implicitly converted to a M64 data type. The first or left operand of a 
+      <samp class="codeph"><samp class="codeph">&lt;&lt;</samp></samp> can be of any type except 
+      <samp class="codeph">I[s|u]8vec[8|16]</samp>. 
+    </p>
+ 
+    <p><strong>Example Syntax Usage for Shift Operators</strong> 
+    </p>
+ 
+    <p>Automatic size and sign conversion. 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 A,C;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec2 B;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A;</samp> 
+    </p>
+ 
+    <p>A&amp;B returns 
+      <span class="keyword">I16vec4</span>, which must be cast to 
+      <span class="keyword">Iu16vec4</span> to ensure logical shift, not arithmetic shift. 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 A, C;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu16vec4 B, R;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R = (Iu16vec4)(A &amp; B) C;</samp> 
+    </p>
+ 
+    <p>A&amp;B returns 
+      <span class="keyword">I16vec4</span>, which must be cast to 
+      <span class="keyword">Is16vec4</span> to ensure arithmetic shift, not logical shift. 
+    </p>
+ 
+    <p><samp class="codeph">R = (Is16vec4)(A &amp; B) C;</samp> 
+    </p>
+ 
+    <p><strong>Shift Operators with Corresponding Intrinsics</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8F6171FD-19A1-4204-B434-5F16ABE69781" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d806843e129"> 
+              <p>Operation 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d806843e135"> 
+              <p>Symbols 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d806843e141"> 
+              <p>Syntax Usage 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d806843e147"> 
+              <p>Intrinsic 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e129 "> 
+              <p>Shift Left 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e135 "> 
+              <p><samp class="codeph">&lt;&lt;</samp><br><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e141 "> 
+              <p><samp class="codeph">R = A &lt;&lt; B</samp><br><samp class="codeph">R &amp;= A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e147 "> 
+              <p><span class="option">_mm_sll_si64</span><br><span class="option">_mm_slli_si64</span><br><span class="option">_mm_sll_pi32</span><br><span class="option">_mm_slli_pi32</span><br><span class="option">_mm_sll_pi16</span><br><span class="option">_mm_slli_pi16</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e129 "> 
+              <p>Shift Right 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e135 "> 
+              <p><samp class="codeph">&gt;&gt;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e141 "> 
+              <p><samp class="codeph">R = A &gt;&gt; B</samp><br><samp class="codeph">R &gt;&gt;= A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d806843e147 "> 
+              <p><span class="option">_mm_srl_si64</span><br><span class="option">_mm_srli_si64</span><br><span class="option">_mm_srl_pi32</span><br><span class="option">_mm_srli_pi32</span><br><span class="option">_mm_srl_pi16</span><br><span class="option">_mm_srli_pi16</span><br><span class="option">_mm_sra_pi32</span><br><span class="option">_mm_srai_pi32</span><br><span class="option">_mm_sra_pi16</span><br><span class="option">_mm_srai_pi16</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>Right shift operations with signed data types use arithmetic shifts. All unsigned and intermediate classes correspond to logical shifts. The following table shows how the return type is determined by the first argument type. 
+    </p>
+ 
+    <p><strong>Shift Operator Overloading</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-04C8E536-6446-47FD-B1EE-D049129DBD39" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="12.5%" id="d806843e315"> 
+              <p>Option 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="12.5%" id="d806843e321"> 
+              <p>R 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d806843e327">Right Shift 
+            </th>
+ 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d806843e330">Left Shift 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="12.5%" id="d806843e333"> 
+              <p>A 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="12.5%" id="d806843e340"> 
+              <p>B 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Logical 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">I64vec1</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">I64vec1 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I64vec1 B;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Logical 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">I32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">I32vec2 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I32vec2 B;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Arithmetic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">Is32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">Is32vec2 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] B;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Logical 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">Iu32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p><samp class="codeph">&lt;&lt;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">Iu32vec2 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] B;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Logical 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">I16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">I16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I16vec4 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Arithmetic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">Is16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">Is16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] B;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e315 "> 
+              <p>Logical 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e321 "> 
+              <p><span class="keyword">Iu16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e327 "> 
+              <p>&gt;&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e330 "> 
+              <p>&lt;&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e333 "> 
+              <p><samp class="codeph">Iu16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="12.5%" headers="d806843e340 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] B;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

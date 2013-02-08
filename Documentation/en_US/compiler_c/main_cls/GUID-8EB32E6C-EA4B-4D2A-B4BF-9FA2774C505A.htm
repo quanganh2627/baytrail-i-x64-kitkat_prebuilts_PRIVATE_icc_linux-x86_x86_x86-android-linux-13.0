@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="falign-stack">
+<meta name="abstract" content="Tells the compiler the stack alignment to use on entry to routines.">
+<meta name="description" content="Tells the compiler the stack alignment to use on entry to routines.">
+<meta name="DC.subject" content="-falign-stack compiler option, routine entry, option specifying the stack alignment to use on">
+<meta name="keywords" content="-falign-stack compiler option, routine entry, option specifying the stack alignment to use on">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8EB32E6C-EA4B-4D2A-B4BF-9FA2774C505A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>falign-stack</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_falign_stack"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_falign_stack"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8EB32E6C-EA4B-4D2A-B4BF-9FA2774C505A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">falign-stack</h1>
+<!--Tells the compiler the stack alignment to use on entry to routines. --><div><p>Tells the compiler the stack alignment to use on entry to routines. </p>
+
+<div class="section" id="GUID-3BDDDE35-2539-48FD-A4CB-7DE00A71D68E"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-1E0EA0CF-4F75-4DC1-A606-D4DB3E7D1420"><h2>Architectures</h2><p>IA-32 architecture</p>
+</div>
+
+<div class="section" id="GUID-C7C37876-D685-471D-8036-058AA7F8BB17"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-falign-stack</span><span class="oper">=</span><span class="var">mode</span></p></td></tr></table> <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-D8E26510-43D1-400C-89DD-2E2AB630B592"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>mode</var></p></td>
+<td valign="top" class="noborder"><p>Is the method to use for stack alignment.  Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">assume-4-byte</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to assume the stack is aligned on 4-byte boundaries. The compiler can dynamically adjust the stack to 16-byte alignment if needed. </p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">maintain-16-byte</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to not assume any specific stack alignment, but attempt to maintain alignment in case the stack is already aligned. The compiler can dynamically align the stack if needed. This setting is compatible with gcc. </p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">assume-16-byte</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to assume the stack is aligned on 16-byte boundaries and to continue to maintain 16-byte alignment. This setting is compatible with gcc. </p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6D87B512-F0BE-4CC5-AC67-9EC417629DA8"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span class="option">-falign-stack=assume-16-byte</span></p></td>
+<td valign="top" class="noborder"><p>The compiler assumes the stack is aligned on 16-byte boundaries and continues to maintain 16-byte alignment.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-03D388DB-0DEE-4B31-BCF5-915C05AA23CC"><h2>Description</h2><p>This option tells the compiler the stack alignment to use on entry to routines.</p>
+</div>
+
+<div class="section" id="GUID-3354F3D9-1622-45F4-9097-130AD569A932"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

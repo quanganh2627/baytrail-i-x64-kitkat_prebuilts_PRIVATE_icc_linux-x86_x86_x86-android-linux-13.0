@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking the Floating-point Stack State">
+<meta name="DC.subject" content="Checking the Floating-point Stack State, checking, floating-point stacks, stacks">
+<meta name="keywords" content="Checking the Floating-point Stack State, checking, floating-point stacks, stacks">
+<meta name="DC.Relation" scheme="URI" content="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0CA4DAE6-BD9B-42C0-A00A-74A7285B571E.htm#GUID-0CA4DAE6-BD9B-42C0-A00A-74A7285B571E">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C529F625-BFE1-4433-B6DB-10251CE7FDCB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking the Floating-point Stack State</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_cmp_stck_f"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C529F625-BFE1-4433-B6DB-10251CE7FDCB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Checking the Floating-point Stack State</h1>
+ 
+   
+  <div> 
+    <p>On systems based on the IA-32 architectures, when an application calls a function that returns a floating-point value, the returned floating-point value is supposed to be on the top of the floating-point stack. If the return value is not used, the compiler must pop the value off of the floating-point stack in order to keep the floating-point stack in the correct state. 
+    </p>
+
+    <p>On systems based on Intel&reg; 64 architectures, floating-point values are usually returned in the 
+      <samp class="codeph">xmm0</samp> register. The floating-point stack is used only when the return value is 
+      <span>a long double</span> on Linux* and OS X* systems. 
+    </p>
+ 
+    <p>If the application calls a function without defining or incorrectly defining the function's prototype, the compiler cannot determine if the function must return a floating-point value. Consequently, the return value is not popped off the floating-point stack if it is not used. This can cause the floating-point stack to overflow.
+    </p>
+ 
+    <p>The overflow of the stack results in two undesirable situations: 
+    </p>
+ 
+    <ul type="disc" id="GUID-89AF0019-E44D-4BD4-9A5C-4184BE5BA37A"> 
+      <li>
+        <p>A 
+          <span class="keyword">NaN</span> value gets involved in the floating-point calculations
+        </p>
+
+      </li>
+ 
+      <li>
+        <p>The program results become unpredictable; the point where the program starts making errors can be arbitrarily far away from the point of the actual error. 
+        </p>
+
+      </li>
+ 
+    </ul>
+ 
+    <p>For systems based on the IA-32 and Intel&reg; 64 architectures, the 
+  <span class="option">-fp-stack-check</span> (Linux* and OS X*) or 
+  <span class="option">/Qfp-stack-check</span> (Windows*) option checks whether a program makes a correct call to a function that should return a floating-point value. If an incorrect call is detected, the option places a code that marks the incorrect call in the program. The 
+  <span class="option"></span><span class="option">-fp-stack-check</span> (Linux* and OS X*) or 
+  <span class="option">/Qfp-stack-check</span> (Windows*) option marks the incorrect call and makes it easy to find the error. 
+  </p>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3>
+    <p>The 
+    <span class="option">-fp-stack-check</span> (Linux* and OS X*) and the 
+    <span class="option">/Qfp-stack-check</span> (Windows*) option causes significant code generation after every function/subroutine call to ensure that the floating-point stack is maintained in the correct state. Therefore, using this option slows down the program being compiled. Use the option only as a debugging aid to find floating point stack underflow/overflow problems, which can be otherwise hard to find.
+    </p>
+
+  </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">Understanding Floating-point Operations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-0CA4DAE6-BD9B-42C0-A00A-74A7285B571E.htm#GUID-0CA4DAE6-BD9B-42C0-A00A-74A7285B571E">-fp-stack-check, /Qfp-stack-check option
+        </a> Tells the compiler to generate extra code after every function call to ensure that the floating-point stack is in the expected state.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

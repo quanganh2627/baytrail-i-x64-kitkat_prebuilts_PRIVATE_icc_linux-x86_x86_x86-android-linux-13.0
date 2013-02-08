@@ -1,0 +1,484 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Logical Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, logical operations, xor_ps, andnot_ps, and_ps, or_ps, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, logical operations, xor_ps, andnot_ps, and_ps, or_ps, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FB3626FB-D2EE-483D-A5D9-371F23FD665F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Logical Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_logical"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FB3626FB-D2EE-483D-A5D9-371F23FD665F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Logical Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-819D77F1-C3FD-41B7-8A3A-2014F58B8F93"> 
+      <p>The prototypes for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics for logical operations are in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in a register. This register is illustrated for each intrinsic with R0-R3. R0, R1, R2 and R3 each represent one of the four 32-bit pieces of the result register. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0576D314-607C-4AAF-B311-BFA5BF37EFBF"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6873FF1A-D1A8-45AC-8704-35BD81A63802" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d870795e70"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d870795e76"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d870795e82"> 
+                <p>Corresponding<br>Intel&reg; SSE Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e70 "> 
+                <p><span class="option"> _mm_and_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e76 "> 
+                <p>Bitwise AND 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d870795e82 "> 
+                <p><span class="keyword">ANDPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e70 "> 
+                <p><span class="option"> _mm_andnot_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e76 "> 
+                <p>Bitwise ANDNOT 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d870795e82 "> 
+                <p><span class="keyword">ANDNPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e70 "> 
+                <p><span class="option"> _mm_or_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e76 "> 
+                <p>Bitwise OR 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d870795e82 "> 
+                <p><span class="keyword">ORPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e70 "> 
+                <p><span class="option"> _mm_xor_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d870795e76 "> 
+                <p>Bitwise Exclusive OR 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d870795e82 "> 
+                <p><span class="keyword">XORPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6C0819A2-3462-4C12-ABD9-15B6C0C65D24"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_and_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the bitwise AND of the four SP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8678750C-9AFA-456D-969D-CAF082E281A4"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BE1A31A7-4CEA-4903-83F9-18BD0DC9E5D4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e229"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e235"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e241"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d870795e247"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e229 "> 
+                <p><span class="keyword">a0 &amp; b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e235 "> 
+                <p><span class="keyword">a1 &amp; b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e241 "> 
+                <p><span class="keyword">a2 &amp; b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d870795e247 "> 
+                <p><span class="keyword">a3 &amp; b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-45F5F762-5387-4D8D-902E-334F7824A6C0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_andnot_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the bitwise AND-NOT of the four SP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-590449B3-7213-4D15-B946-C24464B8DE5D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F0108740-CF94-4CE1-A679-1523D63BA050" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e328"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e334"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e340"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d870795e346"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e328 "> 
+                <p><span class="keyword">~a0 &amp; b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e334 "> 
+                <p><span class="keyword">~a1 &amp; b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e340 "> 
+                <p><span class="keyword">~a2 &amp; b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d870795e346 "> 
+                <p><span class="keyword">~a3 &amp; b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-422DDB8F-E147-4E9E-B5AF-688B424A5D94"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_or_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the bitwise OR of the four SP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1B3E1883-44B5-4ACA-9431-6B29E2AD8099"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-416C4A70-E41E-4A38-AFD6-6C3D21B64ECF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e426"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e432"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e438"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d870795e444"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e426 "> 
+                <p><span class="keyword">a0 | b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e432 "> 
+                <p><span class="keyword">a1 | b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e438 "> 
+                <p><span class="keyword">a2 | b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d870795e444 "> 
+                <p><span class="keyword">a3 | b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FE7175B7-F7C2-4D52-A5B7-4DA470C642C1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_xor_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes bitwise XOR (exclusive-or) of the four SP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-58F4909E-C5AE-4B8C-8ED9-22A5A6DC8C11"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E86CDFA0-CB41-4A68-9E2F-123E487C2613" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e524"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e530"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d870795e536"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d870795e542"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e524 "> 
+                <p><span class="keyword">a0 ^ b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e530 "> 
+                <p><span class="keyword">a1 ^ b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d870795e536 "> 
+                <p><span class="keyword">a2 ^ b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d870795e542 "> 
+                <p><span class="keyword">a3 ^ b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

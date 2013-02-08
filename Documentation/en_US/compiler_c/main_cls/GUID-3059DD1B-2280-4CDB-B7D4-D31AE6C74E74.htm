@@ -1,0 +1,1485 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compare Operators">
+<meta name="DC.subject" content="Class Libraries, floating-point vector classes, compare operators">
+<meta name="keywords" content="Class Libraries, floating-point vector classes, compare operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3059DD1B-2280-4CDB-B7D4-D31AE6C74E74">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compare Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_fp_comp"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3059DD1B-2280-4CDB-B7D4-D31AE6C74E74">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Compare Operators</h1>
+ 
+   
+  <div> 
+    <p>The operators described in this section compare the single precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. Comparison between objects of any 
+      <span class="keyword">Fvec</span> class return the same class being compared. 
+    </p>
+ 
+    <p>The following table lists the compare operators for the 
+      <span class="keyword">Fvec</span> classes. 
+    </p>
+ 
+    <div class="section" id="GUID-80295C85-E713-4F3C-BDA2-8B898DDB9FFC"><h2 class="sectiontitle">Compare Operators and Corresponding Intrinsics</h2> 
+       
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3537414F-09A2-4E8B-B310-5F7F6A273959" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d153126e71"> 
+                <p>Compare For: 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d153126e77"> 
+                <p>Operators 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="34%" id="d153126e83"> 
+                <p>Syntax 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpeq</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpeq(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Inequality 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpneq</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpneq(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpgt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpgt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Greater Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpge</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpge(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Not Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpngt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpngt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Not Greater Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpnge</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpnge(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmplt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmplt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Less Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmple</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmple(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Not Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpnlt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpnlt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e71 "> 
+                <p>Not Less Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e77 "> 
+                <p><span class="keyword">cmpnle</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e83 "> 
+                <p><samp class="codeph">R = cmpnle(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-30A8790C-EF2C-4A9E-A9D7-E3E26386601F"><h2 class="sectiontitle">Compare Operators</h2> 
+       
+      <p>The mask is set to 
+        <samp class="codeph">0xffffffff</samp> for each floating-point value where the comparison is true and 
+        <samp class="codeph">0x00000000</samp> where the comparison is false. The following table shows the return values for each class of the compare operators, which use the syntax described earlier in the 
+        <a href="GUID-7CC06992-B292-4B88-8801-5B6D365DF4E0.htm#GUID-7CC06992-B292-4B88-8801-5B6D365DF4E0">Return Value Notation</a> section. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E37D677B-9C80-4DCB-A18F-ABC19C8D1C05"><h2 class="sectiontitle">Compare Operator Return Value Mapping</h2> 
+       
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8474708D-CAE8-4AF2-A845-C40EAE7984F1" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+           
+           
+           
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="5%" id="d153126e399"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="5%" id="d153126e405"> 
+                <p>A0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="35%" id="d153126e411"> 
+                <p>For Any Operators 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="5%" id="d153126e417"> 
+                <p>B 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="10%" id="d153126e423"> 
+                <p>If True 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="10%" id="d153126e430"> 
+                <p>If False 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="10%" id="d153126e436"> 
+                <p>F32vec4 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="10%" id="d153126e442"> 
+                <p>F64vec2 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="10%" id="d153126e448"> 
+                <p>F32vec1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e399 "> 
+                <p>R0:= 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e405 "> 
+                <p>(A1<br>!(A1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="35%" headers="d153126e411 "> 
+                <p>cmp[eq | lt | le | gt | ge]<br>cmp[ne | nlt | nle | ngt | nge] 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e417 "> 
+                <p>B1)<br>B1) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e423 "> 
+                <p>0xffffffff 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e430 "> 
+                <p>0x0000000 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e436 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e442 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e448 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e399 "> 
+                <p>R1:= 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e405 "> 
+                <p>(A1<br>!(A1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="35%" headers="d153126e411 "> 
+                <p>cmp[eq | lt | le | gt | ge]<br>cmp[ne | nlt | nle | ngt | nge] 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e417 "> 
+                <p>B2)<br>B2) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e423 "> 
+                <p>0xffffffff 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e430 "> 
+                <p>0x0000000<br>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e436 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e442 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e448 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e399 "> 
+                <p>R2:= 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e405 "> 
+                <p>(A1<br>!(A1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="35%" headers="d153126e411 "> 
+                <p>cmp[eq | lt | le | gt | ge]<br>cmp[ne | nlt | nle | ngt | nge] 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e417 "> 
+                <p>B3)<br>B3) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e423 "> 
+                <p>0xffffffff 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e430 "> 
+                <p>0x0000000<br>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e436 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e442 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e448 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e399 "> 
+                <p>R3:= 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e405 "> 
+                <p>A3 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="35%" headers="d153126e411 "> 
+                <p>cmp[eq | lt | le | gt | ge]<br>cmp[ne | nlt | nle | ngt | nge] 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="5%" headers="d153126e417 "> 
+                <p>B3)<br>B3) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e423 "> 
+                <p>0xffffffff 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e430 "> 
+                <p>0x0000000<br>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e436 "> 
+                <p>X 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e442 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10%" headers="d153126e448 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AD42D81B-B549-494E-BCB1-7D90C7FC3896"><h2 class="sectiontitle">Compare Operations for Fvec Classes</h2> 
+      <p>The following table shows examples for arithmetic operators and intrinsics. 
+      </p>
+ 
+       
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-302BA052-993E-405C-AE83-A1C068960982" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d153126e745"> 
+                <p>Returns 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d153126e751"> 
+                <p>Example Syntax Usage 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="34%" id="d153126e757"> 
+                <p>Intrinsic 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e766">Compare for Equality 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e745 d153126e766 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e751 d153126e766 "> 
+                <p><samp class="codeph">F32vec4 R = cmpeq(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e757 d153126e766 "> 
+                <p><span class="option">_mm_cmpeq_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e745 d153126e766 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e751 d153126e766 "> 
+                <p><samp class="codeph">F64vec2 R = cmpeq(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e757 d153126e766 "> 
+                <p><span class="option">_mm_cmpeq_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e745 d153126e766 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e751 d153126e766 "> 
+                <p><samp class="codeph">F32vec1 R = cmpeq(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e757 d153126e766 "> 
+                <p><span class="option">_mm_cmpeq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B3A562A2-B237-432F-9045-4EEE77C1602F" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e865">Compare for Inequality 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e865 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e865 "> 
+                <p><samp class="codeph">F32vec4 R = cmpneq(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e865 "> 
+                <p><span class="option">_mm_cmpneq_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e865 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e865 "> 
+                <p><samp class="codeph">F64vec2 R = cmpneq(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e865 "> 
+                <p><span class="option">_mm_cmpneq_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e865 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e865 "> 
+                <p><samp class="codeph">F32vec1 R = cmpneq(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e865 "> 
+                <p><span class="option">_mm_cmpneq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9D729F4E-7F78-4843-BA2A-6025CC459B72" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e964">Compare for Less Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e964 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e964 "> 
+                <p><samp class="codeph">F32vec4 R = cmplt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e964 "> 
+                <p><span class="option">_mm_cmplt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e964 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e964 "> 
+                <p><samp class="codeph">F64vec2 R = cmplt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e964 "> 
+                <p><span class="option">_mm_cmplt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e964 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e964 "> 
+                <p><samp class="codeph">F32vec1 R = cmplt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e964 "> 
+                <p><span class="option">_mm_cmplt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-57E83DD0-FD87-49AA-A770-F144DE7FCCFB" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1064">Compare for Less Than or Equal 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1064 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1064 "> 
+                <p><samp class="codeph">F32vec4 R = cmple(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1064 "> 
+                <p><span class="option">_mm_cmple_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1064 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1064 "> 
+                <p><samp class="codeph">F64vec2 R = cmple(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1064 "> 
+                <p><span class="option">_mm_cmple_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1064 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1064 "> 
+                <p><samp class="codeph">F32vec1 R = cmple(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1064 "> 
+                <p><span class="option">_mm_cmple_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B0262CF2-ECAD-4F4A-8955-2DCD4CD7E05D" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1163">Compare for Greater Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1163 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1163 "> 
+                <p><samp class="codeph">F32vec4 R = cmpgt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1163 "> 
+                <p><span class="option">_mm_cmpgt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1163 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1163 "> 
+                <p><samp class="codeph">F64vec2 R = cmpgt(F32vec42 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1163 "> 
+                <p><span class="option">_mm_cmpgt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1163 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1163 "> 
+                <p><samp class="codeph">F32vec1 R = cmpgt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1163 "> 
+                <p><span class="option">_mm_cmpgt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C404D988-220E-4FF3-849D-B159DB22CE4F" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1262">Compare for Greater Than or Equal To 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1262 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1262 "> 
+                <p><samp class="codeph">F32vec4 R = cmpge(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1262 "> 
+                <p><span class="option">_mm_cmpge_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1262 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1262 "> 
+                <p><samp class="codeph">F64vec2 R = cmpge(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1262 "> 
+                <p><span class="option">_mm_cmpge_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1262 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1262 "> 
+                <p><samp class="codeph">F32vec1 R = cmpge(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1262 "> 
+                <p><span class="option">_mm_cmpge_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-94BD1DEA-1A57-4C7A-96CD-F2F02E834448" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1361">Compare for Not Less Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1361 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1361 "> 
+                <p><samp class="codeph">F32vec4 R = cmpnlt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1361 "> 
+                <p><span class="option">_mm_cmpnlt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1361 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1361 "> 
+                <p><samp class="codeph">F64vec2 R = cmpnlt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1361 "> 
+                <p><span class="option">_mm_cmpnlt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1361 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1361 "> 
+                <p><samp class="codeph">F32vec1 R = cmpnlt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1361 "> 
+                <p><span class="option">_mm_cmpnlt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4FAA29A8-EAA2-4770-81B2-21790112057C" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1460">Compare for Not Less Than or Equal 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1460 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1460 "> 
+                <p><samp class="codeph">F32vec4 R = cmpnle(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1460 "> 
+                <p><span class="option">_mm_cmpnle_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1460 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1460 "> 
+                <p><samp class="codeph">F64vec2 R = cmpnle(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1460 "> 
+                <p><span class="option">_mm_cmpnle_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1460 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1460 "> 
+                <p><samp class="codeph">F32vec1 R = cmpnle(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1460 "> 
+                <p><span class="option">_mm_cmpnle_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-221E9204-D728-49FD-AB35-82273365D2E5" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1559">Compare for Not Greater Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1559 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1559 "> 
+                <p><samp class="codeph">F32vec4 R = cmpngt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1559 "> 
+                <p><span class="option">_mm_cmpngt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1559 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1559 "> 
+                <p><samp class="codeph">F64vec2 R = cmpngt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1559 "> 
+                <p><span class="option">_mm_cmpngt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1559 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1559 "> 
+                <p><samp class="codeph">F32vec1 R = cmpngt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1559 "> 
+                <p><span class="option">_mm_cmpngt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-686AFA7A-9A22-424F-8792-F8C04A49DFA0" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d153126e1659">Compare for Not Greater Than or Equal 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1659 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1659 "> 
+                <p><samp class="codeph">F32vec4 R = cmpnge(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1659 "> 
+                <p><span class="option">_mm_cmpnge_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1659 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1659 "> 
+                <p><samp class="codeph">F64vec2 R = cmpnge(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1659 "> 
+                <p><span class="option">_mm_cmpnge_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1659 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d153126e1659 "> 
+                <p><samp class="codeph">F32vec1 R = cmpnge(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d153126e1659 "> 
+                <p><span class="option">_mm_cmpnge_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">Floating-point Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

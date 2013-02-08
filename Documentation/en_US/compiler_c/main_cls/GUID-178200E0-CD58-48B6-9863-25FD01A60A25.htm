@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="optimize">
+<meta name="abstract" content="Enables or disables optimizations for code after this pragma till another optimize pragma or end of the translation unit.">
+<meta name="description" content="Enables or disables optimizations for code after this pragma till another optimize pragma or end of the translation unit.">
+<meta name="DC.subject" content="pragma optimize">
+<meta name="keywords" content="pragma optimize">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-178200E0-CD58-48B6-9863-25FD01A60A25">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>optimize</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_optimize"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-178200E0-CD58-48B6-9863-25FD01A60A25">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>optimize</span></h1>
+
+<!--Enables or disables optimizations  for code after this pragma till another optimize pragma or end of the translation unit.-->
+<div><p>Enables or disables optimizations  for code after this pragma till another optimize pragma or end of the translation unit.</p>
+
+<div class="section" id="GUID-56241612-E387-45F2-AF97-59BDF7453CD2"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma optimize</span><span class="delim">(</span><span class="var">""</span><span class="sep">, </span><span class="var">on</span><span class="oper">|</span><span class="var">off</span><span class="delim">)</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-D3DD48CB-BAF2-4393-ABE1-B02A15896182"><h2>Arguments</h2><p>The compiler ignores first argument values. Valid second arguments for <span class="keyword">optimize</span> are given below.</p>
+
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>off</var></p></td>
+
+      <td valign="top" class="noborder"><p>disables optimization</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>on</var></p></td>
+
+      <td valign="top" class="noborder"><p>enables optimization</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-12178373-7742-4D59-A633-B8CD1AD22C6C"><h2>Description</h2>
+<p>The <span class="keyword">optimize</span> pragma is used to enable or disable optimizations. Specifying <span class="keyword">#pragma optimize("", off)</span> disables optimization until either the compiler finds a matching <span class="keyword">#pragma optimize("", on)</span> statement or until the compiler reaches the end of the translation unit.</p>
+
+</div>
+
+
+<div class="section" id="GUID-348E12BC-73CD-45C9-AC84-C973EACCD1D8"><h2>Example</h2>
+<p><strong>Example 1: Disabling optimization for a single function using the #pragma optimize</strong></p>
+
+<p>In the following example, optimizations are disabled for the <samp class="codeph">alpha()</samp> function but not for <samp class="codeph">omega()</samp>.</p>
+
+<pre>#pragma optimize("", off)</pre>
+<pre>alpha() {</pre>
+<pre>...</pre>
+<pre>}</pre>
+<pre>#pragma optimize("", on)</pre>
+<pre>omega() {</pre>
+<pre>...</pre>
+<pre>}</pre>
+<p><strong>Example 2: Disabling optimization for all functions using the #pragma optimize</strong></p>
+
+<p>In the following example, optimizations are disabled for both the <samp class="codeph">alpha()</samp> and <samp class="codeph">omega()</samp> functions.</p>
+
+<pre>#pragma optimize("", off)</pre>
+<pre>alpha() {</pre>
+<pre>...</pre>
+<pre>}</pre>
+<pre>omega() {</pre>
+<pre>...</pre>
+<pre>}</pre>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

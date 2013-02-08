@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for Load Operations">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, load operations, Advanced Vector Extensions, AVX">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, load operations, Advanced Vector Extensions, AVX">
+<meta name="DC.Relation" scheme="URI" content="GUID-64E5BFBB-FE9E-47CB-82A7-76C2AD57ED9C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EFB9BAC4-E225-4A9A-894C-06500FAB94CC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-38BC4F84-8815-491B-8717-CFA62EAE0F03.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5C8DB554-D8DD-4C5B-8807-0DA56E1E7B84.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0CA05DB7-584F-48CC-A7B8-A3B24B105322.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B85C1B60-7BE0-4C10-A2BB-213B994A3221.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-27EA00B6-F15F-4EC5-80EA-AFA553204C41.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-29CB35FA-F50D-4F6E-88B6-D3A1D83BE311.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-15DDFD00-A3D7-4ECE-BCD6-988BEFBB666D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D1B379A7-56ED-4FEE-80B3-2E5EDAA26B26.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F4DA723A-DEB9-42D8-82FF-72553EB24273.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D8B566D6-A3A8-4520-99BD-9C42E134FDEE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE296479-9D5A-4173-95F6-A96D88C7E13E.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8E51FD07-B435-45DA-91E4-E189138E982C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-44FDD3F8-4763-4D3C-960C-6DF87D3DC21B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C07AF508-CC8B-4F23-AFC2-5C9F7658D299.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-08EA04A7-4A00-4842-A5A1-DC63D45FECBB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-54199FF8-D17D-446C-B634-1CFB3645E453.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CDF3E9F6-1C09-47DE-9DBC-0986E8940D71.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AFB6CDB2-9770-4546-84A0-171ADA783D53.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-87DE517B-292D-490F-AF95-DC11A19B1483.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DCA76A29-0F5D-4783-A920-4E88C465489F.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-04D62C94-2420-49D8-85F4-F94787854EE2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C32657F6-AAF5-4DCC-AC94-2BA02AEBADFB.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Load Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_bk_load_ops"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Load Operations</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-64E5BFBB-FE9E-47CB-82A7-76C2AD57ED9C.htm">Intrinsics for Intel&reg; Advanced Vector Extensions</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-EFB9BAC4-E225-4A9A-894C-06500FAB94CC.htm">_mm256_broadcast_pd</a><br>
+Loads and broadcasts packed double-precision floating point values.The corresponding Intel&reg; AVX instruction is <span class="keyword">VBROADCASTF128</span>.</li>
+<li class="ulchildlink"><a href="GUID-38BC4F84-8815-491B-8717-CFA62EAE0F03.htm">_mm256_broadcast_ps</a><br>
+Loads and broadcasts packed single-precision floating point values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VBROADCASTF128</span>. </li>
+<li class="ulchildlink"><a href="GUID-5C8DB554-D8DD-4C5B-8807-0DA56E1E7B84.htm">_mm256_broadcast_sd</a><br>
+Loads and broadcasts scalar double-precision floating point values to a 256-bit destination operand. The corresponding Intel&reg; AVX instruction is <span class="keyword">VBROADCASTSD</span>.</li>
+<li class="ulchildlink"><a href="GUID-0CA05DB7-584F-48CC-A7B8-A3B24B105322.htm">_mm256_broadcast_ss, _mm_broadcast_ss</a><br>
+Loads and broadcasts 256/128-bit scalar single-precision floating point values to a 256/128-bit destination operand. The corresponding Intel&reg; AVX instruction is <span class="keyword">VBROADCASTSS</span>.</li>
+<li class="ulchildlink"><a href="GUID-B85C1B60-7BE0-4C10-A2BB-213B994A3221.htm">_mm256_load_pd</a><br>
+Moves packed double-precision floating point values from aligned memory location to a destination vector. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVAPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-27EA00B6-F15F-4EC5-80EA-AFA553204C41.htm">_mm256_load_ps</a><br>
+Moves packed single-precision floating point values from aligned memory location to a destination vector. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVAPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-29CB35FA-F50D-4F6E-88B6-D3A1D83BE311.htm">_mm256_load_si256</a><br>
+ Moves integer values from aligned memory location to a destination vector. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVDQA</span>.</li>
+<li class="ulchildlink"><a href="GUID-15DDFD00-A3D7-4ECE-BCD6-988BEFBB666D.htm">_mm256_loadu_pd</a><br>
+Moves packed double-precision floating point values from  unaligned memory location to a destination vector.  The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVUPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-D1B379A7-56ED-4FEE-80B3-2E5EDAA26B26.htm">_mm256_loadu_ps</a><br>
+Moves packed single-precision floating point values from unaligned memory location to a destination vector. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVUPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-F4DA723A-DEB9-42D8-82FF-72553EB24273.htm">_mm256_loadu_si256</a><br>
+Moves integer values from unaligned memory location to a destination vector. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVDQU</span>. </li>
+<li class="ulchildlink"><a href="GUID-D8B566D6-A3A8-4520-99BD-9C42E134FDEE.htm">_mm256_maskload_pd, _mm_maskload_pd</a><br>
+ Loads packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMASKMOVPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-CE296479-9D5A-4173-95F6-A96D88C7E13E.htm">_mm256_maskload_ps, _mm_maskload_ps</a><br>
+Loads packed single-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMASKMOVPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-8E51FD07-B435-45DA-91E4-E189138E982C.htm">_mm256_store_pd</a><br>
+Moves packed double-precision floating point values from a float64 vector to an aligned memory location. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVAPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-44FDD3F8-4763-4D3C-960C-6DF87D3DC21B.htm">_mm256_store_ps</a><br>
+Moves packed single-precision floating point values from a float32 vector to an aligned memory location. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVAPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-C07AF508-CC8B-4F23-AFC2-5C9F7658D299.htm">_mm256_store_si256</a><br>
+Moves values from a integer vector to an aligned memory location. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVDQA</span>.</li>
+<li class="ulchildlink"><a href="GUID-08EA04A7-4A00-4842-A5A1-DC63D45FECBB.htm">_mm256_storeu_pd</a><br>
+Moves packed double-precision floating point values from a float64 vector to an unaligned memory location. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVUPD</span>. </li>
+<li class="ulchildlink"><a href="GUID-54199FF8-D17D-446C-B634-1CFB3645E453.htm">_mm256_storeu_ps</a><br>
+Moves packed single-precision floating point values from a float32 vector to an unaligned memory location. The corresponding Intel&reg; AVX instruction is<span class="keyword">VMOVUPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-CDF3E9F6-1C09-47DE-9DBC-0986E8940D71.htm">_mm256_storeu_si256</a><br>
+Moves values from a integer vector to an unaligned memory location. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVDQU</span>. </li>
+<li class="ulchildlink"><a href="GUID-AFB6CDB2-9770-4546-84A0-171ADA783D53.htm">_mm256_stream_pd</a><br>
+Moves  packed double-precision floating-point values using non-temporal hint. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVNTPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-87DE517B-292D-490F-AF95-DC11A19B1483.htm">_mm256_stream_ps</a><br>
+Moves  packed single-precision floating-point values using non-temporal hint. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVNTPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-DCA76A29-0F5D-4783-A920-4E88C465489F.htm">_mm256_stream_si256</a><br>
+Moves  packed integer values using non-temporal hint. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVNTDQ</span>.</li>
+<li class="ulchildlink"><a href="GUID-04D62C94-2420-49D8-85F4-F94787854EE2.htm">_mm256_maskstore_pd, _mm_maskstore_pd</a><br>
+ Stores packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMASKMOVPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-C32657F6-AAF5-4DCC-AC94-2BA02AEBADFB.htm">_mm256_maskstore_ps, _mm_maskstore_ps</a><br>
+Stores packed single-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMASKMOVPS</span>. </li>
+</ul>
+</div>
+
+</body>
+</html>

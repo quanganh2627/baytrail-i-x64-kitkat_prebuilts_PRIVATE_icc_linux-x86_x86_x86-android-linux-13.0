@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Memory Allocation Bottlenecks">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, memory allocation">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, memory allocation">
+<meta name="DC.Relation" scheme="URI" content="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6C597D5C-35CB-4BE7-BDC2-CD0380D9BE02">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Memory Allocation Bottlenecks</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_mem_alloc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6C597D5C-35CB-4BE7-BDC2-CD0380D9BE02">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Memory Allocation Bottlenecks</h1>
+ 
+   
+  <div> 
+	 <p>The memory allocation system used by default on some Linux*, 
+		<span>OS X*, 
+		</span>and Windows* operating systems is known to be a bottleneck in parallel programs. When the program allocates or deallocates memory from the heap (e.g., using 
+		<span class="keyword">malloc, free, new</span>, or 
+		<span class="keyword">delete</span>) on these systems, the runtime library uses a mutex lock to prevent corruption of the heap data structures. Even on a single processor, this lock is quite expensive. However, when multiple strands try to allocate or deallocate memory simultaneously, the resulting contention on the lock can effectively kill much of the parallelism in the program. This means that the heap allocator does not scale to multiple processors. 
+	 </p>
+ 
+	 <p>One solution to this problem is to use a scalable memory allocator, such as the one provided by the Intel&reg; Threading Building Blocks library (Intel&reg; TBB). The TBB Scalable Memory Allocator is recommended for use with Intel&reg; Cilk&#8482; Plus programs. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

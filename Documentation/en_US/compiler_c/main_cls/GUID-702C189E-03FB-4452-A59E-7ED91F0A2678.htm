@@ -1,0 +1,196 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Reducers - More Examples">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, reducer examples">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, reducer examples">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-702C189E-03FB-4452-A59E-7ED91F0A2678">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Reducers - More Examples</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_reducer_moreex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-702C189E-03FB-4452-A59E-7ED91F0A2678">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Reducers - More Examples</h1>
+ 
+   
+  <div> 
+	 <p>The following shows how to use a variety of reducers, including the 
+		<span class="filepath">String</span> and 
+		<span class="filepath">List</span> reducers. 
+	 </p>
+ 
+	 <p> 
+		<strong>String Reducer</strong> 
+	 </p>
+ 
+	 <p><samp class="codeph">reducer_string</samp> builds strings of 8-bit characters, and the example uses += (string concatenation) as the update operation. (For strings of 16-bit or 32-bit characters, use 
+		<samp class="codeph">reducer_basic_string</samp> or 
+		<samp class="codeph">reducer_wstring</samp>.) 
+	 </p>
+ 
+	 <p>This example demonstrates how reducers work with the runtime to preserve serial semantics. In a serial for loop, the reducer concatenates each of the characters 'A' to 'Z', and then prints out: 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph">The result string is: ABCDEFGHIJKLMNOPQRSTUVWXYZ</samp> 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">cilk_for</span> loop uses a divide-and-conquer algorithm to break this into two halves, and then break each half into two halves, until it gets down to a reasonable size chunk of work. Therefore, the first worker might build the string "ABCDEF", the second might build "GHIJKLM", the third might build "NOPQRS", and the fourth might build "TUVWXYZ". The runtime system calls the reducer's reduce method so that the final result is a string containing the letters of the English alphabet in order. 
+	 </p>
+ 
+	 <p>String concatenation is associative (but not commutative); the order of operations is not important. For instance, the following two expressions are equal: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-51E92070-871F-4D3E-9815-29769393D34E"> 
+		<li> 
+		  <p><samp class="codeph">"ABCDEF" concat ("GHIJKLM" concat ("NOPQRS" concat "TUVWXYZ"))</samp> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><samp class="codeph">("ABCDEF" concat "GHIJKLM") concat ("NOPQRS" concat "TUVWXYZ")</samp> 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p>The result is always the same, regardless of how 
+		<span class="keyword">cilk_for</span> creates the work chunks. 
+	 </p>
+ 
+	 <p>The call to 
+		<samp class="codeph">get_value() 
+		</samp> performs the reduce operation and concatenates the substrings into a single output string. Why use 
+		<samp class="codeph">get_value()</samp> to fetch the string? It makes you think about whether fetching the value at this time makes sense. You could fetch the value whenever you want, but, in general, you should not. The result might be an unexpected intermediate value, and, in any case, the intermediate value is meaningless. In this example, the result might be"GHIJKLMNOPQRS", the concatenation of "GHIJKLM" and "NOPQRS". 
+	 </p>
+ 
+	 <p>Intel&reg; Cilk&#8482; Plus reducers provide serial semantics; these serial semantics are only guaranteed at the end of the parallel calculation, such as at the end of a 
+		<span class="keyword">cilk_for</span> loop, after the runtime system has performed all the reduce operations. You should not call 
+		<samp class="codeph">get_value() 
+		</samp>within the 
+		<span class="keyword">cilk_for</span> loop; the value is unpredictable and meaningless since results from other loop iterations are being combined (reduced) with the results in the calling iteration. 
+	 </p>
+ 
+	 <p>Unlike the previous example, which adds integers, the reduce operation is not commutative. You could use similar code to append (or prepend) elements to a list using the reducer library's 
+		<span class="filepath">reducer_list_append</span>, as is shown in the example in the next section. 
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;cilk/reducer_string.h&gt;
+#include &lt;iostream&gt;
+int main()
+{
+   //...
+   cilk::reducer_string result;
+   cilk_for (std::size_t i = 'A'; i &lt; 'Z'+1; ++i){
+     *result += (char)i;
+   }
+   std::cout &lt;&lt; "The result string is: "
+             &lt;&lt; result.get_value() &lt;&lt;std::endl;
+   return 0;
+}
+</pre> 
+	 <p>In this and other examples, each loop iteration only updates the reducer once; however, you can have several updates in each iteration. For example: 
+	 </p>
+ 
+	 <pre>cilk_for (std::size_t i = 'A'; i &lt; 'Z'+1; ++i){
+   *result += (char)i;
+   *result += tolower((char)i);
+}
+</pre> 
+	 <p>This is valid and produces the following string: 
+	 </p>
+ 
+	 <p><samp class="codeph">AaBb...Zz</samp> 
+	 </p>
+ 
+	 <p> 
+		<strong>List Reducer (With User-Defined Type)</strong> 
+	 </p>
+ 
+	 <p><span class="filepath">reducer_list_append</span> creates lists, using the STL list append method as the update operation. The identity is the empty list. The example here is almost identical to the previous string example. The 
+		<span class="filepath">reducer_list_append</span> declaration does, however, require a type, as shown in the following code. 
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;cilk/reducer_list.h&gt;
+#include &lt;iostream&gt;
+int main()
+{
+  //...
+  cilk::reducer_list_append&lt;char&gt; result;
+  cilk_for (std::size_t i = 'A'; i &lt; 'Z'+1; ++i){
+     result-&gt;push_back ((char)i);
+  }
+
+  std::cout &lt;&lt; "String = ";
+  std::list&lt;char&gt; r;
+  r = result.get_value() ;
+  for (std::list&lt;char&gt;::iterator i = r.begin();
+                                 i != r.end(); ++i){
+     std::cout &lt;&lt; *i;
+  }
+  std::cout &lt;&lt; std::endl;
+}
+</pre> 
+	 <p> 
+		<strong>Reducers in Recursive Functions</strong> 
+	 </p>
+ 
+	 <p>The reducers are not limited to update operations within a 
+		<span class="keyword">cilk_for</span> loop. Reducers can work with arbitrary control flow, such as recursively spawned functions. This example illustrates how a reducer can be used to create an in-order list of elements in a tree. The final list will always contain the elements in the same order as in a serial execution, regardless of the number of cores or how the computation is scheduled. 
+	 </p>
+ 
+	 <pre>#include &lt;cilk/reducer_list.h&gt;
+Node *target;
+cilk::reducer_list_append&lt;int&gt; output_list;
+...
+// Output the tree with an in-order walk
+void walk (Node *x)
+{
+   if (NULL == x)
+     return;
+   cilk_spawn walk (x-&gt;left);
+   output_list-&gt;push_back (x-&gt;value);
+   walk (x-&gt;right);
+ }
+</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

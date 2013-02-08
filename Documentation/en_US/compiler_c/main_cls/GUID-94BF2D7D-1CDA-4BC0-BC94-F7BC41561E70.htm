@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_kandnr">
+<meta name="abstract" content="Performs a bitwise AND operation between a NOT vector mask and another vector mask. Corresponding instruction is KANDNR. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Performs a bitwise AND operation between a NOT vector mask and another vector mask. Corresponding instruction is KANDNR. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_kandnr">
+<meta name="keywords" content="_mm512_kandnr">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A68F64D-8650-42B7-9AD6-D1B6F98D674C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-94BF2D7D-1CDA-4BC0-BC94-F7BC41561E70">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_kandnr</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_kandnr"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-94BF2D7D-1CDA-4BC0-BC94-F7BC41561E70">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_kandnr</h1>
+<!--Performs a bitwise AND operation between a NOT vector mask and another vector mask. Corresponding instruction is 
+ KANDNR .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Performs a bitwise AND operation between a NOT vector mask and another vector mask. Corresponding instruction is 
+<samp class="codeph">KANDNR</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-7560C828-0877-4DDD-B09B-BBF3090EE9BB"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __mmask16__cdecl _mm512_kandnr(__mmask16 k1, __mmask16 k2);  &nbsp;</span></p></td></tr></table>
+</div>
+<div class="section" id="GUID-D8019390-D8C4-4852-9C25-40E040FDA5D2"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder">vector mask
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k2</var></p></td>
+
+<td valign="top" class="noborder">vector mask
+</td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-975FBAA3-3015-4D97-9454-4819F708F592"><h2>Description</h2>
+<p>Performs a bitwise AND operation between the NOT of vector mask 
+<samp class="codeph">k2</samp> and vector mask 
+<samp class="codeph">k1</samp>. For this intrinsic, the vector masks are reversed when compared to the same operation performed using the 
+<samp class="codeph">
+<a href="GUID-41CDACE1-4DD3-4A7F-893A-99CD97C9BC8F.htm#GUID-41CDACE1-4DD3-4A7F-893A-99CD97C9BC8F">_mm512_kandn</a>
+</samp> intrinsic.</p>
+</div>
+<div class="section" id="GUID-7523DF72-9B19-44EB-AEA4-6EB5034D5505"><h2>Returns</h2><p>Returns the result of the bitwise AND operation (
+<samp class="codeph">k1 &amp; ^k2</samp>).</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5A68F64D-8650-42B7-9AD6-D1B6F98D674C.htm">Vector Mask Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

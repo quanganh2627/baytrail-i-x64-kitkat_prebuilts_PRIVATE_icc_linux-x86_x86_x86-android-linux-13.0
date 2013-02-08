@@ -1,0 +1,219 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="O">
+<meta name="abstract" content="Specifies the code optimization for applications.">
+<meta name="description" content="Specifies the code optimization for applications.">
+<meta name="DC.subject" content="-O compiler option, /O compiler option, applications, option specifying code optimization for, optimization, option specifying code">
+<meta name="keywords" content="-O compiler option, /O compiler option, applications, option specifying code optimization for, optimization, option specifying code">
+<meta name="DC.Relation" scheme="URI" content="GUID-AC81D804-037B-4506-BEF0-C9D1D7EAD9A3.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BD394DA2-18C4-45A8-A9BD-92204832058E.htm#GUID-BD394DA2-18C4-45A8-A9BD-92204832058E">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>O</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_o_ucase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_o_ucase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">O</h1>
+<!--Specifies the code optimization for applications.--><div><p>Specifies the code optimization for applications.</p>
+
+<div class="section" id="GUID-AAB15221-16DE-454D-813A-77951633BADC"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Optimization</strong></p>
+
+<p class="ide">Linux: 
+								<strong>General &gt; Optimization Level</strong></p>
+
+<p class="ide">OS X: 
+								<strong>General &gt; Optimization Level</strong></p>
+</div>
+<div class="section" id="GUID-0D0F29EA-B591-4C32-84FD-FEB9A6940D10"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-F5C0CCE7-537B-4F0A-9278-0C6D15BE5D31"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-O</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/O</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-C7E787E6-B50D-47C2-991C-9035DEF28878"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the optimization level. Possible values are 1, 2, or 3. On Linux* and OS X* systems, you can also specify 0.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-EB539F76-2CFB-4FB2-9AA8-3C4E0D130514"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="option">O2</span></p></td>
+<td valign="top" class="noborder"><p>Optimizes for code speed. This default may change depending on which other compiler options are specified. For details, see below.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-D7CD1032-354B-405B-8392-306EE96FD706"><h2>Description</h2><p>This option specifies the code optimization for applications.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E47914E3-C28A-4E1A-9AFB-C43602E887AD" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr> <th class="noborder" align="left" valign="top" width="30%" id="d715932e114"><p>Option</p>
+</th>
+ 
+<th class="noborder" align="left" valign="top" width="70%" id="d715932e118"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> 
+<tr> <td class="noborder" valign="top" width="30%" headers="d715932e114 "><p><span class="option">O</span> (Linux* OS and OS X*)</p>
+</td>
+ 
+<td class="noborder" valign="top" width="70%" headers="d715932e118 "><p>This is the same as specifying <span class="option">O2</span>.</p>
+</td>
+ </tr>
+ <tr> 
+<td class="noborder" valign="top" width="30%" headers="d715932e114 "><p><span class="option">O0</span> (Linux OS and OS X)</p>
+</td>
+ 
+<td class="noborder" valign="top" width="70%" headers="d715932e118 "><p>Disables all optimizations. </p>
+<p>This option may set other options. This is determined by the compiler, depending on which operating system and architecture you are using. The options that are set may change from release to release.</p>
+</td>
+ </tr>
+ 
+<tr> <td class="noborder" valign="top" width="30%" headers="d715932e114 "><p><span class="option">O1</span></p>
+</td>
+ 
+<td class="noborder" valign="top" width="70%" headers="d715932e118 "> <p>Enables optimizations for speed and disables some optimizations that increase code size and affect speed.<br>To limit code size, this option:</p>
+ <ul type="disc" id="GUID-3842D3DA-ED25-4A67-A4EB-C75B41F7B2A5"><li><p>Enables global optimization; this includes data-flow analysis, code motion, strength reduction and test replacement, split-lifetime analysis, and instruction scheduling.</p>
+</li>
+
+<li><p>Disables inlining of some intrinsics.</p>
+</li>
+</ul>
+ <p>This option may set other options. This is determined by the compiler, depending on which operating system and architecture you are using. The options that are set may change from release to release.</p>
+ <p>The <span class="option">O1</span> option may improve performance for applications with very large code size, many branches, and execution time not dominated by code within loops.</p>
+</td>
+ </tr>
+ 
+<tr> 
+<td class="noborder" valign="top" width="30%" headers="d715932e114 "><p><span class="option">O2</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d715932e118 "> <p>Enables optimizations for speed. This is the generally recommended optimization level.<br> Vectorization is enabled at <span class="option">O2</span> and higher levels.</p>
+<p> On systems using IA-32 architecture: Some basic loop optimizations such as Distribution, Predicate Opt, Interchange, multi-versioning, and scalar replacements are performed.</p>
+<p>This option also enables:</p>
+ <ul type="disc" id="GUID-FBF6E415-6500-4A7A-AFBC-6936BE18E9CF"><li><p>Inlining of intrinsics</p>
+</li>
+
+<li><p>Intra-file interprocedural optimization, which includes:</p>
+ <ul type="circle" class="circle" id="GUID-AAAF1411-37ED-4822-9C2A-B5E00160F43B"><li><p>inlining</p>
+</li>
+<li><p>constant propagation</p>
+</li>
+<li><p>forward substitution</p>
+</li>
+<li><p>routine attribute propagation</p>
+</li>
+<li><p>variable address-taken analysis</p>
+</li>
+<li><p>dead static function elimination</p>
+</li>
+<li><p>removal of unreferenced variables</p>
+</li>
+ </ul>
+</li>
+<li><p>The following capabilities for performance gain:</p>
+ <ul type="circle" class="circle" id="GUID-88E91A47-7B3E-4046-8DC4-271AC01938A8"><li><p>constant propagation</p>
+</li>
+<li><p>copy propagation</p>
+</li>
+
+<li><p>dead-code elimination</p>
+</li>
+<li><p>global register allocation</p>
+</li>
+<li><p>global instruction scheduling and control speculation</p>
+</li>
+<li><p>loop unrolling</p>
+</li>
+<li><p>optimized code selection</p>
+</li>
+<li><p>partial redundancy elimination</p>
+</li>
+<li><p>strength reduction/induction variable simplification</p>
+ </li>
+<li><p>variable renaming</p>
+</li>
+
+<li><p>exception handling optimizations</p>
+</li>
+<li><p>tail recursions</p>
+</li>
+<li><p>peephole optimizations</p>
+</li>
+<li><p>structure assignment lowering and optimizations</p>
+</li>
+
+<li><p>dead store elimination</p>
+</li>
+ </ul>
+</li>
+ </ul>
+  <p>This option may set other options,  especially options that optimize for code speed. This is determined by the compiler, depending on which operating system and architecture you are using. The options that are set may change from release to release.</p>
+ <p><span><span>On Linux systems, the <span class="option">-debug inline-debug-info</span> option will be enabled by default if you compile with optimizations (option <span class="option">-O2</span> or higher) and debugging is enabled (option <span class="option">-g</span>).</span></span></p>
+<p>Many routines in the shared libraries are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+ </td>
+ </tr>
+ 
+<tr> <td class="noborder" valign="top" width="30%" headers="d715932e114 "><p><span class="option">O3</span></p>
+</td>
+ 
+<td class="noborder" valign="top" width="70%" headers="d715932e118 "> <p>Performs <span class="option">O2</span> optimizations and enables more aggressive loop transformations such as Fusion, Block-Unroll-and-Jam, and collapsing IF statements.</p>
+<p>This option may set other options. This is determined by the compiler, depending on which operating system and architecture you are using. The options that are set may change from release to release.</p>
+   
+<p>When <span class="option">O3</span> is used with options <span class="option">-ax</span> or <span class="option">-x</span> (Linux OS) or with options <span class="option">/Qax</span> or <span class="option">/Qx</span> (Windows OS), the compiler performs more aggressive data dependency analysis than for <span class="option">O2</span>, which may result in longer compilation times.</p>
+
+<p>The <span class="option">O3</span> optimizations may not cause higher performance unless loop and memory access transformations take place. The optimizations may slow down code in some cases compared to <span class="option">O2</span> optimizations.</p>
+<p>The <span class="option">O3</span> option is recommended for applications that have loops that heavily use floating-point calculations and process large data sets. </p>
+
+<p>Many routines in the shared libraries are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+</td>
+ </tr>
+</tbody>
+</table>
+</div>
+<p>The last <span class="option">O</span> option specified on the command line takes precedence over any others.</p>
+</div>
+
+<div class="section" id="GUID-75544959-698A-48D5-B21B-B4DC3AFA08F4"><h2>Alternate Options</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="option">O0</span></p></td>
+
+<td valign="top" class="noborder"><p>Linux and OS X: None<br>Windows: <span class="option">/Od</span></p>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AC81D804-037B-4506-BEF0-C9D1D7EAD9A3.htm">Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-BD394DA2-18C4-45A8-A9BD-92204832058E.htm#GUID-BD394DA2-18C4-45A8-A9BD-92204832058E"><span class="option">Od</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

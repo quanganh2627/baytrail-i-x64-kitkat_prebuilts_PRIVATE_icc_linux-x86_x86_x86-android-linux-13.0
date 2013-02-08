@@ -1,0 +1,236 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="omp task">
+<meta name="abstract" content="Defines a task region.">
+<meta name="description" content="Defines a task region.">
+<meta name="DC.subject" content="omp task">
+<meta name="keywords" content="omp task">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-243B37C4-0633-45C1-8207-66569BFDE799">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>omp task</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_omp_task"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-243B37C4-0633-45C1-8207-66569BFDE799">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"> omp task</h1>
+
+<!-- Defines a task region.-->
+
+<div><p> Defines a task region.</p>
+
+
+
+<div class="section" id="GUID-B76AD468-A8CB-45EF-AA8C-C359811F415D"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma omp task </span><span class="delim">[</span><span class="var">clause</span><span class="delim">[[</span><span class="sep">,</span><span class="delim">]</span><span class="var">clause</span><span class="delim">]</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table><p><samp class="codeph"><var>block</var></samp></p>
+</div>
+
+<div class="section" id="GUID-EFBAED3B-73E8-48FC-8577-09D098BF0EF0"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>clause</var>  </p></td>
+<td valign="top" class="noborder"><var>clause</var> can be any of the following:<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">final</span>(<em>scalar_expression</em>)</p></td>
+<td valign="top" class="noborder"><p> When the <var>scalar_expression </var>evaluates to <samp class="codeph">true</samp>, it specifies that the generated task will be a <samp class="codeph">final</samp> task. <div class="Note"><h3 class="NoteTipHead">Note</h3><p>
+<samp class="codeph">final</samp> task is a task that forces all of
+its descendant tasks  to become included
+tasks.</p>
+
+
+</div>All <samp class="codeph">task</samp> constructs encountered during execution of a final task will generate included tasks.</p>
+<p>Note that if a variable is used in a <samp class="codeph">final</samp> clause expression of a <samp class="codeph">task</samp> construct, it causes an implicit reference to the variable in all enclosing constructs.</p>
+<p> Only a single <samp class="codeph">final</samp> clause can appear in the <samp class="codeph">task</samp> pragma.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">private</span>(<em>list</em>)</p></td>
+<td valign="top" class="noborder"><p>Specifies a list of variables that are to be considered private within the task.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">firstprivate</span>(<em>list</em>)</p></td>
+<td valign="top" class="noborder"><p>Specifies a list of variables that are private and in addition are initialized from a variable of the same name in the enclosing syntactic context at the time the task is created.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">shared</span>(<em>list</em>)</p></td>
+<td valign="top" class="noborder"><p>Specifies a list of variables in the enclosing syntactic context that will be referenced inside the task.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">default(shared|none)</span></p></td>
+<td valign="top" class="noborder"><p><samp class="codeph">default(shared)</samp> specifies that the variables used
+in a task, but not explicitly declared in a
+ <samp class="codeph">private</samp>,
+ <samp class="codeph">firstprivate</samp>
+ or
+ <samp class="codeph">shared</samp>
+ clause will be made
+shared.
+ <samp class="codeph">default(none)</samp>
+ specifies that the variables used
+in a task, but not explicitly declared in a
+ <samp class="codeph">private</samp>
+ ,
+ <samp class="codeph">firstprivate</samp>
+ , or
+ <samp class="codeph">shared</samp>
+ clause will be flagged with a
+syntax error at compile time.
+
+</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">untied</span></p></td>
+<td valign="top" class="noborder"><p> Specifies that the task is never tied to the thread that started its execution. Any thread in the team can resume the task region after a suspension. For example, during runtime, the compiler can start the execution of a given task on thread A, break execution, and later resume it on thread B.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">if</span>(<em>scalar_expression</em>)</p></td>
+<td valign="top" class="noborder"><p> Specifies that the enclosed code section is to
+be executed in parallel only if the <em>scalar_expression</em> evaluates to <samp class="codeph">true</samp>. If this clause is not used, the region is executed as if an
+<samp class="codeph">if</samp>(<samp class="codeph">true</samp>) clause was specified.</p>
+<p> If the <em>scalar_expression</em> evaluates to
+<samp class="codeph"><samp class="codeph">false</samp></samp>, the encountering thread must suspend the current task
+region and begin execution of the generated task immediately. The
+suspended task region will not be resumed until the generated task
+is completed.</p>
+<p> This clause is evaluated by the master thread
+before any data scope attributes take effect.</p>
+<p> Only a single <samp class="codeph">if</samp> clause may appear in the <samp class="codeph">task</samp>
+pragma.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">mergeable</span></p></td>
+<td valign="top" class="noborder"><p> When the generated task is an <samp class="codeph">undeferred task</samp> or an <samp class="codeph">included task</samp>, it specifies that the implementation may generate a <samp class="codeph">merged task</samp> instead.<div class="Note"><h3 class="NoteTipHead">Note</h3><p>
+ An <samp class="codeph">undeferred task</samp>  is a task for which execution is
+not deferred with respect to its generating task region,
+that is, its generating task region is suspended until
+execution of the <samp class="codeph">undeferred task</samp> is completed.</p>
+
+<p>An <samp class="codeph">included task</samp> is a task for which execution is
+sequentially included in the generating task region, that is,
+it is undeferred and executed immediately by the
+encountering thread.</p>
+<p>A <samp class="codeph">merged task</samp>
+ is a task whose data
+environment, inclusive of internal control
+variables, is the same as that of its
+generating task region. Internal control variables (ICVs)
+are discussed in the latest OpenMP* specifications.</p>
+
+
+
+
+
+
+</div></p>
+</td>
+</tr></table>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>block</var></p></td>
+<td valign="top" class="noborder"><p> Is a structured block of statements or constructs. You cannot branch into or out of the block.</p>
+ </td>
+</tr></table>
+
+</div>
+
+
+<div class="section" id="GUID-9B953D9B-1AE1-491F-96ED-8927066FC75E"><h2>Description</h2>
+<p> When a thread encounters a <samp class="codeph">task</samp>
+construct, a task is generated from the code for the associated
+structured block. The encountering thread may immediately execute
+the task, or defer its execution. In the latter case, any thread in
+the team may be assigned the task.</p>
+
+<p> A thread that encounters a task
+scheduling point within the task region may temporarily suspend the
+task region. By default, a task is then tied and its suspended task
+region can only be resumed by the thread that started its
+execution. However, if the <samp class="codeph">untied</samp> clause is specified in a <samp class="codeph">task</samp>
+construct, any thread in the team can resume the task region after
+a suspension. The <samp class="codeph">untied</samp> clause is ignored in following
+cases:</p>
+
+<p>
+<ul type="disc" id="GUID-2A3A4A9B-4CB6-4BDE-AC84-2EA45393F52E"><li>If a <samp class="codeph">final</samp>
+clause has been specified in the same <samp class="codeph">task</samp> construct and the <samp class="codeph">final</samp> clause expression
+evaluates to <samp class="codeph">true</samp></li>
+<li>If a task
+is an <samp class="codeph">included task</samp></li>
+</ul>
+
+</p>
+
+
+<p> A <samp class="codeph">task</samp> construct may be nested
+inside an outer task, but the task region of the inner task is not
+a part of the task region of the outer task.</p>
+
+<p> The <samp class="codeph">task</samp> construct includes a task
+scheduling point in the task region of its generating task,
+immediately following the generation of the explicit task. Each
+explicit task region includes a task scheduling point at its point
+of completion. An
+implementation may add task scheduling points anywhere in untied
+task regions.</p>
+
+<p> Note that when storage is shared
+by an explicit task region, you must add proper synchronization to
+ensure that the storage does not reach the end of its lifetime
+before the explicit task region completes its execution.</p>
+
+<p> A program must not depend on any
+ordering of the evaluations of the clauses of the <samp class="codeph">task</samp> pragma
+and it must not depend on any side effects of the evaluations of
+the clauses. A program that branches into or out of a task region
+is non-conforming.</p>
+
+<p> Unsynchronized use of C++ I/O
+statements by multiple tasks on the same unit has unspecified
+behavior.</p>
+
+
+</div>
+
+
+<div class="section" id="GUID-0256DA21-3C0B-4465-A99A-CB9E4C85623B"><h2 class="sectiontitle">Example:</h2><pre>struct node {
+struct node *left;
+struct node *right;
+};
+extern void process(struct node *);
+int depth, limit;
+
+void traverse( struct node *p ) {
+
+// When depth&gt;limit, stop generating new tasks, and allow the 
+// compiler to avoid creating a new data environment.
+
+if (p-&gt;left)
+#pragma omp task final(depth&gt;limit) mergeable
+     // p is firstprivate by default
+traverse(p-&gt;left);
+if (p-&gt;right)
+#pragma omp task final(depth&gt;limit) mergeable
+     // p is firstprivate by default
+traverse(p-&gt;right);
+process(p);
+}
+</pre><p></p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

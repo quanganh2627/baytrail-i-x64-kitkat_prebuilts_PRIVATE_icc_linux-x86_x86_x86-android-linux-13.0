@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="restrict, Qrestrict">
+<meta name="abstract" content="Determines whether pointer disambiguation is enabled with the restrict qualifier.">
+<meta name="description" content="Determines whether pointer disambiguation is enabled with the restrict qualifier.">
+<meta name="DC.subject" content="-restrict compiler option, /Qrestrict compiler option">
+<meta name="keywords" content="-restrict compiler option, /Qrestrict compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-DD52D6C3-D274-4209-A0D1-4AB93F58C48B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-080E90C8-1199-4A0D-8715-3BD04E7BBE08.htm#GUID-080E90C8-1199-4A0D-8715-3BD04E7BBE08">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-50D54E16-3458-4B41-88C2-9BBD42EE1150">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>restrict, Qrestrict</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_qrestrict"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_qrestrict"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-50D54E16-3458-4B41-88C2-9BBD42EE1150">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">restrict, Qrestrict</h1>
+<!--Determines whether pointer disambiguation is enabled with the restrict qualifier. --><div><p>Determines whether pointer disambiguation is enabled with the restrict qualifier. </p>
+
+<div class="section" id="GUID-D6CB19BE-48E6-422B-967D-422E523DFA4F"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Language &gt; Recognize The Restrict Keyword</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Language &gt; Recognize The Restrict Keyword</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-35AA403A-4092-4D36-A817-699814C8A9F5"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-93EC39EF-1CCC-4B27-8AAA-973A7EC5C154"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-restrict</span></p><p><span class="kwd">-no-restrict</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qrestrict</span></p><p><span class="kwd">/Qrestrict-</span></p></td></tr></table></div>
+<div class="section" id="GUID-DF7DD31E-20DD-4887-94E3-2DFCADDFF001"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-E3ECD0EA-6140-4222-B3E5-5BD8E3F7B904"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-restrict</span> <span>or <span class="option">/Qrestrict-</span></span></p></td>
+<td valign="top" class="noborder"><p>Pointers are not qualified with the restrict keyword.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-4AC8C516-CD22-4D5C-A975-EFC94C214D40"><h2>Description</h2><p>This option determines whether pointer disambiguation is enabled with the restrict qualifier. Options <span class="option">-restrict</span> (Linux and OS X) and <span class="option">/Qrestrict</span> (Windows OS) enable the recognition of the restrict keyword as defined by the ANSI standard.</p>
+<p>By qualifying a pointer with the restrict keyword, you assert that an object accessed by the pointer is only accessed by that pointer in the given scope. You should use the restrict keyword only when this is true. When the assertion is true, the restrict option will have no effect on program correctness, but may allow better optimization.</p>
+</div>
+
+<div class="section" id="GUID-6047C834-8B5D-437C-AAE0-00673FB1036A"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DD52D6C3-D274-4209-A0D1-4AB93F58C48B.htm">Language Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-080E90C8-1199-4A0D-8715-3BD04E7BBE08.htm#GUID-080E90C8-1199-4A0D-8715-3BD04E7BBE08"><span class="option">std, Qstd</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

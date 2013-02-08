@@ -1,0 +1,431 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Creating and Using Build Specification Files">
+<meta name="DC.subject" content="source code analysis, build specification files, injection utility, inspxe-inject utility, wrapper utility, inspxe-wrap utility, inspxe-runsc utility">
+<meta name="keywords" content="source code analysis, build specification files, injection utility, inspxe-inject utility, wrapper utility, inspxe-wrap utility, inspxe-runsc utility">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEC7B612-A511-4C82-8E81-817DFEE8FAE8.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C16CADF3-4649-4DCF-94CA-57761A13A307">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Creating and Using Build Specification Files</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_svbuildspec"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_svbuildspec"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C16CADF3-4649-4DCF-94CA-57761A13A307">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Creating and Using Build Specification Files</h1>
+ 
+   
+  <div> 
+	 <p> If it is difficult to modify your build process to create a new build configuration, then you may need to create a build specification instead. 
+	 </p>
+ 
+	 <p> A build specification file is a summary that details how your application is built. In particular, it summarizes the steps needed to perform 
+		<span>static analysis</span> and specifies the files to process and the compilation options to use. It also describes the pseudo object modules that must be linked to generate the analysis results and the librarian invocations that are needed to combine those pseudo object modules into static link libraries. 
+	 </p>
+ 
+	 <p> The Intel compiler provides utility programs to create and execute build specifications. Invoke any of these utilities with the 
+		<samp class="codeph">-help</samp> switch to get a usage message or with the 
+		<samp class="codeph">-version</samp> switch to identify the version. 
+	 </p>
+ 
+	 <p> 
+		<strong>Creating a Build Specification File</strong> 
+	 </p>
+ 
+	 <p> There are several ways to create a build specification. They are described here in order of convenience. 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-54C0876E-EFD2-454B-B062-032EC685D767"> 
+		<li> Run your normal (debug) build under the injection utility 
+		  <p> The injection utility launches your build command as a child process, intercepts process creations, and generates a build specification file. Each time it sees an invocation of the compiler, librarian, or linker, it captures the command options and adds a corresponding command to the build specification file. Run the utility, as shown in the following: 
+		  </p>
+ 
+		  <pre>inspxe-inject -save-spec &lt;output build spec&gt; -- &lt;build command&gt;</pre> 
+		  <p>For example: 
+		  </p>
+ 
+		  <pre>inspxe-inject -save-spec buildapp_sca.spec -- make debug</pre> 
+		  <p> The injection utility automatically recognizes the following four compilers: the Intel&reg; C++ compiler, the Intel&reg; Fortran compiler, the Microsoft Visual C++* compiler, and the GNU* C++ compiler. The injection utility will not operate correctly if your build procedure invokes a compiler, librarian, or linker on another computer. 
+		  </p>
+ 
+		  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+			 <p> If your build procedure compiles or links files that are not part of your application, the resulting build specification file will also analyze those files. If you cannot avoid compiling unrelated source files during your build, edit the build specification file with a text editor to eliminate the unwanted compilation and link steps. 
+			 </p>
+ 
+		  </div> 
+		</li>
+ 
+		<li><div> 
+		  <p>Modify your build procedure to "wrap" each compilation, librarian, and linker step, then execute the modified build. 
+		  </p>
+ 
+		  <p> The wrapper utility provides direct control over the construction of the build specification. Each time you invoke the wrapper utility, it adds one line to the build specification. When you supply a command line as the argument to the wrapper, the wrapper appends a corresponding line to the build specification. It then optionally executes the command. 
+		  </p>
+ 
+		  <p> In some sense, the wrapper utility is like the injection utility except in the way that build actions are collected. The injection utility observes the actions that are invoked as sub-processes of your build script. The wrapper utility also "observes" the actions you tell it to observe with command line arguments. The actions themselves may or may not actually happen. 
+		  </p>
+ 
+		  <p> The most basic approach is to modify your build script to replace every compiler, librarian, or linker command with a corresponding command that invokes the wrapper. (You may have to capture additional commands, too, such as directory change commands and file copy commands.) Assuming the 
+			 <samp class="codeph">-no-run</samp> option is not supplied, executing the wrapped command will, in turn, execute the command itself in exactly the same way. This means that this transformation cannot break your build script. However, running your build script will, as a side effect, create a build specification. This approach works for any kind of scripting language, such as makefiles, shell scripts, ant scripts and so on. 
+		  </p>
+ 
+		  <p> You can modify this basic approach in two ways. First, you can select certain commands to not be wrapped. This allows you to selectively exclude actions from the build specification. Alternatively, you can add additional wrapper invocations (using the 
+			 <samp class="codeph">-no-run</samp> option) to selectively add commands to the build specification that would not otherwise be captured. Some examples may make this clearer. 
+		  </p>
+ 
+		  <p> Suppose your build uses a utility program called 
+			 <samp class="codeph">remote_shell</samp> to invoke a command on a remote machine. Actions performed in this way would be invisible to the injection utility. The utility uses, as its first argument, the remote machine name; the other arguments form the command to be executed remotely. Your build script might contain a line like this: 
+		  </p>
+ 
+		  <p> 
+			 <pre>remote_shell host1 gcc &lt;args&gt; file1.c</pre> 
+		  </p>
+ 
+		  <p> You could insert an additional line as follows: 
+		  </p>
+ 
+		  <pre>inspxe-wrap -no-run -save-spec
+buildapp_sca.spec -- gcc &lt;args&gt; file1.c
+remote_shell host1 gcc &lt;args&gt; file1.c</pre> 
+		  <p> This tells the wrap utility to record the fact that 
+			 <span class="filepath">file1.c</span> is being compiled with the indicated arguments. The 
+			 <samp class="codeph">-no-run</samp> option tells inspxe-wrap not to actually invoke gcc. The original command remains as it was (unwrapped) and will execute as usual. Note that wrapping the 
+			 <samp class="codeph">remote_shell 
+			 </samp>command itself would not work, because the wrapper utility does not recognize the 
+			 <samp class="codeph">remote_shell</samp> command as a compiler invocation. In fact, this technique can be used to transform any command that isn't recognized by the wrapper utility into one that is recognized: simply insert a wrapper call that wraps the recognized form (in this call, the call to gcc). 
+		  </p>
+ 
+		  <p> Sometimes a build script will build a utility program and execute that utility to generate additional source files that are later compiled into the real application. You might not want to run static analysis on the utility program. (After all, it is not part of your real product.) By selectively omitting the wrapper calls on build steps for the utility program, you effectively exclude the utility program from the build specification. 
+		  </p>
+ 
+		  <p> Probably the most challenging case is where your application is built by some kind of opaque program that does not expose the commands it will execute in any text form. In this case, you have no commands to wrap. However, in this case, you may be able to capture a log that shows what commands were executed and with what options. You can then transform this log using a text editor into a series of commands that will, when run, repeat the build. By replacing each command with a wrapper invocation, you can produce a script that, when run, produces a build specification. 
+		  </p>
+ 
+		  <p> Syntax: 
+		  </p>
+ 
+		  <pre>inspxe-wrap -save-spec &lt;output build spec&gt; [-no-run] -- &lt;command&gt;</pre> 
+		  <p> For example: 
+		  </p>
+ 
+		  <pre>inspxe-wrap -save-spec buildapp_sca.spec -- icl $(CFLAGS) file1.c</pre> 
+		  <p> 
+			 <strong> Note</strong> 
+		  </p>
+ 
+		  <p> The actions created by your instrumented build will be appended to the previous contents of the build specification. Therefore, before you execute your modified build, you should delete the output build specification file. 
+		  </p>
+ 
+		</div></li>
+ 
+	 </ul>
+ 
+	 <p><strong>Dealing with Multiple Projects, Multiple Configurations, and Shared Code</strong> 
+	 </p>
+ 
+	 <p>Your development team may use a master build script that builds several projects or several configurations of the same project. For example, a build script might compile and link the debug and release versions of several different applications. 
+	 </p>
+ 
+	 <p>Running a build script like this under the injection utility (or after instrumentation with the wrap utility) will generate a single build specification that, when executed, scans everything that was built. This is inconvenient because it does not allow you to scan one project by itself. Also, it may not be useful to scan more than one configuration of the same program, as all configurations of the same project generally contain the same defects. 
+	 </p>
+ 
+	 <p>If your master build script supports the capability to build only a single configuration of a single project, then you should use this to create a separate build specification file for each project. This still gives you the ability to scan individual projects; you can then write a script that scans all the projects. 
+	 </p>
+ 
+	 <p>Sometimes common source files or libraries are built into multiple projects. In these cases, there is often considerable overlap in analysis results. That is, defects in shared files tend to appear in every project that uses that file. It is possible that a defect in a common file will be detected in some project contexts and not in others. To cover this possibility, you may want to analyze the results for that file in every project. You will need to decide if the additional coverage is worth the effort. 
+	 </p>
+ 
+	 <p>It may want to choose one primary project where the analysis results for a shared file will be investigated. (For a library, the natural choice is the analysis results for the library itself.) For extra coverage, you can compare the results of analyzing the primary project with the results of investigating another project to see if any new problems in the shared file were discovered. 
+	 </p>
+ 
+	 <p> 
+		<strong>Using the Build Specification File</strong> 
+	 </p>
+ 
+	 <p> Once you have created a build specification, you can use it to perform 
+		<span>static analysis</span>. Remember to update your build specification each time a file is added or removed from the project or when compilation options change. Otherwise, full analysis of your entire application will not occur. 
+	 </p>
+ 
+	 <p> To perform 
+		<span>static analysis</span> from a build specification, use the following command line utility. 
+	 </p>
+ 
+	 <pre>inspxe-runsc -spec-file &lt;build spec&gt; [&lt;options&gt;]</pre> 
+	 <p> 
+		<samp class="codeph">&lt;options&gt;</samp> represents additional options to be passed to the compilation (and link) steps. 
+	 </p>
+ 
+	 <p><strong>Build Specification Utility Options</strong> 
+	 </p>
+ 
+	 <table cellpadding="4" cellspacing="0" summary="" border="1" class="argTbl"><tr> 
+		  <th valign="bottom" align="left" id="d639896e277" width="20%"> 
+			 <strong>Option</strong> 
+		  </th>
+ 
+		  <th valign="bottom" align="left" id="d639896e283" width="20%"> 
+			 <strong>Result</strong> 
+		  </th>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-?, -h, -help 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Describes command line options 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-d-i=<em>id</em> 
+			 </p>
+ 
+			 <p>-disable-id=<em>id</em> 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Disables warning with specified id 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-e-i=<em>id</em> 
+			 </p>
+ 
+			 <p>, -enable-id=<em>id</em> 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Enables warning with specified id 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-l=(1 | 2 | 3), -level=(1 | 2 | 3) 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Specifies level of static analysis (default = 3) 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-l-d=dir, -log-dir=dir 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Specifies directory where information is logged 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-no-return-app-exitcode 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Sets the return code based on success of the tool, not the underlying result (default for inspxe-inject) 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-o-i=file, -option-file=file 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Specifies the file containing command line options 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-q, -quiet 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Suppresses non-essential messages 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-r=dir, -result-dir=dir 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Specifies the directory where analysis results are created (inspxe-runsc only) 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-return-app-exitcode 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Sets the return code based on success of underlying operation, not the tool (default for inspxe-wrap and inspxe-runsc) 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-s-s=file, -save-spec=file 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Specifies the file containing build specification (inspxe-wrap and inspxe-inject only). The wrap utility appends to this file; the injection utility overwrites this file. 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-t-d=dir, -tmp-dir=dir 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Specifies the directory where temporary files are created 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-v, -verbose 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Prints additional information 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr> 
+		  <td valign="top" headers="d639896e277"> 
+			 <p>-V, -version 
+			 </p>
+ 
+		  </td>
+ 
+		  <td valign="top" headers="d639896e283"> 
+			 <p>Displays the version number of the utility 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+</table>
+ 
+	 <p>A user error in usage, such as an invalid command line option, causes a return code of 1. An error in the tool itself causes a return code of 2. In addition, the following rules apply: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-07753BE3-0810-4C5D-BCDA-6C405E67A9F2"> 
+		<li> inspxe-wrap returns the return code of the wrapped command 
+		</li>
+ 
+		<li>inspxe-runsc returns 0 if the analysis results are complete and 4 if an error occurred that prevented complete analysis 
+		</li>
+ 
+		<li>inspxe-inject returns 0 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p>Adding the -return-app-exitcode to the inspxe-inject command line causes the inspxe-inject utility to return the return code of the observed build command. This is recommended if the build command return code is a reliable indicator of whether the actions recorded in the build specification are complete and correct. 
+	 </p>
+ 
+	 <p><span> If no options are specified, the option to enable level 3 static analysis is added by default. 
+		</span> 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FEC7B612-A511-4C82-8E81-817DFEE8FAE8.htm">Static Analysis</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

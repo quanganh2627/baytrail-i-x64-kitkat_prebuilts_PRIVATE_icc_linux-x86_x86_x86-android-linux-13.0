@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Reference for Intrinsics Supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI)">
+<meta name="DC.Relation" scheme="URI" content="GUID-FC13EE09-8555-414B-8FF2-D7D66CD3975C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A.htm#GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41.htm#GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41">
+<meta name="DC.Relation" scheme="URI" content="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-35876E20-882E-4067-88FA-EC110B5A3D9F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Reference for Intrinsics Supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_overview"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-35876E20-882E-4067-88FA-EC110B5A3D9F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Reference for Intrinsics Supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI)</h1>
+ 
+   
+  <div> 
+	 <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+	 </p>
+ 
+	 <p>Intrinsic functions are assembly-coded functions that allow you to use C/C++ function calls and variables in place of assembly instructions. 
+	 </p>
+ 
+	 <p>Intrinsics are expanded inline eliminating function call overhead. Providing the same benefit as using inline assembly, intrinsics improve code readability, assist instruction scheduling, and help reduce debugging. 
+	 </p>
+ 
+	 <p>Intrinsics provide access to instructions that cannot be generated using the standard constructs of the C and C++ languages. 
+	 </p>
+ 
+	 <div class="section" id="GUID-C962EECA-F1BF-4DF3-AC74-189AD7D8000A"><h2 class="sectiontitle">Intrinsics for the C++ Compiler</h2> 
+		 
+		<p>The compiler provides intrinsics to enable vector processing capabilities for data intensive workloads. These intrinsics correspond to a new set of instructions referred as Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI). 
+		</p>
+ 
+		<p>These instructions are extensions of the existing vector graphic streaming SIMD instructions, which are designed to enhance the performance of Intel&reg; 64 architecture-based processors for data intensive programs including audio, video, and graphics processing. 
+		</p>
+ 
+		<p>For each instruction there are two corresponding intrinsics of which one is used for masked operations. 
+		</p>
+ 
+		<p>The prototypes for these intrinsics are available in the 
+		  <span class="filepath">immintrin.h</span> file. 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>You can enable these intrinsics within native code or offloaded code that is written to contain target-specific code. 
+		  </p>
+ 
+		</div> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FC13EE09-8555-414B-8FF2-D7D66CD3975C.htm">Intrinsics for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A.htm#GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A">About Building Native Intel&reg; MIC Architecture Applications 
+		  </a></div>
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code Using a Pragma 
+		  </a></div>
+<div><a href="GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41.htm#GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41">Writing Target-Specific Code with _Cilk_offload 
+		  </a></div>
+<div><a href="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">Data Alignment, Memory Allocation Intrinsics, and Inline Assembly 
+		  </a></div>
+<div><a href="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">Intrinsics for Use Across All IA 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

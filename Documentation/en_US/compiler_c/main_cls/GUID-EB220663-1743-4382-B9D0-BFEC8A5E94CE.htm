@@ -1,0 +1,1162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Logical Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, logical operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, logical operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EB220663-1743-4382-B9D0-BFEC8A5E94CE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Logical Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_log"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EB220663-1743-4382-B9D0-BFEC8A5E94CE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Logical Operators</h1>
+ 
+   
+  <div> 
+    <p>The logical operators use the symbols and intrinsics listed in the following table. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5133E4C5-4371-4231-936A-DF4A1C93E8E4" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" rowspan="2" align="left" valign="top" width="15%" id="d799893e58"> 
+              <p>Bitwise Operation 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d799893e64">Operator Symbols 
+            </th>
+ 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d799893e67">Syntax Usage 
+            </th>
+ 
+            <th class="cellrowborder" rowspan="2" align="left" valign="top" width="25%" id="d799893e70"> 
+              <p>Corresponding Intrinsic 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e79"> 
+              <p>Standard 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e85"> 
+              <p>w/assign 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e91"> 
+              <p>Standard 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e97"> 
+              <p>w/assign 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e58 "> 
+              <p><samp class="codeph">AND</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e79 d799893e85 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e91 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 d799893e97 "> 
+              <p><samp class="codeph">R = A &amp; B</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 "> 
+              <p><samp class="codeph">R &amp;= A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e70 "> 
+              <p><span class="option">_mm_and_si64</span><br><span class="option">_mm_and_si128</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e58 "> 
+              <p><samp class="codeph">OR</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e79 d799893e85 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e91 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 d799893e97 "> 
+              <p><samp class="codeph">R = A | B</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 "> 
+              <p><samp class="codeph">R |= A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e70 "> 
+              <p><span class="option">_mm_and_si64</span><br><span class="option">_mm_and_si128</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e58 "> 
+              <p>XOR 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e79 d799893e85 "> 
+              <p>^ 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e91 "> 
+              <p>^= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 d799893e97 "> 
+              <p>R = A^B 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 "> 
+              <p>R ^= A 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e70 "> 
+              <p><span class="option">_mm_and_si64</span><br><span class="option">_mm_and_si128</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e58 "> 
+              <p><samp class="codeph">ANDNOT</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e79 d799893e85 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e64 d799893e91 "> 
+              <p><samp class="codeph">N/A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 d799893e97 "> 
+              <p><samp class="codeph">R = A andnot B</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e67 "> 
+              <p><samp class="codeph">N/A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e70 "> 
+              <p><span class="option">_mm_and_si64</span><br><span class="option">_mm_and_si128</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p><strong></strong> 
+    </p>
+ 
+    <p><strong>Logical Operators and Miscellaneous Exceptions</strong> 
+    </p>
+ 
+    <p>A and B converted to M64. Result assigned to 
+      <samp class="codeph">Iu8vec8</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I64vec1 A;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is8vec8 B;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu8vec8 C;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A &amp; B;</samp> 
+    </p>
+ 
+    <p>Same size and signedness operators return the nearest common ancestor. 
+    </p>
+ 
+    <p><samp class="codeph">I32vec2 R = Is32vec2 A ^ Iu32vec2 B;</samp> 
+    </p>
+ 
+    <p>A&amp;B returns M64, which is cast to 
+      <samp class="codeph">Iu8vec8</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">C = Iu8vec8(A&amp;B)+ C;</samp> 
+    </p>
+ 
+    <p>When 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp> are of the same class, they return the same type. When 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp> are of different classes, the return value is the return type of the nearest common ancestor. 
+    </p>
+ 
+    <p>The logical operator returns values for combinations of classes, listed in the following tables, apply when 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp> are of different classes. 
+    </p>
+ 
+    <p><strong>Ivec Logical Operator Overloading</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9990B2D0-9DEB-4DD5-B343-D8778EF71A8C" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d799893e428"> 
+              <p>Return &reg; 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d799893e434"> 
+              <p>AND 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d799893e440"> 
+              <p>OR 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d799893e446"> 
+              <p>XOR 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d799893e452"> 
+              <p>NAND 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e459"> 
+              <p>A Operand 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e465"> 
+              <p>B Operand 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I64vec1 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]64vec2 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]64vec2 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I64vec2 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]64vec2 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]64vec2 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I32vec2 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]32vec2 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]32vec2 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I32vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]32vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]32vec4 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I16vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]16vec4 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I16vec8 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]16vec8 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]16vec8 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I8vec8 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]8vec8 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]8vec8 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e428 "> 
+              <p><samp class="codeph">I8vec16 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e434 "> 
+              <p><samp class="codeph">&amp;</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e440 "> 
+              <p><samp class="codeph">|</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e446 "> 
+              <p><samp class="codeph">^</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d799893e452 "> 
+              <p><samp class="codeph">andnot</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e459 "> 
+              <p><samp class="codeph">I[s|u]8vec16 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e465 "> 
+              <p><samp class="codeph">I[s|u]8vec16 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>For logical operators with assignment, the return value of 
+      <samp class="codeph">R</samp> is always the same data type as the pre-declared value of R as listed in the table that follows. 
+    </p>
+ 
+    <p><strong>Ivec Logical Operator Overloading with Assignment</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-57F3A276-938D-4E24-B49F-1D83B5FF2DC8" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e994"> 
+              <p>Return Type 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e1000"> 
+              <p>Left Side &reg; 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e1006"> 
+              <p>AND 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e1012"> 
+              <p>OR 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="15%" id="d799893e1018"> 
+              <p>XOR 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d799893e1025"> 
+              <p>Right Side (Any Ivec Type) 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I128vec1</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I128vec1 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I64vec1</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I64vec1 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I64vec2</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I64vec2 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I[x]32vec4</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I[x]32vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I[x]32vec2</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I[x]32vec2 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I[x]16vec8</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I[x]16vec8 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I[x]16vec4</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I[x]16vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I[x]8vec16</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I[x]8vec16 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e994 "> 
+              <p><samp class="codeph">I[x]8vec8</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1000 "> 
+              <p><samp class="codeph">I[x]8vec8 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1006 "> 
+              <p><samp class="codeph">&amp;=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1012 "> 
+              <p><samp class="codeph">|=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="15%" headers="d799893e1018 "> 
+              <p><samp class="codeph">^=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d799893e1025 "> 
+              <p><samp class="codeph">I[s|u][N]vec[N] A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

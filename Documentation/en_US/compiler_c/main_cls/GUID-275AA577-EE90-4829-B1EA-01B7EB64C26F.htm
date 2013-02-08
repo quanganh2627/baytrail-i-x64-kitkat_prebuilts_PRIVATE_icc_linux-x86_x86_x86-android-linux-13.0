@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Advanced Topic: How to Write a New Reducer">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, custom reducers">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, custom reducers">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-275AA577-EE90-4829-B1EA-01B7EB64C26F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Advanced Topic: How to Write a New Reducer</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_write_reducer"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-275AA577-EE90-4829-B1EA-01B7EB64C26F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Advanced Topic: How to Write a New Reducer</h1>
+ 
+   
+  <div> 
+	 <p>You can write a custom reducer if none of the supplied reducers satisfies your requirements. 
+	 </p>
+ 
+	 <p> Any of the supplied reducers can be used as models for developing new reducers, although some of these examples are relatively complex. The implementations are found in the 
+		<span class="filepath">reducer_*.h</span> header files in the 
+		<span class="filepath">include/cilk</span> directory of the installation. 
+	 </p>
+ 
+	 <p>Additional examples are provided in the following sections. 
+	 </p>
+ 
+	 <p> The basic reducer infrastructure is in 
+		<samp class="codeph">include/cilk/reducer.h</samp>. 
+	 </p>
+ 
+	 <p> 
+		<strong> Monoids</strong> 
+	 </p>
+ 
+	 <p> In mathematics, a 
+		<em>monoid</em> comprises a set of values 
+		<em>T</em>, an associative operation 
+		<em>OP</em> on those values, and an identity 
+		<em>I</em> value with respect to the operation. That is, (<em>T, OP, I)</em> is a monoid if: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-C4593FC5-CEB9-42AE-8ED3-A6FA66516AA5"> 
+		<li> 
+		  <p><em> OP</em> is associative: for every 
+			 <em>x</em>, 
+			 <em>y</em>, and 
+			 <em>z</em> in 
+			 <em>T</em>, 
+			 <em>x OP (y OP z) = (x OP y) OP z</em> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> 
+			 <em> I</em> is the identity for 
+			 <em>OP</em>: for every x in 
+			 <em>T</em>, x<em>OP I = I op x = x</em> 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p> Examples of monoids include the following: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-08E4D7E1-BD8B-4F46-BE0B-45188F9224D5"> 
+		<li> 
+		  <p> Values = the set of all integers; Operation = addition; Identity = 0. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Values = the set of all 32-bit unsigned integers; Operation = addition modulo 2<sup>32</sup>; Identity = 0. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Values = the set of all strings; Operation = concatenation; Identity = the empty string. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p> A reducer is always built around a monoid. That is, it computes a final value by combining a set of values with an operator; it relies on the associativity of the operator to be able to recombine parts of the combination in parallel; and it relies on having an identity value to be able to initialize the accumulator variables for the partial computations. 
+	 </p>
+ 
+	 <p><strong> Components of a Reducer 
+		</strong> 
+	 </p>
+ 
+	 <p> A reducer can be broken into these logical parts: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-4794DB19-3091-4751-B85F-8F4B499F0559"> 
+		<li> 
+		  <p> The "value type" is the type of the value computed by the reducer. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The "view" class represents the accumulator variable within the reducer. In many cases, the view class is the same as the value type. (For example, the view class of a 
+			 <samp class="codeph">reducer_opadd</samp> that computes the sum of a set of values is just the type of those values.) However, the view class may also contain additional information to represent aspects of the computation that are not part of the final computed value. (For example, the view class of a 
+			 <samp class="codeph">reducer_string</samp> that computes the concatenation of a set of strings contains a list of substrings that haven't yet been combined.) 
+		  </p>
+ 
+		  <p>The reducer directly contains one instance of the view class (the "leftmost view"); other view instances are created and destroyed as strands start and finish executing in parallel. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> The "monoid" class represents the mathematical monoid that the reducer is built around. It defines the value type and provides the 
+			 <samp class="codeph">identity()</samp> and 
+			 <samp class="codeph">reduce()</samp> functions used by the reducer when creating and merging views, as well as some functions to handle memory allocation of views. See the discussion below. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The "reducer" class is the 
+			 <samp class="codeph">cilk::reducer</samp> class template, instantiated with the monoid ( 
+			 <samp class="codeph">cilk::reducer&lt;Monoid&gt;</samp> ). A reducer object contains a monoid object and the leftmost view, manages the interaction with the runtime system, and provides access to the view instance for the current strand during execution. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The "wrapper" class restricts access to a reducer's views so that only operations that are consistent with the monoid's associative operation are permitted. Wrapper classes typically provide 
+			 <samp class="codeph">set_value()</samp> and 
+			 <samp class="codeph">get_value()</samp> functions for accessing the computed value. Wrapper classes are optional - 
+			 <samp class="codeph">cilk::reducer&lt;Monoid&gt;</samp> is a complete reducer which does not restrict access to its views. Wrappers can provide robustness for general-purpose or library reducers, but adding a wrapper may be a waste of effort for a single-purpose / single use reducer or reducers for which the view type already supplies a sufficiently-restrictive interface. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p> 
+		<strong> The Monoid Class</strong> 
+	 </p>
+ 
+	 <p> A monoid class provides the information needed by the reducer class to create, initialize, merge, and destroy view instances. It must define a typedef, 
+		<samp class="codeph">value_type</samp> , which is the view class for the reducer (or the value type, if there is no separate view class), and the following functions, which maybe either 
+		<samp class="codeph">static</samp> or 
+		<samp class="codeph">const</samp> . 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CD75B3F4-C13B-428B-A123-5F14C498C09F" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d115118e263"> 
+				  <p> Monoid Function 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d115118e269"> 
+				  <p> Description 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e263 "> 
+				  <p><samp class="codeph">reduce(value_type *left, value_type *right)</samp> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e269 "> 
+				  <p>evaluates 
+					 <samp class="codeph">*left = *left OP *right</samp>; leaves 
+					 <samp class="codeph">*right</samp> in an unspecified, but valid state 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e263 "> 
+				  <p><samp class="codeph">identity(value_type *p)</samp> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e269 "> 
+				  <p>constructs the identity value into the uninitialized memory pointed to by<samp class="codeph">p</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e263 "> 
+				  <p><samp class="codeph">destroy(value_type *p) 
+					 </samp> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e269 "> 
+				  <p>calls the 
+					 <samp class="codeph">value_type</samp> destructor on the object pointed to by 
+					 <samp class="codeph">p</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e263 "> 
+				  <p> 
+					 <samp class="codeph">allocate(size)</samp> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e269 "> 
+				  <p>returns a pointer to 
+					 <samp class="codeph">size</samp> bytes of raw memory 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e263 "> 
+				  <p><samp class="codeph">deallocate(p)</samp> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d115118e269 "> 
+				  <p>deallocates the raw memory at 
+					 <samp class="codeph">p</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p> Any class that provides these definitions can be used as a monoid class, but in practice, a monoid class is always defined as a subclass of 
+		<samp class="codeph">cilk::monoid_base&lt;T&gt;</samp> , which defines 
+		<samp class="codeph">value_type</samp> to be<samp class="codeph"> T</samp> and defines 
+		<samp class="codeph">allocate()</samp> , 
+		<samp class="codeph">destroy()</samp> , and 
+		<samp class="codeph">deallocate()</samp> functions using operator 
+		<samp class="codeph">new</samp>. A class derived from 
+		<samp class="codeph">monoid_base</samp> needs to declare and implement only the 
+		<samp class="codeph">identity(</samp>) and 
+		<samp class="codeph">reduce() 
+		</samp>functions. 
+	 </p>
+ 
+	 <p> The 
+		<samp class="codeph">reduce()</samp> function is not required to leave any particular value in its 
+		<samp class="codeph">right 
+		</samp>argument view, but it must leave it in a valid state so that it can be destructed following the 
+		<samp class="codeph">reduce()</samp> . 
+	 </p>
+ 
+	 <p> 
+		<strong> Why Associativity Is Necessary</strong> 
+	 </p>
+ 
+	 <p> For a reducer to deterministically reproduce the serial semantics, the 
+		<samp class="codeph">reduce</samp> function and the permitted operations on the view must implement an associative operation. (It does not need to be commutative.) 
+	 </p>
+ 
+	 <p> The serial execution of reduction computes the expression (<em>a<sub>0</sub> OP a<sub>1</sub> OP a<sub>2</sub> OP … OP a<sub>N</sub> 
+		</em>). When the reduction is performed in parallel, that expression is broken up into a set of subexpressions which are then combined; for example, ((<em>a<sub>0</sub> OP a<sub>1</sub> OP a<sub>2</sub> 
+		</em>) 
+		<em>OP</em> ((<em>a<sub>3</sub> OP a<sub>4</sub> 
+		</em>) 
+		<em>OP</em> (<em>a<sub>5</sub> 
+		</em>))) 
+		<em>OP</em> (<em>a<sub>6</sub> OP a<sub>7</sub> OP … OP a<sub>10</sub> 
+		</em>) 
+		<em>OP</em> …. The partitioning into subexpressions, and the order in which the subexpressions are combined, is unpredictable, and can vary from one run of the program to another. However, If 
+		<em>OP</em> is associative, it does not matter: regardless of how the expression is broken up, and in what order the subexpressions are associated, the result will be the same. 
+	 </p>
+ 
+	 <p> 
+		<br><img src="GUID-EAA305D1-FA3A-433E-AF83-54E85FB052CF-low.jpg"><br> 
+	 </p>
+ 
+	 <p> 
+		<strong> Writing Reducers - A Singly-Linked List</strong> 
+	 </p>
+ 
+	 <p> Here is a simple singly-linked list created in a loop. The example shows code to make the loop parallel by using a 
+		<samp class="codeph">cilk_for</samp>, but it will not work, because there will be data races between the list node updates. To create a value incrementally in parallel, use of a reducer is required. 
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;iostream&gt;
+
+//  Singly-linked list.
+//
+struct IntListNode {
+    int data;
+    IntListNode* link;
+};
+
+// Compute a value. (Probably does something more interesting in 
+// a real program.)
+//
+int compute(int i)
+{
+    return i;
+}
+
+// Create a list.
+//
+IntListNode* make_list(int n)
+{
+    IntListNode* list = 0;
+    for (int i = 0; i &lt; n; ++i) {
+        IntListNode* node = new IntListNode;
+        node-&gt;data = compute(i);
+        node-&gt;link = list;
+        list = node;
+    }
+    return list;
+}
+
+// Use a list. (Probably does something more interesting in a 
+// real program.)
+//
+void print_list(IntListNode* list)
+{
+    for (IntListNode* node = list; node; node = node-&gt;link)
+        std::cout &lt;&lt; node-&gt;data &lt;&lt; "\n";
+}
+
+int main()
+{
+    IntListNode* list = make_list(20);
+    print_list(list);
+   // Code to deallocate list should go here
+}
+</pre> 
+	 <p> The first step in creating a reducer is to identify the monoid. The data type here is a singly-linked list of integers, represented by 
+		<samp class="codeph">IntListNode</samp> objects. Since parallelizing the computation will result in creating and combining multiple sublists, the associative operation must be list concatenation. The identity value for list concatenation is the empty list. Adding an object at the beginning of a list is equivalent to concatenating a new singleton list containing the object to be added at the front of the list 
+		<samp class="codeph">( list = {x} || list )</samp>, so the reduce operation must be " 
+		<samp class="codeph">left = right || left</samp> ". 
+	 </p>
+ 
+	 <p> How is the list to be represented? Is the view type different from the value type? A singly-linked list can be uniquely represented by a pointer to its first node (or a null pointer for an empty list), and this is what is returned from the 
+		<samp class="codeph">make_list 
+		</samp>function and passed to the 
+		<samp class="codeph">print_list 
+		</samp>function. However, there is no efficient way to concatenate two lists represented just by pointers to their heads, so the view type needs both a head and a tail pointer. 
+	 </p>
+ 
+	 <p> So this is the structure of a monoid. The value type is a pointer to the first node in the list, or 
+		<samp class="codeph">null</samp> for an empty list. The view is a (head, tail) pointer pair, and provides an operation to add a new value to the list. The monoid's identity function initializes an empty-list view, and its 
+		<samp class="codeph">reduce</samp> function concatenates the lists represented by two views. 
+	 </p>
+ 
+	 <p> This is a single-use reducer, so there is no need to create a wrapper. 
+	 </p>
+ 
+	 <p>Here is the resulting parallel code using the new reducer: 
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;cilk/reducer.h&gt;
+#include &lt;iostream&gt;
+
+//  Singly-linked list.
+//
+struct IntListNode {
+    int data;
+    IntListNode* link;
+};
+
+
+class IntListMonoid;            // forward declaration
+
+//  View class.
+//
+class IntListView {
+    friend class IntListMonoid; // for the identity and reduce functions
+    IntListNode* head;
+    IntListNode* tail;
+public:
+    void add_value(int x) { 
+        IntListNode* node = new IntListNode;
+        node-&gt;data = x;
+        node-&gt;link = head;
+        head = node;
+        if (!tail) tail = node;
+    }
+    IntListNode* get_value() const { return head; }
+};
+
+// Monoid class.
+//
+struct IntListMonoid : public cilk::monoid_base&lt;IntListView&gt; {
+
+    // The monoid value_type is the view type.
+    typedef IntListView value_type;
+    
+    // Set *view to the empty list.
+    //
+    static void identity(IntListView* view) {
+        view-&gt;head = view-&gt;tail = 0;
+    }
+    
+    // Move the right list to the beginning of the left list.
+    // Leave the right list empty.
+    //
+    static void reduce(IntListView* left, IntListView* right) {
+        if (right-&gt;head) {
+            right-&gt;tail-&gt;link = left-&gt;head;
+            left-&gt;head = right-&gt;head;
+            right-&gt;head = right-&gt;tail = 0;
+        }
+    }
+};
+
+
+// Compute a value. (Probably does something more interesting in 
+// a real program.)
+//
+int compute(int i)
+{
+    return i;
+}
+
+// Create a list.
+//
+IntListNode* make_list(int n)
+{
+    cilk::reducer&lt;IntListMonoid&gt; list;
+    <strong>cilk_for</strong> (int i = 0; i &lt; n; ++i) {
+        list-&gt;add_value(i);     // "list-&gt;" accesses the view
+    }
+    return list-&gt;get_value();   // "list-&gt;" accesses the view
+}
+
+// Use a list. (Probably does something more interesting in a 
+// real program.)
+//
+void print_list(IntListNode* list)
+{
+    for (IntListNode* node = list; node; node = node-&gt;link)
+        std::cout &lt;&lt; node-&gt;data &lt;&lt; "\n";
+}
+
+int main()
+{
+    IntListNode* list = make_list(20);
+    print_list(list);
+   // Code to deallocate list should go here
+}
+</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

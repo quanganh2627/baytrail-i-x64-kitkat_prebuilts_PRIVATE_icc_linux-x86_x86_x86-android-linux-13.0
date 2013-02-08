@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_cmp_ps, _m256_cmp_ps">
+<meta name="abstract" content="Compares packed float32 elements of two vectors. The corresponding Intel&reg; AVX instruction is VCMPPS.">
+<meta name="description" content="Compares packed float32 elements of two vectors. The corresponding Intel&reg; AVX instruction is VCMPPS.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, compare operations, _mm_cmp_ps (VCMPPS), _m256_cmp_ps (VCMPPS)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, compare operations, _mm_cmp_ps (VCMPPS), _m256_cmp_ps (VCMPPS)">
+<meta name="DC.Relation" scheme="URI" content="GUID-187154E8-0688-433E-B3FC-6D1459C4F225.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6CC5D4F6-7013-4230-8DD3-8429368E835C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_cmp_ps, _m256_cmp_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_cmp_mm_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6CC5D4F6-7013-4230-8DD3-8429368E835C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span> _mm_cmp_ps, _m256_cmp_ps</span></h1>
+
+
+<!--Compares packed float32 elements  of two vectors. The corresponding Intel&reg; AVX instruction is  VCMPPS .--><div><p>Compares packed float32 elements  of two vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VCMPPS</span>.</p>
+
+
+<div class="section" id="GUID-51AED1B3-3E48-4360-8CD5-2315A673BB8C"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128 _mm_cmp_ps(__m128 m1, __m128 m2, const int predicate);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _m256_cmp_ps(__m256 m1, __m256 m2, const int predicate);
+</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-E1B1450D-C223-401A-A8AC-7B17BBB4F25A"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m1</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m2</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>predicate</var></p></td>
+
+      <td valign="top" class="noborder"><p>an immediate operand that specifies the type of comparison to be performed of the packed values; see <span class="filepath">immintrin.h</span> file for the values to specify the type of comparison
+</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-7F079E05-D1BB-4B9D-AF4A-12F4DA18E81E"><h2>Description</h2>
+<p>Performs a SIMD compare of the eight packed single-precision floating-point (float32) values in the first source operand, <var>m1</var>,  and the second source operand, <var>m2</var>, and returns the results of the comparison. </p>
+<p>The <span class="option">_mm_cmp_ps</span> intrinsic is used for comparing 128-bit float32 values while the <span class="option">_m256_cmp_ps</span>
+ intrinsic is used for comparing 256-bit float32 values.
+</p>
+<p>The comparison <var>predicate</var> parameter (immediate) specifies the type of comparison performed on each of the pairs of packed values.</p>
+
+
+</div>
+
+
+
+
+<div class="section" id="GUID-06080D25-7ED4-4D71-B195-CBB1A3C087AD"><h2>Returns</h2><p>Result of the compare operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-187154E8-0688-433E-B3FC-6D1459C4F225.htm">Intrinsics for Compare Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

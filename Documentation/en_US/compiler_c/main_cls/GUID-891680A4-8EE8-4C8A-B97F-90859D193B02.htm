@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag-enable sc-single-file, Qdiag-enable:sc-single-file">
+<meta name="abstract" content="Tells static analysis to process each file individually.">
+<meta name="description" content="Tells static analysis to process each file individually.">
+<meta name="DC.subject" content="-diag-enable sc-single-file compiler option, /Qdiag-enable:sc-single-file compiler option">
+<meta name="keywords" content="-diag-enable sc-single-file compiler option, /Qdiag-enable:sc-single-file compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-891680A4-8EE8-4C8A-B97F-90859D193B02">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag-enable sc-single-file, Qdiag-enable:sc-single-file</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag_enable_sc_single_file"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag_enable_sc_single_file"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-891680A4-8EE8-4C8A-B97F-90859D193B02">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">diag-enable sc-single-file, Qdiag-enable:sc-single-file</h1>
+
+  <!-- Tells static analysis to process each file individually.-->
+  
+  <div><p> Tells static analysis to process each file individually.</p>
+
+    <div class="section" id="IDE_E850D20E7B0D49DFAEBA1D4AC1E6E20E"><a name="IDE_E850D20E7B0D49DFAEBA1D4AC1E6E20E"><!-- --></a><h2>IDE Equivalent</h2><p class="ide">Windows: 
+								<strong>Diagnostics &gt; Analyze Files Individually</strong> </p>
+
+<p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Analyze Files Individually</strong> </p>
+
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+
+
+    <div class="section" id="GUID-0FDF8EA3-2769-4822-9195-039D23824F03"><h2>Architectures</h2>
+      <p>All</p>
+
+    </div>
+
+    <div class="section" id="GUID-E3E110AC-034F-4022-A4B0-7A2A8F253D35"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd"> -diag-enable sc-single-file</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-enable:sc-single-file</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-9DA5033A-E064-4703-B86D-7A350531085F"><h2>Arguments</h2>
+      <p>None</p>
+
+    </div>
+
+    <div class="section" id="GUID-B851EFE2-21D5-4197-AB01-C5C5C7046B08"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p> If static analysis is
+enabled, it analyzes the whole program.</p>
+
+
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-B0F31B53-17BF-4DAF-A4E8-3B25838F5037"><h2>Description</h2>
+      
+    <p>This option tells static analysis to process each file individually.  Skipping the usual whole-program analysis reduces memory requirements and analysis time on large programs but often finds fewer real errors. </p>
+<p>This option is ignored unless static analysis diagnostics are enabled by providing one or more of the following options: <a name="UL_9673810F04F84C1F8D683A78950C6B0E"><!-- --></a><ul type="disc" id="UL_9673810F04F84C1F8D683A78950C6B0E"><li><p> <span class="option">-diag-enable sc[n]</span> or <span class="option">-diag-enable sc-mode</span> (Linux* OS)</p>
+</li>
+<li>
+<p> <span class="option">/Qdiag-enable:sc[n]</span> or <span class="option">/Qdiag-enable:sc-mode</span> (Windows* OS)</p>
+</li>
+</ul>
+</p>
+</div>
+
+    <div class="section" id="GUID-9E2EBADD-2B1B-4430-8525-1D1A31B22EB3"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  </div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm"><span class="option">diag, Qdiag</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_srli_si256">
+<meta name="abstract" content="Logical shift of byte elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is VPSRLDQ.">
+<meta name="description" content="Logical shift of byte elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is VPSRLDQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, logical shift operations, _mm256_srli_si256 (VPSRLDQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, logical shift operations, _mm256_srli_si256 (VPSRLDQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-25C533AB-7324-496E-8A43-092BAB83125F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EBB8FDB4-745C-4D74-BE4F-C452A55D7B32">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_srli_si256</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_srli"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_srli_si256"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EBB8FDB4-745C-4D74-BE4F-C452A55D7B32">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_srli_si256 </span></h1>
+
+
+<!--Logical shift of  byte elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is  VPSRLDQ .--><div><p>Logical shift of  byte elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPSRLDQ</samp>.</p>
+
+
+<div class="section" id="GUID-DC605D62-1A6E-4874-B61C-58A92193940C"><h2>Syntax</h2>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_srli_si256(__m256i s1, const int count);</span></p></td></tr></table>
+  
+</div>
+
+
+<div class="section" id="GUID-0DF971E8-9157-4398-8DBC-AEBFC0C1154D"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>count</var></p></td>
+
+      <td valign="top" class="noborder"><p>8-bit immediate used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-335F1209-8BA5-47BE-BB5E-7ACBA3688539"><h2>Description</h2>
+
+<p>Performs a logical  shift of 8-bit [byte] elements within a 128-bit lane of source vector <var>s1</var> to the right by the number of bits specified in <var>count</var>. The empty low-order bytes are cleared (set to all '<span>0</span>'). If the value specified by <var>count</var> is greater than 15, the destination vector is set to all '<span>0</span>'. The <var>count</var> argument is an 8-bit immediate.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-7F25C7F8-DB50-475E-8983-8EC676FC38D3"><h2>Returns</h2><p> Result of the right-shift operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-25C533AB-7324-496E-8A43-092BAB83125F.htm">Intrinsics for Logical Shift Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_packstorelo_pd/_mm512_mask_packstorelo_pd">
+<meta name="abstract" content="Packs mask-enabled elements of float64 vector to form an unaligned float64 stream and stores that portion of the stream that maps to the low 64-byte-aligned portion of the memory destination. Corresponding instruction is VPACKSTORELD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Packs mask-enabled elements of float64 vector to form an unaligned float64 stream and stores that portion of the stream that maps to the low 64-byte-aligned portion of the memory destination. Corresponding instruction is VPACKSTORELD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_packstorelo_pd, _mm512_mask_packstorelo_pd">
+<meta name="keywords" content="_mm512_packstorelo_pd, _mm512_mask_packstorelo_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-587833A2-78CC-451D-973B-70801D62865E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2AC2BA55-F0DB-41D0-BCBF-4A8961BA789D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_packstorelo_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_packstorelo_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2AC2BA55-F0DB-41D0-BCBF-4A8961BA789D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_packstorelo_pd/_mm512_mask_packstorelo_pd</h1>
+<!-- Packs mask-enabled elements of float64 vector to form an unaligned float64 stream and stores that portion of the stream that maps to the low 64-byte-aligned portion of the memory destination. Corresponding instruction is  VPACKSTORELD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p> Packs mask-enabled elements of float64 vector to form an unaligned float64 stream and stores that portion of the stream that maps to the low 64-byte-aligned portion of the memory destination. Corresponding instruction is <samp class="codeph">VPACKSTORELD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-F0F6BB39-782A-4371-8261-94DDA3AACA9D"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern void __cdecl _mm512_packstorelo_pd(void* mt, __m512d v1);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern void __cdecl _mm512_mask_packstorelo_pd(void* mt, __mmask8 k1, __m512d v1);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-761C803E-0878-4CFE-B3AC-A32F061F5D26"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1</var></p></td>
+
+<td valign="top" class="noborder"><p> source vector to store elements from</p>
+</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><p> vector mask to select elements to add to the stream</p>
+</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>mt  </var></p></td>
+
+<td valign="top" class="noborder"><p>memory location to store vector elements</p>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+
+<div class="section" id="GUID-6CB50B32-48F4-4AE0-8BC6-777AFA61A31B"><h2>Description</h2>
+<p> Packs the mask-enabled elements of float64
+vector <samp class="codeph">v1</samp> into a float64  stream logically mapped starting at
+element-aligned address <var>mt  </var>, and stores the low-64-byte elements
+of that stream (those elements of the stream that map before the
+first 64-byte-aligned address following <var>mt  </var>, the low cache line in
+the current implementation). The length of the stream depends on
+the number of enabled masks, as elements disabled by the mask are
+not added to the stream.</p>
+
+<p> The mask parameter <samp class="codeph">k1</samp> is not used as a
+writemask for this function. Instead, the mask is used as an
+element selector, choosing which elements are added to the
+stream.</p>
+
+
+<p> In conjunction with <samp class="codeph">_mm512_packstorehi_pd</samp>, this
+function is useful for packing data into a queue. Also in
+conjunction with <samp class="codeph">_mm512_packstorehi_pd</samp>, it allows unaligned vector
+stores (that is, vector stores that are only element-wise, not
+vector-wise, aligned). The typical intrinsic sequence to perform an
+unaligned vector store would be:</p>
+
+<pre>_mm512_packstorelo_pd(mt, v1);
+_mm512_packstorehi_pd(mt+64, v1);</pre>
+</div>
+
+
+
+<div class="section" id="GUID-1F9752C3-4D49-4DB2-AFAD-4F0F00F1228E"><h2>Returns</h2><p>Returns nothing.</p>
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-587833A2-78CC-451D-973B-70801D62865E.htm">Store Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

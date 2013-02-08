@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Debugging Strategies">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, debugging">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, debugging">
+<meta name="DC.Relation" scheme="URI" content="GUID-15FC919C-0444-4233-AC7E-9F23209EEC0B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D069A6F2-A4E4-4735-BFDB-427B46DBA875">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Debugging Strategies</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_debugstrat"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D069A6F2-A4E4-4735-BFDB-427B46DBA875">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Debugging Strategies</h1>
+ 
+   
+  <div> 
+	 <p>Debugging a parallel program can be more difficult than debugging a serial program. Use of Intel&reg; Cilk&#8482; Plus is designed to simplify the challenge of parallel debugging as much as possible. Start by debugging the serialization first. 
+	 </p>
+ 
+	 <p>Follow these guidelines to minimize the problem of debugging parallel programs: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-7274B093-044E-4900-B06D-F5FEA22099AA"> 
+		<li> 
+		  <p>If you are converting an existing C/C++ program, debug and test the serial version first. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Once you have a parallel Intel&reg; Cilk&#8482; Plus program, test and debug the serialization. Because both the serial base program and the serialization of the Intel&reg; Cilk&#8482; Plus program are serial C/C++ programs, you can use existing serial debug tools and techniques. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Run with one worker. This can help detect problems occurring in the parallelized code or detect an algorithmic problem. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>You can use the standard debuggers (gdb for Linux* OS and OS X*; the Microsoft Visual Studio* debugger for Windows* OS) for debugging. On Linux* OS and OS X*, the Intel&reg; Debugger (IDB) provides enhanced support for Intel&reg; Cilk&#8482; Plus. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>If your program works correctly as a serialization or when run with only one worker, but behaves incorrectly when run with multiple workers, you probably have a data race. 
+			 <span>You can use Intel&reg; Cilk screen race detector (part of the Intel&reg; Cilk&#8482; Plus SDK on the whatif.intel.com website) or Intel&reg; Inspector XE to detect data races.</span> If you detect a data race, do one or more of the following: 
+		  </p>
+ 
+		  <ul type="disc" id="GUID-74DF68C9-E499-4D3F-8E77-5D16FA8B24C0"> 
+			 <li> 
+				<p>Restructure the code to remove the race 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p>Use a reducer 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p>Use a mutual-exclusion lock (such as one of the mutex locks available as part of Intel&reg; Threading Building Blocks), other lock, or atomic operation 
+				</p>
+ 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>It may be simpler to debug programs built without optimizations. Debugging without optimizations turns off inlining, resulting in a more accurate call stack; additionally, the compiler does not attempt to reorder instructions and optimize register usage. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-15FC919C-0444-4233-AC7E-9F23209EEC0B.htm">Build, Run and Debug an Intel&reg; Cilk&#8482; Plus Program</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

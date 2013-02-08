@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="vec-report, Qvec-report">
+<meta name="abstract" content="Controls the diagnostic information reported by the vectorizer.">
+<meta name="description" content="Controls the diagnostic information reported by the vectorizer.">
+<meta name="DC.subject" content="/Qvec-report compiler option, -vec-report compiler option, vectorizer, option controlling diagnostics reported by">
+<meta name="keywords" content="/Qvec-report compiler option, -vec-report compiler option, vectorizer, option controlling diagnostics reported by">
+<meta name="DC.Relation" scheme="URI" content="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>vec-report, Qvec-report</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_vec_report"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_vec_report"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">vec-report, Qvec-report</h1>
+<!--Controls the diagnostic information reported by the vectorizer.--><div><p>Controls the diagnostic information reported by the vectorizer.</p>
+
+<div class="section" id="GUID-0E859254-5014-4C2A-ACDA-B2C516443F59"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Diagnostics &gt; Vectorizer Diagnostic Level</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Vectorizer Report</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Diagnostics &gt; Vectorizer Diagnostic Report</strong></p>
+</div>
+<div class="section" id="GUID-30BE7035-B150-4F44-A2FB-4E8912B7034D"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-1FF96741-6115-4043-8576-7EBEF24A37CF"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-vec-report</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qvec-report</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-5C44D1B0-5903-47E2-9E9B-B376FB36A93D"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+
+<td valign="top" class="noborder"><p>Is a value denoting which diagnostic messages to report. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">0</span></p></td>
+
+<td valign="top" class="noborder"><p>Tells the vectorizer to report no diagnostic information.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+
+<td valign="top" class="noborder"><p>Tells the vectorizer to report on vectorized loops.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+
+<td valign="top" class="noborder"><p>Tells the vectorizer to report on vectorized and non-vectorized loops.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">3</span></p></td>
+
+<td valign="top" class="noborder"><p>Tells the vectorizer to report on vectorized and non-vectorized loops and any proven or assumed data dependences.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">4</span></p></td>
+
+<td valign="top" class="noborder"><p>Tells the vectorizer to report on non-vectorized loops.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">5</span></p></td>
+
+<td valign="top" class="noborder"><p>Tells the vectorizer to report on non-vectorized loops and the reason why they were not vectorized.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword"><span>6</span></span></p></td>
+
+<td valign="top" class="noborder"><p> Tells the vectorizer to use greater detail when reporting on vectorized
+and non-vectorized loops and any
+proven or assumed data dependences.</p>
+
+ </td>
+
+</tr> 
+</table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-D1080606-1C21-4B2D-AD3E-9BC3B9E881C2"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-vec-report0</span><br><span> or<span class="option">/Qvec-report0</span></span></p></td>
+<td valign="top" class="noborder"><p>If you do not specify the option on the command line, the default is to display no messages. <span><span>However, if vectorization diagnostics reporting has been enabled</span></span> and you do not specify <var>n</var>, the compiler reports diagnostics on vectorized loops. 
+</p>
+ </td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-3EE4ED41-A64F-49B4-ADE7-9E464C0FE283"><h2>Description</h2><p>This option controls the diagnostic information reported by the vectorizer. The vectorizer report is sent to stdout.</p>
+<p>If you do not specify <var>n</var>, it is the same as specifying <span class="option">-vec-report1</span> (Linux* OS and OS X*) or <span class="option">/Qvec-report1</span> (Windows* OS).</p>
+</div>
+
+<div class="section" id="GUID-922B9759-32DD-4013-9E92-AB2834CE7551"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">Optimization Report Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

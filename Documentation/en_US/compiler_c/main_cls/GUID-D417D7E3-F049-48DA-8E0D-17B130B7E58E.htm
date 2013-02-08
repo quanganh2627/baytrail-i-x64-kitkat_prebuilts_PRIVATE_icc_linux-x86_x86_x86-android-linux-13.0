@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_unpacklo_epi8/16/32/64">
+<meta name="abstract" content="Unpacks and interleaves the low-order data elements of the source vector with the low-order data elements in the destination vector. The corresponding Intel&reg; AVX2 instruction is VPUNPCKLBW, VPUNPCKLWD, VPUNPCKLDQ, or VPUNPCKLQDQ.">
+<meta name="description" content="Unpacks and interleaves the low-order data elements of the source vector with the low-order data elements in the destination vector. The corresponding Intel&reg; AVX2 instruction is VPUNPCKLBW, VPUNPCKLWD, VPUNPCKLDQ, or VPUNPCKLQDQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, pack and unpack operations, _mm256_unpacklo_epi8 (VPUNPCKLBW), _mm256_unpacklo_epi16 (VPUNPCKLWD), _mm256_unpacklo_epi32 (VPUNPCKLDQ), _mm256_unpacklo_epi64 (VPUNPCKLQDQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, pack and unpack operations, _mm256_unpacklo_epi8 (VPUNPCKLBW), _mm256_unpacklo_epi16 (VPUNPCKLWD), _mm256_unpacklo_epi32 (VPUNPCKLDQ), _mm256_unpacklo_epi64 (VPUNPCKLQDQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-6027D70D-3E25-4A4F-B9F7-46AF00183AA3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D417D7E3-F049-48DA-8E0D-17B130B7E58E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_unpacklo_epi8/16/32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_blend"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blend_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blend_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D417D7E3-F049-48DA-8E0D-17B130B7E58E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span> _mm256_unpacklo_epi8/16/32/64</span></h1>
+
+<!--Unpacks and interleaves the low-order data elements of the source vector with the low-order data elements in the destination vector. The corresponding Intel&reg; AVX2 instruction is  VPUNPCKLBW ,  VPUNPCKLWD ,  VPUNPCKLDQ , or  VPUNPCKLQDQ .-->
+
+<div><p>Unpacks and interleaves the low-order data elements of the source vector with the low-order data elements in the destination vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VPUNPCKLBW</span>, <span class="option">VPUNPCKLWD</span>, <span class="option">VPUNPCKLDQ</span>, or <span class="option">VPUNPCKLQDQ</span>.</p>
+
+
+
+<div class="section" id="GUID-C6D2FA8B-6FBA-4218-BFF0-CF14BBEE0595"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_unpacklo_epi8(__m256i a, __m256i b);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_unpacklo_epi16(__m256i a, __m256i b);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_unpacklo_epi32(__m256i a, __m256i b);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_unpacklo_epi64(__m256i a, __m256i b);</span></p></td></tr></table></div>
+
+<div class="section" id="GUID-205E5037-29D2-4E1E-BDE3-437EED96927A"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-5E6AA5E8-7817-4EF5-B128-E14872E09B3F"><h2>Description</h2>
+<p>Unpacks and interleaves the low-order signed or unsigned data elements (bytes, words, doublewords, and quadwords) of the  source vector and the low-order signed or unsigned data elements (bytes, words, doublewords, and quadwords)  in the destination operand. The high-order data elements are ignored. </p>
+
+</div>
+
+
+<div class="section" id="GUID-817ECC49-7CD4-4472-9C2F-79F66EADAE31"><h2>Returns</h2><p> Result of the interleave operation</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6027D70D-3E25-4A4F-B9F7-46AF00183AA3.htm">Intrinsics for Pack/Unpack Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

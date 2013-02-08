@@ -1,0 +1,331 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag, Qdiag">
+<meta name="abstract" content="Controls the display of diagnostic information.">
+<meta name="description" content="Controls the display of diagnostic information.">
+<meta name="DC.subject" content="-diag compiler option, -diag-enable compiler option, -diag-disable compiler option, -diag-error compiler option, -diag-warning compiler option, -diag-remark compiler option, -diag-enable sc compiler option, -diag-disable sc compiler option, -diag-enable sc-mode compiler option, /Qdiag compiler option, /Qdiag-enable compiler option, /Qdiag-disable compiler option, /Qdiag-remark compiler option, /Qdiag-error compiler option, /Qdiag-warning compiler option, /Qdiag-enable:sc compiler option, /Qdiag-enable:sc-mode compiler option, /Qdiag-disable:sc compiler option, static analysis, option enabling, option specifying level of messages, diagnostic messages, option affecting which are issued, option controlling OpenMP, option controlling auto-parallelizer, option controlling vectorizer, option controlling static analysis, option controlling display of, option enabling or disabling">
+<meta name="keywords" content="-diag compiler option, -diag-enable compiler option, -diag-disable compiler option, -diag-error compiler option, -diag-warning compiler option, -diag-remark compiler option, -diag-enable sc compiler option, -diag-disable sc compiler option, -diag-enable sc-mode compiler option, /Qdiag compiler option, /Qdiag-enable compiler option, /Qdiag-disable compiler option, /Qdiag-remark compiler option, /Qdiag-error compiler option, /Qdiag-warning compiler option, /Qdiag-enable:sc compiler option, /Qdiag-enable:sc-mode compiler option, /Qdiag-disable:sc compiler option, static analysis, option enabling, option specifying level of messages, diagnostic messages, option affecting which are issued, option controlling OpenMP, option controlling auto-parallelizer, option controlling vectorizer, option controlling static analysis, option controlling display of, option enabling or disabling">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8.htm#GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8">
+<meta name="DC.Relation" scheme="URI" content="GUID-2131922A-2FCB-4442-B8E2-82D0128726F4.htm#GUID-2131922A-2FCB-4442-B8E2-82D0128726F4">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD.htm#GUID-B4596977-3872-4FA2-80E8-28C01AF299FD">
+<meta name="DC.Relation" scheme="URI" content="GUID-C8C6BBAD-2AB5-465B-95C3-CE1CB802774E.htm#GUID-C8C6BBAD-2AB5-465B-95C3-CE1CB802774E">
+<meta name="DC.Relation" scheme="URI" content="GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD.htm#GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag, Qdiag</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">diag, Qdiag</h1>
+<!--Controls the display of diagnostic information.--><div><p>Controls the display of diagnostic information.</p>
+
+<div class="section" id="GUID-56C078DB-E8FE-420C-8CF2-F74C978BE17A"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Diagnostics &gt; Disable Specific Diagnostics </strong>(<span class="option">/Qdiag-disable:id</span>)</p>
+<p class="ide"><strong>Diagnostics &gt; Level of Static  Analysis </strong>(<span class="option">/Qdiag-enable:sc{1|2|3}
+</span>)</p>
+
+<p class="ide"><strong>Diagnostics &gt; Mode of Static Analysis</strong> (<span class="option">/Qdiag-enable:sc-{full|concise|precise}</span>)</p>
+
+ <p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Disable Specific Diagnostics </strong>(<span class="option">-diag-disable id</span>)</p>
+<p class="ide"><strong>Compilation Diagnostics &gt; Level of Static Analysis</strong> (<span class="option">-diag-enable sc{1|2|3}</span> or <span class="option">-diag-disable sv</span>)</p>
+
+<p class="ide"><strong>Compilation Diagnostics &gt; Mode of Static Analysis</strong> (<span class="option">-diag-enable sc-{full|concise|precise}</span>)</p>
+
+ <p class="ide">OS X: 
+								<strong>Diagnostics &gt; Disable Specific Diagnostics </strong>(<span class="option">-diag-disable id</span>)</p>
+</div>
+<div class="section" id="GUID-2C1ABE61-07C9-480B-989E-FA78E583D470"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-4107C127-C769-4CC7-869C-677B4B575585"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-diag-</span><span class="var">type diag-list</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-</span><span class="var">type:diag-list</span></p></td></tr></table></div>
+<div class="section" id="GUID-575AD080-2B67-4769-819E-9576B481BDDA"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>type</var></p></td>
+<td valign="top" class="noborder"><p>Is an action to perform on diagnostics. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">enable</span></p></td>
+<td valign="top" class="noborder"><p>Enables a diagnostic message or a group of messages.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">disable</span></p></td>
+<td valign="top" class="noborder"><p>Disables a diagnostic message or a group of messages.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">error</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to change diagnostics to errors.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">warning</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to change diagnostics to warnings.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">remark</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to change diagnostics to remarks (comments).</p>
+</td>
+</tr></table>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><var>diag-list</var></p></td>
+<td valign="top" class="noborder"><p>Is a diagnostic group or ID value. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"> <tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">driver</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages issued by the compiler driver.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">port-linux</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages for language features that may cause errors when porting to Linux* systems. This diagnostic group is only available on Windows* systems.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">port-win</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages for GNU extensions that may cause errors when porting to Windows. This diagnostic group is only available on Linux and OS X* systems.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">thread</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages that help in thread-enabling a program.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">vec</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages issued by the vectorizer.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">par</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages issued by the auto-parallelizer (parallel optimizer).</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">openmp</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages issued by the OpenMP* parallelizer.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">sc[n]</span></p></td>
+<td valign="top" class="noborder"><p>Enables static analysis and determines which diagnostics to emit based on severity. <var>n</var> can be any of the following: 1, 2, 3. For more details on these values, see below. This value is equivalent to deprecated value sv[n]. This setting is not available on OS X* systems.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">sc-</span><var>mode</var></p></td>
+<td valign="top" class="noborder"><p> Enables static analysis diagnostics and lets you specify the analysis mode. The <em>mode</em> can be any of the following: full, concise, or precise. For more details on these values, see below. This setting is not available on OS X* systems.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">warn</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages that have a "warning" severity level.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">error</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages that have an "error" severity level.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">remark</span></p></td>
+<td valign="top" class="noborder"><p>Specifies diagnostic messages that are remarks or comments.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">cpu-dispatch</span></p></td>
+<td valign="top" class="noborder"><p>Specifies the CPU dispatch remarks for diagnostic messages. These remarks are enabled by default.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">id[,id,...]</span></p></td>
+<td valign="top" class="noborder"><p>Specifies the ID number of one or more messages. If you specify more than one message number, they must be separated by commas. There can be no intervening white space between each "id".</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">tag[,tag,...]</span></p></td>
+<td valign="top" class="noborder"><p>Specifies the mnemonic name of one or more messages. If you specify more than one mnemonic name, they must be separated by commas. There can be no intervening white space between each "tag".</p>
+</td>
+</tr></table>
+<p> The diagnostic messages generated can be affected by certain
+options, such as <span class="option">/arch</span> or <span class="option">/Qx</span> (Windows) or <span class="option">-m</span> or <span class="option">-x</span> (Linux and OS X).
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-0A662131-FC89-4686-A10D-BAADA23A712E"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler issues certain diagnostic messages by default.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E9CACA70-1A4F-4BAE-A398-3F4C38E12F75"><h2>Description</h2><p>This option controls the display of diagnostic information. Diagnostic messages are output to stderr unless compiler option <span class="option">-diag-file</span> (Linux* OS and OS X*) or <span class="option">/Qdiag-file</span> (Windows* OS) is specified.</p>
+<p>When <var>diag-list</var> value "warn" is used with static analysis
+ diagnostics, the following behavior occurs:</p>
+<ul type="disc" id="GUID-ACDFBD89-7D22-4371-B272-42EC34152958"><li><p>Option <span class="option">-diag-enable warn</span> (Linux OS) and <span class="option">/Qdiag-enable:warn</span> (Windows OS) enable all 
+ diagnostics except those that have an "error" severity level. They enable all static analysis
+ warnings, cautions, and remarks. </p>
+</li>
+<li><p>Option <span class="option">-diag-disable warn</span> (Linux OS) and <span class="option">/Qdiag-disable:warn</span> (Windows OS) disable all  static analysis
+ 
+
+ diagnostics except those that have an "error" severity level. They suppress all static analysis
+ 
+
+ 
+
+ warnings, cautions, and remarks. </p>
+</li>
+</ul>
+
+<p>The following table shows more information on values you can specify for <var>diag-list</var> item <span class="keyword">sc</span> and <span class="keyword">sc-</span><em>mode</em>. These items are not available on OS X* systems.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CF93844E-1AF0-48DD-A2AD-923F1836ECD5" frame="void" border="1" rules="none" cellspacing="2">
+
+
+
+<thead align="left">
+<tr>
+<th class="noborder" valign="top" width="13.193588162762024%" id="d360303e448"><p><var>diag-list</var> Item</p>
+</th>
+
+<th class="noborder" colspan="2" valign="top" id="d360303e454"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">
+<p><span class="option">sc[n]</span></p>
+</td>
+
+<td class="noborder" colspan="2" valign="top" headers="d360303e454 ">
+<p>The value of <var>n</var> for static analysis
+ 
+
+ 
+ messages can be any of the following:</p>
+</td>
+</tr>
+
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">&#xA0;</td>
+<td class="noborder" valign="top" width="12.330456226880395%" headers="d360303e454 "><p>1</p>
+</td>
+
+<td class="noborder" valign="top" width="74.47595561035759%" headers="d360303e454 "> Reports only diagnostics with a severity level of "critical". Diagnostics with a severity level of "error" or "warning" are not displayed.</td>
+
+</tr>
+
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">&#xA0;</td>
+<td class="noborder" valign="top" width="12.330456226880395%" headers="d360303e454 "><p>2</p>
+</td>
+
+<td class="noborder" valign="top" width="74.47595561035759%" headers="d360303e454 "> Reports all diagnostics with a severity level of "critical" and "error". Diagnostics with a severity level of "warning" are not reported. This is the default.</td>
+
+</tr>
+
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">&#xA0;</td>
+<td class="noborder" valign="top" width="12.330456226880395%" headers="d360303e454 "><p>3</p>
+</td>
+
+<td class="noborder" valign="top" width="74.47595561035759%" headers="d360303e454 "> Reports all diagnostics regardless of the severity level.</td>
+
+</tr>
+
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 "><p><span class="option">sc-</span><var>mode</var></p>
+</td>
+
+<td class="noborder" colspan="2" valign="top" headers="d360303e454 ">
+<p>The value of <var>mode</var> for static analysis
+ 
+
+ 
+ messages can be any of the following:</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">&#xA0;</td>
+<td class="noborder" valign="top" width="12.330456226880395%" headers="d360303e454 "><p>full</p>
+</td>
+<td class="noborder" valign="top" width="74.47595561035759%" headers="d360303e454 "><p> This mode attempts to find all program
+weaknesses, even at the expense of more false positives.
+This mode is
+recommended when using the tool for
+security assurance. </p>
+
+<p> This is the default if <span class="option">-diag-enable sc{[1|2|3]}</span> (Linux* OS and OS X*) or
+<span class="option">/Qdiag-enable:sc{[1|2|3]}</span> (Windows* OS) is present. Otherwise, the default is
+None (static analysis diagnostics are
+disabled).</p>
+
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">&#xA0;</td>
+<td class="noborder" valign="top" width="12.330456226880395%" headers="d360303e454 "><p>concise</p>
+</td>
+<td class="noborder" valign="top" width="74.47595561035759%" headers="d360303e454 "><p> This mode attempts to reduce false positives
+somewhat more than reducing false negatives. This mode is recommended when using the tool for general error
+detection.</p>
+
+
+
+
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="13.193588162762024%" headers="d360303e448 ">&#xA0;</td>
+<td class="noborder" valign="top" width="12.330456226880395%" headers="d360303e454 "><p>precise</p>
+</td>
+<td class="noborder" valign="top" width="74.47595561035759%" headers="d360303e454 "><p>This mode attempts to avoid all false positives, even at the expense of substantially reduced error checking. This mode is recommended when using the tool for acceptance screening.</p>
+ </td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To disable  static analysis, specify <span class="option">/Qdiag-disable:sc</span> (Windows* OS) or
+option  <span class="option">-diag-disable sc</span> (Linux* OS).
+</p>
+
+<p>To control the diagnostic information reported by the vectorizer, use the <span class="option">-vec-report</span> (Linux OS and OS X) or <span class="option">/Qvec-report</span> (Windows OS) option.</p>
+<p>To control the diagnostic information reported by the auto-parallelizer, use the <span class="option">-par-report</span> (Linux OS and OS X) or <span class="option">/Qpar-report</span> (Windows OS) option.</p>
+</div>
+
+<div class="section" id="GUID-11230A6D-100C-44B6-89AF-D835EDED0EFF"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>enable vec</p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-vec-report</span></p>
+<p>Windows: <span class="option">/Qvec-report</span>
+</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p>disable vec</p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-vec-report0</span>
+</p>
+<p>Windows: <span class="option">/Qvec-report0</span>
+</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p>enable par</p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-par-report</span>
+</p>
+<p>Windows: <span class="option">/Qpar-report</span>
+</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p>disable par</p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-par-report0</span>
+</p>
+<p>Windows: <span class="option">/Qpar-report0</span>
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="example" id="EXAMPLE_5E1ABF56098D468292F3D8E62D028EC8"><a name="EXAMPLE_5E1ABF56098D468292F3D8E62D028EC8"><!-- --></a><h2>Example</h2><p>The following example shows how to enable diagnostic IDs 117, 230 and 450:</p>
+<pre>-diag-enable 117,230,450&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux and OS X systems</pre><pre>/Qdiag-enable:117,230,450&nbsp;&nbsp;&nbsp;&nbsp;! Windows systems</pre><p>The following example shows how to change vectorizer diagnostic messages to warnings:</p>
+<pre>-diag-enable vec -diag-warning vec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux and OS X systems</pre><pre>/Qdiag-enable:vec /Qdiag-warning:vec&nbsp;&nbsp;&nbsp;&nbsp;! Windows systems</pre><p>Note that you need to enable the vectorizer diagnostics before you can change them to warnings.</p>
+<p>The following example shows how to disable all auto-parallelizer diagnostic messages:</p>
+<pre>-diag-disable par&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux and OS X systems</pre><pre>/Qdiag-disable:par&nbsp;&nbsp;&nbsp;&nbsp;! Windows systems</pre><p>The following example shows how to change all diagnostic warnings and remarks to errors:</p>
+<pre>-diag-error warn,remark&nbsp;&nbsp;&nbsp;&nbsp;! Linux and OS X systems</pre><pre>/Qdiag-error:warn,remark&nbsp;&nbsp;&nbsp;! Windows systems</pre><p>The following example shows how to produce static analysis
+ diagnostic messages for all critical errors:</p>
+<pre>-diag-enable sc1      ! Linux systems</pre><pre>/Qdiag-enable:sc1     ! Windows systems</pre><p>The following example shows how to cause static analysis
+
+diagnostics (and default diagnostics) to be sent to a file: </p>
+<pre>-diag-enable sc -diag-file=stat_ver_msg   ! Linux systems </pre><pre>/Qdiag-enable:sc /Qdiag-file:stat_ver_msg ! Windows systems</pre><p>Note that you need to enable static analysis
+ diagnostics before you can send them to a file. In this case, the diagnostics are sent to file stat_ver_msg.diag. If a file name is not specified, the diagnostics are sent to name-of-the-first-source-file.diag.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8.htm#GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8"><span class="option">diag-dump</span>, <span class="option">Qdiag-dump</span></a>  compiler option</div>
+<div><a href="GUID-2131922A-2FCB-4442-B8E2-82D0128726F4.htm#GUID-2131922A-2FCB-4442-B8E2-82D0128726F4"><span class="option">diag-id-numbers</span>, <span class="option">Qdiag-id-numbers</span></a>  compiler option</div>
+<div><a href="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD.htm#GUID-B4596977-3872-4FA2-80E8-28C01AF299FD"><span class="option">diag-file</span>, <span class="option">Qdiag-file</span></a>  compiler option</div>
+<div><a href="GUID-C8C6BBAD-2AB5-465B-95C3-CE1CB802774E.htm#GUID-C8C6BBAD-2AB5-465B-95C3-CE1CB802774E"><span class="option">par-report</span>, <span class="option">Qpar-report</span></a>  compiler option</div>
+<div><a href="GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD.htm#GUID-3D61D83A-857D-49C3-A6C9-A1037BFA63CD"><span class="option">vec-report</span>, <span class="option">Qvec-report</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

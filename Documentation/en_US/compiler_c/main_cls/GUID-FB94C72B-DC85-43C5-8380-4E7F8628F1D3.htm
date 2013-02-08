@@ -1,0 +1,977 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Compare Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer compare operations, cmpgt_epi8, cmplt_epi32, cmpeq_epi16, cmplt_epi16, cmplt_epi8, cmpgt_epi16, cmpeq_epi32, cmpeq_epi8, cmpgt_epi32, Intel&reg; Streaming SIMD Extensions 2, integer compare intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer compare operations, cmpgt_epi8, cmplt_epi32, cmpeq_epi16, cmplt_epi16, cmplt_epi8, cmpgt_epi16, cmpeq_epi32, cmpeq_epi8, cmpgt_epi32, Intel&reg; Streaming SIMD Extensions 2, integer compare intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FB94C72B-DC85-43C5-8380-4E7F8628F1D3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compare Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_int_comparison"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FB94C72B-DC85-43C5-8380-4E7F8628F1D3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Compare Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-6E8A8C3D-9BCC-46B3-B9A7-664611AD0E07"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer comparison operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span>, 
+        <span class="keyword">R1</span>...<span class="keyword">R15</span> represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-36F830F4-C821-456B-BE90-DAA30F3D918F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0CEAAB3A-D798-4ABD-94F5-B0EEB7F0FEE9" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d873967e93"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d873967e99"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d873967e105"> 
+                <p>Corresponding Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmpeq_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPEQB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmpeq_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPEQW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmpeq_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPEQD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmpgt_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPGTB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmpgt_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPGTW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmpgt_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPGTD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmplt_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPGTBr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmplt_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPGTWr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e93 "> 
+                <p><span class="option"> _mm_cmplt_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d873967e99 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d873967e105 "> 
+                <p><span class="keyword">PCMPGTDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-14FC9913-DCCF-4674-B495-D892B642A77E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmpeq_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Compares the 16 signed or unsigned 8-bit integers in 
+        <span class="keyword">a</span> and the 16 signed or unsigned 8-bit integers in 
+        <span class="keyword">b</span> for equality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9A8AC545-7047-4BC9-8642-F4CD518F0162"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-39E0D5E8-0E12-4EC4-B8BE-DC033533EB4C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e376"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e382"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e388"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e394"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e376 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e382 "> 
+                <p><span class="keyword">(a1 == b1) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e388 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e394 "> 
+                <p><span class="keyword">(a15 == b15) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-82ED30AF-CA6D-4933-BCDF-1478846E36A0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmpeq_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Compares the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> and the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">b</span> for equality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AF32CDBC-A059-47BE-AAA0-FA205CA1E488"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6DFFD1A9-C9F1-41A0-81C7-F1A900EF5DAA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e473"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e479"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e485"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e491"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e473 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e479 "> 
+                <p><span class="keyword">(a1 == b1) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e485 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e491 "> 
+                <p><span class="keyword">(a7 == b7) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FA36D011-E15E-42E4-8C17-BC101D0F88D0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmpeq_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Compares the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> and the four signed or unsigned 32-bit integers in 
+        <span class="keyword">b</span> for equality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-633D2B5B-369F-48F8-8D12-D22A0C969400"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-50BF25EE-52F1-4E50-B5E7-E34840B2DABA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e569"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e575"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e581"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e587"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e569 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e575 "> 
+                <p><span class="keyword">(a1 == b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e581 "> 
+                <p><span class="keyword">(a2 == b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e587 "> 
+                <p><span class="keyword">(a3 == b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2D9841EC-6470-463E-BCEB-4AF0EC1B223D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmpgt_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Compares the 16 signed 8-bit integers in 
+        <span class="keyword">a</span> and the 16 signed 8-bit integers in 
+        <span class="keyword">b</span> for greater than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FBDE94F8-869C-41D6-9650-48DCE1F2AF89"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-065343F9-F4F9-40EB-ACAB-AA56B8C1BE65" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e667"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e673"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e679"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e685"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e667 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e673 "> 
+                <p><span class="keyword">(a1 &gt; b1) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e679 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e685 "> 
+                <p><span class="keyword">(a15 &gt; b15) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-183AA015-CE23-433A-9D28-C66B9ADE55BA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmpgt_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Compares the eight signed 16-bit integers in 
+        <span class="keyword">a</span> and the eight signed 16-bit integers in 
+        <span class="keyword">b</span> for greater than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-93821763-2C5C-4039-B57D-EF9F201A511D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-565AF0E0-BA6C-4263-BCDB-DC45A1574EE7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e764"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e770"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e776"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e782"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e764 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e770 "> 
+                <p><span class="keyword">(a1 &gt; b1) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e776 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e782 "> 
+                <p><span class="keyword">(a7 &gt; b7) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4BC50146-4671-4410-8EC0-BB6FADC46CE3"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmpgt_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Compares the four signed 32-bit integers in 
+        <span class="keyword">a</span> and the four signed 32-bit integers in 
+        <span class="keyword">b</span> for greater than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CF62FC03-11E0-4D4C-8C62-648AF6CB1B6F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3281E2B1-BE76-479F-8D02-972966F9B317" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e860"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e866"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e872"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e878"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e860 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e866 "> 
+                <p><span class="keyword">(a1 &gt; b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e872 "> 
+                <p><span class="keyword">(a2 &gt; b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e878 "> 
+                <p><span class="keyword">(a3 &gt; b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B7501CBB-5C48-4094-A296-DCD28FED34DE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmplt_epi8( __m128i a, __m128i b)</span></p></div> 
+      <p>Compares the 16 signed 8-bit integers in 
+        <span class="keyword">a</span> and the 16 signed 8-bit integers in 
+        <span class="keyword">b</span> for less than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CCA579A1-8641-40E9-A55D-2E096B54CE74"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-42193339-30D8-454E-A80C-3AF13663EFDA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e958"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e964"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e970"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e976"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e958 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e964 "> 
+                <p><span class="keyword">(a1 &lt; b1) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e970 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e976 "> 
+                <p><span class="keyword">(a15 &lt; b15) ? 0xff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6F124EAB-7C0A-4785-BF4B-4E3DA015B1B0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmplt_epi16( __m128i a, __m128i b)</span></p></div> 
+      <p>Compares the eight signed 16-bit integers in 
+        <span class="keyword">a</span> and the eight signed 16-bit integers in 
+        <span class="keyword">b</span> for less than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2100FC82-DF07-443E-BA2A-6FF1640563CC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-03AB93A9-05C1-4282-BA79-64D8FC8C5851" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e1055"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e1061"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e1067"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e1073"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e1055 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e1061 "> 
+                <p><span class="keyword">(a1 &lt; b1) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e1067 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e1073 "> 
+                <p><span class="keyword">(a7 &lt; b7) ? 0xffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-67843B40-D61E-463D-B79A-CAAF55DF9A59"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cmplt_epi32( __m128i a, __m128i b)</span></p></div> 
+      <p>Compares the four signed 32-bit integers in 
+        <span class="keyword">a</span> and the four signed 32-bit integers in 
+        <span class="keyword">b</span> for less than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4B4F550D-0222-4ACD-8911-1B189371C225"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8F3A601A-02B8-489C-BC79-4EEB29B6106C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e1151"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e1157"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d873967e1163"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d873967e1169"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e1151 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e1157 "> 
+                <p><span class="keyword">(a1 &lt; b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d873967e1163 "> 
+                <p><span class="keyword">(a2 &lt; b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d873967e1169 "> 
+                <p><span class="keyword">(a3 &lt; b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

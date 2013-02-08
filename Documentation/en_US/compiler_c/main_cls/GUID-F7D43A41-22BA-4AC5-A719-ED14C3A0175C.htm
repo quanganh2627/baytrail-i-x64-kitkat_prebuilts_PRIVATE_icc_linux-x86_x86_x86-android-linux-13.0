@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="Qsfalign">
+<meta name="abstract" content="Specifies stack alignment for functions.">
+<meta name="description" content="Specifies stack alignment for functions.">
+<meta name="DC.subject" content="stack alignment, option specifying for functions, /Qsfalign compiler option">
+<meta name="keywords" content="stack alignment, option specifying for functions, /Qsfalign compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F7D43A41-22BA-4AC5-A719-ED14C3A0175C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Qsfalign</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_qsfalign"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_qsfalign"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F7D43A41-22BA-4AC5-A719-ED14C3A0175C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">Qsfalign</h1>
+<!--Specifies stack alignment for functions.--><div><p>Specifies stack alignment for functions.</p>
+
+<div class="section" id="GUID-FDE3A0B9-3FB0-4423-9649-2CFC91A96DDD"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-4B04124F-6FEA-4B3C-9230-87777478A66F"><h2>Architectures</h2><p>IA-32 architecture</p>
+</div>
+
+<div class="section" id="GUID-C5A243CF-28ED-47F9-9916-11E2D8DD7BEF"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qsfalign</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-6B817B9B-021F-4398-816F-352132FB7A40"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the byte size of aligned variables. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">8</span></p></td>
+<td valign="top" class="noborder"><p>Specifies that alignment should occur for functions with 8-byte aligned variables. At this setting the compiler aligns the stack to 16 bytes if there is any 16-byte or 8-byte data on the stack. For 8-byte data, the compiler only aligns the stack if the alignment will produce a performance advantage.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">16</span></p></td>
+<td valign="top" class="noborder"><p>Specifies that alignment should occur for functions with 16-byte aligned variables. At this setting, the compiler only aligns the stack for 16-byte data. No attempt is made to align for 8-byte data.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-CDE2B13A-DC65-4881-9937-23123A7F7A77"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">/Qsfalign8</span></p></td>
+<td valign="top" class="noborder"><p>Alignment occurs for functions with 8-byte aligned variables.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-8D964B2D-8FE9-404B-A0B9-25E32809EB2A"><h2>Description</h2><p>This option specifies stack alignment for functions. It lets you disable the normal optimization that aligns a stack for 8-byte data.</p>
+<p>If you do not specify <var>n</var>, stack alignment occurs for all functions. If you specify <span class="option">/Qsfalign-</span>, no stack alignment occurs for any function.</p>
+</div>
+
+<div class="section" id="GUID-38E5A137-D3F9-40CB-9707-10D03BE4799E"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

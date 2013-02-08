@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Function Annotations and the SIMD Directive for Vectorization">
+<meta name="DC.subject" content="auto-vectorization hints, Vectorization, pragma, Vectorization, directive, language support, Function annotations, declspec(align), declspec(vector)">
+<meta name="keywords" content="auto-vectorization hints, Vectorization, pragma, Vectorization, directive, language support, Function annotations, declspec(align), declspec(vector)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B25ABCC2-BE6F-4599-AEDF-2434F4676E1B.htm#GUID-B25ABCC2-BE6F-4599-AEDF-2434F4676E1B">
+<meta name="DC.Relation" scheme="URI" content="GUID-1EA04294-988E-4152-B584-B028FD6FAC48.htm#GUID-1EA04294-988E-4152-B584-B028FD6FAC48">
+<meta name="DC.Relation" scheme="URI" content="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm#GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850">
+<meta name="DC.Relation" scheme="URI" content="GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF.htm#GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF">
+<meta name="DC.Relation" scheme="URI" content="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5.htm#GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Function Annotations and the SIMD Directive for Vectorization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_support"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_support"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Function Annotations and the SIMD Directive for Vectorization</h1>
+ 
+   
+  <div> 
+	 <p>This topic presents specific 
+		<span>C++</span> language features that better help to vectorize code. The SIMD vectorization feature is available for both Intel&reg; microprocessors and non-Intel microprocessors. Vectorization may call library routines that can result in additional performance gain on Intel microprocessors than on non-Intel microprocessors. The vectorization can also be affected by certain options, such as 
+  <span class="option">/arch</span> or 
+  <span class="option">/Qx</span> (Windows) or 
+  <span class="option">-m</span> or 
+  <span class="option">-x</span> (Linux and OS X). 
+  </p>
+ 
+  <p>The 
+	 <samp class="codeph">__declspec(align(<var>n</var>))</samp> declaration enables you to overcome hardware alignment constraints. The 
+	 <span class="keyword">restrict</span> qualifier and the auto-vectorization hints address the stylistic issues due to lexical scope, data dependency, and ambiguity resolution. 
+	 <span>The SIMD feature's 
+		<span>pragma</span> allows you to enforce vectorization of loops.</span> 
+  </p>
+ 
+  <p>The 
+	 <samp class="codeph">__attribute__(vector)</samp> and the 
+	 <samp class="codeph">__attribute__(vector(<var>clauses</var>))</samp><span>declarations</span> can be used to vectorize user-defined functions and loops. For SIMD usage, the 
+	 <span class="keyword">vector</span> function is called from a loop that is being vectorized. The function must be implemented in vector operations as part of the loop. 
+  </p>
+ 
+  <p><span>The C/C++ extensions for array notations' 
+		<span class="keyword">map</span> operations can be defined to provide general data parallel semantics, where you do not express the implementation strategy. 
+	 </span>Using array notations, you can write the same operation regardless of the size of the problem, and let the implementation use the right construct, combining SIMD, loops, and tasking to implement the operation. With these semantics, you can choose more elaborate programming and express a single dimensional operation at two levels, using both task constructs and array operations to force a preferred parallel and vector execution. 
+  </p>
+ 
+  <p>The usage model of the 
+	 <span><span class="keyword">vector</span> declaration</span> is that the code generated for the function actually takes a small section (<span class="parmname">vectorlength</span>or 
+	 <span class="parmname">vectorlengthfor</span>) of the array, by value, and exploits SIMD parallelism, whereas the implementation of task parallelism is done at the call site. 
+  </p>
+ 
+  <p>The following table summarizes the language features that help vectorize code. 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-19863E9D-8E04-4D58-897A-8AEA7627E758" frame="border" border="1" cellspacing="0" rules="all"> 
+		 
+		 
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" valign="top" width="53.703703703703695%" id="d182679e142"> 
+				<p>Language Feature 
+				</p>
+ 
+			 </th>
+ 
+			 <th class="cellrowborder" valign="top" width="46.29629629629629%" id="d182679e148"> 
+				<p>Description 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="53.703703703703695%" headers="d182679e142 "> 
+				<p><samp class="codeph">__declspec(align(<var>n</var>))</samp> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="46.29629629629629%" headers="d182679e148 "> 
+				<p>Directs the compiler to align the variable to an 
+				  <var>n</var>-byte boundary. Address of the variable is 
+				  <samp class="codeph"><var>address</var> mod n=0</samp>. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="53.703703703703695%" headers="d182679e142 "> 
+				<p><samp class="codeph">__declspec(align(<var>n</var>,off))</samp> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="46.29629629629629%" headers="d182679e148 "> 
+				<p>Directs the compiler to align the variable to an 
+				  <var>n</var>-byte boundary with offset off within each 
+				  <var>n</var>-byte boundary. Address of the variable is 
+				  <samp class="codeph"><var>address</var> mod n=off</samp>. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="53.703703703703695%" headers="d182679e142 "> 
+				<p><samp class="codeph">__attribute__(vector)</samp> 
+				</p>
+ 
+				</td>
+ 
+			 <td class="cellrowborder" valign="top" width="46.29629629629629%" headers="d182679e148 "> 
+				<p>Combines with the 
+				  <span class="keyword">map</span> operation at the call site to provide the data parallel semantics. When multiple instances of the vector declaration are invoked in a parallel context, the execution order among them is not sequenced. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="53.703703703703695%" headers="d182679e142 "> 
+				<p><samp class="codeph">__attribute__(vector(<span class="parmname">clauses</span>))</samp> 
+				</p>
+ 
+				</td>
+ 
+			 <td class="cellrowborder" valign="top" width="46.29629629629629%" headers="d182679e148 "> 
+				<p>Combines with the 
+				  <span class="keyword">map</span> operation at the call site to provide the data parallel semantics with the following values for 
+				  <span class="parmname">clauses</span>: 
+				</p>
+ 
+				<ul type="disc" id="GUID-7410C437-0B59-4FFB-B2AD-D437F596B3E8"> 
+				  <li> 
+					 <p><span>processor clause: 
+						  <span class="parmname">processor(cpuid)</span></span></p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p><span>vector length clause: 
+						  <span class="parmname">vectorlength(n)</span></span></p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p><span>vector length for clause: 
+						  <span class="parmname">vectorlenghtfor(datatype)</span></span> 
+						</p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p><span>linear clause: 
+						  <span class="parmname">linear(param1:step1 [, param2:step2]…)</span></span> 
+						</p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p><span>uniform clause: 
+						  <span class="parmname">uniform(param [, param,]…)</span></span> 
+						</p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p><span>mask clause: 
+						  <span class="parmname">[no]mask</span></span> 
+						</p>
+ 
+				  </li>
+ 
+				</ul>
+ 
+				<p><span>When multiple instances of the vector declaration are invoked in a parallel context, the execution order among them is not sequenced.</span> 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="53.703703703703695%" headers="d182679e142 "> 
+				<p><span class="keyword">restrict</span> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="46.29629629629629%" headers="d182679e148 "> 
+				<p>Permits the disambiguator flexibility in alias assumptions, which enables more vectorization. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="53.703703703703695%" headers="d182679e142 "> 
+				<p><samp class="codeph">__assume_aligned(<var>a</var>,<var>n</var>)</samp> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="46.29629629629629%" headers="d182679e148 "> 
+				<p>Instructs the compiler to assume that array 
+				  <var>a</var> is aligned on an 
+				  <var>n</var>-byte boundary; used in cases where the compiler has failed to obtain alignment information. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	  
+		 
+		 
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" colspan="2" valign="top" id="d182679e389">Auto-vectorization Hints 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="40%" headers="d182679e389 "> 
+				<p><samp class="codeph">#pragma ivdep</samp> 
+				</p>
+ 
+				<p></p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="60%" headers="d182679e389 "> 
+				<p>Instructs the compiler to ignore assumed vector dependencies. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="40%" headers="d182679e389 "> 
+				<p><samp class="codeph">#pragma vector<br>{aligned|unaligned|always|temporal|nontemporal}</samp> 
+				</p>
+ 
+				</td>
+ 
+			 <td class="cellrowborder" valign="top" width="60%" headers="d182679e389 "> 
+				<p>Specifies how to vectorize the loop and indicates that efficiency heuristics should be ignored. Using the 
+				  <span class="keyword">assert</span> keyword with the 
+				  <span><span class="keyword">vector {always}</span> pragma</span> generates an error-level assertion message saying that the compiler efficiency heuristics indicate that the loop cannot be vectorized. Use 
+				<span class="option">#pragma ivdep!</span> to ignore the assumed dependencies. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="40%" headers="d182679e389 "> 
+				<p><samp class="codeph">#pragma novector</samp> 
+				</p>
+ 
+				</td>
+ 
+			 <td class="cellrowborder" valign="top" width="60%" headers="d182679e389 "> 
+				<p>Specifies that the loop should never be vectorized. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	  
+		 
+		 
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" colspan="2" valign="top" id="d182679e474">User-mandated 
+				<span>pragma</span></th>
+ 
+		  </tr>
+</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="40%" headers="d182679e474 "> 
+				<p><samp class="codeph">#pragma simd</samp> 
+				</p>
+ 
+				</td>
+ 
+			 <td class="cellrowborder" valign="top" width="60%" headers="d182679e474 "> 
+				<p>Enforces vectorization of loops. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	 </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B25ABCC2-BE6F-4599-AEDF-2434F4676E1B.htm#GUID-B25ABCC2-BE6F-4599-AEDF-2434F4676E1B">ivdep pragma 
+		  </a> </div>
+<div><a href="GUID-1EA04294-988E-4152-B584-B028FD6FAC48.htm#GUID-1EA04294-988E-4152-B584-B028FD6FAC48">simd pragma 
+		  </a> </div>
+<div><a href="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm#GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850">vector pragma 
+		  </a> </div>
+<div><a href="GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF.htm#GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF">Elemental Functions 
+		  </a></div></div>
+<div class="linklist">
+<div><a href="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5.htm#GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">User-mandated or SIMD Vectorization 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

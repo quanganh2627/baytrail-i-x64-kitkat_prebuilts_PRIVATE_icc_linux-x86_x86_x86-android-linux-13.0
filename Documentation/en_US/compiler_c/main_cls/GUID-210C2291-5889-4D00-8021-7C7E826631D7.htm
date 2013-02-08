@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30535)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30535">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30535">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-210C2291-5889-4D00-8021-7C7E826631D7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30535)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30535"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30535"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-210C2291-5889-4D00-8021-7C7E826631D7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30535)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-CB400063-FF1F-4A07-9178-1C7BF30FF799"><h2 class="sectiontitle">Message</h2><p>Removing Exception-Handling code associated with the loop-body may enable more optimizations for the loop at line %d.</p>
+</div>
+
+
+<div class="section" id="GUID-FF89D35C-2F8E-4163-8DCD-349B2491B8BD"><h2 class="sectiontitle">Advice</h2>
+<p>Loop optimizations could not be performed because of exception-handling code inside the loop body. You can remove the exception-handling code or use different libraries, etc.</p>
+</div>
+
+
+<div class="section" id="GUID-56977A75-B89B-45F4-828E-6E5068B89A87"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>#include &lt;boost/numeric/ublas/vector.hpp&gt;</pre>
+<pre>#include &lt;boost/numeric/ublas/io.hpp&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>namespace ublas = boost::numeric::ublas;</pre>
+<pre>&nbsp;</pre>
+<pre>int main () </pre>
+<pre>{</pre>
+<pre>  unsigned size = 1000;   </pre>
+<pre>  ublas::vector&lt;double&gt; dest(size), src(size), arg(src);</pre>
+<pre>&nbsp;</pre>
+<pre>  for (int i = 0; i &lt; size; ++ i)</pre>
+<pre>  {</pre>
+<pre>    src(i) = i * 1.2;</pre>
+<pre>    arg(i) = i * 2.3;</pre>
+<pre>  }</pre>
+<pre>&nbsp;  </pre>
+<pre>  // Loop to be vectorized</pre>
+<pre>  dest = src + 1.5 * arg;</pre>
+<pre>&nbsp;</pre>
+<pre>  return 0;</pre>
+<pre>};</pre>
+</div>
+
+
+<p>In this case, the compiler is unable to vectorize the loop at setting O2, the default.   Remove the exception-handling code or recode using different libraries.</p>
+<div class="section" id="GUID-C1F89C55-BE1A-449F-A368-55732ED3DD67"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the restructured code without exception-handling code inside the loop-body follows original program semantics.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

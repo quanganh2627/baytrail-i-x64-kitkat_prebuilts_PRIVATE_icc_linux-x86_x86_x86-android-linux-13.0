@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prof-gen, Qprof-gen">
+<meta name="abstract" content="Produces an instrumented object file that can be used in profile guided optimization.">
+<meta name="description" content="Produces an instrumented object file that can be used in profile guided optimization.">
+<meta name="DC.subject" content="profiling, option instrumenting a program for, /Qprof-gen compiler option, -prof-gen compiler option">
+<meta name="keywords" content="profiling, option instrumenting a program for, /Qprof-gen compiler option, -prof-gen compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AD4BD72C-E96B-4797-B361-5D8D26DFBD08">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prof-gen, Qprof-gen</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_prof_gen"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_prof_gen"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AD4BD72C-E96B-4797-B361-5D8D26DFBD08">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">prof-gen, Qprof-gen</h1>
+<!--Produces an instrumented object file that can be used in profile guided optimization.--><div><p>Produces an instrumented object file that can be used in profile guided optimization.</p>
+
+<div class="section" id="GUID-F3070E6B-ABE3-4D68-9FBB-DB87EEE4E4C5"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>General &gt; Profile Guided Optimization</strong></p>
+<p class="ide"><strong>General &gt; Code Coverage Build Options</strong></p>
+
+
+<p class="ide">Linux: 
+								None</p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-4CF9DAAB-12CE-4CB5-88B3-4D0D8466CA46"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-2CD90D5A-FCAE-4036-9441-1C6C9EF9403F"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-prof-gen</span><span class="delim">[</span><span class="sep">=</span><span class="var">keyword</span><span class="delim">]</span></p><p><span class="kwd">-no-prof-gen</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprof-gen</span><span class="delim">[</span><span class="sep">:</span><span class="var">keyword</span><span class="delim">]</span></p><p><span class="kwd">/Qprof-gen-</span></p></td></tr></table></div>
+<div class="section" id="GUID-B9D79D27-1ED1-429D-A8CF-4A83F39DFBBC"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p> Specifies details for the instrumented file. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">default</span></p></td>
+<td valign="top" class="noborder"><p> Produces an instrumented object file. This is the same as specifying <span class="option">-prof-gen</span> (Linux*OS and OS X*) or <span class="option">/Qprof-gen</span> (Windows* OS) with no keyword.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">srcpos</span></p></td>
+<td valign="top" class="noborder"><p> Produces an instrumented object file that includes extra source position information. </p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">globdata</span></p></td>
+<td valign="top" class="noborder"><p> Produces an instrumented object file that includes information for global data layout.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6956D12B-ED02-4521-B862-FC8B30703791"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> <span class="option">-no-prof-gen</span><span> or <span class="option">/Qprof-gen-</span></span></p></td>
+<td valign="top" class="noborder"><p> Profile generation is disabled.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-A628DEE5-B770-4339-9901-5E780991DE48"><h2>Description</h2><p> This option produces an instrumented object file that can be used in profile guided optimization. It gets the execution count of each basic block.</p>
+<p> If you specify keyword <span class="keyword">srcpos</span> or <span class="keyword">globdata</span>, a static profile information file (.spi) is created. These settings may increase the time needed to do a parallel build using -prof-gen, because of contention writing the .spi file.</p>
+<p> These options are used in phase 1 of the Profile Guided Optimizer (PGO) to instruct the compiler to produce instrumented code in your object files in preparation for instrumented execution.</p>
+<p> When option <span class="option">-prof-gen</span> (Linux* OS and OS X*)
+or <span class="option">/Qprof-gen</span> (Windows* OS) is used to produce an instrumented
+binary file for profile generation, some optimizations are
+disabled.  Those optimizations are not disabled for any
+subsequent profile-guided compilation with option <span class="option">-prof-use</span> (Linux*
+OS and OS X*) or<span class="option"> /Qprof-use</span> (Windows* OS) that makes use of the
+generated profiles.</p>
+
+
+</div>
+
+<div class="section" id="GUID-F73FD418-065D-47CB-AEA2-4CB2D3F71FAB"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

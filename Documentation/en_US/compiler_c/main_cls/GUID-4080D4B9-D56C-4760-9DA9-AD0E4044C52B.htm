@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ftrapuv, Qtrapuv">
+<meta name="abstract" content="Initializes stack local variables to an unusual value to aid error detection.">
+<meta name="description" content="Initializes stack local variables to an unusual value to aid error detection.">
+<meta name="DC.subject" content="-ftrapuv compiler option, /Qtrapuv compiler option, stack variables, option initializing to NaN">
+<meta name="keywords" content="-ftrapuv compiler option, /Qtrapuv compiler option, stack variables, option initializing to NaN">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm#GUID-226DE90E-D4C8-420B-B560-0997839D17C4">
+<meta name="DC.Relation" scheme="URI" content="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4080D4B9-D56C-4760-9DA9-AD0E4044C52B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ftrapuv, Qtrapuv</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ftrapuv"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ftrapuv"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4080D4B9-D56C-4760-9DA9-AD0E4044C52B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ftrapuv, Qtrapuv</h1>
+<!--Initializes stack local variables to an unusual value to aid error detection.--><div><p>Initializes stack local variables to an unusual value to aid error detection.</p>
+
+<div class="section" id="GUID-5520CD1F-C616-4CFD-9C2A-5A610C00632E"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Run-Time &gt; Initialize Stack Variables to an Unusual Value</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Run-Time &gt; Initialize Stack Variables to an Unusual Value</strong></p>
+</div>
+<div class="section" id="GUID-274D4679-7FE0-4708-A0D2-C62E0A6198EC"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-D0C6287A-7A39-4040-8258-72B9CAC5E1AF"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ftrapuv</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qtrapuv</span></p></td></tr></table></div>
+<div class="section" id="GUID-0E1A0548-F1C6-4EFE-94FE-E1A49870A0C9"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-80DAC657-2494-4A4E-AF57-8592C7089C0A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not initialize local variables.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E38B5B17-F4CF-4C63-82D4-9EE3D9ABB9FE"><h2>Description</h2><p>This option initializes stack local variables to an unusual value to aid error detection. Normally, these local variables should be initialized in the application.</p>
+<p>The option sets any uninitialized local variables that are allocated on the stack to a value that is typically interpreted as a very large integer or an invalid address. References to these variables are then likely to cause run-time errors that can help you detect coding errors.</p>
+<p>This option sets option <span class="option">-g</span> (Linux* OS and OS X*) and <span class="option">/Zi</span> or <span class="option">/Z7</span> (Windows* OS), which  changes
+the default optimization level from <span class="option">O2</span> to <span class="option">-O0</span> (Linux OS and OS X)
+or <span class="option">/Od</span> (Windows OS). You can override this effect by explicitly
+specifying an <span class="option">O</span> option setting.</p>
+
+<p>If option <span class="option">O2</span> and option <span class="option">-ftrapuv</span> (Linux OS and OS X) or <span class="option">/Qtrapuv</span> (Windows OS) are used together, you should specify
+option <span class="option">-fp-speculation safe</span> (Linux OS and OS X) or
+<span class="option">/Qfp-speculation:safe</span> (Windows OS) to prevent exceptions resulting
+from speculated floating-point operations from being
+trapped.</p>
+
+<p>For more details on using options <span class="option">-ftrapuv</span> and <span class="option">/Qtrapuv</span>
+with compiler option <span class="option">O</span>, see the article on Intel&reg; Software Network
+titled <cite>Don't optimize when using -ftrapuv for uninitialized
+variable detection</cite>.</p>
+</div>
+
+<div class="section" id="GUID-6D3416CD-0A49-4226-B2F6-2B9B7F469101"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm#GUID-226DE90E-D4C8-420B-B560-0997839D17C4"><span class="option">g</span>, <span class="option">Zi</span>, <span class="option">Z7</span></a>  compiler options</div>
+<div><a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm"><span class="option">O</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

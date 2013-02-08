@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Multiplication Intrinsics">
+<meta name="DC.subject" content="intrinsics, SSSE3, multiplication operations, _mm_maddubs_epi16, _mm_maddubs_pi16, _mm_mulhrs_epi16, _mm_mulhrs_pi16, Supplemental Streaming SIMD Extensions 3, multiplication intrinsics">
+<meta name="keywords" content="intrinsics, SSSE3, multiplication operations, _mm_maddubs_epi16, _mm_maddubs_pi16, _mm_mulhrs_epi16, _mm_mulhrs_pi16, Supplemental Streaming SIMD Extensions 3, multiplication intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-59BDA23C-4226-4D77-A712-2E51207DC6B2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Multiplication Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_tni_mult"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-59BDA23C-4226-4D77-A712-2E51207DC6B2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Multiplication Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-06B365B5-56FF-45AF-B358-BCC062109122"> 
+      <p>These Supplemental Streaming SIMD Extensions 3 (SSSE3) intrinsics are used for multiplication. The prototypes for these intrinsics are in 
+        <span class="filepath">tmmintrin.h</span>. You can also use the 
+        <span class="filepath">ia32intrin.h</span> header file for these intrinsics. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B8DD7659-D346-4862-B763-BAED64140558"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_maddubs_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Multiplies signed and unsigned bytes, adds horizontal pair of signed words, and packs saturated signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1E6E5C2F-BD0E-4606-BA10-ABA8E93D7247"> 
+      <p>Interpreting 
+        <var>a</var> as array of unsigned 8-bit integers, 
+        <var>b</var> as arrays of signed 8-bit integers, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++) {
+r[i] = signed_saturate_to_word(a[2*i+1] * b[2*i+1] + a[2*i]*b[2*i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-06D71CCB-7856-4612-91A2-DEF017E6D0F3"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_maddubs_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Multiplies signed and unsigned bytes, adds horizontal pair of signed words, and packs saturated signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-22C4E7B9-82AE-4AA3-AF2B-A047A31F5997"> 
+      <p>Interpreting 
+        <var>a</var> as array of unsigned 8-bit integers, 
+        <var>b</var> as arrays of signed 8-bit integers, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = signed_saturate_to_word(a[2*i+1] * b[2*i+1] + a[2*i]*b[2*i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-732DD0DB-BA2E-49AD-863D-1E92A8884839"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_mulhrs_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Multiplies signed words, scales and rounds signed doublewords, and packs high 16-bits. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8735C4F3-2F02-457D-965D-CCAB552882B7"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 16-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++) {
+r[i] =  (( (int32)((a[i] * b[i]) &gt;&gt; 14) + 1) &gt;&gt; 1) &amp; 0xFFFF;
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E4A98120-0ED6-4B3A-9021-87ECF52D862F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_mulhrs_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Multiplies signed words, scales and rounds signed doublewords, and packs high 16-bits. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-08AD8E6A-C847-406A-8E06-84FEB14533A1"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of signed 16-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] =  (( (int32)((a[i] * b[i]) &gt;&gt; 14) + 1) &gt;&gt; 1) &amp; 0xFFFF;
+}</pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">Intrinsics for Intel&reg; Supplemental Streaming SIMD Extensions 3 (SSSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

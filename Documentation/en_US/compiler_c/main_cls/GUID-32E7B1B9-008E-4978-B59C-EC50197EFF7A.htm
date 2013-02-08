@@ -1,0 +1,191 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Specifying Alternate Tools and Paths">
+<meta name="DC.subject" content="alternate tools and locations, Linux* compiler options, -Qlocation, -Qoption">
+<meta name="keywords" content="alternate tools and locations, Linux* compiler options, -Qlocation, -Qoption">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-32E7B1B9-008E-4978-B59C-EC50197EFF7A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Specifying Alternate Tools and Paths</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_specify_alt_tools_comm"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_specify_alt_tools_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-32E7B1B9-008E-4978-B59C-EC50197EFF7A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Specifying Alternate Tools and Paths</h1>
+
+
+
+
+<div>
+<p>Use the <span class="option">-Qlocation</span> option to specify an alternate path for a tool. This option accepts two arguments using the following syntax:</p>
+
+<p><span class="option">-Qlocation</span>,<var>tool</var>,<var>path</var></p>
+
+<p>where <var>tool</var> designates which compilation tool is associated with the alternate <var>path</var>.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C28899DB-ED29-4CF2-BA8E-442AE5387901" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="20%" id="d166613e85"><p><var>tool</var></p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="80%" id="d166613e90"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e85 "><p><span class="tt">cpp</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e90 "><p>Specifies the compiler front-end preprocessor.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e85 "><p><span class="tt">c</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e90 "><p>Specifies the C++ compiler.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e85 "><p><span class="tt">asm</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e90 "><p>Specifies the assembler.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e85 "><p><span class="tt">link</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e90 "><p>Specifies the linker.</p>
+</td>
+
+  </tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+<p>Use the <span class="option">-Qoption</span> option to pass an option specified by <var>optlist</var> to a <var>tool</var>, where <var>optlist</var> is a comma-separated list of options. The syntax for this command is:</p>
+
+<p><span class="option">-Qoption</span>,<var>tool</var>,<var>optlist</var></p>
+
+<p>where <var>tool</var> designates which compilation tool receives the <var>optlist</var>.</p>
+
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5A277F00-5C00-489A-AFD6-3D9E9196E06C" frame="border" border="1" cellspacing="0" rules="all">
+
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="20%" id="d166613e196"><p><var>tool</var></p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="80%" id="d166613e201"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e196 "><p><span class="tt">cpp</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e201 "><p>Specifies the compiler front-end preprocessor.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e196 "><p><span class="tt">c</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e201 "><p>Specifies the C++ compiler.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e196 "><p><span class="tt">asm</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e201 "><p>Specifies the assembler.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="20%" headers="d166613e196 "><p><span class="tt">link</span></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="80%" headers="d166613e201 "><p>Specifies the linker.</p>
+</td>
+
+  </tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+<p><var>optlist</var> indicates one or more valid argument strings for the designated program. If the argument is a command-line option, you must include the hyphen. If the argument contains a space or tab character, you must enclose the entire argument in quotation characters (""). You must separate multiple arguments with commas.</p>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

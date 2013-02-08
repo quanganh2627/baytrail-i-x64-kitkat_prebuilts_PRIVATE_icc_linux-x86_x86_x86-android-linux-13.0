@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_shuffle_ps">
+<meta name="abstract" content="Shuffles float32 vectors. The corresponding Intel&reg; AVX instruction is VSHUFPS.">
+<meta name="description" content="Shuffles float32 vectors. The corresponding Intel&reg; AVX instruction is VSHUFPS.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, shuffle operations, _mm256_shuffle_ps (VSHUFPS)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, shuffle operations, _mm256_shuffle_ps (VSHUFPS)">
+<meta name="DC.Relation" scheme="URI" content="GUID-6D301BF1-3F5C-48FA-91B0-7D44437B79A9.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5465E9F1-86F9-4609-93FE-168694D0F97A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_shuffle_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_shuffle_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5465E9F1-86F9-4609-93FE-168694D0F97A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_shuffle_ps</span></h1>
+
+
+<!--Shuffles float32 vectors. The corresponding Intel&reg; AVX instruction is  VSHUFPS .--><div><p>Shuffles float32 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VSHUFPS</span>.</p>
+
+
+<div class="section" id="GUID-501EA1E9-2A91-4C36-A764-BCE6F9A55005"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _mm256_shuffle_ps(__m256 m1, __m256 m2, const int select);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-4EE6C0E9-D331-427D-8E94-97D4C6B0A364"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m1</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m2</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>select </var></p></td>
+
+      <td valign="top" class="noborder"><p> a constant of integer type which determines which elements of the source  vectors move to the result</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-4709CDCA-1B71-41B2-AF91-4F1CEC7D735E"><h2>Description</h2>
+<p>Moves or shuffles two of the packed single-precision floating-point elements (float32 elements) from the double quadword in the source vectors to the low and high quadwords of the double quadword of the result.</p>
+<p>The elements of the first source vector are moved to the low quadword while the elements of the second source vector are moved to the high quadword of the result. The constant defined by the <var>select</var> parameter determines which of the two elements of the source vectors are moved to the result. </p>
+</div>
+
+
+
+
+<div class="section" id="GUID-AC69A00A-D92F-4707-956B-8B962040DD5A"><h2>Returns</h2><p>Result of the shuffle operation. 
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6D301BF1-3F5C-48FA-91B0-7D44437B79A9.htm">Intrinsics for Shuffle Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

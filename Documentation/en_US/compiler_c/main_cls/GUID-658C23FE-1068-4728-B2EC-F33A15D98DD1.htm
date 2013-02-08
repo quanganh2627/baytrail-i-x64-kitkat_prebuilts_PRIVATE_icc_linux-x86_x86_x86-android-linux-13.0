@@ -1,0 +1,152 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Comparison of Function Order Lists and IPO Code Layout">
+<meta name="DC.subject" content="function order list">
+<meta name="keywords" content="function order list">
+<meta name="DC.Relation" scheme="URI" content="GUID-CA2B0F27-8C7A-4C47-B2EE-4893C20D0EAC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-658C23FE-1068-4728-B2EC-F33A15D98DD1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Comparison of Function Order Lists and IPO Code Layout</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pgo_fctn"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pgo_fctn"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-658C23FE-1068-4728-B2EC-F33A15D98DD1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Comparison of Function Order Lists and IPO Code Layout</h1>
+
+
+
+
+<div>
+<p> </p>
+
+<p>The Intel&reg; compiler provides two methods of optimizing the layout of functions in the executable:</p>
+
+<ul type="disc" id="GUID-E595731E-DCEC-403D-8F04-41A55998ECBA">
+<li>
+<p>Using a function order list</p>
+</li>
+
+<li>
+<p>Using the <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) compiler option</p>
+</li>
+</ul>
+
+<p>Each method has its advantages. A function order list, created with proforder, lets you optimize the layout of non-static functions: that is, external and library functions whose names are exposed to the linker.</p>
+
+<p>The linker cannot directly affect the layout order for static functions because the names of these functions are not available in the object files.</p>
+
+<p>The compiler cannot affect the layout order for functions it does not compile, such as library functions. The function layout optimization is performed automatically when IPO is active.</p>
+
+<p>Alternately, using the <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) option allows you to optimize the layout of all <span class="keyword">static</span> or <span class="keyword">extern</span> functions compiled with the Intel&reg; C++ Compiler. The compiler cannot affect the layout order for functions it does not compile, such as library functions. The function layout optimization is performed automatically when IPO is active.</p>
+
+<p><strong>Function Order List Effects</strong></p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-989AA71F-D40B-48E1-8067-96C9641D9C4C" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left">
+<tr valign="middle">
+<th class="cellrowborder" align="left" valign="middle" id="d324101e99">
+<p>Function Type</p>
+</th>
+
+<th class="cellrowborder" align="left" valign="middle" id="d324101e104">
+<p>IPO Code Layout</p>
+</th>
+
+<th class="cellrowborder" align="left" valign="middle" id="d324101e109">
+<p>Function Ordering with proforder</p>
+</th>
+</tr>
+</thead>
+
+<tbody>
+<tr valign="middle">
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e99 ">
+<p>Static</p>
+</td>
+
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e104 ">
+<p>X</p>
+</td>
+
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e109 ">
+<p>No effect</p>
+</td>
+</tr>
+
+<tr valign="middle">
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e99 ">
+<p>Extern</p>
+</td>
+
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e104 ">
+<p>X</p>
+</td>
+
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e109 ">
+<p>X</p>
+</td>
+</tr>
+
+<tr valign="middle">
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e99 ">
+<p>Library</p>
+</td>
+
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e104 ">
+<p>No effect</p>
+</td>
+
+<td class="cellrowborder" align="left" valign="middle" headers="d324101e109 ">
+<p>X</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Function Order List Usage Guidelines (Windows*)</strong></p>
+
+<p>Use the following guidelines to create a function order list:</p>
+
+<ul type="disc" id="GUID-1C9B0476-F50A-4450-B19F-95D32708CCF8">
+<li>
+<p>The order list only affects the order of non-static functions.</p>
+</li>
+
+<li>
+<p>You must compile with <a href="GUID-15AC736C-F052-4E79-8417-CE9EB09E1AA0.htm#GUID-15AC736C-F052-4E79-8417-CE9EB09E1AA0"><span class="option">/Gy</span></a> to enable function-level linking. (This option is active if you specify either option <a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">/O1</span></a> or <span class="option">/O2</span>.)</p>
+</li>
+</ul>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CA2B0F27-8C7A-4C47-B2EE-4893C20D0EAC.htm">PGO Tools</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

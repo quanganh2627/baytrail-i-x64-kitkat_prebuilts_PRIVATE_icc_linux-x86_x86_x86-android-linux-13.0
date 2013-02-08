@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Special Values">
+<meta name="DC.subject" content="floating-point numbers, special values, floating-point values, denormalized numbers (IEEE*), NaN values, normalized floating-point number, Not-a-Number (NaN), signed infinity, signed zero">
+<meta name="keywords" content="floating-point numbers, special values, floating-point values, denormalized numbers (IEEE*), NaN values, normalized floating-point number, Not-a-Number (NaN), signed infinity, signed zero">
+<meta name="DC.Relation" scheme="URI" content="GUID-338B42F0-B891-4D35-9872-8E54BA8AA1CD.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C7EE0D3F-1B90-4387-B8F1-9ABAE400AE6D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Special Values</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_special_value"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C7EE0D3F-1B90-4387-B8F1-9ABAE400AE6D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Special Values</h1>
+
+
+
+
+<div>
+
+<p>The following lists special values that the Intel&reg; Compiler supports and provides a brief description.</p>
+
+
+<div class="section" id="GUID-4FF2737B-C198-4CA2-94A9-3F92BFF26C49"><h2 class="sectiontitle">Signed zero</h2>
+
+<p> The sign of zero is the same as the sign of a nonzero number.  Comparisons, however, consider +0 to be equal to -0. A signed zero is useful in certain numerical analysis algorithms, but in most applications the sign of zero is invisible.</p>
+
+</div>
+
+
+<div class="section" id="GUID-B0DAD31F-2696-40D6-A963-A9787A7F0C26"><h2 class="sectiontitle">Denormalized numbers</h2>
+
+<p>Denormalized numbers (denormals) fill the gap between the smallest positive normalized number and the smallest negative number. Otherwise only (+/-) 0 occurs in that interval. Denormalized numbers extend the range of computable results by allowing for gradual underflow. </p>
+<p>Systems based on the IA-32 architecture support a Denormal Operand status flag, which, when set, means at least one of the input operands to a floating-point operation is a denormal. The Underflow status flag is set when a number loses precision and becomes a denormal.</p>
+
+</div>
+
+
+<div class="section" id="GUID-38333E97-77E1-4DEA-B1B5-D8F6B7C59E5D"><h2 class="sectiontitle">Signed infinity</h2>
+
+<p>Infinities are the result of arithmetic in the limiting case of operands with arbitrarily large magnitude. They provide a way to continue when an overflow occurs. The sign of an infinity is simply the sign you obtain for a finite number in the same operation as the finite number approaches an infinite value. </p>
+<p>By retrieving the status flags, you can differentiate between an infinity that results from an overflow and one that results from division by zero. Intel&reg; Compiler treats infinity as signed by default. The output value of infinity is +Infinity or -Infinity.</p>
+
+</div>
+
+
+<div class="section" id="GUID-F361E9D6-3BCD-4757-9063-2B00AF454598"><h2 class="sectiontitle">Not a Number</h2>
+
+<p>Not a Number (NaN) results from an invalid operation. For instance 0/0 and <span class="keyword">SQRT(-1)</span> result in NaN. In general, an operation involving a NaN produces another NaN. Because the fraction of a NaN is unspecified, there are many possible NaNs. </p>
+<p>Intel&reg; Compiler treats all NaNs identically, but provides two different types:</p>
+
+<ul type="disc" id="GUID-67C74F0D-34F3-48AB-9D9A-0BB4685B9A6F">
+  <li><p>Signaling NAN, which has an initial fraction bit of 0 (zero). This usually raises an invalid exception when used in an operation.</p>
+</li>
+
+  <li><p>Quiet NaN, which has an initial fraction bit of 1.</p>
+</li>
+
+</ul>
+
+<p>The floating-point hardware changes a signaling NAN into a quiet NAN during many arithmetic operations, including the assignment operation.  An invalid exception may be raised but the resulting floating-point value will be a quiet NAN.  Fortran binary and unformatted input and output do not change the internal representations of the values as they are handled. Therefore, signaling and quiet NANs may be read into real data and output to files in binary form.</p>
+
+<p>The output value of NaN is NaN.</p>
+
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-338B42F0-B891-4D35-9872-8E54BA8AA1CD.htm">Understanding IEEE Floating-point Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

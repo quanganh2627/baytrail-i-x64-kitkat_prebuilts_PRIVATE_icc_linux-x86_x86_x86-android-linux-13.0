@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fmerge-debug-strings">
+<meta name="abstract" content="Causes the compiler to pool strings used in debugging information.">
+<meta name="description" content="Causes the compiler to pool strings used in debugging information.">
+<meta name="DC.subject" content="-fmerge-debug-strings compiler option">
+<meta name="keywords" content="-fmerge-debug-strings compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2CE4CAE3-757C-4326-9AE9-CE9E8E36302C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fmerge-debug-strings</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fmerge_debug_strings"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fmerge_debug_strings"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2CE4CAE3-757C-4326-9AE9-CE9E8E36302C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fmerge-debug-strings</h1>
+<!-- Causes the compiler to pool strings used in debugging information.--><div><p> Causes the compiler to pool strings used in debugging information.</p>
+
+<div class="section" id="GUID-7F378D7E-56CE-4F3C-ADFC-B9FDF63FF710"><h2>IDE Equivalent</h2> None
+
+</div>
+<div class="section" id="GUID-EA8AE522-F44B-430A-ACA6-C5EC9B14BA05"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-61521F7E-4BE3-4B46-822C-3DA0CF35FA7A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fmerge-debug-strings</span></p><p><span class="kwd">-fno-merge-debug-strings</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-A76ECDBD-6670-4F3E-BCCF-6979CD928F36"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-3CDA451B-92EC-4762-B8EE-DEFC435BB325"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p> <span class="option">-fmerge-debug-strings</span></p></td>
+<td valign="top" class="noborder"><p> The compiler will pool strings used in debugging information.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AB05C367-5B74-431A-91B4-E872760D2BA4"><h2>Description</h2><p> This option causes the compiler to pool strings
+used in debugging information. The linker will automatically retain
+this pooling.</p>
+
+<p> This option can reduce the size of debug
+information, but it may produce slightly slower compile and link
+times.</p>
+
+
+<p> This option is only turned on by default if you
+are using gcc 4.3 or later, where this setting is also the default,
+since the generated debug tables require binutils version 2.17 or
+later to work reliably.</p>
+
+<p> If you do not want the compiler to pool strings
+used in debugging information, specify option
+<span class="option">-fno-merge-debug-strings</span>.</p>
+
+</div>
+
+<div class="section" id="GUID-1D91A9F8-045D-455D-8013-736BE5CA6C2F"><h2>Alternate Options</h2><p> None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="tcollect-filter, Qtcollect-filter">
+<meta name="abstract" content="Lets you enable or disable the instrumentation of specified functions.">
+<meta name="description" content="Lets you enable or disable the instrumentation of specified functions.">
+<meta name="DC.subject" content="/Qtcollect-filter compiler option, -tcollect-filter compiler option, instrumentation, option enabling or disabling for specified functions">
+<meta name="keywords" content="/Qtcollect-filter compiler option, -tcollect-filter compiler option, instrumentation, option enabling or disabling for specified functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BE31DE0-C83B-4083-9A54-91A0B0407514.htm#GUID-6BE31DE0-C83B-4083-9A54-91A0B0407514">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1BF149C3-D8BE-4659-9C18-9879DCE05C14">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>tcollect-filter, Qtcollect-filter</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_tcollect_filter"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_tcollect_filter"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1BF149C3-D8BE-4659-9C18-9879DCE05C14">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">tcollect-filter, Qtcollect-filter</h1>
+<!--Lets you enable or disable the instrumentation of specified functions.--><div><p>Lets you enable or disable the instrumentation of specified functions.</p>
+
+<div class="section" id="GUID-BCE73D10-31BD-440C-B98C-71CCF542DEF3"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-E43B9655-55B4-4807-A6E7-E842532BE810"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-D5D50F52-AC45-4D5F-AF86-1DA573C6E643"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-tcollect-filter</span><span class="var"> filename</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qtcollect-filter</span><span class="oper">:</span><span class="var">filename</span></p></td></tr></table></div>
+<div class="section" id="GUID-5042AD7A-065E-4965-83C3-0144C53E5089"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is a configuration file that lists filters, one per line. Each filter consists of a regular expression string and a switch. Strings with leading or trailing white spaces must be quoted. Other strings do not have to be quoted. The switch value can be ON, on, OFF, or off.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-05C2BC77-776B-480A-B1D9-0387179269A7"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Functions are not instrumented. However, if option <span class="option">-tcollect</span> (Linux)<span> or <span class="option">/Qtcollect</span> (Windows)</span> is specified, the filter setting is ".* ON" and all functions get instrumented. </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6D179C17-3BE4-481C-B417-2C24736FC602"><h2>Description</h2><p>This option lets you enable or disable the instrumentation of specified functions. </p>
+<p>During instrumentation, the regular expressions in the file are matched against the function names. The switch specifies whether matching functions are to be instrumented or not. Multiple filters are evaluated from top to bottom with increasing precedence. </p>
+<p>The names of the functions to match against are formatted as follows:</p>
+<ul type="disc" id="GUID-AD966039-FB65-48DB-AE24-27E3243015DF"><li><p>C++ function names are demangled and the C++ class hierarchy is used. Function parameters are stripped to keep the function names shorter. </p>
+</li>
+<li><p>The source file name is followed by a colon-separated function name. Source file names should contain the full path, if available. For example: </p>
+<pre>/home/joe/src/foo.c:FOO_bar</pre></li>
+<li><p>Classes and function names are separated by double colons. For example:</p>
+<pre>/home/joe/src/foo.cpp:app::foo::bar</pre></li>
+</ul>
+<p>You can use option <span class="option">-opt-report</span> (Linux* OS) or <span class="option">/Qopt-report</span> (Windows* OS) to get a full list of file and function names that the compiler recognizes from the compilation unit. This list can be used as the basis for filtering in the configuration file.</p>
+<p>To use this option, you must have the Intel&reg; Trace Collector installed and set up through one of its set-up scripts. This tool is a component of the Intel&reg; Trace Analyzer and Collector. </p>
+<p>For more details, see the Intel&reg; Trace Collector User Guide.</p>
+</div>
+
+<div class="section" id="GUID-4DF8F212-08E5-445D-96EF-36AF7B62C146"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_DFF15EDD07AC454B90F3C4E044328898"><a name="EXAMPLE_DFF15EDD07AC454B90F3C4E044328898"><!-- --></a><p>Consider the following filters in a configuration file:</p>
+<pre>'.*' OFF '.*vector.*' ON</pre><p>The above will cause instrumentation of only those functions having the string 'vector' in their names. No other function will be instrumented. Note that reversing the order of the two lines will prevent instrumentation of all functions.</p>
+<p>To get a list of the file or routine strings that can be matched by the regular expression filters, generate an optimization report with tcollect information. For example: </p>
+<pre>Windows OS: icl /Qtcollect /Qopt-report /Qopt-report-phase tcollect</pre><pre>Linux OS: icc -tcollect -opt-report -opt-report-phase tcollect </pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">Optimization Report Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-6BE31DE0-C83B-4083-9A54-91A0B0407514.htm#GUID-6BE31DE0-C83B-4083-9A54-91A0B0407514">tcollect, Qtcollect</a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

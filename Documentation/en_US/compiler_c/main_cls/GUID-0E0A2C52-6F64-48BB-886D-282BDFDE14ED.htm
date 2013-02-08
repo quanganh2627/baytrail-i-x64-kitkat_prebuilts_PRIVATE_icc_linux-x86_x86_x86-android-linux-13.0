@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Microsoft Foundation Classes and Intel&reg; Cilk&#8482; Plus Programs">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, and Microsoft Foundation Classes">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, and Microsoft Foundation Classes">
+<meta name="DC.Relation" scheme="URI" content="GUID-92C5B9DE-43F9-4326-B5D5-61320B176D85.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0E0A2C52-6F64-48BB-886D-282BDFDE14ED">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Microsoft Foundation Classes and Intel&reg; Cilk&#8482; Plus Programs</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_mfc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0E0A2C52-6F64-48BB-886D-282BDFDE14ED">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Microsoft Foundation Classes and Intel&reg; Cilk&#8482; Plus Programs</h1>
+
+<div>
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3>This topic is for  Windows* OS programmers
+only.</div>
+</p>
+
+<p>The Microsoft Foundation Classes (MFC) library depends upon
+thread local storage to map from its class wrappers to the GDI
+handles for objects. Because an Intel&reg; Cilk&#8482; Plus strand is not guaranteed to run
+on any specific OS thread, parallel code using Intel&reg; Cilk&#8482; Plus cannot safely
+call MFC functions.</p>
+
+<p>There are two methods typically used to perform a
+computationally-intensive task in an MFC-based application:</p>
+
+<ul type="disc" id="GUID-77EF8148-1161-4E95-A97D-E1D13375016D"><li><p>The user
+interface (UI) thread creates a computation thread to run the
+computationally-intensive task. The compute thread posts messages
+to the UI thread to update it, leaving the UI thread free to
+respond to UI requests.</p>
+</li>
+<li><p>The
+computationally-intensive code is run on the UI thread, updating
+the UI directly and occasionally running a "message pump" to handle
+other UI requests.</p>
+</li>
+</ul>
+<p>Since the runtime system can switch operating system threads,
+Intel&reg; Cilk&#8482; Plus code must be isolated from code such as MFC that depends on
+Thread Local Storage.</p>
+
+<p>To add a computation thread to an MFC program:</p>
+
+<p>
+<ol id="GUID-16D6DD9C-2416-4963-BD1D-969A3AEC81DC">
+<li> <p>Create a computation thread using operating-system facilities (<samp class="codeph">_beginthreadex</samp> or  <samp class="codeph">AfxBeginThread</samp>).
+All the C++ code that is to be converted to Intel&reg; Cilk&#8482; Plus should run in this
+thread. The computation thread leaves the main (UI) thread
+available to run the message pump for processing window messages
+and updating the UI.</p>
+</li>
+
+<li><p>Pass the handle (<samp class="codeph">HWND</samp>) for the UI windows to the
+computation thread. When the computation thread needs to update the
+UI, it should send a message to the UI thread by calling  <samp class="codeph">PostMessage</samp>.  <samp class="codeph">PostMessage</samp>
+marshals and queues the message into the message queue associated
+with the thread that created the window handle. Do not use  <samp class="codeph">SendMessage</samp>.  <samp class="codeph">SendMessage</samp> is run
+on the currently executing thread, which is not the correct (UI)
+thread.</p>
+</li>
+<li><p>Test the C++ program to ensure that the logic and thread management
+are correct.</p>
+</li>
+<li><p>Add Intel&reg; Cilk&#8482; Plus constructs
+to the logic in the computation thread.</p>
+</li>
+<li><p>Before terminating, the main (UI) thread should wait for the
+computation thread to complete, using  <samp class="codeph">WaitForSingleObject()</samp>.</p>
+</li>
+</ol>
+
+</p>
+
+<p>The  <span class="filepath">QuickDemo</span> example illustrates a Intel&reg; Cilk&#8482; Plus application using MFC.</p>
+
+<p>Additional recommendations:</p>
+
+<ul type="disc" id="GUID-740731C0-EA08-4FAD-A1DA-936980C2E71B"><li><p>When the main
+UI thread creates the computation thread, it should not wait for
+the thread to complete. The function that creates the computation
+thread should return to allow the message pump to run.</p>
+</li>
+<li><p>Be sure that
+none of the data passed to the computation thread is allocated on
+the stack. If it is, it will quickly be invalidated as the
+computation-thread creation function returns, releasing the
+data.</p>
+</li>
+<li><p>A data block
+passed to the computation thread should be freed by the computation
+thread when it is done, just before it sends a completion message
+to the UI.</p>
+</li>
+<li><p>Use the  <samp class="codeph">PostMessage</samp>
+function instead of  <samp class="codeph">CWnd::PostMessage</samp>, as a primary reason
+for creating a computation thread is to avoid the MFC thread-local
+variables in Intel&reg; Cilk&#8482; Plus code.</p>
+</li>
+<li><p>A (short)
+computation using Intel&reg; Cilk&#8482; Plus constructs can be called directly from the
+UI thread, as long as the computation behaves as a "black box" and
+does not attempt to communicate with the message pump or any other
+threads. This feature allows you to call non-interactive functions
+without regard to whether they use Intel&reg; Cilk&#8482; Plus.</p>
+</li>
+</ul>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-92C5B9DE-43F9-4326-B5D5-61320B176D85.htm">Operating System Considerations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

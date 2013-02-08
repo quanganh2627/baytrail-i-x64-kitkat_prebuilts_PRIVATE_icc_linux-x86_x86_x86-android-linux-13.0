@@ -1,0 +1,353 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Trigonometric Functions">
+<meta name="DC.subject" content="Math library, Trigonometric Functions, acos library function, acosd library function, asin library function, atan library function, asind library function, atan2 library function, atand library function, atand2 library function, cos library function, cosd library function, cot library function, cotd library function, sin library function, sincos library function, sincosd library function, sind library function, tan library function, tand library function">
+<meta name="keywords" content="Math library, Trigonometric Functions, acos library function, acosd library function, asin library function, atan library function, asind library function, atan2 library function, atand library function, atand2 library function, cos library function, cosd library function, cot library function, cotd library function, sin library function, sincos library function, sincosd library function, sind library function, tan library function, tand library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DA209CE1-FACE-449C-8FB6-D3188335D4EC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Trigonometric Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_trig"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DA209CE1-FACE-449C-8FB6-D3188335D4EC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Trigonometric Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+    </p>
+
+    <p>The Intel math library supports the following trigonometric functions:
+    </p>
+ 
+    <div class="section" id="ACOS"><a name="ACOS"><!-- --></a><h2 class="sectiontitle">acos</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">acos</span> function returns the principal value of the inverse cosine of 
+        <samp class="codeph">x</samp> in the range [0, pi] radians for 
+        <samp class="codeph">x</samp> in the interval [-1,1].
+      </p>
+ 
+      <p><span class="keyword">errno</span>: EDOM, for |x| &gt; 1
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br><samp class="codeph">double acos(double x);</samp><br><samp class="codeph">long double acosl(long double x);</samp><br><samp class="codeph">float acosf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ACOSD"><a name="ACOSD"><!-- --></a><h2 class="sectiontitle">acosd</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">acosd</span> function returns the principal value of the inverse cosine of 
+        <samp class="codeph">x</samp> in the range [0,180] degrees for 
+        <samp class="codeph">x</samp> in the interval [-1,1].
+      </p>
+ 
+      <p><span class="keyword">errno</span>: EDOM, for |x| &gt; 1
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double acosd(double x);</samp><br> 
+        <samp class="codeph">long double acosdl(long double x);</samp><br> 
+        <samp class="codeph">float acosdf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ASIN"><a name="ASIN"><!-- --></a><h2 class="sectiontitle">asin</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">asin</span> function returns the principal value of the inverse sine of 
+        <samp class="codeph">x</samp> in the range [-pi/2, +pi/2] radians for 
+        <samp class="codeph">x</samp> in the interval [-1,1].
+      </p>
+ 
+      <p><span class="keyword">errno</span>: EDOM, for |x| &gt; 1
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double asin(double x);</samp><br> 
+        <samp class="codeph">long double asinl(long double x);</samp><br> 
+        <samp class="codeph">float asinf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ASIND"><a name="ASIND"><!-- --></a><h2 class="sectiontitle">asind</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">asind</span> function returns the principal value of the inverse sine of 
+        <samp class="codeph">x</samp> in the range [-90,90] degrees for 
+        <samp class="codeph">x</samp> in the interval [-1,1].
+      </p>
+ 
+      <p><span class="keyword">errno</span>: EDOM, for |x| &gt; 1
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double asind(double x);</samp><br> 
+        <samp class="codeph">long double asindl(long double x);</samp><br> 
+        <samp class="codeph">float asindf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ATAN"><a name="ATAN"><!-- --></a><h2 class="sectiontitle">atan</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">atan</span> function returns the principal value of the inverse tangent of 
+        <samp class="codeph">x</samp> in the range [-pi/2, +pi/2] radians.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double atan(double x);</samp><br> 
+        <samp class="codeph">long double atanl(long double x);</samp><br> 
+        <samp class="codeph">float atanf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ATAN2"><a name="ATAN2"><!-- --></a><h2 class="sectiontitle">atan2</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">atan2</span> function returns the principal value of the inverse tangent of 
+        <samp class="codeph">y/x</samp> in the range [-pi, +pi] radians.
+      </p>
+ 
+      <p><span class="keyword">errno</span>: EDOM, for x = 0 and y = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double atan2(double y, double x);</samp><br> 
+        <samp class="codeph">long double atan2l(long double y, long double x);</samp><br> 
+        <samp class="codeph">float atan2f(float y, float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ATAND"><a name="ATAND"><!-- --></a><h2 class="sectiontitle">atand</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">atand</span> function returns the principal value of the inverse tangent of 
+        <samp class="codeph">x</samp> in the range [-90,90] degrees.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double atand(double x);</samp><br> 
+        <samp class="codeph">long double atandl(long double x);</samp><br> 
+        <samp class="codeph">float atandf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ATAND2"><a name="ATAND2"><!-- --></a><h2 class="sectiontitle">atan2d</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">atan2d</span> function returns the principal value of the inverse tangent of 
+        <samp class="codeph">y/x</samp> in the range [-180, +180] degrees.
+      </p>
+ 
+      <p><span class="keyword">errno</span>: EDOM, for x = 0 and y = 0.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double atan2d(double x, double y);</samp><br> 
+        <samp class="codeph">long double atan2dl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float atan2df(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="COS"><a name="COS"><!-- --></a><h2 class="sectiontitle">cos</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cos</span> function returns the cosine of 
+        <samp class="codeph">x</samp> measured in radians. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double cos(double x);</samp><br> 
+        <samp class="codeph">long double cosl(long double x);</samp><br> 
+        <samp class="codeph">float cosf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="COSD"><a name="COSD"><!-- --></a><h2 class="sectiontitle">cosd</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cosd</span> function returns the cosine of 
+        <samp class="codeph">x</samp> measured in degrees.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double cosd(double x);</samp><br> 
+        <samp class="codeph">long double cosdl(long double x);</samp><br> 
+        <samp class="codeph">float cosdf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="COT"><a name="COT"><!-- --></a><h2 class="sectiontitle">cot</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cot</span> function returns the cotangent of 
+        <samp class="codeph">x</samp> measured in radians.
+      </p>
+ 
+      <p><span class="keyword">errno</span>: ERANGE, for overflow conditions at x = 0.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double cot(double x);</samp><br> 
+        <samp class="codeph">long double cotl(long double x);</samp><br> 
+        <samp class="codeph">float cotf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="COTD"><a name="COTD"><!-- --></a><h2 class="sectiontitle">cotd</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cotd</span> function returns the cotangent of 
+        <samp class="codeph">x</samp> measured in degrees.
+      </p>
+ 
+      <p><span class="keyword">errno</span>: ERANGE, for overflow conditions at x = 0.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double cotd(double x);</samp><br> 
+        <samp class="codeph">long double cotdl(long double x);</samp><br> 
+        <samp class="codeph">float cotdf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SIN"><a name="SIN"><!-- --></a><h2 class="sectiontitle">sin</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sin</span> function returns the sine of 
+        <samp class="codeph">x</samp> measured in radians. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double sin(double x);</samp><br> 
+        <samp class="codeph">long double sinl(long double x);</samp><br> 
+        <samp class="codeph">float sinf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SINCOS"><a name="SINCOS"><!-- --></a><h2 class="sectiontitle">sincos</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sincos</span> function returns both the sine and cosine of 
+        <samp class="codeph">x</samp> measured in radians. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">void sincos(double x, double *sinval, double *cosval);</samp><br> 
+        <samp class="codeph">void sincosl(long double x, long double *sinval, long double *cosval);</samp><br> 
+        <samp class="codeph">void sincosf(float x, float *sinval, float *cosval);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SINCOSD"><a name="SINCOSD"><!-- --></a><h2 class="sectiontitle">sincosd</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sincosd</span> function returns both the sine and cosine of 
+        <samp class="codeph">x</samp> measured in degrees.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">void sincosd(double x, double *sinval, double *cosval);</samp><br> 
+        <samp class="codeph">void sincosdl(long double x, long double *sinval, long double *cosval);</samp><br> 
+        <samp class="codeph">void sincosdf(float x, float *sinval, float *cosval);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SIND"><a name="SIND"><!-- --></a><h2 class="sectiontitle">sind</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sind</span> function computes the sine of 
+        <samp class="codeph">x</samp> measured in degrees.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double sind(double x);</samp><br> 
+        <samp class="codeph">long double sindl(long double x);</samp><br> 
+        <samp class="codeph">float sindf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="TAN"><a name="TAN"><!-- --></a><h2 class="sectiontitle">tan</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">tan</span> function returns the tangent of 
+        <samp class="codeph">x</samp> measured in radians.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double tan(double x);</samp><br> 
+        <samp class="codeph">long double tanl(long double x);</samp><br> 
+        <samp class="codeph">float tanf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="TAND"><a name="TAND"><!-- --></a><h2 class="sectiontitle">tand</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">tand</span> function returns the tangent of 
+        <samp class="codeph">x</samp> measured in degrees.
+      </p>
+ 
+      <p><span class="keyword">errno</span>: ERANGE, for overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double tand(double x);</samp><br> 
+        <samp class="codeph">long double tandl(long double x);</samp><br> 
+        <samp class="codeph">float tandf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

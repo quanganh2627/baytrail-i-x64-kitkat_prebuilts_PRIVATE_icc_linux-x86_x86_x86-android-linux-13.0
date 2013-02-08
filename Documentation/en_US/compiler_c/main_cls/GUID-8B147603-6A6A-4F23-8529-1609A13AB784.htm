@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_i32[ext]gather_epi32/ _mm512_mask_i32[ext]gather_epi32">
+<meta name="abstract" content="Gather int32 vector with int32 indices. Corresponding instruction is VPGATHERDD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Gather int32 vector with int32 indices. Corresponding instruction is VPGATHERDD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_i32extgather_epi32, _mm512_mask_i32extgather_epi32, _mm512_i32gather_epi32, _mm512_mask_i32gather_epi32">
+<meta name="keywords" content="_mm512_i32extgather_epi32, _mm512_mask_i32extgather_epi32, _mm512_i32gather_epi32, _mm512_mask_i32gather_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8B147603-6A6A-4F23-8529-1609A13AB784">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_i32[ext]gather_epi32/ _mm512_mask_i32[ext]gather_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_i32extgather_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8B147603-6A6A-4F23-8529-1609A13AB784">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_i32[ext]gather_epi32/ _mm512_mask_i32[ext]gather_epi32 </h1>
+<!--Gather int32 vector with int32 indices. Corresponding instruction is  VPGATHERDD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Gather int32 vector with int32 indices. Corresponding instruction is <samp class="codeph">VPGATHERDD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-3A64C4BE-1176-4C1A-B983-701F722EB0B0"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_i32extgather_epi32(_m512i index, void const* mv, _MM_UPCONV_EPI32_ENUM conv, int scale, int hint);</span></p><p><span class="kwd"> extern __m512i __cdecl _mm512_i32gather_epi32(index, addr, scale);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_mask_i32extgather_epi32(_m512 v1_old, __mmask16 k1, __m512i index, void const* mv, _MM_UPCONV_EPI32_ENUM conv, int scale, int hint);</span></p><p><span class="kwd">extern __m512i __cdecl _mm512_mask_i32gather_epi32(v1_old, k1, index, addr, scale);</span></p></td></tr></table></div>
+<div class="section" id="GUID-3673CF7C-A7AA-4C17-B4A0-3F85F0CE8F33"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>index</var></p></td>
+
+<td valign="top" class="noborder">int32 vector containing indexes in memory <samp class="codeph">mv</samp></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>mv</var></p></td>
+
+<td valign="top" class="noborder"><p>Pointer to base address in memory 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>conv</var></p></td>
+
+<td valign="top" class="noborder"><p>Type of upconversion, which can be one of the following: 
+    <a name="d89e504"><!-- --></a><ul type="disc" id="d89e504"> 
+      <li><samp class="codeph">_MM_UPCONV_EPI32_NONE</samp> - no conversion 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_EPI32_UINT8</samp> - uint8 =&gt; uint32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_EPI32_SINT8</samp> - sint8 =&gt; sint32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_EPI32_UINT16</samp> - uint16 =&gt; uint32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_EPI32_SINT16</samp> - sint16 =&gt; sint32 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>scale</var></p></td>
+
+<td valign="top" class="noborder"><p>Scaling factor for calculating address of elements. Takes following values: 1, 2, 4, and 8. The address of the 
+      <var>i</var>-th element in memory is calculated as: 
+      <samp class="codeph">mv + index[<var>i</var>] * scale</samp> 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>hint</var></p></td>
+
+<td valign="top" class="noborder"><p>Hint that indicates to the processor that the data is non-temporal. Takes the value 0 or 1, where: 
+    <a name="d89e356"><!-- --></a><ul type="disc" id="d89e356"> 
+      <li><samp class="codeph">_MM_HINT_NONE</samp> = 0 
+      </li>
+ 
+      <li><samp class="codeph">_MM_HINT_NT</samp> = 1 (Load is non-temporal) 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+
+
+</table>
+</div>
+<div class="section" id="GUID-AD8F8632-FAAA-4D72-8828-8C97AC37E095"><h2>Description</h2>
+<p>Up-converts a set of 16 memory locations pointed by base address <samp class="codeph">mv</samp> and int32 <samp class="codeph">index</samp> vector index with scale <var>scale</var>, and gathers them into a int32 vector.</p>
+<p>The resulting vector for the masked variant is populated by elements for which the corresponding bit in the writemask vector <samp class="codeph">k1</samp> is set. The remaining elements of the resulting vector for the masked variant is populated by corresponding elements from <samp class="codeph">v1_old</samp>.</p>
+<p>The non-masked variant of the intrinsic is equivalent to the masked variant with full mask (<samp class="codeph">k1</samp>=<span>0xffff</span>).</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>
+<p>These intrinsics do not have broadcast support.</p>
+</div>
+</div>
+<div class="section" id="GUID-49252E6E-4D09-447E-A1E0-BAD6659963E4"><h2>Returns</h2><p>Returns the result of the up-convert load operation.</p>
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">Gather and Scatter Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

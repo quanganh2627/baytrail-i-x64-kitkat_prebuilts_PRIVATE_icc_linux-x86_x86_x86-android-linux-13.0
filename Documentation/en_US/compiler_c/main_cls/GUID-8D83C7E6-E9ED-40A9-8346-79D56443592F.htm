@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="inline-max-per-routine, Qinline-max-per-routine">
+<meta name="abstract" content="Specifies the maximum number of times the inliner may inline into a particular routine.">
+<meta name="description" content="Specifies the maximum number of times the inliner may inline into a particular routine.">
+<meta name="DC.subject" content="inlining, option specifying maximum times for a routine, /Qinline-max-per-routine compiler option, -inline-max-per-routine compiler option">
+<meta name="keywords" content="inlining, option specifying maximum times for a routine, /Qinline-max-per-routine compiler option, -inline-max-per-routine compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC">
+<meta name="DC.Relation" scheme="URI" content="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>inline-max-per-routine, Qinline-max-per-routine</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_inline_max_per_routine"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_inline_max_per_routine"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">inline-max-per-routine, Qinline-max-per-routine</h1>
+<!--Specifies the maximum number of times the inliner may inline into a particular routine.--><div><p>Specifies the maximum number of times the inliner may inline into a particular routine.</p>
+
+<div class="section" id="GUID-17872EB8-8442-44A2-8F23-906CB73ECB08"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-1C3526AE-BA29-4894-81B2-301CBE1BDF51"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-8BE8C074-8D38-40A0-886F-57E058D31FE5"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-inline-max-per-routine</span><span class="oper">=</span><span class="var">n</span></p><p><span class="kwd">-no-inline-max-per-routine</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qinline-max-per-routine</span><span class="oper">=</span><span class="var">n</span></p><p><span class="kwd">/Qinline-max-per-routine-</span></p></td></tr></table></div>
+<div class="section" id="GUID-59F09FEB-9D9C-4A9C-95BA-D03F547CCCAF"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is a positive integer that specifies the maximum number of times the inliner may inline into a particular routine.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-23C18C70-6EB0-4845-9A2A-5F1B8E4B9D6A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-inline-max-per-routine</span><br><span> or<span class="option">/Qinline-max-per-routine-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses default heuristics for inline routine expansion.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-B1D7B77B-7A35-4B78-9745-D4ED8390E73C"><h2>Description</h2><p>This option specifies the maximum number of times the inliner may inline into a particular routine. It limits the number of times that inlining can be applied to any routine.</p>
+<p>If you specify <span class="option">-no-inline-max-per-routine</span> (Linux* OS and OS X*) or <span class="option">/Qinline-max-per-routine-</span> (Windows* OS), there is no limit to the number of times some routine may be inlined into a particular routine.</p>
+<p>To see compiler values for important inlining limits, specify compiler option <span class="option">-opt-report</span> (Linux OS and OS X) or <span class="option">/Qopt-report</span> (Windows OS).</p>
+<p>To see compiler values for important inlining limits, specify compiler option <span class="option">-opt-report</span> (Linux OS and OS X) or <span class="option">/Qopt-report</span> (Windows OS).</p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>When you use this option to increase the default limit, the compiler may do so much additional inlining that it runs out of memory and terminates with an "out of memory" message.</p>
+</div></div>
+
+<div class="section" id="GUID-252F5089-6EB6-4ABA-8DC1-8E1BA1C361FE"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">Inlining Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">inline-factor</span>, <span class="option">Qinline-factor</span></a>  compiler option</div>
+<div><a href="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609"><span class="option">opt-report</span>, <span class="option">Qopt-report</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

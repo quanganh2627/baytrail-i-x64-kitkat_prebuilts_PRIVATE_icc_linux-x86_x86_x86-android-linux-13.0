@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="check-pointers-dangling, Qcheck-pointers-dangling">
+<meta name="abstract" content="Determines whether the compiler checks for dangling pointer references.">
+<meta name="description" content="Determines whether the compiler checks for dangling pointer references.">
+<meta name="DC.subject" content="-check-pointers-dangling compiler option, /Qcheck-pointers-dangling compiler option">
+<meta name="keywords" content="-check-pointers-dangling compiler option, /Qcheck-pointers-dangling compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>check-pointers-dangling, Qcheck-pointers-dangling</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_check_pointers_dangling"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_check_pointers_dangling"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">check-pointers-dangling, Qcheck-pointers-dangling</h1>
+
+  <!-- Determines whether the compiler checks for dangling pointer references.-->
+  
+  <div><p> Determines whether the compiler checks for dangling pointer references.</p>
+
+    <div class="section" id="GUID-59C4D862-C8EC-45C3-9382-18F6292F4791"><h2>IDE Equivalent</h2>
+      <p class="ide">Windows: 
+								<strong>Code Generation &gt; Check Dangling Pointers</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Code Generation &gt; Check Dangling Pointers</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+
+    </div>
+
+    <div class="section" id="GUID-FABDF06E-DB3A-4FB0-BCBB-FB8FFF69EF26"><h2>Architectures</h2>
+      <p>IA-32, Intel&reg; 64 architecture</p>
+
+    </div>
+
+    <div class="section" id="GUID-712238C5-137D-407B-96D6-AC9C44D32852"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-check-pointers-dangling</span><span class="sep">=</span><span class="var">keyword</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qcheck-pointers-dangling</span><span class="sep">:</span><span class="var">keyword</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-3C58A9F1-109E-49A1-9365-8571274FDE6B"><h2>Arguments</h2>
+      <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="parmname">keyword</span></p></td>
+<td valign="top" class="noborder"><p>Specifies what type of dangling pointer checking occurs. Possible values are:</p>
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+<td valign="top" class="noborder"><p> Disables checking for dangling pointer references. This is the default.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">heap</span></p></td>
+<td valign="top" class="noborder"><p> Checks for dangling pointer references on the heap.</p>
+
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">stack</span></p></td>
+
+<td valign="top" class="noborder"><p> Checks for dangling pointer references on the stack.</p>
+
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">all</span></p></td>
+
+<td valign="top" class="noborder"><p> Checks for dangling pointer references on the heap and the stack.</p>
+
+</td>
+</tr></table>
+</td>
+</tr></table>
+
+    </div>
+
+    <div class="section" id="GUID-3F13002D-6146-4A3F-A31C-7AB4CBB7B37E"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="option">-check-pointers-dangling=none</span> or
+<span class="option">/Qcheck-pointers-dangling:none</span></p></td>
+<td valign="top" class="noborder"><p> No checking occurs for dangling pointer references.</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-05F90F8C-602F-48D5-BD5C-6D49206DBEC8"><h2>Description</h2>
+      
+    <p> This option determines whether the
+compiler checks for dangling pointer references.</p>
+
+<p> To use this option, you must also specify
+option <span class="option">-check-pointers</span> (Linux* OS) or
+<span class="option">/Qcheck-pointers</span> (Windows* OS). You
+must also have Composer XE 2013 and Parallel Studio XE 2013 (or C++
+Studio XE 2013) installed on your system.</p>
+
+</div>
+
+    <div class="section" id="GUID-ACF18FB9-27DB-4F3C-A5E4-B7151EB2D27B"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  </div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6.htm">check-pointers/Qcheck-pointers</a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

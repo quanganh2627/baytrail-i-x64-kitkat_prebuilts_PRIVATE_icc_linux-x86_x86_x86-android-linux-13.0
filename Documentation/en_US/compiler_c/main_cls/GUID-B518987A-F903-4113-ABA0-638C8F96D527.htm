@@ -1,0 +1,388 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Floating-point Optimizations">
+<meta name="DC.subject" content="Floating-point Optimizations, -fp-model compiler option">
+<meta name="keywords" content="Floating-point Optimizations, -fp-model compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC.htm#GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B518987A-F903-4113-ABA0-638C8F96D527">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Floating-point Optimizations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_optimize"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B518987A-F903-4113-ABA0-638C8F96D527">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Floating-point Optimizations</h1>
+ 
+  
+  <div> 
+    <p>Application performance is an important goal of the Intel&reg; Compilers, even at default optimization levels. A number of optimizations involve transformations that might affect the floating-point behavior of the application, such as evaluation of constant expressions at compile time, hoisting invariant expressions out of loops, or changes in the order of evaluation of expressions. These optimizations usually help the compiler to produce the most efficient code possible. However, the optimizations might be contrary to the floating-point requirements of the application.
+    </p>
+ 
+    <p>Some optimizations are not consistent with strict interpretation of the ANSI or ISO standards for 
+      <span>C and C++</span>. Such optimizations can cause differences in rounding and small variations in floating-point results that may be more or less accurate than the ANSI-conformant result.
+    </p>
+ 
+    <p>Intel Compilers provide the 
+  <span class="option">-fp-model</span> (Linux* and OS X*) or 
+  <span class="option">/fp</span> (Windows*) option, which allows you to control the optimizations performed when you build an application. The option allows you to specify the compiler rules for:
+  </p>
+ 
+  <ul type="disc" id="GUID-ADBC1B77-1200-49F3-B516-73E8F21B5D29"> 
+    <li>
+      <p><strong>Value safety:</strong> Whether the compiler may perform transformations that could affect the result. For example, in the SAFE mode, the compiler won't transform 
+        <samp class="codeph">x/x</samp> to 1.0 because the value of 
+        <samp class="codeph">x</samp> at runtime might be a zero or a NaN . The UNSAFE mode is the default.
+      </p>
+
+    </li>
+ 
+    <li>
+      <p><strong>Floating-point expression evaluation: 
+        </strong>How the compiler should handle the rounding of intermediate expressions. 
+        <span>For example, when double precision is specified, the compiler interprets the statement 
+          <samp class="codeph">t0=4.0f+0.1f+t1+t2;</samp> as 
+          <samp class="codeph">t0=(float)(4.1+(double)t1+(double)t2);</samp></span>
+      </p>
+
+    </li>
+ 
+    <li>
+      <p><strong>Floating-point contractions:</strong> Whether the compiler should generate fused multiply-add (FMA) instructions on processors that support them. When enabled, the compiler may generate FMA instructions for combining multiply and add operations; when disabled, the compiler must generate separate multiply and add instructions with intermediate rounding.
+      </p>
+
+    </li>
+ 
+    <li>
+      <p><strong>Floating-point environment access:</strong> Whether the compiler must account for the possibility that the program might access the floating-point environment, either by changing the default floating-point control settings or by reading the floating-point status flags. This is disabled by default. You can use the 
+  <span class="option">-fp-model:strict</span> (Linux and OS X*) 
+  <span class="option">/fp:strict</span> (Windows) option to enable it.
+  </p>
+
+  </li>
+ 
+  <li>
+    <p><strong>Precise floating-point exceptions:</strong> Whether the compiler should account for the possibility that floating-point operations might produce an exception. This is disabled by default. You can use 
+  <span class="option">-fp-model:strict</span> (Linux and OS X) or 
+  <span class="option">/fp:strict</span> (Windows); or 
+  <span class="option">-fp-model:except</span> (Linux and OS X) or 
+  <span class="option">/fp:except</span> (Windows) to enable it.<span><br>Consider the following example:</span>
+  </p>
+
+  </li>
+ 
+  </ul>
+ 
+  <pre>double a=1.5;</pre> 
+  <pre>int x=0;</pre> 
+  <pre>...</pre> 
+  <pre>__try {</pre> 
+  <pre>&nbsp;&nbsp;int t0=a; //raises inexact</pre> 
+  <pre>&nbsp;&nbsp;x=1;</pre> 
+  <pre>&nbsp;&nbsp;a*=2;</pre> 
+  <pre>} __except(1) {</pre> 
+  <pre>&nbsp;&nbsp;printf("SEH Exception: x=%d\n", x);</pre> 
+  <pre>}</pre> 
+  <p>Without precise floating-point exceptions, the result is 
+    <span class="keyword">SEH Exception: x=1</span>; with precision floating-point exceptions, the result is 
+    <span class="keyword">SEH Exception: x=0</span>.
+  </p>
+ 
+  <p>The following table describes the impact of different keywords of the option on compiler rules and optimizations:
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F20B2FEB-7FF9-420D-8203-471F4320A111" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="17%" id="d598974e194">
+            <p>Keyword
+            </p>
+
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="17%" id="d598974e200">
+            <p>Value Safety
+            </p>
+
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="17%" id="d598974e206">
+            <p>Floating-Point<br>Expression Evaluation
+            </p>
+
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="17%" id="d598974e214">
+            <p>Floating-Point<br>Contractions
+            </p>
+
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="17%" id="d598974e222">
+            <p>Floating-Point<br>Environment Access
+            </p>
+
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="15%" id="d598974e231">
+            <p>Precise Floating-Point<br>Exceptions
+            </p>
+
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e194 ">
+            <p><span class="keyword">precise</span><br><span class="keyword">source</span><span><br><span class="keyword">double</span><br><span class="keyword">extended</span></span>
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e200 ">
+            <p>Varies
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e206 ">
+            <p>Source<br>Source<span><br>Double<br>Extended</span>
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e214 ">
+            <p>Yes
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e222 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="15%" headers="d598974e231 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e194 ">
+            <p><span class="keyword">strict</span>
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e200 ">
+            <p>Varies
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e206 ">
+            <p>Source
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e214 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e222 ">
+            <p>Yes
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="15%" headers="d598974e231 ">
+            <p>Yes
+            </p>
+
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e194 ">
+            <p><span class="keyword">fast=1</span> (default)
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e200 ">
+            <p>Unsafe
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e206 ">
+            <p>Unknown
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e214 ">
+            <p>Yes
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e222 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="15%" headers="d598974e231 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e194 ">
+            <p><span class="keyword">fast=2</span>
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e200 ">
+            <p>Unsafe
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e206 ">
+            <p>Unknown
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e214 ">
+            <p>Yes
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e222 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="15%" headers="d598974e231 ">
+            <p>No
+            </p>
+
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e194 ">
+            <p><span class="keyword">except</span><br><span class="keyword">except-</span>
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e200 ">
+            <p>Unaffected<br>Unaffected
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e206 ">
+            <p>Source<br>Source
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e214 ">
+            <p>Unaffected<br>Unaffected
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="17%" headers="d598974e222 ">
+            <p>Unaffected<br>Unaffected
+            </p>
+
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="15%" headers="d598974e231 ">
+            <p>Yes<br>No
+            </p>
+
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3>
+    <p>It is illegal to specify the 
+      <span class="keyword">except</span> keyword in an unsafe safety mode.
+    </p>
+
+  </div> 
+  <p>Based on the objectives of an application, you can choose to use different sets of compiler options and keywords to enable or disable certain optimizations, so that you can get the desired result.
+  </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">Understanding Floating-point Operations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC.htm#GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC">Using -fp-model (/fp) Option
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

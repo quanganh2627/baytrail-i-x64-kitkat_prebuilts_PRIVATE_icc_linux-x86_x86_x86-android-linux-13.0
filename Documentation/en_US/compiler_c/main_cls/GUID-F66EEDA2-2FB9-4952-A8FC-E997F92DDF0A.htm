@@ -1,0 +1,521 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="offload_transfer">
+<meta name="abstract" content="Initiates asynchronous data transfer, or initiates and completes synchronous data transfer. This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Initiates asynchronous data transfer, or initiates and completes synchronous data transfer. This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="offload_transfer, pragma">
+<meta name="keywords" content="offload_transfer, pragma">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>offload_transfer</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optref_offload_transfer_pragma"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">offload_transfer</h1>
+ 
+<!--Initiates asynchronous
+  data transfer, or initiates and completes synchronous data transfer. This pragma only applies to Intel&reg; MIC Architecture.--> 
+ 
+<div><p><span id="SHORTDESC_OFFLOAD"><a name="SHORTDESC_OFFLOAD"><!-- --></a>Initiates asynchronous
+  data transfer, or initiates and completes synchronous data transfer. This pragma only applies to Intel&reg; MIC Architecture.</span></p>
+
+<div class="section" id="GUID-9F1DCBE6-8584-4044-AFF8-CFB1414B2096"><h2>Syntax</h2> 
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma offload_transfer 
+	 </span><span class="var">specifier</span><span class="delim">[</span><span class="sep"> 
+	 </span><span class="var">specifier</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table><p>Where 
+  <var>specifier</var> can be any of the following: 
+<ul type="disc" id="GUID-8D2F07D4-BD5F-4F82-BA9A-7A25DE48DEB8"> 
+  <li> 
+	 <p><samp class="codeph">target ( 
+		  <var>target-name</var> [ :<var>target-number</var>
+		  ])</samp> 
+	 </p>
+ 
+  </li>
+ 
+  <li> 
+	 <p><samp class="codeph"><var>if-specifier</var></samp> 
+	 </p>
+ 
+  </li>
+ 
+  <li> 
+	 <p><samp class="codeph">signal ( 
+		  <var>tag</var> )</samp> 
+	 </p>
+ 
+  </li>
+ 
+  <li> 
+	 <p><samp class="codeph">wait ( 
+		  <var>tag</var>[, 
+		  <var>tag</var>, 
+		  <var>...</var>] )</samp> 
+	 </p>
+ 
+  </li>
+<li><p><samp class="codeph">mandatory</samp></p>
+</li>
+ 
+  <li><p><samp class="codeph">optional</samp></p>
+</li>
+ 
+<li> 
+	 <p><samp class="codeph"><var>offload-parameter</var> [, 
+		  <var>offload-parameter</var>, 
+		  <var>…</var>]</samp> 
+	 </p>
+ 
+	  
+	  
+  </li>
+</ul>
+ 
+</p>
+<p>The following are arguments to use in <var>specifier</var>:</p>
+ 
+</div>
+ 
+<div class="section" id="ARGUMENTS_OFFLOAD"><a name="ARGUMENTS_OFFLOAD"><!-- --></a><h2>Arguments</h2><dl id="GUID-5E20F03B-83AC-4092-B658-83D04950E14B"> 
+  <dt class="dlterm"><samp class="codeph"><var>target-name</var></samp></dt>
+<dd> 
+		<p> An identifier that represents
+the target. The only allowable target name is <var>mic</var>.</p>
+
+
+</dd>
+ 
+   
+  <dt class="dlterm"><a name="TARGET-NUMBER"><!-- --></a><samp class="codeph"><var>target-number</var></samp></dt>
+<dd>
+		
+		<p>Required for <var>signal</var> and <var>wait</var> clauses.</p>
+ 
+		<p>An integer expression whose value is interpreted as
+		  follows: 
+		</p>
+ 
+		<a name="TARGET-NUMBER_ARGS"><!-- --></a><dl id="TARGET-NUMBER_ARGS"> 
+
+		  <dt class="dlterm"><samp class="codeph">&gt;=0</samp></dt>
+<dd> 
+				<p id="TARGET-NUMBER_GE_0"><a name="TARGET-NUMBER_GE_0"><!-- --></a>A value greater than
+				  or equal to zero specifies execution on a specific coprocessor. The <span><span>number of the </span></span>specific
+				  coprocessor is determined as follows: 
+				</p>
+ 
+				<p id="TARGET-NUMBER_FORMULA"><a name="TARGET-NUMBER_FORMULA"><!-- --></a><samp class="codeph"><var>coprocessor</var>=<var>target-number</var>
+					 % 
+					 <var>number_of_coprocs</var></samp> 
+				</p>
+<p> If the correct target hardware needed to run the offloaded program is not available on the system, the program fails with an error message.</p>
+</dd>
+ 
+		   
+		  <dt class="dlterm"><samp class="codeph"> &lt;= -1</samp></dt>
+<dd> 
+				<p id="TARGET-NUMBER_LT_-1"><a name="TARGET-NUMBER_LT_-1"><!-- --></a>These values are reserved.</p>
+ 
+			 </dd>
+ 
+		   
+		</dl>
+<p>If you don't specify this argument, the runtime
+		  system chooses whether to execute the code on the coprocessor or the CPU, and
+		  if multiple coprocessors are available, on which coprocessor. 
+		</p>
+<p>For example, in a
+		  system with four targets: 
+		</p>
+ 
+		<ul type="disc" id="GUID-FAA8A42A-0639-4833-8C60-1C0BFE0381E4"> 
+		  <li> 
+			 <p>specifying 2 or 6 tells the runtime systems to
+				execute the code on target 2, because both 
+				<samp class="codeph">2 % 4</samp> and 
+				<samp class="codeph">6 % 4</samp> equal 
+				<samp class="codeph">2</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Specifying 1000 tells the runtime systems to
+				execute the code on target 0, because 
+				<samp class="codeph">1000 % 4 = 0</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		</dd>
+ 
+   
+  <dt class="dlterm"><samp class="codeph"><var>if-specifier</var></samp></dt>
+<dd>
+		
+		<p>A Boolean expression. 
+		</p>
+ 
+		<p> If the expression evaluates to true, then the data transfer specified by the pragma occurs. If the specified target coprocessor is absent from the system or not available at that time because it is fully loaded, then no action is taken. 
+		</p>
+ 
+		<p> If the expression evaluates to false, then no action is taken and none of the other offload clauses have any effect.</p>
+<p> If the expression evaluates to false and you
+use either the <samp class="codeph">signal</samp> or <samp class="codeph">wait</samp> clause in this pragma, then the behavior is
+undefined.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Do not use this clause and a <samp class="codeph">mandatory</samp> clause in the same directive.</p>
+</div></dd>
+ 
+   
+  <dt class="dlterm"><span><samp class="codeph"><var>signal</var></samp></span></dt>
+<dd><div><p>An optional integer expression that serves as a handle on an asynchronous data transfer or computational activity. The computation performed by the <samp class="codeph">offload</samp> clause and any results returned from the offload using <samp class="codeph">out</samp> clauses occurs concurrently with CPU execution of the code after the pragma. If this clause is not used, then the entire offload and associated data transfer are executed synchronously. The CPU will not continue past the pragma until it has completed.</p>
+
+
+<p>This clause refers to a specific target device so you must specify a <var>target-number</var> in the <samp class="codeph">target</samp> clause that is greater than or equal to zero.</p>
+</div></dd>
+<dt class="dlterm"><samp class="codeph"><var>wait</var></samp></dt>
+<dd> 
+		 
+		<p> An optional integer expression to specify a wait for the completion of a previously initiated asynchronous data transfer or asynchronous computation.</p>
+
+
+<p>This clause refers to a specific target device so you must specify a <var>target-number</var> in the <samp class="codeph">target</samp> clause that is greater than or equal to zero.</p>
+		
+
+<p>Querying a signal before the signal has been initiated results in undefined behavior and a runtime abort of the application. For example, querying a signal on <samp class="codeph">target:0</samp> that was initiated for <samp class="codeph">target:1</samp> results in a runtime abort of the application because the signal was initiated for <samp class="codeph">target:1</samp>, so there is no signal associated with <samp class="codeph">target:0</samp>. </p>
+</dd>
+ 
+   <dt class="dlterm"><samp class="codeph">mandatory</samp></dt>
+<dd><p>An optional clause to specify execution on the target is required. Execution on the CPU is not allowed. If the correct target hardware needed to run the offloaded program is not available on the system, the program fails with an error message.</p>
+
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Do not use this clause and the <samp class="codeph"><var>if-specifier</var></samp> clause in the same directive. </p>
+</div></dd>
+
+
+<dt class="dlterm"><samp class="codeph"><var>offload-parameter</var></samp></dt>
+<dd><p>Is one of the following: 
+	 </p>
+<ul type="disc" id="GUID-38D50D3D-A929-43B5-B47A-E572B6285A4B"> 
+		<li> 
+		  <p>in ( 
+			  <em>variable-ref</em> [, 
+			  <em>variable-ref</em>  
+			 <var>…</var>] [ 
+			 <var>modifier</var>[ 
+			 <var>modifier</var><var>…</var> ] ] ) 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>out ( 
+			 <var></var><em>variable-ref</em> [, 
+			 <var></var><em>variable-ref</em>  
+			 <var>…</var>] [ 
+			 <var>modifier</var>[ 
+			 <var>modifier</var><var>…</var> ] ] ) 
+		  </p>
+ 
+		</li>
+ 
+		 
+		<li> 
+		  <p>nocopy ( 
+			 <var></var><em>variable-ref</em> [, 
+			 <var></var><em>variable-ref</em>  
+			 <var>…</var>] [ 
+			 <var>modifier</var>[ 
+			 <var>modifier</var><var>…</var> ] ] ) 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+<p> When a program runs in a heterogeneous environment, program variables are copied back and forth between CPU and the target. The <var>offload-parameter</var> is a specification for controlling the direction in which variables are copied, and for pointers, the amount of data that is copied.</p>
+<p><table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><td valign="top"><samp class="codeph">in</samp></td>
+<td valign="top"> <p> A variable is copied from CPU to the coprocessor.</p>
+</td>
+ 
+  </tr>
+<tr><td valign="top"><samp class="codeph">out</samp></td>
+<td valign="top">  <p>A variable is copied from the coprocessor to the CPU.</p>
+</td>
+ 
+  </tr>
+<tr><td valign="top"><samp class="codeph">nocopy</samp></td>
+<td valign="top"> <p>Memory is allocated on the coprocessor for the variable. 
+		</p>
+ 
+		 
+	 </td>
+ 
+  </tr>
+</table>
+</p>
+<p>An 
+  <samp class="codeph">in</samp> or 
+  <samp class="codeph">out</samp> 
+  <samp class="codeph"><var>element-count-expr</var></samp> expression (see description below within <var>modifier</var>) is
+  evaluated at a point in the program before the statement or clause in which it
+  is used.</p>
+<p>An array variable whose size is known
+  from the declaration is copied in its entirety. If a subset of an array is to
+  be processed, use a pointer to the starting element of the subset and the 
+  <samp class="codeph"><var>element-count-expr</var></samp> to transfer the array
+  subset. 
+</p>
+ 
+		 
+				</dd>
+ 
+   
+  <dt class="dlterm"><samp class="codeph"><var>variable-ref</var>  </samp></dt>
+<dd>
+		
+		<p>Is one of the following:</p>
+<ul type="disc" id="GUID-BC5D2D59-224F-4713-B5C9-67E6BE92CBF4"><li><p> a C/C++ identifier.</p>
+</li>
+<li><p>   <samp class="codeph"><var>variable-ref . identifier</var></samp> </p>
+</li>
+<li><p> <samp class="codeph"><var>array-slice</var></samp> </p>
+</li>
+</ul>
+</dd>
+ 
+   <dt class="dlterm"><samp class="codeph"><var>array-slice</var>    </samp></dt>
+<dd> <p><samp class="codeph"><var>variable-ref '[' integral-expression [ : integral-expression ] ']' 
+		
+		</var></samp></p>
+<p> An
+<samp class="codeph"><var>array-slice</var></samp>
+ is an array expression that
+denotes one contiguous set of array elements.</p>
+
+</dd>
+ 
+  
+  <dt class="dlterm"><samp class="codeph"><var>modifier</var></samp></dt>
+<dd>
+		
+		<p>Is one of the following:</p>
+<ul type="disc" id="GUID-46113F98-C54F-4294-A909-C88984577CDB"> 
+		  <li> 
+			 <p><samp class="codeph">length ( 
+				  <var>element-count-expr</var> )</samp> 
+			 </p>
+ 
+			 <p> where 
+				<samp class="codeph"><var>element-count-expr</var></samp> is an
+				integral expression, computed at runtime. Use it with: 
+			 </p>
+ 
+			 <ul type="disc" id="GUID-74D143E3-8657-4781-8EB6-D228512D7344"> 
+				<li> 
+				  <p>Pointer variables. 
+				  </p>
+ 
+				  <p>Pointer variable values themselves are
+					 never copied across the host/target interface because there is no
+					 correspondence between the memory addresses of the host CPU and the target.
+					 Instead, objects that a pointer points to are copied to or from the target, and
+					 the value of the pointer variable is recreated. By default a single element is
+					 copied. 
+				  </p>
+ 
+				  <p>You can use 
+					 <samp class="codeph"><var> element-count-expr</var></samp> to
+					 specify how many elements of the pointer type should be considered as the data
+					 the pointer points to. If the expression value is zero or negative, a runtime error occurs.</p>
+ 
+				</li>
+ 
+				<li> 
+				  <p>Variable-length arrays.</p>
+ 
+				  <p><var> element-count-expr</var>
+					 specifies a number of elements copied between the CPU and target. 
+				  </p>
+ 
+				</li>
+ 
+			 </ul>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">alloc_if ( 
+				  <var>condition</var> ) | free_if
+				  (<var>condition</var> )</samp> where 
+				<samp class="codeph"><var>condition</var></samp> is a Boolean
+				expression. 
+			 </p>
+<p> <samp class="codeph">alloc_if</samp> specifies a Boolean condition that controls whether the
+allocatable variables in the in clause will be allocated a new
+block of memory on the target when the offload is executed on the
+target. If the expression evaluates to true, a new memory
+allocation is performed for each variable listed in the clause. If
+the condition evaluates to false, the existing allocated values on
+the target are reused (data persistence). You must ensure that a
+block of memory of sufficient size has been previously allocated
+for the variables on the target by using a free_if (0) clause on an earlier offload.</p>
+<p><samp class="codeph"> free_if</samp> specifies a Boolean condition that controls whether to
+deallocate the memory allocated for the allocatable variables in an
+in clause. If the expression evaluates to true, the memory pointed
+to by each variable listed in the clause is deallocated. If the
+condition evaluates to false, no action is taken on the memory
+pointed to by the variables in the list. A subsequent clause will
+be able to reuse the allocated memory (data
+persistence).</p>
+<p>The following are the default settings for the <samp class="codeph">alloc_if</samp> and <samp class="codeph">free_if</samp> modifiers:<table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><th valign="bottom" align="left" id="d846647e661"></th>
+<th valign="bottom" align="left" id="d846647e662"><p><samp class="codeph">alloc_if</samp></p>
+</th>
+<th valign="bottom" align="left" id="d846647e666"><p><samp class="codeph">free_i	f</samp></p>
+</th>
+</tr>
+<tr><td valign="top" headers="d846647e661"><p><samp class="codeph">in</samp></p>
+</td>
+<td valign="top" headers="d846647e662"><p><samp class="codeph">true</samp></p>
+</td>
+<td valign="top" headers="d846647e666"><p><samp class="codeph">true</samp></p>
+</td>
+</tr>
+<tr><td valign="top" headers="d846647e661"><p><samp class="codeph">inout</samp></p>
+</td>
+<td valign="top" headers="d846647e662"><p><samp class="codeph">true</samp></p>
+</td>
+<td valign="top" headers="d846647e666"><p><samp class="codeph">true</samp></p>
+</td>
+</tr>
+<tr><td valign="top" headers="d846647e661"><p><samp class="codeph">out</samp></p>
+</td>
+<td valign="top" headers="d846647e662"><p><samp class="codeph">true</samp></p>
+</td>
+<td valign="top" headers="d846647e666"><p><samp class="codeph">true</samp></p>
+</td>
+</tr>
+<tr><td valign="top" headers="d846647e661"><p><samp class="codeph">nocopy</samp></p>
+</td>
+<td valign="top" headers="d846647e662"><p><samp class="codeph">false</samp></p>
+</td>
+<td valign="top" headers="d846647e666"><p><samp class="codeph">false</samp></p>
+</td>
+</tr>
+</table>
+</p>
+<p>See <a href="GUID-82634DA6-2DC9-4552-A77D-381E344D3029.htm#GUID-82634DA6-2DC9-4552-A77D-381E344D3029">Managing Memory Allocation for Pointer Variables
+</a> for more information.</p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><samp class="codeph">align
+				  (<var>expression</var>)</samp> where the value of 
+				<var>expression</var> should be a power of
+				two. This modifier applies to pointer variables and requests the specified
+				minimum alignment for pointer data allocated on Intel&reg; MIC Architecture. 
+			 </p>
+ 
+		  </li>
+<li><p> <samp class="codeph">alloc
+(<var>array-slice</var>)</samp> where
+<samp class="codeph"><var>array-slice</var></samp>
+ specifies a set of elements of the
+array that need allocation. Data specified by the
+<samp class="codeph">in</samp>/<samp class="codeph">out</samp> expression is transferred into the
+corresponding section of the array alllocated on the coprocessor.
+For more information, see 
+<a href="GUID-10462859-CF7A-419C-A572-87B5565EDADD.htm#GUID-10462859-CF7A-419C-A572-87B5565EDADD">Allocating Memory for Parts of Arrays</a>.
+</p>
+
+</li>
+ 
+		<li><p><samp class="codeph">into
+				  (<var>var-exp</var>)</samp> where <samp class="codeph"><var>var-exp</var></samp> is a variable expression.  The <samp class="codeph">into</samp> modifier allows data to be
+transferred from one variable on the CPU to another on the
+coprocessor, and vice versa. Only one item is allowed in
+<samp class="codeph">variable-ref</samp> when using the <samp class="codeph">into</samp> modifier. 
+For more information, see 
+<a href="GUID-8014C256-1FF9-4C53-A37D-9ADB33045AB1.htm#GUID-8014C256-1FF9-4C53-A37D-9ADB33045AB1">Moving Data from One Variable to Another</a>.</p>
+
+</li>
+</ul>
+</dd>
+ 
+   
+</dl>
+ </div>
+ 
+<div class="section" id="DESCRIPTION_OFFLOAD"><a name="DESCRIPTION_OFFLOAD"><!-- --></a><h2>Description</h2>
+ 
+<p id="OFFLOAD_TRANSFER_DESC1"><a name="OFFLOAD_TRANSFER_DESC1"><!-- --></a><samp class="codeph">offload_transfer</samp> initiates asynchronous
+  data transfer. It also initiates and completes synchronous data transfer.
+</p>
+
+ 
+</div>
+ 
+<div class="section" id="GUID-5F521540-4A34-419F-ACFE-B996CE24ABE4"><h2>Example</h2> 
+  <p>The following example demonstrates using <samp class="codeph">signal</samp> and <samp class="codeph">wait</samp> as clauses of two different pragmas to receive data asynchronously from the coprocessor to the CPU. The first offload performs the computation but only initiates data transfer. The second pragma causes a wait for the data transfer to complete. 
+  </p>
+ 
+  <pre><span>01   const int N = 4086;
+02   float *f1, *f2;
+03   f1 = (float *)memalign(64, N*sizeof(float)); 
+04   f2 = (float *)memalign(64, N*sizeof(float));
+...
+
+10   // CPU sends f1 as input synchronously
+11   // The output is in f2, but is not needed immediately
+12   #pragma offload target (mic:0) signal(f2) \
+13                          in(  f1 : length(N) ) \
+14                          nocopy( f2 : length(N) ) signal(f2)
+15   {
+16        foo(N, f1, f2);
+17   }
+..
+20   #pragma offload_transfer (mic:0) wait(f2) \
+                     out( f2 : length(N) alloc_if(0) free_if(1))
+21   
+22   // CPU can now use the result in f2
+23 </span></pre> 
+</div>
+</div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code 
+		</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

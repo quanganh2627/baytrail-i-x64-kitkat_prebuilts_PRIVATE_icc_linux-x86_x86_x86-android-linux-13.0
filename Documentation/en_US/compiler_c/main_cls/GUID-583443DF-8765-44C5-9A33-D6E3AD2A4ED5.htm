@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="par-affinity, Qpar-affinity">
+<meta name="abstract" content="Specifies thread affinity.">
+<meta name="description" content="Specifies thread affinity.">
+<meta name="DC.subject" content="-par-affinity compiler option (Linux* only), /Qpar-affinity compiler option, thread affinity, option specifying">
+<meta name="keywords" content="-par-affinity compiler option (Linux* only), /Qpar-affinity compiler option, thread affinity, option specifying">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-583443DF-8765-44C5-9A33-D6E3AD2A4ED5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>par-affinity, Qpar-affinity</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_par_affinity"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_par_affinity"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-583443DF-8765-44C5-9A33-D6E3AD2A4ED5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">par-affinity, Qpar-affinity</h1>
+<!-- Specifies thread affinity.--><div><p> Specifies thread affinity.</p>
+
+<div class="section" id="GUID-F7386BF1-B0E9-433B-B733-2AE879316435"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-09628A01-546E-4495-BFF4-2B70C5064D02"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-4FBCBAE1-0FE1-44B3-B095-7195D1AE9D45"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-par-affinity</span><span class="oper">=</span><span class="delim">[</span><span class="var">modifier</span><span class="delim">,...]</span><span class="var">type</span><span class="delim">[,</span><span class="var">permute</span><span class="delim">][,</span><span class="var">offset</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-affinity</span><span class="oper">:</span><span class="delim">[</span><span class="var">modifier</span><span class="delim">,...]</span><span class="var">type</span><span class="delim">[,</span><span class="var">permute</span><span class="delim">][,</span><span class="var">offset</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-46969781-488A-4D74-A96E-666161CB34DC"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>modifier</var></p></td>
+<td valign="top" class="noborder"><p>Is one of the following values:
+<span class="keyword">granularity={fine|thread|core}</span>, <span class="keyword">[no]respect</span>, <span class="keyword">[no]verbose</span>, <span class="keyword">[no]warnings</span>, <span class="keyword">proclist=proc_list</span>.
+The default is <span class="keyword">granularity=core, respect, and noverbose</span>. For information on value <span class="keyword">proclist</span>, see Thread Affinity Interface in <cite>OpenMP* Support</cite>.
+</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>type</var></p></td>
+<td valign="top" class="noborder"><p>Indicates the thread affinity. This argument is required and must be one of the following values:<span class="keyword"> 
+compact</span>, <span class="keyword">disabled</span>, <span class="keyword">explicit</span>, <span class="keyword">none</span>, <span class="keyword">scatter</span>, <span class="keyword">logical</span>, <span class="keyword">physical</span>.  The default is <span class="keyword">none</span>.
+Values <span class="keyword">logical</span> and <span class="keyword">physical</span> are deprecated. Use <span class="keyword">compact</span> and <span class="keyword">scatter</span>, respectively, with no <var>permute</var> value.
+</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>permute</var></p></td>
+<td valign="top" class="noborder"><p>Is a positive integer. You cannot use this argument with <var>type</var> setting <span class="keyword">explicit</span>, <span class="keyword">none</span>, or <span class="keyword">disabled</span>. The default is 0.
+</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>offset</var></p></td>
+<td valign="top" class="noborder"><p>Is a positive integer. You cannot use this argument with <var>type</var> setting <span class="keyword">explicit</span>, <span class="keyword">none</span>, or <span class="keyword">disabled</span>. The default is 0.
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E8B8A76B-316D-4836-A677-877DBE62DA8E"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The thread affinity is determined by the run-time environment.
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AC282C07-F18C-4219-84EF-A1037962A01A"><h2>Description</h2><p>This option specifies thread affinity, which binds threads to physical processing units. It has the same effect as environment variable KMP_AFFINITY.</p>
+<p>This option overrides the environment variable when both are specified. </p>
+
+
+<p>This option only has an effect if the following is true:
+</p>
+<ul type="disc" id="GUID-79672409-6A5D-4337-8229-039B1AE47D4C"><li><p>Linux* OS: You have specified option <span class="option">-parallel</span> or <span class="option">-openmp</span> (or both).
+
+</p>
+<p> Windows* OS: You have specified option <span class="option">/Qparallel</span> or <span class="option">/Qopenmp</span> (or
+both).
+</p>
+
+		</li>
+<li><p>You are compiling the main program.</p>
+</li>
+</ul>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This option may behave differently on Intel&reg; microprocessors than on non-Intel microprocessors.</p>
+</div></div>
+
+<div class="section" id="GUID-059027A4-0E74-4954-83E2-BE22431715D8"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

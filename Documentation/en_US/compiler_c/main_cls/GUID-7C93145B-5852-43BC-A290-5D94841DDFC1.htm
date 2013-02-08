@@ -1,0 +1,2951 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Arithmetic Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer arithmetic operations, subs_epi16, subs_epu16, subs_epu8, sub_epi64, sub_si64, sub_epi32, sub_epi16, sub_epi8, sad_epu8, mul_epu32, subs_epi8, adds_epi8, max_epu8, max_epi16, madd_epi16, avg_epu16, avg_epu8, adds_epu16, adds_epi16, min_epi16, add_epi64, mulhi_epi16, mulhi_epu16, mullo_epi16, mul_su32, min_epu8, adds_epu8, add_si64, add_epi8, add_epi16, add_epi32, Intel&reg; Streaming SIMD Extensions 2, integer arithmetic intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer arithmetic operations, subs_epi16, subs_epu16, subs_epu8, sub_epi64, sub_si64, sub_epi32, sub_epi16, sub_epi8, sad_epu8, mul_epu32, subs_epi8, adds_epi8, max_epu8, max_epi16, madd_epi16, avg_epu16, avg_epu8, adds_epu16, adds_epi16, min_epi16, add_epi64, mulhi_epi16, mulhi_epu16, mullo_epi16, mul_su32, min_epu8, adds_epu8, add_si64, add_epi8, add_epi16, add_epi32, Intel&reg; Streaming SIMD Extensions 2, integer arithmetic intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7C93145B-5852-43BC-A290-5D94841DDFC1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Arithmetic Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_integer_arithmetic"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7C93145B-5852-43BC-A290-5D94841DDFC1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Arithmetic Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-2B29674A-2A4E-47E9-9A26-50749D19534C"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer arithmetic operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span>, 
+        <span class="keyword">R1</span>...<span class="keyword">R15</span> represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8506488D-060F-44D0-8C7F-9D0D14201914"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F77F4D19-6E79-4406-A5C8-CA89F308DC02" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d388869e139"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d388869e145"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d388869e151"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_add_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_add_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_add_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_add_si64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_add_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_adds_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_adds_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_adds_epu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDUSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_adds_epu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PADDUSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_avg_epu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Average 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PAVGB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_avg_epu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Average 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PAVGW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_madd_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Multiplication and Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMADDWD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_max_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Maxima 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMAXSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_max_epu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Maxima 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMAXUB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_min_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Minima 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMINSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_min_epu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Minima 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMINUB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_mulhi_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMULHW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_mulhi_epu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMULHUW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_mullo_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMULLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_mul_su32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMULUDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_mul_epu32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PMULUDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_sad_epu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Computes Difference/Adds 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSADBW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_sub_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_sub_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_sub_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_sub_si64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_sub_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_subs_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_subs_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_subs_epu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBUSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e139 "> 
+                <p><span class="option"> _mm_subs_epu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d388869e145 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d388869e151 "> 
+                <p><span class="keyword">PSUBUSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D4A90894-292A-4C8E-862F-A38ABDE90C76"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_add_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the 16 signed or unsigned 8-bit integers in 
+        <span class="keyword">a</span> to the 16 signed or unsigned 8-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-89A004A9-B4C9-4724-BA77-5D543CEBB350"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C5747E91-3685-4688-8F81-6C76C35BD3C7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e978"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e984"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e990"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e996"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e978 "> 
+                <p><span class="keyword">a0 + b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e984 "> 
+                <p><span class="keyword">a1 + b1;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e990 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e996 "> 
+                <p><span class="keyword">a15 + b15</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EE74BB87-44F9-4737-89C4-BFE106186D5B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_add_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> to the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-815C4C71-F98D-40F9-844D-B9351BF16325"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5A12906A-A92D-403F-9B53-B60D572089B4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1075"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1081"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1087"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1093"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1075 "> 
+                <p><span class="keyword">a0 + b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1081 "> 
+                <p><span class="keyword">a1 + b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1087 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1093 "> 
+                <p><span class="keyword">a7 + b7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5E04E610-0D7F-4981-B53B-EAD2AC7C020D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_add_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> to the four signed or unsigned 32-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-31424203-F7C1-4DAF-9A27-544C468E75B3"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B03BDC8A-A7CA-4620-9D2C-AA54C2B28C32" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1171"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1177"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1183"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1189"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1171 "> 
+                <p><span class="keyword">a0 + b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1177 "> 
+                <p><span class="keyword">a1 + b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1183 "> 
+                <p><span class="keyword">a2 + b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1189 "> 
+                <p><span class="keyword">a3 + b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-46536BBB-3A12-40BE-8601-09A7E28C09F7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_add_si64(__m64 a, __m64 b)</span></p></div> 
+      <p>Adds the signed or unsigned 64-bit integer 
+        <span class="keyword">a</span> to the signed or unsigned 64-bit integer 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D4E51D67-4F95-4151-A4BD-1C01EF6C0D1B"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3613B32C-7600-4096-A368-26898A8306B5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d388869e1266"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d388869e1266 "> 
+                <p><span class="keyword">a + b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5C4284F9-6C9B-4DF0-8681-5611107FBEEA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_add_epi64(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the two signed or unsigned 64-bit integers in 
+        <span class="keyword">a</span> to the two signed or unsigned 64-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-46A76E52-1D94-4E4F-916F-B62E400CFCE8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-03F2B804-7670-4474-9BCC-2B8E2619AD73" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d388869e1321"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d388869e1327"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d388869e1321 "> 
+                <p><span class="keyword">a0 + b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d388869e1327 "> 
+                <p><span class="keyword">a1 + b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E0EBB95E-0C5B-450A-BD9F-CB91D36B8B2D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_adds_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the 16 signed 8-bit integers in 
+        <span class="keyword">a</span> to the 16 signed 8-bit integers in 
+        <span class="keyword">b</span> using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-54E68805-60E7-4315-89DF-6329912F927D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1E63F894-EA13-4B01-914E-345B5ADF2169" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1391"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1397"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1403"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1409"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1391 "> 
+                <p><span class="keyword">SignedSaturate (a0 + b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1397 "> 
+                <p><span class="keyword">SignedSaturate (a1 + b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1403 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1409 "> 
+                <p><span class="keyword">SignedSaturate (a15 + b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9E19332C-2F09-404C-87FF-F4DAE548419F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_adds_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the eight signed 16-bit integers in 
+        <span class="keyword">a</span> to the eight signed 16-bit integers in 
+        <span class="keyword">b</span> using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5D82FEED-871A-4518-8241-8DEAA069A57C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A0313025-CD91-4B60-BED7-0D7AC44485E6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1487"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1493"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1499"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1505"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1487 "> 
+                <p><span class="keyword">SignedSaturate (a0 + b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1493 "> 
+                <p><span class="keyword">SignedSaturate (a1 + b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1499 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1505 "> 
+                <p><span class="keyword">SignedSaturate (a7 + b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8D9C1558-C70F-4610-A37E-5055C95EBF19"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_adds_epu8(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the 16 unsigned 8-bit integers in 
+        <span class="keyword">a</span> to the 16 unsigned 8-bit integers in 
+        <span class="keyword">b</span> using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-74A6C2BE-D436-4F0A-A0BE-0CA90E3509DF"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8C49BF65-AB82-4BBE-8A4C-C640CDDD360A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1584"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1590"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1596"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1602"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1584 "> 
+                <p><span class="keyword">UnsignedSaturate (a0 + b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1590 "> 
+                <p><span class="keyword">UnsignedSaturate (a1 + b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1596 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1602 "> 
+                <p><span class="keyword">UnsignedSaturate (a15 + b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A4EBDE37-6B6E-4E57-B8E3-A9AAC0F2F0C7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_adds_epu16(__m128i a, __m128i b)</span></p></div> 
+      <p>Adds the eight unsigned 16-bit integers in 
+        <span class="keyword">a</span> to the eight unsigned 16-bit integers in 
+        <span class="keyword">b</span> using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-021E9918-7047-4B67-8294-61ABB32C1A29"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A68B280B-18E3-4A5E-AABB-D4AA3A932708" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1680"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1686"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1692"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1698"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1680 "> 
+                <p><span class="keyword">UnsignedSaturate (a0 + b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1686 "> 
+                <p><span class="keyword">UnsignedSaturate (a1 + b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1692 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1698 "> 
+                <p><span class="keyword">UnsignedSaturate (a7 + b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DF1F62D9-E0C5-4B46-B910-970A59E898E6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_avg_epu8(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the average of the 16 unsigned 8-bit integers in 
+        <span class="keyword">a</span> and the 16 unsigned 8-bit integers in 
+        <span class="keyword">b</span> and rounds. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F0AF0310-BEBF-4E14-8631-C7F31A6E153C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2A28A780-B2FA-4DA7-B00A-B441926F4F54" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1776"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1782"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1788"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1794"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1776 "> 
+                <p><span class="keyword">(a0 + b0) / 2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1782 "> 
+                <p><span class="keyword">(a1 + b1) / 2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1788 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1794 "> 
+                <p><span class="keyword">(a15 + b15) / 2</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6A7AF5ED-BA37-48E7-851E-D513DE24BC7C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_avg_epu16(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the average of the eight unsigned 16-bit integers in 
+        <span class="keyword">a</span> and the eight unsigned 16-bit integers in 
+        <span class="keyword">b</span> and rounds. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9603BB19-B0FE-4D2D-A68E-68E1C8FE56A2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4EEA40A6-DEB9-4E0B-B4BF-BB3263675EFB" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1873"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1879"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1885"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1891"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1873 "> 
+                <p><span class="keyword">(a0 + b0) / 2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1879 "> 
+                <p><span class="keyword">(a1 + b1) / 2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1885 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1891 "> 
+                <p><span class="keyword">(a7 + b7) / 2</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-03979E50-78EB-4ACD-B4B2-FD641728C436"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_madd_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Multiplies the eight signed 16-bit integers from 
+        <span class="keyword">a</span> by the eight signed 16-bit integers from 
+        <span class="keyword">b</span>. Adds the signed 32-bit integer results pairwise and packs the four signed 32-bit integer results. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8C9E93C8-BC42-4DF5-9716-72B11B84C707"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8E981D92-A54A-4ABC-B294-DDB982ACAA8A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1969"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1975"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e1981"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e1987"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1969 "> 
+                <p><span class="keyword">(a0 * b0) + (a1 * b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1975 "> 
+                <p><span class="keyword">(a2 * b2) + (a3 * b3)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e1981 "> 
+                <p><span class="keyword">(a4 * b4) + (a5 * b5)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e1987 "> 
+                <p><span class="keyword">(a6 * b6) + (a7 * b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8A56156C-87B2-4903-B6DC-6B30F0C68B43"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_max_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the pairwise maxima of the eight signed 16-bit integers from 
+        <span class="keyword">a</span> and the eight signed 16-bit integers from 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F0E5D9CA-0CBC-411C-8D25-AD82CFBEB20D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4921A1E8-BE45-4950-B289-65873632D740" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2067"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2073"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2079"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2085"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2067 "> 
+                <p><span class="keyword">max(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2073 "> 
+                <p><span class="keyword">max(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2079 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2085 "> 
+                <p><span class="keyword">max(a7, b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-06CA55D7-9B34-4E94-A4D5-F264C9BE435C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_max_epu8(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the pairwise maxima of the 16 unsigned 8-bit integers from 
+        <span class="keyword">a</span> and the 16 unsigned 8-bit integers from 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DC3A962D-78F3-4A44-B37D-B4E247AAE636"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F25AAB36-EC44-4BCF-8A8E-186264FAAECC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2164"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2170"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2176"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2182"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2164 "> 
+                <p><span class="keyword">max(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2170 "> 
+                <p><span class="keyword">max(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2176 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2182 "> 
+                <p><span class="keyword">max(a15, b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BA1EED99-8428-4BD1-BDA0-AA55B25EC099"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_min_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the pairwise minima of the eight signed 16-bit integers from 
+        <span class="keyword">a</span> and the eightsigned 16-bit integers from 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E1BA4118-2558-4548-9F0B-E24460F9BC41"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3F2C1B34-E860-4B32-8391-4040C993D028" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2260"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2266"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2272"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2278"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2260 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2266 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2272 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2278 "> 
+                <p><span class="keyword">min(a7, b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5E9AEF18-819A-4EA7-8842-C2DCCB6C5C19"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_min_epu8(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the pairwise minima of the 16 unsigned 8-bit integers from 
+        <span class="keyword">a</span> and the 16 unsigned 8-bit integers from 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-51D194C9-BCDA-4566-881D-23CA61197B44"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3863927D-1EEB-4A66-92A0-2649323B471A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2356"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2362"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2368"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2374"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2356 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2362 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2368 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2374 "> 
+                <p><span class="keyword">min(a15, b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-67553EB1-755D-4DF3-A18E-EA0396B4CAAB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_mulhi_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Multiplies the eight signed 16-bit integers from 
+        <span class="keyword">a</span> by the eight signed 16-bit integers from 
+        <span class="keyword">b</span>. Packs the upper 16-bits of the eight signed 32-bit results. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D103385E-F449-4030-A29D-A84D07D26E8B"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-84992C54-6621-46EC-809E-F4A01D78E911" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2453"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2459"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2465"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2471"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2453 "> 
+                <p><span class="keyword">(a0 * b0)[31:16]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2459 "> 
+                <p><span class="keyword">(a1 * b1)[31:16]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2465 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2471 "> 
+                <p><span class="keyword">(a7 * b7)[31:16]</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4AA90E38-8B79-4B07-B0D5-900BC1D89F2E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_mulhi_epu16(__m128i a, __m128i b)</span></p></div> 
+      <p>Multiplies the eight unsigned 16-bit integers from 
+        <span class="keyword">a</span> by the eight unsigned 16-bit integers from 
+        <span class="keyword">b</span>. Packs the upper 16-bits of the eight unsigned 32-bit results. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BAE5516E-2476-4009-A2DA-D7FC6AF16949"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2DFF3167-48BB-4C60-BE1D-2EACA3E33F92" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2549"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2555"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2561"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2567"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2549 "> 
+                <p><span class="keyword">(a0 * b0)[31:16]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2555 "> 
+                <p><span class="keyword">(a1 * b1)[31:16]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2561 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2567 "> 
+                <p><span class="keyword">(a7 * b7)[31:16]</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AEFCDACF-64E3-4B90-95F3-E1AB667749B8"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_mullo_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Multiplies the eight signed or unsigned 16-bit integers from 
+        <span class="keyword">a</span> by the eight signed or unsigned 16-bit integers from 
+        <span class="keyword">b</span>. Packs the lower 16-bits of the eight signed or unsigned 32-bit results. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4D62289C-4A2A-4C36-BCB5-4A4A1C235789"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2C897724-E66F-44F5-AF08-14B784A3CE3F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2645"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2651"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2657"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2663"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2645 "> 
+                <p><span class="keyword">(a0 * b0)[15:0]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2651 "> 
+                <p><span class="keyword">(a1 * b1)[15:0]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2657 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2663 "> 
+                <p><span class="keyword">(a7 * b7)[15:0]</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2A04A249-1FC5-4C2B-97B1-37A0A4DBE09F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_mul_su32(__m64 a, __m64 b)</span></p></div> 
+      <p>Multiplies the lower 32-bit integer from 
+        <span class="keyword">a</span> by the lower 32-bit integer from 
+        <span class="keyword">b</span>, and returns the 64-bit integer result. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6A4E25F2-D5C6-4B9B-80F7-D2B01D628850"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-84CCC41E-F1CC-484E-AF32-745C970A124A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d388869e2739"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d388869e2739 "> 
+                <p><span class="keyword">a0 * b0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-91895EE3-43FC-4D46-A359-B4B8DDDAEA8F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_mul_epu32(__m128i a, __m128i b)</span></p></div> 
+      <p>Multiplies two unsigned 32-bit integers from 
+        <span class="keyword">a</span> by two unsigned 32-bit integers from 
+        <span class="keyword">b</span>. Packs the two unsigned 64-bit integer results. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C4E3CDEB-8971-4906-B5D8-E93283412713"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0CE74418-7D18-441E-A370-CAD1474CF203" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d388869e2793"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d388869e2799"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d388869e2793 "> 
+                <p><span class="keyword">a0 * b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d388869e2799 "> 
+                <p><span class="keyword">a2 * b2</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C82A09A3-9EB0-4EF3-9DE5-00F0CE12B631"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sad_epu8(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the absolute difference of the 16 unsigned 8-bit integers from 
+        <span class="keyword">a</span> and the 16 unsigned 8-bit integers from 
+        <span class="keyword">b</span>. Sums the upper eight differences and lower eight differences, and packs the resulting two unsigned 16-bit integers into the upper and lower 64-bit elements. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E5612AE6-CF67-49B9-9EBD-8DCB20CB48D2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-166FCBF6-DB0F-43F4-9908-61DC87AA21CE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="24.03846153846154%" id="d388869e2867"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="24.03846153846154%" id="d388869e2873"> 
+                <p>R1 to R3 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="24.03846153846154%" id="d388869e2879"> 
+                <p>R4 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="24.03846153846154%" id="d388869e2885"> 
+                <p>R5 to R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.03846153846154%" headers="d388869e2867 "> 
+                <p><span class="keyword">abs(a0 - b0) + abs(a1 - b1) +...+ abs(a7 - b7)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="24.03846153846154%" headers="d388869e2873 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="24.03846153846154%" headers="d388869e2879 "> 
+                <p><span class="keyword">abs(a8 - b8) + abs(a9 - b9) +...+ abs(a15 - b15) 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="24.03846153846154%" headers="d388869e2885 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5F556EF5-A385-4C3A-9FDD-E73D7E8D0F40"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sub_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the 16 signed or unsigned 8-bit integers of 
+        <span class="keyword">b</span> from the 16 signed or unsigned 8-bit integers of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D601E07F-D845-4B26-A4C5-09A22D6B5EF2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-23F0E37A-F100-4F4D-A1C5-16FDA9ABCBB0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2966"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2972"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e2978"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e2984"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2966 "> 
+                <p><span class="keyword">a0 - b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2972 "> 
+                <p><span class="keyword">a1 - b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e2978 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e2984 "> 
+                <p><span class="keyword">a15 - b15</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B14052F5-6C82-4469-B3AC-E49EB5B401A5"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sub_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the eight signed or unsigned 16-bit integers of 
+        <span class="keyword">b</span> from the eight signed or unsigned 16-bit integers of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4B34AD85-E848-43EC-A917-B6E9BF3BEA29"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6FE2BAC1-AC49-4E9A-8A1D-9499335168E7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3062"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3068"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3074"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e3080"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3062 "> 
+                <p><span class="keyword">a0 - b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3068 "> 
+                <p><span class="keyword">a1 - b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3074 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e3080 "> 
+                <p><span class="keyword">a7 - b7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F7B2E1F6-971C-4325-BD54-E520FB661638"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sub_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the four signed or unsigned 32-bit integers of 
+        <span class="keyword">b</span> from the four signed or unsigned 32-bit integers of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-33811EEC-82F5-40BE-816C-AC462035821B"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6CBC66EE-DB66-470A-8983-3DDBCC8239F0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3158"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3164"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3170"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e3176"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3158 "> 
+                <p><span class="keyword">a0 - b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3164 "> 
+                <p><span class="keyword">a1 - b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3170 "> 
+                <p><span class="keyword">a2 - b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e3176 "> 
+                <p><span class="keyword">a3 - b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5313CF8B-7B55-42F5-A66D-5D72B6222838"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sub_si64 (__m64 a, __m64 b)</span></p></div> 
+      <p>Subtracts the signed or unsigned 64-bit integer 
+        <span class="keyword">b</span> from the signed or unsigned 64-bit integer 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0AAC9581-BFA1-4C61-B134-B014C59B7FEB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-874A8F42-BF4A-4818-879B-8971AD7098F8" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d388869e3254"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d388869e3254 "> 
+                <p><span class="keyword">a - b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-99CAA3D7-34BA-4F27-931F-CCD4DBE2465D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sub_epi64(__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the two signed or unsigned 64-bit integers in 
+        <span class="keyword">b</span> from the two signed or unsigned 64-bit integers in 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1C71FD37-58C1-4190-B12A-201F5B1EA3BB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0D9D555A-163D-40C7-BB06-99452303A258" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d388869e3308"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d388869e3314"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d388869e3308 "> 
+                <p><span class="keyword">a0 - b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d388869e3314 "> 
+                <p><span class="keyword">a1 - b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3C6B0EC0-7D66-4641-AD9B-CE7F89FDC886"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_subs_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the 16 signed 8-bit integers of 
+        <span class="keyword">b</span> from the 16 signed 8-bit integers of 
+        <span class="keyword">a</span> using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1744117E-9FCB-4B0C-86AC-4CCEE404DBDA"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-33C8C808-C311-404E-BC93-D9FFC01308B6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3378"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3384"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3390"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e3396"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3378 "> 
+                <p><span class="keyword">SignedSaturate (a0 - b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3384 "> 
+                <p><span class="keyword">SignedSaturate (a1 - b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3390 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e3396 "> 
+                <p><span class="keyword">SignedSaturate (a15 - b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A4DD542A-FADB-49F1-886E-9A2782A59E61"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_subs_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the eight signed 16-bit integers of 
+        <span class="keyword">b</span> from the eight signed 16-bit integers of 
+        <span class="keyword">a</span> using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-08EF0FC6-D684-494C-9CCB-1D8E6C61EC2B"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-95160F14-B2BB-410E-BFB2-09FD6D4D6CB7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3475"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3481"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3487"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e3493"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3475 "> 
+                <p><span class="keyword">SignedSaturate (a0 - b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3481 "> 
+                <p><span class="keyword">SignedSaturate (a1 - b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3487 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e3493 "> 
+                <p><span class="keyword">SignedSaturate (a7 - b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-648D5101-32AE-435A-A9FE-DB046D70F9A7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_subs_epu8 (__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the 16 unsigned 8-bit integers of b from the 16 unsigned 8-bit integers of a using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-442595E4-4F8E-4F5B-8883-9307A66F70D5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3DA6C613-FFB7-431D-8087-3C6A4C5E6F3A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3565"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3571"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3577"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e3583"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3565 "> 
+                <p><span class="keyword">UnsignedSaturate (a0 - b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3571 "> 
+                <p><span class="keyword">UnsignedSaturate (a1 - b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3577 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e3583 "> 
+                <p><span class="keyword">UnsignedSaturate (a15 - b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D6207471-FCCC-4278-8D2A-4AA00DB64FD7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_subs_epu16 (__m128i a, __m128i b)</span></p></div> 
+      <p>Subtracts the eight unsigned 16-bit integers of b from the eight unsigned 16-bit integers of a using saturating arithmetic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3E69FC31-78A2-43FB-A974-7CC68663093C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D0B583A3-E671-40AD-AC4F-F7BD9719809B" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3655"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3661"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d388869e3667"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d388869e3673"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3655 "> 
+                <p><span class="keyword">UnsignedSaturate (a0 - b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3661 "> 
+                <p><span class="keyword">UnsignedSaturate (a1 - b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d388869e3667 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d388869e3673 "> 
+                <p><span class="keyword">UnsignedSaturate (a7 - b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

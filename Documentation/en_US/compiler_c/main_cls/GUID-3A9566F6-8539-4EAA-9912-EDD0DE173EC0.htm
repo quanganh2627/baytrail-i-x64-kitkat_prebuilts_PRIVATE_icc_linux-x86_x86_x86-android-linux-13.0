@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_avg_epu8/16">
+<meta name="abstract" content="Computes the average of unsigned 8/16-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is VPAVGB or VPAVGW.">
+<meta name="description" content="Computes the average of unsigned 8/16-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is VPAVGB or VPAVGW.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_avg_epu8 (VPAVGB), _mm256_avg_epu16 (VPAVGW)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_avg_epu8 (VPAVGB), _mm256_avg_epu16 (VPAVGW)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3A9566F6-8539-4EAA-9912-EDD0DE173EC0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_avg_epu8/16</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_avg"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_avg_epu8"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_avg_epu16"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3A9566F6-8539-4EAA-9912-EDD0DE173EC0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_avg_epu8/16 </span></h1>
+
+
+<!--Computes the average of unsigned 8/16-bit integer data elements  of two vectors. The corresponding Intel&reg; AVX2 instruction is  VPAVGB  or  VPAVGW .--><div><p>Computes the average of unsigned 8/16-bit integer data elements  of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPAVGB</span> or <span class="keyword">VPAVGW</span>.</p>
+
+
+<div class="section" id="GUID-09D48FD1-8A10-4140-BC75-CEA11F3E2E77"><h2>Syntax</h2>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_avg_epu8(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_avg_epu16(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-CBB69E2A-16E7-4950-BFBE-5FB497610ECA"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-B6231684-5BE2-4BB6-9ED2-602095BB4E1E"><h2>Description</h2>
+
+<p>Performs a SIMD average of the packed unsigned integers from source vector <var>s2</var> and source vector <var>s1</var> and stores the results in the destination vector. For each corresponding pair of data elements in the first and second vectors, the elements are added together, a 1 is added to the temporary sum, and that result is shifted right by one bit position.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-5B29E800-1447-416E-9E06-CD779FAB5F56"><h2>Returns</h2><p> Result of the operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">Intrinsics for Arithmetic Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

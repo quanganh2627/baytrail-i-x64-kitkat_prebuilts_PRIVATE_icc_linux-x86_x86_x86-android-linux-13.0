@@ -1,0 +1,342 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Logical Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer logical operations, or_si128, andnot_si128, xor_si128, and_si128, Intel&reg; Streaming SIMD Extensions 2, integer logical intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer logical operations, or_si128, andnot_si128, xor_si128, and_si128, Intel&reg; Streaming SIMD Extensions 2, integer logical intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2E6E5B88-3BF4-4571-86DE-A9EA2A7903E7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Logical Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_integer_logical"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2E6E5B88-3BF4-4571-86DE-A9EA2A7903E7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Logical Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-69893931-A6F6-491B-9CDB-F58734B00C7D"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer logical operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in register 
+        <span class="keyword">R</span>. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9F90D4D6-58BE-4417-AA72-C50CF877351D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0D6070A2-F329-4520-8C10-50D98A789088" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d146968e73"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d146968e79"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d146968e85"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e73 "> 
+                <p><span class="option"> _mm_and_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e79 "> 
+                <p>Computes AND 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d146968e85 "> 
+                <p><span class="keyword">PAND</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e73 "> 
+                <p><span class="option"> _mm_andnot_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e79 "> 
+                <p>Computes AND and NOT 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d146968e85 "> 
+                <p><span class="keyword">PANDN</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e73 "> 
+                <p><span class="option"> _mm_or_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e79 "> 
+                <p>Computes OR 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d146968e85 "> 
+                <p><span class="keyword">POR</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e73 "> 
+                <p><span class="option"> _mm_xor_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d146968e79 "> 
+                <p>Computes XOR 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d146968e85 "> 
+                <p><span class="keyword">PXOR</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1FC418D5-CF04-4E3A-A42B-8703873354BB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_and_si128(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the bitwise AND of the 128-bit value in 
+        <span class="keyword">a</span> and the 128-bit value in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-98ABDB63-031B-4C2E-B22F-259C31E76D55"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F3F7CD55-EFA0-4238-BBBC-66473ED5ADEC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d146968e229"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d146968e229 "> 
+                <p><span class="keyword">a &amp; b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4AA7D4F2-0017-45CD-A46A-630615ED03B6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_andnot_si128(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the bitwise AND of the 128-bit value in 
+        <span class="keyword">b</span> and the bitwise NOT of the 128-bit value in 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A6B53D2C-E219-4E68-94FC-ED9DBE34DDAB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-19164A63-1B28-4D65-AA53-5CF88F0A57C2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d146968e283"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d146968e283 "> 
+                <p><span class="keyword">(~a) &amp; b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CDAD1065-3AC5-4F84-962B-3C6A2447514D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_or_si128(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the bitwise OR of the 128-bit value in 
+        <span class="keyword">a</span> and the 128-bit value in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F91DE2AD-51F1-4161-975A-7242FAEA46F8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8883B72E-99C1-4F5F-A510-626719D3BCA9" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d146968e336"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d146968e336 "> 
+                <p><span class="keyword">a | b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1BB35C4B-31E6-4B43-B95F-83E7D64459E8"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_xor_si128(__m128i a, __m128i b)</span></p></div> 
+      <p>Computes the bitwise XOR of the 128-bit value in 
+        <span class="keyword">a</span> and the 128-bit value in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BFDBA87D-9E0B-4021-8A09-5FF7F0B34269"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B6EC8BE6-A936-4738-9A59-A52C986D705C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d146968e389"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d146968e389 "> 
+                <p><span class="keyword">a ^ b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

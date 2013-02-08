@@ -1,0 +1,179 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30756)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30756">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30756">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-179A7895-223F-4A3C-8E25-941FCF6C8F99">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30756)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30756"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30756"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-179A7895-223F-4A3C-8E25-941FCF6C8F99">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30756)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-744DF198-D06A-44FA-8149-FEDF4572AD36"><h2 class="sectiontitle">Message</h2><p>Split the structure '%s' into two parts to improve data locality. Frequently accessed fields are '%s'; performance may improve by putting these fields into one structure and the remaining fields into another structure. Alternatively, performance may also improve by reordering the fields of the structure. Suggested field order: '%s'. </p>
+</div>
+
+
+<div class="section" id="GUID-E1DFFBF9-AC87-40CF-8C23-68316260F866"><h2 class="sectiontitle">Advice</h2>
+<p>This message is issued when both structure splitting and field reordering transformations are applicable. Structure splitting transformation is expected to lead to higher performance gains if the transformation can be successfully applied. However, field reordering transformation is usually simple enough to apply, but the downside is that the performance gain seen may be lower.</p>
+<p>You must verify that the structure meets the requirements for applying the splitting or reordering transformation. Some of these requirements are described in the description of these individual transformations.</p>
+</div>
+
+
+<div class="section" id="GUID-51212605-F19E-4FEE-A73C-C130EB9B30ED"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>//str_split_reord.c</pre>
+<pre>struct str {</pre>
+<pre>    int a1, b1, carr[100], c1, e1;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>#define N 1000000</pre>
+<pre>&nbsp;</pre>
+<pre>struct str *sp;</pre>
+<pre>&nbsp;</pre>
+<pre>void allocate_str_mem()</pre>
+<pre>{</pre>
+<pre>    sp = malloc(N * sizeof(struct str));</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func1() {</pre>
+<pre>    int i, ret = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret += sp[i].c1;</pre>
+<pre>    }</pre>
+<pre>    sp-&gt;carr[0] = ret;</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func2() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 100000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret -= sp[i].e1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func3() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].b1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+</div>
+
+
+
+
+<p>In this case, a message is displayed that is similar to the following:</p>
+<p>drive: program-name: remark #30756:  (DTRANS) Split the structure 'str' into two parts to improve data locality. Frequently accessed fields are 'a1, b1, c1'; performance may improve by putting these fields into one structure and the remaining fields into another structure. Alternatively, performance may also improve by reordering the fields of the structure. Suggested field order: 'a1, c1, e1, b1, carr'. ...(etc.)</p>
+<p>If you determine it is safe to do so, you can modify the program code as shown below to split the structure 'str'. Other references to structure 'str' that are not in the current module should also be similarly modified. </p>
+
+<pre>struct str_cold {</pre>
+<pre>    int carr[100], e1;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>struct str {</pre>
+<pre>    int a1, b1, c1; struct str_cold *cold_ptr;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>#define N 1000000</pre>
+<pre>&nbsp;</pre>
+<pre>struct str *sp;</pre>
+<pre>&nbsp;</pre>
+<pre>void allocate_str_mem()</pre>
+<pre>{</pre>
+<pre>    struct str *temp;</pre>
+<pre>    struct str_cold *cold_begin;</pre>
+<pre>    int index;</pre>
+<pre>&nbsp;</pre>
+<pre>    temp = malloc(N * sizeof(struct str) + N * sizeof(struct str_cold));</pre>
+<pre>    sp = temp;</pre>
+<pre>    cold_begin = (struct str_cold *) (temp + N);</pre>
+<pre>    for(index = 0; index &lt; N; index++) {</pre>
+<pre>       temp[index].cold_ptr = cold_begin + index;</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func1() {</pre>
+<pre>    int i, ret = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret += sp[i].c1;</pre>
+<pre>    }</pre>
+<pre>    sp-&gt;cold_ptr-&gt;carr[0] = ret;</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func2() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 100000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret -= sp[i].cold_ptr-&gt;e1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func3() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].b1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+
+
+<p>For the above example, the only source change required to reorder fields in structure 'str' as alternatively suggested are the following:</p>
+
+<pre>//str_split_reord.c</pre><pre>struct str {</pre><pre>    int a1, c1, e1, b1, carr[100];</pre><pre>};</pre><pre>...</pre><div class="section" id="GUID-6D715632-0FF6-4D9B-AED0-635462E966C1"><h2 class="sectiontitle">Verify</h2>
+
+<p>The suggestion is based on the field references in the current compilation. Please make sure that the restructuring is applied to field references in all source files of the application, and that the restructured code satisfies the original program semantics.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

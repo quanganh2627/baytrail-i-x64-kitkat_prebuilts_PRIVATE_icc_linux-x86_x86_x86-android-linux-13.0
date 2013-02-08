@@ -1,0 +1,208 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Creating a Library from IPO Objects">
+<meta name="DC.subject" content="create libraries using IPO, interprocedural optimizations, creating libraries, xiar, xild, xilibtool, linking tools, xilib, xilink">
+<meta name="keywords" content="create libraries using IPO, interprocedural optimizations, creating libraries, xiar, xild, xilibtool, linking tools, xilib, xilink">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F5B7C10E-4E46-43D9-9558-65EA29645568">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Creating a Library from IPO Objects</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_lib"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_lib"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F5B7C10E-4E46-43D9-9558-65EA29645568">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Creating a Library from IPO Objects</h1>
+
+
+
+
+<div>
+<div class="section" id="GUID-B276FE89-9163-4006-9845-CD35CC323F01"><h2 class="sectiontitle">Linux* and OS X*</h2>
+
+<p>Libraries are often created using a library manager such as <span class="keyword">lib</span>. Given a list of objects, the library manager will insert the objects into a named library to be used in subsequent link steps.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-903797F0-FEE6-4F64-85C8-CF2184AFD741" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e84"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e84 "><pre>xiar cru user.a a.o b.o</pre></td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p>The above command creates a library named <span class="filepath">user.a</span> containing the <span class="filepath">a.o</span> and <span class="filepath">b.o</span> objects.</p>
+
+<p>If the objects have been created using <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> then the archive will not only contain a valid object, but the archive will also contain intermediate representation (IR) for that object file. For example, the following example will produce <span class="filepath">a.o</span> and <span class="filepath">b.o</span> that may be archived to produce a library containing both object code and IR for each source file.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7791EEDF-ABBE-4741-B7A5-5ACD86AC4C37" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e132"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e132 "><pre>icc -ipo -c a.cpp b.cpp</pre></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>This program will invoke the compiler on the IR saved in the object file and generate a valid object that can be inserted into a library.</p>
+
+<p>Using <span class="keyword">xiar</span> is the same as specifying <samp class="codeph">xild -lib</samp>.</p>
+
+</div>
+
+
+<div class="section" id="GUID-87DDD344-9414-4E41-8F6F-E2B3D8D2776A"><h2 class="sectiontitle">OS X Only</h2>
+
+<p>When using <span class="keyword">xilibtool</span>, specify <a href="GUID-9CD8F910-E2F2-439C-8A9E-8FB365541E0A.htm#GUID-9CD8F910-E2F2-439C-8A9E-8FB365541E0A"><span class="option">-static</span></a> to generate static libraries, or specify <a href="GUID-2ED5D256-2AFB-4862-8CC3-00CB0D2E81F9.htm#GUID-2ED5D256-2AFB-4862-8CC3-00CB0D2E81F9"><span class="option">-dynamiclib</span></a> to create dynamic libraries. For example, the following example command will create a static library named <span class="filepath">mylib.a</span> that includes the <span class="filepath">a.o</span>, <span class="filepath">b.o</span>, and <span class="filepath">c.o</span> objects.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3A0B846E-D57D-42D9-8608-DEF887A89C75" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e203"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e203 "><p><pre>xilibtool -static -o mylib.a a.o b.o c.o</pre></p>
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>Alternately, the following example command will create a dynamic library named <span class="filepath">mylib.dylib</span> that includes the <span class="filepath">a.o</span>, <span class="filepath">b.o</span>, and <span class="filepath">c.o</span> objects.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D02E19C7-951C-4921-B91D-1C1BEE425BA9" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e237"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e237 "><pre>xilibtool -dynamic -o mylib.dylib a.o b.o c.o</pre></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>Specifying <span class="keyword">xilibtool</span> is the same as specifying <samp class="codeph">xild -libtool</samp>.</p>
+
+
+</div>
+
+
+<div class="section" id="GUID-8CA0D155-B71F-4B6A-A9C8-82E39D8B055A"><h2 class="sectiontitle">Windows* Only</h2>
+
+<p>Create libraries using <span class="keyword">xilib</span> or <samp class="codeph">xilink -lib</samp> to create libraries of IPO mock object files and link them on the command line.</p>
+
+<p>For example, assume that you create three mock object files by using a command similar to the following:</p>
+
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D9802DB7-A66E-482A-88E7-A655BA91F979" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e283"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e283 "><pre>icl /c /Qipo a.obj b.obj c.obj</pre></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>Further assume <span class="filepath">a.obj</span> contains the main subprogram. You can enter commands similar to the following to link the objects.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F2801106-8F32-4F89-9242-C4A28FC2FD4A" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e308"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e308 ">
+                              <pre>xilib -out:main.lib b.obj c.obj</pre>
+                              <pre>or</pre>
+                              <pre>xilink -lib -out:main.lib b.obj c.obj</pre>
+                              </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>You can link the library and the main program object file by entering a command similar to the following:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E97B8F67-0632-4D90-A29E-C3FE554FDC1D" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d844516e337"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" headers="d844516e337 "><pre>xilink -out:result.exe a.obj main.lib</pre></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">Interprocedural Optimization (IPO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

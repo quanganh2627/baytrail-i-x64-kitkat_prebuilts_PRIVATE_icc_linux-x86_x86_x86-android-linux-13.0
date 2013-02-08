@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="OpenMP* Advanced Issues">
+<meta name="DC.subject" content="OMP directives, advanced issues, debugging, omp.h, performance">
+<meta name="keywords" content="OMP directives, advanced issues, debugging, omp.h, performance">
+<meta name="DC.Relation" scheme="URI" content="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-84C37F54-71A1-406D-9BAB-20CDEB234692">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Advanced Issues</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_openmp_adv_c"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_openmp_adv_c"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-84C37F54-71A1-406D-9BAB-20CDEB234692">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Advanced Issues</h1>
+ 
+   
+  <div> 
+	 <p>This topic discusses how to use the OpenMP* library functions and environment variables and discusses some guidelines for enhancing performance with OpenMP*. 
+	 </p>
+ 
+	 <p>OpenMP* provides specific function calls, and environment variables. See the following topics to refresh you memory about the primary functions and environment variable used in this topic: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-D2D9D561-27D9-470E-A0B9-29F9A61C74F8"> 
+		<li> 
+		  <p><a href="GUID-D3FC1F0B-DD99-4176-B9B5-56EEE72E81A7.htm#GUID-D3FC1F0B-DD99-4176-B9B5-56EEE72E81A7">OpenMP* Run-time Library Routines</a> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">OpenMP* Environment Variables</a></p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>To use the function calls, include the 
+		<span><span class="filepath">omp.h</span> header file 
+		</span>. 
+		<span>This file is</span> installed in the 
+		<span class="keyword">INCLUDE</span> directory during the compiler installation, and compile the application using the 
+		<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux* and Mac OS* X) or 
+		<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows*) option. 
+	 </p>
+ 
+	 <p>The following example, which demonstrates how to use the OpenMP* functions to print the alphabet, also illustrates several important concepts: 
+	 <ol id="GUID-8B99B301-59F6-41A9-B21D-07D752C46743"> 
+		<li>When using functions instead of 
+		  <span>pragmas,</span> your code must be rewritten; rewrites can mean extra debugging, testing, and maintenance efforts. 
+		</li>
+ 
+		<li> It becomes difficult to compile without OpenMP support. 
+		</li>
+ 
+		<li>it is very easy to introduce simple bugs, as in the loop (below) that fails to print all the letters of the alphabet when the number of threads is not a multiple of 26. 
+		</li>
+ 
+		<li>You lose the ability to adjust loop scheduling without creating your own work-queue algorithm, which is a lot of extra effort. You are limited by your own scheduling, which is mostly likely static scheduling as shown in the example. 
+		</li>
+ 
+	 </ol>
+ 
+	 </p>
+
+
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2A1EF7B5-6BBD-4882-99F9-4A0413F2D102" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d434798e133"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" width="100%" headers="d434798e133 "> 
+				  <pre>#include &lt;stdio.h&gt;</pre> 
+				  <pre>#include &lt;omp.h&gt;</pre> 
+				  <pre>int main(void)</pre> 
+				  <pre>{</pre> 
+				  <pre>  int i;</pre> 
+				  <pre>  omp_set_num_threads(4);</pre> 
+				  <pre>  #pragma omp parallel private(i)</pre> 
+				  <pre>  { // OMP_NUM_THREADS is not a multiple of 26,</pre> 
+				  <pre>    // which can be considered a bug in this code.</pre> 
+				  <pre>    int LettersPerThread = 26 / omp_get_num_threads();</pre> 
+				  <pre>    int ThisThreadNum = omp_get_thread_num();</pre> 
+				  <pre>    int StartLetter = 'a'+ThisThreadNum*LettersPerThread;</pre> 
+				  <pre>    int EndLetter = 'a'+ThisThreadNum*LettersPerThread+LettersPerThread;</pre> 
+				  <pre>    for (i=StartLetter; i&lt;EndLetter; i++)</pre> 
+				  <pre>      printf("%c", i);</pre> 
+				  <pre>  }</pre> 
+				  <pre>  printf("\n");</pre> 
+				  <pre>  return 0;</pre> 
+				  <pre>}</pre> 
+				</td>
+ 
+			 </tr>
+ 
+			 </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>Debugging threaded applications is a complex process because debuggers change the run-time performance, which can mask race conditions. Even 
+		<span class="keyword">print</span> statements can mask issues, because they use synchronization and operating system functions. OpenMP* itself also adds some complications, because it introduces additional structure by distinguishing private variables and shared variables, and inserts additional code. A specialized debugger that supports OpenMP, such as the Intel&reg; Debugger, can help you to examine variables and step through threaded code. You can also use the Intel&reg; Inspector XE(Inspector XE) to detect many hard-to-find threading errors analytically. Sometimes, a process of elimination can help identify problems without resorting to sophisticated debugging tools. 
+	 </p>
+ 
+	 <p>Remember that most mistakes are race conditions. Most race conditions are caused by shared variables that really should have been declared private. Start by looking at the variables inside the parallel regions and make sure that the variables are declared private when necessary. Next, check functions called within parallel constructs. 
+		<span>By default, variables declared on the stack are private, but the C/C++ keyword 
+		  <span class="keyword">static</span> changes the variable to be placed on the global heap and therefore shared for OpenMP loops.</span> 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">default(none)</span> clause, shown below, can be used to help find those hard-to-spot variables. If you specify 
+		<span class="keyword">default(none)</span>, then every variable must be declared with a data-sharing attribute clause. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4664F0E7-FC02-4189-B4C2-E2213DC0D67F" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d434798e245"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" width="100%" headers="d434798e245 "> 
+				  <pre>#pragma omp parallel for default(none) private(x,y) shared(a,b)</pre> 
+				</td>
+ 
+			 </tr>
+ 
+			 </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>Another common mistake is using uninitialized variables. Remember that private variables do not have initial values upon entering a parallel construct. Use the 
+		<span class="keyword">firstprivate</span> and 
+		<span class="keyword">lastprivate</span> clauses to initialize them only when necessary, because doing so adds extra overhead. 
+	 </p>
+ 
+	 <p>If you still can't find the bug, then consider the possibility of reducing the scope. Try a binary-hunt. 
+		<span>Force parallel sections to be serial again with 
+		  <span class="keyword">if(0)</span> on the parallel construct or commenting out the pragma altogether.</span> Another method is to force large chunks of a parallel region to be critical sections. Pick a region of the code that you think contains the bug and place it within a critical section. Try to find the section of code that suddenly works when it is within a critical section and fails when it is not. Now look at the variables, and see if the bug is apparent. If that still doesn't work, try setting the entire program to run in serial by setting the compiler-specific environment variable 
+		<span class="keyword">KMP_LIBRARY=serial</span>. 
+	 </p>
+ 
+	 <p>If the code is still not working, and you are not using any OpenMP API function calls, compile it without the 
+		<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux and Mac OS X) or 
+		<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows) option to make sure the serial version works. If you are using OpenMP API function calls, use the 
+  <span class="option">–openmp-stubs</span> (Linux* and Mac OS* X) 
+  <span class="option">/Qopenmp-stubs</span> (Windows) option. 
+  </p>
+ 
+  <div class="section" id="GUID-618CD175-6D96-4C44-AD55-C1F9604B326D"><h2 class="sectiontitle">Performance</h2> 
+	  
+	 <p>OpenMP threaded application performance is largely dependent upon the following things: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-4CDBA7FC-D746-4283-BCED-1A35411BE0C3"> 
+		<li> 
+		  <p>The underlying performance of the single-threaded code. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>CPU utilization, idle threads, and load balancing. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The percentage of the application that is executed in parallel by multiple threads. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The amount of synchronization and communication among the threads. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The overhead needed to create, manage, destroy, and synchronize the threads, made worse by the number of single-to-parallel or parallel-to-single transitions called fork-join transitions. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Performance limitations of shared resources such as memory, bus bandwidth, and CPU execution units. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Memory conflicts caused by shared memory or falsely shared memory. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Performance always begins with a properly constructed parallel algorithm or application. For example, parallelizing a bubble-sort, even one written in hand-optimized assembly language, is not a good place to start. Keep scalability in mind; creating a program that runs well on two CPUs is not as efficient as creating one that runs well on 
+		<var>n</var> CPUs. With OpenMP, the number of threads is chosen by the compiler, so programs that work well regardless of the number of threads are highly desirable. Producer/consumer architectures are rarely efficient, because they are made specifically for two threads. 
+	 </p>
+ 
+	 <p>Once the algorithm is in place, make sure that the code runs efficiently on the targeted Intel&reg; architecture; a single-threaded version can be a big help. Turn off the 
+		<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux and Mac OS X) or 
+		<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows) option to generate a single-threaded version, or build with 
+		<a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">-openmp-stubs</span></a> (Linux and Mac OS X) or 
+		<a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">/Qopenmp-stubs</span></a> (Windows), and run the single-threaded version through the usual set of optimizations. 
+		<span>See 
+		  <a href="GUID-872C664D-7F50-4BE2-9422-3EBE6595FB40.htm#GUID-872C664D-7F50-4BE2-9422-3EBE6595FB40">Worksharing Using OpenMP*</a> for more information.</span> 
+	 </p>
+ 
+	 <p>Once you have gotten the single-threaded performance, it is time to generate the multi-threaded version and start doing some analysis. 
+	 </p>
+ 
+	 <p>Optimizations are really a combination of patience, experimentation, and practice. Make little test programs that mimic the way your application uses the computer resources to get a feel for what things are faster than others. Be sure to try the different scheduling clauses for the parallel sections of code. If the overhead of a parallel region is large compared to the compute time, you may want to use an 
+		<span class="keyword">if</span> clause to execute the section serially. 
+	 </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">OpenMP* Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

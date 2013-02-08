@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="intel_omp_taskq">
+<meta name="abstract" content="For Intel legacy tasking, specifies an environment for the while loop in which to enqueue the units of work specified by the enclosed task pragma.">
+<meta name="description" content="For Intel legacy tasking, specifies an environment for the while loop in which to enqueue the units of work specified by the enclosed task pragma.">
+<meta name="DC.subject" content="pragma intel_omp_taskq">
+<meta name="keywords" content="pragma intel_omp_taskq">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DD40DE97-DDD1-4FC1-A083-15B62414CCAA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>intel_omp_taskq</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_intel_omp_taskq"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DD40DE97-DDD1-4FC1-A083-15B62414CCAA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>intel_omp_taskq</span></h1>
+
+<!-- For Intel legacy tasking, specifies an environment for the while loop in which to enqueue the units of work specified by the enclosed   task  pragma.-->
+
+<div><p> For Intel legacy tasking, specifies an environment for the while loop in which to enqueue the units of work specified by the enclosed  <samp class="codeph">task</samp> pragma.</p>
+
+<div class="section" id="GUID-F19360F9-5F32-4A12-BBE8-10AB32261814"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma intel_omp_taskq</span><span class="delim">[</span><span class="var">clause</span><span class="delim">[[</span><span class="sep">,</span><span class="delim">]</span><span class="var">clause</span><span class="delim">]</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">structured-block</span></p></td></tr></table>
+</div>
+
+<div class="section" id="GUID-AF642C59-0030-4F43-92E5-EC4483924AA7"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr><td valign="top" width="30%" class="noborder"><p><var>clause</var></p></td>
+<td valign="top" class="noborder"><p><var>clause</var> can be any of the following:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">private</span>(<var>variable-list</var>)</p></td>
+<td valign="top" class="noborder"><p>The <span class="keyword">private</span> clause creates a private, default-constructed version for each object in <var>variable-list</var> for the <span class="keyword">taskq</span>. It also implies <span class="keyword">captureprivate</span> on each enclosed task. The original object referenced by each variable has an indeterminate value upon entry to the construct, must not be modified within the dynamic extent of the construct, and has an indeterminate value upon exit from the construct.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">firstprivate</span>(<var>variable-list</var>)</p></td>
+<td valign="top" class="noborder"><p>The <span class="keyword">firstprivate</span> clause creates a private, copy-constructed version for each object in <var>variable-list</var> for the <span class="keyword">taskq</span>. It also implies <span class="keyword">captureprivate</span> on each enclosed task. The original object referenced by each variable must not be modified within the dynamic extent of the construct and has an indeterminate value upon exit from the construct.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">lastprivate</span>(<var>variable-list</var>)</p></td>
+<td valign="top" class="noborder"><p>The <span class="keyword">lastprivate</span> clause creates a private, default-constructed version for each object in <var>variable-list</var> for the <span class="keyword">taskq</span>. It also implies <span class="keyword">captureprivate</span> on each enclosed task. The original object referenced by each variable has an indeterminate value upon entry to the construct, must not be modified within the dynamic extent of the construct, and is copy-assigned the value of the object from the last enclosed task after that task completes execution.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">reduction</span>(<var>operator</var> : <var>variable-list</var>)</p></td>
+<td valign="top" class="noborder"><p>The <span class="keyword">reduction</span> clause performs a reduction operation with the given operator in enclosed task constructs for each object in <var>variable-list</var>. <var>operator</var> and <var>variable-list</var> are defined the same as in the OpenMP Specifications.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">ordered</span></p></td>
+<td valign="top" class="noborder"><p>The <span class="keyword">ordered</span> clause performs ordered constructs in enclosed <span class="keyword">task</span> constructs in original sequential execution order. The <span class="keyword">taskq</span> directive, to which the <span class="keyword">ordered</span> is bound, must have an <span class="keyword">ordered</span> clause present.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">nowait</span></p></td>
+<td valign="top" class="noborder"><p>The <span class="keyword">nowait</span> clause removes the implied barrier at the end of the <span class="keyword">taskq</span>. Threads may exit the <span class="keyword">taskq</span> construct before completing all the <span class="keyword">task</span> constructs queued within it.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+
+</div>
+
+<div class="section" id="GUID-8754E557-4442-4938-AA86-00660D0CB8F5"><h2>Description</h2>
+<p>The <span class="keyword">intel_omp_taskq/taskq</span> pragma specifies the environment within which the enclosed units of work (tasks) are to be executed. From among all the threads that encounter a <span class="keyword">taskq</span> pragma, one is chosen to execute it initially.</p>
+
+<p>Conceptually, the <span class="keyword">taskq</span> pragma causes an empty queue to be created by the chosen thread, and then the code inside the <span class="keyword">taskq</span> block is executed single-threaded. All the other threads wait for work to be enqueued on the conceptual queue.</p>
+
+<p>The <span class="keyword">task</span> pragma specifies a unit of work, potentially executed by a different thread. When a <span class="keyword">task</span> pragma is encountered lexically within a <span class="keyword">taskq</span> block, the code inside the <span class="keyword">task</span> block is conceptually enqueued on the queue associated with the <span class="keyword">taskq</span>. The conceptual queue is disbanded when all work enqueued on it finishes, and when the end of the <span class="keyword">taskq</span> block is reached.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3>This pragma affects parallelization done using <span class="option">-openmp</span> option.  Options that use OpenMP are available for both Intel&reg; and non-Intel microprocessors, but these options may perform additional optimizations on Intel&reg; microprocessors than they perform on non-Intel microprocessors. The list of major, user-visible OpenMP constructs and features that may perform differently on Intel&reg; vs. non-Intel microprocessors includes: locks (internal and user visible), the SINGLE construct, barriers (explicit and implicit), parallel loop scheduling, reductions, memory allocation, and thread affinity and binding.</div></div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

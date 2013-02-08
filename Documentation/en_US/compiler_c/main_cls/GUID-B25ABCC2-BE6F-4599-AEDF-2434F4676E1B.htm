@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ivdep">
+<meta name="abstract" content="Instructs the compiler to ignore assumed vector dependencies.">
+<meta name="description" content="Instructs the compiler to ignore assumed vector dependencies.">
+<meta name="DC.subject" content="pragma ivdep">
+<meta name="keywords" content="pragma ivdep">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm#GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850">
+<meta name="DC.Relation" scheme="URI" content="GUID-CFBEC461-748D-4162-A669-C4F42848267F.htm#GUID-CFBEC461-748D-4162-A669-C4F42848267F">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B25ABCC2-BE6F-4599-AEDF-2434F4676E1B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ivdep</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_ivdep"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B25ABCC2-BE6F-4599-AEDF-2434F4676E1B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>ivdep</span></h1>
+
+<!--Instructs the compiler to ignore assumed vector dependencies.--><div><p>Instructs the compiler to ignore assumed vector dependencies.</p>
+
+<div class="section" id="GUID-5287134E-340B-4A4B-BD91-41686174D1FF"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma ivdep</span></p></td></tr></table>
+</div>
+
+<div class="section" id="GUID-0D437130-9386-445E-8AEE-DABE2D7C9B2F"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-F7C07A3F-0BC4-4B77-B7E5-3452701B4BAD"><h2>Description</h2>
+<p>The <span class="keyword">ivdep</span> pragma instructs the compiler to ignore assumed vector dependencies. To ensure correct code, the compiler treats an assumed dependence as a proven dependence, which prevents vectorization. This pragma overrides that decision. Use this pragma only when you know that the assumed loop dependencies are safe to ignore.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>The proven dependencies that prevent vectorization are not ignored, only assumed dependencies are ignored.</p>
+</div>
+</div>
+
+<div class="section" id="GUID-F050A661-9E75-49EF-8FDA-B8F89AB9D437"><h2>Example</h2>
+<p><strong>Example 1</strong></p>
+
+<p>The loop in this example will not vectorize without the <span class="keyword">ivdep</span> pragma, since the value of <var>k</var> is not known; vectorization would be illegal if <samp class="codeph">k&lt;0</samp>.</p>
+
+<pre>void ignore_vec_dep(int *a, int k, int c, int m)</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;#pragma ivdep</pre>
+<pre>&nbsp;&nbsp;for (int i = 0; i &lt; m; i++)</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;a[i] = a[i + k] * c;</pre>
+<pre>}</pre>
+<p>The pragma binds only the <span class="keyword">for</span> loop contained in current function. This includes a <span class="keyword">for</span> loop contained in a sub-function called by the current function.</p>
+
+<p><strong>Example 2</strong></p>
+
+<p>The following loop requires the parallel option in addition to the <span class="keyword">ivdep</span> pragma to indicate there is no loop-carried dependencies:</p>
+
+<pre>#pragma ivdep</pre>
+<pre>for (i=1; i&lt;n; i++)</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;e[ix[2][i]] = e[ix[2][i]]+1.0;</pre>
+<pre>&nbsp;&nbsp;e[ix[3][i]] = e[ix[3][i]]+2.0;</pre>
+<pre>}</pre>
+<p><strong>Example 3</strong></p>
+
+<p>The following loop requires the parallel option in addition to the <span class="keyword">ivdep</span> pragma to ensure there is no loop-carried dependency for the store into <samp class="codeph">a()</samp>.</p>
+
+<pre>#pragma ivdep</pre>
+<pre>for (j=0; j&lt;n; j++)</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;a[b[j]] = a[b[j]] + 1;</pre>
+<pre>}</pre>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm#GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850"><span class="keyword">vector</span></a> </div>
+<div><a href="GUID-CFBEC461-748D-4162-A669-C4F42848267F.htm#GUID-CFBEC461-748D-4162-A669-C4F42848267F"><span class="keyword">novector</span></a> </div><div>
+    <p class="linkinfo">In addition to the <span class="keyword">ivdep</span> pragma, the <span class="keyword">vector</span> pragma can be used to override the efficiency heuristics of the vectorizer.</p>
+
+  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

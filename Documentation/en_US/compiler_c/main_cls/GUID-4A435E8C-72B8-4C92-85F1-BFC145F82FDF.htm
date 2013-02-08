@@ -1,0 +1,2071 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Portability Options">
+<meta name="DC.subject" content="compiler options, for portability">
+<meta name="keywords" content="compiler options, for portability">
+<meta name="DC.Relation" scheme="URI" content="GUID-276392FD-7457-47A1-A5E6-1DD05B102F81.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4A435E8C-72B8-4C92-85F1-BFC145F82FDF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Portability Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="options_ref_related_opts_cpp_port"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.options_ref_related_opts_cpp_port"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4A435E8C-72B8-4C92-85F1-BFC145F82FDF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Portability Options</h1>
+ 
+   
+  <div> 
+	 <p>A challenge in porting applications from one compiler to another is making sure there is support for the compiler options you use to build your application. The Intel&reg; C++ Compiler supports many of the options that are valid on other compilers you may be using. 
+	 </p>
+ 
+	 <p></p>
+ 
+	 <p>The following sections list compiler options that are supported by the Intel&reg; C++ Compiler and the following: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-40933448-8FBE-4B64-A3BB-DFD151AC785B"> 
+		<li> 
+		  <p><a href="GUID-4A435E8C-72B8-4C92-85F1-BFC145F82FDF.htm#GUID-478B92EA-853F-4362-B479-418929B9FBE8">Microsoft* C++ compiler</a> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><a href="GUID-4A435E8C-72B8-4C92-85F1-BFC145F82FDF.htm#GUID-5793B721-5CA3-400D-8AFA-A47C952B67CD">gcc* Compiler</a> 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Options that are unique to either compiler are not listed in these sections. 
+	 </p>
+ 
+	 <div class="section" id="GUID-478B92EA-853F-4362-B479-418929B9FBE8"><h2 class="sectiontitle">Options Equivalent to Microsoft* C++ Options (Windows* OS)</h2> 
+		 
+		<p>The following table lists compiler options that are supported by both the Intel&reg; C++ Compiler and the Microsoft* C++ compiler. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C06296F0-B477-461D-ACE3-DE861100315D" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/arch</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/C</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/c</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/D&lt;name&gt;{=|#}&lt;text&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/E</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/EH{a|s|c}</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/EP</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/F&lt;n&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Fa[file]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/FA[{c|s|cs}]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/FC</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Fe&lt;file&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/FI&lt;file&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Fm[&lt;file&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Fo&lt;file&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/fp:&lt;model&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Fp&lt;file&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/FR[&lt;file&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Fr[&lt;file&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GA</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Gd</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Ge</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GF</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Gh</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GH</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Gr</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GR[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GS[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Gs[&lt;n&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Gy[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Gz</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/GZ</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/H&lt;n&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/help</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/I&lt;dir&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/J</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/LD</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/LDd</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/link</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/MD</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/MDd</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/MP</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/MT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/MTd</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/nologo</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/O1</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/O2</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Ob&lt;n&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Od</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+
+				
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Oi[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Os</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Ot</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Ox</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Oy[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/P</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/QIfist[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/RTC{1|c|s|u}</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/showIncludes</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/TC</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Tc&lt;source file&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/TP</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Tp&lt;source file&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/u</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/U&lt;name&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/V&lt;string&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/vd</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/vmb</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/vmg</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/vmm</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/vms</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/vmv</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/w</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/W&lt;n&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Wall</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/wd&lt;n&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/we&lt;n&gt;</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/WL</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Wp64</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/WX</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/X</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Y-</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Yc[&lt;file&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Yu[&lt;file&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Z7</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Za</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Zc:&lt;arg1&gt;[, &lt;arg2&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Ze</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Zg</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Zi</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/ZI</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Zl</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Zp[&lt;n&gt;]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">/Zs</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-5793B721-5CA3-400D-8AFA-A47C952B67CD"><h2 class="sectiontitle">Options Equivalent to gcc* Options (Linux* OS)</h2> 
+		 
+		<p>The following table lists compiler options that are supported by both the Intel&reg; C++ Compiler and the gcc* compiler. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-00733892-459C-45BC-BD96-69246FD8D6C3" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-A</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ansi</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-B</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-C</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-c</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-D</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-dD</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-dM</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-dN</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-E</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fargument-noalias</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fargument-noalias-global</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fdata-sections</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ffunction-sections</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fmudflap</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]builtin</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]common</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]freestanding</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]gnu-keywords</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fno-implicit-inline-templates</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fno-implicit-templates</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]inline</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]inline-functions</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]math-errno</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]operator-names</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]stack-protector</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-f[no-]unsigned-bitfields</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fpack-struct</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fpermissive</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fPIC</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fpic</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-freg-struct-return</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fshort-enums</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fsyntax-only</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ftemplate-depth</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ftls-model=global-dynamic</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ftls-model=initial-exec</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ftls-model=local-dynamic</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-ftls-model=local-exec</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-funroll-loops</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-funsigned-char</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fverbose-asm</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fvisibility=default</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fvisibility=hidden</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fvisibility=internal</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-fvisibility=protected</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-H</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-help</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-I</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-idirafter</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-imacros</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-iprefix</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-iwithprefix</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-iwithprefixbefore</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-l</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-L</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-M</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-malign-double</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-march</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-mcpu</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MD</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MF</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MG</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MM</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MMD</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-m[no-]ieee-fp</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MP</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MQ</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-msse</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-msse2</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-msse3</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-MT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-mtune</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-nodefaultlibs</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-nostartfiles</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-nostdinc</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-nostdinc++</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-nostdlib</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-o</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-O</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-O0</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-O1</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-O2</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-O3</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-Os</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-p</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-P</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-S</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-shared</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-static</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-std</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-trigraphs</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-U</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-u</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-v</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-V</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-w</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-Wall</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-Werror</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-Winline</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]cast-qual</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]comment</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]comments</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]deprecated</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]fatal-errors</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]format-security</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]main</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]missing-declarations</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]missing-prototypes</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]overflow</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]overloaded-virtual</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]pointer-arith</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]return-type</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]strict-prototypes</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]trigraphs</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]uninitialized</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]unknown-pragmas</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]unused-function</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-W[no-]unused-variable</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-X</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-x assembler-with-cpp</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-x c</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-x c++</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%"> 
+					 <p><span class="option">-Xlinker</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-276392FD-7457-47A1-A5E6-1DD05B102F81.htm">Related Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="General Interaction with OS Threads">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, interaction with OS threads">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, interaction with OS threads">
+<meta name="DC.Relation" scheme="URI" content="GUID-92C5B9DE-43F9-4326-B5D5-61320B176D85.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3DCB7D2F-EC6F-42A8-B5BF-262B570567E2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>General Interaction with OS Threads</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_interact_os_threads"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3DCB7D2F-EC6F-42A8-B5BF-262B570567E2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">General Interaction with OS Threads</h1>
+ 
+  
+  <div> 
+	 <p>When working with OS threads, be aware of the following.
+	 </p>
+ 
+	 <p> 
+		<strong>A worker thread is an OS thread.</strong> 
+	 </p>
+ 
+	 <p>The runtime system allocates a set of "worker" threads using native OS facilities.
+	 </p>
+ 
+	 <p> 
+		<strong>Intel&reg; Cilk&#8482; Plus programs do not always use 100% of all available processors.</strong> 
+	 </p>
+ 
+	 <p>When running an Intel&reg; Cilk&#8482; Plus program, you may observe that the program appears to consume all the resources of all the processors in the system, even when there is no parallel work to perform. This effect is apparent with programs such as the Windows* OS Task Manager "Performance" tab; all CPUs may appear to be busy, even if only one strand is executing.
+	 </p>
+ 
+	 <p>In fact, the runtime scheduler does yield the CPUs to other programs. If there are no other programs requesting the processor, then the worker will be immediately run again to look for work to steal, and this is what makes the CPUs appear to be busy. Therefore, the program appears to consume all the processors all the time, but there is no adverse effect on the system or other programs.
+	 </p>
+ 
+	 <p> 
+		<strong>Use caution when using native threading interfaces.</strong> 
+	 </p>
+ 
+	 <p>Intel&reg; Cilk&#8482; Plus strands are not operating-system threads. A strand never migrates between workers while running. However, the worker may change after a 
+		<span class="keyword">cilk_spawn</span>, 
+		<span class="keyword">cilk_sync</span> or 
+		<span class="keyword">cilk_for</span> statement, since these statements terminate one or more strands and create one or more new strands. Furthermore, you do not have any control over which worker will run a specific strand.
+	 </p>
+ 
+	 <p>This can impact a program in several ways, most importantly:
+	 </p>
+ 
+	 <ul type="disc" id="GUID-A7489865-EAA9-412D-BB07-5D7B5B341B1E">
+		<li>
+		  <p>Do not use Windows* OS thread local storage or Linux* OS/OS X* Pthreads thread-specific data, because the OS thread may change at a cilk_spawn, cilk_sync, or cilk_for (including within called functions). Instead, use other programming techniques, such as the holder reducer described earlier.
+		  </p>
+
+		</li>
+
+		<li>
+		  <p>Do not use operating system locks or mutexes across 
+			 <span class="keyword">cilk_spawn</span>, 
+			 <span class="keyword">cilk_sync</span> or 
+			 <span class="keyword">cilk_for</span> statements, because only the locking thread can unlock the object.
+		  </p>
+
+		</li>
+
+	 </ul>
+
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-92C5B9DE-43F9-4326-B5D5-61320B176D85.htm">Operating System Considerations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="MMX&#8482; Technology General Support Intrinsics">
+<meta name="DC.subject" content="intrinsics, MMX&#8482; Technology, general support operations, packs_pu16, packs_pi32, unpackhi_pi8, unpackhi_pi16, unpackhi_pi32, unpacklo_pi8, unpacklo_pi16, unpacklo_pi32, cvtm64_si64, cvtsi64_m64, empty, cvtsi32_si64, cvtsi64_si32, packs_pi16">
+<meta name="keywords" content="intrinsics, MMX&#8482; Technology, general support operations, packs_pu16, packs_pi32, unpackhi_pi8, unpackhi_pi16, unpackhi_pi32, unpacklo_pi8, unpacklo_pi16, unpacklo_pi32, cvtm64_si64, cvtsi64_m64, empty, cvtsi32_si64, cvtsi64_si32, packs_pi16">
+<meta name="DC.Relation" scheme="URI" content="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B3C97F31-00A0-4DF0-8084-610685C7C052">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>MMX&#8482; Technology General Support Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mmx_general_support"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B3C97F31-00A0-4DF0-8084-610685C7C052">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">MMX&#8482; Technology General Support Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-1B4EC4E6-FBCC-4102-8479-E414ED2B6F7A"> 
+      <p>The prototypes for MMX&#8482; technology general support intrinsics are in the 
+        <span class="filepath">mmintrin.h</span> header file. 
+      </p>
+ 
+    </div>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E1ECE455-7566-46F1-A333-FE71FACA6AF4" frame="hsides" border="1" rules="all"><thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" valign="top" width="33%" id="d593688e83"> 
+              <p>Intrinsic Name 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="33%" id="d593688e89"> 
+              <p>Operation 
+              </p>
+ 
+            </th>
+ 
+            <th class="row-nocellborder" valign="top" width="34%" id="d593688e95"> 
+              <p>Corresponding<br> MMX&#8482; Instruction 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+</thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_empty</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Empty 
+              <span class="option">MM</span> state 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">EMMS</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_cvtsi32_si64</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Convert from 
+              <span class="option">int</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">MOVD</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_cvtsi64_si32</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Convert to 
+              <span class="option">int</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">MOVD</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_cvtsi64_m64</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Convert from __<span class="option">int64</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">MOVQ</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_cvtm64_si64</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Convert to __<span class="option">int64</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">MOVQ</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_packs_pi16</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Pack 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PACKSSWB</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_packs_pi32</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Pack 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PACKSSDW</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_packs_pu16</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Pack 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PACKUSWB</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_unpackhi_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Interleave 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PUNPCKHBW</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_unpackhi_pi16</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Interleave 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PUNPCKHWD</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_unpackhi_pi32</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Interleave 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PUNPCKHDQ</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_unpacklo_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Interleave 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PUNPCKLBW</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_unpacklo_pi16</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Interleave 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PUNPCKLWD</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e83 "> 
+              <p><span class="option"> _mm_unpacklo_pi32</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="33%" headers="d593688e89 "> 
+              <p>Interleave 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="34%" headers="d593688e95 "> 
+              <p><span class="keyword">PUNPCKLDQ</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <div class="example"> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F6741ADF-3363-4ED2-9883-77D8243989F6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_empty(void)</span></p></div> 
+      <p>Empties the multimedia state. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-66152D87-1B97-47B9-A1E3-81015A597610"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_cvtsi32_si64(int i)</span></p></div> 
+      <p>Converts the integer object 
+      <span class="option">i</span> to a 64-bit 
+      <span class="option">__m64</span> object. The integer value is zero-extended to 64 bits. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-58D75165-113D-4BB3-B9CB-6A7F5A651775"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_cvtsi64_si32(__m64 m)</span></p></div> 
+      <p>Converts the lower 32 bits of the 
+      <span class="option">__m64</span> object 
+      <span class="option">m</span> to an integer. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7A2DFC85-8ED9-409B-BF6B-A15D658809EA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_cvtsi64_m64(__int64 i)</span></p></div> 
+      <p>Moves the 64-bit integer object 
+      <span class="option">i</span> to a 
+      <span class="option">__mm64</span> object 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8A4D739F-64F6-4F2C-BFA9-E9EECF3B78E7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_cvtm64_si64(__m64 m)</span></p></div> 
+      <p>Moves the 
+      <span class="option">__m64</span> object 
+      <span class="option">m</span> to a 64-bit integer 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ED815AE7-C29D-445C-B2AA-0BFF9BE05D40"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_packs_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Packs the four 16-bit values from 
+      <span class="option">m1</span> into the lower four 8-bit values of the result with signed saturation, and pack the four 16-bit values from 
+      <span class="option">m2</span> into the upper four 8-bit values of the result with signed saturation. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-630AD64A-B2BE-47D7-8A2F-558D4EE3A461"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_packs_pi32(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Packs the two 32-bit values from 
+      <span class="option">m1</span> into the lower two 16-bit values of the result with signed saturation, and pack the two 32-bit values from 
+      <span class="option">m2</span> into the upper two 16-bit values of the result with signed saturation. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2D4B9EB0-2950-441D-8FFE-21050C6FEF05"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_packs_pu16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Packs the four 16-bit values from 
+      <span class="option">m1</span> into the lower four 8-bit values of the result with unsigned saturation, and pack the four 16-bit values from 
+      <span class="option">m2</span> into the upper four 8-bit values of the result with unsigned saturation. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C9A79598-2FBA-45F1-A5E0-C779E8CCDF48"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_unpackhi_pi8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Interleaves the four 8-bit values from the high half of 
+      <span class="option">m1</span> with the four values from the high half of 
+      <span class="option">m2</span>. The interleaving begins with the data from 
+      <span class="option">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2F4AE671-FE7E-4E4E-9C58-3D6339F9A63D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_unpackhi_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Interleaves the two 16-bit values from the high half of 
+      <span class="option">m1</span> with the two values from the high half of 
+      <span class="option">m2</span>. The interleaving begins with the data from 
+      <span class="option">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9D9C5B35-C14B-479A-A7B3-ACB0E5A48F6C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_unpackhi_pi32(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Interleaves the 32-bit value from the high half of 
+      <span class="option">m1</span> with the 32-bit value from the high half of 
+      <span class="option">m2</span>. The interleaving begins with the data from 
+      <span class="option">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-140CA161-8279-4066-82CE-B3A64000117E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_unpacklo_pi8(__m64 m1, __m64 m2)</span></p></div> 
+      <p class="LeftIndent">Interleaves the four 8-bit values from the low half of 
+      <span class="option">m1</span> with the four values from the low half of 
+      <span class="option">m2</span>. The interleaving begins with the data from 
+      <span class="option">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-98EE6F7D-BF13-4F29-9C9D-F3B2EC2D7E1C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_unpacklo_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Interleaves the two 16-bit values from the low half of 
+      <span class="option">m1</span> with the two values from the low half of 
+      <span class="option">m2</span>. The interleaving begins with the data from 
+      <span class="option">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-05CE73B1-2D25-459F-BD58-003CF81AC3FE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_unpacklo_pi32(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Interleaves the 32-bit value from the low half of 
+      <span class="option">m1</span> with the 32-bit value from the low half of 
+      <span class="option">m2</span>. The interleaving begins with the data from 
+      <span class="option">m1</span>. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">MMX&#8482; Technology Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

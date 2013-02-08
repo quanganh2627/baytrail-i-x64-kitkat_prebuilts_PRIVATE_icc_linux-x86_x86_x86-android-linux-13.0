@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_maskstore_pd, _mm_maskstore_pd">
+<meta name="abstract" content="Stores packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is VMASKMOVPD.">
+<meta name="description" content="Stores packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is VMASKMOVPD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, load operations, _mm_maskstore_pd (VMASKMOVPD), _mm256_maskstore_pd (VMASKMOVPD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, load operations, _mm_maskstore_pd (VMASKMOVPD), _mm256_maskstore_pd (VMASKMOVPD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-04D62C94-2420-49D8-85F4-F94787854EE2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_maskstore_pd, _mm_maskstore_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_maskstore_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-04D62C94-2420-49D8-85F4-F94787854EE2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_maskstore_pd, _mm_maskstore_pd</span></h1>
+
+
+<!-- Stores packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is  VMASKMOVPD .--><div><p> Stores packed double-precision floating point values according to mask values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMASKMOVPD</span>.</p>
+
+
+<div class="section" id="GUID-F15530EB-2592-484E-8DA3-12B91E948887"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void _mm256_maskstore_pd(double *a, __m256i mask, __m256d b);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void _mm_maskstore_pd(double *a, __m256i mask, __m128d b);
+</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-9E831BAE-7F98-4949-89D5-A2C4093DAE96"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>*a</var></p></td>
+
+      <td valign="top" class="noborder"><p>pointer to a 256/128-bit memory location that can hold constant double-precision floating point (float64) values</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer value calculated based on the most-significant-bit of each quadword of a mask register 
+</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>a 256/128-bit float64 vector 
+</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-171C7FD9-EA55-48C7-B3FC-486F6E283319"><h2>Description</h2>
+<p>Performs a store operation by moving packed double-precision floating point (float64) values from a vector, <var>b</var>, to a 256/128-bit memory location, pointed to by <var>a</var>, using a <var>mask</var>. </p>
+<p>The <var>mask</var> is calculated from the most significant bit of each qword of the <var>mask</var> register. If any of the bits of the mask are set to zero, the corresponding value from the float64 vector is not loaded, and the corresponding field of the destination memory location is left unchanged.</p>
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3><p>Stores are atomic. Faults do not occur for memory locations for which all corresponding mask bits are set to zero.</p>
+</div></p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-F0208F05-0186-4FFD-ADD8-9E4BB5790EC7"><h2>Returns</h2><p> Nothing.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44.htm">Intrinsics for Load Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

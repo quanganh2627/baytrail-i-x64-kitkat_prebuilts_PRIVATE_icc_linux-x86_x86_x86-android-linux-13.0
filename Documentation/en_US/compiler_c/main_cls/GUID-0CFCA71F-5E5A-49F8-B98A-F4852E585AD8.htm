@@ -1,0 +1,183 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fvisibility">
+<meta name="abstract" content="Specifies the default visibility for global symbols or the visibility for symbols in a file.">
+<meta name="description" content="Specifies the default visibility for global symbols or the visibility for symbols in a file.">
+<meta name="DC.subject" content="-fvisibility compiler option, symbol visibility, option specifying">
+<meta name="keywords" content="-fvisibility compiler option, symbol visibility, option specifying">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0CFCA71F-5E5A-49F8-B98A-F4852E585AD8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fvisibility</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fvisibility"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fvisibility"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0CFCA71F-5E5A-49F8-B98A-F4852E585AD8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fvisibility</h1>
+<!--Specifies the default visibility for global symbols or the visibility for symbols in a file. --><div><p>Specifies the default visibility for global symbols or the visibility for symbols in a file. </p>
+
+<div class="section" id="GUID-F32C0F75-3BAE-4E9B-B825-2349ECE679C4"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Data &gt; Default Symbol Visibility</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-1C4EE568-59FF-441E-B663-1A9A01617C30"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-925B6B2E-56DB-49FC-B160-C0BEA873E1DE"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fvisibility</span><span class="oper">=</span><span class="var">keyword</span></p><p><span class="kwd">-fvisibility-</span><span class="var">keyword</span><span class="oper">=</span><span class="var">filename</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-863F9D52-A44A-4E24-828F-6A6C87C2DD67"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the visibility setting. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">default</span></p></td>
+
+<td valign="top" class="noborder">
+<p>Sets visibility to default.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">extern</span></p></td>
+
+<td valign="top" class="noborder"><p>Sets visibility to extern.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">hidden</span></p></td>
+
+<td valign="top" class="noborder"><p>Sets visibility to hidden.</p>
+</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">protected</span></p></td>
+
+<td valign="top" class="noborder"><p>Sets visibility to protected. This value is not available on OS X* systems.</p>
+</td>
+
+</tr></table>
+</td>
+</tr></table>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is the pathname of a file containing the list of symbols whose visibility you want to set. The symbols must be separated by whitespace (spaces, tabs, or newlines).</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9AC3ED24-A264-4C63-99AF-2B591DEE2F33"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr>
+<td valign="top" width="30%" class="noborder"><p>-fvisibility=default</p></td>
+<td valign="top" class="noborder"><p>The compiler sets visibility of symbols to default.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-2F98C18F-DE66-4246-9394-3CEA34F0BCDF"><h2>Description</h2><p>This option specifies the default visibility for global symbols (syntax <span class="option">-fvisibility=</span><var>keyword</var>) or the visibility for symbols in a file (syntax <span class="option">-fvisibility-</span><var>keyword=filename</var>). </p>
+<p>Visibility specified by <span class="option">-fvisibility-</span><var>keyword=filename</var> overrides visibility specified by <span class="option">-fvisibility=</span><var>keyword</var> for symbols specified in a file.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D981C583-5F5A-466A-8E45-84D04952689E" frame="void" border="1" rules="none" cellspacing="2"><thead align="left">
+<tr> 
+<th class="noborder" align="left" valign="top" width="50%" id="d37410e182"><p>Option</p>
+</th>
+ 
+<th class="noborder" align="left" valign="top" width="50%" id="d37410e186"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> 
+<tr> 
+<td class="noborder" valign="top" width="50%" headers="d37410e182 ">
+<p><span class="option">-fvisibility=default</span><br><span class="option">-fvisibility-default</span><var>=filename</var></p>
+</td>
+ 
+<td class="noborder" valign="top" width="50%" headers="d37410e186 "><p>Sets visibility of symbols to default. This means other components can reference the symbol, and the symbol definition can be overridden (preempted) by a definition of the same name in another component.</p>
+</td>
+ </tr>
+ 
+<tr> <td class="noborder" valign="top" width="50%" headers="d37410e182 "><p><span class="option">-fvisibility=extern</span><br><span class="option">-fvisibility-extern</span><var>=filename</var></p>
+</td>
+ 
+<td class="noborder" valign="top" width="50%" headers="d37410e186 "><p>Sets visibility of symbols to extern. This means the symbol is treated as though it is defined in another component. It also means that the symbol can be overridden by a definition of the same name in another component.</p>
+</td>
+ </tr>
+ 
+<tr> <td class="noborder" valign="top" width="50%" headers="d37410e182 ">
+<p><span class="option">-fvisibility=hidden</span><br><span class="option">-fvisibility-hidden</span><var>=filename</var></p>
+</td>
+ 
+<td class="noborder" valign="top" width="50%" headers="d37410e186 "><p>Sets visibility of symbols to hidden. This means that other components cannot directly reference the symbol. However, its address may be passed to other components indirectly.</p>
+</td>
+ </tr>
+ 
+
+<tr> 
+<td class="noborder" valign="top" width="50%" headers="d37410e182 ">
+<p><span class="option">-fvisibility=protected</span><br><span class="option">-fvisibility-protected</span><var>=filename</var></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d37410e186 "><p>Sets visibility of symbols to protected. This means other
+components can reference the symbol, but it cannot be overridden by
+a definition of the same name in another component.
+This value is not available on OS X* systems.</p>
+</td>
+ </tr>
+</tbody>
+</table>
+</div>
+<p>If an <span class="option">-fvisibility</span> option is specified more than once on the command line, the last specification takes precedence over any others.</p>
+<p>If a symbol appears in more than one visibility <var>filename</var>, the setting with the least visibility takes precedence.</p>
+<p>The following shows the precedence of the visibility settings (from greatest to least visibility):</p>
+<ul type="disc" id="GUID-23210B6B-9F94-43B4-8781-BE988513AF96"><li><p><span class="keyword">extern</span></p>
+</li>
+<li><p><span class="keyword">default</span></p>
+</li>
+<li><p><span class="keyword">protected</span></p>
+</li>
+<li><p><span class="keyword">hidden</span></p>
+</li>
+</ul>
+<p>Note that <span class="keyword">extern</span> visibility only applies to functions. If a variable symbol is specified as <span class="keyword">extern</span>, it is assumed to be <span class="keyword">default</span>.</p>
+</div>
+
+<div class="section" id="GUID-0FAD7E4D-BA24-4288-AF7A-290197EE1496"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_BCF69A48D3E7429E80AA82F5D70098D6"><a name="EXAMPLE_BCF69A48D3E7429E80AA82F5D70098D6"><!-- --></a><h2>Example</h2><p>A file named <span class="filepath">prot.txt</span> contains symbols a, b, c, d, and e. Consider the following:</p>
+<pre>-fvisibility-protected=prot.txt</pre><p>This option sets <span class="keyword">protected</span> visibility for all the symbols in the file. It has the same effect as specifying <span class="option">fvisibility=protected</span> in the declaration for each of the symbols.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

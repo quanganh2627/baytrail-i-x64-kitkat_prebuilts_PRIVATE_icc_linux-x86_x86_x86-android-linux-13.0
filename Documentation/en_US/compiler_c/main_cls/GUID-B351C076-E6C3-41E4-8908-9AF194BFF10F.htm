@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="How Reducers Work">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, reducers">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, reducers">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B351C076-E6C3-41E4-8908-9AF194BFF10F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>How Reducers Work</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_reducers_work"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B351C076-E6C3-41E4-8908-9AF194BFF10F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+	<h1 class="topictitle1">How Reducers Work</h1>
+
+	
+	<div>
+		<p>An explanation of the mechanisms and semantics of reducers should help the more advanced programmer understand the rules governing the use of reducers as well as provide the background needed to write custom reducers. </p>
+
+		<p> Reducers are designed to support the parallel execution of a "reduction" algorithm: </p>
+
+		<p> <ol id="GUID-5C71637F-1976-4BC2-88DE-81F5D9C24EDC">
+			<li><p>There is an <em>accumulator variable x</em> with an <em>initial value a<sub>0</sub> </em>. </p>
+</li>
+
+			<li><p>There is a <em>reduction operation OP</em>. </p>
+</li>
+
+			<li><p><em> OP</em> is an <em>associative</em> operation, i.e., <em>x OP y = y OP x</em>. </p>
+</li>
+
+			<li><p><em> OP</em> has an <em>identity</em> value <em>I</em>, i.e., <em>x OP I = I OP x = x</em>. </p>
+</li>
+
+			<li><p>The code repeatedly updates the variable, with each update having the form <em>x = x OP a<sub>i</sub> </em>. After <em>N</em> updates, <em>x</em> contains <em>a<sub>0</sub> OP a<sub>1</sub> OP a<sub>2</sub> OP … OP a<sub>N</sub> </em>. </p>
+</li>
+
+		</ol>
+ </p>
+
+		<p> Common operations that fit this pattern include addition and multiplication, bitwise AND and OR, set union, list append, and string concatenation. (In mathematics, the combination of a type, an associative operation on that type, and an identity for that operation is called a <em>monoid</em>.) </p>
+
+		<p> A reducer object automatically manages multiple copies of an accumulator variable, called the "view," as parallel strands of execution are spawned and synced. Each strand executing in parallel gets its own view, so there cannot be data races between modifications of the accumulator variable in different strands: </p>
+
+		<p> <ol id="GUID-4F60176E-1A60-4D53-AB3B-4433A8DBBB70">
+			<li> Initially, a reducer contains a single view, called the "leftmost" view. </li>
+
+			<li><p> The reducer creates a new instance of the view for each strand that executes in parallel with the leftmost strand. The new view instance is initialized to the reduction operation's identity value by the reducer's identity() function. </p>
+</li>
+
+			<li><p> All accesses to the reducer's view in a strand apply to the view instance that the reducer created for that strand. </p>
+</li>
+
+			<li><p> When a spawned strand finishes executing and merges back into its parent, the reducer's reduce() function combines the values of the two strands' views with the reduction operation, leaving the result in the surviving strand's view instance. The reducer then destroys the terminated strand's view. </p>
+</li>
+
+			<li><p>When all spawned strands have finished executing, the final result of the computation remains in the leftmost view. </p>
+</li>
+
+		</ol>
+ </p>
+
+		<p> As a result of this process, each strand computes a subsequence of the total sequence of operations (<em>I OP a<sub>i</sub> OP a<sub>i+1</sub> OP … OP a<sub>i+m</sub> </em> = <em>a<sub>i</sub> OP a<sub>i+1</sub> OP … OP a<sub>i+m</sub> </em>) in its view, and when the computation is finished, the leftmost view contains the expected result (<em>a<sub>0</sub> OP a<sub>1</sub> OP a<sub>2</sub> OP … OP a<sub>N</sub> </em>). The order of the values is the same as in the serial computation, and since the operation is associative, it doesn't matter what order the subsequence totals are combined in. </p>
+
+		<p> <strong> Lazy View Creation</strong> </p>
+
+		<p> The reason for creating private view instances for strands is to eliminate data races. A strand needs its own instance of a view only if it accesses the view and also executes in parallel with some other strand. Creating, managing, and merging views is not expensive, but it isn't free, so the scheduler avoids creating views unnecessarily. The rule is that: </p>
+
+		<p> <ol id="GUID-DA5CD751-EB12-4831-AC1F-453657144E07">
+			<li> A reducer does not create a new view instance for a strand unless the strand has been stolen. If the strand is not stolen, it can safely use the same view as its child. </li>
+
+			<li><p>The reducer does not create a new view instance until the first time the view is accessed in a stolen strand. If the view is never accessed in the strand, a new instance is not created. </p>
+</li>
+
+		</ol>
+ </p>
+
+		<p><strong> Example: Using reducer_list_append&lt;&gt;</strong> </p>
+
+		<p> This example is a simple program that uses <samp class="codeph">reducer_list_append&lt;&gt;</samp> to accumulate a list of strings in parallel. For list appends, the identity value is the empty list, and the reduction function concatenates the left and right lists. </p>
+
+		<pre>1 #include &lt;cilk/cilk.h&gt;
+ 2 #include &lt;cilk/reducer_list.h&gt;
+ 3
+ 4 cilk::reducer_list_append&lt;std::string&gt; lr();
+ 5
+ 6 void depart()
+ 7 {
+ 8   lr-&gt;push_back("leave");
+ 9 }
+10
+11 int main()
+12 {
+13   lr-&gt;push_back("Don’t ");
+14   cilk_spawn depart();
+15   lr-&gt;push_back(" the path!");
+16   cilk_sync;
+17   std::list&lt;std::string&gt; result = list.get_value();
+18 }</pre>
+		<p> First, consider the serial case when the execution occurs on a single processor. </p>
+
+		<p> <ol id="GUID-08E83134-33F5-478D-9346-7D4D17E46483">
+			<li> The leftmost view is initialized to an empty list when the reducer is created. </li>
+
+			<li><p> The string <samp class="codeph">"Don't "</samp> is appended to the list at line 13. </p>
+</li>
+
+			<li><p> At the spawn, execution continues in the <samp class="codeph">depart()</samp> strand, and <samp class="codeph">"leave" </samp>is appended to the list at line 8. </p>
+</li>
+
+			<li><p> With only one worker, there is no steal, so a new view is not created for the continuation strand, and <samp class="codeph">" the path!"</samp> is appended to the list at line 15. </p>
+</li>
+
+			<li><p> Since there is only one view, there is nothing to do at the sync, and the final content of the leftmost view is {<samp class="codeph">"Don't "</samp>, <samp class="codeph">"leave"</samp>, <samp class="codeph">" the path!"</samp>} . </p>
+</li>
+
+		</ol>
+ </p>
+
+		<p> Now consider what happens when the program is run with two workers. </p>
+
+		<p> <ol id="GUID-6B8481EC-D2A6-42D3-84FF-136C8AA30BE9">
+			<li> The leftmost view is initialized to an empty list when the reducer is created. </li>
+
+			<li><p> The string <samp class="codeph">"Don't "</samp> is appended to the list at line 13. </p>
+</li>
+
+			<li><p> At the spawn, execution continues in the <samp class="codeph">depart()</samp> strand, and <samp class="codeph">"leave"</samp> is appended to the list at line 8. </p>
+</li>
+
+			<li><p> Meanwhile, the second worker steals the continuation strand, so when the view is accessed at line 15, the reducer creates a new view and initializes it to the empty list. </p>
+</li>
+
+			<li><p><samp class="codeph"> " the path!"</samp> is appended to the list in the private view of the continuation strand at line 15. </p>
+</li>
+
+			<li><p> At the sync, the content of the right view, {<samp class="codeph"> "the path!"</samp>} , is appended to the content of the left view, {<samp class="codeph">"Don't", "leave" </samp>}, so the content of the left most view becomes {<samp class="codeph">"Don't ", "leave", " the path!" </samp>}, and the right view is deleted. </p>
+</li>
+
+		</ol>
+ </p>
+
+	</div>
+
+	
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

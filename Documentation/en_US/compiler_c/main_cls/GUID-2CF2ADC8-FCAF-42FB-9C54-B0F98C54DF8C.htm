@@ -1,0 +1,145 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Details on Using Lambda Expressions in C++">
+<meta name="DC.subject" content="Lambda Expressions, details on using in C++">
+<meta name="keywords" content="Lambda Expressions, details on using in C++">
+<meta name="DC.Relation" scheme="URI" content="GUID-AE49EE4C-7140-4F31-9A3C-1D06D9E87D98.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-835983D0-9779-422E-B339-0205358CAACC.htm#GUID-835983D0-9779-422E-B339-0205358CAACC">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2CF2ADC8-FCAF-42FB-9C54-B0F98C54DF8C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Details on Using Lambda Expressions in C++</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_lambda_desc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2CF2ADC8-FCAF-42FB-9C54-B0F98C54DF8C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Details on Using Lambda Expressions in C++</h1>
+ 
+   
+  <div> 
+    <p>This topic explains in some detail about using Intel's implementation of C++ Lambda expressions. In order to use lambda expressions, you need to request 
+  <span class="option">c++0x</span> with the command-line option 
+  <span class="option">-std</span> or 
+  <span class="option">/Qstd</span>: 
+  </p>
+ 
+  <p>On Windows* systems: 
+  <span class="option">/Qstd=c++0x</span> 
+  </p>
+ 
+  <p>On Linux* systems: 
+  <span class="option">-std=c++0x</span> 
+  </p>
+ 
+  <div class="section" id="GUID-26E57B04-3F33-4693-A0C2-58714896173D"><h2 class="sectiontitle">Introducing Lambda Expressions in Code</h2> 
+     
+    <p>Lambda expressions are introduced in the code by [<em>lambda-capture<sub>opt</sub></em>]. If the expression does not capture any local variables or references with automatic storage duration, 
+      <em>lambda-capture<sub>opt</sub></em> can be empty, leaving 
+      <samp class="codeph">[]</samp> as the introducer. 
+    </p>
+ 
+    <p>For example, the lambda expression 
+    </p>
+ 
+    <p> 
+      <pre>[](int x) {return x%3==0;}</pre> 
+    </p>
+ 
+    <p>is equivalent to the expression 
+      <samp class="codeph">unique(),</samp> where 
+      <samp class="codeph">unique</samp> is a secret identifier generated and defined by the compiler as 
+    </p>
+ 
+    <pre>class unique {</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;public:</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;bool operator()(int x ) const {return x%3==0;}</pre> 
+    <pre>&nbsp;};</pre> 
+  </div>
+ 
+  <div class="section" id="GUID-EF5A2B2D-8BCF-4FB4-B73D-25615D8B85F9"><h2 class="sectiontitle">Parameter List in Lambda Expressions</h2> 
+     
+    <p>The 
+      <em>lambda-parameter-declaration</em> follows the 
+      <em>lambda-introducer</em>. If the parameter list is empty, the parentheses can be omitted. For example, the following lambda expressions are equivalent. 
+    </p>
+ 
+    <pre>[] {return rand();}</pre> 
+    <pre>[]() {return rand();}</pre> 
+  </div>
+ 
+  <div class="section" id="GUID-7426C285-FE2B-42E7-B8BB-C5DA7996C09C"><h2 class="sectiontitle">Body and Return Type of Lambda Expressions</h2> 
+     
+    <p>The body of a lambda expression is a compound statement. A return type 
+      <em>T</em> for a lambda expression can be specified by writing 
+      <em><samp class="codeph">-&gt;T</samp></em> after the parameter list. 
+    </p>
+ 
+    <p>For example, the following lambda expressions are equivalent: 
+    </p>
+ 
+    <p> 
+      <pre>[](int x) {return x%3==0;}</pre> 
+      <pre>[](int x) -&gt; bool {return x%3==0;}</pre> 
+      <pre>[](int x) -&gt; bool {if( x%3==0 ) return true; else return false;}</pre> 
+    </p>
+ 
+    <p>If the return type is not explicitly specified, the return type is 
+      <samp class="codeph">void</samp> unless the body has the form 
+      <samp class="codeph">{return expression;}</samp>. In such a case the return type is the type of the expression. Consider the following example: 
+    </p>
+ 
+    <p> 
+      <pre>[](int x) { if (x % 3 == 0) return true; else return false; }</pre> 
+    </p>
+ 
+    <p>This expression is an error because you can't return a boolean value from a function returning void. 
+    </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-329A93E6-AF69-4620-AE60-6D9F0FE5A00B"><h2 class="sectiontitle">Exception Specification</h2> 
+     
+    <p>A lambda expression may include an exception specification after the parameter list and before the return type specification. The parameter list is necessary if there is an exception specification. 
+    </p>
+ 
+    <p>The following lambda expressions specify that they do not throw exceptions: 
+    </p>
+ 
+    <pre>[](int x) throw() -&gt; bool {return x%3==0;}</pre> 
+    <pre>[]() throw() {return rand();}</pre> 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AE49EE4C-7140-4F31-9A3C-1D06D9E87D98.htm">Intel's C++ lambda Extensions</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-835983D0-9779-422E-B339-0205358CAACC.htm#GUID-835983D0-9779-422E-B339-0205358CAACC">Understanding [lambda-capture] 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

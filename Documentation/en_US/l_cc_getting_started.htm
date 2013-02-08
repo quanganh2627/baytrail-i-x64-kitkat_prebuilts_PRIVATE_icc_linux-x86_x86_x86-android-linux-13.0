@@ -1,0 +1,631 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head xmlns:MSHelp="http://www.microsoft.com/MSHelp/">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Language" content="en-US">
+
+<!--link rel="stylesheet" type="text/css" href="resources/styles_w.css"-->
+<title>Getting Started with the Intel(R) C++ Compiler for Android* OS</title>
+<style>
+body { 
+	color:#333333;
+	background-color:#ffffff; 
+	font-family: Verdana, Arial, sans-serif; 
+	font-size: 10pt; 
+	margin-left: 30px;
+}
+p { 
+	font-size: inherit; 
+	line-height: 120%; 
+	margin-top: 0; 
+	margin-bottom: 5pt;
+}
+p.Note { 
+	margin-top:0; 
+	margin-left:25px;
+	margin-bottom:10pt;
+}
+p.twoColumnListHead { 
+	color:#000000; 
+	padding:4px; 
+	text-align:left; 
+	width:auto; 
+	margin-top:0; 
+	margin-bottom:0; 
+	margin-left:0;
+	font-weight:bold;
+}	
+p.pRelatedLink { 
+	margin-top: 0; 
+	margin-bottom: 0;
+}
+p.pRelatedLink { 
+	margin-top: 0px; 
+	margin-bottom: 0px;
+}
+table { 
+	margin-bottom:5pt; 
+	border-collapse:collapse; 
+	margin-top:0.3em; 
+	font-size: 10pt;
+}	
+td { 
+	border: 1px #bababa solid; 
+	vertical-align: top; 
+	font-size: inherit;
+	margin-bottom: 0px;
+}
+td, P.TableCell, td p{ 
+	margin-top: 0; 
+	margin-left: 0;
+	padding: 5px; 
+	text-align: left; 
+	font-size: inherit; 
+	line-height: 120%;
+}
+tr { 
+	vertical-align:top;
+}
+td.noBorder { 
+	border:0px none;
+}
+th, th h3{ 
+	padding: 4px; 
+	text-align: left; 
+	background-color: #555555; 
+	font-weight: bold; 
+	margin-top: 0; 
+	margin-bottom: 0; 
+	color: #FFFFFF; 
+	font-size: 11pt;	
+}
+th { 
+	border:1px #bababa solid;
+}
+th h3.TableHead, th h3 { 
+	padding:0;
+}		
+h3.TableHead{ 
+	padding: 4px; 
+	text-align: left; 
+	background-color: #555555; 
+	font-weight: bold; 
+	margin-top: 0; 
+	margin-bottom: 0; 
+	color: #FFFFFF; 
+	font-size: 11pt;	
+}
+h1 {
+	color: #0860a8;
+	font-size: 15pt;
+	padding-bottom: 1px;
+	margin-left: 0pt;
+	margin-right: 1pt;
+	margin-bottom: 0px;
+	border-bottom: 1px solid #0860A8;
+	font-weight: normal;
+}
+h1.title { 
+	border-bottom:0 none; 
+	margin-left:0;
+	font-weight: normal;
+}
+h2 {
+	color: #0860a8;
+	font-weight: lighter;
+	margin-top: 5pt;
+	margin-bottom: 0;
+	font-size: 13pt;
+}
+h3 {
+	color: #333333;
+	font-weight: bold;
+	margin-top: 5pt;
+	margin-bottom: 0;
+	font-size: 10.5pt;
+}
+h3.NoteTipHead {
+	color:#006699;
+	margin-top:11pt;
+	padding-bottom:0;
+	line-height: 18px;
+	text-transform: uppercase;
+}
+h3.NoteTipHead img {
+	vertical-align: middle;
+}
+ul { 
+	margin-bottom: 1em; 
+	font-size: inherit; 
+	margin-top: 0px; 
+	line-height: 100%; 
+}
+ul ol { 
+	margin-bottom: 0em; 
+	font-size: inherit;
+	list-style-type: decimal;
+}
+ul ul { 
+	margin-bottom:0px; 
+	font-size:inherit;
+}
+ul.Note {
+	margin-left:25px;
+}
+td ul { 
+	font-size:inherit;
+}
+ol { 
+	margin-bottom: 1em; 
+	font-size: inherit; 
+	margin-top: 0px; 
+	line-height: 100%;
+	list-style-type: decimal;
+}
+ol ol { 
+	list-style: lower-alpha; 
+	margin-bottom: 0em; 
+	font-size: inherit;
+}
+ol.Note {
+	margin-left:25px;
+}
+td ol { 
+	font-size:inherit;
+}
+ol ul { 
+	margin-bottom:0px; 
+	font-size:inherit;
+}
+li { 
+	font-size: inherit; 
+	margin-top: 0px; 
+	line-height: 130%;
+}
+li p, ol p, ul p { 
+	margin-bottom:0.2em; 
+	margin-top:0.2em; 
+	margin-left:0; 
+	padding-left:0; 
+	font-size:inherit;
+}
+li table, td table, dd table { 
+	margin-left:0;
+}
+indent li p { 
+	margin-bottom: 0.2em; 
+	margin-top: 0.2em; 
+	margin-left: -2em;
+}
+P.Preformatted, pre { 
+	line-height: 90%; 
+	x-text-tab-stops: repeat 1in; 
+	margin-top:0; 
+	margin-bottom:0; 
+	font-size: 10pt; 
+	font-family: "Courier New", Courier, monospace; 
+	background-color: #eeeeee;
+}
+td P.Preformatted, td pre { 
+	line-height: 90%; 
+	x-text-tab-stops: repeat 1in; 
+	margin-top:0; 
+	margin-bottom:0; 
+	margin-left: 0px;
+	font-size: 10pt; 
+	font-family: "Courier New", Courier, monospace; 
+	background-color: #eeeeee;
+}
+SPAN.Code, .Code { 
+	font-family: "Courier New", Courier, monospace;
+}
+blockquote { 
+	margin-top: 0; 
+	margin-bottom: 0;
+}
+HR { 
+	color: #555555; 
+	border: 0; 
+	background: #555555; 
+	height: 1px; 
+	margin-left: 0;
+}
+SPAN.Big { 
+	font-weight:bold; 
+	font-size:105%;
+}
+.welcomeImg { 
+	padding-left: 0px; 
+	padding-bottom: 0px; 
+	margin-left: 0px;
+}
+.IntelExt {
+	color:#008080;
+} 
+dl { 
+	margin-bottom: 1em; 
+	font-size: inherit; 
+	margin-top: 0px; 
+	line-height: 150%; 
+}	
+dt { 
+	font-weight: bold; 
+	margin-top: 1em;
+}
+dd {
+	font-size: inherit; 
+	margin-left: 0px; 
+}
+dd p {
+	margin-bottom: 0.2em; 
+	margin-top: 0.2em; 
+	font-size: inherit;
+}
+.link_buttons {
+	background-color: #EEEEEE;
+	border-color: #EEEEEE;
+	border-width: 1px;
+	padding: 4px;
+}
+a:link {
+	color: #0860a8;
+	text-decoration: none;
+}
+a:visited { 
+	color:#0860a8;
+	text-decoration: none;	
+}
+a:active {
+	color: #0860a8;
+	text-decoration: underline;
+}
+a:hover {
+	color: #0860a8;
+	text-decoration: underline;
+}
+#mainmenu {
+ text-align: left;
+ font-family: verdana, tahoma, Arial, "sans serif";
+ width: 200px;
+ color: #0860a8;
+ background-color: #f5f5f5;
+ border: 1px #0860a8 solid;
+ padding-top: 10px;
+ padding-right: 10px;
+ padding-bottom: 10px;
+ padding-left: 10px;
+ float: right;
+ z-index: 0;
+ margin: .1em;
+}
+
+#mainmenu a.mainmenulinks, a.mainmenulinks:visited, a.mainmenulinks:hover, a.mainmenulinks:active {
+ font-family: verdana, Helvetica, sans-serif;  
+ font-style: normal; 
+ font-size: 8pt; 
+ font-weight: normal; 
+ color: #000000;
+ text-decoration: underline;
+}
+
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+</style>
+
+	  
+	  </head>
+
+<body>
+<h1 class="firsttitle">Getting Started with the Intel<font face="Times New Roman">®</font> C++ Compiler for Android* OS</h1>
+<p align="center">Document Number: 328001-003</p> 
+
+
+
+
+<div id=mainmenu style="width: 250px; height: 299px">
+<p><b>Contents</b></p>
+	<p><a class="mainmenulinks" href="#using">Using the Intel<font face="Times New Roman">®</font> C++ Compiler as a Stand-Alone Tool</a></p>
+	<p><a class="mainmenulinks" href="#enabling">Enabling the Intel toolchain within the NDK Build System</a></p>
+	<p><a class="mainmenulinks" href="#building">Building a Sample Application with the Intel</a><font face="Times New Roman"><a class="mainmenulinks" href="#using">®</a>
+	</font><a class="mainmenulinks" href="#building">C++ Compiler for Android* OS</a></p>
+	<p><a class="mainmenulinks" href="#running">Running Applications Built with ICC on a Target Device</a></p>
+	<p><a class="mainmenulinks" href="#eclipse">Using Intel® C++ Compiler for Android* with Eclipse</a></p>
+	<p><a class="mainmenulinks" href="#pgo">Using PGO to Improve Android* OS Application Performance</a></p>
+	<p><a class="mainmenulinks" href="#information">Next Steps</a></p>
+	<p><a class="mainmenulinks" href="#legal">Disclaimer and Legal Information</a></p>
+</div>
+
+
+<p>Intel<font face="Times New Roman">®</font> C++ Compiler v13.0 for Android * OS is a cross-compiler for software developers to create C 
+and C++ applications on host Linux* operating systems targeting for the IA-32 architecture-based Android* operating system.</p>
+<p>You can develop applications for IA-32 systems running on Android* OS in one of two ways: </p>
+<ul>
+	<li class="p">
+	<span lang="EN-US" style="font-size: 10.0pt; font-family: Verdana,sans-serif; color: #333333">
+	Using the Intel C++ Compiler as a stand-alone tool</span>  </li>
+	<li class="p">Enabling the Intel toolchain within the Android NDK build 
+	system</li>
+</ul>
+<p>The following sections provide general guidelines for both methods.</p>
+
+<h2><a name="using"></a>Using the Intel<font face="Times New Roman">®</font> C++ Compiler as a Stand-Alone Tool</h2>
+ 
+ 
+<p> The Intel C++ Compiler  requires a GNU compiler toolchain for the Android OS to work.</p>
+<p>You can fulfill the requirement in one of two ways:</p>
+<ul>
+	<li>Install the Android NDK from
+	<a href="http://developer.android.com/sdk/ndk/index.html">http://developer.android.com/sdk/ndk/index.html</a> (The link refers to the latest version of NDK 
+	- 
+	r8b.) 
+	</li>
+	<li>Use the GNU toolchain which is included in the Android source repository</li>
+</ul>
+<!--  <p class="Note"><b>NOTE</b> <br>
+The direct link to NDK r7 download is <a href="http://dl.google.com/android/ndk/android-ndk-r7-linux-x86.tar.bz2"> 
+http://dl.google.com/android/ndk/android-ndk-r7-linux-x86.tar.bz2</a>. If you use an NDK 
+other than r7, you might need to adjust some of the steps below.</p>-->
+<h3>Setting Environment Variables</h3>
+<p>You must set the environment variables to point the Intel C++ Compiler to the 
+the GNU toolchain. 
+The correct method depends on whether you use the NDK or the Android* 
+Open Source Project (AOSP) environment.</p>
+<p>Using the NDK environment:</p>
+<P>export NDK= #set to the NDK root directory (example: /export/JB_4.1.1_r4)</P>
+<P class="Preformatted">
+<span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">
+
+export ANDROID_SYSROOT=$NDK/platforms/android-14/arch-x86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+export ANDROID_GNU_X86_TOOLCHAIN=$NDK/toolchains/x86-4.6/prebuilt/linux-x86 </span></P>
+<p>Using the AOSP environment:</p>
+<p>export TOPDIR= #set to the AOSP root directory (example: /export/ICS_WW35) </p>
+<p class="Preformatted">
+<span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">
+
+export ANDROID_SYSROOT=$TOPDIR/prebuilts/ndk/android-ndk-r8b/platforms/android-14/arch-x86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+export ANDROID_GNU_X86_TOOLCHAIN=$TOPDIR/prebuilts/linux-x86/toolchain/i686-android-linux-4.6</span></p>
+<h3>Setting PATH to Intel Compiler Binaries</h3>
+<p>You must set the PATH environment variable to include a path to Intel C++ 
+Compiler binaries. One method for setting the environment variables quickly is 
+to source the environment script, as shown below:</p>
+<P><span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">
+source iccvars.sh
+</SPAN></P>
+<h2><a name="enabling"></a>Enabling the Intel toolchain within the Android NDK Build System</h2>
+<div id="GUID-E78E910A-CC53-4AF3-8128-BCF0BEB09F4E" class="section">
+	<p>Follow these steps to enable the ICC toolchain inside the NDK build 
+	system: </p>
+	<ol>
+		<li>
+		<p>Install Intel C++ Compiler</p>
+		<li>
+		<p>Set NDK environment variable, for example:<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')"><br>
+		NDK=/work/android-ndk-r8b</span> 
+ </p>
+		</li>
+		<li>
+		<p>Invoke the script <font face="Courier New" size="2">integrate_into_ndk.sh</font>:<br>
+		<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">source /opt/intel/CCAndroid13.0.0.XXX/bin/integrate_into_ndk.sh</span></p>
+	</ol>
+	<p></p>
+<h2><a name="building"></a>Building a Sample Application with the Intel<font face="Times New Roman">®</font> C++ Compiler 
+for Android* OS</h2>
+<p>To build a sample application with the Intel compiler, you need to specify the Intel compiler toolchain 
+in the build command. Use the <b>NDK_TOOLCHAIN</b> option and specify &quot;icc&quot;, for example:</p>
+	<p class="Preformatted">NDK_TOOLCHAIN=icc 
+</p>
+<p>&nbsp;</p>
+<p>Here is an example of how to build the application:</p>
+<Ol><li><p>Build the sample hello-jni application from NDK samples: </p>
+<p class="Preformatted"><span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">cd $NDK/samples/hello-jni&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+ndk-build V=1 -B NDK_TOOLCHAIN=icc APP_ABI=x86 # 
+</SPAN></p>
+<p>where:</p>
+		<p><font face="Courier New">V=1</font> 
+<span lang="EN-US" style="font-size: 10.0pt; font-family: Verdana,sans-serif; color: #333333">
+		specifies</span> output command</p>
+		<p><font face="Courier New">-B</font> means rebuild all </p>
+		<p><font face="Courier New">APP_ABI</font> indicates target architecture</p></li>
+<li>Check for errors in the output.</li>
+</Ol>
+
+
+
+<h2><a name="running"></a>Running Applications Built with ICC on a Target Device</h2>
+<p>The Intel C++ Compiler comes with libraries to support math operations and CPU dispatching. 
+Every binary compiled with the Intel compiler must be able to access these libraries.</p>
+<p>
+<span lang="EN-US" style="font-size: 10.0pt; font-family: Verdana,sans-serif; color: #333333">
+One way to provide the access</span> is to add the following line to the jni/Android.mk file for 
+your application:</p>
+<p class="Preformatted">LOCAL_LDFLAGS   := -static-intel</p>
+<h2><a name="eclipse"></a>Using Intel® C++ Compiler for Android* OS with Eclipse*</h2>
+	<p>To use the Intel® C++ Compiler for Android* OS for building NDK based 
+	applications in Eclipse, you must:</p>
+	<ol>
+		<li>Install and integrate the Intel® C++ Compiler for Android* OS into the Android NDK as 
+		described in the previous sections.
+		<li>Install Android Development Tools (ADT) 20.0 or newer into Eclipse 
+		from <a href="http://developer.android.com/tools/sdk/eclipse-adt.html">http://developer.android.com/tools/sdk/eclipse-adt.html</a>.<li>
+		
+										
+Configure the Eclipse project.</ol>
+	<p>You must do the following to configure the Eclipse project:</p>
+	<ol>
+		<li>Add <b>Native Support</b> to your existing Android project. Right 
+		click on your Android project -<b>&gt;Android Tools -&gt; Add Native Support:</b>
+		<p><img src="capture3.png"></p>
+		
+		<li> Open the properties of an existing Android project. To view the 
+		properties dialog, open the <b>Project</b> menu in Eclipse and click on 
+		<b>Properties</b>:
+		<p><img src="Capture.PNG"></p></li>
+		<li>Navigate to the <b>C/C++ Build -> Environment</b> option:<p><img src="Capture2.PNG"></p></li><p>&nbsp;</p>
+
+		<li>Add the following environment variables:<p>&nbsp;</p>
+		<p class="Preformatted">NDK= # set NDK root (example: NDK=/export/android-ndk-r8)
+		<br>
+		ANDROID_SYSROOT="${NDK}/platforms/android-14/arch-x86"
+		<br>
+		ANDROID_GNU_X86_TOOLCHAIN="${NDK}/toolchains/x86-4.6/prebuilt/linux-x86" </p></li><p>&nbsp;</p>
+
+		<li>Add the following line to the jni/Application.mk file:<p>&nbsp;</p>
+<p class="Preformatted">APP_ABI := x86<br>NDK_TOOLCHAIN := icc</p></li><p>&nbsp;</p>
+
+		<li>Open the Project menu and click on <b>Clean.</b> </li><p>&nbsp;</p>
+
+		<li>Click on <b>Build</b> or <b>Run </b>to use ICC to build the native parts of the Android project.</li>
+</ol>
+<p>See <i>Using Eclipse</i> section in the <i>Intel®
+<span xmlns:MSHelp="http://www.microsoft.com/MSHelp/">C++ Compiler XE</span> 
+13.0 User and Reference Guides</i> supplied with the package for 
+information on using the Intel(R) C++ 
+Compiler in Eclipse* on Linux* OS.</p>
+
+<h2><a name="PGO"></a>Using PGO to Improve Android* OS Application Performance</h2>
+	<ol>
+		<li>Add the following options to the CFlags in the jni/Android.mk file: <p>&nbsp;</p>
+
+		<p class="Preformatted">LOCAL_CFLAGS    := -prof-gen -prof-dir /sdcard
+</p></li><p>&nbsp;</p>
+
+<li>Add the WRITE_EXTERNAL_STORAGE permission to allow the application writing the PGO output to the 
+<font face="Courier New">sdcard</font> folder. Add the following line to the AndroidManifest.xml file:<p>&nbsp;</p>
+<p class="Preformatted">&lt;uses-permission 
+android:name=<span class="code-quote">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; 
+		/&gt;</p>&nbsp;&nbsp;<p></p></li>
+<li>Ensure that the profiling data gets written. The profiling data is written in default mode only if the application exits. Usually an application on Android* does not exit. 
+Use the following options to enforce the application exit or to workaround this issue:</li><ol>
+		<li><b>Option 1:</b> Call exit from JAVA code:<br>
+&nbsp;<p class="Preformatted">System.exit(0);</p><p>&nbsp;</p>
+		<li><b>Option 2:</b> Explicitly dump PGO data from the native code:<br>
+&nbsp;<p class="Preformatted">#include &lt;pgouser.h&gt;<br>
+		_PGOPTI_Prof_Dump_All();
+		<br></p><p>&nbsp;</p>
+
+		<li><b>Option 3:</b> Use environment variable to write the performance data regularly while the application is running. To make the environment variables available 
+		for all applications, add them to the <font face="Courier New">init.rc</font> file of the Android Image:<br>
+&nbsp;<p class="Preformatted">
+		export INTEL_PROF_DUMP_INTERVAL 5000<br>
+		export INTEL_PROF_DUMP_CUMULATIVE 1</p>
+
+
+
+
+
+	</ol>
+	
+
+		<p class="Note">NOTE
+		<br>
+				The value <font face="Courier New">INTEL_PROF_DUMP_INTERVAL</font> is measured in 
+		microsecond and should not be greater than <font face="Courier New">INT_MAX</font>.</p>
+
+<li>Copy the generated dyn files from the target to the host in the source 
+directory of the application: <p>&nbsp;</p><p class="Preformatted">adb pull ...
+</p></li><p>&nbsp;</p>
+
+<li>Change the CFLAGS in Android.mk file to use the generated dyn files. 
+You can use the <font face="Courier New">-prof-dir</font> parameter to point to 
+a different file location.<br>
+&nbsp;<p class="Preformatted">LOCAL_CFLAGS&nbsp;&nbsp;&nbsp; := -prof-use</p></li>
+		<p>&nbsp;</p>
+</ol>
+	
+<p>See <i>Profile-Guided Optimizations</i> section in the <i>Intel®
+<span xmlns:MSHelp="http://www.microsoft.com/MSHelp/">C++ Compiler XE</span> 
+13.0 User and Reference Guides</i> supplied with the package for 
+information on using PGO for optimizing applications built with the Intel(R) C++ 
+Compiler on Linux* and Windows* operating systems.</p>
+<h2><a name="information"></a>Next Steps</h2>
+<p>Read documentation on the Intel tools at<span style="font-size: 11.0pt; font-family: Helvetica,sans-serif; color: #333333">&nbsp;</span>
+<span lang="EN-US" style="font-size: 12.0pt; font-family: 'Times New Roman',serif"><span style="font-size:11.0pt;font-family:&quot;Helvetica&quot;,&quot;sans-serif&quot;">
+<a target="_blank" style="color: #0860A8; text-decoration: none; text-underline: none; text-line-through: none" href="http://developer.intel.com/software/products/">http://www.intel.com/software/products/</a>.</span>
+</span></p>
+<p>Read the NDK  documentation under $NDK/docs.</p>
+	<p>Read the 
+<i>Installation Guide</i> and <i>Release Notes </i>for information on the 
+	product installation, new and changed features, and issues that are not 
+	described in the product documentation.</p>
+<p>Contact your Intel representative for more information on Intel® System 
+Software Tools for Android* OS.</p>
+<hr>
+<h2><a name="legal">Disclaimer and Legal Information</a></h2>
+
+
+
+<p>
+INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL PRODUCTS. NO 
+LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL 
+PROPERTY RIGHTS IS GRANTED BY THIS DOCUMENT. EXCEPT AS PROVIDED IN INTEL&#39;S TERMS 
+AND CONDITIONS OF SALE FOR SUCH PRODUCTS, INTEL ASSUMES NO LIABILITY WHATSOEVER, 
+AND INTEL DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY, RELATING TO SALE AND/OR USE 
+OF INTEL PRODUCTS INCLUDING LIABILITY OR WARRANTIES RELATING TO FITNESS FOR A 
+PARTICULAR PURPOSE, MERCHANTABILITY, OR INFRINGEMENT OF ANY PATENT, COPYRIGHT OR 
+OTHER INTELLECTUAL PROPERTY RIGHT.
+</p>
+<p>
+
+UNLESS OTHERWISE AGREED IN WRITING BY INTEL, THE INTEL PRODUCTS ARE NOT DESIGNED 
+NOR INTENDED FOR ANY APPLICATION IN WHICH THE FAILURE OF THE INTEL PRODUCT COULD 
+CREATE A SITUATION WHERE PERSONAL INJURY OR DEATH MAY OCCUR.
+
+</p>
+<p>
+
+Intel may make changes to specifications and product descriptions at any time, 
+without notice. Designers must not rely on the absence or characteristics of any 
+features or instructions marked &quot;reserved&quot; or &quot;undefined.&quot; Intel reserves these 
+for future definition and shall have no responsibility whatsoever for conflicts 
+or incompatibilities arising from future changes to them. The information here 
+is subject to change without notice. Do not finalize a design with this 
+information.
+
+</p>
+<p>
+
+The products described in this document may contain design defects or errors 
+known as errata which may cause the product to deviate from published 
+specifications. Current characterized errata are available on request.
+
+</p>
+<p>
+
+Contact your local Intel sales office or your distributor to obtain the latest 
+specifications and before placing your product order.
+
+</p>
+<p>
+
+Copies of documents which have an order number and are referenced in this 
+document, or other Intel literature, may be obtained by calling 1-800-548-4725, 
+or by visiting Intel&#39;s Web Site.
+
+</p>
+<p>
+
+Intel processor numbers are not a measure of performance. Processor numbers 
+differentiate features within each processor family, not across different 
+processor families. See <a href="http://www.intel.com/products/processor_number/">
+http://www.intel.com/products/processor_number</a> for details.
+
+</p><!--This document contains information on products in the design phase of development.--><p></p>
+
+<p>Intel, Intel Atom, and Intel Core are trademarks of Intel Corporation in the 
+U.S. and/or other countries.</p>
+
+<p>*Other names and brands may be claimed as the property of others.
+<p>Microsoft, Windows, and the Windows logo are trademarks, or registered trademarks of Microsoft Corporation in the United States and/or other countries.</p>
+<p>Copyright &copy;2013, Intel Corporation. All rights reserved.</p>
+</body>
+
+</html>

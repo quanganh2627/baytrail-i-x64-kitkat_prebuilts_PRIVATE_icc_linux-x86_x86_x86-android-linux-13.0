@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fbuiltin, Oi">
+<meta name="abstract" content="Enables or disables inline expansion of intrinsic functions.">
+<meta name="description" content="Enables or disables inline expansion of intrinsic functions.">
+<meta name="DC.subject" content="-fbuiltin compiler option, /Oi compiler option">
+<meta name="keywords" content="-fbuiltin compiler option, /Oi compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-AC81D804-037B-4506-BEF0-C9D1D7EAD9A3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fbuiltin, Oi</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fbuiltin"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fbuiltin"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fbuiltin, Oi</h1>
+<!--Enables or disables inline expansion of intrinsic functions.--><div><p>Enables or disables inline expansion of intrinsic functions.</p>
+
+<div class="section" id="GUID-386FE94B-55FA-4C02-8208-C56F7E7CF245"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Enable Intrinsic Functions</strong></p>
+
+	<p class="ide">Linux: 
+								None</p>
+
+	<p class="ide">OS X: 
+								None</p>
+
+</div>
+<div class="section" id="GUID-8B2F8975-B410-49B0-A835-97FD9B9235C5"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-2ACF7FBF-DFC2-4DCE-9637-C73BCD4D167A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fbuiltin</span><span class="delim">[</span><span class="oper">-</span><span class="var">func</span><span class="delim">]</span></p><p><span class="kwd">-fno-builtin</span><span class="delim">[</span><span class="oper">-</span><span class="var">func</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Oi[-]</span></p></td></tr></table></div>
+<div class="section" id="GUID-EEF026F5-4D27-42EB-A2FF-41A42546C049"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>func</var></p></td>
+<td valign="top" class="noborder"><p>A comma-separated list of intrinsic functions.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-7AE96C6D-7C39-4A53-9B3F-EEDA35B4807F"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Inline expansion of intrinsic functions disabled.</p>
+</td>
+</tr></table>
+
+</div>
+
+<div class="section" id="GUID-4555449C-88BD-4016-A085-7E88E50A9519"><h2>Description</h2><p>This option enables or disables inline expansion of one or more intrinsic functions.  If <var>-func</var> is not specified, <span class="option">-fno-builtin</span> disables inline expansion for all intrinsic functions.</p>
+<p>For a list of built-in functions affected by <span class="option">-fbuiltin</span>, search for "built-in functions" in the appropriate gcc* documentation.</p>
+<p>For a list of built-in functions affected by <span class="option">/Oi</span>, search for "/Oi" in the appropriate Microsoft* Visual C/C++* documentation.</p>
+</div>
+
+<div class="section" id="GUID-AE7B51FB-7BF8-4C81-BA19-BC452A3EC27B"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AC81D804-037B-4506-BEF0-C9D1D7EAD9A3.htm">Optimization Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

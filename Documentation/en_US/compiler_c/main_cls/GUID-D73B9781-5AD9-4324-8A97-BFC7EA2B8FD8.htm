@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Integer Vector Intrinsic">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE3, integer vector intrinsic, lddqu_si128, integer vector intrinsics, Intel&reg; Streaming SIMD Extensions 3">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE3, integer vector intrinsic, lddqu_si128, integer vector intrinsics, Intel&reg; Streaming SIMD Extensions 3">
+<meta name="DC.Relation" scheme="URI" content="GUID-C661F93F-A2F3-4D87-A304-89EA33243D8A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D73B9781-5AD9-4324-8A97-BFC7EA2B8FD8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Integer Vector Intrinsic</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse3_integer_vector"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D73B9781-5AD9-4324-8A97-BFC7EA2B8FD8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Integer Vector Intrinsic </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-421FB34C-2458-4BE2-B47A-3AC1D55A784C"> 
+      <p>The integer vector intrinsic listed here is designed for the Intel&reg; Pentium&reg; 4 processor with Streaming SIMD Extensions 3 (Intel&reg; SSE3). 
+      </p>
+ 
+      <p>The prototype for this intrinsic is in the 
+        <span class="filepath">pmmintrin.h</span> header file. 
+      </p>
+ 
+      <p><span class="keyword">R</span> represents the register into which the returns are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4186466A-BF84-4C5A-965A-F3A63DC7C7CE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_lddqu_si128(__m128i const *p);</span></p></div> 
+      <p>Loads an unaligned 128-bit value. This differs from 
+        <samp class="codeph">MOVDQU</samp> in that it can provide higher performance in some cases. However, it also may provide lower performance than 
+        <samp class="codeph">MOVDQU</samp> if the memory value being read was just written. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5282AF4C-2273-4756-A429-490B36FD9D1A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-35846C08-94B0-4702-864D-8D3DD4C27261" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d742098e84"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d742098e84 "> 
+                <p><span class="keyword">*p;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C661F93F-A2F3-4D87-A304-89EA33243D8A.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions 3 (Intel&reg; SSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

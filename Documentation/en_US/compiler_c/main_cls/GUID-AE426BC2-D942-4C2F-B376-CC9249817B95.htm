@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking Run-Time Library Functions">
+<meta name="DC.subject" content="pointer checker, checking run-time library functions, wrappers">
+<meta name="keywords" content="pointer checker, checking run-time library functions, wrappers">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AE426BC2-D942-4C2F-B376-CC9249817B95">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking Run-Time Library Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_check_rtl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_check_rtl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AE426BC2-D942-4C2F-B376-CC9249817B95">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Checking Run-Time Library Functions</h1>
+ 
+   
+  <div> 
+	 <p>The pointer checker provides checking on C run-time library functions that manipulate memory through pointers. It uses a library of functions that either replace the run-time library function, or wrap them with the appropriate pointer checking mechanisms. 
+	 </p>
+ 
+	 <p>For functions that allocate memory, such as the 
+		<span class="keyword">malloc()</span> function or various C++ new functions, the wrapper function create bounds information for the pointers returned by the memory allocator. 
+	 </p>
+ 
+	 <p> For functions that copy memory, such as the 
+		<span class="keyword">memcpy()</span> function, the memory address may contain the pointers along with their associated bounds information. The wrapper functions check for out-of-bounds accesses and ensure that any bounds associated with the copied memory are also copied. 
+	 </p>
+ 
+	 <p>The point checker C run-time function wrappers are located in the 
+		<samp class="codeph">libchkpwrap</samp> library. To determine which C run-time routines are wrapped, you can examine the entry points in the library. For example, the following will yield a list of entry points: 
+	 </p>
+ 
+	 <p>Linux* OS: 
+	 </p>
+ 
+	 <pre>% nm libchkpwrap.a | egrep 'T __chkp_'</pre> 
+	 <p>Windows* OS (x86): 
+	 </p>
+ 
+	 <pre>dumpbin /symbols libchkpwrap.lib | egrep 'SECT.*External.*
+[_]*__chkp_'</pre> 
+	 <p>The returned list will include entry points that signify wrappers. For example, 
+		<samp class="codeph">__chkp_strcpy</samp> is the wrapper for 
+		<span class="keyword">strcpy</span>. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Naming and Usage Syntax">
+<meta name="DC.subject" content="intrinsics, naming and syntax">
+<meta name="keywords" content="intrinsics, naming and syntax">
+<meta name="DC.Relation" scheme="URI" content="GUID-6387FF7F-5815-4653-B553-62189555A12A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-709099A7-B463-4C60-B404-046AE49606D3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Naming and Usage Syntax</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_overview_naming"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-709099A7-B463-4C60-B404-046AE49606D3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Naming and Usage Syntax</h1>
+ 
+   
+  <div> 
+    <p>Most intrinsic names use the following notational convention: 
+    </p>
+ 
+    <p><span class="option">_mm_&lt;intrin_op&gt;_&lt;suffix&gt;</span> 
+  </p>
+ 
+  <div class="section" id="GUID-7B1077AF-176F-46BC-8CC2-08D2A4DB5BAC"> 
+    <p>The following table explains each item in the syntax. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2E6B2E3C-7D26-43B4-BA89-BA7033ECF2C2" frame="hsides" border="1" rules="all"> 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%"> 
+              <p><span class="keyword">&lt;intrin_op&gt;</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="75%"> 
+              <p>Indicates the basic operation of the intrinsic; for example, 
+                <span class="keyword">add</span> for addition and 
+                <span class="keyword">sub</span> for subtraction. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%"> 
+              <p><span class="keyword">&lt;suffix&gt;</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="75%"> 
+              <p>Denotes the type of data the instruction operates on. The first one or two letters of each suffix denote whether the data is packed (<span class="keyword">p</span>), extended packed (<span class="keyword">ep</span>), or scalar (<span class="keyword">s</span>). The remaining letters and numbers denote the type, with notation as follows: 
+              <ul type="disc" id="GUID-12BD27E5-BB20-4663-B1B4-1E210E65CED3"> 
+                <li> 
+                  <p><span class="keyword">s</span> single-precision floating point 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">d</span> double-precision floating point 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">i128</span> signed 128-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">i64</span> signed 64-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">u64</span> unsigned 64-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">i32</span> signed 32-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">u32</span> unsigned 32-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">i16</span> signed 16-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">u16</span> unsigned 16-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">i8</span> signed 8-bit integer 
+                  </p>
+ 
+                </li>
+ 
+                <li> 
+                  <p><span class="keyword">u8</span> unsigned 8-bit integer 
+                  </p>
+ 
+                </li>
+ 
+              </ul>
+ 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-A96C225F-C4B3-414F-B64C-B45FA4AAA5F1"> 
+    <p></p>
+ 
+    <p>A number appended to a variable name indicates the element of a packed object. For example, 
+      <span class="keyword">r0</span> is the lowest word of 
+      <span class="keyword">r</span>. Some intrinsics are "composites" because they require more than one instruction to implement them. 
+    </p>
+ 
+    <p>The packed values are represented in right-to-left order, with the lowest value being used for scalar operations. Consider the following example operation: 
+    </p>
+ 
+    <p> 
+      <pre>double a[2] = {1.0, 2.0};
+__m128d t = _mm_load_pd(a);</pre> 
+    </p>
+ 
+    <p>The result is the same as either of the following: 
+    </p>
+ 
+    <p> 
+      <pre>__m128d t = _mm_set_pd(2.0, 1.0);
+__m128d t = _mm_setr_pd(1.0, 2.0);</pre> 
+    </p>
+ 
+    <p>In other words, the 
+      <span class="keyword">xmm</span> register that holds the value 
+      <span class="keyword">t</span> appears as follows: 
+    </p>
+ 
+    <p> 
+      <div class="fignone" id="GUID-9D636D52-1AD8-450E-AAF3-B3A130142D0F"><img src="GUID-C560EC96-F987-4665-ACB4-37A338621669-low.gif"> 
+      </div>
+ 
+    </p>
+ 
+    <p>The "scalar" element is 1.0. Due to the nature of the instruction, some intrinsics require their arguments to be immediates (constant integer literals). 
+    </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6387FF7F-5815-4653-B553-62189555A12A.htm">Overview</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

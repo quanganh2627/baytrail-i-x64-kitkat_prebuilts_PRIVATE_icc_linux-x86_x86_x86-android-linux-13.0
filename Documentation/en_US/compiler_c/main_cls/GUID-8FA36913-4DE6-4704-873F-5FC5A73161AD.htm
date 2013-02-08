@@ -1,0 +1,105 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_fmsub_sd">
+<meta name="abstract" content="Multiply-subtracts scalar double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is VFMSUB<XXX&gt;SD, where XXX could be 132, 213, or 231.">
+<meta name="description" content="Multiply-subtracts scalar double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is VFMSUB<XXX&gt;SD, where XXX could be 132, 213, or 231.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmsub_sd (VFMSUB###), _mm256_fmsub_sd (VFMSUB###)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmsub_sd (VFMSUB###), _mm256_fmsub_sd (VFMSUB###)">
+<meta name="DC.Relation" scheme="URI" content="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8FA36913-4DE6-4704-873F-5FC5A73161AD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_fmsub_sd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_fmsub_sd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8FA36913-4DE6-4704-873F-5FC5A73161AD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span> _mm_fmsub_sd </span></h1>
+
+
+<!--Multiply-subtracts scalar double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is  VFMSUB<XXX>SD , where XXX could be 132, 213, or 231.--><div><p>Multiply-subtracts scalar double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is <span class="keyword">VFMSUB&lt;XXX&gt;SD</span>, where XXX could be 132, 213, or 231.</p>
+
+
+<div class="section" id="GUID-A735B898-7ADD-47A0-82BC-EEE6619DCE18"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128d _mm_fmsub_sd(__m128d a, __m128d b, __m128d c);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-9CDE50D2-AAB6-46A7-85A0-E9EB09CCD183"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>c</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector also used for the operation</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-C73FC627-5839-4B68-BFBA-DD13A63C996F"><h2>Description</h2>
+<p>Performs a set of scalar SIMD multiply-subtract computation on scalar double-precision floating-point values in the low 64-bits of three source operands, <var>a</var>, <var>b</var>, and <var>c</var>. The float64 values in two operands, a and b, are multiplied and the infinite precision intermediate result is obtained. From the infinite precision intermediate result, the float64 value in the third operand, <var>c</var>, is subtracted. The final result is rounded to the nearest float64 value.
+
+</p>
+<p>The compiler defaults to using the <span class="keyword">VFMSUB213SD</span> instruction and uses the other forms <span class="keyword">VFMSUB132SD</span> or <span class="keyword">VFMSUB231SD</span>
+only if a low level
+optimization decides it is useful/necessary. For example, the compiler could change the default if it finds that another instruction form saves a
+register or eliminates a move.
+</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-38247839-DE89-47DD-A138-1CB66644EC2A"><h2>Returns</h2><p> Result of the multiply-subtract operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">Intrinsics for Fused Multiply Add Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

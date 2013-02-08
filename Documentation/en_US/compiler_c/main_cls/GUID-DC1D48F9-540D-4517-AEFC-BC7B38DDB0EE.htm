@@ -1,0 +1,230 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="debug (Linux* OS and OS X*)">
+<meta name="abstract" content="Enables or disables generation of debugging information.">
+<meta name="description" content="Enables or disables generation of debugging information.">
+<meta name="DC.subject" content="-debug compiler option, -fvar-tracking compiler option, -fvar-tracking-assignments compiler option, debugging, option specifying settings to enhance, option affecting information generated">
+<meta name="keywords" content="-debug compiler option, -fvar-tracking compiler option, -fvar-tracking-assignments compiler option, debugging, option specifying settings to enhance, option affecting information generated">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0.htm#GUID-561404E6-993E-483A-8A5B-23A06A2E46E0">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>debug (Linux* OS and OS X*)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_debug_l"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_debug_l"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">debug (Linux* OS and OS X*)</h1>
+<!--Enables or disables generation of debugging information.--><div><p>Enables or disables generation of debugging information.</p>
+
+<div class="section" id="GUID-284EE9BB-77CE-4774-B907-A4F0D427B372"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								None</p>
+
+
+<p class="ide">Linux: 
+								<strong>Debug &gt; Enable Parallel Debug Checks</strong> (<span class="option">-debug parallel</span>)</p>
+<p class="ide"><strong>Debug &gt;  Enable Expanded Line Number Information</strong> (<span class="option">-debug expr-source-pos</span>)</p>
+
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+
+<div class="section" id="GUID-22377AEE-BDF4-420F-B981-D3ECF5552B57"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-1C7AC4C0-5587-49B9-A321-49EB91CC2346"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-debug</span><span class="delim"> [</span><span class="var">keyword</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-72F58283-7A63-4BC4-B166-40E2B8420132"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Is the type of debugging information to be generated. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+<td valign="top" class="noborder"><p>Disables generation of debugging information.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">full</span> or <span class="keyword">all</span></p></td>
+<td valign="top" class="noborder"><p>Generates complete debugging information.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">minimal</span></p></td>
+<td valign="top" class="noborder"><p>Generates line number information for debugging.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]emit_column</span></p></td>
+<td valign="top" class="noborder">Determines whether the compiler generates column number information for debugging.</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]expr-source-pos</span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates source position information at the expression level of granularity.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]inline-debug-info</span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates enhanced debug information for inlined code.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword"><span>[no]macros</span></span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler emits debugging information for C/C++ macros.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword"><span>[no]pubnames</span></span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates a DWARF debug_pubnames section.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]semantic-stepping</span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates enhanced debug information useful for breakpoints and stepping.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]variable-locations</span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates enhanced debug information useful in finding scalar local variables.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">extended</span></p></td>
+<td valign="top" class="noborder"><p>Sets keyword values <span class="keyword">semantic-stepping</span> and <span class="keyword">variable-locations</span>.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]parallel</span><br>(Linux only)</p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates parallel debug code instrumentations useful for thread data sharing and reentrant call detection. </p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+<p>For information on the non-default settings for these keywords, see the Description section.</p>
+</div>
+
+<div class="section" id="GUID-5E00E062-E4E7-4764-AEBB-4B8F909E4B96"><h2>Default</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr> 
+<td valign="top" width="30%" class="noborder"><p>varies</p></td>
+
+<td valign="top" class="noborder"><p> <span><span>Normally, the default is <span class="option">-debug none</span> and no debugging information is generated. However, on Linux* OS, the <span class="option">-debug inline-debug-info</span> option will be enabled by default if you compile with optimizations (option <span class="option">-O2</span> or higher) and debugging is enabled (option <span class="option">-g</span>).</span></span></p>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="section" id="GUID-F6DB860F-D570-4CE5-B920-E09615E1FF39"><h2>Description</h2><p>This option enables or disables generation of debugging information.</p>
+<p>Note that if you turn debugging on, optimization is turned off.</p>
+<p>Keywords <span class="keyword">semantic-stepping</span>, <span class="keyword">inline-debug-info</span>, <span class="keyword">variable-locations</span>, and <span class="keyword">extended</span> can be used in combination with each other. If conflicting keywords are used in combination, the last one specified on the command line has precedence.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DAECA187-FD54-40DF-A3AE-348F217D77AD" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr> <th class="noborder" align="left" valign="top" width="30%" id="d759316e254"><p>Option</p>
+</th>
+ <th class="noborder" align="left" valign="top" width="70%" id="d759316e258"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug none</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Disables generation of debugging information.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug full</span> or <span class="option">-debug all</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates complete debugging information. It is the same as specifying <span class="option">-debug</span> with no keyword.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug minimal</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates line number information for debugging.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug emit_column</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates column number information for debugging.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug expr-source-pos</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates source position information at the statement level of granularity.</p>
+</td>
+ </tr>
+<tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug inline-debug-info</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates enhanced debug information for inlined code. </p>
+<p>On inlined functions, symbols are (by default) associated with the caller. This option causes symbols for inlined functions to be associated with the source of the called function.</p>
+</td>
+ </tr>
+<tr><td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug macros</span></p>
+</td>
+<td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>The compiler emits debugging information for C/C++ macros. This provides a means to describe the macros for a given compilation unit.</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug pubnames</span></p>
+</td>
+<td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>The compiler generates a DWARF debug_pubnames section. This provides a means to list the names of global objects and functions in a compilation unit.</p>
+</td>
+</tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug semantic-stepping</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates enhanced debug information useful for breakpoints and stepping. It tells the debugger to stop only at machine instructions that achieve the final effect of a source statement. </p>
+<p>For example, in the case of an assignment statement, this might be a store instruction that assigns a value to a program variable; for a function call, it might be the machine instruction that executes the call. Other instructions generated for those source statements are not displayed during stepping.</p>
+<p>This option has no impact unless optimizations have also been enabled.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug variable-locations</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates enhanced debug information useful in finding scalar local variables. It uses a feature of the Dwarf object module known as "location lists". </p>
+<p>This feature allows the run-time locations of local scalar variables to be specified more accurately; that is, whether, at a given position in the code, a variable value is found in memory or a machine register. </p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug extended</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Sets keyword values <span class="keyword">semantic-stepping</span> and <span class="keyword">variable-locations</span>. It also tells the compiler to include column numbers in the line information.</p>
+</td>
+ </tr>
+<tr><td class="noborder" valign="top" width="30%" headers="d759316e254 "><p><span class="option">-debug parallel</span></p>
+</td>
+<td class="noborder" valign="top" width="70%" headers="d759316e258 "><p>Generates parallel debug code instrumentations needed for the thread data sharing and reentrant call detection. <span>For shared data and reentrancy detection, option <span class="option">-openmp</span> must be set.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>On Linux* systems, debuggers read debug information from executable images. As a result, information is written to object files and then added to the executable by the linker. </p>
+<p>On OS X* systems, debuggers read debug information from object files. As a result, the executables don't contain any debug information. Therefore, if you want to be able to debug on these systems, you must retain the object files.</p>
+</div>
+
+<div class="section" id="GUID-A08F2B3B-CA64-4C8A-9922-F8DED0883873"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr>
+<td valign="top" width="30%" class="noborder"><p>For <span class="option">-debug full</span>, <span class="option">-debug all</span>, or <span class="option">-debug</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-g</span></p>
+<p>Windows: <span class="option">/debug:full</span>, <span class="option">/debug:all</span>, or <span class="option">/debug</span></p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p>For <span class="option">-debug variable-locations</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-fvar-tracking</span></p>
+<p>Windows: None</p>
+
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p>For <span class="option">-debug semantic-stepping</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-fvar-tracking-assignments</span></p>
+<p>Windows: None</p>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0.htm#GUID-561404E6-993E-483A-8A5B-23A06A2E46E0"><span class="option">debug</span> (Windows*)</a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_srav_epi32/ _mm512_mask_srav_epi32">
+<meta name="abstract" content="Performs an arithmetic right shift operation of the int32 vector. &nbsp;Corresponding instruction is VPSRAVD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Performs an arithmetic right shift operation of the int32 vector. &nbsp;Corresponding instruction is VPSRAVD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_srav_epi32, _mm512_mask_srav_epi32">
+<meta name="keywords" content="_mm512_srav_epi32, _mm512_mask_srav_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-9616E870-BD7A-49E3-8AB5-C0A178E13D1D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D3C8D658-7C7A-4B7D-A0C7-27991E3D9D30">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_srav_epi32/ _mm512_mask_srav_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_srav_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D3C8D658-7C7A-4B7D-A0C7-27991E3D9D30">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_srav_epi32/ _mm512_mask_srav_epi32</h1>
+<!--Performs an arithmetic right shift operation of the int32 vector.   Corresponding instruction is   VPSRAVD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).-->
+
+<div><p>Performs an arithmetic right shift operation of the int32 vector.  &nbsp;Corresponding instruction is  <samp class="codeph">VPSRAVD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-C4F82217-CF83-432F-A1E3-DEE67C5100CA"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_srav_epi32(__m512i v2, __m512i v3);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_mask_srav_epi32(__m512i v1_old, __mmask16 k1, __m512i v2, __m512i v3);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-B43004F8-3797-4A8C-AE12-618808861CBA"><h2>Parameters</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">int32 vector where the arithmetic right shift operation is performed</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">specifies the number of bits by which the arithmetic right shift must occur</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="section" id="GUID-FF13BA53-240A-453B-83C7-64658413EBB1"><h2>Description</h2>
+<p>Performs an element-by-element arithmetic right shift of int32 vector 
+<samp class="codeph">v2</samp>, shifting by the number of bits specified by the int32 vector 
+<samp class="codeph">v3</samp>. If the shift value specified by this parameter is greater than 31 then the result of the shift is all ones or all zeroes, depending on the original sign bit.</p>
+
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing.</p>
+</div>
+
+
+<div class="section" id="GUID-FFAF59FE-3B81-4D77-B54E-3B2AEC7945B6"><h2>Returns</h2>
+<p>Returns the result of the operation.</p>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9616E870-BD7A-49E3-8AB5-C0A178E13D1D.htm">Shift Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

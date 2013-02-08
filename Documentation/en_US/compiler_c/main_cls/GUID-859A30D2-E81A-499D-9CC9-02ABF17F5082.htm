@@ -1,0 +1,612 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library">
+<meta name="DC.subject" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library">
+<meta name="keywords" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A6EDDA8-ACD4-49B6-9746-9DA0FCDE9D06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-859A30D2-E81A-499D-9CC9-02ABF17F5082">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library</title>
+</head>
+<body id="GUID-859A30D2-E81A-499D-9CC9-02ABF17F5082">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Overview: Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library</h1>
+ 
+  
+  <div>
+    <div class="section" id="GUID-0823EF3E-02E6-4F67-9E0B-291C235066A0">
+      <p>The Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library provides all operations mandated by the IEEE 754-2008 standard for binary32 and binary64 binary floating-point interchange formats. The minimum requirements for correct operation of the library are an Intel&reg; Pentium&reg; 4 processor and an operating system supporting Intel&reg; Streaming SIMD Extensions 2 (SSE2) instructions.
+      </p>
+
+      <p>The library supports all four rounding-direction attributes mandated by the IEEE 754-2008 standard for binary floating-point arithmetic: 
+        <samp class="codeph">roundTiesToEven</samp>, 
+        <samp class="codeph">roundTowardPositive</samp>, 
+        <samp class="codeph">roundTowardNegative</samp>, 
+        <samp class="codeph">roundTowardZero</samp>. The additional rounding-direction attribute, 
+        <samp class="codeph">roundTiesToAway</samp>, is not required by the standard, hence, not fully supported in this library. The default rounding-direction attribute is set as 
+        <samp class="codeph">roundTiesToEven</samp>.
+      </p>
+ 
+      <p> The library also supports all mandated exceptions (invalid operation, division by zero, overflow, underflow, and inexact) and sets flags accordingly under default exception handling. Alternate exception handling, which is optional in the standard, is not supported.
+      </p>
+
+      <p> The 
+        <samp class="codeph">bfp754.h</samp> header file includes prototypes for the library functions. For a complete list of the functions available, refer to the 
+        <a href="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm#GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A">Function List</a>. The user also needs to specify linker option 
+        <samp class="codeph">-lbfp754</samp> and floating point semantics control option 
+        <samp class="codeph">-fp-model source -fp-model except 
+        </samp> in order to use the library.
+      </p>
+
+      <p> Many routines in the libbfp754 library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+      </p>
+
+    </div>
+
+    <div class="section" id="GUID-0EAC6B74-A809-464C-90C1-EC306D8F0B5A"><h2 class="sectiontitle"> Operations</h2>
+      
+      <p>The IEEE standard 754-2008 defines four types of operations.
+      <ol id="GUID-9D9FBE30-F0F9-417D-A070-A68827D7C5A2">
+        <li>General-computational operations that produce correctly rounded floating-point or integer results. These operations might signal the floating-point exceptions.
+        </li>
+
+        <li> Quiet-computational operations that produce floating-point results. These operations do not signal any floating-point exceptions.
+        </li>
+
+        <li> Signaling-computational operations that produce no floating-point results. These operations might signal floating-point exceptions.
+        </li>
+
+        <li> Non-computational operations that produce no floating-point results. These operations do not signal floating-point exceptions.
+        </li>
+
+      </ol>
+
+      </p>
+
+      <p>
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0B21D14B-F13C-45B2-A7BA-EAEF826A1F11" frame="border" border="1" cellspacing="0" rules="all">
+          <tbody>
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%">&#xA0;</td>
+
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p><strong>Produce result</strong>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p><strong>Produce no result</strong>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p><strong>Might signal FP exception</strong>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p>General-computational
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p>Signaling-computational
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p><strong>Do not signal FP exception</strong>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p>Quiet-computational
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%"> 
+                <p>Non-computational
+                </p>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      </p>
+
+      <p> The standard also distinguishes among operations by their floating-point operand formats and result format for general-computational operations:
+      <ol id="GUID-7C0CD7B1-CB80-4CFD-800F-A9BBED0A5DCC">
+        <li> Homogenous general-computational operations whose floating-point operands and floating-point result are in the same format.
+        </li>
+
+        <li><em> formatOf</em> general-computational operations whose floating-point operands and floating-point result have different formats.
+          <div class="Note"><h3 class="NoteTipHead">Note</h3>
+            <p>The IEEE 754-2008 standard requires that all 
+              <em>formatOf</em> general-computational operations be computed without any lost of precision before converting to the destination format. This may differ from how these operations are implemented on most hardware and software.
+            </p>
+
+            <p>For example, when all operands are in binary64 format and the destination format is binary32, most hardware and software implementations would first compute an intermediate result rounded in binary64 and then convert the intermediate result to binary32. This double rounding procedure may produce a result different from what is defined in the standard under certain rounding mode.
+            </p>
+
+            <p>For example, let 
+              <samp class="codeph">x=0x3ff0000010000000=1.000000000000000000000001_2, y=0x3ca0000000000000=1.0_2*2^(-53)</samp>, and 
+              <samp class="codeph">x+y=1.00000000000000000000000100000000000000000000000000001_2</samp>.
+            </p>
+
+            <p> When the rounding-direction attribute is set to roundTiesToEven, using double rounding procedure, the addition result rounds to 
+              <samp class="codeph">1.000000000000000000000001_2 (0x3ff0000010000000)</samp> in binary64, which would then round to 
+              <samp class="codeph">1 (0x3f800000)</samp> in binary32. On the other hand, according to the standard, the addition result should round to 
+              <samp class="codeph">1.00000000000000000000001_2 (0x3f800001)</samp> in binary32.
+            </p>
+ 
+          </div>
+        </li>
+
+      </ol>
+
+      </p>
+
+    </div>
+
+    <div class="section" id="GUID-33BB9D86-EC9B-42BC-9A4F-3D8EA13F7661"><h2 class="sectiontitle"> 
+      <strong>Data Types</strong> </h2>
+      
+      <p> The following table correlates the names of the formats used in defining operations in the standard with their C99 types used in this library.
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D0950604-C40C-403D-BF1D-25399BAAD304" frame="border" border="1" cellspacing="0" rules="all"><thead align="left">
+            <tr>
+              <th class="cellrowborder" valign="top" width="NaN%" id="d436689e241"> 
+                <p>Format Name
+                </p>
+
+              </th>
+
+              <th class="cellrowborder" valign="top" width="NaN%" id="d436689e247"> 
+                <p>Definition
+                </p>
+
+              </th>
+
+              <th class="cellrowborder" valign="top" width="NaN%" id="d436689e253"> 
+                <p>C99 Type
+                </p>
+
+              </th>
+
+            </tr>
+</thead>
+
+          <tbody>
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">binary32</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> IEEE 754-2008 binary32 interchange format
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> float</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">binary64</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> IEEE 754-2008 binary64 interchange format
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p> 
+                  <samp class="codeph">double</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">int</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Integer operand formats
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int, unsigned int, long long int, unsigned long long int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p><samp class="codeph"> int32</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Signed 32 bit integer
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p><samp class="codeph"> uint32</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Unsigned 32 bit integer
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> unsigned int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p><samp class="codeph"> int64</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Signed 64 bit integer
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> long long int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p><samp class="codeph"> uint64</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Unsigned 64 bit integer
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p> 
+                  <samp class="codeph">unsigned long long int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p><samp class="codeph"> boolean</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Boolean value represented by generic integer type
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" rowspan="2" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">enum</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Enumerated values of floating-point class
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Enumerated values of floating-point radix
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">logBFormat</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Type for the destination of the logB operation and the scale exponent operand of the scaleB operation
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">decimalCharacterSequence</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Decimal character sequence
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" rowspan="2" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> char*</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">hexCharacterSequence</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Hexadecimal-significand character sequence
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p><samp class="codeph"> exceptionGroup</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Set of exceptions as a set of booleans
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 ">
+                <p> 
+                  <samp class="codeph">flags</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Set of status flags
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph"> int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 "> 
+                <p><samp class="codeph">binaryRoundingDirection</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Rounding direction for binary
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p> 
+                  <samp class="codeph">int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 "> 
+                <p><samp class="codeph">modeGroup</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 ">
+                <p> Dynamically-specifiable modes
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p> 
+                  <samp class="codeph">int</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e241 "> 
+                <p><samp class="codeph">void</samp>
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e247 "> 
+                <p>No explicit operand or result
+                </p>
+
+              </td>
+
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d436689e253 ">
+                <p><samp class="codeph">void</samp>
+                </p>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+</div>
+
+      </p>
+
+    </div>
+
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5A6EDDA8-ACD4-49B6-9746-9DA0FCDE9D06.htm">Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

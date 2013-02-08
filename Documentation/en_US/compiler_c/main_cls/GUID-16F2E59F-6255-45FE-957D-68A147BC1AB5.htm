@@ -1,0 +1,272 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Debug Operations">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, debug operators, element access operator, element assignment operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, debug operators, element access operator, element assignment operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-16F2E59F-6255-45FE-957D-68A147BC1AB5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Debug Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_debug"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-16F2E59F-6255-45FE-957D-68A147BC1AB5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Debug Operations</h1>
+ 
+   
+  <div> 
+    <p>The debug operations do not map to any compiler intrinsics for MMX&#8482; instructions. They are provided for debugging programs only. Use of these operations may result in loss of performance, so you should not use them outside of debugging. 
+    </p>
+ 
+    <div class="section" id="GUID-F132F332-65C0-418A-ABD0-2581D1224AA8"><h2 class="sectiontitle">Output</h2> 
+       
+      <p>The four 32-bit values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in the following format (default in decimal): 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Is32vec4 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Iu32vec4 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; hex &lt;&lt; Iu32vec4 A; /* print in hex format */</samp> 
+      </p>
+ 
+      <p><samp class="codeph">"[3]:A3 [2]:A2 [1]:A1 [0]:A0"</samp> 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+      <p>The two 32-bit values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in the following format (default in decimal): 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Is32vec2 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Iu32vec2 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; hex &lt;&lt; Iu32vec2 A; /* print in hex format */</samp> 
+      </p>
+ 
+      <p><samp class="codeph">"[1]:A1 [0]:A0"</samp> 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+      <p>The eight 16-bit values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in the following format (default in decimal): 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Is16vec8 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Iu16vec8 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; hex &lt;&lt; Iu16vec8 A; /* print in hex format */</samp> 
+      </p>
+ 
+      <p><samp class="codeph">"[7]:A7 [6]:A6 [5]:A5 [4]:A4 [3]:A3 [2]:A2 [1]:A1 [0]:A0"</samp> 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+      <p>The four 16-bit values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in the following format (default in decimal): 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Is16vec4 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Iu16vec4 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; hex &lt;&lt; Iu16vec4 A; /* print in hex format */</samp> 
+      </p>
+ 
+      <p><samp class="codeph">"[3]:A3 [2]:A2 [1]:A1 [0]:A0"</samp> 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+      <p>The sixteen 8-bit values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in the following format (default is decimal): 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Is8vec16 A; cout &lt;&lt; Iu8vec16 A; cout &lt;&lt; hex &lt;&lt; Iu8vec8 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">/* print in hex format instead of decimal*/</samp> 
+      </p>
+ 
+      <p><samp class="codeph">"[15]:A15 [14]:A14 [13]:A13 [12]:A12 [11]:A11 [10]:A10 [9]:A9 [8]:A8 [7]:A7 [6]:A6 [5]:A5 [4]:A4 [3]:A3 [2]:A2 [1]:A1 [0]:A0"</samp> 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+      <p>The eight 8-bit values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in the following format (default is decimal): 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; Is8vec8 A; cout &lt;&lt; Iu8vec8 A;cout &lt;&lt; hex &lt;&lt; Iu8vec8 A;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">/* print in hex format instead of decimal*/</samp> 
+      </p>
+ 
+      <p><samp class="codeph">"[7]:A7 [6]:A6 [5]:A5 [4]:A4 [3]:A3 [2]:A2 [1]:A1 [0]:A0"</samp> 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-38DB97FA-90A1-4730-9CC4-8923CBED82F4"><h2 class="sectiontitle">Element Access Operators</h2> 
+       
+      <p><samp class="codeph">int R = Is64vec2 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned int R = Iu64vec2 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">int R = Is32vec4 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned int R = Iu32vec4 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">int R = Is32vec2 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned int R = Iu32vec2 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">short R = Is16vec8 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned short R = Iu16vec8 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">short R = Is16vec4 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned short R = Iu16vec4 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">signed char R = Is8vec16 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned char R = Iu8vec16 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">signed char R = Is8vec8 A[i];</samp> 
+      </p>
+ 
+      <p><samp class="codeph">unsigned char R = Iu8vec8 A[i];</samp> 
+      </p>
+ 
+      <p>Access and read element 
+        <samp class="codeph">i</samp> of 
+        <samp class="codeph">A</samp>. If DEBUG is enabled and the user tries to access an element outside of 
+        <samp class="codeph">A</samp>, a diagnostic message is printed and the program aborts. 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D35DE246-FA1C-4D71-BB67-F6A382332261"><h2 class="sectiontitle">Element Assignment Operators</h2> 
+       
+      <p><samp class="codeph">Is64vec2 A[i] = int R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Is32vec4 A[i] = int R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Iu32vec4 A[i] = unsigned int R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Is32vec2 A[i] = int R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Iu32vec2 A[i] = unsigned int R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Is16vec8 A[i] = short R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Iu16vec8 A[i] = unsigned short R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Is16vec4 A[i] = short R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Iu16vec4 A[i] = unsigned short R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Is8vec16 A[i] = signed char R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Iu8vec16 A[i] = unsigned char R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Is8vec8 A[i] = signed char R;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">Iu8vec8 A[i] = unsigned char R;</samp> 
+      </p>
+ 
+      <p>Assign 
+        <samp class="codeph">R</samp> to element i of 
+        <samp class="codeph">A</samp>. If 
+        <samp class="codeph">DEBUG</samp> is enabled and the user tries to assign a value to an element outside of 
+        <samp class="codeph">A</samp>, a diagnostic message is printed and the program aborts. 
+      </p>
+ 
+      <p>Corresponding Intrinsics: none 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

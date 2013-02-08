@@ -1,0 +1,152 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for Saving and Restoring the Extended Processor States">
+<meta name="DC.subject" content="intrinsics, for managing extended processor states and registers, saving extended processor states, restoring extended processor states, extended processor states, saving, restoring">
+<meta name="keywords" content="intrinsics, for managing extended processor states and registers, saving extended processor states, restoring extended processor states, extended processor states, saving, restoring">
+<meta name="DC.Relation" scheme="URI" content="GUID-80BF143F-A541-419A-AD92-0B5863C246D7.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5FFE0D02-D08A-458B-9E76-8A0F791313D0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EB36ABCE-0DAA-460E-9F92-D2D2CDF29633.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3D893F4-210B-46F2-A5CE-DEB3EEA0C620.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A77FB56B-AA32-4DC4-BDBB-024CF6157374.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-600A8149-D580-4C87-8D1C-D724CE494BE4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-39A2E248-83E6-4F99-A73C-804908BC092F.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-34F1A9DB-1B28-4EF3-B6D1-613210BBB96F.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B798BA16-5208-4F15-A6BC-009DBFA1EC11.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B9D493C3-E642-4B3C-8343-8D0D69701D4A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-00B1B582-2470-4089-9AE0-F2B356F2B14E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-581B0137-E8F1-4E7E-80E9-301B5DF7E05F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Saving and Restoring the Extended Processor States</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_manextsafe"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-581B0137-E8F1-4E7E-80E9-301B5DF7E05F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Intrinsics for Saving and Restoring the Extended Processor States</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-AE0EEE65-F3A1-475A-BB5A-F61D03FF8212"><h2 class="sectiontitle"> Intrinsics that map to 
+      <span class="option">FXSAVE[64]</span> and 
+      <span class="option">FXRSTOR[64]</span> instructions</h2> 
+       
+      <p>This group of intrinsics includes four intrinsics to save and restore the current state of the 
+        <span class="keyword">x87 FPU</span>, 
+        <span class="keyword">MMX</span>, 
+        <span class="keyword">XMM</span>, and 
+        <span class="keyword">MXCSR</span> registers. 
+      </p>
+ 
+      <p>These intrinsics accept a memory reference to a 16-byte aligned 512-byte memory chunk. The layout of the memory is shown below in Table 1. 
+      </p>
+ 
+      <p>Table 1 - 
+        <samp class="codeph">FXSAVE</samp> save area layout. 
+        <br><img src="GUID-358B0562-766B-46E6-8E03-7555C7D361B0-low.jpg"><br> 
+      </p>
+ 
+      <p>These intrinsics are declared in the 
+        <span class="filepath">immintrin.h</span> file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E4921324-7FF8-4931-9084-F937B6E93410"></div>
+ 
+    <div class="section" id="GUID-D710A0A7-3D6F-4CAA-8307-E905115DABE2"><h2 class="sectiontitle"> Intrinsics that map to 
+      <span class="option">XSAVE[64]</span>, 
+      <span class="option">XSAVEOPT[64]</span>, and 
+      <span class="option">FXRSTOR[64]</span> instructions</h2> 
+       
+      <p> This group of intrinsics includes six intrinsics to fully or partially save and restore the current state of the 
+        <span class="keyword">x87 FPU</span>, 
+        <span class="keyword">MMX</span>, 
+        <span class="keyword">XMM</span>, 
+        <span class="keyword">YMM</span>, and 
+        <span class="keyword">MXCSR</span> registers. 
+      </p>
+ 
+      <p> These intrinsics accept a memory reference to a 64-byte aligned memory. The layout of the register fields for the first 512 bytes is the same as the 
+        <samp class="codeph">FXSAVE</samp> save area layout. The intrinsics saving the states do not write to bytes 
+        <span>464:511</span>. The save area layout is shown in Tables 2a and 2b below. 
+      </p>
+ 
+      <p> The second operand is a save/restore mask specifying the saved/restored extended states. The value of the mask is 
+        <samp class="codeph">AND</samp>ed with 
+        <samp class="codeph">XFEATURE_ENABLED_MASK(XCR0)</samp>. A particular extended state is saved/restored only if the corresponding bit of both save/restore mask and 
+        <samp class="codeph">XFEATURE_ENABLED_MASK</samp> is set to '<span>1</span>'. 
+      </p>
+ 
+      <p></p>
+ 
+      <p>Table 2a - 
+        <samp class="codeph">XSAVE</samp> save area layout (first 512 bytes) 
+        <br><img src="GUID-F241400A-A097-4C8A-BC0D-17589BFF6A45-low.jpg"><br> 
+      </p>
+ 
+      <p>Table 2b - 
+        <samp class="codeph">XSAVE</samp> save area layout for 
+        <span class="keyword">YMM</span> registers 
+        <br><img src="GUID-3BBF5DE7-2C6C-48BB-9F74-708630FC1B16-low.jpg"><br> 
+      </p>
+ 
+      <p> These intrinsics are declared in the 
+        <span class="filepath">immintrin.h</span> file. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-80BF143F-A541-419A-AD92-0B5863C246D7.htm">Intrinsics for Managing Extended Processor States and Registers</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-5FFE0D02-D08A-458B-9E76-8A0F791313D0.htm">_fxsave()</a><br>
+ Saves the states of x87 FPU, MMX, XMM, and MXCSR registers to memory.</li>
+<li class="ulchildlink"><a href="GUID-EB36ABCE-0DAA-460E-9F92-D2D2CDF29633.htm">_fxsave64()</a><br>
+Saves the states of x87 FPU, MMX, XMM, and MXCSR registers to memory.</li>
+<li class="ulchildlink"><a href="GUID-A3D893F4-210B-46F2-A5CE-DEB3EEA0C620.htm">_fxrstor()</a><br>
+Restores the states of x87 FPU, MMX, XMM, and MXCSR registers from memory.</li>
+<li class="ulchildlink"><a href="GUID-A77FB56B-AA32-4DC4-BDBB-024CF6157374.htm">_fxrstor64()</a><br>
+Restores the states of x87 FPU, MMX, XMM, and MXCSR registers from memory.</li>
+<li class="ulchildlink"><a href="GUID-600A8149-D580-4C87-8D1C-D724CE494BE4.htm">_xsave()</a><br>
+ Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory.</li>
+<li class="ulchildlink"><a href="GUID-39A2E248-83E6-4F99-A73C-804908BC092F.htm">_xsave64()</a><br>
+Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory.</li>
+<li class="ulchildlink"><a href="GUID-34F1A9DB-1B28-4EF3-B6D1-613210BBB96F.htm">_xsaveopt()</a><br>
+Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory, optimizing the save operation if possible.</li>
+<li class="ulchildlink"><a href="GUID-B798BA16-5208-4F15-A6BC-009DBFA1EC11.htm">_xsaveopt64()</a><br>
+Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory, optimizing the save operation if possible.</li>
+<li class="ulchildlink"><a href="GUID-B9D493C3-E642-4B3C-8343-8D0D69701D4A.htm">_xrstor()</a><br>
+Restores the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers from memory. </li>
+<li class="ulchildlink"><a href="GUID-00B1B582-2470-4089-9AE0-F2B356F2B14E.htm">_xrstor64()</a><br>
+Restores the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers from memory.</li>
+</ul>
+<br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

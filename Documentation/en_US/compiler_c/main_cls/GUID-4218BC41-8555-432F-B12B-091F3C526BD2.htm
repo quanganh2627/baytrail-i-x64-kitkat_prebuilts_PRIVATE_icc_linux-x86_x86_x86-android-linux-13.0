@@ -1,0 +1,341 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Developer Directed Inline Expansion of User Functions">
+<meta name="DC.subject" content="compilation units, function expansion, inlining, developer directed, user functions">
+<meta name="keywords" content="compilation units, function expansion, inlining, developer directed, user functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-6608F908-2791-4059-8DD9-936FEAB81936.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4218BC41-8555-432F-B12B-091F3C526BD2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Developer Directed Inline Expansion of User Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_inl_user_options"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_inl_user_options"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4218BC41-8555-432F-B12B-091F3C526BD2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Developer Directed Inline Expansion of User Functions</h1>
+ 
+   
+  <div> 
+	 <p>In addition to the options that support compiler directed inline expansion of user functions, the compiler also provides compiler options that allow you to more precisely direct when and if inline function expansion should occur. 
+	 </p>
+ 
+	 <p>The compiler measures the relative size of a routine in an abstract value of intermediate language units, which is approximately equivalent to the number of instructions that will be generated. The compiler uses the intermediate language unit estimates to classify routines and functions as relatively small, medium, or large functions. The compiler then uses the estimates to determine when to inline a function; if the minimum criteria for inlining is met and all other things are equal, the compiler has an affinity for inlining relatively small functions and not inlining relative large functions. 
+	 </p>
+ 
+	 <p>The following developer directed inlining options provide the ability to change the boundaries used by the inlining optimizer to distinguish between small and large functions. These options are supported on all Intel architectures. 
+	 </p>
+ 
+	 <p>In general, you should use the 
+		<a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">-inline-factor</span></a> (Linux* and OS X*) and 
+		<a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">/Qinline-factor</span></a> (Windows*) option before using the individual inlining options listed below; this single option effectively controls several other upper-limit options. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D9150F58-52F1-4E89-8624-3AE460FD54C7" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="middle"> 
+				<th class="cellrowborder" align="left" valign="middle" id="d206904e81"> 
+				  <p>Linux* and OS X* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="middle" id="d206904e87"> 
+				  <p>Windows* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="middle" id="d206904e93"> 
+				  <p>Effect 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">-inline-factor</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">/Qinline-factor</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Controls the multiplier applied to all inlining options that define upper limits: 
+					 <span class="keyword">inline-max-size</span>, 
+					 <span class="keyword">inline-max-total-size</span>, 
+					 <span class="keyword">inline-max-per-routine</span>, and 
+					 <span class="keyword">inline-max-per-compile</span>. While you can specify an individual increase in any of the upper-limit options, this single option provides an efficient means of controlling all of the upper-limit options with a single command. 
+				  </p>
+ 
+				  <p>By default, this option uses a multiplier of 100, which corresponds to a factor of 1. Specifying 200 implies a factor of 2, and so on. Experiment with the multiplier carefully. You could increase the upper limits to allow too much inlining, which might result in your system running out of memory. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-4E27FCC7-658E-4951-A7EC-1D2F5A20A566"> 
+					 <li> 
+						<p><a href="GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC.htm#GUID-A316740A-67EB-44F9-9D6B-AB8E7D8A4BAC"><span class="option">-inline-factor</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-245BAA30-5A92-4DAF-AD2F-5DA404545D1F.htm#GUID-245BAA30-5A92-4DAF-AD2F-5DA404545D1F"><span class="option">-inline-forceinline</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-245BAA30-5A92-4DAF-AD2F-5DA404545D1F.htm#GUID-245BAA30-5A92-4DAF-AD2F-5DA404545D1F"><span class="option">/Qinline-forceinline</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Instructs the compiler to force inlining of functions suggested for inlining whenever the compiler is capable doing so. Typically, the compiler targets functions that have been marked for inlining based on the presence of 
+					 <span>keywords</span>, like 
+					 <span class="keyword">__forceinline</span>, in the source code; however, all such directives in the source code are treated only as suggestions for inlining. The option instructs the compiler to view the inlining suggestion as mandatory and inline the marked function if it can be done legally. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-4B652A35-5F02-42A7-BC97-81F704536516"> 
+					 <li> 
+						<p><a href="GUID-245BAA30-5A92-4DAF-AD2F-5DA404545D1F.htm#GUID-245BAA30-5A92-4DAF-AD2F-5DA404545D1F"><span class="option">-inline-forceinline</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8.htm#GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8"><span class="option">-inline-min-size</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8.htm#GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8"><span class="option">/Qinline-min-size</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Redefines the maximum size of small routines; routines that are equal to or smaller than the value specified are more likely to be inlined. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-492976A3-E949-4F69-A002-2181E2F386F0"> 
+					 <li> 
+						<p><a href="GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8.htm#GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8"><span class="option">-inline-min-size</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908.htm#GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908"><span class="option">-inline-max-size</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908.htm#GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908"><span class="option">/Qinline-max-size</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Redefines the minimum size of large routines; routines that are equal to or larger than the value specified are less likely to be inlined. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-E6FA705F-DCDB-4107-9466-C1D99FD14D8B"> 
+					 <li> 
+						<p><a href="GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908.htm#GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908"><span class="option">-inline-max-size</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6.htm#GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6"><span class="option">-inline-max-total-size</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6.htm#GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6"><span class="option">/Qinline-max-total-size</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Limits the expanded size of inlined functions. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-E5BAC4CE-6259-4A8F-87B9-EF0A2F5FB240"> 
+					 <li> 
+						<p><a href="GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6.htm#GUID-4768E57C-23C6-4A66-9D13-576F55CB78D6"><span class="option">-inline-max-total-size</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F.htm#GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F"><span class="option">-inline-max-per-routine</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F.htm#GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F"><span class="option">/Qinline-max-per-routine</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Limits the number of times inlining can be applied within a routine. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-2FE9F87F-D948-44DD-A084-9B19DF5FCF58"> 
+					 <li> 
+						<p><a href="GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F.htm#GUID-8D83C7E6-E9ED-40A9-8346-79D56443592F"><span class="option">-inline-max-per-routine</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d206904e81 "> 
+				  <p><a href="GUID-D33C7DAF-1A49-4E69-8E41-F1FEB2C50C47.htm#GUID-D33C7DAF-1A49-4E69-8E41-F1FEB2C50C47"><span class="option">-inline-max-per-compile</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e87 "> 
+				  <p><a href="GUID-D33C7DAF-1A49-4E69-8E41-F1FEB2C50C47.htm#GUID-D33C7DAF-1A49-4E69-8E41-F1FEB2C50C47"><span class="option">/Qinline-max-per-compile</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d206904e93 "> 
+				  <p>Limits the number of times inlining can be applied within a compilation unit. 
+				  </p>
+ 
+				  <p>The compilation unit limit depends on the whether or not you specify the 
+					 <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux and OS X) or 
+					 <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) option. If you enable IPO, all source files that are part of the compilation are considered one compilation unit. For compilations not involving IPO each source file is considered an individual compilation unit. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-00B5ABD2-1E7D-4439-8888-CAFF6AA25AA9"> 
+					 <li> 
+						<p><a href="GUID-D33C7DAF-1A49-4E69-8E41-F1FEB2C50C47.htm#GUID-D33C7DAF-1A49-4E69-8E41-F1FEB2C50C47"><span class="option">-inline-max-per-compile</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6608F908-2791-4059-8DD9-936FEAB81936.htm">Inline Expansion of Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

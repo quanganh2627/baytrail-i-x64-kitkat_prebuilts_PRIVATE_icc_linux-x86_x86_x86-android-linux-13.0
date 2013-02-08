@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag-file, Qdiag-file">
+<meta name="abstract" content="Causes the results of diagnostic analysis to be output to a file.">
+<meta name="description" content="Causes the results of diagnostic analysis to be output to a file.">
+<meta name="DC.subject" content="/Qdiag-file compiler option, -diag-file compiler option, diagnostic messages, option sending to file">
+<meta name="keywords" content="/Qdiag-file compiler option, -diag-file compiler option, diagnostic messages, option sending to file">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59.htm#GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag-file, Qdiag-file</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag_file"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag_file"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">diag-file, Qdiag-file</h1>
+<!--Causes the results of diagnostic analysis to be output to a file.--><div><p>Causes the results of diagnostic analysis to be output to a file.</p>
+
+<div class="section" id="GUID-A80258AC-4387-4159-9E51-B890C76F2F3C"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Diagnostics &gt; Diagnostics File</strong></p>
+<p class="ide"><strong>Diagnostics &gt; Emit Diagnostics to File</strong></p>
+
+
+ <p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Diagnostics File</strong></p>
+ <p class="ide">OS X: 
+								<strong>Diagnostics &gt; Diagnostics File</strong></p>
+</div>
+<div class="section" id="GUID-CEF09C7E-C28F-4387-82F0-4C3F17F52862"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-94E41D1F-2F90-48C4-AACB-BF10CB73D36E"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-diag-file</span><span class="delim">[</span><span class="oper">=</span><span class="var">filename</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-file</span><span class="delim">[</span><span class="oper">:</span><span class="var">filename</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-D6A9F379-60A5-40B7-B6FD-11F008CA83CA"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is the name of the file for output.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-1178E9B5-7D18-4EE0-AB79-054CD3B5EDB9"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Diagnostic messages are output to stderr.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-41708ECD-14F7-4FBE-8E41-1A60C705EDA4"><h2>Description</h2><p>This option causes the results of diagnostic analysis to be output to a file. The file is placed in the current working directory.</p>
+<p>You can include a file extension in <var>filename</var>. For example, if <var>file.txt</var> is specified, the name of the output file is 
+<var>file.txt</var>. If you do not provide a file extension, the name of the file is <var>filename.diag</var>. 
+</p>
+<p>If <var>filename</var> is not specified, the name of the file is <var>name-of-the-first-source-file.diag</var>. This is also the name of the file if the name specified for file conflicts with a source file name provided in the command line.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>If you specify <span class="option">-diag-file</span> (Linux OS) or <span class="option">/Qdiag-file</span> (Windows OS) and you also specify <span class="option">-diag-file-append</span> (Linux OS) or <span class="option">/Qdiag-file-append</span> (Windows OS), the last option specified on the command line takes precedence.</p>
+</div></div>
+
+<div class="section" id="GUID-0A8D7CF7-3632-41B2-A289-065381F249E1"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_777B63D44810438090A71475812D2AC4"><a name="EXAMPLE_777B63D44810438090A71475812D2AC4"><!-- --></a><h2>Example</h2><p>The following example shows how to cause diagnostic analysis to be output to a file named <var>my_diagnostics.diag</var>: </p>
+<pre>-diag-file=my_diagnostics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux systems</pre><pre>/Qdiag-file:my_diagnostics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Windows systems</pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59.htm#GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59"><span class="option">diag-file-append, Qdiag-file-append</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

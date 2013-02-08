@@ -1,0 +1,179 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Setting Stack Size on Coprocessors">
+<meta name="DC.subject" content="set stack size on coprocessors, stack size, setting">
+<meta name="keywords" content="set stack size on coprocessors, stack size, setting">
+<meta name="DC.Relation" scheme="URI" content="GUID-D46526BF-F44C-4FE6-96C2-E1334E3BAAF9.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-17EE519D-7D60-4294-B87F-87E5F51EFF2C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Setting Stack Size on Coprocessors</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_set_stack_size"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-17EE519D-7D60-4294-B87F-87E5F51EFF2C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Setting Stack Size on Coprocessors</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p> Each CPU thread that offloads code executes the offloaded code in a coprocessor thread dedicated to that CPU thread. The default stack size for that coprocessor thread is fairly small, 2 MB. 
+	 </p>
+ 
+	 <p> To increase the stack size allocated to offloaded code, set the environment variable 
+		<span class="keyword">MIC_STACKSIZE</span> to a size sufficient for the offloaded code. 
+		<span class="keyword">MIC_STACKSIZE</span> is always honored. It does not require the variable 
+		<span class="keyword">MIC_ENV_PREFIX</span> to be set. 
+	 </p>
+ 
+	 <p>Specify the value for 
+		<span class="keyword">MIC_STACKSIZE</span> as follows: 
+	 </p>
+ 
+	 <table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><td valign="top"> 
+			 <p><samp class="codeph"><var>integer</var><span class="keyword">B</span></samp> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p>A value, in bytes. 
+			 </p>
+</td>
+ 
+		</tr>
+<tr><td valign="top"> 
+			 <p><samp class="codeph"><var>integer</var><span class="keyword">K</span></samp> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p>A value, in kilobytes. 
+			 </p>
+</td>
+ 
+		</tr>
+<tr><td valign="top"> 
+			 <p><samp class="codeph"><var>integer</var><span class="keyword">M</span></samp> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p>A value, in megabytes. 
+			 </p>
+</td>
+ 
+		</tr>
+<tr><td valign="top"> 
+			 <p><samp class="codeph"><var>integer</var><span class="keyword">G</span></samp> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p>A value, in gigabytes. 
+			 </p>
+</td>
+ 
+		</tr>
+<tr><td valign="top"> 
+			 <p><samp class="codeph"><var>integer</var><span class="keyword">T</span></samp> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p>A value, in terabytes. 
+			 </p>
+</td>
+ 
+		</tr>
+</table>
+ 
+	 <p>For example, the following shell BASH and C shell commands set the the maximum stacksize for the main coprocessor thread to 50MB: 
+	 </p>
+ 
+	 <pre>export MIC_STACKSIZE=50M    #(BASH shell)
+setenv MIC_STACKSIZE  50M    #(C shell)</pre> 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>OpenMP* 
+		  <span>and Intel&reg; Cilk&#8482; Plus 
+		  </span>runtime libraries have their own environment variables for adjusting the sizes of the stacks used by additional OpenMP 
+		  <span>or Intel&reg; Cilk&#8482; Plus 
+		  </span>threads. 
+		  <span class="keyword">MIC_STACKSIZE</span> does not apply to such threads. For example, to increase the available stack size for every OpenMP thread except the main thread to 3 MB using the BASH shell, enter: 
+		  <samp class="codeph">export OMP_STACKSIZE=3M</samp> (affects OpenMP threads on both host and coprocessor) or 
+		  <samp class="codeph">export MIC_ENV_PREFIX=MIC export MIC_OMP_STACKSIZE=3M</samp> (affects coprocessor OpenMP threads only). 
+		</p>
+ 
+	 </div> 
+	 <p> If you use pthreads, you can set the pthreads stack size by using 
+		<span class="keyword">posix_memalign()</span> to allocate a page-aligned stack (4096 byte page) with one extra guard page at the bottom, and then passing that stack to 
+		<span class="keyword">pthread_attr_setstack()</span>. Then, use 
+		<span class="keyword">pthread_attr_setstack()</span> for 
+		<span class="keyword">pthread_create()</span>. The following code demonstrates this method. 
+	 </p>
+ 
+	 <pre>#define PAGESIZE 4096
+
+void *makestack(int size)
+{
+    int ret;
+    void *space;
+    char *stack;
+
+    /* size in pages */
+    ret = posix_memalign(&amp;space, PAGESIZE, (size+1) * PAGESIZE);
+    if (ret != 0) {
+        fprintf(stderr, "posix_memalign returns %d\n", ret);
+        return 0;
+    }
+    mprotect(space, PAGESIZE, PROT_NONE);
+    stack = (char *)space + PAGESIZE;
+    printf("makestack: size %d stack %p space %p\n",
+        size, stack, space);
+    return stack;
+}
+
+void setstack(int argc, char **argv)
+{
+    void *i;
+    pthread_t t;
+    int ret;
+    const int stacksize = (12 * 1024 * 1024) / PAGESIZE;
+
+    pthread_attr_init(&amp;thread_attrs);
+    pthread_attr_setstack(&amp;thread_attrs,
+        makestack(stacksize), stacksize * PAGESIZE);
+    pthread_create(&amp;t, &amp;thread_attrs, chkstack, (void *)stacksize);
+}
+</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D46526BF-F44C-4FE6-96C2-E1334E3BAAF9.htm">Building for Intel&reg; MIC Architecture</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">Setting Environment Variables 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,1122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Conditional Select Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, conditional select operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, conditional select operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4A6AFD3E-C7E5-4666-8A0F-AE0661A4D726">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Conditional Select Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_cond"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4A6AFD3E-C7E5-4666-8A0F-AE0661A4D726">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Conditional Select Operators</h1>
+ 
+   
+  <div> 
+    <p>For conditional select operands, the third and fourth operands determine the type returned. Third and fourth operands with same size, but different signedness, return the nearest common ancestor data type. 
+    </p>
+ 
+    <p><strong>Conditional Select Syntax Usage</strong> 
+    </p>
+ 
+    <p>Return the nearest common ancestor data type if third and fourth operands are of the same size, but different signs. 
+    </p>
+ 
+    <p><samp class="codeph">I16vec4 R = select_neq(Is16vec4, Is16vec4, Is16vec4, Iu16vec4);</samp> 
+    </p>
+ 
+    <p>Conditional Select for Equality 
+    </p>
+ 
+    <p><samp class="codeph">R0 := (A0 == B0) ? C0 : D0;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R1 := (A1 == B1) ? C1 : D1;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R2 := (A2 == B2) ? C2 : D2;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R3 := (A3 == B3) ? C3 : D3;</samp> 
+    </p>
+ 
+    <p>Conditional Select for Inequality 
+    </p>
+ 
+    <p><samp class="codeph">R0 := (A0 != B0) ? C0 : D0;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R1 := (A1 != B1) ? C1 : D1;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R2 := (A2 != B2) ? C2 : D2;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R3 := (A3 != B3) ? C3 : D3;</samp> 
+    </p>
+ 
+    <p><strong>Conditional Select Symbols and Corresponding Intrinsics</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5A30F885-43B1-4F7B-B1F1-93588847C476" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e122"> 
+              <p>Conditional Select For: 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e128"> 
+              <p>Operators 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e134"> 
+              <p>Syntax 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e140"> 
+              <p>Corresponding Intrinsic 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e146"> 
+              <p>Additional Intrinsic (Applies to All) 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e122 "> 
+              <p>Equality 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e128 "> 
+              <p><span class="keyword">select_eq</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e134 "> 
+              <p><samp class="codeph">R = select_eq(A, B, C, D)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e140 "> 
+              <p><span class="option">_mm_cmpeq_pi32</span><br><span class="option">_mm_cmpeq_pi16</span><br><span class="option">_mm_cmpeq_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" rowspan="6" valign="top" width="20%" headers="d244802e146 "> 
+              <p><span class="option">_mm_and_si64</span><br><span class="option">_mm_or_si64</span><br><span class="option">_mm_andnot_si64</span> 
+              </p>
+ 
+              <p>&nbsp; 
+              </p>
+ 
+              <p>&nbsp; 
+              </p>
+ 
+              <p>&nbsp; 
+              </p>
+ 
+              <p>&nbsp; 
+              </p>
+ 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e122 "> 
+              <p>Inequality 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e128 "> 
+              <p><span class="keyword">select_neq</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e134 "> 
+              <p><samp class="codeph">R = select_neq(A, B, C, D)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e140 "> 
+              <p><span class="option">_mm_cmpeq_pi32</span><br><span class="option">_mm_cmpeq_pi16</span><br><span class="option">_mm_cmpeq_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e122 "> 
+              <p>Greater Than 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e128 "> 
+              <p><span class="keyword">select_gt</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e134 "> 
+              <p><samp class="codeph">R = select_gt(A, B, C, D)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e140 "> 
+              <p><span class="option">_mm_cmpgt_pi32</span><br><span class="option">_mm_cmpgt_pi16</span><br><span class="option">_mm_cmpgt_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e122 "> 
+              <p>Greater Than<br>or Equal To 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e128 "> 
+              <p><span class="keyword">select_ge</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e134 "> 
+              <p><samp class="codeph">R = select_gt(A, B, C, D)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e140 "> 
+              <p><span class="option">_mm_cmpge_pi32</span><br><span class="option">_mm_cmpge_pi16</span><br><span class="option">_mm_cmpge_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e122 "> 
+              <p>Less Than 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e128 "> 
+              <p><span class="keyword">select_lt</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e134 "> 
+              <p><samp class="codeph">R = select_lt(A, B, C, D)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e140 "> 
+              <p><span class="option">_mm_cmplt_pi32</span><br><span class="option">_mm_cmplt_pi16</span><br><span class="option">_mm_cmplt_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e122 "> 
+              <p>Less Than<br>or Equal To 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e128 "> 
+              <p><span class="keyword">select_le</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e134 "> 
+              <p><samp class="codeph">R = select_le(A, B, C, D)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e140 "> 
+              <p><span class="option">_mm_cmple_pi32</span><br><span class="option">_mm_cmple_pi16</span><br><span class="option">_mm_cmple_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>All conditional select operands must be of the same size. The return data type is the nearest common ancestor of operands 
+      <samp class="codeph">C</samp> and 
+      <samp class="codeph">D</samp>. For conditional select operations using greater-than or less-than operations, the first and second operands must be signed as listed in the table that follows. 
+    </p>
+ 
+    <p><strong>Conditional Select Operator Overloading</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AF756E78-930F-42DB-9D2A-3910CEE1C311" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e464"> 
+              <p>R 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e470"> 
+              <p>Comparison 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e476"> 
+              <p>A and B 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e482"> 
+              <p>C 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d244802e488"> 
+              <p>D 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e464 "> 
+              <p><span class="keyword">I32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" rowspan="3" valign="top" width="20%" headers="d244802e470 "> 
+              <p><span class="keyword">select_eq</span><br><span class="keyword">select_ne</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p><span class="keyword">I[s|u]32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e482 "> 
+              <p><span class="keyword">I[s|u]32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e488 "> 
+              <p><span class="keyword">I[s|u]32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e464 "> 
+              <p><span class="keyword">I16vec4 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p><span class="keyword">I[s|u]16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e482 "> 
+              <p><span class="keyword">I[s|u]16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e464 "> 
+              <p><span class="keyword">I8vec8 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p><span class="keyword">I[s|u]8vec8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e482 "> 
+              <p><span class="keyword">I[s|u]8vec8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e464 "> 
+              <p><span class="keyword">I32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" rowspan="3" valign="top" width="20%" headers="d244802e470 "> 
+              <p><span class="keyword">select_gt</span><br><span class="keyword">select_ge</span><br><span class="keyword">select_lt</span><br><span class="keyword">select_le</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p><span class="keyword">Is32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e482 "> 
+              <p><span class="keyword">Is32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e488 "> 
+              <p><span class="keyword">Is32vec2</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e464 "> 
+              <p><span class="keyword">I16vec4 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p><span class="keyword">Is16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e482 "> 
+              <p><span class="keyword">Is16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e464 "> 
+              <p><span class="keyword">I8vec8 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e476 "> 
+              <p><span class="keyword">Is8vec8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d244802e482 "> 
+              <p><span class="keyword">Is8vec8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>The following table shows the mapping of return values from 
+      <samp class="codeph">R0</samp> to 
+      <samp class="codeph">R7</samp> for any number of elements. The same return value mappings also apply when there are fewer than four return values. 
+    </p>
+ 
+    <p><strong>Conditional Select Operator Return Value Mapping</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F72DEA62-9CE8-40EC-A3D1-7E2A41CDCDAF" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="10%" id="d244802e775"> 
+              <p>Return Value 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="10%" id="d244802e781"> 
+              <p>A Operands 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" colspan="6" align="left" valign="top" id="d244802e787">Available Operators 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="10%" id="d244802e790"> 
+              <p>B Operands 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="10%" id="d244802e796"> 
+              <p>C and D Operands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R0:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C0 : D0; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R1:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C1 : D1; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R2:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C2 : D2; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R3:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C3 : D3; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R4:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C4 : D4; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R5:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C5 : D5; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R6:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C6 : D6; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e775 "> 
+              <p>R7:= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e781 "> 
+              <p>A0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>== 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>!= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&gt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e787 "> 
+              <p>&lt;= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e790 "> 
+              <p>B0 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="10%" headers="d244802e796 "> 
+              <p> C7 : D7; 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

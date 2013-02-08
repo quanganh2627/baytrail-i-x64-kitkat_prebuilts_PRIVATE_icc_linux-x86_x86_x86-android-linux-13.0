@@ -1,0 +1,355 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Unpack Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, unpack operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, unpack operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-144239D8-180E-42B9-8F7A-6821138DECAC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Unpack Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_unpack"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-144239D8-180E-42B9-8F7A-6821138DECAC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Unpack Operators</h1>
+ 
+   
+  <div> 
+    <p>Interleave the 64-bit value from the high half of 
+      <samp class="codeph">A</samp> with the 64-bit value from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I364vec2 unpack_high(I64vec2 A, I64vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is64vec2 unpack_high(Is64vec2 A, Is64vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu64vec2 unpack_high(Iu64vec2 A, Iu64vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A1;</samp><br><samp class="codeph">R1 = B1;</samp> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_epi64</span> 
+    </p>
+ 
+    <p>Interleave the two 32-bit values from the high half of 
+      <samp class="codeph">A</samp> with the two 32-bit values from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I32vec4 unpack_high(I32vec4 A, I32vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is32vec4 unpack_high(Is32vec4 A, Is32vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec4 unpack_high(Iu32vec4 A, Iu32vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A1;</samp><br><samp class="codeph">R1 = B1;</samp><br><samp class="codeph">R2 = A2;</samp><br><samp class="codeph">R3 = B2;</samp> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_epi32</span> 
+    </p>
+ 
+    <p>Interleave the 32-bit value from the high half of 
+      <samp class="codeph">A</samp> with the 32-bit value from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I32vec2 unpack_high(I32vec2 A, I32vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is32vec2 unpack_high(Is32vec2 A, Is32vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec2 unpack_high(Iu32vec2 A, Iu32vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A1;</samp><br><samp class="codeph">R1 = B1;</samp> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_pi32</span> 
+    </p>
+ 
+    <p>Interleave the four 16-bit values from the high half of 
+      <samp class="codeph">A</samp> with the two 16-bit values from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I16vec8 unpack_high(I16vec8 A, I16vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec8 unpack_high(Is16vec8 A, Is16vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu16vec8 unpack_high(Iu16vec8 A, Iu16vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A2;</samp><br><samp class="codeph">R1 = B2;</samp><br><samp class="codeph">R2 = A3;</samp><br><samp class="codeph">R3 = B3;</samp> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_epi16</span> 
+    </p>
+ 
+    <p>Interleave the two 16-bit values from the high half of 
+      <samp class="codeph">A</samp> with the two 16-bit values from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I16vec4 unpack_high(I16vec4 A, I16vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 unpack_high(Is16vec4 A, Is16vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu16vec4 unpack_high(Iu16vec4 A, Iu16vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A2;R1 = B2;</samp><br><samp class="codeph">R2 = A3;R3 = B3;</samp> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_pi16</span> 
+    </p>
+ 
+    <p>Interleave the four 8-bit values from the high half of 
+      <samp class="codeph">A</samp> with the four 8-bit values from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I8vec8 unpack_high(I8vec8 A, I8vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is8vec8 unpack_high(Is8vec8 A, I8vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu8vec8 unpack_high(Iu8vec8 A, I8vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A4;</samp><br><samp class="codeph">R1 = B4;</samp><br><samp class="codeph">R2 = A5;</samp><br><samp class="codeph">R3 = B5;</samp><br><samp class="codeph">R4 = A6;</samp><br><samp class="codeph">R5 = B6;</samp><br><samp class="codeph">R6 = A7;</samp><br><samp class="codeph">R7 = B7;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_pi8</span> 
+    </p>
+ 
+    <p>Interleave the sixteen 8-bit values from the high half of 
+      <samp class="codeph">A</samp> with the four 8-bit values from the high half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I8vec16 unpack_high(I8vec16 A, I8vec16 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is8vec16 unpack_high(Is8vec16 A, I8vec16 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu8vec16 unpack_high(Iu8vec16 A, I8vec16 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A8;</samp><br><samp class="codeph">R1 = B8;</samp><br><samp class="codeph">R2 = A9;</samp><br><samp class="codeph">R3 = B9;</samp><br><samp class="codeph">R4 = A10;</samp><br><samp class="codeph">R5 = B10;</samp><br><samp class="codeph">R6 = A11;</samp><br><samp class="codeph">R7 = B11;</samp><br><samp class="codeph">R8 = A12;</samp><br><samp class="codeph">R8 = B12;</samp><br><samp class="codeph">R2 = A13;</samp><br><samp class="codeph">R3 = B13;</samp><br><samp class="codeph">R4 = A14;</samp><br><samp class="codeph">R5 = B14;</samp><br><samp class="codeph">R6 = A15;</samp><br><samp class="codeph">R7 = B15;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpackhi_epi16</span> 
+    </p>
+ 
+    <p>Interleave the 32-bit value from the low half of 
+      <samp class="codeph">A</samp> with the 32-bit value from the low half of 
+      <samp class="codeph">B</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_epi32</span> 
+    </p>
+ 
+    <p>Interleave the 64-bit value from the low half of 
+      <samp class="codeph">A</samp> with the 64-bit values from the low half of 
+      <samp class="codeph">B</samp> 
+    </p>
+ 
+    <p><samp class="codeph">I64vec2 unpack_low(I64vec2 A, I64vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is64vec2 unpack_low(Is64vec2 A, Is64vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu64vec2 unpack_low(Iu64vec2 A, Iu64vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br><samp class="codeph">R2 = A1;</samp><br><samp class="codeph">R3 = B1;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_epi32</span> 
+    </p>
+ 
+    <p>Interleave the two 32-bit values from the low half of 
+      <samp class="codeph">A</samp> with the two 32-bit values from the low half of 
+      <samp class="codeph">B</samp> 
+    </p>
+ 
+    <p><samp class="codeph">I32vec4 unpack_low(I32vec4 A, I32vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is32vec4 unpack_low(Is32vec4 A, Is32vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec4 unpack_low(Iu32vec4 A, Iu32vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br><samp class="codeph">R2 = A1;</samp><br><samp class="codeph">R3 = B1;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_epi32</span> 
+    </p>
+ 
+    <p>Interleave the 32-bit value from the low half of 
+      <samp class="codeph">A</samp> with the 32-bit value from the low half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I32vec2 unpack_low(I32vec2 A, I32vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is32vec2 unpack_low(Is32vec2 A, Is32vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec2 unpack_low(Iu32vec2 A, Iu32vec2 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_pi32</span> 
+    </p>
+ 
+    <p>Interleave the two 16-bit values from the low half of 
+      <samp class="codeph">A</samp> with the two 16-bit values from the low half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I16vec8 unpack_low(I16vec8 A, I16vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec8 unpack_low(Is16vec8 A, Is16vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu16vec8 unpack_low(Iu16vec8 A, Iu16vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br><samp class="codeph">R2 = A1;</samp><br><samp class="codeph">R3 = B1;</samp><br><samp class="codeph">R4 = A2;</samp><br><samp class="codeph">R5 = B2;</samp><br><samp class="codeph">R6 = A3;</samp><br><samp class="codeph">R7 = B3;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_epi16</span> 
+    </p>
+ 
+    <p>Interleave the two 16-bit values from the low half of 
+      <samp class="codeph">A</samp> with the two 16-bit values from the low half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I16vec4 unpack_low(I16vec4 A, I16vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 unpack_low(Is16vec4 A, Is16vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu16vec4 unpack_low(Iu16vec4 A, Iu16vec4 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br><samp class="codeph">R2 = A1;</samp><br><samp class="codeph">R3 = B1;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_pi16</span> 
+    </p>
+ 
+    <p>Interleave the four 8-bit values from the high low of 
+      <samp class="codeph">A</samp> with the four 8-bit values from the low half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I8vec16 unpack_low(I8vec16 A, I8vec16 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is8vec16 unpack_low(Is8vec16 A, Is8vec16 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu8vec16 unpack_low(Iu8vec16 A, Iu8vec16 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br><samp class="codeph">R2 = A1;</samp><br><samp class="codeph">R3 = B1;</samp><br><samp class="codeph">R4 = A2;</samp><br><samp class="codeph">R5 = B2;</samp><br><samp class="codeph">R6 = A3;</samp><br><samp class="codeph">R7 = B3;</samp><br><samp class="codeph">R8 = A4;</samp><br><samp class="codeph">R9 = B4;</samp><br><samp class="codeph">R10 = A5;</samp><br><samp class="codeph">R11 = B5;</samp><br><samp class="codeph">R12 = A6;</samp><br><samp class="codeph">R13 = B6;</samp><br><samp class="codeph">R14 = A7;</samp><br><samp class="codeph">R15 = B7;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_epi8</span> 
+    </p>
+ 
+    <p>Interleave the four 8-bit values from the high low of 
+      <samp class="codeph">A</samp> with the four 8-bit values from the low half of 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">I8vec8 unpack_low(I8vec8 A, I8vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Is8vec8 unpack_low(Is8vec8 A, Is8vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu8vec8 unpack_low(Iu8vec8 A, Iu8vec8 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">R0 = A0;</samp><br><samp class="codeph">R1 = B0;</samp><br><samp class="codeph">R2 = A1;</samp><br><samp class="codeph">R3 = B1;</samp><br><samp class="codeph">R4 = A2;</samp><br><samp class="codeph">R5 = B2;</samp><br><samp class="codeph">R6 = A3;</samp><br><samp class="codeph">R7 = B3;</samp><br> 
+    </p>
+ 
+    <p>Corresponding intrinsic: 
+      <span class="keyword">_mm_unpacklo_pi8</span> 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

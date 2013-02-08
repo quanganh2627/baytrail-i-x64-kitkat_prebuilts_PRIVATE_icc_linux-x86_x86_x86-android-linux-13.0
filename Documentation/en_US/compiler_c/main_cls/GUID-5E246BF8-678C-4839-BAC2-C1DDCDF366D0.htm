@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Dumping Profile Information">
+<meta name="DC.subject" content="dumping profile information, PGO API, _PGOPTI_Prof_Dump_All, dyn files, dynamic information, endian data, explicit-shape arrays, .dyn, instrumentation, profile-optimized code, dumping">
+<meta name="keywords" content="dumping profile information, PGO API, _PGOPTI_Prof_Dump_All, dyn files, dynamic information, endian data, explicit-shape arrays, .dyn, instrumentation, profile-optimized code, dumping">
+<meta name="DC.Relation" scheme="URI" content="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5E246BF8-678C-4839-BAC2-C1DDCDF366D0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Dumping Profile Information</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pigs_dmp"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pigs_dmp"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5E246BF8-678C-4839-BAC2-C1DDCDF366D0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Dumping Profile Information</h1>
+ 
+   
+  <div> 
+	 <p>The 
+		<span class="keyword">_PGOPTI_Prof_Dump_All()</span> function dumps the profile information collected by the instrumented application. The prototype of the function call is listed below. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F95781C3-B64E-46B8-A8F8-3EB84E2E60E4" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d291993e71"> 
+				  <p>Syntax 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d291993e71 "> 
+				  <p><samp class="codeph">void _PGOPTI_Prof_Dump_All(void);</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>An older version of this function, 
+		<span class="keyword">_PGOPTI_Prof_Dump()</span>, is deprecated and no longer used. 
+	 </p>
+ 
+	 <p>The new function, 
+		<span class="keyword">_PGOPTI_Prof_Dump_All()</span>, operates much like the deprecated function, except on Linux* operating systems, when it is used in connection with shared libraries (.so) and 
+		<span class="keyword">_exit()</span> function to terminate a program. When 
+		<span class="keyword">_PGOPTI_Prof_Dump_All()</span> is called before 
+		<span class="keyword">_exit()</span> function to terminate the program, it insures that a .dyn file is created for all shared libraries needing to create a .dyn file. Use 
+		<span class="keyword">_PGOPTI_Prof_Dump_All()</span> on Linux OS to insure portability and correct functionality. 
+	 </p>
+ 
+	 <p>The profile information is generated in a 
+		<samp class="codeph">.dyn</samp> file (generated in 
+		<a href="GUID-42C5C93F-5F77-4B14-8A27-95798BC30CE3.htm#GUID-42C5C93F-5F77-4B14-8A27-95798BC30CE3">phase 2</a> of PGO). 
+	 </p>
+ 
+	 <p>The environment variables that affect the 
+		<span class="keyword">_PGOPTI_Prof_Dump_All()</span> function are 
+		<span class="keyword">PROF_DIR</span><span class="keyword">COV_DIR</span> and 
+		<span class="keyword">PROF_DPI</span><span class="keyword">COV_DPI</span>. Set the 
+		<span class="keyword">PROF_DIR</span><span class="keyword">COV_DIR</span> environment variable to specify the directory to which the .dyn file must be stored. Alternately, you could use the 
+  <span class="option">–prof_dir</span> profmerge tool option, when building with 
+  <span class="option">-prof-gen</span>, to specify this directory without setting the 
+  <span class="keyword">PROF_DIR</span><span class="keyword">COV_DIR</span> variable. Set the 
+  <span class="keyword">PROF_DPI</span> or 
+  <span class="keyword">COV_DPI</span> environment variables to specify an alternative .dpi filename. The default filename is 
+  <span class="filepath">pgopti.dpi.</span> Alternately, you could use the 
+  <span class="option">–prof_dpi 
+  </span>profmerge tool option, when building with 
+  <span class="option">-prof-gen</span>, to specify the filename for the summary .dpi file. 
+  </p>
+ 
+  <div class="section" id="GUID-A81B0040-7AD0-49CF-A38D-C78F7028CEC1"><h2 class="sectiontitle">Recommended Usage</h2> 
+	  
+	 <p>Insert a single call to this function in the body of the function which terminates the user application. Normally, 
+		<span class="keyword">_PGOPTI_Prof_Dump_All()</span> should be called just once. It is also possible to use this function in conjunction with 
+		<a href="GUID-13554ADB-C3BF-48CE-B32F-B4492AF2BCA6.htm">_PGOPTI_Prof_Reset_All() 
+		</a>function to generate multiple .dyn files (presumably from multiple sets of input data). 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3>
+		  <p>If the data is not reset between the dumps with a call to the _PGOPTI_Prof_Reset_All() function, the counters will continue accumulating data, resulting in the subsequent .dyn file containing data that was previously dumped.
+		  </p>
+
+		</div>
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DB0B6C28-1F9F-4DCC-98B5-5BA36682F38C" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d291993e208"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d291993e208 "> 
+				  <pre>#include &lt;pgouser.h&gt;</pre> 
+				  <pre>void process_data(int foo) {}</pre> 
+				  <pre>int  get_input_data() { return 1; }</pre> 
+				  <pre>int  main(void)</pre> 
+				  <pre>{</pre> 
+				  <pre>// Selectively collect profile information for the portion</pre> 
+				  <pre>// of the application involved in processing input data.</pre> 
+				  <pre>  int input_data = get_input_data();</pre> 
+				  <pre>  while (input_data) {</pre> 
+				  <pre>    _PGOPTI_Prof_Reset();</pre> 
+				  <pre>    process_data(input_data);</pre> 
+				  <pre>    _PGOPTI_Prof_Dump_All();</pre> 
+				  <pre>    input_data = get_input_data();</pre> 
+				  <pre>  }</pre> 
+				  <pre>  return 0;</pre> 
+				  <pre>}</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">PGO API Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

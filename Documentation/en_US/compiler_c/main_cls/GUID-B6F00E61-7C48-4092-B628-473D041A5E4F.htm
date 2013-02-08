@@ -1,0 +1,163 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="check">
+<meta name="abstract" content="Checks for certain conditions at run time.">
+<meta name="description" content="Checks for certain conditions at run time.">
+<meta name="DC.subject" content="-check compiler option, /check compiler option">
+<meta name="keywords" content="-check compiler option, /check compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-DD52D6C3-D274-4209-A0D1-4AB93F58C48B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B6F00E61-7C48-4092-B628-473D041A5E4F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>check</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_check_c"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_check_c"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B6F00E61-7C48-4092-B628-473D041A5E4F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">check</h1>
+
+  <!-- Checks for certain conditions at run time.-->
+  
+  <div><p> Checks for certain conditions at run time.</p>
+
+    <div class="section" id="GUID-E8C756C0-CE03-42AA-8109-F2FACD64F992"><h2>IDE Equivalent</h2>
+
+<p class="ide">Windows: 
+								None</p>
+
+
+<p class="ide">Linux: 
+								<strong>Runtime &gt; Check Stack Frame</strong> (-check=stack)</p>
+
+<p class="ide"><strong>Runtime &gt; Check Type Conversions</strong> (-check=conversions)</p>
+
+<p class="ide"><strong>Runtime &gt; Check Uninitialized Variables</strong> (-check=uninit)</p>
+
+
+
+<p class="ide">OS X: 
+								<strong>Runtime &gt; Check Stack Frame</strong> (-check=stack)</p>
+
+<p class="ide"><strong>Runtime &gt; Check Type Conversions</strong> (-check=conversions)</p>
+
+<p class="ide"><strong>Runtime &gt; Check Uninitialized Variables</strong> (-check=uninit)</p>
+
+
+    </div>
+
+    <div class="section" id="GUID-C730374D-4C5D-45AC-A7AA-F50C98360BD2"><h2>Architectures</h2>
+      <p>All</p>
+
+    </div>
+
+    <div class="section" id="GUID-A613E689-E31B-4DCE-B258-E54142659E28"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-check</span><span class="sep">=</span><span class="var">keyword</span><span class="delim">[</span><span class="sep">, </span><span class="var">keyword</span><span class="sep">...</span><span class="delim">]</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/check</span><span class="sep">:</span><span class="var">keyword</span><span class="delim">[</span><span class="sep">, </span><span class="var">keyword</span><span class="sep">...</span><span class="delim">]</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-D91359CF-D253-4D3F-B516-CE5FA9983AE4"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p> Specifies the conditions to check. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]conversions</span></p></td>
+
+<td valign="top" class="noborder"><p> Determines whether checking occurs for converting to smaller types. Keyword <span class="keyword">conversions</span> enables this checking.</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]stack</span></p></td>
+
+<td valign="top" class="noborder"><p> Determines whether checking occurs on the stack frame. Keyword <span class="keyword">stack</span> enables this checking. If <span class="keyword">stack</span> is specified, the stack is checked for buffer overruns and buffer underruns. This option also enforces local variables initialization and stack pointer verification.</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]uninit</span></p></td>
+
+<td valign="top" class="noborder"><p> Determines whether checking occurs for uninitialized variables. Keyword <span class="keyword">uninit</span> enables this checking. If a variable is read before it is written, a run-time error routine will be called.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-4B61AFBD-858E-46EB-91F6-CBCAB0774802"><h2>Default</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">noconversions</span>
+<br><span class="keyword">nostack</span>
+<br><span class="keyword">nouninit</span></p></td>
+<td valign="top" class="noborder"><p> No checking is performed for the above run-time conditions.</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-1F344A81-35C0-4312-954F-C026B958C122"><h2>Description</h2>
+      
+    <p> This option checks for certain conditions at
+run time.</p>
+
+<p> On Windows* OS, this option disables any
+default or specified optimizations and applies the <span class="option">/Od</span> level of
+optimization. If you specified optimizations, the compiler emits
+warning diagnostics for the disabled optimizations.</p>
+
+<p> On Linux* OS and OS X*, this option may
+disable some optimizations.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p> This option requires library support. Depending on the platform, the required library is either in your operating system run-time environment or in your compiler package.</p>
+</div></div>
+
+    <div class="section" id="GUID-1562CADC-E66B-4D5D-A27F-8B8F63DDD7A8"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">check conversions</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: None</p>
+<p>Windows: <span class="option">/RTCc</span></p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">check stack</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: None</p>
+<p>Windows: <span class="option">/RTCs</span></p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">check uninit</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: None</p>
+<p>Windows: <span class="option">/RTCu</span></p>
+
+</td>
+</tr>
+</table>
+
+      
+    </div>
+
+  </div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DD52D6C3-D274-4209-A0D1-4AB93F58C48B.htm">Language Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

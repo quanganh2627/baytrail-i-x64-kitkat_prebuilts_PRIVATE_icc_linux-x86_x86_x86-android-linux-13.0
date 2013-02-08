@@ -1,0 +1,191 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_cmp_epi32_mask/ _mm512_mask_cmp_epi32_mask">
+<meta name="abstract" content="Performs a comparison between int32 vectors. Corresponding instruction is VPCMPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Performs a comparison between int32 vectors. Corresponding instruction is VPCMPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_cmpeq_epi32_mask, _mm512_mask_cmp_epi32_mask">
+<meta name="keywords" content="_mm512_cmpeq_epi32_mask, _mm512_mask_cmp_epi32_mask">
+<meta name="DC.Relation" scheme="URI" content="GUID-AC7AA6D1-8EAF-41EF-A6C4-EED077EE91FE.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-56DCA8F2-F4AF-4BC6-81CA-F1D244035697">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_cmp_epi32_mask/ _mm512_mask_cmp_epi32_mask</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intref_mic_mm512[_mask]_cmp_epi32_mask"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-56DCA8F2-F4AF-4BC6-81CA-F1D244035697">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_cmp_epi32_mask/ _mm512_mask_cmp_epi32_mask</h1>
+<!--Performs  a comparison between int32 vectors. Corresponding instruction is 
+ VPCMPD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Performs  a comparison between int32 vectors. Corresponding instruction is 
+<samp class="codeph">VPCMPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-B9F4CB59-299A-4AB8-AEF8-8074044ADA4B"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __mmask16 __cdecl _mm512_cmp_epi32_mask(__m512i v2, __m512i v3, const int op);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __mmask16 __cdecl _mm512_mask_cmp_epi32_mask(__mmask16 k1, __m512i v2, __m512i v3, const int op);</span></p></td></tr></table></div>
+<div class="section" id="GUID-80034439-97C6-40F3-9C23-F819C0BA258A"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">int32 vector used for the compare operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">int32 vector used for the compare operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result 
+      </span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>op</var></p></td>
+
+<td valign="top" class="noborder"><p>Comparison predicate. Takes one of the following values: 
+    <a name="d89e656"><!-- --></a><ul type="disc" id="d89e656"> 
+      <li><samp class="codeph">_MM_CMPINT_EQ</samp> - Equal 
+      </li>
+ 
+      <li><samp class="codeph">_MM_CMPINT_LT</samp> - Less than 
+      </li>
+ 
+      <li><samp class="codeph">_MM_CMPINT_LE</samp> - Less than or Equal 
+      </li>
+ 
+      <li><samp class="codeph">_MM_CMPINT_NE</samp> - Not Equal 
+      </li>
+ 
+      <li><samp class="codeph">_MM_CMPINT_NLT</samp> - Not Less than 
+      </li>
+ 
+      <li><samp class="codeph">_MM_CMPINT_GE</samp> - Greater than or Equal 
+      </li>
+ 
+      <li><samp class="codeph"> _MM_CMPINT_NLE</samp> - Not Less than or Equal 
+      </li>
+ 
+      <li><samp class="codeph">_MM_CMPINT_GT</samp> - Greater than 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+
+</td>
+</tr>
+</table>
+</div>
+<div class="section" id="GUID-ED23E3E8-AAC9-49B3-A8B3-04E341A86C00"><h2>Description</h2>
+<p>This intrinsic performs an element-by-element comparison between int32 vectors <samp class="codeph">v2</samp> and <samp class="codeph">v3</samp>, using  the <var>op</var> parameter as a comparison predicate.</p>
+
+<p>For the sake of convenience, the compiler provides the following intrinsics that correspond to the values of the <var>op</var> parameter. You can use these intrinsic names instead of specifying the <var>op</var> parameter.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-18942557-76C7-4C92-BD7B-2F76EE2B33C8" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d274202e169"><p>Intrinsic Name</p>
+</th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d274202e172"><p>Corresponding Comparison Predicate</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p> <samp class="codeph">_mm512_cmpeq_epi32_mask(v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p> <samp class="codeph">_MM_CMPINT_EQ</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_mask_cmpeq_epi32_mask(k1, v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_EQ</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_cmplt_epi32_mask(v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph">_MM_CMPINT_LT</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph">_mm512_mask_cmplt_epi32_mask(k1, v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph">_MM_CMPINT_LT</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_cmple_epi32_mask(v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph">_MM_CMPINT_LE</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_mask_cmple_epi32_mask(k1, v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph">_MM_CMPINT_LE</samp></p>
+</td>
+</tr>
+
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_cmpneq_epi32_mask(v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_NE</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_mask_cmpneq_epi32_mask(k1, v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_NE</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_cmpgt_epi32_mask(v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_GT</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_mask_cmpgt_epi32_mask(k1, v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_GT</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_cmpge_epi32_mask(v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_GE</samp></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d274202e169 "><p><samp class="codeph"> _mm512_mask_cmpge_epi32_mask(k1, v2, v3)</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d274202e172 "><p><samp class="codeph"> _MM_CMPINT_GE</samp></p>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-DFC21416-879E-49D5-A2BE-A1ED2455C1AD"><h2>Returns</h2><p>Returns the result of the comparison in bit eight of the return value, where there is one bit per pair of elements. The <var>i</var>th bit is set to '<span>1</span>' if and only if <samp class="codeph">(v2[<var>i</var>] <var>cmp_op</var> v3[<var>i</var>])</samp> is true.</p>
+<p>In the masked variant, for those elements with a corresponding mask bit set to zero, the return value in the corresponding bit of the result mask is zero.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AC7AA6D1-8EAF-41EF-A6C4-EED077EE91FE.htm">Compare Operations between Integer Vectors</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

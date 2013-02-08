@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_adds_epi8/16">
+<meta name="abstract" content="Adds the signed 8/16-bit integer data elements with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is VPADDSB or VPADDSW.">
+<meta name="description" content="Adds the signed 8/16-bit integer data elements with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is VPADDSB or VPADDSW.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_adds_epi8 (VPADDSB), _mm256_adds_epi16 (VPADDSW)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_adds_epi8 (VPADDSB), _mm256_adds_epi16 (VPADDSW)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E229D906-FB6C-488B-8BD0-CAD549572BBE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_adds_epi8/16</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_adds"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_adds_epi8"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_adds_epi16"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E229D906-FB6C-488B-8BD0-CAD549572BBE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_adds_epi8/16 </span></h1>
+
+
+<!--Adds the signed 8/16-bit integer data elements  with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is  VPADDSB  or  VPADDSW .--><div><p>Adds the signed 8/16-bit integer data elements  with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPADDSB</span> or <span class="keyword">VPADDSW</span>.</p>
+
+
+<div class="section" id="GUID-A9553FD3-08EC-4ADE-AC6C-ECBCEF27585A"><h2>Syntax</h2>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_adds_epi8(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_adds_epi16(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-00A2AA64-78D1-425E-AD6E-87984BA93BAB"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-B2221EC1-36B3-43D9-A720-5F3BEB25260A"><h2>Description</h2>
+
+<p>Performs a SIMD add of the packed, signed, 8- or 16-bit integer data elements with saturation from the first source vector, <var>s1</var>, and corresponding elements of the second source vector, <var>s2</var>, and stores the packed integer results in the destination vector. When an individual byte/word result is beyond the range of a signed byte/word integer (that is, greater than <span>7FH/7FFFH</span> or less than <span>80H/8000H</span>), the saturated value of <span>7FH/7FFFH</span> or <span>80H/8000H</span>, respectively, is written to the destination vector.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-43EC89DB-9631-4339-BA53-785B37B3EED4"><h2>Returns</h2><p> Result of the addition operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">Intrinsics for Arithmetic Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

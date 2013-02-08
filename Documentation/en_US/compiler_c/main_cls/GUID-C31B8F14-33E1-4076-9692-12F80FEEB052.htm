@@ -1,0 +1,203 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="guide-opts, Qguide-opts">
+<meta name="abstract" content="Tells the compiler to analyze certain code and generate recommendations that may improve optimizations.">
+<meta name="description" content="Tells the compiler to analyze certain code and generate recommendations that may improve optimizations.">
+<meta name="DC.subject" content="-guide-opts compiler option, /Qguide-opts compiler option, optimizations, option generating recommendations to improve">
+<meta name="keywords" content="-guide-opts compiler option, /Qguide-opts compiler option, optimizations, option generating recommendations to improve">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm#GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43">
+<meta name="DC.Relation" scheme="URI" content="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E">
+<meta name="DC.Relation" scheme="URI" content="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A.htm#GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A">
+<meta name="DC.Relation" scheme="URI" content="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C31B8F14-33E1-4076-9692-12F80FEEB052">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>guide-opts, Qguide-opts</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_guide_opts"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_guide_opts"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C31B8F14-33E1-4076-9692-12F80FEEB052">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">guide-opts, Qguide-opts</h1>
+<!-- Tells the compiler to analyze certain code and generate recommendations that may improve optimizations.--><div><p> Tells the compiler to analyze certain code and generate recommendations that may improve optimizations.</p>
+
+<div class="section" id="GUID-2D076B18-B1A9-4C40-8865-3567A4C6BB76"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Diagnostics &gt;  Guided Auto Parallelism Code Selection Options</strong></p>
+
+	<p class="ide">Linux: 
+								<strong>Compilation Diagnostics
+ &gt;  Guided Auto Parallelism Code Selection
+</strong></p>
+
+	<p class="ide">OS X: 
+								<strong>Diagnostics &gt;  Guided Auto Parallelism Code Selection </strong></p>
+
+
+</div>
+<div class="section" id="GUID-889DE8E9-667D-4241-A75D-A59BB4F6E4D7"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-444A274C-04F3-47D9-87FC-8E2B439A66C2"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">guide-opts</span><span class="oper">=</span><span class="var">string</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qguide-opts</span><span class="oper">:</span><span class="var">string</span></p></td></tr></table></div>
+<div class="section" id="GUID-AF02CB6F-D522-4765-A3B0-9CB762A90D30"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>string</var></p></td>
+<td valign="top" class="noborder"><p>Is the text denoting the code to analyze. The string must appear
+within quotes. It can take one or more of the following forms:
+</p>
+<a name="SIMPLETABLE_A793CCC9D9CC40459448FC0E6A1C6F46"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="SIMPLETABLE_A793CCC9D9CC40459448FC0E6A1C6F46" border="1" class="simpletableborder"><tr><td valign="top"><var>filename</var>
+</td>
+</tr>
+<tr><td valign="top"><var>filename</var>, <var>routine</var>
+</td>
+</tr>
+<tr><td valign="top"><var>filename</var>, <var>range</var> [, <var>range</var>]...
+
+</td>
+</tr>
+<tr><td valign="top"><var>filename</var>, <var>routine</var>, <var>range</var>
+ [, <var>range</var>]...
+</td>
+</tr>
+</table>
+<p> If you specify more than one of the above forms in a string, a semicolon must appear between each form. If you specify more than one <var>range</var>
+ in a string, a comma must appear between each <var>range</var>. Optional blanks can follow each parameter in the forms above and they can also follow each form in a string.</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p> Specifies the name of a file to be analyzed. It
+can include a path.</p>
+
+<p> If you do not specify a path, the compiler
+looks for filename in the current working directory.</p>
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>routine</var>
+</p></td>
+<td valign="top" class="noborder"><p> Specifies the name of a routine to be analyzed.
+You can include an identifying<span> parameter</span>. </p>
+
+<p> The name, including any<span> parameter</span>, must be enclosed in single quotes.</p>
+ <p>The compiler tries to uniquely identify the routine that corresponds to the specified routine name. It may select multiple routines to analyze, especially if the following is true:</p>
+<ul type="disc" id="GUID-D2187F0C-F287-436C-9A42-F98862A2E444"><li><p> More than one routine has the specified routine name, so the routine cannot be uniquely identified.</p>
+</li>
+<li><p>No<span> parameter</span>
+ information has been specified to narrow the number of routines selected as matches.
+  </p>
+</li>
+</ul>
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>range</var>
+</p></td>
+<td valign="top" class="noborder"><p> Specifies a range of line numbers to analyze in
+the file or routine specified. The <var>range</var> must be specified in
+integers in the form:</p>
+
+<p><em> first_line_number-last_line_number</em></p>
+
+<p> The hyphen between the line numbers is
+required.</p>
+
+</td>
+</tr></table>
+
+
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-DEE8A0D7-78F9-4B86-BE9F-E617CB300338"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>You do not receive guidance on how to improve optimizations.
+However, if you specify option <span class="option">-guide</span> (Linux* OS and OS X*) or <span class="option">/Qguide</span> (Windows* OS), the compiler
+analyzes and generates recommendations for all the code in an
+application
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-36C6E4B7-32CE-4AFA-89B0-DD7028E7EE52"><h2>Description</h2><p> This option tells the compiler to analyze
+certain code and generate recommendations that may
+improve optimizations.</p>
+
+
+<p> This option is ignored unless you also specify
+one or more of the following options: option <span class="option">-guide</span>, <span class="option">-guide-vec</span>,
+<span class="option">-guide-data-trans</span>, or <span class="option">-guide-par</span> (Linux* OS and OS X*), or option <span class="option">/Qguide</span>,
+<span class="option">/Qguide-vec</span>, <span class="option">/Qguide-data-trans</span>, or <span class="option">/Qguide-par</span> (Windows*
+OS).</p>
+
+<p> When option <span class="option">-guide-opt</span> or <span class="option">/Qguide-opt</span> is
+specified, a message is output that
+includes which parts of the input files are being analyzed. If a routine is selected to be analyzed, the
+complete routine name will appear in the generated
+message.</p>
+
+<p> When inlining is involved, you should specify
+callee line numbers. Generated messages also use callee line
+numbers.</p>
+
+</div>
+
+<div class="section" id="GUID-716A31C9-10A6-4DB1-A1A9-4C5089318A33"><h2>Alternate Options</h2><p>None</p>
+</div>
+<div class="example" id="EXAMPLE_6DB980ED7BFD47988505113AF5EBFA6F"><a name="EXAMPLE_6DB980ED7BFD47988505113AF5EBFA6F"><!-- --></a><h2>Example</h2><p> Consider the following:</p>
+
+ <pre>Linux* OS: -guide-opts="v.c, 1-10; v2.c, 1-40, 50-90, 100-200; v5.c, 300-400; x.c, 'funca(int)', 22-44, 55-77, 88-99; y.c, 'funcb'"
+</pre>
+ <pre>Windows* OS: /Qguide-opts:"v.c, 1-10; v2.c, 1-40, 50-90, 100-200; v5.c, 300-400; x.c, 'funca(int)', 22-44, 55-77, 88-99; y.c, 'funcb'"
+</pre>
+<p> The above command causes the following to be
+analyzed:</p>
+<a name="SIMPLETABLE_5AD5A0D246F34E5D95221C3B2A42D1B3"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="SIMPLETABLE_5AD5A0D246F34E5D95221C3B2A42D1B3" border="1" class="simpletableborder"><tr><td valign="top"> file v.c, line numbers 1 to 10
+</td>
+</tr>
+<tr><td valign="top">file v2.c, line numbers 1 to 40, 50 to 90, and
+100 to 200
+</td>
+</tr>
+<tr><td valign="top">file v5.c, line numbers 300 to 400
+</td>
+</tr>
+<tr><td valign="top">file x.c, routine funca with parameter (int),
+line numbers 22 to 44, 55 to 77, and 88 to 99
+</td>
+</tr>
+<tr><td valign="top">file y.c, routine funcb
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm#GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE"><span class="option">guide, Qguide</span></a>  compiler option</div>
+<div><a href="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43"><span class="option">guide-data-trans, Qguide-data-trans</span></a>  compiler option</div>
+<div><a href="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E"><span class="option">guide-par, Qguide-par</span></a>  compiler option</div>
+<div><a href="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A.htm#GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A"><span class="option">guide-vec, Qguide-vec</span></a>  compiler option</div>
+<div><a href="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59"><span class="option">guide-file, Qguide-file</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

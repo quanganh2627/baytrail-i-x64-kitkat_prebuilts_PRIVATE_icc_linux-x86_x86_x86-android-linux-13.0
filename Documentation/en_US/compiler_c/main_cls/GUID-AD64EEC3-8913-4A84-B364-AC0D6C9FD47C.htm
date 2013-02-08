@@ -1,0 +1,516 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Comparison Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, comparison operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, comparison operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AD64EEC3-8913-4A84-B364-AC0D6C9FD47C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Comparison Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_comp"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AD64EEC3-8913-4A84-B364-AC0D6C9FD47C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Comparison Operators</h1>
+ 
+   
+  <div> 
+    <p>The equality and inequality comparison operands can have mixed signedness, but they must be of the same size. The comparison operators for less-than and greater-than must be of the same sign and size. 
+    </p>
+ 
+    <p><strong>Example of Syntax Usage for Comparison Operator</strong> 
+    </p>
+ 
+    <p>The nearest common ancestor is returned for compare for equal/not-equal operations. 
+    </p>
+ 
+    <p><span class="keyword">Iu8vec8 A;</span> 
+    </p>
+ 
+    <p><span class="keyword">Is8vec8 B;</span> 
+    </p>
+ 
+    <p><span class="keyword">I8vec8 C;</span> 
+    </p>
+ 
+    <p><samp class="codeph">C = cmpneq(A,B);</samp> 
+    </p>
+ 
+    <p>Type cast needed for different-sized elements for equal/not-equal comparisons. 
+    </p>
+ 
+    <p><span class="keyword">Iu8vec8 A, C;</span> 
+    </p>
+ 
+    <p><span class="keyword">Is16vec4 B;</span> 
+    </p>
+ 
+    <p><span class="keyword">C = cmpeq(A,(Iu8vec8)B);</span> 
+    </p>
+ 
+    <p>Type cast needed for sign or size differences for less-than and greater-than comparisons. 
+    </p>
+ 
+    <p><span class="keyword">Iu16vec4 A;</span> 
+    </p>
+ 
+    <p><span class="keyword">Is16vec4 B, C;</span> 
+    </p>
+ 
+    <p><samp class="codeph">C = cmpge((Is16vec4)A,B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = cmpgt(B,C);</samp> 
+    </p>
+ 
+    <p><strong>Inequality Comparison Symbols and Corresponding Intrinsics</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4D0263A8-EAE4-4576-97BF-E1401B524B9A" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e130"> 
+              <p>Compare For: 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e136"> 
+              <p>Operators 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e142"> 
+              <p>Syntax 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e148"> 
+              <p>Intrinsic 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e130 "> 
+              <p>Equality 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e136 "> 
+              <p><span class="keyword">cmpeq</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e142 "> 
+              <p><samp class="codeph">R = cmpeq(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e148 "> 
+              <p><span class="option">_mm_cmpeq_pi32</span><br><span class="option">_mm_cmpeq_pi16</span><br><span class="option">_mm_cmpeq_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e130 "> 
+              <p>Inequality 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e136 "> 
+              <p><span class="keyword">cmpneq</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e142 "> 
+              <p><samp class="codeph">R = cmpneq(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e148 "> 
+              <p><span class="option">_mm_cmpeq_pi32</span><br><span class="option">_mm_cmpeq_pi16</span><br><span class="option">_mm_cmpeq_pi8</span><br><span class="option">_mm_andnot_si64</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e130 "> 
+              <p>Greater Than 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e136 "> 
+              <p><span class="keyword">cmpgt</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e142 "> 
+              <p><samp class="codeph">R = cmpgt(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e148 "> 
+              <p><span class="option">_mm_cmpgt_pi32</span><br><span class="option">_mm_cmpgt_pi16</span><br><span class="option">_mm_cmpgt_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e130 "> 
+              <p>Greater Than<br>or Equal To 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e136 "> 
+              <p><span class="keyword">cmpge</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e142 "> 
+              <p><samp class="codeph">R = cmpge(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e148 "> 
+              <p><span class="option">_mm_cmpgt_pi32</span><br><span class="option">_mm_cmpgt_pi16</span><br><span class="option">_mm_cmpgt_pi8</span><br><span class="option">_mm_andnot_si64</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e130 "> 
+              <p>Less Than 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e136 "> 
+              <p><span class="keyword">cmplt</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e142 "> 
+              <p><samp class="codeph">R = cmplt(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e148 "> 
+              <p><span class="option">_mm_cmpgt_pi32</span><br><span class="option">_mm_cmpgt_pi16</span><br><span class="option">_mm_cmpgt_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e130 "> 
+              <p>Less Than<br>or Equal To 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e136 "> 
+              <p><span class="keyword">cmple</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e142 "> 
+              <p><samp class="codeph">R = cmple(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e148 "> 
+              <p><span class="option">_mm_cmpgt_pi32</span><br><span class="option">_mm_cmpgt_pi16</span><br><span class="option">_mm_cmpgt_pi8</span><br><span class="option">_mm_andnot_si64</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>Comparison operators have the restriction that the operands must be the size and sign as listed in the Compare Operator Overloading table. 
+    </p>
+ 
+    <p><strong>Compare Operator Overloading</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E30CA7DB-FC1F-4A9A-B924-76D00AA92795" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e436"> 
+              <p>R 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e442"> 
+              <p>Comparison 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e448"> 
+              <p>A 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d569008e454"> 
+              <p>B 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e436 "> 
+              <p><span class="keyword">I32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e442 "> 
+              <p><span class="keyword">cmpeq</span><br><span class="keyword">cmpne</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e448 "> 
+              <p><span class="keyword">I[s|u]32vec2 B</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e454 "> 
+              <p><span class="keyword">I[s|u]32vec2 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e436 "> 
+              <p><span class="keyword">I16vec4 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e442 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e448 "> 
+              <p><span class="keyword">I[s|u]16vec4 B</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e454 "> 
+              <p><span class="keyword">I[s|u]16vec4 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e436 "> 
+              <p><span class="keyword">I8vec8 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e442 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e448 "> 
+              <p><span class="keyword">I[s|u]8vec8 B</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e454 "> 
+              <p><span class="keyword">I[s|u]8vec8 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e436 "> 
+              <p><span class="keyword">I32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e442 "> 
+              <p><span class="keyword">cmpgt</span><br><span class="keyword">cmpge</span><br><span class="keyword">cmplt</span><br><span class="keyword">cmple</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e448 "> 
+              <p><span class="keyword">Is32vec2 B</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e454 "> 
+              <p><span class="keyword">Is32vec2 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e436 "> 
+              <p><span class="keyword">I16vec4 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e442 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e448 "> 
+              <p><span class="keyword">Is16vec4 B</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e454 "> 
+              <p><span class="keyword">Is16vec4 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e436 "> 
+              <p><span class="keyword">I8vec8 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e442 "> 
+              <p>&nbsp; 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e448 "> 
+              <p><span class="keyword">Is8vec8 B</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d569008e454 "> 
+              <p><span class="keyword">Is8vec8 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

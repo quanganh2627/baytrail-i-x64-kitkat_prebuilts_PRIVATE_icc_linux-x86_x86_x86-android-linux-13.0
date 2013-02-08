@@ -1,0 +1,160 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="debug (Windows* OS)">
+<meta name="abstract" content="Enables or disables generation of debugging information.">
+<meta name="description" content="Enables or disables generation of debugging information.">
+<meta name="DC.subject" content="debugging, option specifying settings to enhance, option affecting information generated, /debug compiler option">
+<meta name="keywords" content="debugging, option specifying settings to enhance, option affecting information generated, /debug compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE.htm#GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>debug (Windows* OS)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_debug_w"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_debug_w"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">debug (Windows* OS)</h1>
+<!--Enables or disables generation of debugging information.--><div><p>Enables or disables generation of debugging information.</p>
+
+<div class="section" id="GUID-722940B9-FD8F-4104-954E-A2B6E58D32E3"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Debugging &gt; Enable Expanded Line Number Information </strong> (<span class="option">/debug:expr-source-pos</span>)</p>
+
+
+<p class="ide">Linux: 
+								None</p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-FB18FF2C-D0B3-4363-A11C-2340AF9138D2"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-205AAEF0-22CC-42E3-96CD-7E571432196C"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/debug</span><span class="delim">[</span><span class="oper">:</span><span class="var">keyword</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-54C7F4D5-C756-4E29-A0DB-74BAD2858481"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Is the type of debugging information to be generated. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+<td valign="top" class="noborder"><p>Generates no symbol table information.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">full</span> or <span class="keyword">all</span></p></td>
+<td valign="top" class="noborder"><p>Generates complete debugging information.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">minimal</span></p></td>
+<td valign="top" class="noborder"><p>Generates line numbers and minimal debugging information.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">partial</span></p></td>
+<td valign="top" class="noborder"><p>Deprecated. Generates global symbol table information needed for linking.</p>
+</td>
+</tr>  <tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]expr-source-pos</span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates source position information at the expression level of granularity.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]inline-debug-info</span></p></td>
+<td valign="top" class="noborder"><p>Determines whether the compiler generates enhanced debug information for inlined code.</p>
+
+</td>
+</tr></table>
+</td>
+</tr></table>
+<p>For information on the non-default settings for these keywords, see the Description section.</p>
+
+</div>
+
+<div class="section" id="GUID-16376C54-E32C-4F84-B8C9-65681EE4DEE7"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span class="option">/debug:none</span></p></td>
+<td valign="top" class="noborder"><p>This is the default on the command line and for a release configuration in the IDE.</p>
+</td>
+</tr><tr> <td valign="top" width="30%" class="noborder"><p><span class="option">/debug:full</span></p></td>
+<td valign="top" class="noborder"><p>This is the default for a debug configuration in the IDE.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-1F27A641-54B2-48D7-9386-9D0D04CAB7FA"><h2>Description</h2><p>This option enables or disables generation of debugging information. It is passed to the linker.</p>
+<p>Note that if you turn debugging on, optimization is turned off.</p>
+<p>If conflicting keywords are used in combination, the last one specified on the command line has precedence.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-233A5A37-3CDF-4015-A4F0-D86F41185443" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr> <th class="noborder" align="left" valign="top" width="50%" id="d272317e177"><p>Option</p>
+</th>
+ <th class="noborder" align="left" valign="top" width="50%" id="d272317e181"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> <tr> <td class="noborder" valign="top" width="50%" headers="d272317e177 "><p><span class="option">/debug:none</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d272317e181 "><p>Disables generation of debugging information. </p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="50%" headers="d272317e177 "><p><span class="option">/debug:full</span> or <span class="option">/debug:all</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d272317e181 "><p>Generates complete debugging information. It produces symbol table information needed for full symbolic debugging of unoptimized code and global symbol information needed for linking. It is the same as specifying <span class="option">/debug</span> with no keyword. </p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="50%" headers="d272317e177 "><p><span class="option">/debug:minimal</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d272317e181 "><p>Generates line number information for debugging. It produces global symbol information needed for linking, but not local symbol table information needed for debugging.</p>
+ </td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="50%" headers="d272317e177 "><p><span class="option">/debug:partial</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d272317e181 "><p>Generates global symbol table information needed for linking, but not local symbol table information needed for debugging. This option is deprecated and is not available in the IDE.</p>
+</td>
+ </tr>
+<tr> <td class="noborder" valign="top" width="50%" headers="d272317e177 "><p><span class="option">/debug:expr-source-pos</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d272317e181 "><p>Generates source position information at the statement level of granularity.</p>
+</td>
+ </tr>
+<tr><td class="noborder" valign="top" width="50%" headers="d272317e177 "><p><span class="option">/debug:inline-debug-info</span></p>
+</td>
+<td class="noborder" valign="top" width="50%" headers="d272317e181 "><p>Generates enhanced debug information for inlined code. </p>
+<p>On inlined functions, symbols are (by default) associated with the caller. This option causes symbols for inlined functions to be associated with the source of the called function.</p>
+</td>
+</tr>
+ </tbody>
+</table>
+</div>
+</div>
+
+<div class="section" id="GUID-5AE6794E-B99B-4604-AB86-79FBEE2B2317"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr> <td valign="top" width="30%" class="noborder"><p>For <span class="option">/debug:full</span> or<br><span class="option">/debug</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: None<br>Windows: <span class="option">/Zi</span></p>
+</td>
+</tr></table>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE.htm#GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE"> <span class="option">debug</span> (Linux* and OS* X)</a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

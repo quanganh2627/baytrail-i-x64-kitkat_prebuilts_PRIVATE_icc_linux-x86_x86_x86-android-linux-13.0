@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_reduce_[g]max_ps/_mm512_mask_reduce_[g]max_ps">
+<meta name="abstract" content="Determines the element with maximum scalar value in a float32 vector. There is no corresponding instruction. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Determines the element with maximum scalar value in a float32 vector. There is no corresponding instruction. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_reduce_max_ps, _mm512_reduce_gmax_ps, _mm512_mask_reduce_max_ps, _mm512_mask_reduce_gmax_ps">
+<meta name="keywords" content="_mm512_reduce_max_ps, _mm512_reduce_gmax_ps, _mm512_mask_reduce_max_ps, _mm512_mask_reduce_gmax_ps">
+<meta name="DC.Relation" scheme="URI" content="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-63E81030-9055-48B5-9933-19F5215490A2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_reduce_[g]max_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_reduce_max_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-63E81030-9055-48B5-9933-19F5215490A2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_reduce_[g]max_ps/_mm512_mask_reduce_[g]max_ps</h1>
+<!--Determines the element with maximum scalar value in a float32 vector. There is no corresponding instruction.  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Determines the element with maximum scalar value in a float32 vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-677D72E2-C9C8-46CC-B785-35C4B7F03364"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern float __cdecl _mm512_reduce_gmax_ps(_m512 v2);</span></p><p><span class="kwd">extern float __cdecl _mm512_reduce_max_ps(_m512 v2);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern float __cdecl _mm512_mask_reduce_gmax_ps(__mmask16 k1, _m512 v2);</span></p><p><span class="kwd">extern float __cdecl _mm512_mask_reduce_max_ps(__mmask16 k1, _m512 v2);</span></p></td></tr></table></div>
+<div class="section" id="GUID-D3162C24-26DA-42FF-87C7-B622C8439E26"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float32 vector in which to determine the maximum value
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result 
+      </span></td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-D7CE72B6-9358-4C68-8EB3-E9133A7EEA8F"><h2>Description</h2>
+<p>Determines the element with maximum value in the float32 vector 
+<samp class="codeph">v2</samp>.</p>
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing. Elements in 
+<samp class="codeph">v2</samp> with corresponding bit clear in 
+<samp class="codeph">k1</samp> are copied as is to the resulting vector.</p>
+<p>
+For the g variant:</p>
+<p><samp class="codeph">FpMax()</samp> returns the larger of the two elements in <samp class="codeph">v2</samp>, following IEEE in general, and specifically following this from the DX10 spec:</p>
+<p>
+<samp class="codeph">dest = src0 &gt;= src1 ? src0 : src1</samp>
+</p>
+<p>The <samp class="codeph">&gt;=</samp> is used instead of <samp class="codeph">&gt;</samp> so that if <samp class="codeph">min(x,y) = x</samp> then <samp class="codeph">max(x,y) = y</samp>.</p>
+<p> &nbsp;NaN has special handling: If one element is NaN, then the other element is returned (choice made per-component). If both are NaN, then the quietized NaN from the first element in 
+<samp class="codeph">v2</samp> is returned. This conforms to new IEEE 754R rules.</p>
+<p>For the non-g variant:</p>
+
+
+<p> <samp class="codeph">FpMax()</samp> returns the larger of the two elements in <samp class="codeph">v2</samp>  by performing a SIMD compare of the packed
+single-precision floating-point values in those two elements .</p>
+<p>If the values being compared are
+both 0.0s (of either sign), the value in the second element in <samp class="codeph">v2</samp> is
+returned. If only one value is a NaN, the second element in <samp class="codeph">v2</samp>,
+either a NaN or a valid floating-point value, is written to the
+result.</p>
+</div>
+<div class="section" id="GUID-B0A00D65-68A4-44D9-A2B8-E2DDA02E675F"><h2>Returns</h2><p>Returns the result of the operation.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">Reduction Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

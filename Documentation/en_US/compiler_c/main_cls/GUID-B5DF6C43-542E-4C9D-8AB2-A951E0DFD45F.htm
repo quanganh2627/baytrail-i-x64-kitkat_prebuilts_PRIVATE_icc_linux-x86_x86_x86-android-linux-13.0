@@ -1,0 +1,350 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Profile an Application">
+<meta name="DC.subject" content="-prof-gen compiler option, -prof-gen:srcpos compiler option, .dyn files, /Qprof-gen compiler option, /Qprof-gen:srcpos compiler option, /Qcov-gen compiler option, advanced PGO options, dyn files, dynamic information, files, endian data, using profile-guided optimization, explicit-shape arrays, .dyn, source, instrumentation, compilation, execution, feedback compilation, profile-guided optimization, example of, phases, user functions">
+<meta name="keywords" content="-prof-gen compiler option, -prof-gen:srcpos compiler option, .dyn files, /Qprof-gen compiler option, /Qprof-gen:srcpos compiler option, /Qcov-gen compiler option, advanced PGO options, dyn files, dynamic information, files, endian data, using profile-guided optimization, explicit-shape arrays, .dyn, source, instrumentation, compilation, execution, feedback compilation, profile-guided optimization, example of, phases, user functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-9C4692D9-BBDE-4F36-95B1-58295EAFA5B5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Profile an Application</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pgo_expl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pgo_expl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Profile an Application</h1>
+ 
+   
+  <div> 
+	 <p>Profiling an application includes the following three phases:
+	 </p>
+ 
+	 <ul type="disc" id="GUID-CD164E38-300D-4259-A4B6-9BD0ABE5A8E6"> 
+		<li>
+		  <p><a href="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F.htm#INSTRUMENTATION">Instrumentation compilation and linking</a>
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p><a href="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F.htm#INSTRUMENTED">Instrumented execution</a>
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p><a href="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F.htm#FEEDBACK">Feedback compilation</a>
+		  </p>
+
+		</li>
+ 
+	 </ul>
+ 
+	 <p>This topic provides detailed information on how to profile an application by providing sample commands for each of the three phases (or steps).
+	 </p>
+ 
+	 <ol id="GUID-AE483DAC-F47C-4A2E-9F15-AEE3D7F7390D"> 
+		<li>
+		  <p id="INSTRUMENTATION"><a name="INSTRUMENTATION"><!-- --></a>Instrumentation compilation and linking
+		  </p>
+ 
+		  <p>Use 
+  <span class="option">-prof-gen</span> (Linux* and OS X*) or 
+  <span class="option">/Qprof-gen</span> (Windows*) to produce an executable with instrumented information included. Use<span class="option"> /Qcov-gen</span> (Windows) option to obtain minimum instrumentation only for code coverage. 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-38784802-6C2B-4E2D-BB3D-5902A4BE6049" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr valign="top"> 
+			 <th class="cellrowborder" align="left" valign="top" id="d603532e174">
+				<p>Operating System
+				</p>
+
+			 </th>
+ 
+			 <th class="cellrowborder" align="left" valign="top" id="d603532e180">
+				<p>Commands
+				</p>
+
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" headers="d603532e174 ">
+				<p>Linux and OS X
+				</p>
+
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" headers="d603532e180 ">
+				<p><samp class="codeph">icpc -prof-gen -prof-dir/usr/profiled a1.cpp a2.cpp a3.cpp</samp>
+				</p>
+ 
+				<p><samp class="codeph">icpc a1.o a2.o a3.o</samp>
+				</p>
+
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" headers="d603532e174 ">
+				<p>Windows
+				</p>
+
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" headers="d603532e180 ">
+				<p><samp class="codeph">icl /Qprof-gen /Qprof-dirc:\profiled a1.cpp a2.cpp a3.cpp</samp>
+				</p>
+ 
+				<p><samp class="codeph">icl a1.obj a2.obj a3.obj</samp>
+				</p>
+
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr valign="top">
+			 <td class="cellrowborder" valign="top" headers="d603532e174 ">
+				<p>Windows
+				</p>
+
+			 </td>
+
+			 <td class="cellrowborder" valign="top" headers="d603532e180 ">
+				<p><samp class="codeph">icl /Qcov-gen /Qcov-dirc:/cov_data a1.cpp a2.cpp a3.cpp</samp>
+				</p>
+ 
+				<p><samp class="codeph">icl a1.obj a2.obj a3.obj</samp>
+				</p>
+ 
+			 </td>
+
+		  </tr>
+ 
+		</tbody>
+
+	 </table>
+</div>
+ 
+  <p>Use the 
+  <span class="option">-prof-dir</span> (Linux and OS X) or 
+  <span class="option">/Qprof-dir</span> (Windows) or 
+  <span class="option">/Qcov-dir</span> (Windows) option if the application includes the source files located in multiple directories; using the option insures the profile information is generated in one consistent place. The example commands demonstrate how to combine these options on multiple sources.
+  </p>
+ 
+  <p>The compiler gathers extra information when you use the 
+  <span class="option">-prof-gen=srcpos</span> (Linux and OS X) or 
+  <span class="option">/Qprof-gen:srcpos</span> (Windows) option; however, the extra information is collected to provide support for specific Intel tools, like the 
+  <a href="GUID-2B837E96-077E-4183-878D-00A25968752C.htm#GUID-2B837E96-077E-4183-878D-00A25968752C">code coverage Tool</a>. If you do not expect to use such tools, do not specify 
+  <span class="option">-prof-gen=srcpos</span> (Linux and OS X) or 
+  <span class="option">/Qprof-gen:srcpos</span> (Windows); the extended option does not provide better optimization and could slow parallel compile times. If you are interested in using the instrumentation only for code coverage, use the 
+  <span class="option">/Qcov-gen</span> (Windows) option, instead of the 
+  <span class="option">/Qprof-gen:srcpos</span> (Windows) option, to minimize instrumentation overhead. 
+  </p>
+
+  </li>
+ 
+  <li>
+	 <p id="INSTRUMENTED"><a name="INSTRUMENTED"><!-- --></a>Instrumented execution
+	 </p>
+ 
+	 <p>Run your instrumented program with a representative set of data to create one or more dynamic information files.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6CB0EC4E-4ECF-486C-81AA-016673FDEC31" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d603532e316">
+				  <p>Operating System
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" id="d603532e322">
+				  <p>Command
+				  </p>
+
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d603532e316 ">
+				  <p>Linux and OS X
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d603532e322 ">
+				  <p><samp class="codeph">./a1.out</samp>
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d603532e316 ">
+				  <p>Windows
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d603532e322 ">
+				  <p><samp class="codeph">a1.exe</samp>
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+
+		</table>
+</div>
+ 
+	 <p>Executing the instrumented applications generates dynamic information file that has a unique name and .dyn suffix. A new dynamic information file is created every time you execute the instrumented program.
+	 </p>
+ 
+	 <p>You can run the program more than once with different input data.
+	 </p>
+
+  </li>
+ 
+  <li>
+	 <p id="FEEDBACK"><a name="FEEDBACK"><!-- --></a>Feedback compilation
+	 </p>
+ 
+	 <p>Before this step, copy all .dyn and .dpi files into the same directory. Compile and link the source files with 
+  <span class="option">-prof-use</span> (Linux and OS X) or 
+  <span class="option">/Qprof-use</span> (Windows); the option instructs the compiler to use the generated dynamic information to guide the optimization:
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-36B8EA4E-4A02-4C42-A0E7-78D525921A54" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr valign="top"> 
+			 <th class="cellrowborder" align="left" valign="top" id="d603532e400">
+				<p>Operating System
+				</p>
+
+			 </th>
+ 
+			 <th class="cellrowborder" align="left" valign="top" id="d603532e406">
+				<p>Examples
+				</p>
+
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" headers="d603532e400 ">
+				<p>Linux and OS X
+				</p>
+
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" headers="d603532e406 ">
+				<p><samp class="codeph">icpc -prof-use -ipo -prof-dir/usr/profiled a1.cpp a2.cpp a3.cpp</samp>
+				</p>
+
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" headers="d603532e400 ">
+				<p>Windows
+				</p>
+
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" headers="d603532e406 ">
+				<p><samp class="codeph">icl /Qprof-use /Qipo /Qprof-dirc:\profiled a1.cpp a2.cpp a3.cpp</samp>
+				</p>
+
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+
+	 </table>
+</div>
+ 
+  <p>This final phase compiles and links the sources files using the data from the dynamic information files generated during instrumented execution (phase 2).
+  </p>
+ 
+  <p>In addition to the optimized executable, the compiler produces a pgopti.dpi file.
+  </p>
+ 
+  <p>Most of the time, you should specify the default optimizations,<span class="option">-02</span> (Linux and OS X) or 
+  <span class="option">/O2</span> (Windows), for phase 1, and specify more advanced optimizations, 
+  <span class="option">-ipo</span> (Linux) or 
+  <span class="option">/Qipo</span> (Windows), during the final (phase 3) compilation. For example, the example shown above used<span class="option">-O2</span> (Linux and OS X) or 
+  <span class="option">/O2</span> (Windows) in step 1 and<span class="option">-ipo</span> (Linux or OS X) or 
+  <span class="option">/Qipo</span> (Windows) in step 3.
+  </p>
+
+  </li>
+ 
+  </ol>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+	 <p>The compiler ignores the 
+	 <span class="option">-ipo</span> or 
+	 <span class="option">-ip</span> (Linux and OS X) or 
+	 <span class="option">/Qipo</span> or 
+	 <span class="option">/Qip</span> (Windows) option during phase 1 with 
+	 <span class="option">-prof-gen</span> (Linux and OS X) or 
+	 <span class="option">/Qprof-gen</span> (Windows).
+	 </p>
+ 
+  </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9C4692D9-BBDE-4F36-95B1-58295EAFA5B5.htm">Profile-Guided Optimization (PGO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

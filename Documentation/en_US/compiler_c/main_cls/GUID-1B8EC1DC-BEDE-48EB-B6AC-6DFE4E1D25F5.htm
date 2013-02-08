@@ -1,0 +1,231 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Guided Auto Parallelism in the Eclipse* IDE">
+<meta name="DC.subject" content="Guided Auto-Parallelization, Eclipse* integration, using Guided Auto-Parallelization">
+<meta name="keywords" content="Guided Auto-Parallelization, Eclipse* integration, using Guided Auto-Parallelization">
+<meta name="DC.Relation" scheme="URI" content="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-83EF886E-C50C-4B4F-ACAD-BE029D88576C.htm#GUID-83EF886E-C50C-4B4F-ACAD-BE029D88576C">
+<meta name="DC.Relation" scheme="URI" content="GUID-6CA8435B-71E4-479A-B631-A1143FDCBE48.htm#GUID-6CA8435B-71E4-479A-B631-A1143FDCBE48">
+<meta name="DC.Relation" scheme="URI" content="GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD.htm#GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD">
+<meta name="DC.Relation" scheme="URI" content="GUID-0C9ED677-0FB3-4711-8FE1-3C229E52890B.htm#GUID-0C9ED677-0FB3-4711-8FE1-3C229E52890B">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1B8EC1DC-BEDE-48EB-B6AC-6DFE4E1D25F5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Guided Auto Parallelism in the Eclipse* IDE</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_use_gap_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_use_gap_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1B8EC1DC-BEDE-48EB-B6AC-6DFE4E1D25F5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Guided Auto Parallelism in the Eclipse* IDE</h1>
+ 
+   
+  <div> 
+    <p>The Guided Auto Parallelism (GAP) feature helps you locate portions of your serial code that can be parallelized. When you enable analysis using GAP, the compiler shows code that can increase efficiency by executing through automatic parallelization and vectorization. 
+    </p>
+ 
+    <div class="section" id="GUID-FF42CE4A-D43C-4611-A53B-2EF3F97A4FD5"><h2 class="sectiontitle">Running Analysis on a Project</h2> 
+       
+      <p>To start analysis from the Eclipse* IDE: 
+      </p>
+ 
+      <ul type="disc" id="GUID-EA356F34-BF06-45E4-B021-EAC94FA15814"> 
+        <li> 
+          <p>Run a one time analysis for the current project. Select 
+            <span><b class="uicontrol">Intel Tools</b> &gt; <b class="uicontrol">Guided Auto Parallelism</b> &gt; <b class="uicontrol">Quick Analysis</b></span>. 
+          </p>
+ 
+          <p>The 
+            <b class="uicontrol">Intel Tools</b> menu can be accessed from the 
+            <b class="uicontrol">Project</b> portion of the main menu bar, or from the project's context menu. 
+          </p>
+ 
+          <p>The default configuration settings are defined in 
+            <b class="uicontrol">Intel Guided Auto Parallelism Preferences</b>. To access the GAP preference page, select 
+            <span><b class="uicontrol"> Window</b> &gt; <b class="uicontrol">Preferences</b> &gt; <b class="uicontrol">C/C++</b> &gt; <b class="uicontrol">Intel Guided Auto Parallelism</b></span>. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Run analysis as part of a normal project build. 
+          </p>
+ 
+          <p>Select 
+            <span><b class="uicontrol">Project</b> &gt; <b class="uicontrol">Properties</b> &gt; <b class="uicontrol">C/C++ Build</b> &gt; <b class="uicontrol">Settings</b> &gt; <b class="uicontrol">Compilation Diagnostics</b></span> and enable analysis by selecting one of the values from the 
+            <b class="uicontrol">Enable Guided Auto Parallelism Analysis</b> drop-down list. In this mode, GAP-related settings in 
+            <b class="uicontrol">Intel Guided Auto Parallelism Preferences</b> are ignored, in favor of other GAP-related settings available in the property page. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>To receive advice, be sure that auto-parallelization is enabled and that the optimization level is set to 
+      <span class="option">-O2</span> (the default setting) or above. To enable auto-parallelization, select 
+      <span><b class="uicontrol">Project</b> 
+         &gt; <b class="uicontrol">Properties</b> 
+         &gt; <b class="uicontrol">C/C++ Build Settings</b> 
+         &gt; <b class="uicontrol">Optimization</b></span> using the 
+      <b class="uicontrol">Parallelization</b> property page. To set the optimization level, select 
+      <span><b class="uicontrol"> Project</b> &gt; <b class="uicontrol">Properties</b> &gt; <b class="uicontrol">C/C++ Build</b> &gt; <b class="uicontrol">Settings</b> &gt; <b class="uicontrol">General</b></span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-729A66A6-2ED9-40D4-8E9A-20331032C36A"><h2 class="sectiontitle">Running Analysis on a File or within a File</h2> 
+       
+      <p>Use the 
+        <b class="uicontrol">Guided Auto Parallelism 
+        </b> context menu item to run analysis on the following: 
+      </p>
+ 
+      <p> 
+      <ul type="disc" id="GUID-0E610A82-F573-4AA7-8C00-F590E51D6BCC"> 
+        <li> 
+          <p><b class="uicontrol">Single file:</b> Select a file and right-click. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><b class="uicontrol">Function:</b> Right-click within the function scope. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><b class="uicontrol">Range of lines:</b> Select one or more lines for analysis and right-click. 
+          </p>
+ 
+          <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+            <p>Eclipse* takes the highlighted selection and passes the corresponding line numbers or routine name parameter to the compiler. 
+            </p>
+ 
+            <p>Select a project, folder, files, or any combination thereof. 
+            </p>
+ 
+          </div> 
+        </li>
+ 
+      </ul>
+ 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2AFEC771-DBF5-4336-891D-F161950E181A"><h2 class="sectiontitle">Examples</h2> 
+       
+      <p>To illustrate how the various Guided Auto Parallelism settings work together, consider the following scenarios: 
+      </p>
+ 
+      <p> 
+        <table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><td valign="top"> 
+              <p><strong>Scenario: 
+                </strong>The GAP analysis setting in the property pages is set to 
+                <b class="uicontrol">Enabled</b>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+<tr> 
+            <td valign="top"> 
+              <p><strong>Result:</strong> Analysis occurs for the project during all regular project builds. In the property pages define the 
+                <b class="uicontrol">Analysis</b> settings, and the compiler ignores analysis settings in 
+                <b class="uicontrol">Intel Guided Auto Parallelism Preferences</b>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+<tr> 
+          </tr>
+</table>
+ 
+      </p>
+ 
+      <p> 
+        <table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><td valign="top"> 
+              <p><strong>Scenario: 
+                </strong>The GAP analysis setting in the property pages is set to 
+                <b class="uicontrol">Disabled</b> and GAP is run from the 
+                <b class="uicontrol">Intel Tools</b> menu. 
+              </p>
+</td>
+ 
+          </tr>
+<tr><td valign="top"> 
+              <p><strong>Result:</strong> Analysis occurs for one build. Default values for this analysis are taken from 
+                <b class="uicontrol">Intel Guided Auto Parallelism Preferences</b> and can be overridden in the dialog box. Options specified in the property pages are also used, but will be overridden by specified analysis options. 
+              </p>
+</td>
+ 
+          </tr>
+</table>
+ 
+      </p>
+ 
+      <p> 
+        <table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><td valign="top"> 
+              <p><strong>Scenario: 
+                </strong> The GAP analysis setting in the property pages is set to 
+                <b class="uicontrol">Disabled</b>, but GAP options are set in 
+                <b class="uicontrol">Intel Guided Auto Parallelism Preferences</b>. 
+              </p>
+</td>
+ 
+          </tr>
+<tr><td valign="top"> 
+              <p><strong>Result:</strong> No analysis occurs, unless explicitly selected in the 
+                <b class="uicontrol">Intel Tools</b> menu. 
+              </p>
+</td>
+ 
+          </tr>
+</table>
+ 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">Using Eclipse*</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-83EF886E-C50C-4B4F-ACAD-BE029D88576C.htm#GUID-83EF886E-C50C-4B4F-ACAD-BE029D88576C"> Options: Guided Auto Parallelism dialog box
+        </a> </div>
+<div><a href="GUID-6CA8435B-71E4-479A-B631-A1143FDCBE48.htm#GUID-6CA8435B-71E4-479A-B631-A1143FDCBE48"> Guided Auto Parallelism Overview
+        </a> </div>
+<div><a href="GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD.htm#GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD"> Using Guided Auto Parallelism
+        </a> </div>
+<div><a href="GUID-0C9ED677-0FB3-4711-8FE1-3C229E52890B.htm#GUID-0C9ED677-0FB3-4711-8FE1-3C229E52890B">Reusing Guided Auto Parallelism Configurations
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

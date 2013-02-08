@@ -1,0 +1,353 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Finding and Reporting Out-of-Bounds Errors">
+<meta name="DC.subject" content="pointer checker, finding and reporting errors">
+<meta name="keywords" content="pointer checker, finding and reporting errors">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B8D77890-54DC-4FB9-BD1E-6C55CC8F03DF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Finding and Reporting Out-of-Bounds Errors</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_find_oob"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_find_oob"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B8D77890-54DC-4FB9-BD1E-6C55CC8F03DF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Finding and Reporting Out-of-Bounds Errors</h1>
+ 
+   
+  <div> 
+	 <p>The pointer checker includes the 
+		<span class="keyword">__chkp_report_control()</span> library function and the 
+		<samp class="codeph">__chkp_report_option_t</samp> enumeration to allow you to control how errors are reported. The function and enumeration are declared in the header file 
+		<span class="filepath">chkp.h</span>. 
+	 </p>
+ 
+	 <p> The report control enumeration has one of the following values: 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-25CCFA83-D905-4658-9A71-985F35D67B53" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <strong> Enum Value</strong> 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <strong> Action</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>__CHKP_REPORT_NONE 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>Do nothing. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>__CHKP_REPORT_BPT 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>Execute a breakpoint interrupt. If you specify this value, the pointer checker will issue a breakpoint for any out-of-bounds error that it finds. If you are using a debugger, the breakpoint will trap into the debugger so that you can determine where the error occurred. You can then use the features of the debugger to determine the cause of the error. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>__CHKP_REPORT_LOG 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>Log the error and continue; the compiler will report each out-of-bounds pointer it finds. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>__CHKP_REPORT_TERM
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>Log the error and exit the program; the compiler will only report the first bounds violation and then terminate. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>__CHKP_REPORT_CALLBACK 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%">
+				  <p>Call a user defined function; the compiler will invoke a user-defined function to deal with a bounds error. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>__CHKP_REPORT_TRACEBACK _BPT
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Print a traceback including source file and line number for the instruction where the out-of-bounds error occurred, then execute a breakpoint interrupt. 
+				  </p>
+
+				  <div class="Note"><h3 class="NoteTipHead">Note</h3>
+					 <p>Specify the<span class="option"> /Zi</span> (Windows* OS) or 
+					 <span class="option">-rdynamic</span> (Linux* OS) compiler option to obtain better traceback information, including routine names.
+					 </p>
+
+				  </div>
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>__CHKP_REPORT_TRACE_LOG 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Log the error and continue; the log will include traceback information for each out-of-bounds error. This is the default reporting mode. 
+				  </p>
+
+				  <div class="Note"><h3 class="NoteTipHead">Note</h3>
+					 <p>Specify the<span class="option"> /Zi</span> (Windows* OS) or 
+					 <span class="option">-rdynamic</span> (Linux* OS) compiler option to obtain better traceback information, including routine names.
+					 </p>
+
+				  </div>
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>__CHKP_REPORT_TRACE_TERM
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Log the error and terminate; the log will include traceback information for each out-of-bounds error. Only the first bounds error will be reported. 
+				  </p>
+
+				  <div class="Note"><h3 class="NoteTipHead">Note</h3>
+					 <p>Specify the<span class="option"> /Zi</span> (Windows* OS) or 
+					 <span class="option">-rdynamic</span> (Linux* OS) compiler option to obtain better traceback information, including routine names.
+					 </p>
+
+				  </div>
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>__CHKP_REPORT_TRACE_CALLBACK
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Log the error and call a user-defined routine; the log will include traceback information for each out-of-bounds error.
+				  </p>
+
+				  <div class="Note"><h3 class="NoteTipHead">Note</h3>
+					 <p>Specify the<span class="option"> /Zi</span> (Windows* OS) or 
+					 <span class="option">-rdynamic</span> (Linux* OS) compiler option to obtain better traceback information, including routine names.
+					 </p>
+
+				  </div> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>__CHKP_REPORT_OOB_STATS 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Emit statistics for the bounds violation; Currently, this is a count of the out-of-bounds errors. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>__CHKP_REPORT_USE_ENV_VAR 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Use the environment variable 
+					 <samp class="codeph">INTEL_CHKP_REPORT_MODE</samp> to specify the reporting mode. If the environment variable is not set, the default reporting mode is used. 
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p><strong>Changing the Reporting Mode</strong> 
+	 </p>
+ 
+	 <p> To change the reporting mode from the default 
+		<samp class="codeph">__CHKP_REPORT_TRACE_LOG</samp>, do the following: 
+	 </p>
+ 
+	 <ol id="GUID-D8B48C8F-885C-4CF7-A321-443D4F61FF49"> 
+		<li> 
+		  <p>Add an include of 
+			 <span class="filepath">chkp.h</span> in your program source. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Add a call to the report control routine 
+			 <samp class="codeph">__chkp_report_control()</samp> (before any pointer references are made), specifying one of the enum values. 
+		  </p>
+ 
+		  <p>For example, to report all bounds errors, specify the following: 
+		  </p>
+ 
+		  <p><samp class="codeph">__chkp_report_control(__CHKP_REPORT_LOG, 0);</samp> 
+		  </p>
+ 
+		</li>
+ 
+	 </ol>
+ 
+	 <p> In the above, the first parameter to the routine is the enum value and the second parameter is 0, except in the case of the 
+		<samp class="codeph">__CHKP_REPORT_CALLBACK</samp> enum value, which requires the name of a user-defined callback routine as the second parameter. 
+	 </p>
+ 
+	 <p> You can also change the reporting mode using the environment variable 
+		<samp class="codeph">INTEL_CHKP_REPORT_MODE</samp>. This allows you to change the reporting mode without recompiling your code. To use the environment variable, do the following: 
+	 </p>
+ 
+	 <ol id="GUID-F0AAA4B6-B248-4C8E-8EFD-442F241691FD"> 
+		<li> 
+		  <p>Add an include of 
+			 <span class="filepath">chkp.h</span> in your program source. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Add a call to the report control routine 
+			 <samp class="codeph">__chkp_report_control()</samp> (before any pointer references are made), specifying 
+			 <samp class="codeph">__CHKP_REPORT_USE_ENV_VAR</samp>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Set the 
+			 <samp class="codeph">INTEL_CHKP_REPORT_MODE</samp> environment variable to the desired report mode. For example: 
+		  </p>
+ 
+		  <p><samp class="codeph"> export INTEL_CHKP_REPORT_MODE=__CHKP_REPORT_OOB_STATS</samp> 
+		  </p>
+ 
+		</li>
+ 
+	 </ol>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>The 
+		  <samp class="codeph">INTEL_CHKP_REPORT_MODE 
+		  </samp>environment variable is valid only if a call to 
+		  <samp class="codeph">__chkp_report_control</samp> has been made with the report mode set to 
+		  <samp class="codeph">__CHKP_REPORT_USE_ENV_VAR</samp>. Otherwise, it is ignored. 
+		</p>
+ 
+		<p>If you specify the report mode to be 
+		  <samp class="codeph">__CHKP_REPORT_USE_ENV_VAR</samp> and the 
+		  <samp class="codeph">INTEL_CHKP_REPORT_MODE</samp> environment variable is not set, the default report mode (<samp class="codeph">__CHKP_REPORT_TRACE_LOG</samp>) is used. 
+		</p>
+ 
+	 </div> 
+	 <p> 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

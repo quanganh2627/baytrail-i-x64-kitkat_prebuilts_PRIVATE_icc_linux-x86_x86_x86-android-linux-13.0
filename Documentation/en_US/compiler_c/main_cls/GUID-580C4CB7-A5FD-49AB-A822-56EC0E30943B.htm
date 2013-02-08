@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_blendv_epi8">
+<meta name="abstract" content="Conditionally blends word elements of source vector depending on bits in a mask vector. The corresponding Intel&reg; AVX2 instruction is VPBLENDVB.">
+<meta name="description" content="Conditionally blends word elements of source vector depending on bits in a mask vector. The corresponding Intel&reg; AVX2 instruction is VPBLENDVB.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, blend operations, _mm256_blend_epi32 (VPBLENDVB)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, blend operations, _mm256_blend_epi32 (VPBLENDVB)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F3BFEA9-1AAA-4799-A271-EF64FB22731F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-580C4CB7-A5FD-49AB-A822-56EC0E30943B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_blendv_epi8</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_blendv"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blendv_epi8"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-580C4CB7-A5FD-49AB-A822-56EC0E30943B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_blendv_epi8 </span></h1>
+
+
+<!--Conditionally blends word elements of source vector depending on bits in a mask vector. The corresponding Intel&reg; AVX2 instruction is  VPBLENDVB .--><div><p>Conditionally blends word elements of source vector depending on bits in a mask vector. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPBLENDVB</span>.</p>
+
+
+<div class="section" id="GUID-7A26582C-1BFF-412D-87DC-070E5422465C"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_blendv_epi8(__m256i s1, __m256i s2, const int mask);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-5F167C84-5432-48C9-B60A-85AE7C3A1B4E"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+<td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+<td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+<td valign="top" class="noborder"><p>integer vector used for the operation</p>
+</td>
+</tr>
+</table>
+</div>
+
+
+<div class="section" id="GUID-DD9DBE83-D066-43E0-B3B3-14E3A7E0D8A0"><h2>Description</h2>
+<p>Performs a blend operation by conditionally copying 8-bit byte elements from source vectors <var>s2</var> and <var>s1</var>, depending on mask bits defined in <var>mask</var> vector. The mask bits are the most significant bit in each byte element of <var>mask.</var></p>
+<p>Each byte element of the destination vector is copied from the corresponding byte element in <var>s2</var> if a mask bit is 1, or the corresponding byte element in <var>s1</var> if a mask bit is 0.</p>
+</div>
+
+
+<div class="section" id="GUID-4004D687-83B8-44BC-9BB5-54FC4EAEBB6E"><h2>Returns</h2><p> Result of the blend operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F3BFEA9-1AAA-4799-A271-EF64FB22731F.htm">Intrinsics for Blend Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

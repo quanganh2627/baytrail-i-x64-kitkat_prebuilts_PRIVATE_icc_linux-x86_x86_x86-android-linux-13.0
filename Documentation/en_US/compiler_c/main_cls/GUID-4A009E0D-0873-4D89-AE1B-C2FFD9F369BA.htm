@@ -1,0 +1,168 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_roundfxpnt_adjust_pd/ _mm512_mask_roundfxpnt_adjust_pd">
+<meta name="abstract" content="Rounds float64 vector. Corresponding instruction is VRNDFXPNTPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Rounds float64 vector. Corresponding instruction is VRNDFXPNTPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_roundfxpnt_adjust_pd, _mm512_mask_roundfxpnt_adjust_pd">
+<meta name="keywords" content="_mm512_roundfxpnt_adjust_pd, _mm512_mask_roundfxpnt_adjust_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4A009E0D-0873-4D89-AE1B-C2FFD9F369BA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_roundfxpnt_adjust_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_roundfxpnt_adjust_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4A009E0D-0873-4D89-AE1B-C2FFD9F369BA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_roundfxpnt_adjust_pd/ _mm512_mask_roundfxpnt_adjust_pd</h1>
+
+
+<!--Rounds float64 vector. Corresponding instruction is 
+ VRNDFXPNTPD . 
+
+ This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture). 
+--><div><p>Rounds float64 vector. Corresponding instruction is 
+<samp class="codeph">VRNDFXPNTPD</samp>. 
+
+<span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span>
+</p>
+
+
+<div class="section" id="GUID-089077E6-7FE7-4E5C-BAF3-0A49F7635E8A"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">
+extern __m512d __cdecl _mm512_roundfxpnt_adjust_pd(__m512d v2, int rc, _MM_EXP_ADJ_ENUM adj);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __m512d __cdecl _mm512_mask_roundfxpnt_adjust_pd(__m512d v1_old, __mmask8 k1, __m512d v2, int rc, _MM_EXP_ADJ_ENUM adj);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-07AAA29E-05A3-445F-A697-C5D89D7C62AC"><h2>Parameters</h2>
+
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float32 vector used for rounding</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>expadj</var></p></td>
+
+<td valign="top" class="noborder"><p>Exponent adjustment values; these can be one of the following values: 
+    <a name="d89e257"><!-- --></a><ul type="disc" id="d89e257"> 
+      <li><samp class="codeph">_MM_EXPADJ_NONE</samp> - 2**0 (32.0 - no exp adjustment) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_4</samp> - 2**4 &nbsp;(28.4) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_5</samp> - 2**5 &nbsp;(27.5) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_8</samp> - 2**8 &nbsp;(24.8) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_16</samp> - 2**16 (16.16) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_24</samp> - 2**24 (8.24) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_31</samp> - 2**31 (1.31) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_EXPADJ_32</samp> - 2**32 (0.32) 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>rc</var></p></td>
+
+<td valign="top" class="noborder"><p>Rounding control values; these can be one of the following: 
+    <a name="d89e49"><!-- --></a><ul type="disc" id="d89e49"> 
+      <li><samp class="codeph">_MM_FROUND_TO_NEAREST_INT</samp> - rounds to nearest even 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_TO_NEG_INF</samp> - rounds to negative infinity 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_TO_POS_INF</samp> - rounds to positive infinity 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_TO_ZERO</samp> - rounds to zero 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_CUR_DIRECTION</samp> - rounds using default from MXCSR register 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-87FF0CAB-4C9C-4272-9727-5E5185357268"><h2>Description</h2>
+<p>Rounds float64 vector 
+<samp class="codeph">v2</samp>  according to <var>rc</var> and <var>expadj</var> values.</p>
+
+
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing.</p>
+</div>
+
+
+<div class="section" id="GUID-5B993B6F-5840-4FCB-A039-524F693F6FE6"><h2>Returns</h2>
+<p>Returns the result of the rounding operation.</p>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Holder Syntax">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, holders">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, holders">
+<meta name="DC.Relation" scheme="URI" content="GUID-7C85AD0C-7208-4457-B734-ADEEE736B208.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-88EB500C-67E3-4198-B6CE-EF8E9F5A6C30">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Holder Syntax</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_holder_ex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-88EB500C-67E3-4198-B6CE-EF8E9F5A6C30">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Holder Syntax</h1>
+ 
+   
+  <div> 
+	 <p> Holder syntax is as follows: 
+	 </p>
+ 
+	 <pre>
+#include &lt;cilk/holder.h&gt;
+enum holder_policy {
+    holder_keep_indeterminate,
+    holder_keep_last,
+    holder_keep_last_copy,
+    holder_keep_last_swap,
+    holder_keep_last_move
+};
+template &lt;typename Type,
+        holder_policy Policy = holder_keep_indeterminate,
+        typename Allocator = std::allocator&lt;Type&gt; &gt;
+class holder
+{
+    /// Default constructor uses default-initialization for both the
+    /// leftmost view and each identity view.
+    holder(const Allocator&amp; alloc = Allocator());
+ 
+    /// Construct from an exemplar that is used to initialize both the
+    /// leftmost view and each identity view.
+    holder(const Type&amp; v, const Allocator&amp; alloc = Allocator());
+    /// Construct from a functor that is used to initialize both the
+    /// leftmost view and each identity view. The functor, 'f', must be be
+    /// invokable using the expression 'Type x = f()'.
+    template &lt;typename Func&gt;
+    holder(const Func&amp; f, const Allocator&amp; alloc = Allocator());
+    /// Return the current view
+    Type&amp; view();
+    Type const&amp; view() const;
+    Type&amp; operator()();
+    Type const&amp; operator()() const;
+};
+</pre> 
+	 <p> 
+		<strong>Template Parameters:</strong> 
+	 </p>
+ 
+	 <p><span class="parmname">Type</span>: The type of object held in the holder 
+	 </p>
+ 
+	 <p> 
+		<span class="parmname">Policy</span>: The policy for deciding the value of the holder after a sync. Valid keywords are the following: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-A970C3BC-9DF7-4F6E-984F-FBF3434CC1D5"> 
+		<li> 
+		  <p><span class="keyword">holder_keep_indeterminate:</span> 
+		  </p>
+ The value of the holder is indeterminate (most efficient.) 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">holder_keep_last</span>: The value of the holder is the last value that would have been set in the program serialization. The Intel&reg; Cilk&#8482; Plus library will choose one of the policies below using compile-time heuristics that attempt to pick the most efficient. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">holder_keep_last_copy</span>: The value of the holder is set by copy-assigning the last value that would have been set in the program serialization. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">holder_keep_last_swap</span>: The value of the holder is set by invoking the 
+			 <samp class="codeph">Type::swap(Type&amp;)</samp> member function. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">holder_keep_last_move</span>: The value of the holder is set by move-assigning the last value that would have been set in the program serialization (<span><span>C++11</span></span>-mode only). 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p> 
+		<span class="parmname">Allocator</span>: A memory allocator used to allocate each holder view. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7C85AD0C-7208-4457-B734-ADEEE736B208.htm">Holders</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

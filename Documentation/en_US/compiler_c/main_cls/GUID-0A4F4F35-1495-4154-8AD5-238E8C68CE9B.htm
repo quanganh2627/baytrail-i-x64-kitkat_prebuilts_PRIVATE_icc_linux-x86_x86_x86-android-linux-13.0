@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fast-transcendentals, Qfast-transcendentals">
+<meta name="abstract" content="Enables the compiler to replace calls to transcendental functions with faster but less precise implementations.">
+<meta name="description" content="Enables the compiler to replace calls to transcendental functions with faster but less precise implementations.">
+<meta name="DC.subject" content="/Qfast-transcendentals compiler option, -fast-transcendentals compiler option, transcendental functions, option replacing calls to">
+<meta name="keywords" content="/Qfast-transcendentals compiler option, -fast-transcendentals compiler option, transcendental functions, option replacing calls to">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A.htm#GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0A4F4F35-1495-4154-8AD5-238E8C68CE9B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fast-transcendentals, Qfast-transcendentals</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fast_transcendentals"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fast_transcendentals"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0A4F4F35-1495-4154-8AD5-238E8C68CE9B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fast-transcendentals, Qfast-transcendentals</h1>
+<!--Enables the compiler to replace calls to transcendental functions with faster but less precise implementations.--><div><p>Enables the compiler to replace calls to transcendental functions with faster but less precise implementations.</p>
+
+<div class="section" id="GUID-B205407E-20BE-425D-BECC-0ACCF36AB7B4"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-840C2F9F-22A5-48BE-B852-75F7037717DF"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-B91503CD-01BC-422F-BE70-60B9802B19F1"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fast-transcendentals</span></p><p><span class="kwd">-no-fast-transcendentals</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qfast-transcendentals</span></p><p><span class="kwd">/Qfast-transcendentals-</span></p></td></tr></table></div>
+
+<div class="section" id="ARGUMENTS_42279568A6F644A88F1A10F4D7AB6686"><a name="ARGUMENTS_42279568A6F644A88F1A10F4D7AB6686"><!-- --></a><h2>Arguments</h2><p>None</p>
+</div>
+<div class="section" id="GUID-8A071954-6A9C-4E09-BB5D-369DBBAD3FFF"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>depends on the setting of<span class="option"> -fp-model</span> (Linux* OS and OS X*)<span> or <span class="option">/fp</span> (Windows* OS)</span></p></td>
+<td valign="top" class="noborder"><p>If you do not specify option <span class="option">-[no-]fast-transcendentals</span><span>or option /Qfast-transcendentals[-]</span>:</p>
+<ul type="disc" id="GUID-5B53B0E5-310E-435A-9907-AC49D784B56C"><li><p>The default is ON if option <span class="option">-fp-model fast</span><span> or <span class="option">/fp:fast</span></span> is specified or is in effect.
+</p>
+</li>
+<li><p>The default is OFF if a value-safe setting is specified for <span class="option">-fp-model</span><span> or <span class="option">/fp</span></span> (such as "precise", "source", etc.).
+</p>
+</li>
+</ul>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-7E0164E6-3838-4002-A86E-08A852744772"><h2>Description</h2><p>This option enables the compiler to replace calls to transcendental functions with implementations that may be faster but less precise. </p>
+<p>It allows the compiler to perform certain optimizations on transcendental functions, such as replacing individual calls to sine in a loop with a single call to a less precise vectorized sine library routine. </p>
+<p>This option does not affect explicit Short Vector Math Library (SVML) intrinsics.  It only affects scalar calls to the standard math library routines.</p>
+<p>You cannot use option <span class="option">–fast-transcendentals</span> with option <span class="option">–fp-model strict</span><span> and you cannot use option<span class="option"> /Qfast-transcendentals</span> with option <span class="option">/fp:strict</span></span>. </p>
+<p> This option determines the setting for the
+maximum allowable relative error for math library function results
+(max-error) if none of the following options are
+specified:</p>
+
+<ul type="disc" id="GUID-0508A3AC-9FE0-45C9-ABB7-FD291CA8E409"><li><p><span class="option">-fimf-accuracy-bits</span> (Linux* OS and OS X*) or
+<span class="option">/Qimf-accuracy-bits</span> (Windows* OS)</p>
+</li>
+<li><p><span class="option">-fimf-max-error</span> (Linux OS and OS X) or
+<span class="option">/Qimf-max-error</span> (Windows OS)</p>
+</li>
+<li><p><span class="option">-fimf-precision</span> (Linux OS and OS X) or
+<span class="option">/Qimf-precision</span> (Windows OS)</p>
+</li>
+</ul>
+
+<p>This option enables extra optimization that only applies to Intel&reg; processors.</p>
+
+<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d26874e174"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d26874e174 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+
+</div>
+
+<div class="section" id="GUID-0A0D4A79-5319-4A7C-9D45-13378F02BD23"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A.htm#GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A"><span class="option">fp-model</span>, <span class="option">fp</span></a>  compiler option</div>
+<div><a href="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079"><span class="option">fimf-accuracy-bits, Qimf-accuracy-bits</span></a>  compiler option</div>
+<div><a href="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486"><span class="option">fimf-max-error, Qimf-max-error</span></a>  compiler option</div>
+<div><a href="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3"><span class="option">fimf-precision, Qimf-precision</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

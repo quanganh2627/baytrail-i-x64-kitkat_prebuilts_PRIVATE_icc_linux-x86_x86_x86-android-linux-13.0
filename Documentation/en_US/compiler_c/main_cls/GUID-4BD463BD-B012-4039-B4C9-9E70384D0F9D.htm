@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="unroll_and_jam/nounroll_and_jam">
+<meta name="abstract" content="Hints to the compiler to enable or disable loop unrolling and jamming. These pragmas can only be applied to iterative FOR loops.">
+<meta name="description" content="Hints to the compiler to enable or disable loop unrolling and jamming. These pragmas can only be applied to iterative FOR loops.">
+<meta name="DC.subject" content="pragma unroll_and_jam, pragma nounroll_and_jam">
+<meta name="keywords" content="pragma unroll_and_jam, pragma nounroll_and_jam">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4BD463BD-B012-4039-B4C9-9E70384D0F9D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>unroll_and_jam/nounroll_and_jam</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_unroll_and_jam"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4BD463BD-B012-4039-B4C9-9E70384D0F9D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>unroll_and_jam/nounroll_and_jam</span></h1>
+
+<!--Hints to the compiler to enable or disable loop unrolling and jamming. These pragmas can only be applied to iterative  FOR  loops.-->
+<div><p>Hints to the compiler to enable or disable loop unrolling and jamming. These pragmas can only be applied to iterative <span class="keyword">FOR</span> loops.</p>
+
+<div class="section" id="GUID-CD0CCD0C-7EC2-4990-940F-0625DE30ABA4"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma unroll_and_jam</span></p><p><span class="kwd">#pragma unroll_and_jam </span><span class="delim">(</span><span class="var">n</span><span class="delim">)</span></p><p><span class="kwd">#pragma nounroll_and_jam</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-1723C6A9-99DA-4450-922C-02E9FF7D5735"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+
+      <td valign="top" class="noborder"><p>is the unrolling factor representing the number of times to unroll a loop; it is an integer constant from 0 through 255</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-46F91809-BBDC-4B3C-88C0-276207996E91"><h2>Description</h2>
+<p>The <span class="keyword">unroll_and_jam</span> pragma partially unrolls one or more loops higher in the nest than the innermost loop and fuses/jams the resulting loops back together. This transformation allows more reuses in the loop.</p>
+
+<p>This pragma is not effective on innermost loops. Ensure that the immediately following loop is not the innermost loop after compiler-initiated interchanges are completed. </p>
+
+<p>Specifying this pragma is a hint to the compiler that the unroll and jam sequence is legal and profitable. The compiler enables this transformation whenever possible.</p>
+
+<p>The <span class="keyword">unroll_and_jam</span> pragma must precede the <span class="keyword">FOR</span> statement for each <span class="keyword">FOR</span> loop it affects. If <span class="keyword">n</span> is specified, the optimizer unrolls the loop <var>n</var> times. If <var>n</var> is omitted or if it is outside the allowed range, the optimizer assigns the number of times to unroll the loop. The compiler generates correct code by comparing <var>n</var> and the loop count.</p>
+
+<p>This pragma is supported only when compiler option <span class="option">O3</span> is set. The <span class="keyword">unroll_and_jam</span> pragma overrides any setting of loop unrolling from the command line.</p>
+
+<p>When unrolling a loop increases register pressure and code size it may be necessary to prevent unrolling of a nested/imperfect nested loop. In such cases, use the <span class="keyword">nounroll_and_jam</span> pragma. The <span class="keyword">nounroll_and_jam</span> pragma hints to the compiler not to unroll a specified loop.</p>
+
+</div>
+
+
+<div class="section" id="GUID-8EE2D2B3-3C3D-4BC7-8499-8E84C9C958E3"><h2>Example</h2>
+<p><strong>Example: Using unroll_and_jam pragma</strong></p>
+
+<pre>int a[10][10];</pre>
+<pre>int b[10][10];</pre>
+<pre>int c[10][10];</pre>
+<pre>int d[10][10];</pre>
+<pre>void unroll(int n)</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;int i,j,k;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;#pragma unroll_and_jam (6)</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 1; i &lt; n; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#pragma unroll_and_jam (6)</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 1; j &lt; n; j++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (k = 1; k &lt; n; k++){</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[i][j] += b[i][k]*c[k][j];</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_permutevar_ps, _mm256_permutevar_ps">
+<meta name="abstract" content="Permutes float32 values into a 256-bit or 128-bit destination vector. The corresponding Intel&reg; AVX instruction is VPERMILPS.">
+<meta name="description" content="Permutes float32 values into a 256-bit or 128-bit destination vector. The corresponding Intel&reg; AVX instruction is VPERMILPS.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, permute operations, _mm256_permutevar_ps (VPERMILPS), _mm_permutevar_ps (VPERMILPS)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, permute operations, _mm256_permutevar_ps (VPERMILPS), _mm_permutevar_ps (VPERMILPS)">
+<meta name="DC.Relation" scheme="URI" content="GUID-4FB84BB1-7DC8-4950-8F95-F111519EF701.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A47BEDE0-9CBB-486D-8D2E-554FCB01B603">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_permutevar_ps, _mm256_permutevar_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_permutevar_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A47BEDE0-9CBB-486D-8D2E-554FCB01B603">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm_permutevar_ps, _mm256_permutevar_ps</span></h1>
+
+
+<!--Permutes float32 values into a 256-bit or 128-bit destination vector. The corresponding Intel&reg; AVX instruction is  VPERMILPS .--><div><p>Permutes float32 values into a 256-bit or 128-bit destination vector. The corresponding Intel&reg; AVX instruction is <span class="keyword">VPERMILPS</span>.</p>
+
+
+<div class="section" id="GUID-2C109E74-DAC2-4021-BA99-55FE65239FB2"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _mm256_permutevar_ps(__m256 m1, __m256i control);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128 _mm_permutevar_ps(__m128 m1, __m128i control);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-4396EC59-906A-4C18-B4AA-11EC5D22696A"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>m1</var></p></td>
+
+      <td valign="top" class="noborder"><p>a 256-bit or 128-bit float32 vector
+</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>control</var></p></td>
+
+      <td valign="top" class="noborder"><p>a vector with 2-bit control fields, one for each corresponding element of the source vector</p>
+<p><ul type="disc" id="GUID-33ABAE70-D842-48B3-9100-1788A6ED8065"><li>for  the 256-bit <var>m1</var> source vector this <var>control</var> vector  contains eight 2-bit control fields 
+</li>
+<li>for the 128-bit <var>m1</var> source vector this <var>control</var> vector  contains four 2-bit control fields</li>
+</ul>
+
+	</p>
+
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-45F727CD-96DB-419A-A1F5-64980FC2904B"><h2>Description</h2>
+<p>Permutes single-precision floating-point values in the source vector, <var>m1</var>, according to the the 2-bit control fields in the low bytes of corresponding elements of a shuffle control. The result is stored in a destination vector.
+</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-0A0DB06A-ACC9-4F5F-9385-DA4A9C1B6751"><h2>Returns</h2><p> A 256-bit or 128-bit float32 vector with permuted values.
+
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-4FB84BB1-7DC8-4950-8F95-F111519EF701.htm">Intrinsics for Permute Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

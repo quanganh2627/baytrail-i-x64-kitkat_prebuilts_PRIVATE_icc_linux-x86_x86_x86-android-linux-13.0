@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_add_epi8/16/32/64">
+<meta name="abstract" content="Adds signed/unsigned packed 8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is VPADDB, VPADDW, VPADDD, or VPADDQ.">
+<meta name="description" content="Adds signed/unsigned packed 8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is VPADDB, VPADDW, VPADDD, or VPADDQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_add_epi8 (VPADDB), _mm256_add_epi16 (VPADDW), _mm256_add_epi32 (VPADDD), _mm256_add_epi64 (VPADDQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_add_epi8 (VPADDB), _mm256_add_epi16 (VPADDW), _mm256_add_epi32 (VPADDD), _mm256_add_epi64 (VPADDQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D4735A59-E9C9-4614-8027-B9BDF8E15266">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_add_epi8/16/32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_add"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_add_epi8"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_add_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_add_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_add_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D4735A59-E9C9-4614-8027-B9BDF8E15266">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_add_epi8/16/32/64 </span></h1>
+
+
+<!--Adds signed/unsigned packed  8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is  VPADDB ,  VPADDW ,  VPADDD , or  VPADDQ .--><div><p>Adds signed/unsigned packed  8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPADDB</span>, <span class="keyword">VPADDW</span>, <span class="keyword">VPADDD</span>, or <span class="keyword">VPADDQ</span>.</p>
+
+
+<div class="section" id="GUID-E2B5C6FB-9416-4B2A-A491-994DBAC59B7E"><h2>Syntax</h2>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_add_epi8(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_add_epi16(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_add_epi32(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_add_epi64(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-21E55AA2-4F14-491F-B94F-8716C3926EEC"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-32DEB1A6-78C6-4A17-A4B8-2DAC893E8F44"><h2>Description</h2>
+
+<p>Adds packed signed/unsigned 8-, 16-, 32-, or 64-bit integers from source vector <var>s1</var> and corresponding bits of source vector <var>s2</var> and stores the packed integer result in the destination vector. When an individual result is too large to be represented in 8/16/32/64 bits (overflow), the result is wrapped around and the low 8/16/32/64 bits are written to the destination vector (that is, the carry is ignored).</p>
+<p>You must control the range of values operated upon to prevent undetected overflow conditions.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-751A56FC-B74A-4FBA-8EEC-12AEACB940F5"><h2>Returns</h2><p> Result of the addition operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">Intrinsics for Arithmetic Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

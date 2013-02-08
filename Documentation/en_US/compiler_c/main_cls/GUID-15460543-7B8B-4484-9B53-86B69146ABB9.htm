@@ -1,0 +1,179 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="optimization_level">
+<meta name="abstract" content="Controls optimization for one function or all functions after its first occurrence.">
+<meta name="description" content="Controls optimization for one function or all functions after its first occurrence.">
+<meta name="DC.subject" content="pragma optimization_level">
+<meta name="keywords" content="pragma optimization_level">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-15460543-7B8B-4484-9B53-86B69146ABB9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>optimization_level</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_optimization_level"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-15460543-7B8B-4484-9B53-86B69146ABB9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>optimization_level</span></h1>
+
+<!--Controls optimization for one function or all functions after its first occurrence.-->
+<div><p>Controls optimization for one function or all functions after its first occurrence.</p>
+
+<div class="section" id="GUID-5C5624C1-5A58-475A-956A-D6912AA5DF41"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma </span><span class="delim">[</span><span class="var">intel</span><span class="sep">|</span><span class="var">GCC</span><span class="delim">] </span><span class="kwd">optimization_level </span><span class="var">n</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-7F1E7D79-6E00-4027-A879-F51EA7670771"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>intel|GCC</var></p></td>
+
+      <td valign="top" class="noborder"><p>indicates the interpretation to use</p>
+</td>
+
+    </tr>
+  
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+
+      <td valign="top" class="noborder"><p>an integer value specifying an optimization level; valid values are:</p>
+
+                                      <ul type="disc" id="GUID-4FBF8066-1BDF-4449-8D4F-B9E1C30DD86E">
+	                                    <li><p>0 same optimizations as <span class="option">-O0</span></p>
+</li>
+
+	                                    <li><p>1 same optimizations as <span class="option">-O1</span></p>
+</li>
+
+	                                    <li><p>2 same optimizations as <span class="option">-O2</span></p>
+</li>
+
+	                                    <li><p>3 same optimizations as <span class="option">-O3</span></p>
+</li>
+
+                                      </ul>
+
+                                      </td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-083EB304-0AC1-425B-84EB-01D88EF3026A"><h2>Description</h2>
+<p>The <span class="keyword">optimization_level</span> pragma is used to restrict optimization for a specific function while optimizing the remaining application using a different, higher optimization level. For example, if you specify <span class="option">-O3</span>  or <span class="option">/O3</span> for the application and specify <samp class="codeph">#pragma optimization_level 1</samp>, the marked function will be optimized at the <span class="option">-O1</span>  or <span class="option">/O1</span> option level, while the remaining application will be optimized at the higher level.</p>
+
+<p>In general, the pragma optimizes the function at the level specified as <var>n</var>; however, certain compiler optimizations, like Inter-procedural Optimization (IPO), are not enabled or disabled during translation unit compilation. For example, if you enable IPO and a specific optimization level, IPO is enabled even for the function targeted by this pragma; however, IPO might not be fully implemented regardless of the optimization level specified at the command line. The reverse is also true.</p>
+
+<p><strong>Scope of optimization restriction</strong></p>
+
+<p>On Linux* and OS X* systems, the scope of the optimization restriction can be affected by arguments passed to the <span class="option">-pragma-optimization-level</span> compiler option as explained in the following table.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D6959B69-259D-4F94-A488-35BE82CB556E" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="30%" id="d64085e162"><p>Syntax</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="70%" id="d64085e166"><p>Behavior</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+  <tr>
+    <td class="cellrowborder" valign="top" width="30%" headers="d64085e162 "><p><samp class="codeph">#pragma intel optimization_level</samp><var> n</var></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="70%" headers="d64085e166 "><p>Applies pragma only to the next function, using the specified optimization level, regardless of the argument passed to the <span class="option">-pragma-optimization-level</span> option.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="30%" headers="d64085e162 "><p><samp class="codeph">#pragma GCC optimization_level</samp><var> n</var> or<br><samp class="codeph">#pragma GCC optimization_level reset</samp></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="70%" headers="d64085e166 "><p>Applies pragma to all subsequent functions, using the specified optimization level, regardless of the argument passed to the <span class="option">-pragma-optimization-level</span> option.</p>
+<p>Specifying <span class="keyword">reset</span> reverses the effect of the most recent <samp class="codeph">#pragma GCC optimization_level</samp> statement, by returning to the optimization level previously specified.</p>
+</td>
+
+  </tr>
+
+  <tr>
+    <td class="cellrowborder" valign="top" width="30%" headers="d64085e162 "><p><samp class="codeph">#pragma optimization_level</samp><var> n</var></p>
+</td>
+
+    <td class="cellrowborder" valign="top" width="70%" headers="d64085e166 "><p>Applies either the intel or GCC interpretation. Interpretation depends on argument passed to the <span class="option">-pragma-optimization-level</span> option.</p>
+</td>
+
+  </tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>On Windows* systems, the pragma always uses the <span class="keyword">intel</span> interpretation; the pragma is applied only to the next function.</p>
+</div>
+<p><strong>Using the <samp class="codeph">intel</samp>
+ interpretation of <samp class="codeph">#pragma optimization_level</samp></strong></p>
+
+<p>Place the pragma immediately before the function being affected. </p>
+
+<div class="example"><p><strong>Example:</strong>
+<pre>#pragma intel optimization_level 1</pre>
+<pre>gamma() {</pre>
+<pre>...</pre>
+<pre>}</pre>
+</p>
+</div>
+
+<p><strong>Using the <samp class="codeph">GCC*</samp> interpretation of <samp class="codeph">#pragma optimization_level</samp></strong></p>
+
+	<p>Place the pragma in any location prior to the functions being affected.</p>
+
+</div>
+
+
+
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Passing Options to the Linker">
+<meta name="DC.subject" content="compiler options, linker-related">
+<meta name="keywords" content="compiler options, linker-related">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7EC44EC6-4E81-430A-BF0E-F8A92003F5D0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Passing Options to the Linker</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_linking_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_linking_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7EC44EC6-4E81-430A-BF0E-F8A92003F5D0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Passing Options to the Linker</h1>
+
+
+
+
+<div>
+<p>This topic describes the options that let you control and customize the linking with tools and libraries and define the output of the <span class="keyword">ld</span> linker. See the <span class="keyword">ld</span> man page for more information on the linker.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2E767550-42B9-46D4-90F5-880E234841FB" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="30%" id="d411269e60"><p>Option</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="70%" id="d411269e64"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-L</span><var>directory</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>Instruct the linker to search <var>directory</var> for libraries.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-Qoption</span><var>,tool,list</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>Passes an argument list to another program in the compilation sequence, such as the assembler or linker.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-shared</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>Instructs the compiler to build a Dynamic Shared Object (DSO) instead of an executable.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-shared-libgcc</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p><span class="option">-shared-libgcc</span> has the opposite effect of <span class="option">-static-libgcc</span>. When it is used, the GNU standard libraries are linked in dynamically, allowing the user to override the static linking behavior when the <span class="option">-static</span> option is used. Note: By default, all C++ standard and support libraries are linked dynamically.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-shared-intel</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>Specifies that all Intel-provided libraries should be linked dynamically.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-static</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>Causes the executable to link all libraries statically, as opposed to dynamically.<br>When <span class="option">-static</span> is not used:<ul type="disc" id="GUID-1A39C5FD-63D5-4414-9885-327E102EAB2A"><li><p><span class="filepath">/lib/ld-linux.so.2</span> is linked in</p>
+</li>
+<li><p>all other libs are linked dynamically</p>
+</li>
+</ul>
+When <span class="option">-static</span> is used:<ul type="disc" id="GUID-55C7A138-85E8-4266-A50C-1A5C7865B241"><li><p><span class="filepath">/lib/ld-linux.so.2</span> is not linked in</p>
+</li>
+<li><p>all other libs are linked statically</p>
+</li>
+</ul>
+</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-static-libgcc</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p> This option causes the GNU standard libraries to be linked in statically.   </p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-Bstatic</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>This option is placed in the linker command line corresponding to its  location on the user command line. This option is used to control the linking behavior of any library being passed in via the command line.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-Bdynamic</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>This option is placed in the linker command line corresponding to its location on the user command line. This option is used to control the linking behavior of any library being passed in via the command line.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-static-intel</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>This option causes Intel-provided libraries to be linked in statically. It is the opposite of <span class="option">-shared-intel</span>.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-Wl,</span><var>optlist</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>This option passes a comma-separated list (<var>optlist</var>) of linker options to the linker.</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d411269e60 "><p><span class="option">-Xlinker</span><var> val</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d411269e64 "><p>This option passes a value (<var>val</var>), such as a linker option, an object, or a library, directly to the linker.</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

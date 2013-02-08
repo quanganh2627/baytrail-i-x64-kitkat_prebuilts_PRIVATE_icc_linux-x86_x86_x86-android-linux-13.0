@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_testc_si256">
+<meta name="abstract" content="Performs a packed bit test of two integer vectors to set the CF flag. The corresponding Intel&reg; AVX instruction is VPTEST.">
+<meta name="description" content="Performs a packed bit test of two integer vectors to set the CF flag. The corresponding Intel&reg; AVX instruction is VPTEST.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, packed test operations, _mm256_testc_si256 (VPTEST)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, packed test operations, _mm256_testc_si256 (VPTEST)">
+<meta name="DC.Relation" scheme="URI" content="GUID-D388423A-101E-4DBE-9CA9-54BE82B375B3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1C130366-0489-427D-8A8D-E8428D1C5DEA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_testc_si256</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_testc_si"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1C130366-0489-427D-8A8D-E8428D1C5DEA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_testc_si256</span></h1>
+
+
+<!-- Performs a packed bit test of two integer vectors to set the CF flag. The corresponding Intel&reg; AVX instruction is  VPTEST .--><div><p> Performs a packed bit test of two integer vectors to set the CF flag. The corresponding Intel&reg; AVX instruction is <span class="keyword">VPTEST</span>.</p>
+
+
+<div class="section" id="GUID-3299D77F-78A6-4731-8779-2102574B8D3A"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern int _mm256_testc_si256(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-F7F9D17B-AD6B-4693-86D6-297C9F34EB67"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>first source integer vector</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>second source integer vector </p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-8AE07455-FE8A-428A-94E2-ACF982F6937F"><h2>Description</h2>
+<p>Allows setting of the CF flag. The CF flag is set based on the result of a bitwise AND and logical NOT operation between the first and second source vectors. The corresponding instruction, <span class="keyword">VPTEST</span>, sets the CF flag if all the resulting bits are 0. If the resulting bits are non-zeros, the instruction clears the CF flag.  
+ </p>
+</div>
+
+
+
+
+<div class="section" id="GUID-82607AF0-D9F5-4730-9138-BC6201A6EF8C"><h2>Returns</h2><p> Non-zero if CF flag is set
+</p>
+<p>Zero if the CF flag is not set
+</p>
+
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D388423A-101E-4DBE-9CA9-54BE82B375B3.htm">Intrinsics for Packed Test Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

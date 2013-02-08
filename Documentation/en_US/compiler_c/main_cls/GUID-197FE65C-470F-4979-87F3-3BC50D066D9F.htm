@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="optimization_parameter">
+<meta name="abstract" content="Tells the compiler to generate code specialized for a particular processor, at the function level, similar to the -m (/arch) options.">
+<meta name="description" content="Tells the compiler to generate code specialized for a particular processor, at the function level, similar to the -m (/arch) options.">
+<meta name="DC.subject" content="optimization_parameter">
+<meta name="keywords" content="optimization_parameter">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-197FE65C-470F-4979-87F3-3BC50D066D9F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>optimization_parameter</title>
+</head>
+<body id="GUID-197FE65C-470F-4979-87F3-3BC50D066D9F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">optimization_parameter</h1>
+
+<!--  Tells the compiler to generate code specialized for a particular processor, at the function level, similar to the   -m  ( /arch )  options.-->
+
+<div><p>  Tells the compiler to generate code specialized for a particular processor, at the function level, similar to the  <span class="option">-m</span> (<span class="option">/arch</span>)  options.</p>
+
+
+
+<div class="section" id="GUID-6070FB03-AF8F-4F01-83B2-EA668490E1BE"><h2>Syntax</h2><p>Linux* OS and OS X*:</p>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma intel optimization_parameter target_arch</span><span class="delim">=&lt;</span><span class="var">CPU</span><span class="delim">&gt;</span></p></td></tr></table>
+
+ <p>Windows* OS:</p>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma [intel] optimization_parameter target_arch</span><span class="delim">=&lt;</span><span class="var">CPU</span><span class="delim">&gt;</span></p></td></tr></table></div>
+
+<div class="section" id="GUID-475A8A3E-9A09-4127-B55A-4E0A5EA8DF5F"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">target_arch</span>=&lt;<var>CPU</var>&gt;</p></td>
+<td valign="top" class="noborder"><p>for the list of CPUs, see <a href="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3"><span class="option">-m</span></a> (<a href="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61"><span class="option">/arch</span></a>) option.</p>
+</td>
+</tr></table>
+
+</div>
+
+
+<div class="section" id="GUID-10C8A69F-6A81-42DF-9A59-5A8AAB01EE0F"><h2>Description</h2>
+<p>The <span class="option">intel optimization_parameter target_arch </span>pragma controls the  <span class="option">-m</span> (<span class="option">/arch</span>) option settings at the function level, overriding the option values specified at the command-line.</p>
+<p>Place <span class="option">#pragma intel optimization_parameter target_arch=</span><var>&lt;CPU&gt;</var> at the head of a function to get the compiler to target that function for a specified instruction set.   The pragma works like the <span class="option">-m</span> (<span class="option">/arch</span>) option, but applies only to the function before which it is placed.</p>
+
+ </div>
+
+
+<div class="section" id="GUID-6AE03FF8-9580-494A-957C-24368A2F7DAA"><h2 class="sectiontitle">Example</h2><ol id="GUID-56F55174-74C0-445B-A178-33C158117D74"><li><pre> icc -mAVX foo.c</pre><p></p>
+<p>The above command targets everything in <samp class="codeph">foo.c</samp> for Intel&reg; AVX processors.</p>
+</li>
+<li><pre>#pragma intel optimization_parameter target_arch=AVX
+void bar()
+{
+...
+}
+</pre><p> </p>
+<p>The above code targets just the function <samp class="codeph">bar</samp> for Intel&reg; AVX processors, regardless of the command line options used.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

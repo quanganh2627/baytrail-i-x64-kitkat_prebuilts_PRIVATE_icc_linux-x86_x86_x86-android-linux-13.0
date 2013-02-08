@@ -1,0 +1,150 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fimf-arch-consistency, Qimf-arch-consistency">
+<meta name="abstract" content="Ensures that the math library functions produce consistent results across different microarchitectural implementations of the same architecture.">
+<meta name="description" content="Ensures that the math library functions produce consistent results across different microarchitectural implementations of the same architecture.">
+<meta name="DC.subject" content="-fimf-arch-consistency compiler option, /Qimf-arch-consistency compiler option, math library functions, option producing consistent results">
+<meta name="keywords" content="-fimf-arch-consistency compiler option, /Qimf-arch-consistency compiler option, math library functions, option producing consistent results">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B.htm#GUID-DC3C7856-118C-4D81-B630-7D27F931C04B">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<meta name="DC.Relation" scheme="URI" content="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316.htm#GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fimf-arch-consistency, Qimf-arch-consistency</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fimf_arch_consistency"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fimf_arch_consistency"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fimf-arch-consistency, Qimf-arch-consistency</h1>
+<!--Ensures that the math library functions produce consistent results across different microarchitectural implementations of the same architecture.--><div><p>Ensures that the math library functions produce consistent results across different microarchitectural implementations of the same architecture.</p>
+
+
+<div class="section" id="GUID-C83B34A9-6C72-48BC-842C-8552BBF4A702"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-9E4EAC6D-DF2F-4E34-88AA-16FE79F43E30"><h2>Architectures</h2><p>All</p>
+</div>
+<div class="section" id="GUID-1CDCE799-A97F-47A5-8B9B-995A51F6FD98"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fimf-arch-consistency</span><span class="oper">=</span><span class="var">value</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qimf-arch-consistency</span><span class="oper">:</span><span class="var">value</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-73DA19B5-B69A-4055-9997-92F6A2E10C8C"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>value</var></p></td>
+<td valign="top" class="noborder"><p>Is one of the logical values "true" or "false".</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>funclist</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional list of one or more math library functions to which the attribute should be applied. If you specify more than one function, they must be separated with commas.  Precision-specific variants like sin and sinf are considered different functions, so you would need to use <span class="option">-fimf-arch-consistency=true:sin,sinf</span> (or <span class="option">/Qimf-arch-consistency:true:sin,sinf</span>) to specify consistent results for both the single-precision and double-precision sine functions. </p>
+<p>You also can specify the symbol /f to denote single-precision divides, symbol / to denote double-precision divides, symbol /l to denote extended-precision divides, and symbol /q to denote quad-precision divides. For example you can specify  <span class="option">-fimf-arch-consistency=true:/</span> or <span class="option">/Qimf-arch-consistency:true:/</span>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-23EBB022-6CA7-4130-9585-682BEF592FFA"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>false</p></td>
+<td valign="top" class="noborder"><p> Implementations of some math library functions may produce slightly different results on implementations of the same architecture.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AC84D190-8341-41C0-A8E7-B34C11521DC0"><h2>Description</h2><p>This option ensures that the math library functions produce consistent results across different microarchitectural implementations of the same architecture (for example, across different microarchitectural implementations of IA-32 architecture). Consistency is only guaranteed for a single binary. Consistency is not guaranteed across different architectures. For example, consistency is not guaranteed across IA-32 architecture and Intel&reg; 64 architecture.</p>
+<p>If you need to define the accuracy for a math function of a certain precision, specify the function name of the precision that you need. For example, if you want double precision, you can specify :sin; if you want single precision, you can specify :sinf, as in <span class="option">-fimf-arch-consistency=true:sin</span>  or<span class="option"> /Qimf-arch-consistency:true:sin</span>, or <span class="option">-fimf-arch-consistency=false:sqrtf</span> or <span class="option">/Qimf-arch-consistency:false:sqrtf</span>.</p>
+<p>If you do not specify any function names, then the setting applies to all functions (and to all precisions). However, as soon as you specify an individual function name, the setting applies only to the function of corresponding precision. So, for example, sinf applies only to the single-precision sine function, sin applies only to the double-precision sine function, sinl applies only to the extended-precision sine function, etc.  </p>
+
+
+
+
+
+<p>The <span class="option">-fimf-arch-consistency</span> (Linux* OS and OS X*) and
+<span class="option">/Qimf-arch-consistency</span> (Windows* OS)
+option may decrease run-time performance, but the option will
+provide bit-wise consistent results on all Intel&reg; processors and
+compatible, non-Intel processors,
+regardless of micro-architecture. This option may not provide bit-wise
+consistent results between different architectures, for example,
+between IA-32 and Intel&reg; 64 architectures<span>, or between Intel&reg; 64 architecture and Intel&reg; MIC Architecture</span>.</p>
+
+
+
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Many routines in libraries LIBM (Math Library) and SVML (Short Vector Math Library) are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+</div><p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d738809e164"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d738809e164 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+</div>
+
+<div class="section" id="GUID-3137CBD6-4806-4588-87D1-95E3CEDFDE25"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B.htm#GUID-DC3C7856-118C-4D81-B630-7D27F931C04B"><span class="option">fimf-absolute-error, Qimf-absolute-error</span></a>  compiler option</div>
+<div><a href="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<span class="option">fimf-accuracy-bits, Qimf-accuracy-bits</span></a>  compiler option</div>
+<div><a href="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316.htm#GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<span class="option">fimf-domain-exclusion, Qimf-domain-exclusion</span></a>  compiler option</div>
+<div><a href="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486"><span class="option">fimf-max-error, Qimf-max-error</span></a>  compiler option</div>
+<div><a href="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3"><span class="option">fimf-precision, Qimf-precision</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

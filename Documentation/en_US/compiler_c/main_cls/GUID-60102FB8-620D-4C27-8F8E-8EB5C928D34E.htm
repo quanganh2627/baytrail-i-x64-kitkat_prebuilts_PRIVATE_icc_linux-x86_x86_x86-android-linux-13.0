@@ -1,0 +1,243 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Avoiding Mixed Data Type Arithmetic Expressions">
+<meta name="DC.subject" content="avoid, inefficient data types, mixed arithmetic expressions, performance, efficiency, maintainability, autovectorization, autovectorization of innermost loops">
+<meta name="keywords" content="avoid, inefficient data types, mixed arithmetic expressions, performance, efficiency, maintainability, autovectorization, autovectorization of innermost loops">
+<meta name="DC.Relation" scheme="URI" content="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-338B42F0-B891-4D35-9872-8E54BA8AA1CD.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-60102FB8-620D-4C27-8F8E-8EB5C928D34E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Avoiding Mixed Data Type Arithmetic Expressions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_av_mxtype"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-60102FB8-620D-4C27-8F8E-8EB5C928D34E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Avoiding Mixed Data Type Arithmetic Expressions</h1>
+ 
+   
+  <div> 
+    <p>Avoid mixing integer and floating-point (<span>float,double, or long double</span>) data in the same computation. Expressing all numbers in a floating-point arithmetic expression (assignment statement) as floating-point values eliminates the need to convert data between fixed and floating-point formats. Expressing all numbers in an integer arithmetic expression as integer values also achieves this. This improves run-time performance.
+    </p>
+ 
+    <p>For example, assuming that 
+      <samp class="codeph">I</samp> and 
+      <samp class="codeph">J</samp> are both 
+      <span>int</span> variables, expressing a constant number (2.) as an integer value (2) eliminates the need to convert the data. The following examples demonstrate inefficient and efficient code.
+    </p>
+ 
+    <div class="example"><h2 class="sectiontitle">Examples</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7E878695-E06B-4546-A815-61E7C9BB7F12" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="100%" id="d298498e90">
+                <p>Example 1: Inefficient Code
+                </p>
+
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d298498e90 ">
+                <p><span><samp class="codeph">int I, J;</samp></span><br><samp class="codeph">I = J / 2.</samp><span><samp class="codeph">;</samp></span>
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5F36661C-FF99-4E1C-9FE0-95306726357B" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="100%" id="d298498e131">
+                <p>Example 2: Efficient Code
+                </p>
+
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d298498e131 ">
+                <p><span><samp class="codeph">int I, J;</samp></span><br><samp class="codeph">I = J / 2</samp><span><samp class="codeph">;</samp></span>
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+
+    <div class="section" id="GUID-E6908C3B-F890-4C81-8589-33EF45D46CA7"><h2 class="sectiontitle">Special Considerations for Auto-Vectorization of the Innermost Loops</h2>
+      
+      <p>Auto-vectorization of an innermost loop packs multiple data elements from consecutive loop iterations into a vector register, each of which is 128-bit (SSE) or 256 bit (AVX) in size. 
+      </p>
+
+      <p>Consider a loop that uses different sized data, for example, REAL and DOUBLE PRECISION. For REAL data, the compiler tries to pack data elements from four (SSE) or eight (AVX) consecutive iterations (32 bits x 4 = 128 bits, 32 bits x 8 = 256 bits). For DOUBLE PRECISION data, the compiler tries to pack data elements from two (SSE) or four (AVX) consecutive iterations (64 bits x 2 = 128 bits, 64 bits x 4 = 256 bits). Because of the mismatched number of iterations, the compiler sometimes fails to perform auto-vectorization of the loop, after trying to automatically remedy the situation. 
+      </p>
+
+      <p>If your attempt to auto-vectorize an innermost loop fails, it is a good practice to try using the same sized data. INTEGER and REAL are considered same sized data since both are 32-bit in size.
+      </p>
+ 
+    </div>
+
+    <div class="example"><h2 class="sectiontitle">Examples</h2>
+      
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5173D074-5114-43BF-8CF6-6F6A691BFBF3" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="100%" id="d298498e193">
+                <p>Example 1: Non-autovectorizable code
+                </p>
+
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d298498e193 "> 
+                <pre>DOUBLE PRECISION A(N), B(N)</pre>
+                <pre>REAL C(N), D(N)</pre>
+                <pre>DO I=1, N</pre>
+                <pre>&nbsp;&nbsp;&nbsp;A(I)=D(I)</pre>
+                <pre>&nbsp;&nbsp;&nbsp;C(I)=B(I)</pre>
+                <pre>ENDDO</pre>
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-73B19629-683C-4ABF-B7F3-F6A411D46498" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="100%" id="d298498e241">
+                <p>Example 2: Auto-vectorizable after automatic distribution into two loops 
+                </p>
+
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d298498e241 "> 
+                <pre>DOUBLE PRECISION A(N), B(N)</pre>
+                <pre>REAL C(N), D(N)</pre>
+                <pre>DO I=1, N</pre>
+                <pre>&nbsp;&nbsp;&nbsp;A(I)=B(I)</pre>
+                <pre>&nbsp;&nbsp;&nbsp;C(I)=D(I)</pre>
+                <pre>ENDDO</pre>
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-89DC6FC8-5EFB-49E9-A812-AFBC5C854D69" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="100%" id="d298498e289">
+                <p>Example 3: Auto-vectorizable as one loop 
+                </p>
+
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d298498e289 "> 
+                <pre>REAL A(N), B(N)</pre>
+                <pre>REAL C(N), D(N)</pre>
+                <pre>DO I=1, N</pre>
+                <pre>&nbsp;&nbsp;&nbsp;A(I)=B(I)</pre>
+                <pre>&nbsp;&nbsp;&nbsp;C(I)=D(I)</pre>
+                <pre>ENDDO</pre>
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">Tuning Performance</a></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-338B42F0-B891-4D35-9872-8E54BA8AA1CD.htm">Understanding IEEE Floating-point Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

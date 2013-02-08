@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_addsetc_epi32/ _mm512_mask_addsetc_epi32">
+<meta name="abstract" content="Adds int32 vectors and sets mask to carry. The corresponding instruction is VPADDSETCD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Adds int32 vectors and sets mask to carry. The corresponding instruction is VPADDSETCD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_addsetc_epi32, _mm512_mask_addsetc_epi32">
+<meta name="keywords" content="_mm512_addsetc_epi32, _mm512_mask_addsetc_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-35FEBC95-F7B7-46E4-B16C-35D6F20B323F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CC152FEB-33D6-43E5-8C6E-921527915A4E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_addsetc_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_addsetc_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CC152FEB-33D6-43E5-8C6E-921527915A4E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_addsetc_epi32/ _mm512_mask_addsetc_epi32</h1>
+<!--Adds int32 vectors and sets mask to carry. The corresponding instruction is 
+ VPADDSETCD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Adds int32 vectors and sets mask to carry. The corresponding instruction is 
+<samp class="codeph">VPADDSETCD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-667C2DE6-F9BE-4CEA-B635-C8979AFA9EF3"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_addsetc_epi32(_m512i v2, _m512i v3, __mmask16* k2_res);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_mask_addsetc_epi32(_m512i v2, __mmask16 k1, __mmask16 k1_old, _m512i v3, __mmask16* k2_res);</span></p></td></tr></table></div>
+<div class="section" id="GUID-C0D832F2-9915-4538-BF6B-0A8B8B0FB1A0"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">int32 vector used for the addition operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">int32 vector also used for addition operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k2_res</var></p></td>
+
+<td valign="top" class="noborder">vector mask register where the carry over value is stored
+</td>
+</tr>
+
+</table>
+
+
+
+
+
+</div>
+<div class="section" id="GUID-50BF0776-1124-45C8-9E6A-0B0B762DB1B3"><h2>Description</h2>
+<p>Performs an element-by-element addition between int32 vector 
+<samp class="codeph">v2</samp> and int32 vector 
+<samp class="codeph">v3</samp>. The carry from the sum is returned in 
+<samp class="codeph">k2_res</samp>.</p>
+<p>The masked variant has two additional arguments: 
+<samp class="codeph">v1_old</samp> and 
+<samp class="codeph">k1</samp>. Those elements of 
+<samp class="codeph">v2</samp> and 
+<samp class="codeph">v3</samp> with the corresponding bits clear in vector mask 
+<samp class="codeph">k1</samp> are not used in the computation.  &nbsp;Instead corresponding elements from 
+<samp class="codeph">v2</samp> are copied to the resulting vector, and corresponding elements from 
+<samp class="codeph">v1_old</samp> are copied to 
+<samp class="codeph">k2_res</samp>.</p>
+</div>
+<div class="section" id="GUID-D0DE6B08-2107-449E-9C3C-78B88E70A291"><h2>Returns</h2><p>Returns the result of the addition operation. Carry over value is returned in 
+<samp class="codeph">k2_res</samp>.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-35FEBC95-F7B7-46E4-B16C-35D6F20B323F.htm">Addition Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

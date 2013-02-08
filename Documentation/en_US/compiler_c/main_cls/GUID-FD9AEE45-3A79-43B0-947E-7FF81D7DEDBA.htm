@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_mulhrs_epi16">
+<meta name="abstract" content="Multiplies extended packed unsigned integers of two vectors with round and scale. The corresponding Intel&reg; AVX2 instruction is VPMULHRSW.">
+<meta name="description" content="Multiplies extended packed unsigned integers of two vectors with round and scale. The corresponding Intel&reg; AVX2 instruction is VPMULHRSW.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_mulhrs_epi16 (VPMULHRSW)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_mulhrs_epi16 (VPMULHRSW)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FD9AEE45-3A79-43B0-947E-7FF81D7DEDBA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_mulhrs_epi16</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_mulhrs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_mulhrs_epi16"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FD9AEE45-3A79-43B0-947E-7FF81D7DEDBA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_mulhrs_epi16</span></h1>
+
+
+<!--Multiplies extended packed unsigned integers  of two vectors with round and scale. The corresponding Intel&reg; AVX2  instruction is  VPMULHRSW .--><div><p>Multiplies extended packed unsigned integers  of two vectors with round and scale. The corresponding Intel&reg; AVX2  instruction is <span class="keyword">VPMULHRSW</span>.</p>
+
+
+<div class="section" id="GUID-D83E8F2D-16EE-4039-9A29-CD1905041D65"><h2>Syntax</h2>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_mulhrs_epi16(__m256i s1, __m256i s2);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-81EA370B-359D-4D50-A423-49C653ABB39F"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-CCEF6F97-77C9-43ED-843A-4C884194C281"><h2>Description</h2>
+<p>Vertically multiplies each signed 16-bit integer from <var>s1</var>vector with the corresponding signed 16-bit integer of <var>s2</var> vector, producing intermediate, signed 32-bit integers. Each intermediate 32-bit integer is truncated to the 18 most-significant-bits. Rounding is performed by adding 1 to the least-significant-bit of the 18-bit intermediate result. </p>
+<p>The final result is obtained by selecting the 16 bits immediately to the right of the most-significant-bit of each 18-bit intermediate result and packing them to the destination operand.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-7062B222-500E-49D8-934D-F11FE3B3B949"><h2>Returns</h2><p> Result of the multiply, round, and scale  operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">Intrinsics for Arithmetic Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

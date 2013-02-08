@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_subr_round_pd/ _mm512_mask_subr_round_pd">
+<meta name="abstract" content="Reverse subtracts rounded float64 vectors. The corresponding instruction is &nbsp; VSUBRPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Reverse subtracts rounded float64 vectors. The corresponding instruction is &nbsp; VSUBRPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_subr_round_pd, _mm512_mask_subr_round_pd">
+<meta name="keywords" content="_mm512_subr_round_pd, _mm512_mask_subr_round_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-8A3EE323-6643-4828-AA7D-8336F6FBAD82.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AF1F86D4-1F6A-46BA-89DE-3761D798D05E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_subr_round_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_subr_round_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AF1F86D4-1F6A-46BA-89DE-3761D798D05E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_subr_round_pd/ _mm512_mask_subr_round_pd</h1>
+<!--Reverse subtracts rounded float64 vectors. The corresponding instruction is   
+ VSUBRPD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Reverse subtracts rounded float64 vectors. The corresponding instruction is  &nbsp;
+<samp class="codeph">VSUBRPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-0710C8C7-B68F-4BA1-A758-585A59957D4D"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_subr_round_pd(_m512d v2, _m512d v3, int rc);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_mask_subr_round_pd(_m512d v1_old, __mmask8 k1, _m512d v2, _m512d v3, int rc);</span></p></td></tr></table></div>
+<div class="section" id="GUID-D1D16734-4819-4164-92A1-FEF48CA9C3C2"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float64 vector from which subtraction is done
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">float64 vector subtracted from 
+<samp class="codeph">v2</samp>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><p><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result 
+      </span></p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>rc</var></p></td>
+
+<td valign="top" class="noborder"><p>Rounding control values; these can be one of the following: 
+    <a name="d89e49"><!-- --></a><ul type="disc" id="d89e49"> 
+      <li><samp class="codeph">_MM_FROUND_TO_NEAREST_INT</samp> - rounds to nearest even 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_TO_NEG_INF</samp> - rounds to negative infinity 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_TO_POS_INF</samp> - rounds to positive infinity 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_TO_ZERO</samp> - rounds to zero 
+      </li>
+ 
+      <li><samp class="codeph">_MM_FROUND_CUR_DIRECTION</samp> - rounds using default from MXCSR register 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+
+</table>
+
+
+
+
+
+</div>
+<div class="section" id="GUID-5555A106-ABAA-4107-8C2F-41669F8B6366"><h2>Description</h2>
+<p>Performs an element-by-element subtraction of rounded float64 vector 
+<samp class="codeph">v2</samp> from rounded float64 vector 
+<samp class="codeph">v3</samp>. Intermediate values are rounded according to <var>rc</var> value.</p>
+<p>The masked variant has two additional arguments: 
+<samp class="codeph">v1_old</samp> and 
+<samp class="codeph">k1</samp>. Those elements of 
+<samp class="codeph">v2</samp> and 
+<samp class="codeph">v3</samp> with the corresponding bit clear in vector mask 
+<samp class="codeph">k1</samp> are not used in the computation. Instead, the corresponding element from 
+<samp class="codeph">v1_old</samp> is copied to the resulting vector.</p>
+</div>
+<div class="section" id="GUID-EED64734-4AE5-413E-9E37-FAAC6873951C"><h2>Returns</h2><p>Returns the result of the subtraction operation.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8A3EE323-6643-4828-AA7D-8336F6FBAD82.htm">Subtraction Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

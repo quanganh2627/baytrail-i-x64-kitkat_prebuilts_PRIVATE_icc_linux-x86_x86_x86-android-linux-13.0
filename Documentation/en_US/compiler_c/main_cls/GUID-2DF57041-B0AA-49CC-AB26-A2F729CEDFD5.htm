@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Static Analysis">
+<meta name="DC.subject" content="static analysis, initial setup">
+<meta name="keywords" content="static analysis, initial setup">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEC7B612-A511-4C82-8E81-817DFEE8FAE8.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2DF57041-B0AA-49CC-AB26-A2F729CEDFD5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Static Analysis</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_use_src_code_analysis"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_use_src_code_analysis"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2DF57041-B0AA-49CC-AB26-A2F729CEDFD5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Static Analysis</h1>
+ 
+   
+  <div> 
+	 <div class="section" id="GUID-A317322C-7112-4BBE-89F2-1FDE480B3A94"><h2 class="sectiontitle">Using Static Analysis from the Microsoft Visual Studio* IDE</h2> 
+		 
+		<p>To build your application for static analysis in Microsoft Visual Studio, use the 
+		  <strong>Build for Intel Static Analysis</strong> menu option. This creates a new build configuration for static analysis and sets the required properties in the Visual Studio IDE. 
+		</p>
+ 
+		<p>There are several forms of the 
+		  <strong>Build for Intel Static Analysis</strong> menu option, including: 
+		</p>
+ 
+		<p> 
+		<ul type="disc" id="GUID-C4F5FB2C-AF2B-47F8-BA31-10A073DB9829"> 
+		  <li><strong>Build solution for Intel Static Analysis</strong> 
+		  </li>
+ 
+		  <li><strong>Build &lt;projectname&gt; for Intel Static Analysis</strong> 
+		  </li>
+ 
+		</ul>
+ These forms appear in all menus that can build projects or solutions, including the 
+		<strong>Build 
+		</strong> menu and the popup menu that appears when you right click on selected project(s) or on the solution. 
+		</p>
+ 
+		<p>The first time you use this menu option, a dialog box appears to guide you through the setup process. 
+		</p>
+ 
+		<p><strong>Using Static Analysis for an Intel C++ Solution</strong> 
+		</p>
+ 
+		<p>To perform static analysis on Intel C++ solutions and projects: 
+		</p>
+ 
+		<ol id="GUID-A94C5E85-2402-4332-904A-072BDE9EB900"> 
+		  <li>Choose 
+			 <strong>Build for Intel Static Analysis</strong>. 
+		  </li>
+ 
+		  <li>In the 
+			 <strong>Create configuration</strong> dialog box, choose the following: 
+			 <ul type="disc" id="GUID-7713796A-3360-4AEC-BFB8-A05FC16C5B7E"> 
+				<li><strong>Copy configuration settings from</strong>: Specify the configuration from which settings should be copied 
+				</li>
+ 
+				<li><strong>Level of Static Analysis</strong>: Select the desired level of analysis 
+				</li>
+ 
+				<li><strong>Additional Options</strong>: Select 
+				  <strong>Analyze Include Files</strong> if you would like to analyze system include files 
+				</li>
+ 
+			 </ul>
+ 
+		  </li>
+ 
+		  <li><div>Leave the 
+			 <strong>Build for Static Analysis after creating configuration</strong> checkbox checked. A new configuration called Intel_SSA is created and the project(s) selected for building with static analysis are built. (If you uncheck this checkbox, you will set up for static analysis but not run it at this time). 
+		  </div></li>
+ 
+		</ol>
+ 
+		<p> Analysis results will open automatically in the Intel&reg; Inspector XE user interface. 
+		</p>
+ 
+		<p><strong>Using Static Analysis for a Visual C++ Solution or a Mixed Solution</strong> 
+		</p>
+ 
+		<p>To perform static analysis on Visual C++ only solutions and projects or on a mixed solution containing both Intel C++ and Visual C++ projects, do the following:: 
+		</p>
+ 
+		<ol id="GUID-9594FD07-4510-44C1-987B-496A0DBA31CE"> 
+		  <li>Choose 
+			 <strong>Build for Intel Static Analysis</strong>. 
+		  </li>
+ 
+		  <li> For Visual Studio 2008: Check and uncheck projects in the 
+			 <strong>Prepare Projects</strong> dialog box that appears. This dialog box shows all Visual C++ projects in the solution. Initially, all Visual C++ projects are selected for static analysis. Uncheck any projects that do not require it. Click 
+			 <strong>Next</strong>. 
+			 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+				<p>Existing configurations will not be modified. The Solution Explorer will show a different icon to indicate that a project configuration is built by the Intel compiler. 
+				</p>
+ 
+			 </div> 
+		  </li>
+ 
+		  <li>In the 
+			 <strong>Create configuration</strong> dialog box, choose the following: 
+			 <ul type="disc" id="GUID-07E8FF4D-736A-4BC8-942D-EC660B3DC5A0"> 
+				<li><strong>Copy configuration settings from</strong>: Specify the configuration from which settings should be copied 
+				</li>
+ 
+				<li><strong>Level of Static Analysis</strong>: Select the desired level of analysis 
+				</li>
+ 
+				<li><strong>Additional Options</strong>: Select 
+				  <strong>Analyze Include Files</strong> if you would like to analyze system include files 
+				</li>
+ 
+			 </ul>
+ 
+		  </li>
+ 
+		  <li><div> Leave the 
+			 <strong> Build for Static Analysis after creating configuration</strong> checkbox checked. A new configuration called Intel_SSA is created and the project(s) selected for building with static analysis are built. (If you do not click this checkbox, you will set up for static analysis but not run it at this time.) 
+		  </div></li>
+ 
+		  <li> 
+		  </li>
+ 
+		</ol>
+ 
+		<p>Analysis results will open automatically in the Intel&reg; Inspector XE user interface. 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>Preparing a Visual C++ project for use with static analysis does not cause the existing configurations to build with the Intel compiler. However, it does modify the solution (.sln) file and adds an Intel project (.icproj) file for each prepared project. After these changes, the solution will no longer build on systems where the Intel compiler is not installed. In a team environment where some team members will not install the Intel compiler, it is best to treat these modifications as temporary and discard them after running static analysis. You can always use the menu item to perform the preparation step again as needed. 
+		  </p>
+ 
+		</div> 
+		<p> There are several Microsoft Visual Studio* IDE property pages related to static analysis. You can change the options for static analysis by modifying the properties for the Intel_SSA configuration. To do this, use the following property pages: 
+		</p>
+ 
+		<ul type="disc" id="GUID-8CA832A2-8C1D-4619-924D-F5FD3A50FACE"> 
+		  <li><strong>C/C++&gt;Diagnostics&gt;Level of Static Analysis</strong> 
+		  </li>
+ 
+		  <li><strong>C/C++&gt;Diagnostics&gt;Analyze Include Files</strong> 
+		  </li>
+ 
+		  <li><strong>C/C++&gt;Diagnostics&gt;Analysis results container</strong> (Default location is 
+			 <strong>My Inspector XE Results-&lt;<em>product name</em>&gt;</strong>directory in the project root directory) 
+		  </li>
+ 
+		  <li><div><strong>C/C++&gt;Diagnostics-&gt;Mode of Static Analysis</strong> 
+		  </div></li>
+ 
+		  <li><div><strong>C/C++&gt;Diagnostics-&gt;Analyze Files Individually</strong> 
+		  </div></li>
+ 
+		  <li><div><strong>C/C++&gt;Diagnostics-&gt;Treat Enumerations as Known Ranges</strong> 
+		  </div></li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-D00FDDA8-A1EC-4CA3-B601-2DEC40398FF5"><h2 class="sectiontitle">Using Static Analysis from the Eclipse* IDE</h2> 
+		 
+		<p>In the Eclipse* IDE: 
+		</p>
+ 
+		<ol id="GUID-BB5D4FCB-D5C0-4CDB-8581-7D89A71CBBFD"> 
+		  <li> 
+			 <p>Open the property pages for the project and select 
+				<strong>C/C++ Build</strong> . 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Click the 
+				<strong>Manage…</strong> button. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> In the 
+				<strong>Manage</strong> dialog box, click the 
+				<strong>New…</strong> button to open the 
+				<strong>Create configuration</strong> dialog box. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Supply a name for the new configuration in the 
+				<strong>Name</strong> box; for example, 
+				<strong>Intel_SSA</strong>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> Supply a 
+				<strong>Description</strong> for the configuration if you want (optional). 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Choose 
+				<strong>Copy settings from an existing configuration</strong> and click the appropriate radio button to select the Debug configuration from the corresponding drop down menu. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> Click 
+				<strong>OK</strong> to close the 
+				<strong>Create configuration</strong> dialog box. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> Click 
+				<strong>OK</strong> to close the 
+				<strong>Manage</strong> dialog box (with your new configuration name selected). 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Navigate to the Intel compiler's 
+				<strong>Compilation Diagnostics 
+				</strong> properties. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Use the 
+				<strong>Level of Static Analysis</strong> and 
+				<strong>Analyze Include Files</strong> properties to enable static analysis. 
+			 </p>
+ 
+		  </li>
+ 
+		</ol>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-A378F345-8209-4EAF-A00D-C4FDF33E2029"><h2 class="sectiontitle">Using Static Analysis from the Command Line</h2> 
+		 
+		<p>If you are building from the command line, you need to create a new build configuration or target distinct from your existing build configuration or target. Once you do this, you can add the command line options to enable static analysis. You must supply the options that request static analysis on each compilation and link step. The following table summarizes the static analysis options. See the Compiler Options reference for full descriptions of each option. 
+		</p>
+ 
+		<table cellpadding="4" cellspacing="0" summary="" border="1" class="argTbl"><tr> 
+			 <th valign="bottom" align="left" id="d145465e389" width="20%"> 
+				<p>Option (Windows* and Linux* OS syntax) 
+				</p>
+ 
+			 </th>
+ 
+			 <th valign="bottom" align="left" id="d145465e395" width="20%"> 
+				<p>Result 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+<tr> 
+			 <td valign="top" headers="d145465e389"> 
+				<p>/Qdiag-enable:sc{[1|2|3]} 
+				</p>
+ 
+				<p>-diag-enable sc{[1|2|3]} 
+				</p>
+ 
+			 </td>
+ 
+			 <td valign="top" headers="d145465e395"> 
+				<p> Enables static analysis. The number specifies the severity level of diagnostics reported (1=only critical errors, 
+				  <span><span>2=all errors and warnings, and 3=all diagnostics regardless of severity level)</span></span>. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+<tr><td valign="top" headers="d145465e389"> 
+				<p> /Qdiag-enable:sc-{full|concise|precise} 
+				</p>
+ 
+				<p> -diag-enable sc-{full|concise|precise} 
+				</p>
+ 
+			 </td>
+<td valign="top" headers="d145465e395"> 
+				<p>Enables static analysis and determines the analysis mode. 
+				</p>
+</td>
+ 
+		  </tr>
+<tr> 
+			 <td valign="top" headers="d145465e389"> 
+				<p>/Qdiag-disable:sc 
+				</p>
+ 
+				<p>-diag-disable sc 
+				</p>
+ 
+			 </td>
+ 
+			 <td valign="top" headers="d145465e395"> 
+				<p> Disables static analysis 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+<tr> 
+			 <td valign="top" headers="d145465e389"> 
+				<p>/Qdiag-enable:sc-include 
+				</p>
+ 
+				<p>-diag-enable sc-include 
+				</p>
+ 
+			 </td>
+ 
+			 <td valign="top" headers="d145465e395"> 
+				<p> Analyzes system include files as well as source files. By default, apparent errors in system include files are not reported. 
+				</p>
+ 
+				<p>System include files are those include files found using the INCLUDE environment variable. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+<tr><td valign="top" headers="d145465e389"> 
+				<p> /Qdiag-enable:sc-single-file 
+				</p>
+ 
+				<p> -diag-enable sc-single-file 
+				</p>
+ 
+			 </td>
+<td valign="top" headers="d145465e395"> 
+				<p> Processes each file individually, skipping the usual whole-program analysis. This reduces memory requirements and analysis time on large programs, but may detect fewer real errors. 
+				</p>
+</td>
+ 
+		  </tr>
+<tr> 
+			 <td valign="top" headers="d145465e389"> 
+				<p> /Qdiag-sc-dir:<em>dir</em> 
+				</p>
+ 
+				<p> -diag-sc-dir 
+				  <em>dir</em> 
+				</p>
+ 
+			 </td>
+ 
+			 <td valign="top" headers="d145465e395"> 
+				<p> Directs diagnostic results to the given directory. If this option is not specified, or if the option is specified without indicating a directory, results are directed to the current working directory. Each run creates results in a new subdirectory whose name has the form "r@@@sc", where "@@@" is replaced the next available sequence number (001, 002, ...). 
+				</p>
+ 
+				<p>This option requires that you also specify the compiler option to enable static analysis. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+<tr><td valign="top" headers="d145465e389"> 
+				<p> /Qdiag-enable:sc-enums 
+				</p>
+ 
+				<p> -diag-enable sc-enums 
+				</p>
+ 
+			 </td>
+<td valign="top" headers="d145465e395"> 
+				<p> Instructs static analysis to treat enumeration variables as known values equal to any one of the associated enumeration literals. By default, static analysis treats unknown enumeration variables as unknown integer values. Setting this option may find additional errors, but tends to create more false positives. 
+				</p>
+</td>
+ 
+		  </tr>
+</table>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>Windows* OS: Even if your project must build on the command line, it is still possible to integrate your project into Visual Studio. To do this, create a Visual Studio "makefile project," in which case, Visual Studio will build the project by invoking a command line of your choosing. If you plan to use a makefile project, you should add the 
+			 <samp class="codeph">/Qdiag-sc-dir:<em>dir</em></samp> or 
+			 <samp class="codeph">-diag-sc-dir 
+				<em>dir</em></samp> option on the link step to direct the output to the "My Inspector XE Results-&lt;<em>product name</em>&gt;" folder in the project root directory. This allows Intel&reg; Inspector XE to find your results and display them in the Visual Studio Solution Explorer. If you do not want to use Visual Studio at all, you should use the stand-alone form of the Intel&reg; Inspector XE GUI. If you do this, you can place your results wherever you like. 
+		  </p>
+ 
+		</div> 
+		<p>To enable OpenMP*, specify the 
+		  <span>/Qopenmp</span> (Windows* OS) or 
+		  <span>-openmp</span> (Linux* OS) option. You must do this if your program uses OpenMP. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-E81E22C2-E64B-4EA8-BA04-C6199259AB95"><h2 class="sectiontitle"> Considerations When Using Static Analysis</h2> 
+		 
+		<ul type="disc" id="GUID-85AC4EC2-6850-43C0-9034-3A8C8AF99A1C"> 
+		  <li> 
+			 <p>Using Build Specifications: As an alternative to creating a new build configuration, you can create a 
+				<strong>build specification</strong>. See 
+				<a href="GUID-C16CADF3-4649-4DCF-94CA-57761A13A307.htm#GUID-C16CADF3-4649-4DCF-94CA-57761A13A307"> Creating and Using Build Specification Files 
+				</a> for more information. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li><div> 
+			 <p>Static analysis results are generated at the link step. The Intel linker must be used for linking and the compiler driver automatically invokes the Intel linker when building an executable. On Windows* OS, you must build static libraries with the Intel librarian, xilib.exe. The xilib program recognizes the static analysis compiler options such as /Qdiag-enable:sc{1|2|3}. If you supply an option that enables static analysis, you can generate a static analysis result for the static library. On Linux* OS, you must build the static library for static analysis with the Intel archive program, xiar. If you want to generate a static analysis result for the static library, you need to use xiar and supply the static analysis compiler options such as -diag-enable=sc{1|2|3} but preceded by a "q", for example, -qdiag-enable=sc3. 
+			 </p>
+ 
+		  </div></li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FEC7B612-A511-4C82-8E81-817DFEE8FAE8.htm">Static Analysis</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

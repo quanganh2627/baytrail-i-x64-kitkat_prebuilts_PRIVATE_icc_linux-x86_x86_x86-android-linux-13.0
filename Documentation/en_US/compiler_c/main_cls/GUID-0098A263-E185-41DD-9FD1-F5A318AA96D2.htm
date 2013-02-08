@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="Yu">
+<meta name="abstract" content="Tells the compiler to use a precompiled header file.">
+<meta name="description" content="Tells the compiler to use a precompiled header file.">
+<meta name="DC.subject" content="/Yu compiler option">
+<meta name="keywords" content="/Yu compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-366E0C03-6A68-4E46-A904-3E612AFC7DDD.htm#GUID-366E0C03-6A68-4E46-A904-3E612AFC7DDD">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0098A263-E185-41DD-9FD1-F5A318AA96D2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Yu</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_yu"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_yu"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0098A263-E185-41DD-9FD1-F5A318AA96D2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">Yu</h1>
+<!--Tells the compiler to use a precompiled header file. --><div><p>Tells the compiler to use a precompiled header file. </p>
+
+<div class="section" id="GUID-ADDD9C18-149C-40F2-91D4-35FB9019B0DA"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Precompiled Headers &gt; Precompiled Header</strong> (VS 2010)</p>
+
+<p class="ide"><strong>Language &gt; Create/Use Precompiled Header</strong> (VS 2008)</p>
+
+
+
+<p class="ide">Linux: 
+								None</p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-266B0BD1-1864-4583-9491-4DBB425923D1"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-054A18E3-43AE-4AFA-9C25-F6AA0C75AD8D"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Yu</span><span class="delim">[</span><span class="var">filename</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-16E575A4-5084-4286-A521-240282F188D3"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is the name of a C/C++ header file, which is included in the source file using an #include preprocessor directive.</p>
+ </td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E84FD3EC-214E-474E-AFBA-5841D3042DF1"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not use precompiled header files unless it is told to do so.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-36A61321-9AA7-4C20-AEE1-D32D7548A601"><h2>Description</h2><p>This option tells the compiler to use a precompiled header (PCH) file.</p>
+<p> It is supported for multiple source files when
+all source files use the same .pchi
+file.</p>
+
+<p> The compiler treats all code occurring before
+the header file as
+precompiled. It skips to just beyond the #include directive
+associated with the  header file, uses the code contained in the PCH file, and then compiles all
+code after <var>filename</var>.</p>
+
+<p>If you do not specify <var>filename</var>, the compiler will use a PCH with a name based on the source file name.  If you specify option <span class="option">/Fp</span>, it will use the PCH specified by that option.</p>
+<p> When this option is specified, the compiler ignores all text, including
+declarations preceding the #include
+statement of the specified file.</p>
+
+<p> This option cannot be used in the same
+compilation as the <span class="option">/Yc</span> option.</p>
+
+</div>
+
+<div class="section" id="GUID-AA914221-66DF-4F81-A9A4-A2E7D8ACFBEF"><h2>Alternate Options</h2><p>None</p>
+</div>
+<div class="example" id="EXAMPLE_E975812C0BA24399AD872229F33529B4"><a name="EXAMPLE_E975812C0BA24399AD872229F33529B4"><!-- --></a><h2>Example</h2><p>Consider the following command line:</p>
+<pre>icl /c /Yuheader.h bar.cpp</pre><p>In this case, the name of the PCH file used is "header.pchi".</p>
+<p>In the following command line, no filename is specified:</p>
+<pre>icl /Yu bar.cpp</pre><p>In this case, the name of the PCH file used is "bar.pchi".</p>
+<p>In the following command line, no filename is specified, but option <span class="option">/Fp</span> is specified:</p>
+<pre>icl /Yu /Fpprecomp bar.cpp</pre><p>In this case, the name of the PCH file used is "precomp.pchi".</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-366E0C03-6A68-4E46-A904-3E612AFC7DDD.htm#GUID-366E0C03-6A68-4E46-A904-3E612AFC7DDD"><span class="option">Yc</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

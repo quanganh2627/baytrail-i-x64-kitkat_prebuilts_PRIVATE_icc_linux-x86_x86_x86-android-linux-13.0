@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Allocating Memory for Parts of Arrays">
+<meta name="DC.subject" content="Intel&reg; MIC Architecture, allocating memory for parts of arrays, memory, allocating for parts of arrays, alloc">
+<meta name="keywords" content="Intel&reg; MIC Architecture, allocating memory for parts of arrays, memory, allocating for parts of arrays, alloc">
+<meta name="DC.Relation" scheme="URI" content="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-10462859-CF7A-419C-A572-87B5565EDADD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Allocating Memory for Parts of Arrays</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_alloc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-10462859-CF7A-419C-A572-87B5565EDADD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Allocating Memory for Parts of Arrays</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p> This topic discusses using the 
+		<samp class="codeph">alloc</samp> modifier with the 
+		<span><samp class="codeph">offload</samp> set of pragmas</span> 
+		</p>
+ 
+	 <p>The 
+		<samp class="codeph">alloc</samp> modifier contains an array section reference. When you specify it, then the allocation on the coprocessor is limited to that shape of array. Only unit stride is allowed in the section. When a section has a rank greater than one, the second and subsequent index expressions must specify all elements at that dimension. The array section must be contiguous. 
+	 </p>
+ 
+	 <p>Data is transferred into that portion of the array specified by the 
+		<span><samp class="codeph">in</samp> or 
+		  <samp class="codeph">out</samp></span> expression. Thus memory allocation and the data transfer can use separate array slice references. 
+	 </p>
+ 
+	 <p>When the lower bound of the first dimension of a section used in the 
+		<samp class="codeph">alloc</samp> modifier is non-zero, then the memory allocation begins with that element. The memory preceding the lower bound is unallocated and should not be referenced by your program. By not referencing it, you enable a smaller section of the array to be transferred to the coprocessor without requiring that the entire array be allocated. 
+	 </p>
+ 
+	 <div class="example"><h2 class="sectiontitle">Example</h2> 
+		 In the following example, 
+		<ul type="disc" id="GUID-324234BA-5012-4920-9EAB-0BA48542A139"> 
+		  <li> 
+			 <p>The alloc(p[5:1000]) modifier allocates 1000 elements on the coprocessor. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>The first usable element has index 5 and the last has index 1004. Thus only elements 5 through 1004 are accessible on the coprocessor. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> Data transfer is specified by the 
+				<samp class="codeph">in(p[10:100]</samp> clause. 
+			 </p>
+ 
+			 <p> 100 elements are transferred into the allocated memory in the range 
+				<samp class="codeph">p[10]</samp> through 
+				<samp class="codeph">p[109]</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<pre>int *p;
+//  1000 elements allocated. Data transferred into p[10:100]
+#pragma offload … in ( p[10:100] : alloc(p[5:1000]) )
+{ … }
+</pre> 
+		<p>
+		</p>
+<img src="GUID-06BF84E1-24B7-4D32-8CCD-5CD3FFF1F2AF-low.gif"> 
+		<p>
+		</p>
+ 
+		<pre>typedef int ARRAY[4][4];
+ARRAY *p;
+p = malloc(…);
+
+// On the coprocessor, 16 elements are allocated for an array of shape 5x4.
+// The first row is unallocated.
+// Data is transferred into row 2 only
+#pragma offload … in ( (*p)[2][:] :  alloc([1:4][:]) )
+{ … }
+</pre> 
+		<img src="GUID-0D458474-00C7-421E-9860-BBC33D193B0A-low.gif"> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">Offload Using a Pragma</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">offload 
+		  </a>  
+		  </div>
+<div><a href="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm">offload_attribute 
+		  </a>  
+		  </div>
+<div><a href="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A.htm">offload_transfer 
+		  </a>  
+		  </div>
+<div><a href="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E.htm">offload_wait 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

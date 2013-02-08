@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Tuning Performance">
+<meta name="DC.subject" content="run-time performance, improving">
+<meta name="keywords" content="run-time performance, improving">
+<meta name="DC.Relation" scheme="URI" content="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B7EF9B88-011D-4035-90BC-AEC3519C39C6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Tuning Performance</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_perf_prg"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B7EF9B88-011D-4035-90BC-AEC3519C39C6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Overview: Tuning Performance</h1>
+
+
+
+
+<div>
+
+<p>This section describes several programming guidelines that can help you improve the performance of floating-point applications:</p>
+
+
+<ul type="disc" id="GUID-D9E6EF30-238D-44F5-86F1-DD01454CB1F8">
+  
+  <li>Avoid exceeding representable ranges during computation; handling these cases can have a performance impact.</li>
+
+  <li>Use a single-precision type (for example, <span class="keyword">float</span>) unless the extra precision and/or range obtained through <span class="keyword">double</span> or <span class="keyword">long double</span> is required. Greater precision types increase memory size and bandwidth requirements. See <a href="GUID-A20222DD-712A-4025-A112-FE9B6E9D78AB.htm#GUID-A20222DD-712A-4025-A112-FE9B6E9D78AB">Using Efficient Data Types</a> section.</li>
+
+  <li><a href="GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F.htm#GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F">Reduce the impact of denormal exceptions for all supported architectures</a>.</li>
+
+  <li><a href="GUID-60102FB8-620D-4C27-8F8E-8EB5C928D34E.htm#GUID-60102FB8-620D-4C27-8F8E-8EB5C928D34E">Avoid mixed data type arithmetic expressions</a>.</li>
+
+</ul>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">Tuning Performance</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

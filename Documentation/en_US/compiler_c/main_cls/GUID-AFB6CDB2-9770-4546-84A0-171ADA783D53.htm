@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_stream_pd">
+<meta name="abstract" content="Moves packed double-precision floating-point values using non-temporal hint. The corresponding Intel&reg; AVX instruction is VMOVNTPD.">
+<meta name="description" content="Moves packed double-precision floating-point values using non-temporal hint. The corresponding Intel&reg; AVX instruction is VMOVNTPD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, load operations, _mm256_stream_pd (VMOVNTPD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, load operations, _mm256_stream_pd (VMOVNTPD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AFB6CDB2-9770-4546-84A0-171ADA783D53">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_stream_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_stream_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AFB6CDB2-9770-4546-84A0-171ADA783D53">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_stream_pd</span></h1>
+
+
+<!--Moves  packed double-precision floating-point values using non-temporal hint. The corresponding Intel&reg; AVX instruction is  VMOVNTPD .--><div><p>Moves  packed double-precision floating-point values using non-temporal hint. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMOVNTPD</span>.</p>
+
+
+<div class="section" id="GUID-6A43E3DC-7389-4282-AAD8-40C781062DA0"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void    _mm256_stream_pd(double *p, __m256d a);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-AD816462-1726-4FD0-B6CF-52C4B13BDACA"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>*p</var></p></td>
+
+      <td valign="top" class="noborder"><p>pointer to a memory location that can hold double-precision floating point (float64) values; the address must be 32-byte aligned</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-41CF489A-3C9E-4D19-A979-4A8C3BAD4046"><h2>Description</h2>
+<p>Performs a store operation by moving packed double-precision floating point values (float64 values) from a float64 vector, <var>a</var>, to a 256-bit aligned memory location, pointed to by <var>p</var>, using a non-temporal hint to prevent caching of the data during the write to memory.</p>
+
+
+</div>
+
+
+
+
+<div class="section" id="GUID-C44954C7-07AE-4830-BE11-9013046D1DC3"><h2>Returns</h2><p> Result of the streaming/store operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A40CBDD-58FD-4F36-9C6D-F3D2355B5E44.htm">Intrinsics for Load Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

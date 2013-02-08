@@ -1,0 +1,390 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using OpenMP*">
+<meta name="DC.subject" content="Using OpenMP*, -openmp option, /Qopenmp option, KMP_STACKSIZE environment variable, OpenMP directives, syntax">
+<meta name="keywords" content="Using OpenMP*, -openmp option, /Qopenmp option, KMP_STACKSIZE environment variable, OpenMP directives, syntax">
+<meta name="DC.Relation" scheme="URI" content="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8907A087-8DCE-48CD-B52F-383441E2EF54">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using OpenMP*</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_openmp_using"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_openmp_using"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8907A087-8DCE-48CD-B52F-383441E2EF54">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using OpenMP*</h1>
+ 
+   
+  <div> 
+	 <p>Using OpenMP* in your application requires several steps. To use OpenMP, you must do the following:
+	 </p>
+ 
+	 <ol id="GUID-0EC6F229-9774-41F8-B3AC-3D94F1AAB46C"> 
+		<li>
+		  <p>Add OpenMP directives to your application source code.
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p>Compile the application with 
+			 <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux* and Mac OS* X) or 
+			 <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows*) option.
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p>For applications with large local or temporary arrays, you may need to increase the stack space available at run-time. In addition, you may need to increase the stack allocated to individual threads by using the 
+			 <a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">KMP_STACKSIZE environment variable</a> 
+			 or by setting the corresponding 
+			 <a href="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740.htm#GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">library routines</a>.
+		  </p>
+
+		</li>
+ 
+	 </ol>
+ 
+	 <p>You can set other environment variables to control multi-threaded code execution.
+	 </p>
+ 
+	 <div class="section" id="GUID-83BCE124-A884-444B-B723-B72F430E7FE1"><h2 class="sectiontitle">Add OpenMP Support to the Application</h2> 
+		 
+		<p>Add the OpenMP API routine declarations to your application by adding a statement similar to the following in your code:
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6FD100B8-554C-4D15-9B1D-39D6B525F4AE" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left">
+				<tr>
+				  <th class="cellrowborder" align="left" valign="top" id="d463041e110">
+					 <p>Example
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody>
+				<tr>
+				  <td class="cellrowborder" valign="top" headers="d463041e110 "> 
+					 <pre>#include &lt;omp.h&gt;</pre> 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-2EC70A92-585D-484C-9625-C400A85E86D1"><h2 class="sectiontitle">OpenMP Directive Syntax</h2> 
+		 
+		<p>OpenMP directives use a specific format and syntax. 
+		  <a href="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740.htm#GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">Intel Extension Routines to OpenMP*</a> describes the OpenMP extensions to the specification that have been added to the Intel&reg; compiler.
+		</p>
+ 
+		<p>The following syntax illustrates using the directives in your source.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7BDCEBB1-AB89-4B45-9CB4-0EBE1744B6D5" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left">
+				<tr>
+				  <th class="cellrowborder" align="left" valign="top" id="d463041e156">
+					 <p>Example
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody>
+				<tr>
+				  <td class="cellrowborder" valign="top" headers="d463041e156 "> 
+					 <pre>&lt;prefix&gt; &lt;directive&gt; [&lt;clause&gt;, ...] &lt;newline&gt;</pre> 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+ 
+		<p>where:
+		</p>
+ 
+		<ul type="disc" id="GUID-46551B96-9513-49AD-B97D-B4EC5C943131"> 
+		  <li>
+			 <p>&lt;<var>prefix</var>&gt; - Required for all OpenMP directives. 
+				<span>The prefix must be 
+				  <samp class="codeph">#pragma omp</samp>.</span> 
+				</p>
+
+		  </li>
+ 
+		  <li>
+			 <p>&lt;<var>directive</var>&gt; - A valid OpenMP directive. Must immediately follow the prefix.
+			 </p>
+
+		  </li>
+ 
+		  <li>
+			 <p>[&lt;<var>clause</var>&gt;] - Optional. Clauses can be in any order and repeated as necessary, unless otherwise restricted.
+			 </p>
+
+		  </li>
+ 
+		  <li>
+			 <p>[&lt;<var>newline</var>&gt;] - A required component of directive syntax. It precedes the structured block which is enclosed by this directive.
+			 </p>
+
+		  </li>
+ 
+		</ul>
+ 
+		<p>The directives are interpreted as comments if you omit the 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux and Mac OS X) or 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows*) option.
+		</p>
+ 
+		<p>The following example demonstrates one way of using an OpenMP directive to parallelize a loop.
+		</p>
+
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1A8DB626-D587-4334-89FF-6852BC05E780" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left">
+				<tr>
+				  <th class="cellrowborder" align="left" valign="top" id="d463041e257">
+					 <p>Example
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody>
+				<tr>
+				  <td class="cellrowborder" valign="top" headers="d463041e257 "> 
+					 <pre>#include &lt;omp.h&gt;</pre> 
+					 <pre>void simple_omp(int *a){</pre> 
+					 <pre>  int i;</pre> 
+					 <pre>  #pragma omp parallel for</pre> 
+					 <pre>  for (i=0; i&lt;1024; i++)</pre> 
+					 <pre>    a[i] = i*2;</pre>
+					 <pre>}</pre> 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+ 
+		<p>See 
+		  <a href="GUID-FB38434E-65CF-4665-8725-486D6B0B2475.htm#GUID-FB38434E-65CF-4665-8725-486D6B0B2475">OpenMP* Examples</a> for more examples on using directives in specific circumstances.
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-EDDBF818-AF51-4FAB-8284-5FDE6288C265"><h2 class="sectiontitle">Compile the Application</h2> 
+		 
+		<p>The 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux* and Mac OS* X) or 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows*) option enables the parallelizer to generate multi-threaded code based on the OpenMP directives in the source. The code can be executed in parallel on single processor, multi-processor, or multi-core processor systems.
+		</p>
+
+		<p>The 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">openmp</span></a> option works with both 
+		  <a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O0</span></a> (Linux and Mac OS X) and 
+		  <a href="GUID-BD394DA2-18C4-45A8-A9BD-92204832058E.htm#GUID-BD394DA2-18C4-45A8-A9BD-92204832058E"><span class="option">/Od</span></a> (Windows) and with any optimization level of 
+		<span class="option">-O1</span>, 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O2</span></a> and 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O3</span></a> (Linux and Mac OS X) or 
+		<span class="option">/O1</span>, 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">/O2</span></a> and 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">/O3</span></a> (Windows).
+		</p>
+ 
+		<p>Specifying 
+		  <a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O0</span></a> (Linux and Mac OS X) or 
+		  <a href="GUID-BD394DA2-18C4-45A8-A9BD-92204832058E.htm#GUID-BD394DA2-18C4-45A8-A9BD-92204832058E"><span class="option">/Od</span></a> (Windows) with the OpenMP option helps to debug OpenMP applications.
+		</p>
+ 
+		<p>Compile your application using commands similar to those shown below:
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7954248F-D0AC-4463-A169-682DB86514EE" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" width="20%" id="d463041e429">
+					 <p>Operating System
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" width="80%" id="d463041e435">
+					 <p>Description
+					 </p>
+
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="20%" headers="d463041e429 ">
+					 <p>Linux and Mac OS X
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="80%" headers="d463041e435 ">
+					 <p><samp class="codeph">icc -openmp 
+						  <var>source_file</var></samp>
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="20%" headers="d463041e429 ">
+					 <p>Windows
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="80%" headers="d463041e435 ">
+					 <p><samp class="codeph">icl /Qopenmp 
+						  <var>source_file</var></samp>
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+
+		  </table>
+</div>
+ 
+		<p>Assume that you compile the sample above, using commands similar to the following, where 
+		  <a href="GUID-901DA056-846F-4778-B904-4533DE2B5067.htm#GUID-901DA056-846F-4778-B904-4533DE2B5067"><span class="option">-c</span></a> (Linux and Mac OS X) or 
+		  <a href="GUID-901DA056-846F-4778-B904-4533DE2B5067.htm#GUID-901DA056-846F-4778-B904-4533DE2B5067"><span class="option">/c</span></a> (Windows) instructs the compiler to compile the code without generating an executable:
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-07493748-8302-4FF0-B5FE-884834FB9DA2" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="20%" id="d463041e515">
+					 <p>Operating System
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="80%" id="d463041e521">
+					 <p>Example
+					 </p>
+
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="20%" headers="d463041e515 ">
+					 <p>Linux and Mac OS X
+					 </p>
+
+				  </td>
+ 
+				  <td class="ClassicCCommon" valign="top" width="80%" headers="d463041e521 ">
+					 <p><samp class="codeph">icc -openmp -c parallel.cpp</samp>
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="20%" headers="d463041e515 ">
+					 <p>Windows
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="80%" headers="d463041e521 ">
+					 <p><samp class="codeph">icl /Qopenmp /c parallel.cpp</samp>
+					 </p>
+
+				  </td>
+ 
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+ 
+		<p>The compiler might return a message similar to the following:
+		</p>
+ 
+		<p><samp class="codeph">parallel.cpp(20) : (col. 3) remark: OpenMP DEFINED LOOP WAS PARALLELIZED.</samp>
+		</p>
+ 
+		<p><strong>Configure the OpenMP Environment</strong>
+		</p>
+ 
+		<p>Before you run the multi-threaded code, you can set the number of desired threads using the OpenMP environment variable, 
+		  <span class="keyword">OMP_NUM_THREADS</span>. See the 
+		  <a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">OpenMP Environment Variables</a>.
+		</p>
+ 
+	 </div>
+ 
+  </div>
+
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">OpenMP* Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for GATHER Operations">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, GATHER operations, Advanced Vector Extensions 2, AVX2">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, GATHER operations, Advanced Vector Extensions 2, AVX2">
+<meta name="DC.Relation" scheme="URI" content="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5B552084-EE5C-4861-9527-4C9B9A57F421.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1458BC86-33D3-42F8-901E-643A06F36454.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C581A12E-58FB-461D-A9FF-9ABB20DF3F3D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EA8089B0-0137-4CDE-9C78-6FE8A45A7346.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-01963F91-B5F2-4143-B55F-F9521205C161.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F92472CC-40AA-467A-BCB1-F011FB821DA1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F1DE220A-AFBA-4D18-9C9D-EEA1BB386BAB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D52EB71-CADA-420A-B1B3-94BBE6F660F5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5C3CBF79-BAFF-451A-9585-2FF699EE651F.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1F275401-A760-49B1-944A-B02C075514D8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0C3C6A5-E2F8-4DDC-A5A8-56AD479FFED2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4ACD9B87-20C1-4442-B025-AE4D3FAD8439.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8DBA84C-7740-492A-B259-2F0717158BBC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8F3C131A-B85E-4FE8-B429-CE2D4D08DBB0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-45451DF8-0E40-4DD8-B235-1B4FBE24F859.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DB192BEA-1FB9-421A-ABB9-FA81417287B7.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for GATHER Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_bk_avx2_blend"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for GATHER Operations</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">Intrinsics for Intel&reg; Advanced Vector Extensions 2</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-5B552084-EE5C-4861-9527-4C9B9A57F421.htm">_mm_mask_i32gather_pd, _mm256_mask_i32gather_pd</a><br>
+Gathers 2/4 packed double-precision floating point values from memory  referenced by the given base address, dword indices and scale, and using the given double-precision FP mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERDPD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-1458BC86-33D3-42F8-901E-643A06F36454.htm">_mm_i32gather_pd, _mm256_i32gather_pd</a><br>
+Gathers 2/4 packed double-precision floating point values from memory  referenced by the given base address, dword indices and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERDPD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-C581A12E-58FB-461D-A9FF-9ABB20DF3F3D.htm">_mm_mask_i64gather_pd, _mm256_mask_i64gather_pd</a><br>
+Gathers 2/4 packed double-precision floating point values from memory  referenced by the given base address, qword indices and scale, and using the given double precision FP mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERQPD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-EA8089B0-0137-4CDE-9C78-6FE8A45A7346.htm">_mm_i64gather_pd, _mm256_i64gather_pd</a><br>
+Gathers 2/4 packed double-precision floating point values from memory  referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERQPD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-01963F91-B5F2-4143-B55F-F9521205C161.htm">_mm_mask_i32gather_ps, _mm256_mask_i32gather_ps</a><br>
+Gathers 2/4 packed single-precision floating point values from memory  referenced by the given base address, dword indices and scale, and using the given single-precision FP mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERDPS</samp>.</li>
+<li class="ulchildlink"><a href="GUID-F92472CC-40AA-467A-BCB1-F011FB821DA1.htm">_mm_i32gather_ps, _mm256_i32gather_ps</a><br>
+Gathers 2/4 packed single-precision floating point values from memory  referenced by the given base address, dword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERDPS</samp>.</li>
+<li class="ulchildlink"><a href="GUID-F1DE220A-AFBA-4D18-9C9D-EEA1BB386BAB.htm">_mm_mask_i64gather_ps, _mm256_mask_i64gather_ps</a><br>
+Gathers 2/4 packed single-precision floating point values from memory  referenced by the given base address, qword indices and scale, and using the given single-precision FP mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERQPS</samp>.</li>
+<li class="ulchildlink"><a href="GUID-2D52EB71-CADA-420A-B1B3-94BBE6F660F5.htm">_mm_i64gather_ps, _mm256_i64gather_ps</a><br>
+Gathers 2/4 packed single-precision floating point values from memory  referenced by the given base address, qword indices and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERQPS</samp>.</li>
+<li class="ulchildlink"><a href="GUID-5C3CBF79-BAFF-451A-9585-2FF699EE651F.htm">_mm_mask_i32gather_epi32, _mm256_mask_i32gather_epi32</a><br>
+Gathers  2/4 doubleword values from memory referenced by the given base address, dword indices, and scale, using the given dword mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERDD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-1F275401-A760-49B1-944A-B02C075514D8.htm">_mm_i32gather_epi32, _mm256_i32gather_epi32</a><br>
+Gathers 2/4 doubleword values from memory referenced by the given base address, dword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERDD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-A0C3C6A5-E2F8-4DDC-A5A8-56AD479FFED2.htm">_mm_mask_i32gather_epi64,_mm256_mask_i32gather_epi64</a><br>
+Gathers  2/4 quadword values from memory   referenced by the given base address, dword indices, and scale, and using the given qword mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERDQ</samp>.</li>
+<li class="ulchildlink"><a href="GUID-4ACD9B87-20C1-4442-B025-AE4D3FAD8439.htm">_mm_i32gather_epi64,_mm256_i32gather_epi64</a><br>
+Gathers 2/4 quadword values from memory referenced by the given base address, dword indices and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERDQ</samp>.</li>
+<li class="ulchildlink"><a href="GUID-B8DBA84C-7740-492A-B259-2F0717158BBC.htm">_mm_mask_i64gather_epi32,_mm256_mask_i64gather_epi32</a><br>
+Gathers  2/4 doubleword values from memory   referenced by the given base address, qword indices and scale, and using the given dword mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERQD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-8F3C131A-B85E-4FE8-B429-CE2D4D08DBB0.htm">_mm_i64gather_epi32,_mm256_i64gather_epi32</a><br>
+Gathers 2/4 doubleword values from memory referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERQD</samp>.</li>
+<li class="ulchildlink"><a href="GUID-45451DF8-0E40-4DD8-B235-1B4FBE24F859.htm">_mm_mask_i64gather_epi64,_mm256_mask_i64gather_epi64</a><br>
+Gathers  2/4 quadword values from memory  referenced by the given base address, qword indices and scale, and using the given qword mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERQQ</samp>.</li>
+<li class="ulchildlink"><a href="GUID-DB192BEA-1FB9-421A-ABB9-FA81417287B7.htm">_mm_i64gather_epi64,_mm256_i64gather_epi64</a><br>
+Gathers 2/4 quadword values from memory   referenced by the given base address, qword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERQQ</samp>.</li>
+</ul>
+</div>
+
+</body>
+</html>

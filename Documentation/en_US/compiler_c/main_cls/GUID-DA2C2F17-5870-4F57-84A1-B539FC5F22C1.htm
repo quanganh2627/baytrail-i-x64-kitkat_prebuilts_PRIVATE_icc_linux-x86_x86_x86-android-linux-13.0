@@ -1,0 +1,417 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Exponential Functions">
+<meta name="DC.subject" content="Math library, Exponential Functions, cbrt library function, exp library function, exp10 library function, exp2 library function, expm1 library function, frexp library function, hypot library function, ilogb library function, ldexp library function, log library function, log10 library function, log1p library function, log2 library function, logb library function, pow library function, scalb library function, scalbn library function, sqrt library function">
+<meta name="keywords" content="Math library, Exponential Functions, cbrt library function, exp library function, exp10 library function, exp2 library function, expm1 library function, frexp library function, hypot library function, ilogb library function, ldexp library function, log library function, log10 library function, log1p library function, log2 library function, logb library function, pow library function, scalb library function, scalbn library function, sqrt library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DA2C2F17-5870-4F57-84A1-B539FC5F22C1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Exponential Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_expo"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DA2C2F17-5870-4F57-84A1-B539FC5F22C1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Exponential Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+    </p>
+
+    <p>The Intel math library supports the following exponential functions:
+    </p>
+ 
+    <div class="section" id="CBRT"><a name="CBRT"><!-- --></a><h2 class="sectiontitle">cbrt</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cbrt</span> function returns the cube root of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double cbrt(double x);</samp><br> 
+        <samp class="codeph">long double cbrtl(long double x);</samp><br> 
+        <samp class="codeph">float cbrtf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="EXP"><a name="EXP"><!-- --></a><h2 class="sectiontitle">exp</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">exp</span> function returns 
+        <samp class="codeph">e</samp> raised to the 
+        <samp class="codeph">x</samp> power, 
+        <samp class="codeph">e</samp><sup>x</sup>. 
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double exp(double x);</samp><br> 
+        <samp class="codeph">long double expl(long double x);</samp><br> 
+        <samp class="codeph">float expf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="EXP10"><a name="EXP10"><!-- --></a><h2 class="sectiontitle">exp10</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">exp10</span> function returns 10 raised to the 
+        <samp class="codeph">x</samp> power, 10<sup>x</sup>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double exp10(double x);</samp><br> 
+        <samp class="codeph">long double exp10l(long double x);</samp><br> 
+        <samp class="codeph">float exp10f(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="EXP2"><a name="EXP2"><!-- --></a><h2 class="sectiontitle">exp2</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">exp2</span> function returns 2 raised to the 
+        <samp class="codeph">x</samp> power, 2<sup>x</sup>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double exp2(double x);</samp><br> 
+        <samp class="codeph">long double exp2l(long double x);</samp><br> 
+        <samp class="codeph">float exp2f(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="EXPM1"><a name="EXPM1"><!-- --></a><h2 class="sectiontitle">expm1</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">expm1</span> function returns 
+        <samp class="codeph">e</samp> raised to the 
+        <samp class="codeph">x</samp> power minus 1, 
+        <samp class="codeph">e<sup>x - 1</sup></samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double expm1(double x);</samp><br> 
+        <samp class="codeph">long double expm1l(long double x);</samp><br> 
+        <samp class="codeph">float expm1f(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FREXP"><a name="FREXP"><!-- --></a><h2 class="sectiontitle">frexp</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">frexp</span> function converts a floating-point number 
+        <samp class="codeph">x</samp> into signed normalized fraction in [1/2, 1) multiplied by an integral power of two. The signed normalized fraction is returned, and the integer exponent stored at location 
+        <samp class="codeph">exp</samp>.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double frexp(double x, int *exp);</samp><br> 
+        <samp class="codeph">long double frexpl(long double x, int *exp);</samp><br> 
+        <samp class="codeph">float frexpf(float x, int *exp);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="HYPOT"><a name="HYPOT"><!-- --></a><h2 class="sectiontitle">hypot</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">hypot</span> function returns the square root of 
+        <samp class="codeph">(x<sup>2</sup> + y<sup>2</sup>)</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double hypot(double x, double y);</samp><br> 
+        <samp class="codeph">long double hypotl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float hypotf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ILOGB"><a name="ILOGB"><!-- --></a><h2 class="sectiontitle">ilogb</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">ilogb</span> function returns the exponent of 
+        <samp class="codeph">x</samp> base two as a 
+        <samp class="codeph">signed int</samp> value.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for x = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int ilogb(double x);</samp><br> 
+        <samp class="codeph">int ilogbl(long double x);</samp><br> 
+        <samp class="codeph">int ilogbf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="INVSQRT"><a name="INVSQRT"><!-- --></a><h2 class="sectiontitle">invsqrt</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">invsqrt</span> function returns the inverse square root. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double invsqrt(double x);</samp><br> 
+        <samp class="codeph">long double invsqrtl(long double x);</samp><br> 
+        <samp class="codeph">float invsqrtf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LDEXP"><a name="LDEXP"><!-- --></a><h2 class="sectiontitle">ldexp</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">ldexp</span> function returns 
+        <samp class="codeph">x*2<sup>exp</sup></samp>, where 
+        <samp class="codeph">exp</samp> is an integer value.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double ldexp(double x, int exp);</samp><br> 
+        <samp class="codeph">long double ldexpl(long double x, int exp);</samp><br> 
+        <samp class="codeph">float ldexpf(float x, int exp);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LOG"><a name="LOG"><!-- --></a><h2 class="sectiontitle">log</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">log</span> function returns the natural log of x, ln(x). 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt; 0<br><strong>errno</strong>: ERANGE, for x = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double log(double x);</samp><br> 
+        <samp class="codeph">long double logl(long double x);</samp><br> 
+        <samp class="codeph">float logf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LOG10"><a name="LOG10"><!-- --></a><h2 class="sectiontitle">log10</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">log10</span> function returns the base-10 log of x, log<sub>10</sub>(x). 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt; 0<br><strong>errno</strong>: ERANGE, for x = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double log10(double x);</samp><br> 
+        <samp class="codeph">long double log10l(long double x);</samp><br> 
+        <samp class="codeph">float log10f(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LOG1P"><a name="LOG1P"><!-- --></a><h2 class="sectiontitle">log1p</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">log1p</span> function returns the natural log of 
+        <samp class="codeph">(x+1), ln(x + 1)</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt; -1<br><strong>errno</strong>: ERANGE, for x = -1
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double log1p(double x);</samp><br> 
+        <samp class="codeph">long double log1pl(long double x);</samp><br> 
+        <samp class="codeph">float log1pf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LOG2"><a name="LOG2"><!-- --></a><h2 class="sectiontitle">log2</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">log2</span> function returns the base-2 log of 
+        <samp class="codeph">x</samp>, log<sub>2</sub>(x).
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt; 0<br><strong>errno</strong>: ERANGE, for x = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double log2(double x);</samp><br> 
+        <samp class="codeph">long double log2l(long double x);</samp><br> 
+        <samp class="codeph">float log2f(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LOGB"><a name="LOGB"><!-- --></a><h2 class="sectiontitle">logb</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">logb</span> function returns the signed exponent of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double logb(double x);</samp><br> 
+        <samp class="codeph">long double logbl(long double x);</samp><br> 
+        <samp class="codeph">float logbf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="POW"><a name="POW"><!-- --></a><h2 class="sectiontitle">pow</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">pow</span> function returns 
+        <samp class="codeph">x</samp> raised to the power of 
+        <samp class="codeph">y</samp>, 
+        <samp class="codeph">x<sup>y</sup></samp>. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong>
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x = 0 and y &lt; 0<br><strong>errno</strong>: EDOM, for x &lt; 0 and y is a non-integer<br><strong>errno</strong>: ERANGE, for overflow and underflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double pow(double x, double y);</samp><br> 
+        <samp class="codeph">long double powl(double x, double y);</samp><br> 
+        <samp class="codeph">float powf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SCALB"><a name="SCALB"><!-- --></a><h2 class="sectiontitle">scalb</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">scalb</span> function returns 
+        <samp class="codeph">x*2<sup>y</sup></samp>, where 
+        <samp class="codeph">y</samp> is a floating-point value.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double scalb(double x, double y);</samp><br> 
+        <samp class="codeph">long double scalbl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float scalbf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SCALBN"><a name="SCALBN"><!-- --></a><h2 class="sectiontitle">scalbn</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">scalbn</span> function returns 
+        <samp class="codeph">x*2<sup>n</sup></samp>, where 
+        <samp class="codeph">n</samp> is an integer value.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double scalbn(double x, int n);</samp><br> 
+        <samp class="codeph">long double scalbnl (long double x, int n);</samp><br> 
+        <samp class="codeph">float scalbnf(float x, int n);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SCALBLN"><a name="SCALBLN"><!-- --></a><h2 class="sectiontitle">scalbln</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">scalbln</span> function returns 
+        <samp class="codeph">x*2<sup>n</sup></samp>, where 
+        <samp class="codeph">n</samp> is a long integer value.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double scalbln(double x, long int n);</samp><br> 
+        <samp class="codeph">long double scalblnl (long double x, long int n);</samp><br> 
+        <samp class="codeph">float scalblnf(float x, long int n);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SQRT"><a name="SQRT"><!-- --></a><h2 class="sectiontitle">sqrt</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sqrt</span> function returns the correctly rounded square root.
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt; 0 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double sqrt(double x);</samp><br> 
+        <samp class="codeph">long double sqrtl(long double x);</samp><br> 
+        <samp class="codeph">float sqrtf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

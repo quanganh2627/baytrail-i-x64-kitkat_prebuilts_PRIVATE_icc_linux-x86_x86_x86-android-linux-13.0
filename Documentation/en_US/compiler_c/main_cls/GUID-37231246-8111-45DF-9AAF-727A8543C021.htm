@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Overview: Using Shared Virtual Memory">
+<meta name="DC.subject" content="shared memory, about using">
+<meta name="keywords" content="shared memory, about using">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-37231246-8111-45DF-9AAF-727A8543C021">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Using Shared Virtual Memory</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_ovrvw_usage__shared"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-37231246-8111-45DF-9AAF-727A8543C021">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Using Shared Virtual Memory</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>This programming model is suitable when the data exchanged between the CPU and the coprocessor is more complex than scalars, arrays, and structs that can be copied from one variable to another using a simple 
+		<samp class="codeph">memcpy</samp>. The data to be exchanged between the CPU and the coprocessor can be arbitrarily complex. It can use pointers, and any composition of structs and pointers. 
+	 </p>
+ 
+	 <p> Data exchanged in this model is unrestricted in data structural complexity. However, at the point of offload, the data must already be in the shared memory region, either as a result of its being declared 
+		<span class="keyword">_Cilk_shared</span>, or because it was allocated using 
+		<span class="keyword">_Offload_shared_malloc()</span> or 
+		<span class="keyword">_Offload_shared_aligned_malloc()</span>. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3.htm">_Cilk_shared 
+		  </a>  
+		  </div>
+<div><a href="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505.htm">_Cilk_offload 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

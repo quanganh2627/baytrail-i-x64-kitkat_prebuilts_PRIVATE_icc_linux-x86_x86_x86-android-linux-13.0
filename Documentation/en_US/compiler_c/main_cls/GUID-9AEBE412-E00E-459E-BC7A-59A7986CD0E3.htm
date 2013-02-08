@@ -1,0 +1,185 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Addition Intrinsics">
+<meta name="DC.subject" content="intrinsics, SSSE3, addition operations, _mm_hadd_epi16, _mm_hadd_epi32, _mm_hadds_epi16, _mm_hadd_pi16, _mm_hadd_pi32, _mm_hadds_pi16, Supplemental Streaming SIMD Extensions 3, addition intrinsics">
+<meta name="keywords" content="intrinsics, SSSE3, addition operations, _mm_hadd_epi16, _mm_hadd_epi32, _mm_hadds_epi16, _mm_hadd_pi16, _mm_hadd_pi32, _mm_hadds_pi16, Supplemental Streaming SIMD Extensions 3, addition intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9AEBE412-E00E-459E-BC7A-59A7986CD0E3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Addition Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_tni_add"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9AEBE412-E00E-459E-BC7A-59A7986CD0E3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Addition Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-F2AE20A7-06A1-45B3-A6F6-5A2E46A1E768"> 
+      <p>These Supplemental Streaming SIMD Extensions 3 (SSSE3) intrinsics are used for horizontal addition. The prototypes for these intrinsics are in 
+        <span class="filepath">tmmintrin.h</span>. You can also use the 
+        <span class="filepath">ia32intrin.h</span> header file for these intrinsics. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8630E7A8-8C41-40B3-A44F-F8A0BBC654F0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_hadd_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Adds horizontally packed signed words.
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-781CDA9D-26AF-4531-B08B-2AE135B80CAE"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = a[2*i] + a[2i+1];
+r[i+4] = b[2*i] + b[2*i+1];
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D6254996-5D7C-43FA-B5DB-B506AFA9D757"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_hadd_epi32 (__m128i a, __m128i b);</span></p></div> 
+      <p>Adds horizontally packed signed doublewords. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DBC76FD6-FCF8-4895-824E-7A8D09895BB2"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 32-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = a[2*i] + a[2i+1];
+r[i+2] = b[2*i] + b[2*i+1];
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-96796A0F-67EE-45D5-B1EA-9E8A4F184C0B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_hadds_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Adds horizontally packed signed words with signed saturation. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BC4EB606-1169-4773-A5A6-BCD8BB28B016"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = signed_saturate_to_word(a[2*i] + a[2i+1]);
+r[i+4] = signed_saturate_to_word(b[2*i] + b[2*i+1]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9E108573-D0B0-4DB1-84FF-7CE325C57D65"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_hadd_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Adds horizontally packed signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-90E08BFC-8F20-4CAC-9F48-615097754A23"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = a[2*i] + a[2i+1];
+r[i+2] = b[2*i] + b[2*i+1];
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CCA07642-7D60-4972-B1AB-96BDEE98BE60"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_hadd_pi32 (__m64 a, __m64 b);</span></p></div> 
+      <p>Adds horizontally packed signed doublewords. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-004BCAFF-DBFF-455A-A119-70A9FCDA29C3"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 32-bit signed integers: 
+      </p>
+ 
+      <pre>r[0] = a[1] + a[0];
+r[1] = b[1] + b[0];</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AEE2E69E-4BCA-4B24-833D-ACA02DA610F7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_hadds_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Adds horizontally packed signed words with signed saturation. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2605A27A-6AB8-4427-8039-66B767BC9CC7"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = signed_saturate_to_word(a[2*i] + a[2i+1]);
+r[i+2] = signed_saturate_to_word(b[2*i] + b[2*i+1]);
+}</pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">Intrinsics for Intel&reg; Supplemental Streaming SIMD Extensions 3 (SSSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compiler Diagnostic Options">
+<meta name="DC.Relation" scheme="URI" content="GUID-C049864C-4C7A-4124-8BD3-045B7D82F2FA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A4F0353B-69DD-4541-AB28-C72D548A12D4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-82B74BDE-4211-423B-8ECA-47CAFACFB8E1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1469E8CC-AC5B-4CBB-AA15-98E8ED7B424C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-891680A4-8EE8-4C8A-B97F-90859D193B02.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EDB3AC79-BA44-4161-9798-75C6DD212431.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2131922A-2FCB-4442-B8E2-82D0128726F4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5F5AC7E2-6356-4C0D-A1E4-75A570CEA77A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4642611D-145C-489A-A9A8-21293BB17507.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-79E461EF-631C-4AC4-AEDE-2CB5880F1933.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D79DEF99-A1CD-46FA-A5C6-C6566C23B3D4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-946C04D0-2FCD-4CCE-AC07-EF6CDF651476.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-76E2B73F-CE29-49E3-B8C7-1958B8930D2A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B5730911-CE7B-4E0F-9169-AD12909641B8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7E35C054-A0B1-46B8-B23B-DE7EA4B1EAB8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-96AA0A3E-D495-44DB-BA7E-69130B0E8E2B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AAAF0C79-5CBC-4AD9-ACE5-4DE5D42FBFDC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-13E6AB62-4C86-4E80-926A-79BFE1077F22.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-28DC47A3-6CC5-46EC-B4B3-42B862649B3D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-74EC3438-47F4-4F47-8B82-85BC2B019163.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B866F8B-CBEC-4691-B763-419D025D4E7D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A42C0E7B-103A-4045-84E1-E7BEAB765612.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-05E1F226-8025-42C4-86E5-0C68DFEEDE60.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1B3DD4E8-36A7-46DD-B8BF-2A232177C235.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-14554577-B58B-40EC-9B7C-14A520091DED.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-87F9EE96-094E-480D-8FF4-FCE3CE33DF60.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FB4CF2DA-7FC4-4E34-A75D-64222C7964EE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5197A8DF-179F-4FD4-B8FD-FA9DEF0CC6E5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B87C0D5A-2843-41AA-A0E4-AC30215F14C4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3C8256E6-4296-45BF-802B-7B19D86D0DE8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BDC66133-9F78-45D8-88DE-5DC6ECEF7998.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5B84384D-2662-4D6D-B4E9-1CB16E964F88.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A6AD3CC6-1B36-41A5-B0DB-391C92B1BB08.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2CD886CB-C642-497A-8509-DD1666EAE2D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-071BDEE7-7ED6-4D97-9E03-C83C349419E6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EFFE7509-31B9-4A31-BF72-36F631A4AEAE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E37F3CC0-1FB5-4CA8-B089-FB248C41657D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A27D79C9-D4D9-497C-B0C3-1E0373548E7C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A5239879-8291-4837-BBE2-0C2A827090CC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4737AD0F-EDDA-4506-84D5-C5B7C34B3B17.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1D752DBB-E8E5-4F9A-BC53-959EB943A26C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EE7417B9-C01E-4F3B-94D8-3CAA43F1FE2E.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-24936A71-1B52-4480-B2EE-A6E21A14FF12.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F5430C0C-3100-4A65-BF7D-BB72498F091E.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-26B5FB92-4F53-43C3-8B74-4ADE2BED2FF9.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AB6C9F57-1851-4905-8860-7BACFD84CBFA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DD48404E-372F-44CE-BEB9-775D64F91209.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-22FD192C-4C9D-4C16-B3DE-C3629D2EE483.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-71B3FADF-7E62-4168-8710-C75182AF7282.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0670A3AA-5497-4D68-BEF8-0E4B5B5B17E3.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1B71803D-224B-4143-BD2B-4D06A3321FD8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-88CC13E5-F067-443E-8176-43DE4DF9C15D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E81C5AEA-291E-4A14-9F4F-AEFCDE983052.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-26A5EC5A-95DE-4384-B24B-03E7BD691D37.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-20ECC383-87E2-4BA5-8ECA-BE4596A814DA.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compiler Diagnostic Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Compiler Diagnostic Options</h1>
+
+
+<div></div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C049864C-4C7A-4124-8BD3-045B7D82F2FA.htm">Compiler Option Categories and Descriptions</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm">diag, Qdiag</a><br>
+Controls the display of diagnostic information.</li>
+<li class="ulchildlink"><a href="GUID-69DD75F6-29A4-441E-95D6-B1A2C91C87D8.htm">diag-dump, Qdiag-dump</a><br>
+Tells the compiler to print all enabled diagnostic messages and stop compilation.</li>
+<li class="ulchildlink"><a href="GUID-A4F0353B-69DD-4541-AB28-C72D548A12D4.htm">diag-enable sc, Qdiag-enable:sc</a><br>
+Enables static analysis diagnostics. You can determine which diagnostics to emit based on severity or you can specify an analysis mode for diagnostic messages. </li>
+<li class="ulchildlink"><a href="GUID-82B74BDE-4211-423B-8ECA-47CAFACFB8E1.htm">diag-enable sc-enums, Qdiag-enable:sc-enums</a><br>
+Tells static analysis to treat enumeration variables as known values equal to any one of the associated enumeration literals.</li>
+<li class="ulchildlink"><a href="GUID-1469E8CC-AC5B-4CBB-AA15-98E8ED7B424C.htm">diag-enable sc-include, Qdiag-enable:sc-include</a><br>
+ Tells a source code analyzer to process include files and source files when issuing diagnostic messages.</li>
+<li class="ulchildlink"><a href="GUID-891680A4-8EE8-4C8A-B97F-90859D193B02.htm">diag-enable sc-single-file, Qdiag-enable:sc-single-file</a><br>
+ Tells static analysis to process each file individually.</li>
+<li class="ulchildlink"><a href="GUID-EDB3AC79-BA44-4161-9798-75C6DD212431.htm">diag-error-limit, Qdiag-error-limit</a><br>
+Specifies the maximum number of errors allowed before compilation stops.</li>
+<li class="ulchildlink"><a href="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD.htm">diag-file, Qdiag-file</a><br>
+Causes the results of diagnostic analysis to be output to a file.</li>
+<li class="ulchildlink"><a href="GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59.htm">diag-file-append, Qdiag-file-append</a><br>
+Causes the results of diagnostic analysis to be appended to a file.</li>
+<li class="ulchildlink"><a href="GUID-2131922A-2FCB-4442-B8E2-82D0128726F4.htm">diag-id-numbers, Qdiag-id-numbers</a><br>
+Determines whether the compiler displays diagnostic messages by using their ID number values.</li>
+<li class="ulchildlink"><a href="GUID-5F5AC7E2-6356-4C0D-A1E4-75A570CEA77A.htm">diag-once, Qdiag-once</a><br>
+Tells the compiler to issue one or more diagnostic messages only once.</li>
+<li class="ulchildlink"><a href="GUID-4642611D-145C-489A-A9A8-21293BB17507.htm">diag-sc-dir, Qdiag-sc-dir</a><br>
+ Specifies a directory for static analysis results.</li>
+<li class="ulchildlink"><a href="GUID-79E461EF-631C-4AC4-AEDE-2CB5880F1933.htm">fnon-call-exceptions</a><br>
+Allows trapping instructions to throw C++ exceptions.</li>
+<li class="ulchildlink"><a href="GUID-D79DEF99-A1CD-46FA-A5C6-C6566C23B3D4.htm">traceback</a><br>
+Tells the compiler to generate extra information in the object file to provide source file traceback information when a severe error occurs at run time.</li>
+<li class="ulchildlink"><a href="GUID-946C04D0-2FCD-4CCE-AC07-EF6CDF651476.htm">w</a><br>
+Disables all warning messages.</li>
+<li class="ulchildlink"><a href="GUID-76E2B73F-CE29-49E3-B8C7-1958B8930D2A.htm">w, W</a><br>
+Specifies the level of diagnostic messages to be generated by the compiler.</li>
+<li class="ulchildlink"><a href="GUID-B5730911-CE7B-4E0F-9169-AD12909641B8.htm">Wabi</a><br>
+Determines whether a warning is issued if generated code is not C++ ABI compliant.</li>
+<li class="ulchildlink"><a href="GUID-7E35C054-A0B1-46B8-B23B-DE7EA4B1EAB8.htm">Wall</a><br>
+Enables warning and error diagnostics.</li>
+<li class="ulchildlink"><a href="GUID-96AA0A3E-D495-44DB-BA7E-69130B0E8E2B.htm">Wbrief</a><br>
+Tells the compiler to display a shorter form of diagnostic output. </li>
+<li class="ulchildlink"><a href="GUID-AAAF0C79-5CBC-4AD9-ACE5-4DE5D42FBFDC.htm">Wcheck</a><br>
+Tells the compiler to perform compile-time code checking for certain code. </li>
+<li class="ulchildlink"><a href="GUID-13E6AB62-4C86-4E80-926A-79BFE1077F22.htm">Wcomment</a><br>
+Determines whether a warning is issued when /* appears in the middle of a /* */ comment.</li>
+<li class="ulchildlink"><a href="GUID-28DC47A3-6CC5-46EC-B4B3-42B862649B3D.htm">Wcontext-limit, Qcontext-limit</a><br>
+Set the maximum number of template instantiation contexts shown in diagnostic.</li>
+<li class="ulchildlink"><a href="GUID-74EC3438-47F4-4F47-8B82-85BC2B019163.htm">wd, Qwd</a><br>
+Disables a soft diagnostic. This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-7B866F8B-CBEC-4691-B763-419D025D4E7D.htm">Wdeprecated</a><br>
+Determines whether warnings are issued for deprecated features.</li>
+<li class="ulchildlink"><a href="GUID-A42C0E7B-103A-4045-84E1-E7BEAB765612.htm">we, Qwe</a><br>
+Changes a soft diagnostic to an error. This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-05E1F226-8025-42C4-86E5-0C68DFEEDE60.htm">Weffc++, Qeffc++</a><br>
+Enables warnings based on certain C++ programming guidelines.</li>
+<li class="ulchildlink"><a href="GUID-1B3DD4E8-36A7-46DD-B8BF-2A232177C235.htm">Werror, WX</a><br>
+Changes all warnings to errors.</li>
+<li class="ulchildlink"><a href="GUID-14554577-B58B-40EC-9B7C-14A520091DED.htm">Werror-all</a><br>
+Causes all warnings and currently-enabled remarks to be reported as errors.</li>
+<li class="ulchildlink"><a href="GUID-87F9EE96-094E-480D-8FF4-FCE3CE33DF60.htm">Wextra-tokens</a><br>
+Determines whether warnings are issued about extra tokens at the end of preprocessor directives. </li>
+<li class="ulchildlink"><a href="GUID-FB4CF2DA-7FC4-4E34-A75D-64222C7964EE.htm">Wformat</a><br>
+Determines whether argument checking is enabled for calls to printf, scanf, and so forth.</li>
+<li class="ulchildlink"><a href="GUID-5197A8DF-179F-4FD4-B8FD-FA9DEF0CC6E5.htm">Wformat-security</a><br>
+Determines whether the compiler issues a warning when the use of format functions may cause security problems. </li>
+<li class="ulchildlink"><a href="GUID-B87C0D5A-2843-41AA-A0E4-AC30215F14C4.htm">Winline</a><br>
+Enables diagnostics about what is inlined and what is not inlined.</li>
+<li class="ulchildlink"><a href="GUID-3C8256E6-4296-45BF-802B-7B19D86D0DE8.htm">WL</a><br>
+Tells the compiler to display a shorter form of diagnostic output. </li>
+<li class="ulchildlink"><a href="GUID-BDC66133-9F78-45D8-88DE-5DC6ECEF7998.htm">Wmain</a><br>
+Determines whether a warning is issued if the return type of main is not expected.</li>
+<li class="ulchildlink"><a href="GUID-5B84384D-2662-4D6D-B4E9-1CB16E964F88.htm">Wmissing-declarations</a><br>
+Determines whether warnings are issued for global functions and variables without prior declaration.</li>
+<li class="ulchildlink"><a href="GUID-A6AD3CC6-1B36-41A5-B0DB-391C92B1BB08.htm">Wmissing-prototypes</a><br>
+Determines whether warnings are issued for missing prototypes.</li>
+<li class="ulchildlink"><a href="GUID-2CD886CB-C642-497A-8509-DD1666EAE2D2.htm">wn, Qwn</a><br>
+Controls the number of errors displayed before compilation stops. This is a deprecated option. </li>
+<li class="ulchildlink"><a href="GUID-071BDEE7-7ED6-4D97-9E03-C83C349419E6.htm">Wnon-virtual-dtor</a><br>
+Tells the compiler to issue a warning when a class appears to be polymorphic, yet it declares a non-virtual one. </li>
+<li class="ulchildlink"><a href="GUID-EFFE7509-31B9-4A31-BF72-36F631A4AEAE.htm">wo, Qwo</a><br>
+Tells the compiler to issue one or more diagnostic messages only once. This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-E37F3CC0-1FB5-4CA8-B089-FB248C41657D.htm">Wp64</a><br>
+Tells the compiler to display diagnostics for 64-bit porting. </li>
+<li class="ulchildlink"><a href="GUID-A27D79C9-D4D9-497C-B0C3-1E0373548E7C.htm">Wpointer-arith</a><br>
+Determines whether warnings are issued for questionable pointer arithmetic.</li>
+<li class="ulchildlink"><a href="GUID-A5239879-8291-4837-BBE2-0C2A827090CC.htm">Wport</a><br>
+Tells the compiler to issue portability diagnostics.</li>
+<li class="ulchildlink"><a href="GUID-4737AD0F-EDDA-4506-84D5-C5B7C34B3B17.htm">Wpragma-once</a><br>
+Determines whether a warning is issued about the use of #pragma once. </li>
+<li class="ulchildlink"><a href="GUID-1D752DBB-E8E5-4F9A-BC53-959EB943A26C.htm">wr, Qwr</a><br>
+Changes a soft diagnostic to an remark.  This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-EE7417B9-C01E-4F3B-94D8-3CAA43F1FE2E.htm">Wremarks</a><br>
+ Tells the compiler to display remarks and comments.</li>
+<li class="ulchildlink"><a href="GUID-24936A71-1B52-4480-B2EE-A6E21A14FF12.htm">Wreorder</a><br>
+Tells the compiler to issue a warning when the order of member initializers does not match the order in which they must be executed. </li>
+<li class="ulchildlink"><a href="GUID-F5430C0C-3100-4A65-BF7D-BB72498F091E.htm">Wreturn-type</a><br>
+Determines whether warnings are issued when a function uses the default int return type or when a return statement is used in a void function.</li>
+<li class="ulchildlink"><a href="GUID-26B5FB92-4F53-43C3-8B74-4ADE2BED2FF9.htm">Wshadow</a><br>
+Determines whether a warning is issued when a variable declaration hides a previous declaration.</li>
+<li class="ulchildlink"><a href="GUID-AB6C9F57-1851-4905-8860-7BACFD84CBFA.htm">Wsign-compare</a><br>
+ Determines whether warnings are issued when a comparison between signed and unsigned values could produce an incorrect result when the signed value is converted to unsigned.</li>
+<li class="ulchildlink"><a href="GUID-DD48404E-372F-44CE-BEB9-775D64F91209.htm">Wstrict-aliasing</a><br>
+Determines whether warnings are issued for code that might violate the optimizer's strict aliasing rules.</li>
+<li class="ulchildlink"><a href="GUID-22FD192C-4C9D-4C16-B3DE-C3629D2EE483.htm">Wstrict-prototypes</a><br>
+Determines whether warnings are issued for functions declared or defined without specified argument types.</li>
+<li class="ulchildlink"><a href="GUID-71B3FADF-7E62-4168-8710-C75182AF7282.htm">Wtrigraphs</a><br>
+Determines whether warnings are issued if any trigraphs are encountered that might change the meaning of the program.</li>
+<li class="ulchildlink"><a href="GUID-0670A3AA-5497-4D68-BEF8-0E4B5B5B17E3.htm">Wuninitialized</a><br>
+Determines whether a warning is issued if a variable is used before being initialized.</li>
+<li class="ulchildlink"><a href="GUID-1B71803D-224B-4143-BD2B-4D06A3321FD8.htm">Wunknown-pragmas</a><br>
+Determines whether a warning is issued if an unknown #pragma directive is used.</li>
+<li class="ulchildlink"><a href="GUID-88CC13E5-F067-443E-8176-43DE4DF9C15D.htm">Wunused-function</a><br>
+Determines whether a warning is issued if a declared function is not used.</li>
+<li class="ulchildlink"><a href="GUID-E81C5AEA-291E-4A14-9F4F-AEFCDE983052.htm">Wunused-variable</a><br>
+Determines whether a warning is issued if a local or non-constant static variable is unused after being declared.</li>
+<li class="ulchildlink"><a href="GUID-26A5EC5A-95DE-4384-B24B-03E7BD691D37.htm">ww, Qww</a><br>
+Changes a soft diagnostic to an warning.  This is a deprecated option.</li>
+<li class="ulchildlink"><a href="GUID-20ECC383-87E2-4BA5-8ECA-BE4596A814DA.htm">Wwrite-strings</a><br>
+Issues a diagnostic message if const char * is converted to (non-const) char *.</li>
+</ul>
+</div>
+
+</body>
+</html>

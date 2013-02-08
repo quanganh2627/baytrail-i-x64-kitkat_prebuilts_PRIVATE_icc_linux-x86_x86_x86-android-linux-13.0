@@ -1,0 +1,248 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Resolving Data Races">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, data races">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, data races">
+<meta name="DC.Relation" scheme="URI" content="GUID-778EAE45-702F-49E7-9225-A7B817F8AC56.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A1C12E25-DE26-4655-B551-17B12F214B09">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Resolving Data Races</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_resolve_data_races"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A1C12E25-DE26-4655-B551-17B12F214B09">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Resolving Data Races</h1>
+ 
+  
+  <div> 
+	 <p>There are a number of ways to resolve a race condition:
+	 </p>
+ 
+	 <ul type="disc" id="GUID-F2E3485A-6F7D-4B38-B91D-C7086F301AE6">
+		<li>
+		  <p>Fix a bug in your program
+		  </p>
+
+		</li>
+
+		<li>
+		  <p>Use local variables instead of global variables
+		  </p>
+
+		</li>
+
+		<li>
+		  <p>Restructure your code
+		  </p>
+
+		</li>
+
+		<li>
+		  <p>Change your algorithm
+		  </p>
+
+		</li>
+
+		<li>
+		  <p>Use reducers
+		  </p>
+
+		</li>
+
+		<li>
+		  <p>Use a lock
+		  </p>
+
+		</li>
+
+	 </ul>
+ 
+	 <p><strong>Fix a bug in your program</strong> 
+	 </p>
+ 
+	 <p>A race condition can be caused by a bug in the program logic. For instance, a race can occur if a recursive sort calls use an overlapping region, and, therefore, references the same memory location in parallel. The solution is to fix the application.
+	 </p>
+ 
+	 <p> 
+		<strong>Use local variables instead of global variables 
+		</strong>
+	 </p>
+ 
+	 <p>Consider the following program:
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;iostream&gt;
+const int IMAX=5;
+const int JMAX=5;
+int a[IMAX * JMAX];
+
+int main()
+{
+   int idx;
+
+   cilk_for (int i=0; i&lt;IMAX; ++i)
+   {
+     for (int j=0; j&lt;JMAX; ++j)
+     {
+        idx = i*JMAX + j; // This is a race.
+        a[idx] = i+j;
+      }
+   }
+   for (int i=0; i&lt;IMAX*JMAX; ++i)
+     std::cout &lt;&lt; i &lt;&lt; " " &lt;&lt; a[i] &lt;&lt;std::endl;
+   return 0;
+}
+</pre>
+	 <p>This program has a race on the 
+		<samp class="codeph">idx</samp> variable, because it is accessed in parallel in the 
+		<samp class="codeph">cilk_for</samp> loop. Because 
+		<samp class="codeph">idx</samp> is only used inside the loop, it is easy to resolve the race by making 
+		<samp class="codeph">idx</samp> local within the loop:
+	 </p>
+ 
+	 <pre>int main()
+{
+// int idx;                  // Remove global
+   cilk_for (int i=0; i&lt;IMAX; ++i)
+   {
+     for (int j=0; j&lt;JMAX; ++j)
+     {
+       int idx = i*JMAX + j; // Declare idx locally
+       a[idx] = i+j;
+     }
+    }
+...
+}
+</pre>
+	 <p> 
+		<strong>Restructure your code</strong>
+	 </p>
+ 
+	 <p>In some cases, you can eliminate the race by a simple rewrite. Here is another way to resolve the race in the previous program:
+	 </p>
+ 
+	 <pre>int main()
+{
+// int idx;                // Remove global
+   cilk_for (int i=0; i&lt;IMAX; ++i)
+   {
+     for (int j=0; j&lt;JMAX; ++j)
+     {
+//     idx = i*JMAX + j;    // Don't use idx
+       a[i*JMAX + j] = i+j; // Instead,
+                           // calculate as needed
+      }
+    }
+...
+}
+</pre>
+	 <p> 
+		<strong>Change your algorithm</strong>
+	 </p>
+ 
+	 <p>One of the best solutions, although not always easy or even possible, is to find an algorithm that partitions your problem such that the parallelism is restricted to calculations that cannot race.
+	 </p>
+ 
+	 <p> 
+		<strong>Use reducers</strong>
+	 </p>
+ 
+	 <p>Reducers are designed to be race-free objects that can be safely used in parallel. See 
+		<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm#GUID-0F63EF23-250C-4093-AB10-822DD1423405">Reducers</a> for more information.
+	 </p>
+ 
+	 <p> 
+		<strong>Use locks</strong>
+	 </p>
+ 
+	 <p>Locks can be used to resolve data race conditions. The drawbacks to this approach are described in 
+		<a href="GUID-F8D0848E-041E-4B24-AA7C-8FE6E04831A9.htm#GUID-F8D0848E-041E-4B24-AA7C-8FE6E04831A9">Considerations for Using Locks</a>. There are several kinds of locks, including:
+	 </p>
+ 
+	 <ul type="disc" id="GUID-700CD70E-9687-4C10-9A27-4ACED1C0AB8E">
+		<li><span class="keyword">tbb::mutex</span> objects from the Intel&reg; Threading Building Blocks library
+		</li>
+
+		<li>system locks on Windows*, Linux*, and OS X* operating systems
+		</li>
+
+		<li>atomic instructions that are effectively short-lived locks that protect a read-modify-write sequence of instructions
+		</li>
+
+	 </ul>
+
+	 <p>The following program contains a race on 
+		<samp class="codeph">sum</samp>, because the statement 
+		<samp class="codeph">sum=sum+i 
+		</samp>both reads and writes 
+		<samp class="codeph">sum</samp>:
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+
+int main()
+{
+   int sum = 0;
+   cilk_for (int i=0; i&lt;10; ++i)
+   {
+      sum = sum + i;  // THERE IS A RACE ON SUM
+    }
+}
+</pre> 
+	 <p> Using a lock to resolve the race:
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;tbb/mutex.h&gt;
+#include &lt;iostream&gt;
+
+int main()
+{
+   tbb::mutex mut;
+   int sum = 0;
+   cilk_for (int i=0; i&lt;10; ++i)
+   {
+     mut.lock();
+     sum = sum + i; // PROTECTED WITH LOCK
+     mut.unlock();
+   }
+   std::cout &lt;&lt; "Sum is " &lt;&lt; sum &lt;&lt; std::endl;
+
+return 0;
+}</pre> 
+	 <p>This example is for illustration only. A reducer is typically a better way to solve this kind of race.
+	 </p>
+ 
+  </div>
+
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-778EAE45-702F-49E7-9225-A7B817F8AC56.htm">Understanding Race Conditions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

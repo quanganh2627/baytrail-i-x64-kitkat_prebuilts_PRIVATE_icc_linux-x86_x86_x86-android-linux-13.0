@@ -1,0 +1,129 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Pause Intrinsic">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, pause intrinsic, Intel&reg; Streaming SIMD Extensions 2">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, pause intrinsic, Intel&reg; Streaming SIMD Extensions 2">
+<meta name="DC.Relation" scheme="URI" content="GUID-7CD76E4D-5690-4CBE-A0FB-C9719E2490FC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3488E3C1-33C3-4444-9D72-CB428DCA3658">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Pause Intrinsic</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_pause"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3488E3C1-33C3-4444-9D72-CB428DCA3658">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Pause Intrinsic</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-F07403F0-1D33-4837-BF48-51F31154D9DE"> 
+      <p>The prototype for this Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsic is in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-90D5E697-DB91-46AA-93E0-03119ED2920F"><h2 class="sectiontitle"><span class="keyword">PAUSE</span> Intrinsic </h2> 
+       
+    </div>
+ 
+    <div class="section" id="GUID-945BD83D-4498-4E2C-9E0F-6FA163272404"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_pause(void) 
+          </span></p></div> 
+    </div>
+ 
+    <div class="section" id="GUID-CBA57B42-A966-4A96-B171-5851264BD494"> 
+      <p>The 
+        <span class="keyword">pause</span> intrinsic is used in spin-wait loops with the processors implementing dynamic execution (especially out-of-order execution). In the spin-wait loop, the 
+        <span class="keyword">pause</span> intrinsic improves the speed at which the code detects the release of the lock and provides especially significant performance gain. 
+      </p>
+ 
+      <p>The execution of the next instruction is delayed for an implementation-specific amount of time. The 
+        <span class="keyword">PAUSE</span> instruction does not modify the architectural state. For dynamic scheduling, the 
+        <span class="keyword">PAUSE</span> instruction reduces the penalty of exiting from the spin-loop. 
+      </p>
+ 
+      <p><strong>Example of loop with the PAUSE instruction:</strong> 
+      </p>
+ 
+      <p>In this example, the program spins until memory location 
+        <span class="keyword">A</span> matches the value in register 
+        <span class="keyword">eax</span>. The code sequence that follows shows a test-and-test-and-set. 
+      </p>
+ 
+      <pre>spin_loop:pause</pre> 
+      <pre>cmp eax, A</pre> 
+      <pre>jne spin_loop</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-BF6A168A-0AF6-418A-9A5C-D8C0102F7EBC"> 
+      <p></p>
+ 
+      <p>In this example, the spin occurs only after the attempt to get a lock has failed. 
+      </p>
+ 
+      <pre>get_lock: mov eax, 1</pre> 
+      <pre>xchg eax, A ; Try to get lock</pre> 
+      <pre>cmp eax, 0 ; Test if successful</pre> 
+      <pre>jne spin_loop</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D444493A-67A7-4E33-BA9E-BEEF7ACDDC5E"><h2 class="sectiontitle">Critical Section </h2> 
+       
+      <pre>// critical_section code</pre> 
+      <pre>mov A, 0 ; Release lock</pre> 
+      <pre>jmp continue</pre> 
+      <pre>spin_loop: pause;</pre> 
+      <pre>// spin-loop hint</pre> 
+      <pre>cmp 0, A ;</pre> 
+      <pre>// check lock availability</pre> 
+      <pre>jne spin_loop</pre> 
+      <pre>jmp get_lock</pre> 
+      <pre>// continue: other code</pre> 
+      <p></p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>The first branch is predicted to fall-through to the critical section in anticipation of successfully gaining access to the lock. It is highly recommended that all spin-wait loops include the 
+          <span class="keyword">PAUSE</span> instruction. Since 
+          <span class="keyword">PAUSE</span> is backwards compatible to all existing IA-32 architecture-based processor generations, a test for processor type (a CPUID test) is not needed. All legacy processors execute 
+          <span class="keyword">PAUSE</span> instruction as a 
+          <span class="keyword">NOP</span>, but in processors that use the 
+          <span class="keyword">PAUSE</span> instruction as a hint there can be significant performance benefit. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7CD76E4D-5690-4CBE-A0FB-C9719E2490FC.htm">Miscellaneous Functions and Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

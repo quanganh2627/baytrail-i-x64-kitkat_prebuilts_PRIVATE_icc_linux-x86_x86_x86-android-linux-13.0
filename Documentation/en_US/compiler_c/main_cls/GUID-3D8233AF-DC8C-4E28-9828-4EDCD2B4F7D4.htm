@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Mapping Strands to Workers">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, mapping strands to workers">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, mapping strands to workers">
+<meta name="DC.Relation" scheme="URI" content="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3D8233AF-DC8C-4E28-9828-4EDCD2B4F7D4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Mapping Strands to Workers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_map_strands"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3D8233AF-DC8C-4E28-9828-4EDCD2B4F7D4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Mapping Strands to Workers</h1>
+
+<div>
+<p>An earlier DAG illustrated the serial/parallel structure of an
+Intel&reg; Cilk&#8482; Plus program. Recall that the DAG does not depend on the number of
+processors. The execution model describes how the runtime scheduler
+maps strands to workers.</p>
+
+<p>When parallelism is introduced, multiple strands may execute in
+parallel. However, in an Intel&reg; Cilk&#8482; Plus program, strands that  may execute in parallel are not  required to execute in parallel. The
+scheduler makes this decision dynamically.</p>
+
+<p>Consider the following program fragment:</p>
+
+<pre>do_init_stuff(); // execute strand 1
+cilk_spawn func3();     // spawn strand 3 (the "child")
+do_more_stuff();         // execute strand 2 (the "continuation")
+cilk_sync;
+do_final_stuff;          // execute strand 4
+</pre><p>Here is the simple DAG for the code:</p>
+
+<p>
+<br><img src="GUID-C78D84BC-0EC8-45E6-9E53-ECCE897AAF74-low.jpg"><br>
+</p>
+
+<p>Recall that a worker is an
+operating system thread that executes an Intel&reg; Cilk&#8482; Plus program. If there is
+more than one worker available, there are one of two ways that this
+program may execute:</p>
+
+<ul type="disc" id="GUID-7124F2C7-8DF2-4842-8AAA-A1B3DB520693"><li><p>The entire
+program may execute on a single worker</p>
+</li>
+<li><p>The scheduler
+may choose to execute strands (2) and (3) on different workers</p>
+</li>
+</ul>
+<p>In order to guarantee serial semantics, the function that is
+spawned (the child, or strand (3) in this example) is always
+executed on the same worker that is executing the strand that
+enters the spawn. Thus, in this case, strand (1) and strand (3) are
+guaranteed to run on the same worker.</p>
+
+<p>If there is a worker available, then strand (2) (the"continuation") may execute on a different worker. This is known as a
+ steal, and the situation can be described by saying that  the
+continuation was  stolen by the new
+worker.</p>
+
+<p>To illustrate these two execution options, a new diagram is
+helpful. The diagram illustrates the execution on a single
+worker:</p>
+
+<p>
+<br><img src="GUID-22A33490-E247-46C6-9E54-4A67D328E788-low.jpg"><br>
+</p>
+
+<p>If a second worker is scheduled, the second worker will begin
+executing the continuation, strand (2). The first worker will
+proceed to the sync at (B). In the following diagram, the second
+worker is indicated by showing strand (2) as a dotted line. After
+the sync, strand (4) may continue on either worker. In the current
+implementation, strand (4) will execute on the last worker that
+reaches the sync.</p>
+
+<p>
+<br><img src="GUID-42D19F21-C60B-4ACB-AE78-8BEC7DB0A63F-low.jpg"><br>
+</p>
+
+<p>The details of the execution model have several implications
+that will be described in the section on the interaction between
+workers and system threads, and also the section on reducers.
+For now, the key ideas are:</p>
+
+<ul type="disc" id="GUID-21AC5201-09F3-4019-89F6-815B02C6A8DB"><li><p>After a
+<span class="keyword">cilk_spawn</span>, the child will always execute on the same worker (the system thread) as the caller.</p>
+</li>
+<li><p>After a
+<span class="keyword">cilk_spawn</span>, the continuation may execute on a different worker. If
+this occurs, the continuation is said to be  stolen by another worker.</p>
+</li>
+<li><p>After a
+<span class="keyword">cilk_sync</span>, execution may proceed on any worker that executed a
+strand that entered the sync.</p>
+</li>
+</ul>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">Intel&reg; Cilk&#8482; Plus Execution Model</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

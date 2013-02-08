@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="profile-loops-report, Qprofile-loops-report">
+<meta name="abstract" content="Controls the level of detail for the data collected when instrumentation occurs before and after certain loops.">
+<meta name="description" content="Controls the level of detail for the data collected when instrumentation occurs before and after certain loops.">
+<meta name="DC.subject" content="-profile-loops-report compiler option, /Qprofile-loops-report compiler option, instrumentation calls, option generating report for loops">
+<meta name="keywords" content="-profile-loops-report compiler option, /Qprofile-loops-report compiler option, instrumentation calls, option generating report for loops">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D97B59BE-AF12-4EC0-B915-70D9CE189A59.htm#GUID-D97B59BE-AF12-4EC0-B915-70D9CE189A59">
+<meta name="DC.Relation" scheme="URI" content="GUID-DA805DF1-33A4-4880-B1EA-F21DA98830A2.htm#GUID-DA805DF1-33A4-4880-B1EA-F21DA98830A2">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E83C9F5B-12F8-49E3-B21E-5EFDD6617ACE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>profile-loops-report, Qprofile-loops-report</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_profile_loops_report"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_profile_loops_report"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E83C9F5B-12F8-49E3-B21E-5EFDD6617ACE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">profile-loops-report, Qprofile-loops-report</h1>
+
+<!--Controls the level of detail for the data collected when instrumentation occurs before and after certain loops.-->
+<div><p>Controls the level of detail for the data collected when instrumentation occurs before and after certain loops.</p>
+
+<div class="section" id="GUID-3464E648-1AB0-4C7C-9132-9E7B5C7A9AE5"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-996219B2-CDCF-411D-A0FD-279E440D0556"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-56FF4FB9-96FC-4DAB-A4FA-341F5519BCAC"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-profile-loops-report</span><span class="delim">[</span><span class="sep">=</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprofile-loops-report</span><span class="delim">[</span><span class="sep">:</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-B087D123-0964-4769-9C90-15F918AF2780"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is a value denoting the level of detail  to report. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+<td valign="top" class="noborder"><p> Reports the cycle counts on entry and exits of loops. This is the default if <var>n</var> is not specified.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+<td valign="top" class="noborder"><p> Reports the level 1 default details, but also includes the loop min/max and average loop iteration counts. </p>
+<p>To collect the loop iteration counts, additional instrumentation is inserted. This can increase overhead in the instrumented application and slow performance.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+
+</div>
+<div class="section" id="GUID-F7FB227E-C6EC-4C71-A949-CDEFF8F3BFE8"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p> <span class="option">-profile-loops-report=1</span> or <span class="option">/Qprofile-loops-report:1</span></p></td>
+<td valign="top" class="noborder"><p>The report shows the cycle counts on entry and exits of loops.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-BCBA9EA7-146D-4C49-9577-3F019C120E92"><h2>Description</h2><p>This option controls the level of detail for the data collected when instrumentation occurs before and after certain loops. To use this option, you must also specify option <span class="option">-profile-loops</span> (Linux* OS and OS X*) or <span class="option">/Qprofile-loops</span> (Windows* OS). </p>
+
+<p>The report appears in file loop_prof_loops_&lt;name&gt;.dump, where &lt;name&gt; is a timestamp value for the run. The columns listed in the report will be based on the level of detail that was selected during instrumentation. </p>
+<p>It is recommended that the same report level be used for all files that are instrumented for the application. If different files of the application were instrumented with different levels, the report will contain all the columns of the highest detail level, but with default values for unavailable fields for files that were instrumented at lower levels. </p>
+
+
+</div>
+
+<div class="section" id="GUID-CB9A6177-441B-4D06-B49A-60B0CF32161D"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-D97B59BE-AF12-4EC0-B915-70D9CE189A59.htm#GUID-D97B59BE-AF12-4EC0-B915-70D9CE189A59"><span class="option">profile-functions, Qprofile-functions</span></a>  compiler option</div>
+<div><a href="GUID-DA805DF1-33A4-4880-B1EA-F21DA98830A2.htm#GUID-DA805DF1-33A4-4880-B1EA-F21DA98830A2"><span class="option">profile-loops, Qprofile-loops</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="C/C++ Extensions for Array Notations Overview">
+<meta name="DC.subject" content="parallelization, C/C++ Extensions for Array Notations, parallelism">
+<meta name="keywords" content="parallelization, C/C++ Extensions for Array Notations, parallelism">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4E06ED4-184F-40E6-A8B4-117947D8C7AD.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B51B9AB-3A7A-46CB-87C7-366D441FE6FF.htm#GUID-8B51B9AB-3A7A-46CB-87C7-366D441FE6FF">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-713DA73F-69CA-447E-A3C2-043C7EBC9420">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>C/C++ Extensions for Array Notations Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_cean_ovw"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_cean_ovw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-713DA73F-69CA-447E-A3C2-043C7EBC9420">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> C/C++ Extensions for Array Notations Overview</h1>
+ 
+   
+  <div> 
+	 <p> The C/C++ language extensions for array notations are Intel-specific language extensions that are part of the Intel&reg; Cilk&#8482; Plus feature. 
+	 </p>
+ 
+	 <p>The C/C++ extensions provide data parallel array notations with the following major benefits: 
+	 <ul type="disc" id="GUID-21709857-B3CD-43B8-A90A-D2C78B03B8A8"> 
+		<li> Allows you to use array notation to program 
+		  <span><span>vector</span></span> operations in a familiar language 
+		</li>
+ 
+		<li>Achieves predictable performance based on mapping parallel constructs to the underlying 
+		  <span><span>SIMD hardware</span></span> 
+		</li>
+ 
+		<li>Enables compiler 
+		  <span><span>vectorization</span></span> with less reliance on alias and dependence analysis 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p>When you use the array notations, the compiler implements them using vector code. 
+	 </p>
+ 
+	 <div class="section" id="GUID-771A63CC-6CCE-417C-8FD9-3E780407C089"><h2 class="sectiontitle">Usage Recommendations</h2> 
+		 
+		<p> Use the array notations when your algorithm requires operations on arrays and where it does not require a specific order of operations among the elements of the array(s). 
+		</p>
+ 
+		<p>The C/C++ language extensions for array notations are enabled by default. To disable them, use the negative form of the 
+		<span class="option">[Q]intel-extensions-</span> compiler option. 
+		</p>
+ 
+		<p>To use the array notations in your application, do the following: 
+		<ol id="GUID-AB3F9AD1-85EE-4C3B-8E05-595997482B2F"> 
+		  <li>Insert the array notations language extensions into your application source code. 
+		  </li>
+ 
+		  <li>Compile the application at optimization level 
+		<span class="option">O1</span> and above to enable vectorization. By default, the compiler generates SIMD vector instructions in the Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) instruction set. To generate SIMD vector instructions beyond 
+		<span class="keyword">SSE2</span>, you can add target/architecture-specific compiler options to the compile command. 
+		</li>
+ 
+		</ol>
+ 
+		</p>
+ 
+		<p>If you compile your application using 
+		<span class="option">–O0</span> (Linux* OS and OS X*) or 
+		<span class="option">/Od</span> (Windows* OS), you generate serialized scalar code 
+		<span><span>without vectorization</span></span>. 
+		</p>
+ 
+		<p>By default, the compiler accepts the array notations language extensions to generate 
+		  <span><span>vector code</span></span> based on the data parallel constructs in the program. 
+		</p>
+ 
+		<p>The array notations work with both 
+		<span class="option"> -O0</span> (Linux OS and OS X) and 
+		<span class="option"> /Od</span> (Windows OS) options, and with optimization levels of 
+		<span class="option">O1</span>, 
+		<span class="option">O2</span> and 
+		<span class="option">O3</span>. Specifying 
+		<span class="option">-O0</span> (Linux OS and OS X) or 
+		<span class="option">/Od</span> (Windows OS) option serializes the array operations into sequential loops and helps to debug applications using array notations. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B4E06ED4-184F-40E6-A8B4-117947D8C7AD.htm">Extensions for Array Notation</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-8B51B9AB-3A7A-46CB-87C7-366D441FE6FF.htm#GUID-8B51B9AB-3A7A-46CB-87C7-366D441FE6FF">intel-extensions, Qintel-extensions
+		  </a> Enables or disables all Intel&reg; C and Intel&reg; C++ language extensions.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

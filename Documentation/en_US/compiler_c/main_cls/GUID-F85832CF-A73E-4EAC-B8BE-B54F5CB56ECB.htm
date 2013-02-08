@@ -1,0 +1,760 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Addition and Subtraction Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, addition operators, subtraction operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, addition operators, subtraction operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F85832CF-A73E-4EAC-B8BE-B54F5CB56ECB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Addition and Subtraction Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_addsub"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F85832CF-A73E-4EAC-B8BE-B54F5CB56ECB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Addition and Subtraction Operators</h1>
+ 
+   
+  <div> 
+    <p>The addition and subtraction operators return the class of the nearest common ancestor when the right-side operands are of different signs. The following code provides examples of usage and miscellaneous exceptions. 
+    </p>
+ 
+    <p><strong>Syntax Usage for Addition and Subtraction Operators</strong> 
+    </p>
+ 
+    <p>Return nearest common ancestor type, 
+      <span class="keyword">I16vec4</span>. 
+    </p>
+ 
+    <p><span class="keyword">Is16vec4 A;</span> 
+    </p>
+ 
+    <p><span class="keyword">Iu16vec4 B;</span> 
+    </p>
+ 
+    <p><span class="keyword">I16vec4 C;</span> 
+    </p>
+ 
+    <p><samp class="codeph">C = A + B;</samp> 
+    </p>
+ 
+    <p>Returns type left-hand operand type. 
+    </p>
+ 
+    <p><span class="keyword">Is16vec4 A;</span> 
+    </p>
+ 
+    <p><span class="keyword">Iu16vec4 B;</span> 
+    </p>
+ 
+    <p><samp class="codeph">A += B;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">B -= A;</samp> 
+    </p>
+ 
+    <p>Explicitly convert 
+      <samp class="codeph">B</samp> to 
+      <span class="keyword">Is16vec4</span>. 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 A,C;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec24 B;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A + C;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A + (Is16vec4)B;</samp> 
+    </p>
+ 
+    <p><strong>Addition and Subtraction Operators with Corresponding Intrinsics</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3A9537E1-B957-44A3-AD0A-2B37E50D2D35" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d855594e146"> 
+              <p>Operation 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d855594e152"> 
+              <p>Symbols 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d855594e158"> 
+              <p>Syntax 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d855594e164"> 
+              <p>Corresponding Intrinsics 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e146 "> 
+              <p>Addition 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e152 "> 
+              <p><samp class="codeph">+</samp><br><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e158 "> 
+              <p><samp class="codeph">R = A + B</samp><br><samp class="codeph">R += A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e164 "> 
+              <p><span class="option">_mm_add_epi64</span><br><span class="option">_mm_add_epi32</span><br><span class="option">_mm_add_epi16</span><br><span class="option">_mm_add_epi8</span><br><span class="option">_mm_add_pi32</span><br><span class="option">_mm_add_pi16</span><br><span class="option">_mm_add_pi8</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e146 "> 
+              <p>Subtraction 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e152 "> 
+              <p><samp class="codeph">-</samp><br><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e158 "> 
+              <p><samp class="codeph">R = A - B</samp><br><samp class="codeph">R -= A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d855594e164 "> 
+              <p><span class="option">_mm_sub_epi64</span><br><span class="option">_mm_sub_epi32</span><br><span class="option">_mm_sub_epi16</span><br><span class="option">_mm_sub_epi8</span><br><span class="option">_mm_sub_pi32</span><br><span class="option">_mm_sub_pi16</span><br><span class="option">_mm_sub_pi8</span><br> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>The following table lists addition and subtraction return values for combinations of classes when the right side operands are of different signedness. The two operands must be the same size, otherwise you must explicitly indicate the typecasting. 
+    </p>
+ 
+    <p><strong>Addition and Subtraction Operator Overloading</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D10445ED-7256-48A9-9758-4A679A721266" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e324"> 
+              <p>Return Value 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d855594e330">Available Operators 
+            </th>
+ 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d855594e333">Right Side Operands 
+            </th>
+ 
+          </tr>
+ 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e339"> 
+              <p>R 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e345"> 
+              <p>Add 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e351"> 
+              <p>Sub 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e357"> 
+              <p>A 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e363"> 
+              <p>B 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I64vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]64vec2 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]64vec2 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I32vec4 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]32vec4 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]32vec4 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]32vec2 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]32vec2 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I16vec8 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]16vec8 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]16vec8 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I16vec4 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]16vec4 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]16vec4 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I8vec8 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]8vec8 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]8vec8 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e324 d855594e339 "> 
+              <p><span class="keyword">I8vec16 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e345 "> 
+              <p><samp class="codeph">+</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e330 d855594e351 "> 
+              <p><samp class="codeph">-</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e357 "> 
+              <p><span class="keyword">I[s|u]8vec2 A</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e333 d855594e363 "> 
+              <p><span class="keyword">I[s|u]8vec16 B</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>The following table shows the return data type values for operands of the addition and subtraction operators with assignment. The left side operand determines the size and signedness of the return value. The right side operand must be the same size as the left operand; otherwise, you must use an explicit typecast. 
+    </p>
+ 
+    <p><strong>Addition and Subtraction with Assignment</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3E124899-18FC-483C-AD31-A42CA4CD5B0F" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e708"> 
+              <p>Return Value &reg; 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e714"> 
+              <p>Left Side &reg; 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e720"> 
+              <p>Add 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e726"> 
+              <p>Sub 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d855594e732"> 
+              <p>Right Side (A) 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e708 "> 
+              <p><span class="keyword">I[x]32vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e714 "> 
+              <p><span class="keyword">I[x]32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e720 "> 
+              <p><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e726 "> 
+              <p><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e732 "> 
+              <p><span class="keyword">I[s|u]32vec4 A;</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e708 "> 
+              <p><span class="keyword">I[x]32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e714 "> 
+              <p><span class="keyword">I[x]32vec2 R</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e720 "> 
+              <p><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e726 "> 
+              <p><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e732 "> 
+              <p><span class="keyword">I[s|u]32vec2 A;</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e708 "> 
+              <p><span class="keyword">I[x]16vec8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e714 "> 
+              <p><span class="keyword">I[x]16vec8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e720 "> 
+              <p><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e726 "> 
+              <p><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e732 "> 
+              <p><span class="keyword">I[s|u]16vec8 A;</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e708 "> 
+              <p><span class="keyword">I[x]16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e714 "> 
+              <p><span class="keyword">I[x]16vec4</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e720 "> 
+              <p><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e726 "> 
+              <p><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e732 "> 
+              <p><span class="keyword">I[s|u]16vec4 A;</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e708 "> 
+              <p><span class="keyword">I[x]8vec16</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e714 "> 
+              <p><span class="keyword">I[x]8vec16</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e720 "> 
+              <p><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e726 "> 
+              <p><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e732 "> 
+              <p><span class="keyword">I[s|u]8vec16 A;</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e708 "> 
+              <p><span class="keyword">I[x]8vec8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e714 "> 
+              <p><span class="keyword">I[x]8vec8</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e720 "> 
+              <p><samp class="codeph">+=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e726 "> 
+              <p><samp class="codeph">-=</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="20%" headers="d855594e732 "> 
+              <p><span class="keyword">I[s|u]8vec8 A;</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

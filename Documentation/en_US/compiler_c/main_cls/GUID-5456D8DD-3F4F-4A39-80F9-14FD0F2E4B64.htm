@@ -1,0 +1,115 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30537)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30537">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30537">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4B50C59D-616D-42E8-B94F-0DE28D5EE6CB.htm#GUID-4B50C59D-616D-42E8-B94F-0DE28D5EE6CB">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5456D8DD-3F4F-4A39-80F9-14FD0F2E4B64">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30537)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30537"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30537"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5456D8DD-3F4F-4A39-80F9-14FD0F2E4B64">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30537)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-0C9DB37A-3DD6-4386-B6D9-4FA2B1F5019B"><h2 class="sectiontitle">Message</h2><p>Add the "restrict" keyword to each pointer-typed formal parameter of the routine "%s". This allows optimizations such as parallelization and vectorization to be applied to the loop at line %d. </p>
+</div>
+
+
+<div class="section" id="GUID-90B16D4D-D5B3-49CC-A1A5-7C2408CC3D43"><h2 class="sectiontitle">Advice</h2>
+<p>Rather than using option -fnoargument-alias (Linux* OS and OS X*) or /Qno-alias-args (Windows* OS), which affects the entire file, you can add the restrict qualifier to the pointer arguments to this routine. This change is more localized since it affects only the routines where the keyword is applied. </p>
+<p>The restrict qualifier is part of C standard C99. This qualifier can be applied to a data pointer to indicate that during the scope of that pointer declaration, all data accessed through it will be accessed only through that pointer but not through any other pointer. So, the restrict keyword enables the compiler to perform certain optimizations based on the premise that a given object cannot be changed through another pointer. You must ensure that restrict-qualified pointers are used as they are intended to be used. Otherwise, undefined behavior may result. </p>
+<p>The Intel compiler requires that you also specify option <span class="option">-restrict</span> (Linux* OS and OS X*) or <span class="option">/Qrestrict</span> (Windows* OS) when compiling non-C99 programs.</p>
+</div>
+
+
+<div class="section" id="GUID-30DB79E9-BAF0-4446-B056-70CBA8B156D8"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>void matrix_mul_matrix(int  N, float * C,  float  *A,  float  *B) {</pre>
+<pre>  int  i,j,k;</pre>
+<pre>&nbsp;</pre>
+<pre>  for (i=0; i&lt;N; i++) {</pre>
+<pre>    for (j=0; j&lt;N; j++) {</pre>
+<pre>      C[i*N+j]=0;</pre>
+<pre>      for(k=0;k&lt;N;k++)</pre>
+<pre>      {</pre>
+<pre>        C[i*N+j]+=A[i*N+k] * B[k*N+j];</pre>
+<pre>      }</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre>}</pre>
+</div>
+
+
+
+
+<p>In this case, the compiler is unable to apply loop optimizations such as loop-interchange and vectorization at setting O2, the default. </p>
+
+<p>If you determine it is safe to do so, you can modify the program code as follows:</p>
+
+<pre>void matrix_mul_matrix(int  N, float * restrict C,  float  * restrict A,  float</pre>
+<pre> * restrict B) {</pre>
+<pre>  int  i,j,k;</pre>
+<pre>&nbsp;</pre>
+<pre>  for (i=0; i&lt;N; i++) {</pre>
+<pre>    for (j=0; j&lt;N; j++) {</pre>
+<pre>      C[i*N+j]=0;</pre>
+<pre>      for(k=0;k&lt;N;k++)</pre>
+<pre>      {</pre>
+<pre>        C[i*N+j]+=A[i*N+k] * B[k*N+j];</pre>
+<pre>      }</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+
+<p>Note that instead of using the restrict qualifier, you could have specified <span class="option">-fnoargument-alias</span> or <span class="option">/Qno-alias-args</span> before compiling the code.</p>
+<div class="section" id="GUID-5EEEF0C3-134D-45F6-A098-4DE64C1FD30E"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that semantics of the "restrict" pointer qualifier is satisfied: in the routine, all data accessed through the pointer must not be accessed through any other pointer.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-4B50C59D-616D-42E8-B94F-0DE28D5EE6CB.htm#GUID-4B50C59D-616D-42E8-B94F-0DE28D5EE6CB">GAP Message (Diagnostic ID 30536)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using the compilervars File to Specify Location of Components">
+<meta name="DC.subject" content="compilervars.bat, compilervars.sh, compilervars.csh, environment variables, setting with compilervars file">
+<meta name="keywords" content="compilervars.bat, compilervars.sh, compilervars.csh, environment variables, setting with compilervars file">
+<meta name="DC.Relation" scheme="URI" content="GUID-54318F64-F8B3-4583-845E-327E0A5A6978.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F79DF975-A9CB-4C9A-A394-286E44B8FDBE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using the compilervars File to Specify Location of Components</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_setup_envars"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_setup_envars"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F79DF975-A9CB-4C9A-A394-286E44B8FDBE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using the compilervars File to Specify Location of Components</h1>
+ 
+   
+  <div> 
+    <p>Before you first invoke the compiler, you need to be sure certain environment variables are set. These environment variables define the location of the various compiler-related components. 
+    </p>
+ 
+    <p>The product includes a batch file that you can run to set environment variables. 
+    </p>
+ 
+    <ul type="disc" id="GUID-9A21594B-A937-469B-AFBA-F3B5E56B899A"> 
+      <li> On Linux* OS and OS X*, the file is a shell script called 
+        <span class="filepath">compilervars.sh</span> or 
+        <span class="filepath">compilervars.csh.</span> 
+      </li>
+ 
+      <li> On Windows* OS, the file is a batch file called 
+        <span class="filepath">compilervars.bat</span>. The batch file called 
+        <span class="filepath">iclvars.bat</span> will continue to be provided for compatibility. 
+      </li>
+ 
+    </ul>
+ 
+    <p>The following information is operating system dependent. 
+    </p>
+ 
+    <div class="section" id="GUID-DF793680-F6E8-4CF2-A3B7-A24F928CEA22"><h2 class="sectiontitle">Linux* OS and OS X*:</h2> 
+       
+      <p>To 
+        <span class="keyword">source</span> an environment script, enter one of the following on the command line: 
+      </p>
+ 
+      <p><span><span class="keyword">source</span> &lt;install-dir&gt;/bin/compilervars.sh 
+          <span class="option">&lt;arg&gt;</span></span> 
+      </p>
+ 
+      <p>or 
+      </p>
+ 
+      <p><span><span class="keyword">source</span> &lt;install-dir&gt;/bin/compilervars.csh 
+          <span class="option">&lt;arg&gt;</span></span> 
+      </p>
+ 
+      <p>The environment script file takes one argument 
+      <span class="option">&lt;arg&gt;</span>: 
+      </p>
+ 
+      <ul type="disc" id="GUID-B3D88BB6-93C5-41BA-8624-5F9EBF80A60F"> 
+        <li><span class="keyword"> ia32</span>: Compiler and libraries for IA-32 architecture only 
+        </li>
+ 
+        <li><span class="keyword"> intel64</span>: Compiler and libraries for Intel&reg; 64 architecture only 
+        </li>
+ 
+      </ul>
+ 
+      <p>If you want the script to run automatically, add the same command to the end of your startup file. 
+      </p>
+ 
+      <p>Sample 
+        <span class="filepath">.bash_profile</span> entry for 
+        <span class="filepath">compilervars.sh</span> for IA-32 architecture only: 
+      </p>
+ 
+      <pre># set environment vars for Intel&reg; C++ compiler</pre> 
+      <pre>source &lt;install-dr&gt;/bin/compilervars.sh ia32</pre> 
+      <p>With some Linux* distributions, if you source 
+        <span class="filepath">compilervars.sh</span> from your 
+        <span class="filepath">.bash_profile</span>, the location of 
+        <span class="keyword">LIBRARY_PATH</span> may not be set as you would expect. It may be necessary to source 
+        <span class="filepath">compilervars.sh</span> after starting your terminal session. This affects the Intel&reg; C++ compiler (<span class="keyword">icpc</span>) only. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CC8326F6-A154-40D3-B7DE-683A1405792B"><h2 class="sectiontitle">Windows* OS:</h2> 
+       
+      <p>Under normal circumstances, you do not need to run the batch file. The Intel&reg; C++ command-line window sets these variables for you automatically. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>You will need to run the batch file if you open a command-line window instead of using the provided one or if you want to use the compiler from a script of your own. 
+        </p>
+ 
+      </div> 
+      <p>The batch file inserts the directories used by the Intel&reg; C++ compiler at the beginning of the existing paths. Because these directories appear first, they are searched before any directories in the path lists provided by Windows* OS. This is especially important if the existing path includes directories with files having the same names as those needed by Intel&reg; Fortran. 
+      </p>
+ 
+      <p>The batch file takes two arguments: 
+      </p>
+ 
+      <p><span> &lt;install-dir&gt;\bin\compilervars.bat 
+          <span class="option">&lt;arg1&gt; [&lt;arg2&gt;]</span></span> 
+      </p>
+ 
+      <p><span class="option">&lt;arg1&gt;</span> is one of the following 
+      </p>
+ 
+      <ul type="disc" id="GUID-CD994C23-DD0C-43F4-9DB4-81000EAA6E85"> 
+        <li><samp class="codeph">ia32</samp>: Compiler and libraries for IA-32 architecture only 
+        </li>
+ 
+        <li> 
+          <samp class="codeph">ia32_intel64</samp>: Compiler running on IA-32 architecture that generates code for Intel&reg; 64 architecture using Intel&reg; 64 architecture libraries 
+        </li>
+ 
+        </ul>
+ 
+      <p><span class="option">&lt;arg2&gt;</span>, if specified, is one of the following: 
+      </p>
+ 
+      <ul type="disc" id="GUID-B049A86D-DD5E-44DE-BA90-B685E70A4552"> 
+        <li><samp class="codeph">vs2008</samp>: Microsoft* Visual Studio* 2008 
+        </li>
+ 
+        <li><samp class="codeph">vs2010</samp>: Microsoft* Visual Studio* 2010 
+        </li>
+ 
+      </ul>
+ 
+      <p>If 
+      <span class="option">&lt;arg2&gt;</span> is not specified, the script uses the version of Visual Studio* that was detected during the installation procedure. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54318F64-F8B3-4583-845E-327E0A5A6978.htm">Using the Command Line</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

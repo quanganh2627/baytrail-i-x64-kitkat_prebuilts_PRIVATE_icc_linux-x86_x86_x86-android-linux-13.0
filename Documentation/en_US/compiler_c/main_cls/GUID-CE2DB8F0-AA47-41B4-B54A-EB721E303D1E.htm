@@ -1,0 +1,477 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Miscellaneous Functions">
+<meta name="DC.subject" content="Math library, Miscellaneous Functions, copysign library function, fabs library function, fdim library function, finite library function, fma library function, fmax library function, fmin library function, nextafter library function">
+<meta name="keywords" content="Math library, Miscellaneous Functions, copysign library function, fabs library function, fdim library function, finite library function, fma library function, fmax library function, fmin library function, nextafter library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CE2DB8F0-AA47-41B4-B54A-EB721E303D1E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Miscellaneous Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_misc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CE2DB8F0-AA47-41B4-B54A-EB721E303D1E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Miscellaneous Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+    </p>
+
+    <p>The Intel math library supports the following miscellaneous functions:
+    </p>
+ 
+    <div class="section" id="COPYSIGN"><a name="COPYSIGN"><!-- --></a><h2 class="sectiontitle">copysign</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">copysign</span> function returns the value with the magnitude of 
+        <samp class="codeph">x</samp> and the sign of 
+        <samp class="codeph">y</samp>.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double copysign(double x, double y);</samp><br> 
+        <samp class="codeph">long double copysignl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float copysignf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FABS"><a name="FABS"><!-- --></a><h2 class="sectiontitle">fabs</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fabs</span> function returns the absolute value of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fabs(double x);</samp><br> 
+        <samp class="codeph">long double fabsl(long double x);</samp><br> 
+        <samp class="codeph">float fabsf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FDIM"><a name="FDIM"><!-- --></a><h2 class="sectiontitle">fdim</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fdim</span> function returns the positive difference value, 
+        <samp class="codeph">x-y</samp> (for 
+        <samp class="codeph">x &gt; y</samp>) or +0 (for 
+        <samp class="codeph">x &lt;= to y</samp>).
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for values too large
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fdim(double x, double y);</samp><br> 
+        <samp class="codeph">long double fdiml(long double x, long double y);</samp><br> 
+        <samp class="codeph">float fdimf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FINITE"><a name="FINITE"><!-- --></a><h2 class="sectiontitle">finite</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <samp class="codeph">finite</samp> function returns 1 if 
+        <samp class="codeph">x</samp> is not a 
+        <samp class="codeph">NaN</samp> or +/- infinity. Otherwise 0 is returned.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int finite(double x);</samp><br> 
+        <samp class="codeph">int finitel(long double x);</samp><br> 
+        <samp class="codeph">int finitef(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FMA"><a name="FMA"><!-- --></a><h2 class="sectiontitle">fma</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fma</span> functions return 
+        <samp class="codeph">(x*y)+z</samp>.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fma(double x, double y, double z);</samp><br> 
+        <samp class="codeph">long double fmal(long double x, long double y, long double z);</samp><br> 
+        <samp class="codeph">float fmaf(float x, float y, float double z);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FMAX"><a name="FMAX"><!-- --></a><h2 class="sectiontitle">fmax</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fmax</span> function returns the maximum numeric value of its arguments.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fmax(double x, double y);</samp><br> 
+        <samp class="codeph">long double fmaxl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float fmaxf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FMIN"><a name="FMIN"><!-- --></a><h2 class="sectiontitle">fmin</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fmin</span> function returns the minimum numeric value of its arguments.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fmin(double x, double y);</samp><br> 
+        <samp class="codeph">long double fminl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float fminf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FPCLASSIFY"><a name="FPCLASSIFY"><!-- --></a><h2 class="sectiontitle">fpclassify</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fpclassify</span> function returns the value of the number classification macro appropriate to the value of its argument.
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-61818B31-C549-4DA5-99FE-E11684B63AC2" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="100%" id="d717526e344">
+                <p>Return Value
+                </p>
+
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d717526e344 ">
+                <p>0 (NaN)
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d717526e344 ">
+                <p>1 (Infinity)
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d717526e344 ">
+                <p>2 (Zero)
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d717526e344 ">
+                <p>3 (Subnormal)
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="100%" headers="d717526e344 ">
+                <p>4 (Finite)
+                </p>
+
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fpclassify(double x);</samp><br> 
+        <samp class="codeph">long double fpclassifyl(long double x);</samp><br> 
+        <samp class="codeph">float fpclassifyf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISFINITE"><a name="ISFINITE"><!-- --></a><h2 class="sectiontitle">isfinite</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isfinite</span> function returns 1 if 
+        <samp class="codeph">x</samp> is not a 
+        <samp class="codeph">NaN</samp> or +/- infinity. Otherwise 0 is returned.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isfinite(double x);</samp><br> 
+        <samp class="codeph">int isfinitel(long double x);</samp><br> 
+        <samp class="codeph">int isfinitef(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISGREATER"><a name="ISGREATER"><!-- --></a><h2 class="sectiontitle">isgreater</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isgreater</span> function returns 1 if 
+        <samp class="codeph">x</samp> is greater than 
+        <samp class="codeph">y</samp>. This function does not raise the invalid floating-point exception.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isgreater(double x, double y);</samp><br> 
+        <samp class="codeph">int isgreaterl(long double x, long double y);</samp><br> 
+        <samp class="codeph">int isgreaterf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISGREATEREQUAL"><a name="ISGREATEREQUAL"><!-- --></a><h2 class="sectiontitle">isgreaterequal</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isgreaterequal</span> function returns 1 if 
+        <samp class="codeph">x</samp> is greater than or equal to 
+        <samp class="codeph">y</samp>. This function does not raise the invalid floating-point exception.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isgreaterequal(double x, double y);</samp><br> 
+        <samp class="codeph">int isgreaterequall(long double x, long double y);</samp><br> 
+        <samp class="codeph">int isgreaterequalf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISINF"><a name="ISINF"><!-- --></a><h2 class="sectiontitle">isinf</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isinf</span> function returns a non-zero value if and only if its argument has an infinite value.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isinf(double x);</samp><br> 
+        <samp class="codeph">int isinfl(long double x);</samp><br> 
+        <samp class="codeph">int isinff(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISLESS"><a name="ISLESS"><!-- --></a><h2 class="sectiontitle">isless</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isless</span> function returns 1 if 
+        <samp class="codeph">x</samp> is less than 
+        <samp class="codeph">y</samp>. This function does not raise the invalid floating-point exception.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isless(double x, double y);</samp><br> 
+        <samp class="codeph">int islessl(long double x, long double y);</samp><br> 
+        <samp class="codeph">int islessf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISLESSEQUAL"><a name="ISLESSEQUAL"><!-- --></a><h2 class="sectiontitle">islessequal</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">islessequal</span> function returns 1 if 
+        <samp class="codeph">x</samp> is less than or equal to 
+        <samp class="codeph">y</samp>. This function does not raise the invalid floating-point exception.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int islessequal(double x, double y);</samp><br> 
+        <samp class="codeph">int islessequall(long double x, long double y);</samp><br> 
+        <samp class="codeph">int islessequalf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISLESSGREATER"><a name="ISLESSGREATER"><!-- --></a><h2 class="sectiontitle">islessgreater</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">islessgreater</span> function returns 1 if 
+        <samp class="codeph">x</samp> is less than or greater than 
+        <samp class="codeph">y</samp>. This function does not raise the invalid floating-point exception.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int islessgreater(double x, double y);</samp><br> 
+        <samp class="codeph">int islessgreaterl(long double x, long double y);</samp><br> 
+        <samp class="codeph">int islessgreaterf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISNAN"><a name="ISNAN"><!-- --></a><h2 class="sectiontitle">isnan</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isnan</span> function returns a non-zero value if and only if 
+        <samp class="codeph">x</samp> has a 
+        <samp class="codeph">NaN</samp> value.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isnan(double x);</samp><br> 
+        <samp class="codeph">int isnanl(long double x);</samp><br> 
+        <samp class="codeph">int isnanf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISNORMAL"><a name="ISNORMAL"><!-- --></a><h2 class="sectiontitle">isnormal</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isnormal</span> function returns a non-zero value if and only if 
+        <samp class="codeph">x</samp> is normal.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isnormal(double x);</samp><br> 
+        <samp class="codeph">int isnormall(long double x);</samp><br> 
+        <samp class="codeph">int isnormalf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ISUNORDERED"><a name="ISUNORDERED"><!-- --></a><h2 class="sectiontitle">isunordered</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">isunordered</span> function returns 1 if either 
+        <samp class="codeph">x</samp> or 
+        <samp class="codeph">y</samp> is a 
+        <samp class="codeph">NaN</samp>. This function does not raise the invalid floating-point exception.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int isunordered(double x, double y);</samp><br> 
+        <samp class="codeph">int isunorderedl(long double x, long double y);</samp><br> 
+        <samp class="codeph">int isunorderedf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="NEXTAFTER"><a name="NEXTAFTER"><!-- --></a><h2 class="sectiontitle">nextafter</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">nextafter</span> function returns the next representable value in the specified format after 
+        <samp class="codeph">x</samp> in the direction of 
+        <samp class="codeph">y</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow and underflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double nextafter(double x, double y);</samp><br> 
+        <samp class="codeph">long double nextafterl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float nextafterf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="NEXTTOWARD"><a name="NEXTTOWARD"><!-- --></a><h2 class="sectiontitle">nexttoward</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">nexttoward</span> function returns the next representable value in the specified format after 
+        <samp class="codeph">x</samp> in the direction of 
+        <samp class="codeph">y</samp>. If 
+        <samp class="codeph">x</samp> equals 
+        <samp class="codeph">y</samp>, then the function returns 
+        <samp class="codeph">y</samp> converted to the type of the function. Use the 
+      <span class="option">/Qlong-double</span> option on Windows* operating systems for accurate results.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow and underflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double nexttoward(double x, long double y);</samp><br> 
+        <samp class="codeph">long double nexttowardl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float nexttowardf(float x, long double y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SIGNBIT"><a name="SIGNBIT"><!-- --></a><h2 class="sectiontitle">signbit</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">signbit</span> function returns a non-zero value if and only if the sign of 
+        <samp class="codeph">x</samp> is negative.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">int signbit(double x);</samp><br> 
+        <samp class="codeph">int signbitl(long double x);</samp><br> 
+        <samp class="codeph">int signbitf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SIGNIFICAND"><a name="SIGNIFICAND"><!-- --></a><h2 class="sectiontitle">significand</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">significand</span> function returns the significand of 
+        <samp class="codeph">x</samp> in the interval [1,2). For 
+        <samp class="codeph">x</samp> equal to zero, NaN, or +/- infinity, the original 
+        <samp class="codeph">x</samp> is returned.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double significand(double x);</samp><br> 
+        <samp class="codeph">long double significandl(long double x);</samp><br> 
+        <samp class="codeph">float significandf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

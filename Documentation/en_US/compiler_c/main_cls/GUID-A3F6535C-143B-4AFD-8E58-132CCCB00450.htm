@@ -1,0 +1,344 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Terms, Conventions, and Syntax Defined">
+<meta name="DC.subject" content="Class Libraries, terms, conventions, syntax">
+<meta name="keywords" content="Class Libraries, terms, conventions, syntax">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A3F6535C-143B-4AFD-8E58-132CCCB00450">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Terms, Conventions, and Syntax Defined</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_terms"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A3F6535C-143B-4AFD-8E58-132CCCB00450">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Terms, Conventions, and Syntax Defined</h1>
+ 
+   
+  <div> 
+    <p>The following are special terms and syntax used in this chapter to describe functionality of the classes with respect to their associated operations. 
+    </p>
+ 
+    <div class="section" id="GUID-761211CA-E3AF-48FC-9493-A678BC0FCBA1"><h2 class="sectiontitle">Ivec Class Syntax Conventions</h2> 
+       
+      <p>The name of each class denotes the data type, signedness, bit size, number of elements using the following generic format: 
+      </p>
+ 
+      <p><samp class="codeph">&lt;type&gt;&lt;signedness&gt;&lt;bits&gt;vec&lt;elements&gt;</samp> 
+      </p>
+ 
+      <p><samp class="codeph">{ F | I } { s | u } { 64 | 32 | 16 | 8 } vec { 8 | 4 | 2 | 1 }</samp> 
+      </p>
+ 
+      <p>where 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-218209C3-3188-4224-AF99-E4669DA3B374" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%"> 
+                <p><samp class="codeph">type</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%"> 
+                <p>indicates floating point ( 
+                  <samp class="codeph">F</samp> ) or integer ( 
+                  <samp class="codeph">I</samp> ) 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%"> 
+                <p><samp class="codeph">signedness</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%"> 
+                <p>indicates signed ( 
+                  <samp class="codeph">s</samp> ) or unsigned ( 
+                  <samp class="codeph">u</samp> ). For the Ivec class, leaving this field blank indicates an intermediate class. There are no unsigned Fvec classes, therefore for the Fvec classes, this field is blank. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%"> 
+                <p><samp class="codeph">bits</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%"> 
+                <p>specifies the number of bits per element 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%"> 
+                <p><samp class="codeph">elements</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%"> 
+                <p>specifies the number of elements 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1FB512F4-577E-4500-A93F-19D6E88DADF7"><h2 class="sectiontitle">Special Terms and Conventions</h2> 
+       
+      <p>The following terms are used to define the functionality and characteristics of the classes and operations defined in this manual. 
+      </p>
+ 
+      <ul type="disc" id="GUID-2D5530F3-413B-47D7-BAF6-6F7F95DCE5A3"> 
+        <li> 
+          <p><strong>Nearest Common Ancestor</strong> -- This is the intermediate or parent class of two classes of the same size. For example, the nearest common ancestor of 
+            <span class="keyword">Iu8vec8</span> and 
+            <span class="keyword">Is8vec8</span> is 
+            <span class="keyword">I8vec8</span>. Also, the nearest common ancestor between 
+            <span class="keyword">Iu8vec8</span> and 
+            <span class="keyword">I16vec4</span> is 
+            <span class="keyword">M64</span>. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><strong>Casting</strong> -- Changes the data type from one class to another. When an operation uses different data types as operands, the return value of the operation must be assigned to a single data type. Therefore, one or more of the data types must be converted to a required data type. This conversion is known as a typecast. Sometimes, typecasting is automatic, other times you must use special syntax to explicitly typecast it yourself. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><strong>Operator Overloading</strong> -- This is the ability to use various operators on the same user-defined data type of a given class. Once you declare a variable, you can add, subtract, multiply, and perform a range of operations. Each family of classes accepts a specified range of operators, and must comply by rules and restrictions regarding typecasting and operator overloading as defined in the header files. The following table shows the notation used in this documention to address typecasting, operator overloading, and other rules. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p><strong>Class Syntax Notation Conventions</strong> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3C3248B3-0E44-4B36-8435-21E0CAF14B10" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="50%" id="d539397e226"> 
+                <p>Class Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="50%" id="d539397e232"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u][N]vec[N]</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>Any value except 
+                  <span class="keyword">I128vec1</span> nor 
+                  <span class="keyword">I64vec1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I64vec1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p><span class="keyword">__m64</span> data type 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]64vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>two 64-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]32vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>four 32-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]8vec16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>eight 16-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]16vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>sixteen 8-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]32vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>two 32-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]16vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>four 16-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e226 "> 
+                <p><span class="keyword">I[s|u]8vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d539397e232 "> 
+                <p>eight 8-bit values of any signedness 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_set[r]4_ps">
+<meta name="abstract" content="Sets elements of a float32 vector using specified values in the sequence, dcbadcbadcbadcba. There is no corresponding instruction. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Sets elements of a float32 vector using specified values in the sequence, dcbadcbadcbadcba. There is no corresponding instruction. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_set4_ps, _mm512_setr4_ps">
+<meta name="keywords" content="_mm512_set4_ps, _mm512_setr4_ps">
+<meta name="DC.Relation" scheme="URI" content="GUID-6A684133-93A6-4399-9027-2D0780D2BAD7.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4F4195D6-B145-45F2-A0DA-7BB55BBB389A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_set[r]4_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_set[r]4_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4F4195D6-B145-45F2-A0DA-7BB55BBB389A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_set[r]4_ps</h1>
+<!--Sets elements of a float32 vector using specified values in the sequence, 
+ dcbadcbadcbadcba . There is no corresponding instruction.  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Sets elements of a float32 vector using specified values in the sequence, 
+<samp class="codeph">dcbadcbadcbadcba</samp>. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-C6754A34-CAC3-4BE5-B926-446DF19D4DC1"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m512  &nbsp;__cdecl _mm512_set4_ps(float d, float c, float b, float a);</span></p><p><span class="kwd">extern __m512  &nbsp;__cdecl _mm512_setr4_ps(float a, float b, float c, float d);</span></p></td></tr></table>
+</div>
+<div class="section" id="GUID-1DCCFAC0-4959-4AD9-89E9-546DEF881273"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+<td valign="top" class="noborder">float32 value</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+<td valign="top" class="noborder">float32 value</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>c</var></p></td>
+
+<td valign="top" class="noborder">float32 value</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>d</var></p></td>
+
+<td valign="top" class="noborder">float32 value</td>
+</tr>
+</table>
+</div>
+<div class="section" id="GUID-B356751D-8074-4769-BC8B-4D9E06A41138"><h2>Description</h2>
+<p>Sets four values
+<var>a</var>, <var>b</var>, <var>c</var>, and 
+<var>d</var> in a float32 result vector, in a specific 16-element sequence  &nbsp;- 
+<samp class="codeph">dcbadcbadcbadcba</samp>, where the elements</p>
+<p><samp class="codeph">v12, v8, v4, v0 = <var>a</var></samp></p>
+<p><samp class="codeph">v13, v9, v5, v1 = <var>b</var></samp></p>
+<p><samp class="codeph">v14, v10, v6, v2 = <var>c</var></samp></p>
+<p><samp class="codeph">v15, v11, v7, v3 = <var>d</var></samp>.</p>
+</div>
+<div class="section" id="GUID-053D8E1C-91A9-4BD2-A8EA-8C6BDBAADB5E"><h2>Returns</h2><p>Returns a float32 vector with 16 elements in a specific sequence - 
+<samp class="codeph">dcbadcbadcbadcba</samp>.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6A684133-93A6-4399-9027-2D0780D2BAD7.htm">Memory and Initialization Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

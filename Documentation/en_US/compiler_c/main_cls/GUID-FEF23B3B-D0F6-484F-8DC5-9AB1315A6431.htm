@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ipo, Qipo">
+<meta name="abstract" content="Enables interprocedural optimization between files.">
+<meta name="description" content="Enables interprocedural optimization between files.">
+<meta name="DC.subject" content="interprocedural optimizations, option enabling between files, /Qipo compiler option, -ipo compiler option">
+<meta name="keywords" content="interprocedural optimizations, option enabling between files, /Qipo compiler option, -ipo compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ipo, Qipo</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ipo"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ipo"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ipo, Qipo</h1>
+<!--Enables interprocedural optimization between files.--><div><p>Enables interprocedural optimization between files.</p>
+
+<div class="section" id="GUID-8A45D23F-E137-4861-9A78-8758DF941485"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Interprocedural Optimization</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Optimization &gt; Enable Whole Program Optimization</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-180E2267-B2EC-410B-B968-4F3B1D087B95"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-721DE5F4-01F1-4D27-B39F-AE44474D4E53"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ipo</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">-no-ipo</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qipo</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p><p><span><span class="kwd">/Qipo-</span></span></p></td></tr></table></div>
+<div class="section" id="GUID-D7331D64-DF95-4CB4-889A-A46E3A644F24"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional integer that specifies the number of object files the compiler should create. The integer must be greater than or equal to 0.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-73DFD8C8-4260-413F-99E9-DF2F3DA78933"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-ipo</span> or <span class="option">/Qipo-</span></p></td>
+<td valign="top" class="noborder"><p>Multifile interprocedural optimization is not enabled.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-BA216D99-9EDB-433A-B98B-6FCAF67FB5F1"><h2>Description</h2><p>This option enables interprocedural optimization between files. This is also called multifile interprocedural optimization (multifile IPO) or Whole Program Optimization (WPO).</p>
+<p>When you specify this option, the compiler performs inline function expansion for calls to functions defined in separate files.</p>
+<p>You cannot specify the names for the files that are created.</p>
+<p>If <var>n</var> is 0, the compiler decides whether to create one or more object files based on an estimate of the size of the application. It generates one object file for small applications, and two or more object files for large applications.</p>
+<p>If <var>n</var> is greater than 0, the compiler generates <var>n</var> object files, unless <var>n</var> exceeds the number of source files (<var>m</var>), in which case the compiler generates only <var>m</var> object files.</p>
+<p>If you do not specify <var>n</var>, the default is 0.</p>
+</div>
+
+<div class="section" id="GUID-E29AB44B-5F01-49F5-8D88-98356A0B4062"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm">Interprocedural Optimization (IPO) Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

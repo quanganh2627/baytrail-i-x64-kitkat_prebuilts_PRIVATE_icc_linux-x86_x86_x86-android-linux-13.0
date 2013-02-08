@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Porting from GNU gcc* to Microsoft Visual C++*">
+<meta name="DC.subject" content="-diag-enable port-win compiler option, porting applications, gcc*, porting from, from GNU gcc* to Microsoft Visual C++*">
+<meta name="keywords" content="-diag-enable port-win compiler option, porting applications, gcc*, porting from, from GNU gcc* to Microsoft Visual C++*">
+<meta name="DC.Relation" scheme="URI" content="GUID-54286E58-FE02-4F8D-B280-3BA2AADB2B4D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AA02F8E7-58B0-444C-895D-66C66AF48D54">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Porting from GNU gcc* to Microsoft Visual C++*</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_porting_fromgcc"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_porting_fromgcc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AA02F8E7-58B0-444C-895D-66C66AF48D54">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Porting from GNU gcc* to Microsoft Visual C++*</h1>
+ 
+   
+  <div> 
+	 <div class="section" id="GUID-D2889B09-07C8-4375-A72C-2C739356F855"> 
+		<p>On Linux* and OS X* systems, you can use the 
+		<span class="option">-diag-enable port-win</span> option to alert you to general syntactical problems when porting an application from GNU gcc* to Microsoft Visual C++*. The following examples illustrate use of this option. 
+		</p>
+ 
+		<p><strong>Example 1:</strong> 
+		</p>
+ 
+		<pre>$ cat -n attribute.c
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 int main()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;int i __attribute__((unused));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;return 0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 } 
+$ icc -c -diag-enable port-win attribute.c 
+attribute.c(3): warning #2133: attributes are a GNU extension
+&nbsp;&nbsp;&nbsp;&nbsp;int i __attribute__((unused));</pre> 
+		<p><strong>Example 2:</strong> 
+		</p>
+ 
+		<pre>$ cat -n state_expr.c
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 int main()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;int i = ({ int j; j = 1; j--; j;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;return i;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 } 
+$ icc -c -diag-enable port-win state_expr.c 
+state_expr.c(3): warning #2132: statement expressions are a GNU extension
+&nbsp;&nbsp;&nbsp;&nbsp;int i = ({ int j; j = 1; j--; j;});</pre> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54286E58-FE02-4F8D-B280-3BA2AADB2B4D.htm">Porting Applications</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">-diag-enable port-win 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

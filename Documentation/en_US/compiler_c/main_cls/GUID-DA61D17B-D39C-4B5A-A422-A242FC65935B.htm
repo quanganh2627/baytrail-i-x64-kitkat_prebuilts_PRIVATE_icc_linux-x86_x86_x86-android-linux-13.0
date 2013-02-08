@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Reduction Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-071B49E5-0F68-49C8-B030-018E7ABFC2F1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1087D109-5C0B-41D7-8FBA-0FB30F856818.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4744429D-0DF7-4BFE-98AF-558E2D6ACEC1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-ED75A09D-4A1C-407C-BDFE-C53281BA46E3.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-70859823-421E-44FF-BE23-15CCC1FC5CE0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DE87356E-F3A5-4EF8-8655-B4112B2B8FCB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-63E81030-9055-48B5-9933-19F5215490A2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D8ABA9D0-4824-48EF-A372-1C718828F6B7.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D33AE10F-3A0B-4B9B-B125-2053C6DB9823.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1D232349-45B8-4977-AF43-0DE871DAC070.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CBD53E88-1D37-4294-8E8F-1656FFAE7C6E.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A9CF29CD-D5A3-4E31-BABA-DB96CC284EBA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7DF8A923-DBB3-4450-8EB2-6901F6D73510.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-674AF8C5-8B53-452E-B2B1-BB18C0F3F374.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2A5E4C80-5038-414E-B567-469D4FA93D02.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3216D59A-7D08-4593-BC14-AFEED1FF9D18.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3236A62-7F48-41AD-921A-E5E3405AC474.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Reduction Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_bk_red_ops"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Reduction Intrinsics</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">Vector Intrinsics</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-071B49E5-0F68-49C8-B030-018E7ABFC2F1.htm">Overview: Reduction Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-1087D109-5C0B-41D7-8FBA-0FB30F856818.htm">_mm512_reduce_add_ps/_mm512_mask_reduce_add_ps</a><br>
+Returns a float32 scalar value of an addition operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-4744429D-0DF7-4BFE-98AF-558E2D6ACEC1.htm">_mm512_reduce_add_pd/_mm512_mask_reduce_add_pd</a><br>
+Returns a float64 scalar value of an addition operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-ED75A09D-4A1C-407C-BDFE-C53281BA46E3.htm">_mm512_reduce_add_epi32/_mm512_mask_reduce_add_epi32</a><br>
+Returns an integer scalar value of an addition operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-70859823-421E-44FF-BE23-15CCC1FC5CE0.htm">_mm512_reduce_and_epi32/_mm512_mask_reduce_and_epi32</a><br>
+Returns an integer scalar value of a bitwise AND operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-DE87356E-F3A5-4EF8-8655-B4112B2B8FCB.htm">_mm512_reduce_or_epi32/_mm512_mask_reduce_or_epi32</a><br>
+Returns an integer scalar value of a bitwise OR operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-63E81030-9055-48B5-9933-19F5215490A2.htm">_mm512_reduce_[g]max_ps/_mm512_mask_reduce_[g]max_ps</a><br>
+Determines the element with maximum scalar value in a float32 vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-D8ABA9D0-4824-48EF-A372-1C718828F6B7.htm">_mm512_reduce_[g]max_pd/_mm512_mask_reduce_[g]max_pd</a><br>
+Determines the element with maximum scalar value in a float64 vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-D33AE10F-3A0B-4B9B-B125-2053C6DB9823.htm">_mm512_reduce_max_epi32/_mm512_mask_reduce_max_epi32</a><br>
+Determines the element with maximum scalar value in an integer vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-1D232349-45B8-4977-AF43-0DE871DAC070.htm">_mm512_reduce_max_epu32/_mm512_mask_reduce_max_epu32</a><br>
+Determines the element with maximum scalar value in an unsigned integer vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-CBD53E88-1D37-4294-8E8F-1656FFAE7C6E.htm">_mm512_reduce_[g]min_ps/_mm512_mask_reduce_[g]min_ps</a><br>
+Determines the element with minimum scalar value in a float32 vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-A9CF29CD-D5A3-4E31-BABA-DB96CC284EBA.htm">_mm512_reduce_[g]min_pd/_mm512_mask_reduce_[g]min_pd</a><br>
+Determines the element with minimum scalar value in a float64 vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-7DF8A923-DBB3-4450-8EB2-6901F6D73510.htm">_mm512_reduce_min_epi32/_mm512_mask_reduce_min_epi32</a><br>
+Determines the element with minimum scalar value in an integer vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-674AF8C5-8B53-452E-B2B1-BB18C0F3F374.htm">_mm512_reduce_min_epu32/_mm512_mask_reduce_min_epu32</a><br>
+Determines the element with minimum scalar value in an unsigned integer vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-2A5E4C80-5038-414E-B567-469D4FA93D02.htm">_mm512_reduce_mul_ps/_mm512_mask_reduce_mul_ps</a><br>
+Returns a float32 scalar value of a multiplication operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-3216D59A-7D08-4593-BC14-AFEED1FF9D18.htm">_mm512_reduce_mul_pd/_mm512_mask_reduce_mul_pd</a><br>
+Returns a float64 scalar value of a multiplication operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-A3236A62-7F48-41AD-921A-E5E3405AC474.htm">_mm512_reduce_mul_epi32/_mm512_mask_reduce_mul_epi32</a><br>
+Returns an integer scalar value of a multiplication operation. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+</ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="xHost, QxHost">
+<meta name="abstract" content="Tells the compiler to generate instructions for the highest instruction set available on the compilation host processor.">
+<meta name="description" content="Tells the compiler to generate instructions for the highest instruction set available on the compilation host processor.">
+<meta name="DC.subject" content="/QxHost compiler option, -xHost compiler option, code, option generating specialized">
+<meta name="keywords" content="/QxHost compiler option, -xHost compiler option, code, option generating specialized">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3">
+<meta name="DC.Relation" scheme="URI" content="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B5554896-8329-49D1-BE66-532D93DEAFFE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>xHost, QxHost</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_xhost"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_xhost"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B5554896-8329-49D1-BE66-532D93DEAFFE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">xHost, QxHost</h1>
+<!--Tells the compiler to generate instructions for the highest instruction set
+available on the compilation host processor.
+--><div><p>Tells the compiler to generate instructions for the highest instruction set
+available on the compilation host processor.
+</p>
+
+<div class="section" id="GUID-D61F6C09-6A07-4AD8-A58A-34761918463B"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Code Generation &gt; Intel Processor-Specific Optimization</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Code Generation &gt; Intel Processor-Specific Optimization</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Code Generation &gt; Intel Processor-Specific Optimization</strong></p>
+</div>
+<div class="section" id="GUID-D83371AD-5153-495B-B8D9-CDC46025BD86"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-5AF13FC8-FC62-4FA9-B437-3B9754DC33AE"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-xHost</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/QxHost</span></p></td></tr></table></div>
+<div class="section" id="GUID-E5F67483-A510-448A-880F-6B1ABD695A86"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-5308FC84-3490-4248-99EC-5CE755984326"><h2>Default</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p>Windows* systems: None<br>Linux* systems: None<br>OS X* systems using IA-32 architecture: <span class="option">-xSSE3</span><br>OS X* systems using Intel&reg; 64 architecture: <span class="option">-xSSSE3</span></p></td>
+<td valign="top" class="noborder"><p> On Windows systems, if neither <span class="option">/Qx</span> nor <span class="option">/arch</span> is specified, the
+default is <span class="option">/arch:SSE2</span>.</p>
+
+<p> On Linux systems, if neither <span class="option">-x</span> nor <span class="option">-m</span> is specified, the default
+is <span class="option">-msse2</span>.</p>
+
+</td>
+</tr></table>
+
+</div>
+
+<div class="section" id="GUID-4B856DCC-FC6B-47FE-97D8-9B48EA371660"><h2>Description</h2><p>This option tells the compiler to generate instructions for the highest instruction set
+available on the compilation host processor.
+</p>
+<p> The instructions generated by this compiler option differ
+depending on the compilation host processor. </p>
+<p>The following table
+describes the effects of specifying  the <span class="option">-xHost</span> (Linux* OS and OS X*) or <span class="option">/QxHost</span> (Windows* OS) option and it tells whether the
+resulting executable will run on processors different from the host
+processor.</p>
+
+<p> Descriptions in the table refer to Intel&reg; Advanced Vector Extensions 2 (Intel&reg; AVX2), Intel&reg;
+Advanced Vector Extensions (Intel&reg; AVX), Intel&reg; Streaming SIMD
+Extensions (Intel&reg; SSE), and Supplemental Streaming SIMD
+Extensions (SSSE).</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-411B0C85-A4FD-4B66-9FB5-639562624620" frame="void" border="1" rules="none" cellspacing="2">
+<thead align="left">
+<tr>
+<th class="noborder" valign="top" width="20%" id="d601580e140"><p>Instruction Set of Host Processor</p>
+</th>
+
+<th class="noborder" valign="top" width="80%" id="d601580e144"><p>Effects When the -xHost or /QxHost Compiler Option is Specified</p>
+
+
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p>Intel&reg; AVX2</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors:</p>
+<p>                                                Corresponds to option <span class="option">-xCORE-AVX2</span> (Linux* OS and OS X*) or <span class="option">/QxCORE-AVX2</span> (Windows* OS). The generated executable will not run on non-Intel processors and it will not run on Intel&reg; processors that do not support Intel&reg; AVX2 instructions.</p>
+
+<p>When compiling on non-Intel processors:</p>
+
+<p> Corresponds to option <span class="option">-march=core-avx2</span> (Linux OS and OS X) or <span class="option">/arch:CORE-AVX2</span> (Windows OS). The 
+generated executable will run on Intel&reg; processors and non-Intel processors that 
+support at least Intel&reg; AVX2 instructions..  You may see a run-time error if the run-time processor does not 
+support Intel&reg; AVX2 instructions.</p>
+</td>
+
+</tr>
+
+
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p>Intel&reg; AVX</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors:</p>
+<p>                                                Corresponds to option <span class="option">-xAVX</span> (Linux* OS and OS X*) or <span class="option">/QxAVX</span> (Windows* OS). The generated executable will not run on non-Intel processors and it will not run on Intel&reg; processors that do not support Intel&reg; AVX instructions.</p>
+
+<p>When compiling on non-Intel processors:</p>
+
+<p>Corresponds to option <span class="option">-mavx</span> (Linux OS and OS X) or <span class="option">/arch:AVX</span> (Windows OS). The 
+generated executable will run on Intel&reg; processors and non-Intel processors that 
+support at least Intel&reg; AVX instructions.  You may see a run-time error if the run-time processor does not 
+support Intel&reg; AVX instructions.</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p> Intel&reg; SSE4.2</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors:
+</p>
+<p>Corresponds to option <span class="option">-xSSE4.2</span> (Linux* OS and OS X*) or <span class="option">/QxSSE4.2</span>
+(Windows* OS). The generated executable will not run on non-Intel processors and
+it will not run on Intel&reg; processors that do not support Intel&reg;
+SSE4.2 instructions.</p>
+
+<p>When compiling on non-Intel processors:</p>
+<p>Corresponds to option <span class="option">-msse4.2</span> (Linux OS and OS X) or <span class="option">/arch:SSE4.2</span>
+(Windows OS). The generated executable will run on Intel&reg; processors and
+non-Intel processors that support at least Intel&reg;
+SSE4.2 instructions. You may see a run-time
+error if the run-time processor does not support Intel&reg; SSE4.2 instructions.</p>
+
+</td>
+
+</tr>
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p> Intel&reg; SSE4.1</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors:
+</p>
+<p>Corresponds to option <span class="option">-xSSE4.1</span> (Linux* OS and OS X*) or <span class="option">/QxSSE4.1</span>
+(Windows* OS). The generated executable will not run on non-Intel processors and
+it will not run on Intel&reg; processors that do not support Intel&reg;
+SSE4.1 instructions.</p>
+
+<p>When compiling on non-Intel processors:</p>
+<p>Corresponds to option <span class="option">-msse4.1</span> (Linux OS and OS X) or <span class="option">/arch:SSE4.1</span>
+(Windows OS). The generated executable will run on Intel&reg; processors and
+non-Intel processors that support at least Intel&reg;
+SSE4.1 instructions. You may see a run-time
+error if the run-time processor does not support Intel&reg; SSE4.1
+instructions.</p>
+
+</td>
+
+</tr>
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p> SSSE3</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors:
+</p>
+<p>Corresponds to option <span class="option">-xSSSE3</span> (Linux* OS and OS X*) or <span class="option">/QxSSSE3</span>
+(Windows* OS). The generated executable will not run on non-Intel processors and
+it will not run on Intel&reg; processors that do not support SSSE3 instructions.</p>
+
+<p>When compiling on non-Intel processors:</p>
+<p>Corresponds to option <span class="option">-mssse3</span> (Linux OS and OS X) or <span class="option">/arch:SSSE3</span>
+(Windows OS). The generated  executable will run on Intel&reg; processors and
+non-Intel processors that support at least SSSE3 instructions. You may see a run-time
+error if the run-time processor does not support SSSE3
+instructions.</p>
+
+</td>
+
+</tr>
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p> Intel&reg; SSE3</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors:
+</p>
+<p>Corresponds to option <span class="option">-xSSE3</span> (Linux* OS and OS X*) or <span class="option">/QxSSE3</span>
+(Windows* OS). The generated executable will not run on non-Intel processors and
+it will not run on Intel&reg; processors that do not support Intel&reg;
+SSE3 instructions.</p>
+
+<p>When compiling on non-Intel processors:</p>
+<p>Corresponds to option <span class="option">-msse3</span> (Linux OS and OS X) or <span class="option">/arch:SSE3</span>
+(Windows OS). The generated executable will run on Intel&reg; processors and
+non-Intel processors that support at least Intel&reg;
+SSE3 instructions. You may see a warning run-time error if the run-time processor does not
+support Intel&reg; SSE3 instructions.</p>
+
+</td>
+
+</tr>
+
+<tr>
+<td class="noborder" valign="top" width="20%" headers="d601580e140 "><p>Intel&reg; SSE2</p>
+</td>
+
+<td class="noborder" valign="top" width="80%" headers="d601580e144 "><p>When compiling on Intel&reg; processors or non-Intel processors:
+</p>
+<p>Corresponds to option <span class="option">-msse2</span> (Linux* OS and OS X*) or <span class="option">/arch:SSE2</span>
+(Windows* OS). The generated executable will run on Intel&reg; processors and
+non-Intel processors that support at least Intel&reg;
+SSE2 instructions. You may see a run-time
+error if the run-time processor does not support Intel&reg; SSE2
+instructions.</p>
+
+
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p> For more information on other settings for option <span class="option">-x</span> (Linux* OS and OS X*) and <span class="option">/Qx</span> (Windows* OS), see that option description.</p>
+<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d601580e381"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d601580e381 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+
+</div>
+
+<div class="section" id="GUID-E9E9B113-7688-4537-8A73-36768C22A7C0"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">x</span>, <span class="option">Qx</span></a>  compiler option</div>
+<div><a href="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D"><span class="option">ax</span>, <span class="option">Qax</span></a>  compiler option</div>
+<div><a href="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3"><span class="option">m</span></a>  compiler option</div>
+<div><a href="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61"><span class="option">arch</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

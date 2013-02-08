@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prof-src-dir, Qprof-src-dir">
+<meta name="abstract" content="Determines whether directory information of the source file under compilation is considered when looking up profile data records.">
+<meta name="description" content="Determines whether directory information of the source file under compilation is considered when looking up profile data records.">
+<meta name="DC.subject" content="/Qprof-src-dir compiler option, -prof-src-dir compiler option, profile data records, option affecting search for">
+<meta name="keywords" content="/Qprof-src-dir compiler option, -prof-src-dir compiler option, profile data records, option affecting search for">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1727138-6AD9-4AC8-80F0-F27A377B9C99.htm#GUID-E1727138-6AD9-4AC8-80F0-F27A377B9C99">
+<meta name="DC.Relation" scheme="URI" content="GUID-B862A6C9-D034-4F59-88C4-75EB9763A4E3.htm#GUID-B862A6C9-D034-4F59-88C4-75EB9763A4E3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7A4AD6A9-AC6A-43AF-A8E2-08BB10FEC685">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prof-src-dir, Qprof-src-dir</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_prof_src_dir"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_prof_src_dir"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7A4AD6A9-AC6A-43AF-A8E2-08BB10FEC685">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">prof-src-dir, Qprof-src-dir</h1>
+<!--Determines whether directory information of the source file under compilation is considered when looking up profile data records.--><div><p>Determines whether directory information of the source file under compilation is considered when looking up profile data records.</p>
+
+<div class="section" id="GUID-D1E23CC0-EEBE-45A5-9968-5404EC903FCA"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-908B8994-F7BA-4A71-855E-875520AC7FCD"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-E00E8DB1-C36E-47B3-88A9-7D11C7BE811B"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-prof-src-dir</span></p><p><span><span class="kwd">-no-prof-src-dir</span></span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprof-src-dir</span></p><p><span><span class="kwd">/Qprof-src-dir-</span></span></p></td></tr></table></div>
+<div class="section" id="GUID-4C7DA0CB-616D-4C78-A889-BD93D6A95875"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-3CE509AB-7DE6-47C7-BB40-2B4BCC415C89"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> <span class="option">-prof-src-dir</span><br><span> or<span class="option">/Qprof-src-dir</span></span></p></td>
+<td valign="top" class="noborder"><p>Directory information is used when looking up profile data records in the .dpi file.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6DF4916D-97C8-4CAE-841E-D8A92FFCD2FF"><h2>Description</h2><p>This option determines whether directory information of the source file under compilation is considered when looking up profile data records in the .dpi file. To use this option, you must also specify option <span class="option">-prof-use</span> (Linux* OS and OS X*) or <span class="option">/Qprof-use</span> (Windows* OS). </p>
+<p>If the option is enabled, directory information is considered when looking up the profile data records within the .dpi file. You can specify directory information by using one of the following options:</p>
+<ul type="disc" id="GUID-858C052D-A9C1-4E22-A6BD-9AFED32D1D24"><li><p>Linux and OS X:  <span class="option">-prof-src-root</span> or  <span class="option">-prof-src-root-cwd</span></p>
+</li>
+<li><p>Windows:  <span class="option">/Qprof-src-root</span> or <span class="option">/Qprof-src-root-cwd</span></p>
+</li>
+</ul>
+<p>If the option is disabled, directory information is ignored and only the name of the file is used to find the profile data record.</p>
+<p>Note that options <span class="option">-prof-src-dir</span> (Linux OS and OS X) and <span class="option">/Qprof-src-dir</span> (Windows OS) control how the names of the user's source files get represented within the .dyn or .dpi files.  Options <span class="option">-prof-dir</span> (Linux OS and OS X) and <span class="option">/Qprof-dir</span> (Windows OS) specify the location of the .dyn or the .dpi files.</p>
+</div>
+
+<div class="section" id="GUID-E2C0EDA1-0FE3-45BB-930E-481C62CAC0E6"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407"><span class="option"> prof-use, Qprof-use</span></a>  compiler option</div>
+<div><a href="GUID-E1727138-6AD9-4AC8-80F0-F27A377B9C99.htm#GUID-E1727138-6AD9-4AC8-80F0-F27A377B9C99"><span class="option"> prof-src-root, Qprof-src-root</span></a> compiler option</div>
+<div><a href="GUID-B862A6C9-D034-4F59-88C4-75EB9763A4E3.htm#GUID-B862A6C9-D034-4F59-88C4-75EB9763A4E3"><span class="option"> prof-src-root-cwd, Qprof-src-root-cwd</span></a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

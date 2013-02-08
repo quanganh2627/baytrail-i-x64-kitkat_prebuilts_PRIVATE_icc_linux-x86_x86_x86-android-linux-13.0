@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="EP">
+<meta name="abstract" content="Causes the preprocessor to send output to stdout, omitting #line directives.">
+<meta name="description" content="Causes the preprocessor to send output to stdout, omitting #line directives.">
+<meta name="DC.subject" content="/EP compiler option, -EP compiler option">
+<meta name="keywords" content="/EP compiler option, -EP compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-3C8AB042-5B7B-46C5-95AE-A30F2B536FE0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0F85D7F1-235B-4C26-84F3-A6F14A39D835">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>EP</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ep_ucase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ep_ucase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0F85D7F1-235B-4C26-84F3-A6F14A39D835">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">EP</h1>
+<!--Causes the preprocessor to send output to stdout, omitting #line directives.--><div><p>Causes the preprocessor to send output to stdout, omitting #line directives.</p>
+
+<div class="section" id="GUID-1E4ACAF2-5566-4F4F-B1DB-8B58ABEA3C82"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Preprocessor &gt; Preprocess Suppress Line Numbers</strong> (VS 2010)</p>
+
+	<p class="ide">Linux: 
+								None</p>
+
+	<p class="ide">OS X: 
+								None</p>
+
+</div>
+<div class="section" id="GUID-09FD9F84-0851-414F-A2C5-76E8828BA5C2"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-52B34E97-10D7-4B14-998B-DD26313A9C2A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-EP</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/EP</span></p></td></tr></table></div>
+<div class="section" id="GUID-BB43B64B-FF6A-4ADC-BA8D-D3ADEF83BA72"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-E0F715C6-B971-4169-9C4B-151DF39B73E9"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Preprocessed source files are output to the compiler.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-7C6F4AB6-68CF-4332-986B-8B4EAFA34E47"><h2>Description</h2><p>This option causes the preprocessor to send output to <span class="keyword">stdout</span>, omitting #line directives. </p>
+<p>If you also specify option <span class="option">P</span> or <span>Linux* OS </span>option <span class="option">F</span>, the preprocessor will write the results (without #line directives) to a file instead of <span class="keyword">stdout</span>.</p>
+</div>
+
+<div class="section" id="GUID-D6FA830D-5975-4845-9C3C-1E84C7F03AA4"><h2>Alternate Options</h2><p>None</p>
+</div>
+<div class="example" id="EXAMPLE_AF3A106E24E444C98303F550420405CB"><a name="EXAMPLE_AF3A106E24E444C98303F550420405CB"><!-- --></a><h2>Example</h2><p>To preprocess to 
+
+<span class="keyword">stdout</span> omitting 
+
+ #line
+
+directives, enter the following command:
+</p>
+<p>On Windows* systems:</p>
+<pre>icl /EP prog1.cpp prog2.cpp</pre><p>On Linux* and OS X* systems:</p>
+<pre>icpc -EP prog1.cpp prog2.cpp</pre></div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3C8AB042-5B7B-46C5-95AE-A30F2B536FE0.htm">Preprocessor Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

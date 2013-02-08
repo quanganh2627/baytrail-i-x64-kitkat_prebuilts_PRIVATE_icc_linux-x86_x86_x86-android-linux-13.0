@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30759)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30759">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30759">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1564ADA1-2A18-4BEC-A62D-2A708BC7E9F8.htm#GUID-1564ADA1-2A18-4BEC-A62D-2A708BC7E9F8">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-509443C8-9F74-4C37-B43D-2C74F5631F2B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30759)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30759"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30759"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-509443C8-9F74-4C37-B43D-2C74F5631F2B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30759)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-080D6DA0-57DD-45D0-8406-17BC8F4960B2"><h2 class="sectiontitle">Message</h2><p>Remove unused field(s) '%s' from the struct '%s'. The fields: '%s' were conservatively assumed by the compiler as referenced since their address is taken. </p>
+<p>This message is emitted only with whole-program recognition.</p>
+</div>
+
+
+<div class="section" id="GUID-5D5F4A91-DFCA-45A2-B865-08B2CF4D2EFB"><h2 class="sectiontitle">Advice</h2>
+<p>Some unused fields were seen in a class or structure type. If the unused fields can be removed from the structure definition, it will lead to reduced memory usage and better cache utilization since the cache will no longer be filled with unused data.</p>
+<p>You must verify that the fields that are reported as unused are not accessed elsewhere in the application. You also need to be careful when removing unused fields if the code relies on the structure fields to be laid out in a specific order. For example, if the application code uses the address of a field to access other fields, it may stop working once unused fields are removed. Note that such code is not considered valid in the first place.</p>
+
+<p>The unused field analysis considers address taken fields as used. It will report address taken fields also when reporting any unused fields.</p>
+</div>
+
+
+<div class="section" id="GUID-199D69D4-B0C0-4B9E-92B5-1547C67BE6F7"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>//unused_field_3.c</pre>
+<pre>struct str {</pre>
+<pre>    int a1, b1, c1, d1, e1, f1;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>struct str sp[1000000];</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func1() {</pre>
+<pre>    int i, ret = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret += sp[i].b1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func2() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret -= sp[i].c1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int *gip;</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func3() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].d1;</pre>
+<pre>    }</pre>
+<pre>&nbsp;</pre>
+<pre>    gip = &amp;(sp-&gt;f1);</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int main()</pre>
+<pre>{</pre>
+<pre>    hot_func1();</pre>
+<pre>    hot_func2();</pre>
+<pre>    hot_func3();</pre>
+<pre>}</pre>
+</div>
+
+
+
+
+<p>The above code will cause a message to be displayed that is similar to the following:</p>
+<p>program-name: remark #30759: (DTRANS) Remove unused field(s) 'e1' from the struct 'str'. The fields: 'f1' were conservatively assumed by the compiler as referenced since their address is taken... (etc.)</p>
+<p>In this case, if the unused fields can be removed, the only source change needed would be the following:</p>
+<pre>//unused_field_3.c</pre><pre>struct str {</pre><pre>    int a1, b1, c1, d1, f1;</pre><pre>};</pre><pre>...</pre><div class="section" id="GUID-BF52D011-C5BB-4BC6-AA42-753CCE2C7A4F"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the restructured code satisfies the original program semantics.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-1564ADA1-2A18-4BEC-A62D-2A708BC7E9F8.htm#GUID-1564ADA1-2A18-4BEC-A62D-2A708BC7E9F8">GAP Message (Diagnostic ID 30760)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

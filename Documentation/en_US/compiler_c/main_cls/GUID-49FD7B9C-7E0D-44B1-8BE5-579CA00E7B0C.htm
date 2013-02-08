@@ -1,0 +1,1479 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Conditional Select Operators for Fvec Classes">
+<meta name="DC.subject" content="Class Libraries, floating-point vector classes, conditional select operators">
+<meta name="keywords" content="Class Libraries, floating-point vector classes, conditional select operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-49FD7B9C-7E0D-44B1-8BE5-579CA00E7B0C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Conditional Select Operators for Fvec Classes</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_fp_cond"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-49FD7B9C-7E0D-44B1-8BE5-579CA00E7B0C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Conditional Select Operators for Fvec Classes</h1>
+ 
+   
+  <div> 
+    <p>Each conditional function compares single-precision floating-point values of A and B. The C and D parameters are used for return value. Comparison between objects of any Fvec class returns the same class. 
+    </p>
+ 
+    <div class="section" id="GUID-877C4B1B-DF68-4640-ABD6-9AFD5C80E279"><h2 class="sectiontitle">Conditional Select Operators for Fvec Classes</h2> 
+       
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BBB24BFA-5023-4F47-AB16-AE99C031D225" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d230472e56"> 
+                <p>Conditional Select for: 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d230472e62"> 
+                <p>Operators 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="34%" id="d230472e68"> 
+                <p>Syntax 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_eq</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_eq(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Inequality 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_neq</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_neq(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_gt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_gt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Greater Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_ge</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_ge(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Not Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_gt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_gt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Not Greater Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_ge</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_ge(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_lt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_lt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Less Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_le</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_le(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Not Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_nlt</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_nlt(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e56 "> 
+                <p>Not Less Than or Equal To 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e62 "> 
+                <p><span class="keyword">select_nle</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e68 "> 
+                <p><samp class="codeph">R = select_nle(A, B)</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-807DBF58-49F6-4552-87F3-E3946B1BA6C1"><h2 class="sectiontitle">Conditional Select Operator Usage</h2> 
+       
+      <p>For conditional select operators, the return value is stored in C if the comparison is true or in D if false. The following table shows the return values for each class of the conditional select operators, using the 
+        <a href="GUID-7CC06992-B292-4B88-8801-5B6D365DF4E0.htm#GUID-7CC06992-B292-4B88-8801-5B6D365DF4E0">Return Value Notation</a> described earlier. 
+      </p>
+ 
+      <p><strong>Compare Operator Return Value Mapping</strong> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-09D7ED31-4F86-4CAF-A9C8-5A5DFB3657D2" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+           
+           
+           
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e377"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e383"> 
+                <p>A0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="36%" id="d230472e389"> 
+                <p>Operators 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e395"> 
+                <p>B 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e401"> 
+                <p>C 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e408"> 
+                <p>D 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e414"> 
+                <p>F32vec4 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e420"> 
+                <p>F64vec2 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="8%" id="d230472e426"> 
+                <p>F32vec1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e377 "> 
+                <p><samp class="codeph">R0:=</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e383 "> 
+                <p><samp class="codeph"><samp class="codeph">(A1</samp></samp><br><samp class="codeph">!(A1</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="36%" headers="d230472e389 "> 
+                <p><samp class="codeph">select_[eq | lt | le | gt | ge]</samp><br><samp class="codeph">select_[ne | nlt | nle | ngt | nge]</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e395 "> 
+                <p><samp class="codeph">B0)</samp><br><samp class="codeph">B0)</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e401 "> 
+                <p><samp class="codeph">C0</samp><br><samp class="codeph">C0</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e408 "> 
+                <p><samp class="codeph">D0</samp><br><samp class="codeph">D0</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e414 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e420 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e426 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e377 "> 
+                <p><samp class="codeph">R1:=</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e383 "> 
+                <p><samp class="codeph">(A2</samp><br><samp class="codeph">!(A2</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="36%" headers="d230472e389 "> 
+                <p><samp class="codeph">select_[eq | lt | le | gt | ge]</samp><br><samp class="codeph">select_[ne | nlt | nle | ngt | nge]</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e395 "> 
+                <p><samp class="codeph">B1)</samp><br><samp class="codeph">B1)</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e401 "> 
+                <p><samp class="codeph">C1</samp><br><samp class="codeph">C1</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e408 "> 
+                <p><samp class="codeph">D1</samp><br><samp class="codeph">D1</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e414 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e420 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e426 "> 
+                <p><samp class="codeph">N/A</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e377 "> 
+                <p><samp class="codeph">R2:=</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e383 "> 
+                <p><samp class="codeph">(A2</samp><br><samp class="codeph">!(A2</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="36%" headers="d230472e389 "> 
+                <p><samp class="codeph">select_[eq | lt | le | gt | ge]</samp><br><samp class="codeph">select_[ne | nlt | nle | ngt | nge]</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e395 "> 
+                <p><samp class="codeph">B2)</samp><br><samp class="codeph">B2)</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e401 "> 
+                <p><samp class="codeph">C2</samp><br><samp class="codeph">C2</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e408 "> 
+                <p><samp class="codeph">D2</samp><br><samp class="codeph">D2</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e414 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e420 "> 
+                <p><samp class="codeph">N/A</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e426 "> 
+                <p><samp class="codeph">N/A</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e377 "> 
+                <p><samp class="codeph">R3:=</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e383 "> 
+                <p><samp class="codeph">(A3</samp><br><samp class="codeph">!(A3</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="36%" headers="d230472e389 "> 
+                <p><samp class="codeph">select_[eq | lt | le | gt | ge]</samp><br><samp class="codeph">select_[ne | nlt | nle | ngt | nge]</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e395 "> 
+                <p><samp class="codeph">B3)</samp><br><samp class="codeph">B3)</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e401 "> 
+                <p><samp class="codeph">C3</samp><br><samp class="codeph">C3</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e408 "> 
+                <p><samp class="codeph">D3</samp><br><samp class="codeph">D3</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e414 "> 
+                <p><samp class="codeph">X</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e420 "> 
+                <p><samp class="codeph">N/A</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="8%" headers="d230472e426 "> 
+                <p><samp class="codeph">N/A</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-81C6C17F-2EE5-4786-92C6-0D3203DA4F85"> 
+      <p></p>
+ 
+      <p>The following table shows examples for conditional select operations and corresponding intrinsics. 
+      </p>
+ 
+      <p><strong>Conditional Select Operations for Fvec Classes</strong> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-810B04A4-60D1-454D-A1AF-0D16341062A4" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d230472e831"> 
+                <p>Returns 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d230472e837"> 
+                <p>Example Syntax Usage 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="34%" id="d230472e843"> 
+                <p>Intrinsic 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e852">Compare for Equality 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e831 d230472e852 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e837 d230472e852 "> 
+                <p><samp class="codeph">F32vec4 R = select_eq(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e843 d230472e852 "> 
+                <p><span class="option">_mm_cmpeq_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e831 d230472e852 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e837 d230472e852 "> 
+                <p><samp class="codeph">F64vec2 R = select_eq(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e843 d230472e852 "> 
+                <p><span class="option">_mm_cmpeq_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e831 d230472e852 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e837 d230472e852 "> 
+                <p><samp class="codeph">F32vec1 R = select_eq(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e843 d230472e852 "> 
+                <p><span class="option">_mm_cmpeq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C82918B1-E637-4D7D-B29C-5EEFD98344FA" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e951">Compare for Inequality 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e951 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e951 "> 
+                <p><samp class="codeph">F32vec4 R = select_neq(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e951 "> 
+                <p><span class="option">_mm_cmpneq_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e951 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e951 "> 
+                <p><samp class="codeph">F64vec2 R = select_neq(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e951 "> 
+                <p><span class="option">_mm_cmpneq_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e951 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e951 "> 
+                <p><samp class="codeph">F32vec1 R = select_neq(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e951 "> 
+                <p><span class="option">_mm_cmpneq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F71C6004-4ECB-4ED1-AB8D-3AB4A1D1782C" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1051">Compare for Less Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1051 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1051 "> 
+                <p><samp class="codeph">F32vec4 R = select_lt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1051 "> 
+                <p><span class="option">_mm_cmplt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1051 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1051 "> 
+                <p><samp class="codeph">F64vec2 R = select_lt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1051 "> 
+                <p><span class="option">_mm_cmplt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1051 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1051 "> 
+                <p><samp class="codeph">F32vec1 R = select_lt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1051 "> 
+                <p><span class="option">_mm_cmplt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F3453C39-78DB-49C0-820B-92325BBDC57B" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1150">Compare for Less Than or Equal 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1150 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1150 "> 
+                <p><samp class="codeph">F32vec4 R = select_le(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1150 "> 
+                <p><span class="option">_mm_cmple_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1150 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1150 "> 
+                <p><samp class="codeph">F64vec2 R = select_le(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1150 "> 
+                <p><span class="option">_mm_cmple_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1150 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1150 "> 
+                <p><samp class="codeph">F32vec1 R = select_le(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1150 "> 
+                <p><span class="option">_mm_cmple_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FF51304B-05D7-4A5C-8052-38D4DD31ECAA" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1249">Compare for Greater Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1249 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1249 "> 
+                <p><samp class="codeph">F32vec4 R = select_gt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1249 "> 
+                <p><span class="option">_mm_cmpgt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1249 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1249 "> 
+                <p><samp class="codeph">F64vec2 R = select_gt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1249 "> 
+                <p><span class="option">_mm_cmpgt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1249 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1249 "> 
+                <p><samp class="codeph">F32vec1 R = select_gt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1249 "> 
+                <p><span class="option">_mm_cmpgt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1501660D-0277-47D6-8239-0E3BF575DE12" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1348">Compare for Greater Than or Equal To 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1348 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1348 "> 
+                <p><samp class="codeph">F32vec1 R = select_ge(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1348 "> 
+                <p><span class="option">_mm_cmpge_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1348 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1348 "> 
+                <p><samp class="codeph">F64vec2 R = select_ge(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1348 "> 
+                <p><span class="option">_mm_cmpge_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1348 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1348 "> 
+                <p><samp class="codeph">F32vec1 R = select_ge(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1348 "> 
+                <p><span class="option">_mm_cmpge_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-269439E9-8320-44B6-9FFD-F5123431FD1D" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1447">Compare for Not Less Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1447 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1447 "> 
+                <p><samp class="codeph">F32vec1 R = select_nlt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1447 "> 
+                <p><span class="option">_mm_cmpnlt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1447 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1447 "> 
+                <p><samp class="codeph">F64vec2 R = select_nlt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1447 "> 
+                <p><span class="option">_mm_cmpnlt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1447 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1447 "> 
+                <p><samp class="codeph">F32vec1 R = select_nlt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1447 "> 
+                <p><span class="option">_mm_cmpnlt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5129F4A5-2BB4-4F0C-B723-AC1BC3560030" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1546">Compare for Not Less Than or Equal 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1546 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1546 "> 
+                <p><samp class="codeph">F32vec1 R = select_nle(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1546 "> 
+                <p><span class="option">_mm_cmpnle_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1546 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1546 "> 
+                <p><samp class="codeph">F64vec2 R = select_nle(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1546 "> 
+                <p><span class="option">_mm_cmpnle_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1546 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1546 "> 
+                <p><samp class="codeph">F32vec1 R = select_nle(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1546 "> 
+                <p><span class="option">_mm_cmpnle_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C2B6CDDC-C7E6-4CB8-B6DF-ED2BB28DE874" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1646">Compare for Not Greater Than 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1646 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1646 "> 
+                <p><samp class="codeph">F32vec1 R = select_ngt(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1646 "> 
+                <p><span class="option">_mm_cmpngt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1646 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1646 "> 
+                <p><samp class="codeph">F64vec2 R = select_ngt(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1646 "> 
+                <p><span class="option">_mm_cmpngt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1646 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1646 "> 
+                <p><samp class="codeph">F32vec1 R = select_ngt(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1646 "> 
+                <p><span class="option">_mm_cmpngt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BA804EB0-4C05-4F4F-B955-84F5A7A059D8" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d230472e1745">Compare for Not Greater Than or Equal 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1745 "> 
+                <p>4 floats 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1745 "> 
+                <p><samp class="codeph">F32vec1 R = select_nge(F32vec4 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1745 "> 
+                <p><span class="option">_mm_cmpnge_ps</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1745 "> 
+                <p>2 doubles 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1745 "> 
+                <p><samp class="codeph">F64vec2 R = select_nge(F64vec2 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1745 "> 
+                <p><span class="option">_mm_cmpnge_pd</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1745 "> 
+                <p>1 float 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d230472e1745 "> 
+                <p><samp class="codeph">F32vec1 R = select_nge(F32vec1 A);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d230472e1745 "> 
+                <p><span class="option">_mm_cmpnge_ss</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">Floating-point Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

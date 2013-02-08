@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_inserti128_si256">
+<meta name="abstract" content="Inserts 128-bits of packed integer data of the second source vector into the destination vector at a 128-bit offset from imm8[0]. The corresponding AVX2 instruction is VINSERTI128.">
+<meta name="description" content="Inserts 128-bits of packed integer data of the second source vector into the destination vector at a 128-bit offset from imm8[0]. The corresponding AVX2 instruction is VINSERTI128.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, insert and extract operations, _mm256_inserti128_si256 (VINSERTI128)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, insert and extract operations, _mm256_inserti128_si256 (VINSERTI128)">
+<meta name="DC.Relation" scheme="URI" content="GUID-52AD7A9F-A501-4095-95BF-6CF61F496AED.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F6A1A3EA-9C11-453D-A58D-3D2B82CB4993">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_inserti128_si256</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_inserti"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F6A1A3EA-9C11-453D-A58D-3D2B82CB4993">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_inserti128_si256 </span></h1>
+
+
+<!--Inserts  128-bits of packed integer data of the second source vector into the destination vector at a 128-bit offset from imm8[0]. The corresponding AVX2 instruction is  VINSERTI128 .--><div><p>Inserts  128-bits of packed integer data of the second source vector into the destination vector at a 128-bit offset from imm8[0]. The corresponding AVX2 instruction is <span class="option">VINSERTI128</span>.</p>
+
+
+<div class="section" id="GUID-233A6492-0325-40B3-A9B7-8BF56833A7E6"><h2>Syntax</h2>
+  
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_inserti128_si256(__m256i a, __m128i b, const int mask);</span></p></td></tr></table>
+  
+</div>
+
+
+<div class="section" id="GUID-4D52DDF5-B51C-406C-94A6-F62F96F1DA52"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p>  <var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector
+</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector
+</p>
+</td>
+
+    </tr>
+	<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer constant specifying offset</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-05C012EE-B140-409E-87A0-92B05C12EA7F"><h2>Description</h2>
+<p>Inserts 128-bits of packed integer data from the second source operand (third operand) into the destination operand (first operand) at a 128-bit offset from <samp class="codeph">imm8[0]</samp>. The remaining portions of the destination are written by the corresponding fields of the first source operand (second operand). The high 7 bits of the immediate are ignored.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-1DA2B1A8-ADC0-4A7A-A4BF-5604DA209932"><h2>Returns</h2><p></p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-52AD7A9F-A501-4095-95BF-6CF61F496AED.htm">Intrinsics for Insert/Extract Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

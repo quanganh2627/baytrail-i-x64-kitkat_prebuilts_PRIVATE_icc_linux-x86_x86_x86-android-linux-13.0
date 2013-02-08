@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fminshared">
+<meta name="abstract" content="Specifies that a compilation unit is a component of a main program and should not be linked as part of a shareable object.">
+<meta name="description" content="Specifies that a compilation unit is a component of a main program and should not be linked as part of a shareable object.">
+<meta name="DC.subject" content="compilation units, option to prevent linking as shareable object, -fminshared compiler option">
+<meta name="keywords" content="compilation units, option to prevent linking as shareable object, -fminshared compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0CFCA71F-5E5A-49F8-B98A-F4852E585AD8.htm#GUID-0CFCA71F-5E5A-49F8-B98A-F4852E585AD8">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AA9A457E-7864-4F54-A36F-ED591B53EF41">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fminshared</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fminshared"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fminshared"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AA9A457E-7864-4F54-A36F-ED591B53EF41">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fminshared</h1>
+<!--Specifies that a compilation unit is a component of a main program and should not be linked as part of a shareable object.--><div><p>Specifies that a compilation unit is a component of a main program and should not be linked as part of a shareable object.</p>
+
+<div class="section" id="GUID-5F0CBE83-5403-48A3-888A-4C6F4646BFB1"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-53DDE692-F3CC-4025-A01A-38F55EB4EB42"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-B2B709BE-0D87-4BA2-AFD0-F2C243AF215B"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fminshared</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-1568E152-650E-4893-B6E5-E3E830DDEFF6"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-B203F695-6B46-4956-B2D5-F91C7CCB4036"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Source files are compiled together to form a single object file.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-1015FBAB-626B-422B-97DC-A9D0A70ADF17"><h2>Description</h2><p>This option specifies that a compilation unit is a component of a main program and should not be linked as part of a shareable object.</p>
+<p>This option allows the compiler to optimize references to defined symbols without special visibility settings. To ensure that external and common symbol references are optimized, you need to specify visibility hidden or protected by using the <span class="option">-fvisibility</span>, <span class="option">-fvisibility-hidden</span>, or <span class="option">-fvisibility-protected</span> option.</p>
+<p>Also, the compiler does not need to generate position-independent code for the main program. It can use absolute addressing, which may reduce the size of the global offset table (GOT) and may reduce memory traffic.</p>
+</div>
+
+<div class="section" id="GUID-F6CA65B6-4433-4B5D-8949-89D60E8604D2"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-0CFCA71F-5E5A-49F8-B98A-F4852E585AD8.htm#GUID-0CFCA71F-5E5A-49F8-B98A-F4852E585AD8"><span class="option">fvisibility</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

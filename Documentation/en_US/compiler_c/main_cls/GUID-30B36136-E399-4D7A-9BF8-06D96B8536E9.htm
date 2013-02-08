@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="unroll/nounroll">
+<meta name="abstract" content="Indicates to the compiler to unroll or not to unroll a counted loop.">
+<meta name="description" content="Indicates to the compiler to unroll or not to unroll a counted loop.">
+<meta name="DC.subject" content="pragma unroll, pragma nounroll">
+<meta name="keywords" content="pragma unroll, pragma nounroll">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-30B36136-E399-4D7A-9BF8-06D96B8536E9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>unroll/nounroll</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_unroll_nounroll"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-30B36136-E399-4D7A-9BF8-06D96B8536E9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>unroll/nounroll</span></h1>
+
+<!--Indicates to the compiler to unroll or not to unroll a counted loop.-->
+<div><p>Indicates to the compiler to unroll or not to unroll a counted loop.</p>
+
+<div class="section" id="GUID-6A71235E-071B-42ED-9ADC-F59A211C92B5"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma unroll</span></p><p><span class="kwd">#pragma unroll</span><span class="delim">(</span><span class="var">n</span><span class="delim">)</span></p><p><span class="kwd">#pragma nounroll</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-532BFBFE-71CC-4823-9EF2-102DEB239D5E"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+
+      <td valign="top" class="noborder"><p>is the unrolling factor representing the number of times to unroll a loop; it is an integer constant from 0 through 255</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-D8F87017-49ED-450E-8A7E-E952A4F360D5"><h2>Description</h2>
+<p>The <span class="keyword">unroll</span><var>[n]</var> pragma tells the compiler how many times to unroll a counted loop.</p>
+
+<p>The <span class="keyword">unroll</span> pragma must precede the <span class="keyword">FOR</span> statement for each <span class="keyword">FOR</span> loop it affects. If <var>n</var> is specified, the optimizer unrolls the loop <var>n</var> times. If <var>n</var> is omitted or if it is outside the allowed range, the optimizer assigns the number of times to unroll the loop.</p>
+
+<p>This pragma is supported only when option <span class="option">O3</span> is set. The <span class="keyword">unroll</span> pragma overrides any setting of loop unrolling from the command line.</p>
+
+<p>The pragma can be applied for the innermost loop nest as well as for the outer loop nest. If applied to outer loop nests, the current implementation supports complete outer loop unrolling. The loops inside the loop nest are either not unrolled at all or completely unrolled. The compiler generates correct code by comparing <var>n</var> and the loop count.</p>
+
+<p>When unrolling a loop increases register pressure and code size it may be necessary to prevent unrolling of a loop. In such cases, use the <span class="keyword">nounroll</span> pragma. The <span class="keyword">nounroll</span> pragma instructs the compiler not to unroll a specified loop.</p>
+
+</div>
+
+
+<div class="section" id="GUID-AFF26220-3558-47D7-961C-D1B3C86B15A4"><h2>Example</h2>
+<p><strong>Example 1: Using unroll pragma for innermost loop unrolling</strong></p>
+
+
+<pre>void unroll(int a[], int b[], int c[], int d[])</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;#pragma unroll(4)</pre>
+<pre>&nbsp;&nbsp;for (int i = 1; i &lt; 100; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;b[i] = a[i] + 1;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;d[i] = c[i] + 1;</pre>
+<pre>&nbsp;&nbsp;}</pre> 
+<pre>}</pre>
+
+<p><strong>Example 2: Using unroll pragma for outer loop unrolling</strong></p>
+
+<p>In Example 2, placing the <samp class="codeph">#pragma unroll</samp> before the first <span class="keyword">for</span> loop causes the compiler to unroll the outer loop completely. If a <samp class="codeph">#pragma unroll</samp> is placed before the inner <span class="keyword">for</span> loop as well as before the outer <span class="keyword">for</span> loop, the compiler ignores the inner <span class="keyword">for</span> loop <span class="keyword">unroll</span> pragma. If the <samp class="codeph">#pragma unroll</samp> is placed only for the innermost loop, the compiler unrolls the innermost loop according to some factor.</p>
+
+
+<pre>int m = 0;</pre>
+<pre>int dir[4]= {1,2,3,4};</pre>
+<pre>int data[10];</pre>
+<pre>#pragma unroll (4) &nbsp;// outer loop unrolling</pre>
+<pre>&nbsp;&nbsp;for (int i = 0; i &lt; 4; i++)</pre>
+<pre>&nbsp;&nbsp;{</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = dir[i]; data[j]==N ; j+=dir[i])</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m++;</pre>
+<pre>&nbsp;&nbsp;}</pre>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

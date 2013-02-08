@@ -1,0 +1,283 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="offload_wait">
+<meta name="abstract" content="Specifies a wait for a previously initiated asynchronous activity. This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Specifies a wait for a previously initiated asynchronous activity. This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="offload_wait, pragma">
+<meta name="keywords" content="offload_wait, pragma">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>offload_wait</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optref_offload_wait_pragma"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">offload_wait</h1>
+ 
+<!--Specifies a wait
+  for a previously initiated asynchronous activity.
+This pragma only applies to Intel&reg; MIC Architecture.--> 
+ 
+<div><p><span id="SHORTDESC_OFFLOAD"><a name="SHORTDESC_OFFLOAD"><!-- --></a>Specifies a wait
+  for a previously initiated asynchronous activity.
+This pragma only applies to Intel&reg; MIC Architecture.</span></p>
+
+<div class="section" id="GUID-9F1DCBE6-8584-4044-AFF8-CFB1414B2096"><h2>Syntax</h2> 
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma offload_wait 
+	 </span><span class="var">specifier</span><span class="delim">[</span><span class="sep">, 
+	 </span><span class="var">specifier</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table> 
+<p>Where 
+  <var>specifier</var> can be any of the following: 
+<ul type="disc" id="GUID-8D2F07D4-BD5F-4F82-BA9A-7A25DE48DEB8"> 
+  <li> 
+	 <p><samp class="codeph">target ( 
+		  <var>target-name</var> [ :<var>target-number</var>
+		  ])</samp> 
+	 </p>
+ 
+  </li>
+ 
+  <li> 
+	 <p><samp class="codeph">if ( <var>if-specifier</var> )</samp> 
+	 </p>
+ 
+  </li>
+ 
+   
+  <li> 
+	 <p><samp class="codeph">wait ( 
+		  <var>tag</var>[, 
+		  <var>tag</var> 
+		  <var>...</var>] )</samp> 
+	 </p>
+ 
+  </li>
+ 
+   
+</ul>
+ 
+</p>
+<p>The following are arguments to use in <var>specifier</var>.</p>
+</div>
+ 
+ 
+<div class="section" id="ARGUMENTS_OFFLOAD"><a name="ARGUMENTS_OFFLOAD"><!-- --></a><h2>Arguments</h2> 
+<dl id="GUID-5E20F03B-83AC-4092-B658-83D04950E14B"> 
+  <dt class="dlterm"><samp class="codeph"><var>target-name</var></samp></dt>
+<dd> 
+		<p> An identifier that represents
+the target. The only allowable target name is <var>mic</var>.</p>
+
+
+</dd>
+ 
+   
+  <dt class="dlterm"><a name="TARGET-NUMBER"><!-- --></a><samp class="codeph"><var>target-number</var></samp></dt>
+<dd>
+		
+		<p>Required for <var>signal</var> and <var>wait</var> clauses.</p>
+ 
+		<p>If you don't specify this argument, the runtime
+		  system will wait until all the tags are signaled by any coprocessor. 
+		</p>
+<p>An integer expression whose value is interpreted as
+		  follows: 
+		</p>
+ 
+<a name="TARGET-NUMBER_ARGS"><!-- --></a><dl id="TARGET-NUMBER_ARGS"> 
+
+		  <dt class="dlterm"><samp class="codeph">&gt;=0</samp></dt>
+<dd> 
+				<p id="TARGET-NUMBER_GE_0"><a name="TARGET-NUMBER_GE_0"><!-- --></a>A value greater than
+				  or equal to zero specifies execution on a specific coprocessor. The <samp class="codeph"><span>number of the </span></samp>specific
+				  coprocessor is determined as follows: 
+				</p>
+ 
+				<p id="TARGET-NUMBER_FORMULA"><a name="TARGET-NUMBER_FORMULA"><!-- --></a><samp class="codeph"><var>coprocessor</var>=<var>target-number</var>
+					 % 
+					 <var>number_of_coprocs</var></samp> 
+				</p>
+<p> If the correct target hardware needed to run the offloaded program is not available on the system, the program fails with an error message.</p>
+</dd>
+ 
+		   
+		  <dt class="dlterm"><samp class="codeph"> &lt;= -1</samp></dt>
+<dd> 
+				<p id="TARGET-NUMBER_LT_-1"><a name="TARGET-NUMBER_LT_-1"><!-- --></a>These values are reserved.</p>
+ 
+			 </dd>
+ 
+		   
+		</dl>
+<p>For example, in a system with four targets:</p>
+		 
+		 
+		<a name="TARGET-NUMBER_EG"><!-- --></a><ul type="disc" id="TARGET-NUMBER_EG"> 
+		  <li> 
+			 <p>Specifying 2 or 6 tells the runtime systems  to wait for coprocessor 2 to signal the tags, because both 
+				<samp class="codeph">2 % 4 
+				</samp> and 
+				<samp class="codeph">6 % 4</samp> equal 
+				<samp class="codeph">2</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Specifying 1000 tells the runtime systems  wait for coprocessor 0 to signal the tags, because 
+				<samp class="codeph">1000 % 4 = 0</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+</dd>
+ 
+   
+  <dt class="dlterm"><samp class="codeph"><var>if-specifier</var></samp></dt>
+<dd>
+		
+		<p>A Boolean expression. 
+		</p>
+ 
+		<p> If the expression evaluates to true, then the runtime will wait until the tags are signaled.  
+		</p>
+ 
+		<p> 
+		 If the expression evaluates to false, then the <var>wait</var> clause is ignored.</p>
+<p> Use the same <em>if-specifier</em>
+expression that you used to start the asynchronous computation or
+data transfer with <samp class="codeph">offload</samp> or <samp class="codeph">offload_transfer</samp>.</p>
+
+</dd>
+ 
+   
+  <dt class="dlterm"><samp class="codeph"><var>wait</var></samp></dt>
+<dd> 
+		 
+		<p> A mandatory expression to specify a wait for the completion of a previously initiated asynchronous data transfer or asynchronous computations.</p>
+<p>This clause refers to a specific target device so you must specify a <var>target-number</var> in the <samp class="codeph">target</samp> clause that is greater than or equal to zero.</p>
+		
+
+<p>Querying a signal before the signal has been initiated results in undefined behavior and a runtime abort of the application. For example, querying a signal on <samp class="codeph">target:0</samp> that was initiated for <samp class="codeph">target:1</samp> results in a runtime abort of the application because the signal was initiated for <samp class="codeph">target:1</samp>, so there is no signal associated with <samp class="codeph">target:0</samp>. </p>
+
+</dd>
+ 
+   
+  
+  
+</dl>
+ </div>
+<div class="section" id="DESCRIPTION_OFFLOAD"><a name="DESCRIPTION_OFFLOAD"><!-- --></a><h2>Description</h2>
+ 
+<p id="OFFLOAD_WAIT_DESC1"><a name="OFFLOAD_WAIT_DESC1"><!-- --></a>This directive specifies a wait for the
+  completion of a previously initiated asynchronous data transfer done by 
+  <samp class="codeph">offload_transfer</samp>, or an asynchronous computation and return
+  data transfer, if any, done by 
+  <samp class="codeph">offload</samp>.</p>
+ 
+</div>
+ 
+<div class="section" id="GUID-5F521540-4A34-419F-ACFE-B996CE24ABE4"><h2>Example</h2> 
+   
+  <p id="OFFLOAD_WAIT_PRAGMA_EG1"><a name="OFFLOAD_WAIT_PRAGMA_EG1"><!-- --></a>The following example double buffers inputs to an offload.</p>
+ 
+  <pre id="OFFLOAD_WAIT_PRAGMA_EG2"><a name="OFFLOAD_WAIT_PRAGMA_EG2"><!-- --></a>#pragma offload_attribute(push, target(mic))
+int count = 25000000;
+int iter = 10;
+float *in1, *out1;
+float *in2, *out2;
+#pragma offload_attribute(pop)
+
+
+void do_async_in()
+{
+      int i;
+      #pragma offload_transfer target(mic:0) in(in1 : length(count) alloc_if(0) free_if(0) ) signal(in1)
+      for (i=0; i&lt;iter; i++)
+      {
+            if (i%2 == 0) {
+                  #pragma offload_transfer target(mic:0) if(i!=iter-1) in(in2 : length(count) alloc_if(0) free_if(0) ) signal(in2)
+                  #pragma offload target(mic:0) nocopy(in1) wait(in1) out(out1 : length(count) alloc_if(0) free_if(0) )
+                  compute(in1, out1);
+            } else {
+                  #pragma offload_transfer target(mic:0) if(i!=iter-1) in(in1 : length(count) alloc_if(0) free_if(0) ) signal(in1)
+                  #pragma offload target(mic:0) nocopy(in2) wait(in2) out(out2 : length(count) alloc_if(0) free_if(0) )
+                  compute(in2, out2);
+            }
+      }
+}</pre><p id="OFFLOAD_WAIT_PRAGMA_EG2"><a name="OFFLOAD_WAIT_PRAGMA_EG2"><!-- --></a> In this example the output results of an offload are double-buffered:</p>
+ 
+<pre>#pragma offload_attribute(push, target(mic))
+int count = 25000000;
+int iter = 10;
+float *in1, *out1;
+float *in2, *out2;
+#pragma offload_attribute(pop)
+
+void do_async_out()
+{
+      int i;
+      for (i=0; i&lt;iter+1; i++)
+      {
+            if (i%2 == 0) {
+                  if (i&lt;iter) {
+                        #pragma offload target(mic:0) in(in1 : length(count) alloc_if(0) free_if(0) ) nocopy(out1)
+                        compute(in1, out1);
+                        #pragma offload_transfer target(mic:0) out(out1 : length(count) alloc_if(0) free_if(0) ) signal(out1)
+                  }
+                  if (i&gt;0) {
+                        #pragma offload_wait target(mic:0) wait(out2)
+                        use_result(out2);
+                  }
+            } else {
+                  if (i&lt;iter) {
+                        #pragma offload target(mic:0) in(in2 : length(count) alloc_if(0) free_if(0) ) nocopy(out2)
+                        compute(in2, out2);
+                        #pragma offload_transfer target(mic:0) out(out2 : length(count) alloc_if(0) free_if(0) ) signal(out2)
+                  }
+                  #pragma offload_wait target(mic:0) wait(out1)
+                  use_result(out1);
+            }
+      }
+}
+</pre> 
+ 
+    
+</div>
+</div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code 
+		</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

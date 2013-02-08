@@ -1,0 +1,1816 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Shift Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer shift operations, srl_epi64, sra_epi32, sra_epi16, srl_epi32, srai_epi32, srai_epi16, srli_epi64, srli_epi32, srl_epi16, srli_epi16, slli_epi64, sll_epi32, slli_epi32, slli_epi16, sll_epi64, sll_epi16, srli_si128, slli_si128, Intel&reg; Streaming SIMD Extensions 2, integer shift intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer shift operations, srl_epi64, sra_epi32, sra_epi16, srl_epi32, srai_epi32, srai_epi16, srli_epi64, srli_epi32, srl_epi16, srli_epi16, slli_epi64, sll_epi32, slli_epi32, slli_epi16, sll_epi64, sll_epi16, srli_si128, slli_si128, Intel&reg; Streaming SIMD Extensions 2, integer shift intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-63F9164B-0E69-4C86-8DE1-EDC72EFE5CDC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Shift Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_int_shift"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-63F9164B-0E69-4C86-8DE1-EDC72EFE5CDC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Shift Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-75F208B8-9D21-4E1C-A3B0-45D5244502CC"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer shift operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span>, 
+        <span class="keyword">R1</span>...<span class="keyword">R7</span> represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A8553D4A-5966-4A21-A180-B055F496E34C"> 
+      <p> 
+        <div class="Note"><h3 class="NoteTipHead">Note</h3>The 
+          <span class="keyword">count</span> argument is one shift count that applies to all elements of the operand being shifted. It is not a vector shift count that shifts each element by a different amount. 
+        </div> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4AC2BA8D-CEFE-4AE3-B192-78E64043484A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B2CB6910-1E46-4892-A094-EB08C74C729F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e124"> 
+                <p>Intrinsic 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e130"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e136"> 
+                <p>Shift Type 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e142"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_slli_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_slli_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_sll_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_slli_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_sll_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_slli_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_sll_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift left 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSLLQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srai_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Arithmetic 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRAW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_sra_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Arithmetic 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRAW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srai_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Arithmetic 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRAD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_sra_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Arithmetic 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRAD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srli_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srli_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srl_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srli_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srl_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srli_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e124 "> 
+                <p><span class="option"> _mm_srl_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e130 "> 
+                <p>Shift right 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e136 "> 
+                <p>Logical 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e142 "> 
+                <p><span class="keyword">PSRLQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C74C764A-926F-4393-853D-F4C077112F3B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_slli_si128(__m128i a, int imm)</span></p></div> 
+      <p>Shifts the 128-bit value in 
+        <span class="keyword">a</span> left by 
+        <span class="keyword">imm</span> bytes while shifting in zeros. 
+        <span class="keyword">imm</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7DA1755F-10BC-4AE3-8959-D43EF56FC075"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A8FD3C1D-B6C7-4547-A57A-2F77C6884C07" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d315411e750"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d315411e750 "> 
+                <p>a &lt;&lt; (imm * 8) 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BE970B51-56A9-4D54-9F32-2F973BC8F726"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_slli_epi16(__m128i a, int count)</span></p></div> 
+      <p>Shifts the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> left by count bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FEB1F8D7-1D91-470D-94BA-79FD9BE18C20"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0D4AE97F-80FF-4E35-9351-47D890B45868" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e802"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e808"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e814"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e820"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e802 "> 
+                <p><span class="keyword">a0 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e808 "> 
+                <p><span class="keyword">a1 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e814 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e820 "> 
+                <p><span class="keyword">a7 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8A961F26-1BA7-48DB-B1D5-6EC7BF813318"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sll_epi16(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> left by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A029AC3B-FA49-4C76-B33E-9F4D20092E98"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1BEF0156-3E40-4115-A84F-20B6C5931940" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e898"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e904"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e910"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e916"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e898 "> 
+                <p><span class="keyword">a0 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e904 "> 
+                <p><span class="keyword">a1 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e910 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e916 "> 
+                <p><span class="keyword">a7 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6E266BA7-4F49-45B8-85E3-FB4262900EB6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_slli_epi32(__m128i a, int count)</span></p></div> 
+      <p>Shifts the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> left by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5B158DDB-6654-49C9-B788-E0189F058ABC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F2D22136-74C1-4BCC-AE86-5B82EE847907" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e994"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1000"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1006"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1012"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e994 "> 
+                <p><span class="keyword">a0 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1000 "> 
+                <p><span class="keyword">a1 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1006 "> 
+                <p><span class="keyword">a2 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1012 "> 
+                <p><span class="keyword">a3 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-44776BB6-5E0F-4A75-948F-2AA0CE39C2A3"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sll_epi32(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> left by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-493810E1-D1BF-45A4-9327-BAB3BD5E2BD3"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3353B79F-0523-451C-991D-F6A3A00B777A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1093"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1099"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1105"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1111"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1093 "> 
+                <p><span class="keyword">a0 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1099 "> 
+                <p><span class="keyword">a1 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1105 "> 
+                <p><span class="keyword">a2 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1111 "> 
+                <p><span class="keyword">a3 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E2D80600-D23A-45BD-8F65-7EF2B13CF29F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_slli_epi64(__m128i a, int count)</span></p></div> 
+      <p>Shifts the two signed or unsigned 64-bit integers in 
+        <span class="keyword">a</span> left by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8BC0FFB9-DA4E-48F8-99C5-3C29C1C7BE1E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C951F00F-C433-468E-A84A-C0B9D5B34126" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d315411e1189"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d315411e1195"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d315411e1189 "> 
+                <p><span class="keyword">a0 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d315411e1195 "> 
+                <p><span class="keyword">a1 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-711FC895-3836-4F13-B064-F4CEA5AE2C01"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sll_epi64(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the two signed or unsigned 64-bit integers in 
+        <span class="keyword">a</span> left by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C2E90E4B-BE52-42D6-A986-5E6CB4B66618"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BF2D2793-4CB3-4E9A-B9EE-221A37B75478" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d315411e1257"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d315411e1263"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d315411e1257 "> 
+                <p><span class="keyword">a0 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d315411e1263 "> 
+                <p><span class="keyword">a1 &lt;&lt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5D7D3F49-8D6B-4906-81FF-398B945EBAF8"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srai_epi16(__m128i a, int count)</span></p></div> 
+      <p>Shifts the eight signed 16-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in the sign bit. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-864D0C54-0D72-4FDD-9E81-7C5F6501D352"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6BE38DB4-84C0-4791-B20A-D6E6D55C359F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1328"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1334"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1340"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1346"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1328 "> 
+                <p><span class="keyword">a0 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1334 "> 
+                <p><span class="keyword">a1 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1340 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1346 "> 
+                <p><span class="keyword">a7 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1DA2A55A-5681-4CD4-84F3-6067706A90B2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sra_epi16(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the eight signed 16-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in the sign bit. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-02E956AB-2553-4DE9-A46B-ECD0C2B3D84B"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D9CFC09B-B594-4195-AFAE-754228C162F2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1424"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1430"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1436"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1442"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1424 "> 
+                <p><span class="keyword">a0 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1430 "> 
+                <p><span class="keyword">a1 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1436 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1442 "> 
+                <p><span class="keyword">a7 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C21BD251-8C9C-4A8A-9544-FF0717B61B05"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srai_epi32(__m128i a, int count)</span></p></div> 
+      <p>Shifts the four signed 32-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in the sign bit. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-03EC2B6D-AF2A-4666-9DFC-2CAD5048466C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DB3CCBE5-7C94-41E1-B7F7-0680CCFEEE61" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1520"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1526"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1532"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1538"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1520 "> 
+                <p><span class="keyword">a0 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1526 "> 
+                <p><span class="keyword">a1 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1532 "> 
+                <p><span class="keyword">a2 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1538 "> 
+                <p><span class="keyword">a3 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AADDBA99-E22B-409E-ABE4-B3FE04A8715E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_sra_epi32(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the four signed 32-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in the sign bit. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D7DD925A-6C1B-4157-8C01-BB392FB0C456"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A19F24A1-91F5-4AD0-B6E3-3094B7FA0943" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1619"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1625"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1631"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1637"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1619 "> 
+                <p><span class="keyword">a0 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1625 "> 
+                <p><span class="keyword">a1 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1631 "> 
+                <p><span class="keyword">a2 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1637 "> 
+                <p><span class="keyword">a3 &gt;&gt; count</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-58F8F72F-D019-48F3-AC58-5A65D2BCFCE6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srli_si128(__m128i a, int imm)</span></p></div> 
+      <p>Shifts the 128-bit value in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">imm</span> bytes while shifting in zeros. 
+        <span class="keyword">imm</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8378827B-AC92-40E2-8224-B831C822075F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3B58790E-A1E8-4ADB-A49E-5D9B234BD892" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d315411e1717"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d315411e1717 "> 
+                <p><span class="keyword">srl(a, imm*8)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8337C5CF-4224-488F-AD6B-AF4E3BB3919A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srli_epi16(__m128i a, int count)</span></p></div> 
+      <p>Shifts the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2A16B258-9C5B-45A1-9A36-768D66AA24CD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-30511425-CFF3-4C9E-A290-36D1EE5CD3CD" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1773"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1779"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1785"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1791"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1773 "> 
+                <p><span class="keyword">srl(a0, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1779 "> 
+                <p><span class="keyword">srl(a1, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1785 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1791 "> 
+                <p><span class="keyword">srl(a7, count)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F265AB5A-0E8E-4CA5-839B-DEEF9F5E852C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srl_epi16(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the eight signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-973FC3DE-C6EB-43CA-BF6A-0642FE08CA1C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E5A746A9-1D43-488A-A433-C60BE7F204C3" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1870"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1876"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1882"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1888"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1870 "> 
+                <p><span class="keyword">srl(a0, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1876 "> 
+                <p><span class="keyword">srl(a1, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1882 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1888 "> 
+                <p><span class="keyword">srl(a7, count)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-12DB4DFE-8D0E-435F-BEBC-4C90AB1F01E4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srli_epi32(__m128i a, int count)</span></p></div> 
+      <p>Shifts the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0C987494-FA77-4406-B91B-6A6817A2A6C0"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-52A111F1-F298-4C6F-8D93-4AE642B73C8F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1966"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1972"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e1978"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e1984"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1966 "> 
+                <p><span class="keyword">srl(a0, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1972 "> 
+                <p><span class="keyword">srl(a1, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e1978 "> 
+                <p><span class="keyword">srl(a2, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e1984 "> 
+                <p><span class="keyword">srl(a3, count)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3BCDCACE-9F1E-4801-8140-BF72BE532111"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srl_epi32(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-42B8F929-9AE5-44BB-A4C7-1E77DAB47C24"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FD3BB08D-729D-43ED-AE88-02C8859AB792" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e2064"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e2070"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d315411e2076"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d315411e2082"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e2064 "> 
+                <p><span class="keyword">srl(a0, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e2070 "> 
+                <p><span class="keyword">srl(a1, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d315411e2076 "> 
+                <p><span class="keyword">srl(a2, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d315411e2082 "> 
+                <p><span class="keyword">srl(a3, count)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E2E1E2F2-2FFF-4527-B62C-2D1AA7282E4A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srli_epi64(__m128i a, int count)</span></p></div> 
+      <p>Shifts the two signed or unsigned 64-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EAC5DE1B-FAA4-4BE0-8E41-F9B05FA0B76E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-022C936C-5BA1-4C4C-80DD-DD9FE799EFD9" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d315411e2161"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d315411e2167"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d315411e2161 "> 
+                <p><span class="keyword">srl(a0, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d315411e2167 "> 
+                <p><span class="keyword">srl(a1, count)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-93827F3F-7D33-4939-89C5-33E54E35EC1A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_srl_epi64(__m128i a, __m128i count)</span></p></div> 
+      <p>Shifts the two signed or unsigned 64-bit integers in 
+        <span class="keyword">a</span> right by 
+        <span class="keyword">count</span> bits while shifting in zeros. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BC5E8446-5444-4F90-86B4-3DD1C0B4615A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B468BF74-9321-4872-8D4D-59FC3975D27F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d315411e2229"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d315411e2235"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d315411e2229 "> 
+                <p><span class="keyword">srl(a0, count)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d315411e2235 "> 
+                <p><span class="keyword">srl(a1, count)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

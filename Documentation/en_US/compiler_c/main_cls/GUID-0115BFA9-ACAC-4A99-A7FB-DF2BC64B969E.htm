@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_andnot_epi64/ _mm512_mask_andnot_epi64">
+<meta name="abstract" content="Bitwise AND operation between NOT operated int64 vectors. Corresponding instruction is VPANDNQ. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Bitwise AND operation between NOT operated int64 vectors. Corresponding instruction is VPANDNQ. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_andnot_epi64, _mm512_mask_andnot_epi64">
+<meta name="keywords" content="_mm512_andnot_epi64, _mm512_mask_andnot_epi64">
+<meta name="DC.Relation" scheme="URI" content="GUID-14DFBCAF-5602-4170-A73E-5BAC42F04AF1.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0115BFA9-ACAC-4A99-A7FB-DF2BC64B969E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_andnot_epi64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_andnot_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0115BFA9-ACAC-4A99-A7FB-DF2BC64B969E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_andnot_epi64/ _mm512_mask_andnot_epi64</h1>
+<!--Bitwise AND operation between NOT operated int64 vectors. Corresponding instruction is 
+ VPANDNQ .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Bitwise AND operation between NOT operated int64 vectors. Corresponding instruction is 
+<samp class="codeph">VPANDNQ</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-E00CF884-2932-4537-AF68-15FDE83AB407"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_andnot_epi64(_m512i v2, _m512i v3);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_mask_andnot_epi64(_m512i v1_old, __mmask8 k1, _m512i v2, _m512i v3);</span></p></td></tr></table></div>
+<div class="section" id="GUID-3518082B-52CE-4835-BBC8-3CB016BECD89"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">int64 vector used for bitwise operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">int64 vector also used for bitwise operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-70D852AF-93FF-46AF-9201-51146C18B759"><h2>Description</h2>
+<p>Performs a bitwise AND operation between int64 vectors 
+<samp class="codeph">v2</samp> and 
+<samp class="codeph">v3</samp>, each of which were previously operated upon by the NOT bitwise operator.</p>
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing. The remaining elements of the resulting vector are filled with corresponding elements from 
+<samp class="codeph">v1_old</samp>.</p>
+</div>
+<div class="section" id="GUID-1E68D494-CC0F-45CE-9067-7AD676F55D8C"><h2>Returns</h2><p>Returns the result of the bitwise AND operation.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-14DFBCAF-5602-4170-A73E-5BAC42F04AF1.htm">Bitwise Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Reducer Library">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, reducer library">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, reducer library">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6B5EBB46-2BAB-465B-870F-5CD6A981FA35">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Reducer Library</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_reducer_lib"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6B5EBB46-2BAB-465B-870F-5CD6A981FA35">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Reducer Library</h1>
+ 
+   
+  <div> 
+	 <p>The provided reducer library contains the reducers shown in the following table. 
+	 </p>
+ 
+	 <p>A description of each reducer is described in the comments that appear in the corresponding header file. 
+	 </p>
+ 
+	 <p>In the following table, the second column shows each reducer's identity element and the third column shows the Update operation (there may be several). 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7803F8FC-1A3E-4DC8-979A-F958B42BB880" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d334680e56"> 
+				  <p> Reducer/Header File 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d334680e62"> 
+				  <p> Identity element 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d334680e68"> 
+				  <p>Update operation 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d334680e74"> 
+				  <p> Description 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_list_append</span> 
+				  </p>
+ 
+				  <p><span class="filepath">&lt;cilk/reducer_list.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>empty list 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>push_back() 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Creates a list by appending elements at the back. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p> 
+					 <span class="keyword">reducer_list_prepend</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_list.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>empty list 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p> push_front() 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Creates a list by adding elements at the front. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword"> reducer_max</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_max.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>(implicit) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>calc_max 
+				  </p>
+ 
+				  <p> cilk::max_of 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Finds the maximum value over a set of values. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword"> reducer_max_index</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_max.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>(implicit) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>calc_max 
+				  </p>
+ 
+				  <p>cilk::max_of 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Finds the maximum value and the index of the element containing the maximum value over a set of values. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_min</span> 
+				  </p>
+ 
+				  <p><span class="filepath">&lt;cilk/reducer_min.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>(implicit) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>calc_min 
+				  </p>
+ 
+				  <p>cilk::min_of 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Finds the minimum value over a set of values. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_min_index</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_min.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>(implicit) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>calc_min 
+				  </p>
+ 
+				  <p>cilk::min_of 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Finds the minimum value and the index of the element containing the minimum value over a set of values. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p> 
+					 <span class="keyword">reducer_opadd</span> 
+				  </p>
+ 
+				  <p><span class="filepath">&lt;cilk/reducer_opadd.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p> 0 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>+, +=, ++, -, -=, -- 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Performs a sum. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_opand</span> 
+				  </p>
+ 
+				  <p><span class="filepath">&lt;cilk/reducer_opand.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p> ~0 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>&amp;, &amp;= 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Perform bitwise AND. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_opor</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_opor.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p> 0 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>|, |= 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Perform bitwise OR. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p> 
+					 <span class="keyword">reducer_opxor</span> 
+				  </p>
+ 
+				  <p></p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_opxor.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>0 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p> ^, ^= 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Perform bitwise XOR. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_ostream</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_ostream.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>empty string 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>&lt;&lt; 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Provides an output stream that can be written in parallel. In order to preserve a consistent order in the output stream, output is buffered by the reducer class until there is no more pending output to the left of the current position. This ensures that the output always appears in the same order as the output generated by the equivalent serial program. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_basic_string</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_string.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>empty string 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p> +=, append 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Creates a string using append or += operations. Internally, the string is maintained as a list of substrings in order to minimize copying and memory fragmentation. The substrings are assembled into a single output string when get_value() is called. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_string</span> 
+				  </p>
+ 
+				  <p> 
+					 <span class="filepath">&lt;cilk/reducer_string.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>empty string 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>+=, append 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Provides a shorthand for a reducer_basic_string &lt;char&gt;. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e56 "> 
+				  <p><span class="keyword">reducer_wstring</span> 
+				  </p>
+ 
+				  <p><span class="filepath">&lt;cilk/reducer_string.h&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e62 "> 
+				  <p>empty string 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e68 "> 
+				  <p>+=, append 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d334680e74 "> 
+				  <p>Provides a shorthand for a reducer_basic_string &lt;wchar_t&gt;. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

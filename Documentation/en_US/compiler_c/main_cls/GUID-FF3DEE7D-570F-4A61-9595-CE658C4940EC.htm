@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Serialization">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, serialization">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, serialization">
+<meta name="DC.Relation" scheme="URI" content="GUID-15FC919C-0444-4233-AC7E-9F23209EEC0B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FF3DEE7D-570F-4A61-9595-CE658C4940EC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Serialization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_serial"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FF3DEE7D-570F-4A61-9595-CE658C4940EC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Serialization</h1>
+ 
+  
+  <div> 
+	 <p>The provided keywords are designed to have serial semantics. In other words, every Intel&reg; Cilk&#8482; Plus program corresponds to an equivalent C/C++ program. Such a C/C++ program is referred to as the 
+		<strong>serialization</strong> of the program. The serialization is particularly useful when debugging Intel&reg; Cilk&#8482; Plus programs.
+	 </p>
+ 
+	 <p> 
+		<strong>How to Create a Serialization 
+		</strong>
+	 </p>
+ 
+	 <p>The header file 
+		<span class="filepath">cilk_stub.h</span> contains macros that redefine the Intel&reg; Cilk&#8482; Plus keywords and library calls into an equivalent serial form. Include 
+		<span class="filepath">cilk/cilk_stub.h</span> before any other headers to build a serialization .
+	 </p>
+ 
+	 <p><strong> Linux* OS and OS X*:</strong>
+	 </p>
+ 
+	 <p>The Intel compiler provides command line options to facilitate serialization. There are two equivalent options:
+	 </p>
+ 
+	 <p> 
+  <span class="option">-cilk-serialize</span>
+  </p>
+ 
+  <p> 
+  <span class="option">-include cilk/cilk_stub.h</span>
+  </p>
+ 
+  <p>For example, to build a serialized reducer called 
+	 <span class="filepath">reducer.cpp</span> (which contains Intel&reg; Cilk&#8482; Plus keywords), enter the following on the command line:
+  </p>
+ 
+  <p> 
+	 <samp class="codeph">icc -O2 -cilk-serialize -o reducer_serial reducer.cpp</samp>
+  </p>
+ 
+  <p> 
+	 <strong>Windows* OS:</strong>
+  </p>
+ 
+  <p>The Intel compiler provides command line options to facilitate serialization. There are two equivalent options:
+  </p>
+ 
+  <p> 
+  <span class="option">/Qcilk-serialize</span>
+  </p>
+ 
+  <p> 
+  <span class="option">/FI cilk/cilk_stub.h</span>
+  </p>
+ 
+  <p>For example, to build a serialized reducer called 
+	 <span class="filepath">reducer.cpp</span> (which contains Intel&reg; Cilk&#8482; Plus keywords), enter the following on the command line:
+  </p>
+ 
+  <p><samp class="codeph">icl /O2 /Qcilk-serialize reducer.cpp</samp> 
+  </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-15FC919C-0444-4233-AC7E-9F23209EEC0B.htm">Build, Run and Debug an Intel&reg; Cilk&#8482; Plus Program</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

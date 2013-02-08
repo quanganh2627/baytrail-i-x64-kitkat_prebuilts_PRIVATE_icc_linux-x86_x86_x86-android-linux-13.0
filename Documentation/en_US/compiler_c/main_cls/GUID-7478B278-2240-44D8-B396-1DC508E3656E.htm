@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Details about Intel&reg; Streaming SIMD Extensions Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, data types, registers, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, data types, registers, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7478B278-2240-44D8-B396-1DC508E3656E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Details about Intel&reg; Streaming SIMD Extensions Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_details"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7478B278-2240-44D8-B396-1DC508E3656E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Details about Intel&reg; Streaming SIMD Extensions Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-3A079335-2702-4065-BA7F-85E9AEEB9D04"> 
+      <p>Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) instructions use the following features: 
+      </p>
+ 
+      <ul type="disc" id="GUID-0A029851-5F93-4B8D-AEB5-C5CA6307196A"> 
+        <li> 
+          <p>Registers – Enable packed data of up to 128 bits in length for optimal SIMD processing 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Data Types – Enable packing of up to 16 elements of data in one register 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F1672447-514C-4D56-8308-3B599756C52D"><h2 class="sectiontitle">Registers</h2> 
+       
+      <p>Intel&reg; Streaming SIMD Extensions use eight 128-bit registers (<span class="keyword">XMM0</span> to 
+        <span class="keyword">XMM7</span>). 
+      </p>
+ 
+      <p>Because each of these registers can hold more than one data element, the processor can process more than one data element simultaneously. This processing capability is also known as single-instruction multiple data processing (SIMD). 
+      </p>
+ 
+      <p>For each computational and data manipulation instruction in the new extension sets, there is a corresponding C intrinsic that implements that instruction directly. This frees you from managing registers and assembly programming. Further, the compiler optimizes the instruction scheduling so that your executable runs faster. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>The 
+          <span class="keyword">MM</span> and 
+          <span class="keyword">XMM</span> registers are the SIMD registers used by the systems based on IA-32 architecture to implement MMX&#8482; technology and Intel&reg; SSE or Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2). 
+          </p>
+ 
+      </div> 
+    </div>
+ 
+    <div class="section" id="GUID-EAC398EE-20AD-498C-B24A-0702952B681F"><h2 class="sectiontitle">Data Types</h2> 
+       
+      <p>These Intrinsic functions use four new C data types as operands, representing the new registers that are used as the operands to these intrinsic functions. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-85F35923-0E32-400E-B576-5C0264D19E0C"><h2 class="sectiontitle">New Data Types</h2> 
+       
+      <p>The following table details for which instructions each of the new data types are available. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-79F34CDD-D51A-4609-B219-D139697275D1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d366345e124"> 
+                <p>New Data Type 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d366345e130"> 
+                <p>Intel&reg; Streaming SIMD Extensions Intrinsics 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d366345e136"> 
+                <p>Intel&reg; Streaming SIMD Extensions 2 Intrinsics 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d366345e142"> 
+                <p>Intel&reg; Streaming SIMD Extensions 3 Intrinsics 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e124 "> 
+                <p><span class="keyword">__m64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e130 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e136 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d366345e142 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e124 "> 
+                <p><span class="keyword">__m128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e130 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e136 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d366345e142 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e124 "> 
+                <p><span class="keyword">__m128d</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e130 "> 
+                <p>Not available 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e136 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d366345e142 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e124 "> 
+                <p><span class="keyword">__m128i</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e130 "> 
+                <p>Not available 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d366345e136 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d366345e142 "> 
+                <p>Available 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D50DDC21-162B-4A6A-AB9F-DE905D85A0F8"><h2 class="sectiontitle">__m128 Data Types</h2> 
+       
+      <p>The 
+        <span class="keyword">__m128</span> data type is used to represent the contents of a Intel&reg; SSE register used by Intel&reg; SSE intrinsics. The 
+        <span class="keyword">__m128</span> data type can hold four 32-bit floating-point values. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">__m128d</span> data type can hold two 64-bit floating-point values. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">__m128i</span> data type can hold sixteen 8-bit, eight 16-bit, four 32-bit, or two 64-bit integer values. 
+      </p>
+ 
+      <p>The compiler aligns 
+        <span class="keyword">__m128d and _m128i</span> local and global data to 16-byte boundaries on the stack. To align 
+        <span class="keyword">integer</span>, 
+        <span class="keyword">float</span>, or 
+        <span class="keyword">double</span> arrays, you can use the declspec align statement. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7CF3476B-E5EC-48FD-94A2-62DA00BD810E"><h2 class="sectiontitle">Data Types Usage Guidelines</h2> 
+       
+      <p>These data types are not basic ANSI C data types. You must observe the following usage restrictions: 
+      <ul type="disc" id="GUID-057FE6FF-9311-451F-9F06-3D831C521BE5"> 
+        <li> 
+          <p>Use data types only on either side of an assignment, as a return value, or as a parameter. You cannot use it with other arithmetic expressions (+, -, etc). 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use data types as objects in aggregates, such as unions, to access the byte elements and structures. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use data types only with the respective intrinsics described in this documentation. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D33A0F68-99E5-4EB6-8152-DB67945137C8"><h2 class="sectiontitle">Accessing __m128i Data</h2> 
+       
+      <p>To access 8-bit data: 
+      </p>
+ 
+      <pre>#define  _mm_extract_epi8(x, imm) \</pre> 
+      <pre>((((imm) &amp; 0x1) == 0) ?   \</pre> 
+      <pre> _mm_extract_epi16((x), (imm) &gt;&gt; 1) &amp; 0xff : \</pre> 
+      <pre> _mm_extract_epi16( _mm_srli_epi16((x), 8), (imm) &gt;&gt; 1))</pre> 
+      <p></p>
+ 
+      <p>For 16-bit data, use the following intrinsic: 
+      </p>
+ 
+      <pre>int  _mm_extract_epi16(__m128i a, int imm)</pre> 
+      <p></p>
+ 
+      <p>To access 32-bit data: 
+      </p>
+ 
+      <pre>#define  _mm_extract_epi32(x, imm) \</pre> 
+      <pre> _mm_cvtsi128_si32( _mm_srli_si128((x), 4 * (imm)))</pre> 
+      <p></p>
+ 
+      </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

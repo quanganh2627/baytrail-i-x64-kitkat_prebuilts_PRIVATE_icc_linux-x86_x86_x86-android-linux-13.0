@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_fmadd_pd, _mm256_fmadd_pd">
+<meta name="abstract" content="Multiply-adds packed double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is VFMADD<XXX&gt;PD, where XXX could be 132, 213, or 231.">
+<meta name="description" content="Multiply-adds packed double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is VFMADD<XXX&gt;PD, where XXX could be 132, 213, or 231.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmadd_pd (VFMADD###), _mm256_fmadd_pd (VFMADD###)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmadd_pd (VFMADD###), _mm256_fmadd_pd (VFMADD###)">
+<meta name="DC.Relation" scheme="URI" content="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2F190FEC-7C2F-44A6-B81E-F6026DDA1F45">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_fmadd_pd, _mm256_fmadd_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_fmadd_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2F190FEC-7C2F-44A6-B81E-F6026DDA1F45">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span> _mm_fmadd_pd, _mm256_fmadd_pd</span></h1>
+
+
+<!--Multiply-adds packed double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is  VFMADD<XXX>PD , where XXX could be 132, 213, or 231.--><div><p>Multiply-adds packed double-precision floating-point values using three float64 vectors. The corresponding FMA instruction is <span class="keyword">VFMADD&lt;XXX&gt;PD</span>, where XXX could be 132, 213, or 231.</p>
+
+
+<div class="section" id="GUID-A0C5D7E7-EAA9-4F02-AEDA-5A49492F9D53"><h2>Syntax</h2><p><strong>For 128-bit vector</strong></p>
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128d _mm_fmadd_pd(__m128d a, __m128d b, __m128d c);</span></p></td></tr></table>
+<p><strong>For 256-bit vector</strong></p>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256d _mm256_fmadd_pd(__m256d a, __m256d b, __m256d c);
+</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-B8F700FB-85FE-4AAC-AE03-042EE3045D69"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>c</var></p></td>
+
+      <td valign="top" class="noborder"><p>float64 vector also used for the operation</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-E782D729-FCD1-4307-A005-F8E2570BE2B1"><h2>Description</h2>
+<p>Performs a set of SIMD multiply-add computation on packed double-precision floating-point values using three source vectors/operands, <samp class="codeph">a</samp>,<samp class="codeph"> b</samp>, and <samp class="codeph">c</samp>. Corresponding values in two operands, <samp class="codeph">a</samp> and <samp class="codeph">b</samp>,  are multiplied and the infinite precision intermediate results are added to corresponding  values in the third operand, after which the final results are rounded to the nearest float64 values.</p>
+<p>The compiler defaults to using the <span class="keyword">VFMADD213PD</span> instruction and uses the other forms <span class="keyword">VFMADD132PD</span> or <span class="keyword">VFMADD231PD</span> only if a low level optimization decides it is useful or necessary. For example, the compiler could change the default if it finds that another instruction form saves a register or eliminates a move.</p>
+</div>
+
+
+<div class="section" id="GUID-DD7D43D1-0D4F-48B0-A464-7E54B81761EC"><h2>Returns</h2><p> Result of the multiply-add operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">Intrinsics for Fused Multiply Add Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

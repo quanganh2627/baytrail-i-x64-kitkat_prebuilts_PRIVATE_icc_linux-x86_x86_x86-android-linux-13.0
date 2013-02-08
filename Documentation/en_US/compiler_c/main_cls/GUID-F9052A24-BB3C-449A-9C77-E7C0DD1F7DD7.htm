@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="High-Level Optimizations (HLO) Overview">
+<meta name="DC.subject" content="HLO, IA-32 architecture based applications, IVDEP, effect when tuning applications, Intel&reg; 64 architecture based applications, data format, prefetching, high performance programming, applications for, high-level optimizer, loop unrolling, using the HLO optimizer, loops, distribution, interchange, transformations, optimizations, high-level language">
+<meta name="keywords" content="HLO, IA-32 architecture based applications, IVDEP, effect when tuning applications, Intel&reg; 64 architecture based applications, data format, prefetching, high performance programming, applications for, high-level optimizer, loop unrolling, using the HLO optimizer, loops, distribution, interchange, transformations, optimizations, high-level language">
+<meta name="DC.Relation" scheme="URI" content="GUID-B503902D-829A-4A15-83DA-C2AAA8F3EC51.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F9052A24-BB3C-449A-9C77-E7C0DD1F7DD7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>High-Level Optimizations (HLO) Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_hlo_ovw"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_hlo_ovw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F9052A24-BB3C-449A-9C77-E7C0DD1F7DD7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">High-Level Optimizations (HLO) Overview</h1>
+
+
+
+
+<div>
+<p>High-level Optimizations (HLO) exploits the properties of source code constructs (for example, loops and arrays) in applications developed in high-level programming languages. While the default optimization level, <span class="option">-O2</span> (Linux* OS and OS X*) or <span class="option">/O2</span> (Windows* OS) option, performs some high-level optimizations, specifying <span class="option">-O3</span> (Linux and OS X) or /O3 (Windows) provides the best chance for performing loop transformations to optimize memory accesses. </p>
+<p>Loop optimizations may result in calls to library routines that can result in additional performance gain on Intel&reg; microprocessors than on non-Intel microprocessors. The optimizations performed can also be affected by certain options, such as <span class="option">/arch</span> or <span class="option">/Qx</span> (Windows) or <span class="option">-m</span> or <span class="option">-x</span> (Linux and OS X), where, under the <span class="option">/Qx</span> (Windows) or <span class="option">–x</span> (Linux and OS X) option, additional HLO transformations may be performed for Intel&reg; microprocessors than for non-Intel microprocessors.  </p>
+<p>Within HLO, loop transformation techniques include:</p>
+
+
+<ul type="disc" id="GUID-E0BCC9C8-1C0B-42F9-B492-AB6A3DFB9CD7">
+  <li><p>Loop Permutation or Interchange</p>
+</li>
+
+  <li><p>Loop Distribution</p>
+</li>
+
+  <li><p>Loop Fusion</p>
+</li>
+
+  <li><p>Loop Unrolling</p>
+</li>
+
+  <li><p>Data Prefetching</p>
+</li>
+
+  <li><p>Scalar Replacement</p>
+</li>
+
+  <li><p>Unroll and Jam</p>
+</li>
+
+  <li><p>Loop Blocking or Tiling</p>
+</li>
+
+  <li><p>Partial-Sum Optimization</p>
+</li>
+
+  
+  <li><p>Predicate Optimization</p>
+</li>
+
+  <li><p>Loop Reversal</p>
+</li>
+
+  <li><p>Profile-Guided Loop Unrolling</p>
+</li>
+
+  <li><p>Loop Peeling</p>
+</li>
+
+  <li><p>Data Transformation: Malloc Combining and Memset Combining</p>
+</li>
+
+  <li><p>Loop Rerolling</p>
+</li>
+
+  <li><p>Memset and Memcpy Recognition</p>
+</li>
+
+  <li><p>Statement Sinking for Creating Perfect Loopnests</p>
+</li>
+
+</ul>
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B503902D-829A-4A15-83DA-C2AAA8F3EC51.htm">High-Level Optimization (HLO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

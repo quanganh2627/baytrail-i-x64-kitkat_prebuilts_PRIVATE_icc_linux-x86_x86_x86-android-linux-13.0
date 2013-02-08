@@ -1,0 +1,1357 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Worksharing Using OpenMP*">
+<meta name="DC.subject" content="OMP pragmas, load balancing">
+<meta name="keywords" content="OMP pragmas, load balancing">
+<meta name="DC.Relation" scheme="URI" content="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-243B37C4-0633-45C1-8207-66569BFDE799.htm#GUID-243B37C4-0633-45C1-8207-66569BFDE799">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-872C664D-7F50-4BE2-9422-3EBE6595FB40">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Worksharing Using OpenMP*</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_openmp_start_c"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_openmp_start_c"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-872C664D-7F50-4BE2-9422-3EBE6595FB40">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Worksharing Using OpenMP*</h1>
+ 
+   
+  <div> 
+    <p>To get the maximum performance benefit from a processor with multi-core and Intel&reg; Hyper-Threading Technology (Intel&reg; HT Technology), an application needs to be executed in parallel. Parallel execution requires threads, and threading an application is not a simple thing to do; using OpenMP* can make the process a lot easier. Using the OpenMP pragmas, most loops with no loop-carried dependency can be threaded with one simple statement. This topic explains how to start using OpenMP to parallelize loops, which is also called worksharing. 
+    </p>
+ 
+    <p>Options that use OpenMP* are available for both Intel&reg; and non-Intel microprocessors, but these options may perform additional optimizations on Intel&reg; microprocessors than they perform on non-Intel microprocessors. The list of major, user-visible OpenMP* constructs and features that may perform differently on Intel&reg; vs. non-Intel microprocessors includes: locks (internal and user visible), the SINGLE construct, barriers (explicit and implicit), parallel loop scheduling, reductions, memory allocation, and thread affinity and binding. 
+    </p>
+ 
+    <p>Most loops can be threaded by inserting one pragma immediately prior to the loop. Further, by leaving the details to the compiler and OpenMP, you can spend more time determining which loops should be threaded and how to best restructure the algorithms for maximum performance. The maximum performance of OpenMP is realized when it is used to thread hotspots, the most time-consuming loops in your application. 
+    </p>
+ 
+    <p>The power and simplicity of OpenMP is demonstrated by looking at an example. The following loop converts a 32-bit RGB (red, green, blue) pixel to an 8-bit gray-scale pixel. One pragma, which has been inserted immediately before the loop, is all that is needed for parallel execution. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F987D7EA-8405-4BD3-800B-BB6B49917198" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" id="d450541e55"> 
+              <p>Example 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+</thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" headers="d450541e55 "> 
+              <pre>#pragma omp parallel for</pre> 
+              <pre>for (i=0; i &lt; numPixels; i++)</pre> 
+              <pre>{</pre> 
+              <pre>   pGrayScaleBitmap[i] = (unsigned BYTE)</pre> 
+              <pre>            (pRGBBitmap[i].red * 0.299 +</pre> 
+              <pre>            pRGBBitmap[i].green * 0.587 +</pre> 
+              <pre>            pRGBBitmap[i].blue * 0.114);</pre> 
+              <pre>}</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>First, the example uses worksharing, which is the general term used in OpenMP to describe distribution of work across threads. When worksharing is used with the 
+      <samp class="codeph">for</samp> construct, as shown in the example, the iterations of the loop are distributed among multiple threads so that each loop iteration is executed exactly once and in parallel by one or more threads. OpenMP determines the number of threads to create and how to best create, synchronize, and destroy them. OpenMP places the following five restrictions on which loops can be threaded: 
+    </p>
+ 
+    <ul type="disc" id="GUID-6D139E9F-5C21-4D20-B8D3-B5EC442E45F0"> 
+      <li> 
+        <p>The loop variable must be of type signed or unsigned integer, random access iterator, or pointer. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The comparison operation must be in the form<samp class="codeph"> loop_variable &lt;, &lt;=, &gt;, or &gt;= loop_invariant_expression</samp> of a compatible type. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The third expression or increment portion of the 
+          <samp class="codeph">for</samp> loop must be either addition or subtraction by a loop invariant value. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>If the comparison operation is &lt; or &lt;=, the loop variable must increment on every iteration; conversely, if the comparison operation is &gt; or &gt;=, the loop variable must decrement on every iteration. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The loop body must be single-entry-single-exit, meaning no jumps are permitted from inside to outside the loop, with the exception of the 
+          <span class="keyword">exit</span> statement that terminates the whole application. If the statements 
+          <span class="keyword">goto</span> or 
+          <span class="keyword">break</span> are used, the statements must jump within the loop, not outside it. Similarly, for exception handling, exceptions must be caught within the loop. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Although these restrictions might sound somewhat limiting, non-conforming loops can easily be rewritten to follow these restrictions. 
+    </p>
+ 
+    <div class="section" id="GUID-4E6CD0DA-C622-4D81-B519-017E0499D346"><h2 class="sectiontitle">Basics of Compilation</h2> 
+       
+      <p>Using the OpenMP pragmas requires an OpenMP-compatible compiler and thread-safe libraries. Adding the 
+        <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> option to the compiler instructs the compiler to pay attention to the OpenMP pragmas and to insert threads. If you omit the 
+        <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> option, the compiler will ignore OpenMP pragmas, which provides a very simple way to generate a single-threaded version without changing any source code. 
+      </p>
+ 
+      <p>For conditional compilation, the compiler defines the 
+        <span class="keyword">_OPENMP</span> macro. If needed, the macro can be tested as shown in the following example. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-64ED48C2-BF64-4C0F-B01A-770F65CF5271" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e195"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e195 "> 
+                <pre>#ifdef _OPENMP</pre> 
+                <pre>   fn();</pre> 
+                <pre>#endif</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-18BC2B8A-BC9C-4D94-B3B5-080E49D2C801"><h2 class="sectiontitle">A Few Simple Examples</h2> 
+       
+      <p>The following examples illustrate how simple OpenMP is to use. In common practice, additional issues need to be addressed, but these examples illustrate a good starting point. 
+      </p>
+ 
+      <p>In the first example, the following loop clips an array to the range 0...255. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C2949D1F-8884-404F-A325-D4E6142A4467" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e243"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e243 "> 
+                <pre>// clip an array to 0 &lt;= x &lt;= 255</pre> 
+                <pre>for (i=0; i &lt; numElements; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   if (array[i] &lt; 0)</pre> 
+                <pre>   array[i] = 0;</pre> 
+                <pre>   else if (array[i] &gt; 255)</pre> 
+                <pre>      array[i] = 255;</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>You can thread it using a single OpenMP pragma; insert the pragma immediately prior to the loop: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C743402E-D796-42FC-B71D-3BB4BACE5D53" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e299"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e299 "> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (i=0; i &lt; numElements; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   if (array[i] &lt; 0)</pre> 
+                <pre>   array[i] = 0;</pre> 
+                <pre>   else if (array[i] &gt; 255)</pre> 
+                <pre>      array[i] = 255;</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>In the second example, the loop generates a table of square roots for the numbers 0...100. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F6CC2E73-1A11-487B-951F-9B49AB18B283" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e354"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e354 "> 
+                <pre>double value;</pre> 
+                <pre>double roots[100];</pre> 
+                <pre>for (value = 0.0; value &lt; 100.0; value ++)</pre> 
+                <pre>{</pre> 
+                <pre>   roots[(int)value] = sqrt(value);</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Thread the loop by changing the loop variable to a signed integer or unsigned integer and inserting a 
+      <span class="option">#pragma omp parallel 
+      </span>pragma. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-03ABB5E1-7408-47FE-941B-71DA7F7AF819" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e406"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e406 "> 
+                <pre>int value;</pre> 
+                <pre>double roots[100];</pre> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (value = 0; value &lt; 100; value ++)</pre> 
+                <pre>{</pre> 
+                <pre>   roots[value] = sqrt((double)value);</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B26FE695-9E31-4E5A-947E-C38BC07B46BD"><h2 class="sectiontitle">Avoiding Data Dependencies and Race Conditions</h2> 
+       
+      <p>When a loop meets all five loop restrictions (listed above) and the compiler threads the loop, the loop still might not work correctly due to the existence of data dependencies. 
+      </p>
+ 
+      <p>Data dependencies exist when different iterations of a loop (more specifically a loop iteration that is executed on a different thread) read or write the same location in shared memory. Consider the following example that calculates factorials. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BB50272D-9749-45D2-AB67-AA49E0187974" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e467"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e467 "> 
+                <pre>// Each loop iteration writes a value that a different iteration reads.</pre> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (i=2; i &lt; 10; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   factorial[i] = i * factorial[i-1];</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The compiler will thread this loop, but the threading will fail because at least one of the loop iterations is data-dependent upon a different iteration. This situation is referred to as a race condition. Race conditions can only occur when using shared resources (like memory) and parallel execution. To address this problem either rewrite the loop or pick a different algorithm, one that does not contain the race condition. 
+      </p>
+ 
+      <p>Race conditions are difficult to detect because, for a given case or system, the variables might win the race in the order that happens to make the program function correctly. Because a program works once does not mean that the program will work under all conditions. Testing your program on various machines, some with Hyper-Threading Technology and some with multiple physical processors, is a good starting point to help identify race conditions. 
+      </p>
+ 
+      <p>Traditional debuggers are useless for detecting race conditions because they cause one thread to stop the race while the other threads continue to significantly change the runtime behavior; however, thread checking tools can help. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-73E3F8D3-9508-43D3-929F-12061DCF5B92"><h2 class="sectiontitle">Managing Shared and Private Data</h2> 
+       
+      <p>Nearly every loop (in real applications) reads from or writes to memory; it's your responsibility, as the developer, to instruct the compiler what memory should be shared among the threads and what memory should be kept private. When memory is identified as shared, all threads access the same memory location. When memory is identified as private, however, a separate copy of the variable is made for each thread to access in private. When the loop ends, the private copies are destroyed. By default, all variables are shared except for the loop variable, which is private. Memory can be declared as private in the following two ways: 
+      </p>
+ 
+      <ul type="disc" id="GUID-2CF0C601-1E8D-4F7B-90F1-2A3BAADF5367"> 
+        <li> 
+          <p>Declare the variable inside the loop-really inside the parallel OpenMP pragma-without the static keyword. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Specify the private clause on an OpenMP pragma. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>The following loop fails to function correctly because the variable 
+        <var>temp</var> is shared. It should be private. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E8FD06FB-FCC3-4DAC-98C2-55A972C5296C" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e554"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e554 "> 
+                <pre>// Variable temp is shared among all threads, so while one thread</pre> 
+                <pre>// is reading variable temp another thread might be writing to it</pre> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (i=0; i &lt; 100; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   temp = array[i];</pre> 
+                <pre>   array[i] = do_something(temp);</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The following two examples both declare the variable 
+        <var>temp</var> as private memory, which solves the problem. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-56CA45BC-68D7-48A7-B366-3DC2219C0FB5" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e613"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e613 "> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (i=0; i &lt; 100; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   int temp; // variables declared within a parallel construct</pre> 
+                <pre>             // are, by definition, private</pre> 
+                <pre>   temp = array[i];</pre> 
+                <pre>   array[i] = do_something(temp);</pre> 
+                <pre>&gt;}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The 
+        <var>temp</var> variable can also be made private in the following way: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A06AB63E-23FD-425E-B706-EA9513CC2DC8" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e671"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e671 "> 
+                <pre>#pragma omp parallel for private(temp)</pre> 
+                <pre>for (i=0; i &lt; 100; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   temp = array[i];</pre> 
+                <pre>   array[i] = do_something(temp);</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Every time you use OpenMP to parallelize a loop, you should carefully examine all memory references, including the references made by called functions. Variables declared within a parallel construct are defined as private except when they are declared with the 
+        <samp class="codeph">static</samp> declarator, because static variables are not allocated on the stack. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-65D8B5E3-9304-4C32-8CE8-27BE4BFE1536"><h2 class="sectiontitle">Reductions</h2> 
+       
+      <p>Loops that accumulate a value are fairly common, and OpenMP has a specific clause to accommodate them. Consider the following loop that calculates the sum of an array of integers. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-64E76332-2729-48CA-81BD-C0BB3A802B79" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e732"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e732 "> 
+                <pre>sum = 0;</pre> 
+                <pre>for (i=0; i &lt; 100; i++)</pre> 
+                <pre>{</pre> 
+                <pre>sum += array[i]; // this variable needs to be shared to generate</pre> 
+                <pre>                // the correct results, but private to avoid</pre> 
+                <pre>                // race conditions from parallel execution</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The variable sum in the previous loop must be shared to generate the correct result, but it also must be private to permit access by multiple threads. OpenMP provides the 
+        <samp class="codeph">reduction</samp> clause that is used to efficiently combine the mathematical reduction of one or more variables in a loop. The following example demonstrates how the loop can use the 
+        <samp class="codeph">reduction</samp> clause to generate the correct results. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E4593075-EC50-499A-BE8A-937D3003DD62" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e790"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e790 "> 
+                <pre>sum = 0;</pre> 
+                <pre>#pragma omp parallel for reduction(+:sum)</pre> 
+                <pre>for (i=0; i &lt; 100; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   sum += array[i];</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>In the case of the example listed above, the reduction provides private copies of the variable 
+        <var>sum</var> for each thread, and when the threads exit, it adds the values together and places the result in the one global copy of the variable. 
+      </p>
+ 
+      <p>The following table lists the possible reduction operations, along with their initial values (mathematical identity values). 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-99DA3B9D-684B-4174-89A1-406A03EED3F7" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="30%" id="d450541e847"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="70%" id="d450541e853"> 
+                <p><var>private</var> Variable Initialization Value 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>+ (addition) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>- (subtraction) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>* (multiplication) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>1 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>&amp; (bitwise and) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>~0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>| (bitwise or) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>^ (bitwise exclusive or) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>&amp;&amp; (conditional and) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>1 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="30%" headers="d450541e847 "> 
+                <p>|| (conditional or) 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="70%" headers="d450541e853 "> 
+                <p>0 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Multiple reductions in a loop are possible by specifying comma-separated variables and operations on a given 
+        <samp class="codeph">parallel</samp> construct. Reduction variables must meet the following requirements: 
+      </p>
+ 
+      <ul type="disc" id="GUID-0E735061-B043-4ADD-89B6-EEFEF093EFEC"> 
+        <li> 
+          <p>can be listed in just one reduction 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>cannot be declared constant 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>cannot be declared private in the parallel construct 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-160F629B-4CFA-4B96-B41A-C9047B589972"><h2 class="sectiontitle">Load Balancing and Loop Scheduling</h2> 
+       
+      <p>Load balancing, the equal division of work among threads, is among the most important attributes for parallel application performance. Load balancing is extremely important, because it ensures that the processors are busy most, if not all, of the time. Without a balanced load, some threads may finish significantly before others, leaving processor resources idle and wasting performance opportunities. 
+      </p>
+ 
+      <p>Within loop constructs, poor load balancing is usually caused by variations in compute time among loop iterations. It is usually easy to determine the variability of loop iteration compute time by examining the source code. In most cases, you will see that loop iterations consume a uniform amount of time. When that is not true, it may be possible to find a set of iterations that consume similar amounts of time. For example, sometimes the set of all even iterations consumes about as much time as the set of all odd iterations. Similarly, it might be the case that the set of the first half of the loop consumes about as much time as the second half. In contrast, it might be impossible to find sets of loop iterations that have a uniform execution time. Regardless of the case, you should provide this extra loop scheduling information to OpenMP so it can better distribute the iterations of the loop across the threads (and therefore processors) for optimum load balancing. 
+      </p>
+ 
+      <p>If you know that all loop iterations consume roughly the same amount of time, the OpenMP 
+        <samp class="codeph">schedule</samp> clause should be used to distribute the iterations of the loop among the threads in roughly equal amounts via the scheduling policy. In addition, you need to minimize the chances of memory conflicts that may arise because of false sharing due to using large chunks. This behavior is possible because loops generally touch memory sequentially, so splitting up the loop in large chunks - like the first half and second half when using two threads - will result in the least chance for overlapping memory. While this may be the best choice for memory issues, it may be bad for load balancing. Unfortunately, the reverse is also true; what might be best for load balancing may be bad for memory performance. You must strike a balance between optimal memory usage and optimal load balancing by measuring the performance to see what method produces the best results. 
+      </p>
+ 
+      <p>Use the following general form on the 
+        <samp class="codeph">parallel</samp> construct to schedule an OpenMP loop: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E36DFDAC-5AD1-46BD-B74A-F1896B5BCA03" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1050"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1050 "> 
+                <pre>#pragma omp parallel for schedule(kind [, chunk size])</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Four different loop scheduling types (kinds) can be provided to OpenMP, as shown in the following table. The optional parameter (chunk), when specified, must be a positive integer. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5F8CCABB-2691-447E-9965-CBB04D3EDA54" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="20%" id="d450541e1084"> 
+                <p>Kind 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="80%" id="d450541e1090"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d450541e1084 "> 
+                <p>static 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d450541e1090 "> 
+                <p>Divide the loop into equal-sized chunks or as equal as possible in the case where the number of loop iterations is not evenly divisible by the number of threads multiplied by the chunk size. By default, chunk size is 
+                  <var>loop_count</var>/<var>number_of_threads</var>. 
+                </p>
+ 
+                <p>Set chunk to 1 to interleave the iterations. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d450541e1084 "> 
+                <p>dynamic 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d450541e1090 "> 
+                <p>Use the internal work queue to give a chunk-sized block of loop iterations to each thread. When a thread is finished, it retrieves the next block of loop iterations from the top of the work queue. 
+                </p>
+ 
+                <p>By default, the chunk size is 1. Be careful when using this scheduling type because of the extra overhead involved. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d450541e1084 "> 
+                <p>guided 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d450541e1090 "> 
+                <p>Similar to dynamic scheduling, but the chunk size starts off large and decreases to better handle load imbalance between iterations. The optional chunk parameter specifies them minimum size chunk to use. 
+                </p>
+ 
+                <p>By default the chunk size is approximately 
+                  <var>loop_count</var>/<var>number_of_threads</var>. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d450541e1084 "> 
+                <p>auto 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d450541e1090 "> 
+                <p>When schedule (auto) is specified, the decision regarding scheduling is delegated to the compiler. The programmer gives the compiler the freedom to choose any possible mapping of iterations to threads in the team. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="20%" headers="d450541e1084 "> 
+                <p>runtime 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="80%" headers="d450541e1090 "> 
+                <p>Uses the 
+                  <a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1"><span class="keyword">OMP_SCHEDULE</span> environment</a> variable to specify which one of the three loop-scheduling types should be used. 
+                </p>
+ 
+                <p><span class="keyword">OMP_SCHEDULE</span> is a string formatted exactly the same as would appear on the parallel construct. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Assume that you want to parallelize the following loop. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-62DCC8AE-4956-432C-9535-F5467EB2E94F" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1222"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1222 "> 
+                <pre>for (i=0; i &lt; NumElements; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   array[i] = StartVal;</pre> 
+                <pre>   StartVal++;</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>As written, the loop contains a data dependency, making it impossible to parallelize without a change. The new loop, shown below, fills the array in the same manner, but without data dependencies. The new loop can also be written using the SIMD instructions. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E5C1C0EB-D1D7-4B69-BA81-C8D9048DD6D8" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1268"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1268 "> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (i=0; i &lt; NumElements; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   array[i] = StartVal + i;</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Observe that the code is not 100% identical because the value of variable 
+        <var>StartVal</var> is not incremented. As a result, when the parallel loop is finished, the variable will have a value different from the one produced by the serial version. If the value of 
+        <span class="keyword">StartVal</span> is needed after the loop, the additional statement, shown below, is needed. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C8E29D63-49D9-4DAE-9011-05623B30708E" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1319"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1319 "> 
+                <pre>// This works and is identical to the serial version.</pre> 
+                <pre>#pragma omp parallel for</pre> 
+                <pre>for (i=0; i &lt; NumElements; i++)</pre> 
+                <pre>{</pre> 
+                <pre>   array[i] = StartVal + i;</pre> 
+                <pre>}</pre> 
+                <pre>StartVal += NumElements;</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7B566EAB-0E0E-440B-9AF6-A7B23FD583CB"><h2 class="sectiontitle">OpenMP* Tasking Model</h2> 
+       
+      <p>The OpenMP tasking model enables you to parallelize a large range of applications. You can use several OpenMP* pragmas for tasking. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1388CAE0-30EA-48B5-9F58-71B33CE93EB7"><h2 class="sectiontitle">The 
+        <span><span class="option">omp task</span> Pragma</span></h2> 
+       
+      <p>The omp task pragma has the following syntax: 
+      </p>
+ 
+      <p><samp class="codeph">#pragma omp task [clause[[,] clause] ...] new-line</samp> 
+      </p>
+ 
+      <p><samp class="codeph"> structured-block</samp> 
+      </p>
+ 
+      <p>where clause is one of the following: 
+      </p>
+ 
+      <ul type="disc" id="GUID-CE1C1608-F35D-4ABD-8837-93D89C977DE3"> 
+        <li> 
+          <p><samp class="codeph">if(scalar-expression)</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">final (scalar expression)</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">untied</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">default(shared | none)</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">mergeable</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">private(list)</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">firstprivate(list)</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><samp class="codeph">shared(list)</samp> 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>The 
+      <span class="option">#pragma omp task</span> defines an explicit task region as shown in the following example: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B65BA1EA-4E8D-4312-B0AA-B3F203F39778" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1478"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1478 "> 
+                <pre>void test1(LIST *head){</pre> 
+                <pre>  #pragma intel omp parallel shared(head)</pre> 
+                <pre>  {</pre> 
+                <pre>    #pragma omp single </pre> 
+                <pre>{ LIST *p = head; </pre> 
+                <pre>  while (p != NULL) {</pre> 
+                <pre>        #pragma omp task firstprivate(p)</pre> 
+                <pre>        {</pre> 
+                <pre>           do_work1(p);</pre> 
+                <pre>        }</pre> 
+                <pre>        p = p-&gt;next;</pre> 
+                <pre>      }</pre> 
+                <pre>    }</pre> 
+                <pre>  }</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The binding thread set of the task region is the current parallel team. A task region binds to the innermost enclosing PARALLEL region. When a thread encounters a task construct, a task is generated from the structured block enclosed in the construct. The encountering thread may immediately execute the task, or defer its execution. A task construct may be nested inside an outer task, but the task region of the inner task is not a part of the task region of the outer task. 
+      </p>
+ 
+      <p><strong> Using 
+      <span class="option">#pragma omp task</span> clauses</strong> 
+      </p>
+ 
+      <p>The<span class="option"> #pragma omp task 
+      </span>takes an optional comma-separated list of clauses. The data environment of the task is created according to the data-sharing attribute clauses on the task construct and any defaults that apply. The example below shows a way to generate 
+      <samp class="codeph">N</samp> tasks with one thread and execute them with the threads in the parallel team: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-761FFB65-EE60-4BC8-BF45-6CAEB69812F5" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1573"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1573 "> 
+                <pre>#pragma omp parallel shared(data)</pre> 
+                <pre>{  </pre> 
+                <pre>#pragma omp single private(i)</pre> 
+                <pre>  {</pre> 
+                <pre>    for (i=0, i&lt;N; i++) {</pre> 
+                <pre>        #pragma omp task firstprivate(i shared(data) </pre> 
+                <pre>        {</pre> 
+                <pre>           do_work(data(i));</pre> 
+                <pre>        }</pre> 
+                <pre>     }</pre> 
+                <pre>  }</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p><strong>Task scheduling</strong> 
+      </p>
+ 
+      <p>When a thread reaches a task scheduling point, it may perform a task switch, beginning or resuming execution of a different task bound to the current team. Task scheduling points are implied at the following locations: 
+      </p>
+ 
+      <ul type="disc" id="GUID-E97799D4-DC18-415B-A447-AB5254869FAA"> 
+        <li> 
+          <p>the point immediately following the generation of an explicit task 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>after the last instruction of a task region 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>in a taskwait 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>in implicit and explicit barrier regions 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>When a thread encounters a task scheduling point it may do one of the following: 
+      </p>
+ 
+      <ul type="disc" id="GUID-82E64676-52AA-4F7D-8F19-99B1D5C9F1D4"> 
+        <li> 
+          <p>begin execution of a tied task bound to the current team 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>resume any suspended task region, bound to the current team, to which it is tied 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>begin execution of an untied task bound to the current team 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>resume any suspended untied task region bound to the current team 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>If more than one of the above choices is available, it is unspecified as to which will be chosen. 
+      </p>
+ 
+      <p><strong>Task scheduling constrains</strong> 
+      </p>
+ 
+      <ol id="GUID-DC0FBD98-02B4-4C0B-AC56-133DB9BCE2B6"> 
+        <li> 
+          <p>An explicit task whose construct contained an if clause whose if clause expression evaluated to false is executed immediately after generation of the task. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Other scheduling of new tied tasks is constrained by the set of task regions that are currently tied to the thread, and that are not suspended in a barrier region. If this set is empty, any new tied task may be scheduled. Otherwise, a new tied task may be scheduled only if it is a descendant of every task in the set. A program relying on any other assumption about task scheduling is non-conforming. 
+          </p>
+ 
+        </li>
+ 
+      </ol>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>Task scheduling points dynamically divide task regions into parts. Each part is executed from start to finish without interruption. Different parts of the same task region are executed in the order in which they are encountered. In the absence of task synchronization constructs, the order in which a thread executes parts of different schedulable tasks is unspecified. 
+        </p>
+ 
+      </div> 
+      <p>A correct program must behave correctly and consistently with all conceivable scheduling sequences that are compatible with the rules above. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-671608AB-7C6E-4FFE-B53E-D4F139E19091"><h2 class="sectiontitle">The 
+        <span><span class="option">omp taskwait</span> Pragma</span></h2> 
+       
+      <p>The 
+      <span class="option">#pragma omp taskwait 
+      </span>specifies a wait on the completion of child tasks generated since the beginning of the current task. A taskwait region binds to the current task region. The binding thread set of the taskwait region is the encountering thread. 
+      </p>
+ 
+      <p>The taskwait region includes an implicit task scheduling point in the current task region. The current task region is suspended at the task scheduling point until execution of all its child tasks generated before the taskwait region are completed. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0BCD9E90-BABF-42C6-A4CB-69E177FB285F" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" id="d450541e1755"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d450541e1755 "> 
+                <pre>#pragma omp task</pre> 
+                <pre>{ ...</pre> 
+                <pre>  #pragma omp task</pre> 
+                <pre>  { do_work1(); }</pre> 
+                <pre>  #pragma omp task</pre> 
+                <pre>  {  ...</pre> 
+                <pre>   #pragma omp task</pre> 
+                <pre>     {  do_work2(); }</pre> 
+                <pre>       ...</pre> 
+                <pre>     }</pre> 
+                <pre>     #pragma omp taskwait</pre> 
+                <pre>     ...</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-186882B4-21C4-4454-9049-7E80852AEF52"><h2 class="sectiontitle">The 
+        <span><span class="option">omp taskyield</span> Pragma</span></h2> 
+       
+      <p>The<span class="option"> #pragma omp taskyield</span> specifies that the current task can be suspended at that point and the thread may switch to the execution of a different task. You can use this pragma to provide an explicit task scheduling point at a particular point in the task. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">OpenMP* Support</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-243B37C4-0633-45C1-8207-66569BFDE799.htm#GUID-243B37C4-0633-45C1-8207-66569BFDE799">omp task pragma 
+        </a>  Defines a task region.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

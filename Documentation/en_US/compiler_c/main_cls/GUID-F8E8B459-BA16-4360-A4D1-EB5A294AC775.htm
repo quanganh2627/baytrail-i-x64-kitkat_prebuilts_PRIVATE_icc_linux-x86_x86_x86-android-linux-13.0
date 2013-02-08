@@ -1,0 +1,172 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Reducers - A Simple Example">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, reducers">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, reducers">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F8E8B459-BA16-4360-A4D1-EB5A294AC775">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Reducers - A Simple Example</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_reducer_ex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F8E8B459-BA16-4360-A4D1-EB5A294AC775">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Reducers - A Simple Example</h1>
+ 
+   
+  <div> 
+	 <p>This example illustrates use of reducers in accumulating a sum in parallel. Consider the following serial program, which repeatedly calls a 
+		<samp class="codeph">compute()</samp> function and accumulates the answers into the 
+		<samp class="codeph">total 
+		</samp>variable. 
+	 </p>
+ 
+	 <pre>#include &lt;iostream&gt;
+
+unsigned int compute(unsigned int i)
+{
+   return i; // return a value computed from i
+}
+
+int main(int argc, char* argv[])
+{
+   unsigned long long int n = 1000000;
+   unsigned long long int total = 0;
+
+   // Compute the sum of integers 1..n
+   for(unsigned int i = 1; i &lt;= n; ++i)
+   {
+     total += compute(i);
+   }
+
+   // the sum of the first n integers should be n * (n+1) / 2
+   unsigned long long int correct = (n * (n+1)) / 2;
+
+   if (total == correct)
+     std::cout &lt;&lt; "Total (" &lt;&lt; total
+               &lt;&lt; ") is correct" &lt;&lt; std::endl;
+   else
+     std::cout &lt;&lt; "Total (" &lt;&lt; total
+               &lt;&lt; ") is WRONG, should be "
+               &lt;&lt; correct &lt;&lt; std::endl;
+   return 0;
+}
+</pre> 
+	 <p>Converting this program to an Intel&reg; Cilk&#8482; Plus program and changing the 
+		<span class="keyword">for</span> to a 
+		<span class="keyword">cilk_for</span> causes the loop to run in parallel, but creates a data race on the total variable. To resolve the race, you can make total a reducer; specifically, a 
+		<span class="keyword">reducer_opadd</span>, defined for types that have an associative + operator. The changes are shown below. 
+	 </p>
+ 
+	 <pre>#include &lt;cilk/cilk.h&gt;
+<strong>#include &lt;cilk/reducer_opadd.h&gt;</strong>
+#include &lt;iostream&gt;
+
+unsigned int compute(unsigned int i)
+{
+   return i; // return a value computed from i
+}
+int  main(int argc, char* argv[])
+{
+   unsigned long long int n = 1000000;
+   <strong>cilk::reducer_opadd&lt;unsigned long long int&gt; total (0);</strong>
+
+   // Compute 1..n
+   <strong>cilk_for</strong>(unsigned int i = 1; i &lt;= n; ++i)
+   {
+     <strong>*total</strong> += compute(i);
+   }
+
+   // the sum of the first N integers should be n * (n+1) / 2
+   unsigned long long int correct = (n * (n+1)) / 2;
+
+   if ( <strong>total.get_value()</strong> == correct)
+     std::cout &lt;&lt; "Total (" &lt;&lt;  <strong>total.get_value()</strong>
+               &lt;&lt; ") is correct" &lt;&lt; std::endl;
+   else
+     std::cout &lt;&lt; "Total (" &lt;&lt;  <strong>total.get_value()</strong>
+               &lt;&lt; ") is WRONG, should be "
+               &lt;&lt; correct &lt;&lt; std::endl;
+   return 0;
+}
+</pre> 
+	 <p>The following changes in the serial code show how to use a reducer: 
+	 </p>
+ 
+	 <ol id="GUID-41F90EE4-280C-4F25-89B6-B20604A5FC97"> 
+		<li> 
+		  <p>Include the appropriate reducer header file (<samp class="codeph"><span>cilk/reducer_opadd.h</span></samp>). 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Declare the reduction variable as a 
+			 <span class="keyword">reducer_kind&lt;TYPE&gt; 
+			 </span>rather than as a 
+			 <span class="keyword">TYPE</span>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Introduce parallelism, in this case by changing the 
+			 <span class="keyword">for</span> loop to a 
+			 <span class="keyword">cilk_for 
+			 </span>loop. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>In the parallel code, change references to the original variable to dereferences of the reducer variable (<samp class="codeph">*total</samp>). 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Retrieve the reducer's final value after all parallel strands have synchronized; in this case, after the 
+			 <span class="keyword">cilk_for</span> loop is complete (<samp class="codeph">total.get_value()</samp>). 
+		  </p>
+ 
+		</li>
+ 
+	 </ol>
+ 
+	 <p> 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3>Reducers are C++ class objects that cannot be copied or assigned. 
+		</div> 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

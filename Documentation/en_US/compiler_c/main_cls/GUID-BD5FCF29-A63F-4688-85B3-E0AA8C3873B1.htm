@@ -1,0 +1,587 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Conversion Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer conversion operations, cvttsd_si64, cvttps_epi32, cvtps_epi32, cvtepi32_ps, cvtsd_si64, cvtsi64_sd, Intel&reg; Streaming SIMD Extensions 2, integer conversion intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer conversion operations, cvttsd_si64, cvttps_epi32, cvtps_epi32, cvtepi32_ps, cvtsd_si64, cvtsi64_sd, Intel&reg; Streaming SIMD Extensions 2, integer conversion intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BD5FCF29-A63F-4688-85B3-E0AA8C3873B1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Conversion Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_int_conversion"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BD5FCF29-A63F-4688-85B3-E0AA8C3873B1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Conversion Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-A5858039-83EE-4889-9961-3FF15423EFF2"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer conversion operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span>, 
+        <span class="keyword">R1</span>, 
+        <span class="keyword">R2</span> and 
+        <span class="keyword">R3</span> represent the registers in which results are placed. 
+      </p>
+ 
+      <p>Intrinsics marked with * are implemented only on Intel&reg; 64 architectures. The rest of the intrinsics are implemented on both IA-32 architectures and Intel&reg; 64 architectures. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-75B91B7A-D117-4CC6-8958-D0CA04B8B5BD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-78109DF4-FCF2-4DA6-876A-5DE99A060550" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d625975e93"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d625975e99"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d625975e105"> 
+                <p>Corresponding Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e93 "> 
+                <p><span class="option"> _mm_cvtsi64_sd*</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e99 "> 
+                <p>Convert and pass through 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d625975e105 "> 
+                <p><span class="keyword">CVTSI2SD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e93 "> 
+                <p><span class="option"> _mm_cvtsd_si64*</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e99 "> 
+                <p>Convert according to rounding 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d625975e105 "> 
+                <p><span class="keyword">CVTSD2SI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e93 "> 
+                <p><span class="option"> _mm_cvttsd_si64*</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e99 "> 
+                <p>Convert using truncation 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d625975e105 "> 
+                <p><span class="keyword">CVTTSD2SI</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e93 "> 
+                <p><span class="option"> _mm_cvtepi32_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e99 "> 
+                <p>Convert to SP FP 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d625975e105 "> 
+                <p>None 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e93 "> 
+                <p><span class="option"> _mm_cvtps_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e99 "> 
+                <p>Convert from SP FP 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d625975e105 "> 
+                <p>None 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e93 "> 
+                <p><span class="option"> _mm_cvttps_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d625975e99 "> 
+                <p>Convert from SP FP using truncate 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d625975e105 "> 
+                <p>None 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6920CA0E-D362-4DC2-A669-D0E2BCC73F4A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cvtsi64_sd(__m128d a, __int64 b)</span></p></div> 
+      <p>Converts the signed 64-bit integer value in 
+        <span class="keyword">b</span> to a DP FP value. The upper DP FP value in 
+        <span class="keyword">a</span> is passed through. Use only on Intel&reg; 64 architectures. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9A9E3CE1-55E3-47F3-81B4-764B08F88FD9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6CA51E7C-BDFF-40AD-B9B7-D14B1757F1A2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d625975e293"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d625975e299"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d625975e293 "> 
+                <p><span class="keyword">(double)b</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d625975e299 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-24A29109-9016-4787-A4F4-6BCB1D3935D3"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__int64 _mm_cvtsd_si64(__m128d a)</span></p></div> 
+      <p>Converts the lower DP FP value of 
+        <span class="keyword">a</span> to a 64-bit signed integer value according to the current rounding mode. Use only on Intel&reg; 64 architectures. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-585627C2-B94E-4927-B5F9-FB1BA00CD253"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8B0954F7-E824-4088-8FE9-7FA96E7672AB" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d625975e358"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d625975e358 "> 
+                <p><span class="keyword">(__int64) a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C79E49A8-2F6C-499F-9F83-AABAB1967539"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__int64 _mm_cvttsd_si64(__m128d a)</span></p></div> 
+      <p>Converts the lower DP FP value of 
+        <span class="keyword">a</span> to a 64-bit signed integer value using truncation. Use only on Intel&reg; 64 architectures. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3941DF95-B404-432F-AED3-66C2CB0CE949"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B40A57A8-97BE-4352-AACB-6997CBD05F02" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d625975e408"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d625975e408 "> 
+                <p><span class="keyword">(__int64) a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4C349FD5-8261-4A7E-B4C8-576B20BC91C2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cvtepi32_ps(__m128i a)</span></p></div> 
+      <p>Converts the four signed 32-bit integer values of 
+        <span class="keyword">a</span> to SP FP values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0124D2B4-3180-41A9-8B13-163F6121ACA9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E10B1BD2-C592-4620-9775-49B8BC1F2982" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e461"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e467"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e473"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d625975e479"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e461 "> 
+                <p><span class="keyword">(float) a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e467 "> 
+                <p><span class="keyword">(float) a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e473 "> 
+                <p><span class="keyword">(float) a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d625975e479 "> 
+                <p><span class="keyword">(float) a3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E65BFF20-19B5-4E2B-919C-D0DB3CA1A789"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cvtps_epi32(__m128 a)</span></p></div> 
+      <p>Converts the four SP FP values of 
+        <span class="keyword">a</span> to signed 32-bit integer values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-75AEBC15-7F62-4F28-B46E-B1EB0C727631"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4B50A788-2100-4FEA-8C8F-A8EDEC747DF3" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e557"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e563"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e569"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d625975e575"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e557 "> 
+                <p><span class="keyword">(int) a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e563 "> 
+                <p><span class="keyword">(int) a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e569 "> 
+                <p><span class="keyword">(int) a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d625975e575 "> 
+                <p><span class="keyword">(int) a3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B1CFE576-21E9-4E70-BE5E-B9B18D598C12"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cvttps_epi32(__m128 a)</span></p></div> 
+      <p>Converts the four SP FP values of 
+        <span class="keyword">a</span> to signed 32 bit integer values using truncate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-72CF5F53-B704-439D-9F1E-BB843E5198D6"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-54CD43F5-D7E2-4EAF-883A-1EBCCCC95AE6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e652"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e658"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d625975e664"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d625975e670"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e652 "> 
+                <p><span class="keyword">(int) a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e658 "> 
+                <p><span class="keyword">(int) a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d625975e664 "> 
+                <p><span class="keyword">(int) a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d625975e670 "> 
+                <p><span class="keyword">(int) a3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

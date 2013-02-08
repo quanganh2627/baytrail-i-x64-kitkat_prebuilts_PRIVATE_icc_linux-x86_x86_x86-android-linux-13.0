@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_sub_ps/ _mm512_mask_sub_ps">
+<meta name="abstract" content="Subtracts float32 vectors. The corresponding instruction is &nbsp; VSUBPS. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Subtracts float32 vectors. The corresponding instruction is &nbsp; VSUBPS. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_sub_ps, _mm512_mask_sub_ps">
+<meta name="keywords" content="_mm512_sub_ps, _mm512_mask_sub_ps">
+<meta name="DC.Relation" scheme="URI" content="GUID-8A3EE323-6643-4828-AA7D-8336F6FBAD82.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1C463D26-C448-4828-A14E-285121DBB024">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_sub_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_sub_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1C463D26-C448-4828-A14E-285121DBB024">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_sub_ps/ _mm512_mask_sub_ps</h1>
+<!--Subtracts float32 vectors. The corresponding instruction is   
+ VSUBPS .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Subtracts float32 vectors. The corresponding instruction is  &nbsp;
+<samp class="codeph">VSUBPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-D8E69798-75FD-4C25-8111-51CFBB1EDA52"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512 __cdecl _mm512_sub_ps(_m512 v2, _m512 v3);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512 __cdecl _mm512_mask_sub_ps(_m512 v1_old, __mmask16 k1, _m512 v2, _m512 v3);</span></p></td></tr></table></div>
+<div class="section" id="GUID-734A950D-BFCA-4DDF-B150-7EC243F9DC49"><h2>Parameters</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float32 vector from which subtraction is done
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">float32 vector subtracted from 
+<samp class="codeph">v2</samp>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result 
+      </span></td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-0E7FCC46-2CD9-4D0B-B197-B7E92F53574A"><h2>Description</h2>
+<p>Performs an element-by-element subtraction of the float32 vector 
+<samp class="codeph">v3</samp> from float32 vector 
+<samp class="codeph">v2</samp>.</p>
+<p>The masked variant has two additional arguments: 
+<samp class="codeph">v1_old</samp> and 
+<samp class="codeph">k1</samp>. Those elements of 
+<samp class="codeph">v2</samp> and 
+<samp class="codeph">v3</samp> with the corresponding bit clear in vector mask 
+<samp class="codeph">k1</samp> are not used in the computation. Instead, the corresponding element from 
+<samp class="codeph">v1_old</samp> is copied to the resulting vector.</p>
+</div>
+<div class="section" id="GUID-150BB74A-2587-4291-9169-EE494C4C6E74"><h2>Returns</h2><p>Returns the result of the subtraction operation.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8A3EE323-6643-4828-AA7D-8336F6FBAD82.htm">Subtraction Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

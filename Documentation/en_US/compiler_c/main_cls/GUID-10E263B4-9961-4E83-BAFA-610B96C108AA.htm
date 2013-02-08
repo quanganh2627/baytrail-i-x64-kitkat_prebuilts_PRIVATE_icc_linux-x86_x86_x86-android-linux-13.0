@@ -1,0 +1,229 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Nearest Integer Functions">
+<meta name="DC.subject" content="Math library, Nearest Integer Functions, ceil library function, floor library function, llrint library function, llround library function, lrint library function, lround library function, modf library function, nearbyint library function, rint library function, round library function, trunc library function">
+<meta name="keywords" content="Math library, Nearest Integer Functions, ceil library function, floor library function, llrint library function, llround library function, lrint library function, lround library function, modf library function, nearbyint library function, rint library function, round library function, trunc library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-10E263B4-9961-4E83-BAFA-610B96C108AA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Nearest Integer Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_near_int"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-10E263B4-9961-4E83-BAFA-610B96C108AA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Nearest Integer Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+    </p>
+
+    <p>The Intel math library supports the following nearest integer functions:
+    </p>
+ 
+    <div class="section" id="CEIL"><a name="CEIL"><!-- --></a><h2 class="sectiontitle">ceil</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">ceil</span> function returns the smallest integral value not less than 
+        <samp class="codeph">x</samp> as a floating-point number. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double ceil(double x);</samp><br> 
+        <samp class="codeph">long double ceill(long double x);</samp><br> 
+        <samp class="codeph">float ceilf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="FLOOR"><a name="FLOOR"><!-- --></a><h2 class="sectiontitle">floor</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">floor</span> function returns the largest integral value not greater than 
+        <samp class="codeph">x</samp> as a floating-point value. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double floor(double x);</samp><br> 
+        <samp class="codeph">long double floorl(long double x);</samp><br> 
+        <samp class="codeph">float floorf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LLRINT"><a name="LLRINT"><!-- --></a><h2 class="sectiontitle">llrint</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">llrint</span> function returns the rounded integer value (according to the current rounding direction) as a 
+        <samp class="codeph">long long int</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for values too large
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">long long int llrint(double x);</samp><br> 
+        <samp class="codeph">long long int llrintl(long double x);</samp><br> 
+        <samp class="codeph">long long int llrintf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LLROUND"><a name="LLROUND"><!-- --></a><h2 class="sectiontitle">llround</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">llround</span> function returns the rounded integer value as a 
+        <samp class="codeph">long long int</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for values too large
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">long long int llround(double x);</samp><br> 
+        <samp class="codeph">long long int llroundl(long double x);</samp><br> 
+        <samp class="codeph">long long int llroundf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LRINT"><a name="LRINT"><!-- --></a><h2 class="sectiontitle">lrint</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">lrint</span> function returns the rounded integer value (according to the current rounding direction) as a 
+        <samp class="codeph">long int</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for values too large
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">long int lrint(double x);</samp><br> 
+        <samp class="codeph">long int lrintl(long double x);</samp><br> 
+        <samp class="codeph">long int lrintf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LROUND"><a name="LROUND"><!-- --></a><h2 class="sectiontitle">lround</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">lround</span> function returns the rounded integer value as a 
+        <samp class="codeph">long int</samp>. Halfway cases are rounded away from zero.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for values too large
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">long int lround(double x);</samp><br> 
+        <samp class="codeph">long int lroundl(long double x);</samp><br> 
+        <samp class="codeph">long int lroundf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="MODF"><a name="MODF"><!-- --></a><h2 class="sectiontitle">modf</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">modf</span> function returns the value of the signed fractional part of 
+        <samp class="codeph">x</samp> and stores the integral part at 
+        <samp class="codeph">*iptr</samp> as a floating-point number.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double modf(double x, double *iptr);</samp><br> 
+        <samp class="codeph">long double modfl(long double x, long double *iptr);</samp><br> 
+        <samp class="codeph">float modff(float x, float *iptr);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="NEARBYINT"><a name="NEARBYINT"><!-- --></a><h2 class="sectiontitle">nearbyint</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">nearbyint</span> function returns the rounded integral value as a floating-point number, using the current rounding direction.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double nearbyint(double x);</samp><br> 
+        <samp class="codeph">long double nearbyintl(long double x);</samp><br> 
+        <samp class="codeph">float nearbyintf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="RINT"><a name="RINT"><!-- --></a><h2 class="sectiontitle">rint</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">rint</span> function returns the rounded integral value as a floating-point number, using the current rounding direction.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double rint(double x);</samp><br> 
+        <samp class="codeph">long double rintl(long double x);</samp><br> 
+        <samp class="codeph">float rintf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ROUND"><a name="ROUND"><!-- --></a><h2 class="sectiontitle">round</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">round</span> function returns the nearest integral value as a floating-point number. Halfway cases are rounded away from zero.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double round(double x);</samp><br> 
+        <samp class="codeph">long double roundl(long double x);</samp><br> 
+        <samp class="codeph">float roundf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="TRUNC"><a name="TRUNC"><!-- --></a><h2 class="sectiontitle">trunc</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">trunc</span> function returns the truncated integral value as a floating-point number.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double trunc(double x);</samp><br> 
+        <samp class="codeph">long double truncl(long double x);</samp><br> 
+        <samp class="codeph">float truncf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

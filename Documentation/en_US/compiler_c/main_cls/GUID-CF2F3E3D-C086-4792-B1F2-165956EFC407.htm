@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prof-use, Qprof-use">
+<meta name="abstract" content="Enables the use of profiling information during optimization.">
+<meta name="description" content="Enables the use of profiling information during optimization.">
+<meta name="DC.subject" content="/Qprof-use compiler option, -prof-use compiler option, profiling, option enabling use of information from">
+<meta name="keywords" content="/Qprof-use compiler option, -prof-use compiler option, profiling, option enabling use of information from">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D9BAEB78-A109-43CF-9586-97551C001197.htm#GUID-D9BAEB78-A109-43CF-9586-97551C001197">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prof-use, Qprof-use</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_prof_use"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_prof_use"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">prof-use, Qprof-use</h1>
+<!--Enables the use of profiling information during optimization.--><div><p>Enables the use of profiling information during optimization.</p>
+
+<div class="section" id="GUID-5FC26A3C-2E0F-411F-9112-23E0A2477CEA"><h2>IDE Equivalent</h2>
+		<p class="ide">Windows: 
+								<strong>General &gt; Profile Guided Optimization</strong></p>
+
+		<p class="ide">Linux: 
+								None</p>
+
+		<p class="ide">OS X: 
+								None</p>
+</div>
+
+<div class="section" id="GUID-72BFB97E-1A6F-4209-99F6-5C9624858A71"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-2BB3451F-FCF6-4E78-9E92-2FF8F9AB2686"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-prof-use</span><span class="delim">[=</span><span class="var">keyword</span><span class="delim">]</span></p><p><span class="kwd">-no-prof-use</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprof-use</span><span class="delim">[:</span><span class="var">keyword</span><span class="delim">]</span></p><p><span class="kwd">/Qprof-use-</span></p></td></tr></table></div>
+<div class="section" id="GUID-D50FB34A-6A8F-41D0-B4C8-EA3C4845564C"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Specifies additional instructions. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">weighted</span></p></td>
+<td valign="top" class="noborder"><p>Tells the profmerge utility to apply a weighting to the .dyn file values when creating the .dpi file to normalize the data counts when the training runs have differentexecution durations.  This argument only has an effect when the compiler invokes the profmerge utility to create the .dpi file. This argument does not have an effect if the .dpi file was previously created without weighting.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">[no]merge</span></p></td>
+<td valign="top" class="noborder"><p>Enables or disables automatic invocation of the profmerge utility. The default is <span class="keyword">merge</span>. Note that you cannot specify both <span class="keyword">weighted</span> and <span class="keyword">nomerge</span>.  If you try to specify both values, a warning will be displayed and <span class="keyword">nomerge</span> takes precedence.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">default</span></p></td>
+<td valign="top" class="noborder"><p>Enables the use of profiling information during optimization. The profmerge utility is invoked by default. This value is the same as specifying <span class="option">-prof-use</span> (Linux* OS and OS X*) or <span class="option">/Qprof-use</span> (Windows* OS) with no argument.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9E274721-304E-4481-9532-C1E06B4C106A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-prof-use</span> <span>or <span class="option">/Qprof-use-</span></span></p></td>
+<td valign="top" class="noborder"><p>Profiling information is not used during optimization.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-46C7D4BE-A852-4102-AC55-16ADBD847B30"><h2>Description</h2><p>This option enables the use of profiling information (including function splitting and function grouping) during optimization. It enables option /Qfnsplit (Windows* OS).</p>
+<p>This option instructs the compiler to produce a profile-optimized executable and it merges available profiling output files into a pgopti.dpi file.</p>
+<p>Note that there is no way to turn off function grouping if you enable it using this option.</p>
+<p> To set the hotness threshold for function grouping and function ordering, use option <span class="option">-prof-hotness-threshold</span> (Linux OS) or <span class="option">/Qprof-hotness-threshold</span> (Windows OS).</p>
+</div>
+
+<div class="section" id="GUID-10A17802-41C3-4590-AE2A-7D3AD5D1D44A"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-D9BAEB78-A109-43CF-9586-97551C001197.htm#GUID-D9BAEB78-A109-43CF-9586-97551C001197"><span class="option">prof-hotness-threshold, Qprof-hotness-threshold</span></a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

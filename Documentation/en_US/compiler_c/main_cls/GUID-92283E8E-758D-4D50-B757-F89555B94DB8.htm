@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Automatic Vectorization Overview">
+<meta name="DC.subject" content="auto-vectorizer, SSE, SSE2, SSE3, SSSE3, AVX, data format, type, compiler directives, for vectorization">
+<meta name="keywords" content="auto-vectorizer, SSE, SSE2, SSE3, SSSE3, AVX, data format, type, compiler directives, for vectorization">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-92283E8E-758D-4D50-B757-F89555B94DB8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Automatic Vectorization Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_ovw"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_ovw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-92283E8E-758D-4D50-B757-F89555B94DB8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Automatic Vectorization Overview</h1>
+
+
+
+
+<div>
+<p>The automatic vectorizer (also called the auto-vectorizer) is a component of the Intel&reg; compiler that automatically uses SIMD instructions in the Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE, SSE2, SSE3 and SSE4 Vectorizing Compiler and Media Accelerators), <span>and the </span>Supplemental Streaming SIMD Extensions (SSSE3) instruction sets<span>, and the Intel&reg; Advanced Vector Extension instruction set</span>. <span>The vectorizer detects operations in the program that can be done in parallel and converts the sequential operations to parallel; for example, the vectorizer converts the sequential SIMD instruction that processes 2, 4, 8 or up to 16 elements into a  parallel operation, depending on the data type.</span></p>
+
+<p>Automatic vectorization is supported on IA-32 and Intel&reg; 64 architectures.</p>
+
+
+
+<p>The compiler supports a variety of auto-vectorizing hints <span>and user-mandated <span>pragmas</span></span> that can help the compiler to generate effective vector instructions.</p>
+
+
+<p>See <em>The Software Vectorization Handbook. Applying Multimedia Extensions for Maximum Performance</em>, A.J.C. Bik. Intel Press, June, 2004, for a detailed discussion of how to vectorize code using the Intel&reg; compiler. Additionally, see the Related Publications topic in this document for other resources.</p>
+
+
+<p>Using the <span class="option">-vec</span> (Linux*) or the <span class="option">/Qvec</span> (Windows*) option enables vectorization at default optimization levels for both Intel&reg; microprocessors and non-Intel microprocessors. Vectorization may call library routines that can result in additional performance gain on Intel microprocessors than on non-Intel microprocessors. The vectorization can also be affected by certain options, such as <span class="option">/arch</span> or <span class="option">/Qx </span>(Windows) or <span class="option">-m</span> or <span class="option">-x</span> (Linux and OS X).</p>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

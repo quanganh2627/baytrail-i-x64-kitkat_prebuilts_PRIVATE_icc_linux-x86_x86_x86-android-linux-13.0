@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_sbbr_epi32/ _mm512_mask_sbbr_epi32">
+<meta name="abstract" content="Reverse subtracts int32 vectors with borrow. The corresponding instruction is VPSBBRD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Reverse subtracts int32 vectors with borrow. The corresponding instruction is VPSBBRD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_sbbr_epi32, _mm512_mask_sbbr_epi32">
+<meta name="keywords" content="_mm512_sbbr_epi32, _mm512_mask_sbbr_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-8A3EE323-6643-4828-AA7D-8336F6FBAD82.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8F915C56-8C1E-44F4-B6FA-C141191CF977">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_sbbr_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_sbbr_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8F915C56-8C1E-44F4-B6FA-C141191CF977">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_sbbr_epi32/ _mm512_mask_sbbr_epi32</h1>
+<!--Reverse subtracts int32 vectors with borrow. The corresponding instruction is 
+ VPSBBRD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Reverse subtracts int32 vectors with borrow. The corresponding instruction is 
+<samp class="codeph">VPSBBRD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-B5388D36-54BE-4194-AA4D-264C8B8E6178"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_sbbr_epi32(_m512i v2, __mmask16 k2, _m512i v3, __mmask16* borrow);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512i __cdecl _mm512_mask_sbbr_epi32(_m512i v2, __mmask16 k1, __mmask16 k2, _m512i v3, __mmask16* borrow);</span></p></td></tr></table></div>
+<div class="section" id="GUID-F0757D45-71BD-4A76-BDC2-267F53DDD4E3"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">int32 vector subtracted from 
+<samp class="codeph">v3</samp>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">int32 vector from which subtraction is done; can contain the result of a swizzle/broadcast/conversion process on a memory or int32 vector
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result 
+      </span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k2</var></p></td>
+
+<td valign="top" class="noborder">mask register; corresponding element  &nbsp;subtracted from 
+<samp class="codeph">v2</samp>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>borrow</var></p></td>
+
+<td valign="top" class="noborder"><span>mask register; borrowed value of subtraction written into 
+        <samp class="codeph">n</samp>th bit 
+      </span></td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-32A25645-59C4-4667-9A91-ABD9484C3D2A"><h2>Description</h2>
+<p>Performs an element-by-element three-input subtraction of the int32 vector 
+<samp class="codeph">v2</samp>, as well as the corresponding bit of 
+<samp class="codeph">k2</samp>, from int32 vector 
+<samp class="codeph">v3</samp>. The borrowed value from the subtraction difference for the 
+<samp class="codeph">n</samp>th element is written into the 
+<samp class="codeph">n</samp>th bit of vector mask 
+<samp class="codeph">k2_res</samp>.</p>
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing. Elements in 
+<samp class="codeph">v2</samp> with corresponding bit clear in 
+<samp class="codeph">k1</samp> are copied as is to the resulting vector.</p>
+</div>
+<div class="section" id="GUID-C0407B78-8712-44D3-8E5B-CB7606A04396"><h2>Returns</h2><p>Returns the result of the subtraction operation. The borrowed value is written into 
+<samp class="codeph">k2_res</samp>.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8A3EE323-6643-4828-AA7D-8336F6FBAD82.htm">Subtraction Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

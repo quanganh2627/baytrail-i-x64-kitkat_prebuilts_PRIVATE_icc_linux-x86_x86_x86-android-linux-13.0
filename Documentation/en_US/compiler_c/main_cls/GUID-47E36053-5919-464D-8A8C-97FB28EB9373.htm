@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ansi-alias-check, Qansi-alias-check">
+<meta name="abstract" content="Enables or disables the ansi-alias checker.">
+<meta name="description" content="Enables or disables the ansi-alias checker.">
+<meta name="DC.subject" content="-ansi-alias-check compiler option, /Qansi-alias-check compiler option">
+<meta name="keywords" content="-ansi-alias-check compiler option, /Qansi-alias-check compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231.htm#GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231">
+<meta name="DC.Relation" scheme="URI" content="GUID-DD48404E-372F-44CE-BEB9-775D64F91209.htm#GUID-DD48404E-372F-44CE-BEB9-775D64F91209">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-47E36053-5919-464D-8A8C-97FB28EB9373">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ansi-alias-check, Qansi-alias-check</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ansi_alias_check"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ansi_alias_check"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-47E36053-5919-464D-8A8C-97FB28EB9373">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ansi-alias-check, Qansi-alias-check</h1>
+<!--Enables or disables the ansi-alias checker.--><div><p>Enables or disables the ansi-alias checker.</p>
+
+<div class="section" id="GUID-9A07E6CE-27F7-41C9-A873-618EFAA102A4"><h2>IDE Equivalent</h2>
+None
+
+</div>
+<div class="section" id="GUID-ADD55439-7807-4AD4-9F0A-E16F1456F296"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-9CA687B1-00B7-46C6-9DF0-8D6B8D496CB8"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ansi-alias-check</span></p><p><span class="kwd">-no-ansi-alias-check</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qansi-alias-check
+</span></p><p><span class="kwd">/Qansi-alias-check-</span></p></td></tr></table></div>
+<div class="section" id="GUID-A8FCCCCF-7AF9-4E65-8688-8F1591655A8F"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-3FC18083-EF9D-48D7-90BD-AA1B0F57F7F3"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-ansi-alias-check
+</span> <span>or <span class="option">/Qansi-alias-check
+-</span></span></p></td>
+<td valign="top" class="noborder"><p> The ansi-alias checker is disabled unless option <span class="option">-ansi-alias-check</span> or  <span class="option">/Qansi-alias-check</span>
+ has been specified.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-1261CD59-3DAA-4EB3-B85F-4FE6824301CC"><h2>Description</h2><p>This option enables or disables the ansi-alias checker.  The ansi-alias checker checks the source code 
+for potential violations of ANSI aliasing rules and disables unsafe optimizations related to the code 
+
+for those statements that are identified as potential violations.
+</p>
+<p>You can use option <span class="option">–Wstrict-aliasing</span> to identify potential violations.</p>
+<p>If option <span class="option">-ansi-alias</span>  (Linux OS and OS X)
+or <span class="option">/Qansi-alias</span>  (Windows OS) 
+has been specified, the ansi-alias checker is enabled by default. 
+You can use option <span class="option">-no-ansi-alias-check</span> or <span class="option">/Qansi-alias-check-</span> to disable the 
+checker.
+
+</p>
+</div>
+
+<div class="section" id="GUID-FAD2701B-F924-4027-95FA-A1199DFE3138"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231.htm#GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231">ansi-alias, Qansi-alias</a> compiler option</div>
+<div><a href="GUID-DD48404E-372F-44CE-BEB9-775D64F91209.htm#GUID-DD48404E-372F-44CE-BEB9-775D64F91209">Wstrict-aliasing</a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

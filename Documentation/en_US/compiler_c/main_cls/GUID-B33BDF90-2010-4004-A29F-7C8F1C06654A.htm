@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="opt-calloc">
+<meta name="abstract" content="Tells the compiler to substitute a call to _intel_fast_calloc() for a call to calloc().">
+<meta name="description" content="Tells the compiler to substitute a call to _intel_fast_calloc() for a call to calloc().">
+<meta name="DC.subject" content="-opt-calloc compiler option (Linux only)">
+<meta name="keywords" content="-opt-calloc compiler option (Linux only)">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B33BDF90-2010-4004-A29F-7C8F1C06654A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>opt-calloc</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_opt_calloc"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_opt_calloc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B33BDF90-2010-4004-A29F-7C8F1C06654A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">opt-calloc</h1>
+<!--Tells the compiler to substitute a call to _intel_fast_calloc() for a call to calloc().--><div><p>Tells the compiler to substitute a call to _intel_fast_calloc() for a call to calloc().</p>
+
+<div class="section" id="GUID-4A689EA1-8D5A-4091-A362-9AF56C7AA17C"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-5A40CEC0-3A8A-4300-A429-D10FFDBE5423"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-2BBF110F-EA09-469B-81FA-7F6CAC443D07"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-opt-calloc</span></p><p><span class="kwd">-no-opt-calloc</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-1CF13E26-0F7B-41EE-BC70-93D5F6109153"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-22BAC1AC-8F78-4005-AE0A-B2AF62D91899"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-opt-calloc</span></p></td>
+<td valign="top" class="noborder"><p>The compiler does not substitute a call to _intel_fast_calloc() for a call to calloc().</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-4B03B88C-EFEA-452F-8D92-4221BAE0CD8E"><h2>Description</h2><p>This option tells the compiler to substitute a call to_intel_fast_calloc() for a call to calloc().</p>
+<p>This option may increase the performance of long-running programs that use calloc() frequently. It is recommended for these programs over combinations of options <span class="option">-inline-calloc</span> and <span class="option">-opt-malloc-options=3</span> because this option causes less memory fragmentation.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Many routines in the LIBIRC library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+</div></div>
+
+<div class="section" id="GUID-226D280E-CC6A-45F2-B724-D39E6A144ADF"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

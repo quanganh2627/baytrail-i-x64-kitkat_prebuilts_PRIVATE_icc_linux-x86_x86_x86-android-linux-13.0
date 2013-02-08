@@ -1,0 +1,630 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="MMX&#8482; Technology Packed Arithmetic Intrinsics">
+<meta name="DC.subject" content="intrinsics, MMX&#8482; Technology, packed arithmetic operations, adds_pi8, add_pi8, mulhi_pi16, mullo_pi16, sub_pi32, madd_pi16, subs_pu8, subs_pi16, sub_pi16, subs_pu16, subs_pi8, add_pi16, sub_pi8, adds_pu16, adds_pu8, adds_pi16, add_pi32">
+<meta name="keywords" content="intrinsics, MMX&#8482; Technology, packed arithmetic operations, adds_pi8, add_pi8, mulhi_pi16, mullo_pi16, sub_pi32, madd_pi16, subs_pu8, subs_pi16, sub_pi16, subs_pu16, subs_pi8, add_pi16, sub_pi8, adds_pu16, adds_pu8, adds_pi16, add_pi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-ADC4EFA2-410A-44D4-9FF2-84B8EC55B058">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>MMX&#8482; Technology Packed Arithmetic Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mmx_packed_arithmetic"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-ADC4EFA2-410A-44D4-9FF2-84B8EC55B058">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">MMX&#8482; Technology Packed Arithmetic Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-18A332D6-D510-455C-9BE5-908F17ECDDA6"> 
+      <p>The prototypes for MMX&#8482; technology packed arithmetic intrinsics are in the 
+        <span class="filepath">mmintrin.h</span> header file. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D2CDCBBB-C986-4745-A0F0-1AB102D599E6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d571826e87"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d571826e93"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d571826e99"> 
+                <p>Corresponding<br> MMX&#8482; Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_add_pi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_add_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_add_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_adds_pi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_adds_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_adds_pu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDUSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_adds_pu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PADDUSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_sub_pi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_sub_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_sub_pi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_subs_pi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_subs_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_subs_pu8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBUSB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_subs_pu16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PSUBUSW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_madd_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Multiply and add 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PMADDWD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_mulhi_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PMULHW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e87 "> 
+                <p><span class="option"> _mm_mullo_pi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d571826e93 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d571826e99 "> 
+                <p><span class="keyword">PMULLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-17F40D34-8E73-4676-B016-C72527C7E9F7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_add_pi8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the eight 8-bit values in 
+        <span class="keyword">m1</span> to the eight 8-bit values in 
+        <span class="keyword">m2</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-76F4BDB1-B9F3-472A-8975-F328359CF4F2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_add_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the four 16-bit values in 
+        <span class="keyword">m1</span> to the four 16-bit values in 
+        <span class="keyword">m2</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-642A771C-EE0F-4051-AE71-47E5B84C54C4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_add_pi32(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the two 32-bit values in 
+        <span class="keyword">m1</span> to the two 32-bit values in 
+        <span class="keyword">m2</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-050A3A6B-2668-4F71-8843-F7FAC318E655"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_adds_pi8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the eight signed 8-bit values in 
+        <span class="keyword">m1</span> to the eight signed 8-bit values in 
+        <span class="keyword">m2</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9F231DF1-D46B-48E2-BA47-170B6834920F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_adds_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the four signed 16-bit values in 
+        <span class="keyword">m1</span> to the four signed 16-bit values in 
+        <span class="keyword">m2</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E72C2259-C49B-4780-860C-0EE22BA213D0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_adds_pu8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the eight unsigned 8-bit values in 
+        <span class="keyword">m1</span> to the eight unsigned 8-bit values in 
+        <span class="keyword">m2</span> and using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8236827E-C119-4D7E-912D-B3C60F14DA70"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_adds_pu16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Add the four unsigned 16-bit values in 
+        <span class="keyword">m1</span> to the four unsigned 16-bit values in 
+        <span class="keyword">m2</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B62A99CB-41EE-41EF-A139-3AD71B86E885"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sub_pi8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the eight 8-bit values in 
+        <span class="keyword">m2</span> from the eight 8-bit values in 
+        <span class="keyword">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0ACBAA96-ED54-413E-B96D-712362354B21"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sub_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the four 16-bit values in 
+        <span class="keyword">m2</span> from the four 16-bit values in 
+        <span class="keyword">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3FE6DFF5-44B2-4D2C-B56F-C21C9E3191D2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_sub_pi32(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the two 32-bit values in 
+        <span class="keyword">m2</span> from the two 32-bit values in 
+        <span class="keyword">m1</span>. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B476F3E8-194D-4C50-AB3F-22A28F92E3DE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_subs_pi8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the eight signed 8-bit values in 
+        <span class="keyword">m2</span> from the eight signed 8-bit values in 
+        <span class="keyword">m1</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9C6FA4E4-4888-4A78-895C-5CAB2B055561"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_subs_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the four signed 16-bit values in 
+        <span class="keyword">m2</span> from the four signed 16-bit values in 
+        <span class="keyword">m1</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EB1E25B9-AB3B-4024-BA6E-924DBD8ED484"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_subs_pu8(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the eight unsigned 8-bit values in 
+        <span class="keyword">m2</span> from the eight unsigned 8-bit values in 
+        <span class="keyword">m1</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5CC257AB-0A86-430D-BD31-0352E70385B6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_subs_pu16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Subtract the four unsigned 16-bit values in 
+        <span class="keyword">m2</span> from the four unsigned 16-bit values in 
+        <span class="keyword">m1</span> using saturating arithmetic. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FFAF2104-BC6A-4749-8A8B-45F640F6C226"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_madd_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Multiply four 16-bit values in 
+        <span class="keyword">m1</span> by four 16-bit values in 
+        <span class="keyword">m2</span> producing four 32-bit intermediate results, which are then summed by pairs to produce two 32-bit results. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-25F7F7CD-F72C-40DC-9736-13AC26BB2704"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_mulhi_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Multiply four signed 16-bit values in 
+        <span class="keyword">m1</span> by four signed 16-bit values in 
+        <span class="keyword">m2</span> and produce the high 16 bits of the four results. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-888CB8C1-CDB9-41BA-B4CB-78A8820BE6FA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_mullo_pi16(__m64 m1, __m64 m2)</span></p></div> 
+      <p>Multiply four 16-bit values in 
+        <span class="keyword">m1</span> by four 16-bit values in 
+        <span class="keyword">m2</span> and produce the low 16 bits of the four results. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">MMX&#8482; Technology Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

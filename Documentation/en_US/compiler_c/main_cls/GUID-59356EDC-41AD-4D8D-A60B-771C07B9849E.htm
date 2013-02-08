@@ -1,0 +1,409 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Summary of Intel&reg; Cilk&#8482; Plus Language Features">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, summary of language features">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, summary of language features">
+<meta name="DC.Relation" scheme="URI" content="GUID-9AC25C75-112B-4136-82D8-96348475602E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-59356EDC-41AD-4D8D-A60B-771C07B9849E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Summary of Intel&reg; Cilk&#8482; Plus Language Features</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_langfeats"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-59356EDC-41AD-4D8D-A60B-771C07B9849E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Summary of Intel&reg; Cilk&#8482; Plus Language Features</h1>
+ 
+   
+  <div> 
+	 <p>Intel&reg; Cilk&#8482; Plus provides a number of related elements such as keywords, command line options, environment variables and pragmas. The following table provides a summary. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EDABBBAF-3330-44A0-817E-19F835E8481A" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		   
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <strong> Element</strong> 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <strong> Description</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Keywords:</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">_Cilk_spawn</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Modifies a function call statement to tell the runtime system that the function may (but is not required to) run in parallel with the caller. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-6DFD6494-58B4-40ED-88E9-90FEAF5AF8F6.htm">cilk_spawn</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">_Cilk_sync</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Indicates that the current function cannot continue past this point in parallel with its spawned children. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-ADA046BE-1B5C-4A4A-B6F7-AEADF2FB6FF4.htm">cilk_sync</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">_Cilk_for</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Specifies a loop that permits loop iterations to run in parallel; is a replacement for the normal C/C++ for loop. 
+				  </p>
+ 
+				  <p>This statement divides a loop into chunks containing one or more loop iterations. Each chunk is executed serially, and is spawned as a chunk during the execution of the loop. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-ABF330B0-FEDA-43CD-9393-48CD6A43063C.htm">cilk_for</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Pragmas:</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">cilk grainsize</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Specifies the grain size for one cilk_for loop. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-ABF330B0-FEDA-43CD-9393-48CD6A43063C.htm">cilk_for</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">simd</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Expresses vector parallelism for utilizing hardware SIMD parallelism. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-1EA04294-988E-4152-B584-B028FD6FAC48.htm#GUID-1EA04294-988E-4152-B584-B028FD6FAC48">simd</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Predefined Macro:</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">__cilk</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Specifies the supported Intel&reg; Cilk&#8482; Plus version number. The value is set at 200 for this release. If this macro is not defined, the compiler does not support Intel&reg; Cilk&#8482; Plus. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Environment Variable:</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">CILK_NWORKERS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Specifies the number of worker threads . 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-85B8EB6D-A49C-4D44-B58E-88DCA85FBE23.htm">Set Worker Count</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Elemental Function:</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="keyword">declspec(vector)</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%">Used to write an elemental function. 
+				  <p>See 
+					 <a href="GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF.htm#GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF">Elemental Functions</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Compiler Options:</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="option">/Qcilk-serialize, -cilk-serialize</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Specifies that a Intel&reg; Cilk&#8482; Plus program should be serialized. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-FF3DEE7D-570F-4A61-9595-CE658C4940EC.htm">Serialization</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="option">/Qintel-extensions[-], -[no]intel-extensions</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Enables or disables Intel language extensions (which include Intel&reg; Cilk&#8482; Plus). Intel language extensions are on by default. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" colspan="2" valign="top"><strong>Header files (located in include/cilk):</strong> 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="filepath">cilk/cilk.h</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Defines macros that provide names with simpler conventions (<span class="keyword">cilk_spawn, cilk_sync and cilk_for</span>) . 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="filepath">cilk/cilk_api.h</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Declares the runtime functions and classes. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="filepath">cilk/cilk_stub.h</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Can be used to serialize an Intel&reg; Cilk&#8482; Plus application . 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="filepath">cilk/holder.h</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p> Contains the definition of the cilk::holder template. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-E3FBD18F-C6DB-4776-96C8-E8358541FA0E.htm">Introduction to Holders</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="filepath">cilk/reducer.h</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Contains common reducer definitions. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-73A68BC2-BDCD-4922-8CAB-B5AAAFF90CFF.htm">Introduction to Reducers</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p><span class="filepath">reducer_list.h 
+					 </span><span class="filepath">reducer_max.h</span> 
+					 <span class="filepath">reducer_min.h 
+					 </span> 
+					 <span class="filepath">reducer_opadd.h</span> 
+					 <span class="filepath">reducer_opand.h</span> 
+					 <span class="filepath">reducer_opor.h</span> 
+					 <span class="filepath">reducer_opxor.h 
+					 </span> 
+					 <span class="filepath">reducer_ostream.h</span> 
+					 <span class="filepath">reducer_string.h</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="NaN%"> 
+				  <p>Reducers provided in the reducer library. 
+				  </p>
+ 
+				  <p>See 
+					 <a href="GUID-6B5EBB46-2BAB-465B-870F-5CD6A981FA35.htm#GUID-6B5EBB46-2BAB-465B-870F-5CD6A981FA35">Reducer Library</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9AC25C75-112B-4136-82D8-96348475602E.htm">Introduction</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

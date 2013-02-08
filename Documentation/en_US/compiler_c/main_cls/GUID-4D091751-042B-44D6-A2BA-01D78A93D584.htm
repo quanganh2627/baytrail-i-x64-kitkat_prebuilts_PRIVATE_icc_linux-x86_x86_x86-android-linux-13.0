@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fms-dialect">
+<meta name="abstract" content="Enables support for a language dialect that is compatible with Microsoft* Windows, while maintaining link compatibility with gcc. This option is deprecated on OS* X systems.">
+<meta name="description" content="Enables support for a language dialect that is compatible with Microsoft* Windows, while maintaining link compatibility with gcc. This option is deprecated on OS* X systems.">
+<meta name="DC.subject" content="-fms-dialect compiler option">
+<meta name="keywords" content="-fms-dialect compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-45B8DF44-5AFD-436F-9042-6668A6171892.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-97A5D37C-E4E3-4EF6-B279-63E538177CA0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4D091751-042B-44D6-A2BA-01D78A93D584">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fms-dialect</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fms_dialect"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fms_dialect"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4D091751-042B-44D6-A2BA-01D78A93D584">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fms-dialect</h1>
+<!--Enables support for a language dialect that is compatible with Microsoft* Windows, while maintaining link compatibility with gcc. This option is deprecated on OS* X systems.--><div><p>Enables support for a language dialect that is compatible with Microsoft* Windows, while maintaining link compatibility with gcc. This option is deprecated on OS* X systems.</p>
+
+<div class="section" id="GUID-2F3A4533-8DD9-48C2-9043-24EF5408BAF3"><h2>IDE Equivalent</h2>
+None
+
+</div>
+<div class="section" id="GUID-DE9C5FA5-EF13-4B29-BEF6-82885B7EA90C"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-E34AC47B-CA3B-4BD7-B006-9A2B68EA061A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fms-dialect</span><span class="delim">[</span><span class="sep">=</span><span class="var">ver</span><span class="delim">]</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-6EAEC43E-835F-49D0-B43E-4E6C033F48BA"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>ver</var></p></td>
+<td valign="top" class="noborder"><p>Indicates that the language dialect should be compatible with a certain version of Microsoft* Visual Studio. Possible values are: </p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">10</span></p></td>
+
+<td valign="top" class="noborder"><p>Specifies the dialect should be compatible with Microsoft* Visual Studio 2010.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">9</span></p></td>
+
+<td valign="top" class="noborder"><p>Specifies the dialect should be compatible with Microsoft* Visual Studio 2008. This is the default if you do not specify <var>ver</var>.</p>
+</td>
+
+</tr>
+</table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AB0C236C-A230-4437-BAA4-5DB6BEBD0939"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not support a language dialect that is compatible with Microsoft* Windows.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9110FCE2-0F9D-4389-9DBF-CC234A13F3B4"><h2>Description</h2><p>This option enables support for a language dialect that is compatible with Microsoft* Windows, while maintaining link compatibility with gcc. It allows portability of code written on Windows* OS that uses Microsoft extensions or language features.  </p>
+</div>
+
+<div class="section" id="GUID-48565F5F-342D-4304-9435-93A2315168C4"><h2>Alternate Options</h2><p>Linux and OS X: None</p>
+
+    <p>Windows: <span class="option">/Qgcc-dialect</span></p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-45B8DF44-5AFD-436F-9042-6668A6171892.htm">Compatibility Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-97A5D37C-E4E3-4EF6-B279-63E538177CA0.htm"><span class="option">Qgcc-dialect</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

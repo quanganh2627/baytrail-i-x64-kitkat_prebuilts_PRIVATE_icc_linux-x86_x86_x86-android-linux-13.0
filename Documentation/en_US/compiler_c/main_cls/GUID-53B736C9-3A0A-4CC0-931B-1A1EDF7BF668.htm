@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="inline-level, Ob">
+<meta name="abstract" content="Specifies the level of inline function expansion.">
+<meta name="description" content="Specifies the level of inline function expansion.">
+<meta name="DC.subject" content="-inline-level compiler option, inline function expansion, option specifying level of, /Ob compiler option">
+<meta name="keywords" content="-inline-level compiler option, inline function expansion, option specifying level of, /Ob compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>inline-level, Ob</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ob"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ob"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">inline-level, Ob</h1>
+<!--Specifies the level of inline function expansion.--><div><p>Specifies the level of inline function expansion.</p>
+
+<div class="section" id="GUID-6309F5D4-AB15-4850-9CDF-12B6267A3BBE"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Inline Function Expansion</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Optimization &gt; Inline Function Expansion</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Optimization &gt; Inline Function Expansion</strong></p>
+</div>
+<div class="section" id="GUID-3C232199-8AA5-4D34-B03B-2948F0F858BC"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-BF496E34-B18B-4DD3-909B-42982E5FB4BF"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-inline-level</span><span class="oper">=</span><span class="var">n</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Ob</span><span class="var">n</span></p></td></tr></table></div>
+<div class="section" id="GUID-80653394-3FD2-4DC4-82E5-65FD15DFCA0F"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the inline function expansion level. Possible values are 0, 1, and 2.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-FB98BF0D-0541-4F48-BFFE-2F27236CCBEF"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-inline-level=2</span><span> or <span class="option">/Ob2</span></span></p></td>
+<td valign="top" class="noborder"><p>This is the default if option <span class="option">O2</span> is specified or is in effect by default. On Windows* systems, this is also the default if option <span class="option">O3</span> is specified.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-inline-level=0</span><span> or <span class="option">/Ob0</span></span></p></td>
+<td valign="top" class="noborder"><p>This is the default if option <span class="option">-O0</span> (Linux* OS and OS X*)<span> or <span class="option">/Od</span> (Windows* OS)</span> is specified.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-AA311464-1D03-45B3-A445-4CEE03564567"><h2>Description</h2><p>This option specifies the level of inline function expansion. Inlining procedures can greatly improve the run-time performance of certain programs.</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3E293D3C-3CC3-454D-8ABB-FB2F43E3B78C" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr> <th class="noborder" align="left" valign="top" width="30%" id="d266975e131"><p>Option</p>
+</th>
+ <th class="noborder" align="left" valign="top" width="70%" id="d266975e135"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> <tr> <td class="noborder" valign="top" width="30%" headers="d266975e131 "><p><span class="option">-inline-level=0 or Ob0</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d266975e135 "><p>Disables inlining of user-defined functions. Note that statement functions are always inlined.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d266975e131 "><p><span class="option">-inline-level=1 or Ob1 </span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d266975e135 "><p>Enables inlining when an inline keyword or an inline <span>attribute</span> is specified.<span> Also enables inlining according to the C++ language.</span></p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d266975e131 "><p><span class="option">-inline-level=2 or Ob2</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d266975e135 "><p>Enables inlining of any function at the compiler's discretion.</p>
+</td>
+ </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="section" id="GUID-B58DD61B-7294-48F5-8387-A3B78F553F2C"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">Inlining Options</a></div>
+</div>
+<div class="See Also"><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

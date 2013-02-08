@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="sox, Qsox">
+<meta name="abstract" content="Tells the compiler to save the compilation options and version number in the Linux* OS executable or the Windows* OS object file. It also lets you choose whether to include lists of certain functions.">
+<meta name="description" content="Tells the compiler to save the compilation options and version number in the Linux* OS executable or the Windows* OS object file. It also lets you choose whether to include lists of certain functions.">
+<meta name="DC.subject" content="-sox compiler option, /Qsox compiler option, version, option saving in executable or object file, compiler options">
+<meta name="keywords" content="-sox compiler option, /Qsox compiler option, version, option saving in executable or object file, compiler options">
+<meta name="DC.Relation" scheme="URI" content="GUID-BC283ACB-C0A8-4BE1-8D86-1974292A3367.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-57AD7042-0009-492D-8C6F-AC279E681F2A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>sox, Qsox</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_sox"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_sox"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-57AD7042-0009-492D-8C6F-AC279E681F2A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">sox, Qsox</h1>
+<!--Tells the compiler to save the compilation options and version number in the Linux* OS executable or the Windows* OS object file.  It also lets you choose whether to include lists of certain  functions .--><div><p>Tells the compiler to save the compilation options and version number in the Linux* OS executable or the Windows* OS object file.  It also lets you choose whether to include lists of certain <span>functions</span>.</p>
+
+<div class="section" id="GUID-FFD5663E-A0FA-4D9D-A9C3-9B6B625602E3"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-CF9B77BB-44E2-479F-A5B4-2CDA1D373916"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-88122E94-37C7-42DA-8135-AAEDA3C7521D"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-sox</span><span class="delim">[</span><span class="oper">=</span><span class="var">keyword</span><span class="delim">[,</span><span class="var">keyword</span><span class="delim">]</span><span class="delim">]</span></p><p><span class="kwd">-no-sox</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qsox</span><span class="delim">[</span><span class="oper">:</span><span class="var">keyword</span><span class="delim">[,</span><span class="var">keyword</span><span class="delim">]</span><span class="delim">]</span></p><p><span class="kwd">/Qsox-</span></p></td></tr></table></div>
+<div class="section" id="GUID-D43BF9F8-CCB0-4A2D-B6A2-9C94C3576DB7"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Is the <span>function</span> information to include. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">inline</span></p></td>
+<td valign="top" class="noborder"><p> Includes a list of the <span>functions</span> that were compiled with <span class="option">-prof-use</span> (Linux* OS) or <span class="option">/Qprof-use</span> (Windows* OS) and for which the .dpi file had profile information, and an indication for each as to whether the profile information was USED (matched) or IGNORED (mismatched).</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">profile</span></p></td>
+<td valign="top" class="noborder"><p> Includes a list of the <span>functions</span> that were inlined in each object.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-BD5B42AF-F714-45AB-8947-45ECC0CAA41C"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-sox</span><br><span> or<span class="option">/Qsox-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler does not save these informational strings in the executable or object file.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-34B12B38-0565-4983-B855-3641192998C0"><h2>Description</h2><p>This option tells the compiler to save the compilation options and version number in the Linux* OS executable or the Windows* OS object file.  It also lets you choose whether to include lists of certain <span>functions</span>.  The information is embedded as a string in each object file or assembly output.</p>
+<p> If you specify <span class="option">-sox</span> <span>or <span class="option">/Qsox</span></span> with no argument,
+the compiler saves the compiler options and version number used in
+the compilation of the objects that make up the
+executable.</p>
+
+<p> If you specify this option on Linux systems, the size of the executable on disk is
+increased slightly. <span>Each <var>keyword</var>  you specify
+increases the size of the executable.</span>
+When you link the object files into an executable file, the linker
+places each of the information strings into the header of the
+executable. It is then possible to use a tool, such as a strings
+utility, to determine what options were used to build the
+executable file.</p>
+
+<p> If you specify this option on Windows systems, the information stays in the object
+file.</p>
+
+</div>
+
+<div class="section" id="GUID-FB144DBB-F322-4A7C-AEE4-AF98B7F35E85"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_0E60A828D2E84235B56D08C0465DD61D"><a name="EXAMPLE_0E60A828D2E84235B56D08C0465DD61D"><!-- --></a><h2>Example</h2><p> The following commands are equivalent on Linux* OS:</p>
+
+<pre>-sox=profile -sox=inline &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux OS</pre>
+<pre>-sox=profile,inline      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux OS</pre><p> The following commands are equivalent on Windows* OS:</p>
+
+<pre>/Qsox:profile /Qsox:inline&nbsp;&nbsp;&nbsp;&nbsp;    ! Windows OS</pre>
+<pre>/Qsox:profile,inline&nbsp;&nbsp;&nbsp;&nbsp;          ! Windows OS</pre><p> You can use the negative form of the option to disable and reset the option. 
+For example:</p>
+<pre>-sox=profile -no-sox -sox=inline      ! This means -sox=inline on Linux OS</pre><pre>/Qsox:profile /Qsox- /Qsox:inline     ! This means /Qsox:inline on Windows OS</pre></div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BC283ACB-C0A8-4BE1-8D86-1974292A3367.htm">Miscellaneous Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407"><span class="option">prof-use, Qprof-use</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

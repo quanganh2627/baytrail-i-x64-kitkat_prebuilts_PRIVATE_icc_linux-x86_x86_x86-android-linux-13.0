@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Elemental Functions">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, elemental functions">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, elemental functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-44B505B6-01AF-4865-8DF4-AF851F51DDA1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5.htm#GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">
+<meta name="DC.Relation" scheme="URI" content="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781.htm#GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Elemental Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_elem_functions"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_elem_functions"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-90A7F490-941F-4C07-A88E-07BBA14AE6AF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Elemental Functions</h1>
+ 
+   
+  <div> 
+	 <p>Elemental functions are a general language construct to express a data parallel algorithm. An elemental function is written as a regular C/C++ function, and the algorithm within describes the operation on one element, using scalar syntax. The function can then be called as a regular C/C++ function to operate on an single element or it can be called in a data parallel context, providing many elements to operate on. In Intel&reg; Cilk&#8482; Plus, the data parallel context is provided as an array. 
+	 </p>
+ 
+	 <div class="section" id="GUID-2F322160-53B9-4E64-BF19-BE95AB4A8001"><h2 class="sectiontitle">How Elemental Functions Work</h2> 
+		 
+		<p>When you write an elemental function, the compiler generates a short vector form of the function, which can perform your function's operation on multiple arguments in a single invocation. The short vector version may be able to perform multiple operations as fast as the regular implementation performs a single one by utilizing the vector ISA in the CPU. In addition, upon invocation of the function, if the data set is large enough, the compiler may assign different copies of the elemental functions to different 
+		  <span><span>threads (or workers)</span></span>, executing them concurrently. The end result is that your data parallel operation executes on the CPU utilizing both the parallelism available in the multiple cores and the parallelism available in the vector ISA. 
+		</p>
+ 
+		<p>If the short vector function is called inside a parallel loop, a 
+		  <span class="keyword">cilk_for</span> loop or an auto-parallelized loop that is vectorized, you can achieve both vector-level and thread-level parallelism. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-EFA915D0-0736-4A88-BCAA-370A97883C4E"><h2 class="sectiontitle">Declaring an Elemental Function</h2> 
+		 
+		<p> In order for the compiler to generate the short vector function, you need to provide an indication in your code. 
+		</p>
+ 
+		<p>Windows* OS: 
+		</p>
+ 
+		<p>Use the 
+		  <samp class="codeph">__declspec(vector (clauses))</samp> declaration, as follows: 
+		</p>
+ 
+		<pre>__declspec(vector (clauses)) return_type elemental_function_name(arguments)</pre> 
+		<p>Linux* OS and OS X*: 
+		</p>
+ 
+		<p>Use the 
+		  <samp class="codeph">__attribute__((vector (clauses)))</samp> declaration, as follows: 
+		</p>
+ 
+		<pre>__attribute__((vector (clauses))) return_type elemental_function_name(arguments)</pre> 
+		<p> The clauses for the vector declaration take the following values: 
+		  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"> 
+			 <tr> 
+				<td valign="top" width="30%" class="noborder"><p> 
+				  <span class="parmname">processor(cpuid)</span> 
+				</p></td>
+ 
+				<td valign="top" class="noborder"> 
+				  <p>Where 
+					 <samp class="codeph">cpuid</samp> takes one of the following values: 
+				  <ul type="disc" id="GUID-B86D799D-B0B1-4903-BAA5-D7F6CA91540D"> 
+					 <li> 
+						<p><samp class="codeph">atom</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">mic</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">core_aes_pclmulqdq</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">core_i7_sse4_2</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">core_2_duo_sse4_1</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">core_2_duo_ssse3</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">core_2nd_gen_avx</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">core_3rd_gen_avx</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">pentium_4_sse3</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">pentium_4</samp> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">pentium_m</samp> 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+		</p>
+ 
+		</td>
+ 
+		</tr> 
+		<tr> 
+		  <td valign="top" width="30%" class="noborder"><p> 
+			 <span class="parmname">vectorlength(n)</span> 
+		  </p></td>
+ 
+		  <td valign="top" class="noborder"> 
+			 <p>Where 
+				<samp class="codeph">n</samp> is a vectorlength (vl). It must be an integer that is a power of 2. The value must be 2, 4, 8, or 16. 
+			 </p>
+ 
+			 <p>The 
+				<span class="parmname">vectorlength</span> clause tells the compiler that each routine invocation at the call site should execute the computation equivalent to 
+				<samp class="codeph">n</samp> times the scalar function execution. 
+			 </p>
+ 
+		  </td>
+ 
+		</tr> 
+		<tr> 
+		  <td valign="top" width="30%" class="noborder"><p><span class="parmname">vectorlengthfor(datatype)</span> 
+		  </p></td>
+ 
+		  <td valign="top" class="noborder"> 
+			 <p>Where the 
+				<samp class="codeph">datatype</samp> value must be one of the following built-in types otherwise the behavior is undefined. 
+			 <ul type="disc" id="GUID-39AFCDFC-2440-4E10-B83D-2A077C772BF5"> 
+				<li> 
+				  <p>integer types (8-, 16-, 32-, or 64-bit) 
+				  </p>
+ 
+				</li>
+ 
+				<li> 
+				  <p>pointer types (treated as pointer-sized integer) 
+				  </p>
+ 
+				</li>
+ 
+				<li> 
+				  <p>floating point types (32- or 64-bit) 
+				  </p>
+ 
+				</li>
+ 
+				<li> 
+				  <p>complex types (64- or 128-bit) 
+				  </p>
+ 
+				</li>
+ 
+			 </ul>
+ 
+			 </p>
+ 
+			 <p>When you use the 
+				<span class="parmname">vectorlengthfor</span> clause, 
+				<samp class="codeph">n</samp> is computed as the data type corresponding to the size of the vector register/data type for the processor being used. For example, 
+				<span class="parmname">vectorlengthfor(float)</span> results in 
+				<samp class="codeph">n=4</samp> for Intel&reg; SSE2 to Intel&reg; SSE4.2 target processors (with packed float operations available on 128-bit 
+				<samp class="codeph">XMM</samp> registers), and 
+				<samp class="codeph">n=8</samp> for Intel&reg; AVX target processors (with packed float operations available on 256-bit 
+				<samp class="codeph">YMM</samp> registers). Using 
+				<span class="parmname">vectorlengthfor(int)</span> results in 
+				<samp class="codeph">n=4</samp> for Intel&reg; SSE2 to Intel&reg; AVX target processors. 
+				<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+				  <p>The 
+					 <span class="parmname">vectorlength</span> and 
+					 <span class="parmname">vectorlengthfor</span> clauses are mutually exclusive. 
+				  </p>
+ 
+				</div> 
+			 </p>
+ 
+		  </td>
+ 
+		</tr> 
+		<tr> 
+		  <td valign="top" width="30%" class="noborder"><p>linear(param1:step1 [, param2:step2]…) 
+		  </p></td>
+ 
+		  <td valign="top" class="noborder"> 
+			 <p>Where 
+			 <ul type="disc" id="GUID-25FBBF59-C293-4BF6-A818-AE530F63E67D"> 
+				<li> 
+				  <p><samp class="codeph">param</samp> is a scalar variable 
+				  </p>
+ 
+				</li>
+ 
+				<li> 
+				  <p><samp class="codeph">step</samp> is a compile-time 
+					 <span>integer</span> constant expression 
+				  </p>
+ 
+				  <p>The 
+					 <span class="parmname">linear</span> clause tells the compiler that for each consecutive invocation of the routine in a serial execution, the value of 
+					 <samp class="codeph">param1</samp> is incremented by 
+					 <samp class="codeph">step1</samp>, 
+					 <samp class="codeph">param2</samp> is incremented by 
+					 <samp class="codeph">step2</samp>, and so on. If more than one step is specified for a particular variable, a compile-time error occurs. Multiple 
+					 <span class="parmname">linear</span> clauses are merged as a union. 
+				  </p>
+ 
+				</li>
+ 
+			 </ul>
+ 
+			 </p>
+ 
+		  </td>
+ 
+		</tr> 
+		<tr> 
+		  <td valign="top" width="30%" class="noborder"><p><span><span>uniform</span></span>(param [, param,]…) 
+		  </p></td>
+ 
+		  <td valign="top" class="noborder"> 
+			 <p>Where 
+				<samp class="codeph">param</samp> is a formal parameter of the specified function. 
+			 </p>
+ 
+			 <p>The 
+				<span class="parmname">uniform</span> clause tells the compiler that the values of the specified arguments can be broadcast to all iterations as a performance optimization. Multiple uniform clauses are merged as a union. 
+			 </p>
+ 
+		  </td>
+ 
+		</tr> 
+		<tr> 
+		  <td valign="top" width="30%" class="noborder"><p>[no]mask 
+		  </p></td>
+ 
+		  <td valign="top" class="noborder"> 
+			 <p>The 
+				<span class="parmname">[no]mask</span> clause tells the compiler to generate a masked vector version of the routine. 
+			 </p>
+ 
+		  </td>
+ 
+		</tr> 
+		</table>
+ 
+		</p>
+ 
+		<p> Write the code inside your function using existing C/C++ syntax. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-ED29CDB4-5085-4F4B-9C9E-AA10A90B954E"><h2 class="sectiontitle">Invoking an Elemental Function with Parallel Context</h2> 
+		 
+		<p>Typically, the invocation of an elemental function provides arrays wherever scalar arguments are specified as formal parameters. Use the array notation syntax available in Intel&reg; Cilk&#8482; Plus to provide the arrays succinctly. Alternatively, you can invoke the function from a 
+		  <span class="keyword">_Cilk_for</span> loop. 
+		</p>
+ 
+		<p>The following examples show how to use elemental functions to add two large arrays and store the result in a third array, taking advantage of the parallelism available in both the cores and the vectors in the CPU: 
+		</p>
+ 
+		<p>Windows* OS: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-43FE0907-7826-4957-BDBE-B94041F72DAE" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="66.66666666666666%" id="d492796e445"> 
+					 <p><strong>Example</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d492796e445 "> 
+					 <pre>//declaring the function body</pre> 
+					 <pre>__declspec((vector)) double ef_add (double x, double y){</pre> 
+					 <pre>&nbsp;&nbsp;return x + y;</pre> 
+					 <pre>}</pre> 
+					 <pre>&nbsp;&nbsp;</pre> 
+					 <pre>//invoking the function using array notations</pre> 
+					 <pre>a[:] = ef_add(b[:],c[:]); &nbsp;&nbsp;&nbsp;//operates on the whole extent of the arrays a,b,c</pre> 
+					 <pre>a[0:n:s] = ef_add(b[0:n:s],c[0:n:s]); //use the full array notation construct to also specify n as an extend and s as a stride</pre> 
+					 <pre>&nbsp;&nbsp;</pre> 
+					 <pre>//Use the _Cilk_for construct to invoke the elemental function in a data parallel context</pre> 
+					 <pre>_Cilk_for (j = 0; j &lt; n; ++j) {</pre> 
+					 <pre>&nbsp;&nbsp;a[j] = ef_add(b[j],c[j])</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>Linux* OS and OS X*: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-08090330-AEC3-417B-BF5E-2FBC2119BBF2" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="66.66666666666666%" id="d492796e521"> 
+					 <p><strong>Example</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d492796e521 "> 
+					 <pre>//declaring the function body</pre> 
+					 <pre>__attribute__((vector)) double ef_add (double x, double y){</pre> 
+					 <pre>&nbsp;&nbsp;return x + y;</pre> 
+					 <pre>}</pre> 
+					 <pre>&nbsp;&nbsp;</pre> 
+					 <pre>//invoking the function using array notations</pre> 
+					 <pre>a[:] = ef_add(b[:],c[:]); &nbsp;&nbsp;&nbsp;//operates on the whole extent of the arrays a,b,c</pre> 
+					 <pre>a[0:n:s] = ef_add(b[0:n:s],c[0:n:s]); //use the full array notation construct to also specify n as an extend and s as a stride</pre> 
+					 <pre>&nbsp;&nbsp;</pre> 
+					 <pre>//Use the _Cilk_for construct to invoke the elemental function in a data parallel context</pre> 
+					 <pre>_Cilk_for (j = 0; j &lt; n; ++j) {</pre> 
+					 <pre>&nbsp;&nbsp;a[j] = ef_add(b[j],c[j])</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>Only the calling code using the 
+			 <span class="keyword">_Cilk_for</span> calling syntax is able to use all available parallelism. The array notation syntax, as well as calling the elemental function from the regular 
+			 <samp class="codeph">for</samp> loop, results in invoking the short vector function in each iteration and utilizing the vector parallelism but the invocation is done in a serial loop, without utilizing multiple cores. 
+		  </p>
+ 
+		</div> 
+	 </div>
+ 
+	 <p><strong>Limitations</strong> 
+	 </p>
+ 
+	 <p>The following language constructs are disallowed within elemental functions: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-009965CE-CBF3-4FC7-894C-E4CF7CF15484"> 
+		<li> 
+		  <p>The 
+			 <span class="keyword">GOTO</span> statement 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The 
+			 <span class="keyword">switch</span> statement with16 or more 
+			 <span class="keyword">case</span> statements 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Operations on 
+			 <span class="keyword">classes</span> and 
+			 <span class="keyword">structs</span> (other than member selection) 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The 
+			 <span class="keyword">_Cilk_spawn</span> keyword 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Expressions with array notations 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44B505B6-01AF-4865-8DF4-AF851F51DDA1.htm">Intel&reg; Cilk&#8482; Plus</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5.htm#GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">User-mandated or SIMD Vectorization 
+		  </a></div>
+<div><a href="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781.htm#GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">Function Annotations and the SIMD Directive for Vectorization 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

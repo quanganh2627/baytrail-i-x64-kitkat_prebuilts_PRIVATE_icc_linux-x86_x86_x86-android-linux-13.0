@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Restrictions on Offloaded Code Using Shared Virtual Memory">
+<meta name="DC.subject" content="restrictions on offloaded code">
+<meta name="keywords" content="restrictions on offloaded code">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A2B78E31-969D-4C16-AB6A-136F5B0DDE31">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Restrictions on Offloaded Code Using Shared Virtual Memory</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_code_restrictions_shared"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A2B78E31-969D-4C16-AB6A-136F5B0DDE31">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Restrictions on Offloaded Code Using Shared Virtual Memory</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p> Offloaded code using virtual shared memory has the following restrictions: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-26E67ED2-EC7A-47C7-BACB-A532333B0A7D"> 
+		<li> 
+		  <p>Multiple host CPU threads can execute concurrently while one host CPU thread offloads a section of code. In this case, synchronization mechanisms such as locks, atomics, mutexes, OpenMP* atomic operations, OpenMP critical, OpenMP taskwait, OpenMP barriers, etc. do not work between the host CPU code and code that is offloaded to the coprocessor. However, if parallelism on the host CPU is enabled using OpenMP, then OpenMP synchronization at the end of a parallel region is guaranteed to work even if some part of the OpenMP parallel region has been offloaded to the coprocessor. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p id="EXCEPTION_HANDLING"><a name="EXCEPTION_HANDLING"><!-- --></a>Exception handling may be done as usual within code running on the CPU and within code running on the coprocessor. So exceptions can be raised, caught and handled on the CPU, or raised, caught and handled on the coprocessor. However it is not possible to propagate an exception from the coprocessor to the CPU. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Virtual shared memory classes that allocate and free memory must use either using the 
+			 <span class="keyword">_Offload_shared_malloc()</span> and 
+			 <span class="keyword">_Offload_shared_free()</span> or 
+			 <span class="keyword">_Offload_shared_aligned_malloc()</span> and 
+			 <span class="keyword">_Offload_shared_aligned_free()</span> APIs instead of standard allocate and free APIs. 
+		  </p>
+ 
+		  <p>For an example, see 
+			 <span class="filepath"><var>install-dir</var>/Samples/en_US/C++/mic_samples/LEO_tutorial</span>. 
+		  </p>
+ 
+		  <p>Standard Template libraries which provide classes that allocate and free their own memory are not usable currently with 
+			 <span class="keyword">_Cilk_shared</span> unless they are modified to use the 
+			 <span class="keyword">_Offload_shared_*</span> specific APIs mentioned above. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Runtime Type Information (RTTI) is not supported under the Shared Virtual memory programming method. Specifically, use of 
+			 <samp class="codeph">dynamic_cast&lt;&gt;</samp> and 
+			 <samp class="codeph">typeid()</samp> is not supported. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

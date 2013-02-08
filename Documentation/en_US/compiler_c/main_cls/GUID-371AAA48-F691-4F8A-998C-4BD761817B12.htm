@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Setting the Number of OpenMP* Threads on the Coprocessor">
+<meta name="DC.subject" content="Enter index keyword">
+<meta name="keywords" content="Enter index keyword">
+<meta name="DC.Relation" scheme="URI" content="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-371AAA48-F691-4F8A-998C-4BD761817B12">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Setting the Number of OpenMP* Threads on the Coprocessor</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_omp_setting_num_threads"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-371AAA48-F691-4F8A-998C-4BD761817B12">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Setting the Number of OpenMP* Threads on the Coprocessor</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>Several methods exist to override the default number of threads per core on the coprocessor. 
+	 </p>
+ 
+	 <div class="section" id="GUID-A528D4B3-CD7C-4817-9DBB-65F03D003AB3"><h2 class="sectiontitle">Using the OpenMP* API</h2> 
+		 
+		<p>The OpenMP* API specification provides the following standard ways to change the desired number of threads on the coprocessor: 
+		</p>
+ 
+		<ul type="disc" id="GUID-DFB202EF-3C5F-4CAA-AE7F-F19138501161"> 
+		  <li> 
+			 <p>Calling the function 
+				<samp class="codeph">omp_set_num_threads(<var>n</var>)</samp> before the omp parallel region 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Using the clause 
+				<samp class="codeph">#pragma omp parallel num_threads(<var>n</var>)</samp></p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Setting the environment variable 
+				<samp class="codeph">OMP_NUM_THREADS=<var>n</var></samp> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>For more information, refer to the OpenMP* API Specification at http://www.openmp.org. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-448B7650-3C75-4EDF-B8C4-A7312B5A97DF"><h2 class="sectiontitle"> Using the Intel&reg; Compiler</h2> 
+		 
+		<p>In addition to the standard methods that the OpenMP* API specification provides, listed below, you can use the environment variable 
+		  <samp class="codeph">MIC_ENV_PREFIX</samp> to define a custom-prefixed environment variable to control the number of OpenMP* threads on the coprocessor separately from the host CPU. For example, the following environment variable definitions set 
+		  <samp class="codeph">OMP_NUM_THREADS</samp> on both the CPU and the coprocessor, but with different values. 
+		</p>
+ 
+		<pre>OMP_NUM_THREADS=8
+MIC_OMP_NUM_THREADS=124
+MIC_ENV_PREFIX=MIC</pre> 
+		<p>Direct calls on the coprocessor to APIs in 
+		  <span class="filepath">libiomp5.so</span> to establish a specific runtime setting override any setting previously set by a CPU environment variable that is replicated on the coprocessor. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">OpenMP* Considerations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

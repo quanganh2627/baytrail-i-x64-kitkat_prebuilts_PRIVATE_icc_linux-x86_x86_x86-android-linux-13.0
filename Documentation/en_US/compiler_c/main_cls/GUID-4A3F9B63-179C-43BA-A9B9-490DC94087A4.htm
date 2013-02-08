@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_fmsubadd_ps, _mm256_fmsubadd_ps">
+<meta name="abstract" content="Multiply-subtracts and adds packed single-precision floating-point values using three float32 vectors. The corresponding FMA instruction is VFMSUBADD<XXX&gt;PS, where XXX could be 132, 213, or 231.">
+<meta name="description" content="Multiply-subtracts and adds packed single-precision floating-point values using three float32 vectors. The corresponding FMA instruction is VFMSUBADD<XXX&gt;PS, where XXX could be 132, 213, or 231.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmsubadd_ps (VFMSUBADD###), _mm256_fmsubadd_ps (VFMSUBADD###)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, fused multiply-add (FMA) operations, _mm_fmsubadd_ps (VFMSUBADD###), _mm256_fmsubadd_ps (VFMSUBADD###)">
+<meta name="DC.Relation" scheme="URI" content="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4A3F9B63-179C-43BA-A9B9-490DC94087A4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_fmsubadd_ps, _mm256_fmsubadd_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_fmsubadd_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4A3F9B63-179C-43BA-A9B9-490DC94087A4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span> _mm_fmsubadd_ps, _mm256_fmsubadd_ps</span></h1>
+
+
+<!--Multiply-subtracts and adds packed single-precision floating-point values using three float32 vectors. The corresponding FMA instruction is  VFMSUBADD<XXX>PS , where XXX could be 132, 213, or 231.--><div><p>Multiply-subtracts and adds packed single-precision floating-point values using three float32 vectors. The corresponding FMA instruction is <span class="keyword">VFMSUBADD&lt;XXX&gt;PS</span>, where XXX could be 132, 213, or 231.</p>
+
+
+<div class="section" id="GUID-5E9AD00C-8869-4F6B-9C1D-CB77C407E224"><h2>Syntax</h2><p><strong>For 128-bit vector</strong></p>
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128 _mm_fmsubadd_ps(__m128 a, __m128 b, __m128 c);</span></p></td></tr></table>
+<p><strong>For 256-bit vector</strong></p>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _mm256_fmsubadd_ps(__m256 a, __m256 b, __m256 c);
+</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-CB54B4EF-B26E-4B55-B509-9D4B4BCD2006"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>a</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>b</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector also used for the operation</p>
+</td>
+
+    </tr>
+<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>c</var></p></td>
+
+      <td valign="top" class="noborder"><p>float32 vector also used for the operation</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-2EE60EC5-B015-4D66-A146-42C4BF240FA7"><h2>Description</h2>
+<p>Performs a set of SIMD multiply-subtract-add computation on packed single-precision floating-point values using three source vectors/operands, <samp class="codeph">a</samp>,<samp class="codeph"> b</samp>, and <samp class="codeph">c</samp>. Corresponding values in two operands, <samp class="codeph">a</samp> and <samp class="codeph">b</samp>,  are multiplied and infinite precision intermediate results are obtained. The odd values in the third operand, <samp class="codeph">c</samp>, are subtracted from the intermediate results while the even values are added to them. The final results are rounded to the nearest float32 values.
+</p>
+<p>The compiler defaults to using the <span class="keyword">VFMSUBADD213PS</span> instruction and uses the other forms <span class="keyword">VFMSUBADD132PS</span> or <span class="keyword">VFMSUBADDS231PS</span>
+only if a low level
+optimization decides it is useful or necessary. For example, the compiler could change the default if it finds that another instruction form saves a
+register or eliminates a move.
+</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-CE092F48-416C-4676-B8C4-78459CE509B6"><h2>Returns</h2><p> Result of the multiply-add-subtract operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F2F72E9F-C27C-44C4-BAD8-26B6209B6D2F.htm">Intrinsics for Fused Multiply Add Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

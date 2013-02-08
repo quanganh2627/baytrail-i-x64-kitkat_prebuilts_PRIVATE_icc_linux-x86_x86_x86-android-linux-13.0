@@ -1,0 +1,623 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Rules for Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, rules for operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, rules for operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-06B51837-6658-4AAF-9E73-B103F38E227A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Rules for Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_rules"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-06B51837-6658-4AAF-9E73-B103F38E227A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Rules for Operators</h1>
+ 
+   
+  <div> 
+    <p>To use operators with the 
+      <samp class="codeph">Ivec</samp> classes you must use one of the following three syntax conventions: 
+    </p>
+ 
+    <p><samp class="codeph">[ Ivec_Class ] R = [ Ivec_Class ] A [ operator ][ Ivec_Class ] B</samp> 
+    </p>
+ 
+    <p><strong>Example 1:</strong> 
+      <samp class="codeph">I64vec1 R = I64vec1 A &amp; I64vec1 B;</samp> 
+    </p>
+ 
+    <p><samp class="codeph">[ Ivec_Class ] R =[ operator ] ([ Ivec_Class ] A,[ Ivec_Class ] B)</samp> 
+    </p>
+ 
+    <p><strong>Example 2:</strong> 
+      <samp class="codeph">I64vec1 R = andnot(I64vec1 A, I64vec1 B);</samp> 
+    </p>
+ 
+    <p><samp class="codeph">[ Ivec_Class ] R [ operator ]= [ Ivec_Class ] A</samp> 
+    </p>
+ 
+    <p><strong>Example 3:</strong> 
+      <samp class="codeph">I64vec1 R &amp;= I64vec1 A;</samp> 
+    </p>
+ 
+    <p>[ 
+      <samp class="codeph">operator</samp> ]an operator (for example, &amp;, |, or ^ ) 
+    </p>
+ 
+    <p>[ 
+      <samp class="codeph">Ivec_Class</samp> ] an 
+      <samp class="codeph">Ivec</samp> class 
+    </p>
+ 
+    <p><samp class="codeph">R</samp>, 
+      <samp class="codeph">A</samp>, 
+      <samp class="codeph">B</samp> variables declared using the pertinent 
+      <samp class="codeph">Ivec</samp> classes 
+    </p>
+ 
+    <p>The table that follows shows automatic and explicit sign and size typecasting. "Explicit" means that it is illegal to mix different types without an explicit typecasting. "Automatic" means that you can mix types freely and the compiler will do the typecasting for you. 
+    </p>
+ 
+    <p><strong>Summary of Rules Major Operators</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2220B9E3-6318-43A4-8EBA-C001050F6C19" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d15478e134"> 
+              <p>Operators 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d15478e140"> 
+              <p>Sign Typecasting 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d15478e146"> 
+              <p>Size Typecasting 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d15478e152"> 
+              <p>Other Typecasting Requirements 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Assignment 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Logical 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>Automatic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>Automatic<br>(to left) 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>Explicit typecasting is required for different types used in non-logical expressions on the right side of the assignment. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Addition and Subtraction 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>Automatic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>Explicit 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Multiplication 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>Automatic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>Explicit 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Shift 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>Automatic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>Explicit 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>Casting Required to ensure arithmetic shift. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Compare 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>Automatic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>Explicit 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>Explicit casting is required for signed classes for the less-than or greater-than operations. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e134 "> 
+              <p>Conditional Select 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e140 "> 
+              <p>Automatic 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e146 "> 
+              <p>Explicit 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d15478e152 "> 
+              <p>Explicit casting is required for signed classes for less-than or greater-than operations. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <div class="section" id="GUID-19531041-EB4F-4A6F-8ACA-8001834296B3"><h2 class="sectiontitle">Data Declaration and Initialization</h2> 
+       
+      <p>The following table shows literal examples of constructor declarations and data type initialization for all class sizes. All values are initialized with the most significant element on the left and the least significant to the right. 
+      </p>
+ 
+      <p><strong>Declaration and Initialization Data Types for Ivec Classes</strong> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A25DB914-1047-457F-B15E-31D4C21A3F54" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d15478e385"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d15478e391"> 
+                <p>Class 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="34%" id="d15478e397"> 
+                <p>Syntax 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p>Declaration 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">M128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I128vec1 A; Iu8vec16 A;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p>Declaration 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">M64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I64vec1 A; Iu8vec16 A;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">__m128</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">M128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I128vec1 A(__m128 m); Iu16vec8(__m128 m);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">__m64</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">M64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I64vec1 A(__m64 m);Iu8vec8 A(__m64 m);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">__int64</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">M64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I64vec1 A = __int64 m; Iu8vec8 A =__int64 m;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">int i</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">M64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I64vec1 A = int i; Iu8vec8 A = int i;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">int</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">I32vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I32vec2 A(int A1, int A0);</samp><br><samp class="codeph">Is32vec2 A(signed int A1, signed int A0);</samp><br><samp class="codeph">Iu32vec2 A(unsigned int A1, unsigned int A0);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">int</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">I32vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I32vec4 A(short A3, short A2, short A1, short A0);</samp><br><samp class="codeph">Is32vec4 A(signed short A3, ..., signed short A0);</samp><br><samp class="codeph">Iu32vec4 A(unsigned short A3, ..., unsigned short A0);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">short int</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">I16vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I16vec4 A(short A3, short A2, short A1, short A0);</samp><br><samp class="codeph">Is16vec4 A(signed short A3, ..., signed short A0);</samp><br><samp class="codeph">Iu16vec4 A(unsigned short A3, ..., unsigned short A0);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">short int</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">I16vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I16vec8 A(short A7, short A6, ..., short A1, short A0);</samp><br><samp class="codeph">Is16vec8 A(signed A7, ..., signed short A0);</samp><br><samp class="codeph">Iu16vec8 A(unsigned short A7, ..., unsigned short A0);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">char</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">I8vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I8vec8 A(char A7, char A6, ..., char A1, char A0);</samp><br><samp class="codeph">Is8vec8 A(signed char A7, ..., signed char A0);</samp><br><samp class="codeph">Iu8vec8 A(unsigned char A7, ..., unsigned char A0);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e385 "> 
+                <p><span class="keyword">char</span> Initialization 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d15478e391 "> 
+                <p><span class="keyword">I8vec16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d15478e397 "> 
+                <p><samp class="codeph">I8vec16 A(char A15, ..., char A0);</samp><br><samp class="codeph">Is8vec16 A(signed char A15, ..., signed char A0);</samp><br><samp class="codeph">Iu8vec16 A(unsigned char A15, ..., unsigned char A0);</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

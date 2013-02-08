@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Load Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F7FCB20E-12A0-43E1-9DA6-2134D035C476.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-21A7AB61-DE84-410A-8211-ADE9533FACE1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5DA89227-25A6-49F5-975A-747822B2B6CE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-88D03298-7839-4B1B-BD45-32B3378759C2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1954858E-0EB7-4427-B5D8-033A1E4F6C4D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4C6CD059-4EF2-44B3-896F-A87DA30DF9F0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-43036203-8AD3-4FA8-ADBF-2EF11C90CD12.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-00A8E537-223A-46E7-9215-E3E516080E3A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-87ACEAE2-EF0B-400D-963F-F66D3535BB81.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C66D359D-C54E-4AD3-8902-5BEFA5593035.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0EF9FEB1-40DB-4256-8076-1D663D5CE5F9.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9A19D262-E537-4B01-95D2-908BAAC0934F.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C1FF8A5B-2716-4BCB-96D0-A84AC24DB6B6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CCAFF9C3-BA7D-4475-998A-4CBEB2686F58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-59EA199D-7C7B-447F-A0CE-2AA41AA168B1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C8F7BA47-0D35-4A99-9C2F-6446F5FA5EC0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DB6A3DB0-5CA7-4BBC-A4E3-6CDD0ADF3753.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D16503A7-6643-4407-BB86-2BEFC8054671.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-23004C7D-39B8-498A-82EE-53A3882E2537.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-71DDCD22-2472-412D-BD2C-A97CC134F594.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-04C5E76E-08F3-4CA6-9866-3CBC878BC138.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-48B38E84-BDD6-4E9B-95A9-CA1CF2222008.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2F9E1401-5078-44FC-AFC4-9EE3F37ADAE8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-21C2076E-82ED-4606-B3FA-A4392C7C84F0.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B09001A9-F8CD-464F-A05F-C1D1C7CC2FC5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Load Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_bk_load_ops"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-B09001A9-F8CD-464F-A05F-C1D1C7CC2FC5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Load Intrinsics</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">Vector Intrinsics</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-F7FCB20E-12A0-43E1-9DA6-2134D035C476.htm">_mm512_extload_ps/ _mm512_mask_extload_ps</a><br>
+Loads/broadcasts/converts float32 vector. Corresponding instruction is  <samp class="codeph">VMOVAPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-21A7AB61-DE84-410A-8211-ADE9533FACE1.htm">_mm512_load_ps/ _mm512_mask_load_ps</a><br>
+Loads float32 vector. Corresponding instruction is  <samp class="codeph">VMOVAPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-5DA89227-25A6-49F5-975A-747822B2B6CE.htm">_mm512_extload_epi32/ _mm512_mask_extload_epi32</a><br>
+ Loads/broadcasts/converts int32 vector. Corresponding instruction is  <samp class="codeph">VMOVDQA32</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-88D03298-7839-4B1B-BD45-32B3378759C2.htm">_mm512_load_epi32/ _mm512_mask_load_epi32</a><br>
+Loads int32 vector. Corresponding instruction is  <samp class="codeph">VMOVDQA32</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-1954858E-0EB7-4427-B5D8-033A1E4F6C4D.htm">_mm512_extload_pd/ _mm512_mask_extload_pd</a><br>
+Loads/broadcasts/converts float64 vector. Corresponding instruction is  <samp class="codeph">VMOVAPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-4C6CD059-4EF2-44B3-896F-A87DA30DF9F0.htm">_mm512_load_pd/ _mm512_mask_load_pd</a><br>
+Loads  float64 vector. Corresponding instruction is  <samp class="codeph">VMOVAPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-43036203-8AD3-4FA8-ADBF-2EF11C90CD12.htm">_mm512_extload_epi64/ _mm512_mask_extload_epi64</a><br>
+Loads/broadcasts/converts int64 vector. Corresponding instruction is  <samp class="codeph">VMOVDQA64</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-00A8E537-223A-46E7-9215-E3E516080E3A.htm">_mm512_load_epi64/ _mm512_mask_load_epi64</a><br>
+Loads int64 vector. Corresponding instruction is  <samp class="codeph">VMOVDQA64</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-87ACEAE2-EF0B-400D-963F-F66D3535BB81.htm">_mm512_loadunpackhi_epi32/ _mm512_mask_loadunpackhi_epi32</a><br>
+Loads high  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int32 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-C66D359D-C54E-4AD3-8902-5BEFA5593035.htm">_mm512_extloadunpackhi_epi32/ _mm512_mask_extloadunpackhi_epi32</a><br>
+ Loads high 64-byte-aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int32 vector. Corresponding instruction is <samp class="codeph">VLOADUNPACKHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-0EF9FEB1-40DB-4256-8076-1D663D5CE5F9.htm">_mm512_loadunpacklo_epi32/ _mm512_mask_loadunpacklo_epi32</a><br>
+Loads low  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int32 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-9A19D262-E537-4B01-95D2-908BAAC0934F.htm">_mm512_extloadunpacklo_epi32/ _mm512_mask_extloadunpacklo_epi32</a><br>
+ Loads low 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int32 vector. Corresponding instruction is <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-C1FF8A5B-2716-4BCB-96D0-A84AC24DB6B6.htm">_mm512_loadunpackhi_epi64/ _mm512_mask_loadunpackhi_epi64</a><br>
+Loads high  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int64 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-CCAFF9C3-BA7D-4475-998A-4CBEB2686F58.htm">_mm512_extloadunpackhi_epi64/ _mm512_mask_extloadunpackhi_epi64</a><br>
+Loads high 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int64 vector.  Corresponding instruction is <samp class="codeph">VLOADUNPACKHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-59EA199D-7C7B-447F-A0CE-2AA41AA168B1.htm">_mm512_loadunpacklo_epi64/ _mm512_mask_loadunpacklo_epi64</a><br>
+Loads low  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int64 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-C8F7BA47-0D35-4A99-9C2F-6446F5FA5EC0.htm">_mm512_extloadunpacklo_epi64/ _mm512_mask_extloadunpacklo_epi64</a><br>
+Loads low 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in int64 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-DB6A3DB0-5CA7-4BBC-A4E3-6CDD0ADF3753.htm">_mm512_loadunpackhi_ps/ _mm512_mask_loadunpackhi_ps</a><br>
+Loads high  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float32 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-D16503A7-6643-4407-BB86-2BEFC8054671.htm">_mm512_extloadunpackhi_ps/ _mm512_mask_extloadunpackhi_ps</a><br>
+Loads high 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float32 vector.   Corresponding instruction is <samp class="codeph">VLOADUNPACKHD</samp>.  <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-23004C7D-39B8-498A-82EE-53A3882E2537.htm">_mm512_loadunpacklo_ps/ _mm512_mask_loadunpacklo_ps</a><br>
+Loads low  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float32 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-71DDCD22-2472-412D-BD2C-A97CC134F594.htm">_mm512_extloadunpacklo_ps/ _mm512_mask_extloadunpacklo_ps</a><br>
+Loads low 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float32 vector.  Corresponding instruction is <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-04C5E76E-08F3-4CA6-9866-3CBC878BC138.htm">_mm512_loadunpackhi_pd/ _mm512_mask_loadunpackhi_pd</a><br>
+Loads high  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float64 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-48B38E84-BDD6-4E9B-95A9-CA1CF2222008.htm">_mm512_extloadunpackhi_pd/ _mm512_mask_extloadunpackhi_pd</a><br>
+Loads high 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float64 vector.   Corresponding instruction is <samp class="codeph">VLOADUNPACKHD</samp>.  <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-2F9E1401-5078-44FC-AFC4-9EE3F37ADAE8.htm">_mm512_loadunpacklo_pd/ _mm512_mask_loadunpacklo_pd</a><br>
+Loads low  64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float64 vector. Corresponding instruction is  <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-21C2076E-82ED-4606-B3FA-A4392C7C84F0.htm">_mm512_extloadunpacklo_pd/ _mm512_mask_extloadunpacklo_pd</a><br>
+Loads low 64-byte aligned portion of unaligned doubleword stream, unpacks mask-enabled elements that fall in that portion, and stores those elements in float64 vector. Corresponding instruction is <samp class="codeph">VLOADUNPACKLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+</ul>
+</div>
+
+</body>
+</html>

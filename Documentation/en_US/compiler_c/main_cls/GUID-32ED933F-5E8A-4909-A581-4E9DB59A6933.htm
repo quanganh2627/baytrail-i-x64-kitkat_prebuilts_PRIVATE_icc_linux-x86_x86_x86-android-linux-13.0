@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Automatic Vectorization">
+<meta name="DC.subject" content="vectorization, what is, speed-up, obstacles, compiler options, compiler directives, pragmas, keywords, auto-vectorizer, using">
+<meta name="keywords" content="vectorization, what is, speed-up, obstacles, compiler options, compiler directives, pragmas, keywords, auto-vectorizer, using">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-32ED933F-5E8A-4909-A581-4E9DB59A6933">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Automatic Vectorization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_use"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_use"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-32ED933F-5E8A-4909-A581-4E9DB59A6933">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Automatic Vectorization</h1>
+ 
+   
+  <div> 
+	 <p>The automatic vectorizer (also called the auto-vectorizer) is a component of the Intel&reg; compiler that automatically uses SIMD instructions in the Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE, SSE2, SSE3 and SSE4 Vectorizing Compiler and Media Accelerators), 
+		<span>and the 
+		</span>Supplemental Streaming SIMD Extensions (SSSE3) instruction sets<span>, and the Intel&reg; Advanced Vector Extension instruction set</span>. The vectorizer detects operations in the program that can be done in parallel, and then converts the sequential operations, like one SIMD instruction that processes 2, 4, 8 or up to 16 elements, to parallel, depending on the data type. 
+	 </p>
+ 
+	 <p>So, what is vectorization? The process of converting an algorithm from a scalar implementation, which does an operation one pair of operands at a time, to a vector process where a single instruction can refer to a vector (series of adjacent values) is called vectorization. SIMD instructions operate on multiple data elements in one instruction and make use of the 128-bit SIMD floating-point registers. 
+	 </p>
+ 
+	 <p> Automatic vectorization occurs when the Intel&reg; Compiler generates packed SIMD instructions to unroll a loop. Because the packed instructions operate on more than one data element at a time, the loop executes more efficiently. This process is referred to as auto-vectorization only to emphasize that the compiler identifies and optimizes suitable loops on its own, without requiring any special action by you. However, it is useful to note that in some cases, certain keywords or directives may be applied in the code for auto-vectorization to occur. 
+	 </p>
+ 
+	 <p>Automatic vectorization is supported on IA-32 and Intel&reg; 64 architectures. 
+	 </p>
+ 
+	 <p>Using the 
+  <span class="option">-vec</span> (Linux and OS X*) or the 
+  <span class="option">/Qvec</span> (Windows*) option enables vectorization at default optimization levels for both Intel&reg; microprocessors and non-Intel microprocessors. Vectorization may call library routines that can result in additional performance gain on Intel microprocessors than on non-Intel microprocessors. The vectorization can also be affected by certain options, such as 
+  <span class="option">/arch</span> or 
+  <span class="option">/Qx</span> (Windows) or 
+  <span class="option">-m</span> or 
+  <span class="option">-x</span> (Linux and OS X). 
+  </p>
+ 
+  <div class="section" id="GUID-33AA272F-1203-474C-92A2-E65F3C82B16E"><h2 class="sectiontitle">Vectorization Speed-up</h2> 
+	  
+	 <p>Where does the vectorization speedup come from? Consider the following sample code fragment, where 
+		<samp class="codeph">a</samp>, 
+		<samp class="codeph">b</samp> and 
+		<samp class="codeph">c</samp> are integer arrays: 
+		<pre>for (i=0;i&lt;=MAX;i++)</pre> 
+		<pre>   c[i]=a[i]+b[i];</pre> 
+	 </p>
+ 
+	 <p>If vectorization is not enabled (that is, you compile using 
+	 <span class="option">/O1</span> or<span class="option"> /Qvec-</span> option), for each iteration, the compiler processes the code such that there is a lot of unused space in the SIMD registers, even though each of the registers could hold three additional integers. If vectorization is enabled (you compile using<span class="option"> /O2</span> or higher options), the compiler may use the additional registers to perform four additions in a single instruction. The compiler looks for vectorization opportunities whenever you compile at default optimization (<span class="option">-O2</span>) or higher. 
+	 <div class="Note"><h3 class="NoteTipHead">Tip</h3> 
+		<p>To allow comparisons between vectorized and not-vectorized code, disable vectorization using the 
+		<span class="option">/Qvec-</span> (Windows*) or 
+		<span class="option">-no-vec</span> (Linux* or OS X*) option; enable vectorization using the<span class="option"> /O2</span> or 
+		<span class="option">-O2</span> option. 
+		</p>
+ 
+	 </div> 
+	 </p>
+ 
+	 <p>To get information on whether a loop was vectorized or not, enable generation of the vectorization report using the 
+	 <span class="option">/Qvec-report:1</span> 
+	 <span class="option">/Qopt-report-phase hpo</span> (Windows) or 
+	 <span class="option">–vec-report1</span> 
+	 <span class="option">–opt-report-phase hpo</span> (Linux or OS X) option. You will get a one line message for every loop that is vectorized, as follows: 
+	 <pre>&gt; icl /Qvec-report1 MultArray.c</pre> 
+	 <pre>MultArray.c(92): (col. 5) remark: LOOP WAS VECTORIZED.</pre> 
+	 </p>
+ 
+	 <p>The source line number (92 in the above example) refers to either the beginning or the end of the loop. 
+	 </p>
+ 
+	 <p> To get details about the type of loop transformations and optimizations that took place, use the<span class="option"> /Qopt-report-phase hpo</span> (Windows*) or 
+	 <span class="option">-opt-report-phase hpo</span> (Linux* and OS X*) option by itself or along with the 
+	 <span class="option">/Qopt-report 
+	 </span>(Windows*) or 
+	 <span class="option">-opt-report</span> (Linux* and OS X*) option. 
+	 </p>
+ 
+	 <p>So, how significant is the performance enhancement? To evaluate performance enhancement yourself, run 
+		<em>example1</em>: 
+	 <ol id="GUID-E4887B2B-E251-4F1D-952B-C03D483B90E9"> 
+		<li>Open an Intel&reg; Compiler command line window. 
+		  <span>Source an environment script such as 
+			 <span class="filepath">iccvars_intel64.sh</span> in the compiler 
+			 <em>bin/intel64</em> directory, or 
+			 <span class="filepath">iccvars_ia32.sh</span> in the 
+			 <em>bin/ia32</em> directory, as appropriate. 
+		  </span> 
+		</li>
+ 
+		<li>Navigate to the \<em>example1</em> directory. The small application multiplies a vector by a matrix using the following loop: 
+		  <pre>for (j = 0;j &lt; size2; j++) {</pre> 
+		  <pre>      b[i] += a[i][j] * x[j];</pre> 
+		  <pre>}</pre> 
+		</li>
+ 
+		<li> Build and run the application, first without enabling auto-vectorization. Note the time taken for the application to run. 
+		  <span>On Linux* and MacOS*X platforms, enter:</span> 
+		  <pre>icc -O2 -no-vec  MultArray.c -o NoVectMult</pre> 
+		  <pre>./NoVectMult</pre></li>
+ 
+		<li> Now build and run the application, this time enabling auto-vectorization. Note the time taken for the application to run. 
+		  <span>On Linux* and MacOS*X platforms, enter:</span> 
+		  <pre>icc -O2 -vec-report1 MultArray.c -o VectMult</pre> 
+		  <pre>./VectMult</pre></li>
+ 
+	 </ol>
+ 
+	 </p>
+ 
+	 <p>When you compare the timing of the two runs, you may see that the vectorized version runs faster. The time for the non-vectorized version is only slightly faster than would be obtained by compiling with the 
+	 <span class="option">/O1</span> or the 
+	 <span class="option">-O1</span> option. 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-55C1536A-117B-4938-B740-AE917F3424BB"><h2 class="sectiontitle">Obstacles to Vectorization</h2> 
+	  
+	 <p>The following do not always prevent vectorization, but frequently either prevent it or cause the compiler to decide that vectorization would not be worthwhile. 
+	 <ul type="disc" id="GUID-CEC2C42E-6B54-4436-88A8-638A821C00CA"> 
+		<li><strong>Non-contiguous memory access:</strong> Four consecutive integers or floating-point values, or two consecutive doubles, may be loaded directly from memory in a single SSE instruction. But if the four integers are not adjacent, they must be loaded separately using multiple instructions, which is considerably less efficient. The most common examples of non-contiguous memory access are loops with non-unit stride or with indirect addressing, as in the examples below. The compiler rarely vectorizes such loops, unless the amount of computational work is large compared to the overhead from non-contiguous memory access. 
+		  <pre>// arrays accessed with stride 2</pre> 
+		  <pre>for (int i=0; i&lt;SIZE; i+=2)  b[i] += a[i] * x[i];</pre> 
+		  <pre>// inner loop accesses a with stride SIZE</pre> 
+		  <pre>for (int j=0; j&lt;SIZE; j++)  {</pre> 
+		  <pre>  for (int i=0; i&lt;SIZE; i++)   b[i] += a[i][j] * x[j];</pre> 
+		  <pre>}</pre> 
+		  <pre>// indirect addressing of x using index array</pre> 
+		  <pre>  for (int i=0; i&lt;SIZE; i+=2)  b[i] += a[i] * x[index[i]];</pre> 
+		  <p>The typical message from the vectorization report is: 
+			 <samp class="codeph">vectorization possible but seems inefficient</samp>, although indirect addressing may also result in the following report: 
+			 <samp class="codeph">Existence of vector dependence.</samp> 
+		  </p>
+ 
+		</li>
+ 
+		<li><strong>Data dependencies:</strong> Vectorization entails changes in the order of operations within a loop, since each SIMD instruction operates on several data elements at once. Vectorization is only possible if this change of order does not change the results of the calculation. 
+		  <ul type="disc" id="GUID-F180F4EB-C168-4B63-89A8-ADEB63056085"> 
+			 <li>The simplest case is when data elements that are written (stored to) do not appear in any other iteration of the individual loop. In this case, all the iterations of the original loop are independent of each other, and can be executed in any order, without changing the result. The loop may be safely executed using any parallel method, including vectorization. All the examples considered so far fall into this category. 
+			 </li>
+ 
+			 <li>When a variable is written in one iteration and read in a subsequent iteration, there is a “read-after-write” dependency, also known as a flow dependency, as in this example: 
+				<pre>A[0]=0;</pre> 
+				<pre>for (j=1; j&lt;MAX; j++)  A[j]=A[j-1]+1;</pre> 
+				<pre>// this is equivalent to:</pre> 
+				<pre>A[1]=A[0]+1;   A[2]=A[1]+1;   A[3]=A[2]+1; A[4]=A[3]+1;</pre> 
+				<p>So the value of j gets propagated to all A[j]. This cannot safely be vectorized: if the first two iterations are executed simultaneously by a SIMD instruction, the value of A[1] is used by the second iteration before it has been calculated by the first iteration. 
+				</p>
+ 
+			 </li>
+ 
+			 <li>When a variable is read in one iteration and written in a subsequent iteration, this is a write-after-read dependency, (sometimes also known as an anti-dependency), as in the following example: 
+				<pre>for (j=1; j&lt;MAX; j++)  A[j-1]=A[j]+1;</pre> 
+				<pre>// this is equivalent to:</pre> 
+				<pre>A[0]=A[1]+1;   A[1]=A[2]+1;   A[2]=A[3]+1; A[3]=A[4]+1;</pre> 
+				<p>This is not safe for general parallel execution, since the iteration with the write may execute before the iteration with the read. However, for vectorization, no iteration with a higher value of j can complete before an iteration with a lower value of j, and so vectorization is safe (i.e., gives the same result as non-vectorized code) in this case. The following example, however, may not be safe, since vectorization might cause some elements of A to be overwritten by the first SIMD instruction before being used for the second SIMD instruction. 
+				</p>
+ 
+				<pre>for (j=1; j&lt;MAX; j++)  {</pre> 
+				<pre>  A[j-1]=A[j]+1;</pre> 
+				<pre>  B[j]=A[j]*2;</pre> 
+				<pre>}</pre> 
+				<pre>// this is equivalent to:</pre> 
+				<pre>A[0]=A[1]+1;   A[1]=A[2]+1;   A[2]=A[3]+1; A[3]=A[4]+1;</pre> 
+			 </li>
+ 
+			 <li>Read-after-read situations aren’t really dependencies, and do not prevent vectorization or parallel execution. If a variable is not written, it does not matter how often it is read. 
+			 </li>
+ 
+			 <li>Write-after-write, or ‘output’, dependencies, where the same variable is written to in more than one iteration, are in general unsafe for parallel execution, including vectorization. 
+			 </li>
+ 
+			 <li>However, there is a very important exception, that apparently contains all of the above types of dependency: 
+				<pre>sum=0;</pre> 
+				<pre>for (j=1; j&lt;MAX; j++)  sum = sum + A[j]*B[j]</pre> 
+				<p>Although sum is both read and written in every iteration, the compiler recognizes such reduction idioms, and is able to vectorize them safely. The loop in example 1 was another example of a reduction, with a loop-invariant array element in place of a scalar. 
+				</p>
+ 
+				<p>These types of dependencies between loop iterations are sometimes known as loop-carried dependencies. 
+				</p>
+ 
+				<p>The above examples are of proven dependencies. However, the compiler cannot safely vectorize a loop if there is even a potential dependency. Consider the following example: 
+				</p>
+ 
+				<pre>for (i = 0; i &lt; size; i++) {</pre> 
+				<pre>  c[i] = a[i] * b[i];</pre> 
+				<pre>}</pre>In the above example, the compiler needs to determine whether, for some iteration 
+				<samp class="codeph"> i</samp>, 
+				<samp class="codeph">c[i]</samp> might refer to the same memory location as 
+				<samp class="codeph">a[i]</samp> or<samp class="codeph"> b[i]</samp> for a different iteration. (Such memory locations are sometimes said to be “aliased”). For example, if 
+				<samp class="codeph">a[i]</samp> pointed to the same memory location as 
+				<samp class="codeph">c[i-1]</samp>, there would be a read-after-write dependency as in the earlier example. If the compiler cannot exclude this possibility, it will not vectorize the loop unless you provide the compiler with hints. 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-6E76FBF1-8EE2-4244-A152-EA3159022190"><h2 class="sectiontitle">Helping the Intel&reg; Compiler to Vectorize</h2> 
+	  
+	 <p>Sometimes the compiler has insufficient information to decide to vectorize a loop. There are several ways to provide additional information to the compiler: 
+	 <ul type="disc" id="GUID-51891410-095C-442C-A77B-0BE35888FA03"> 
+		<li><strong>Pragmas:</strong> 
+		  <ul type="disc" id="GUID-28CA8AEE-7453-40B2-B46C-2694A6085248"> 
+			 <li><span class="option">#pragma ivdep</span>: may be used to tell the compiler that it may safely ignore any potential data dependencies. (The compiler will not ignore proven dependencies). Use of this pragma when there are dependencies may lead to incorrect results. There are cases where the compiler cannot tell by a static analysis that it is safe to vectorize but you, as a developer, would know. Consider the following loop: 
+	 <pre>void copy(char *cp_a, char *cp_b, int n) {</pre> 
+	 <pre>  for (int i = 0; i &lt; n; i++) {</pre> 
+	 <pre>    cp_a[i] = cp_b[i];</pre> 
+	 <pre>  }</pre> 
+	 <pre>}</pre> 
+	 <p>Without more information, a vectorizing compiler must conservatively assume that the memory regions accessed by the pointer variables<var> cp_a 
+		</var>and 
+		<var>cp_b</var> may (partially) overlap, which gives rise to potential data dependencies that prohibit straightforward conversion of this loop into SIMD instructions. At this point, the compiler may decide to keep the loop serial or, as done by the Intel&reg; C/C++ compiler, generate a run-time test for overlap, where the loop in the true-branch can be converted into SIMD instructions: 
+		<pre>if (cp_a + n &lt; cp_b || cp_b + n &lt; cp_a)</pre> 
+		<pre>/* vector loop */</pre> 
+		<pre>for (int i = 0; i &lt; n; i++) cp_a[i] = cp_b [i];</pre> 
+		<pre>else</pre> 
+		<pre>/* serial loop */</pre> 
+		<pre>for (int i = 0; i &lt; n; i++) cp_a[i] = cp_b[i];</pre> 
+	 </p>
+ 
+	 <p>Run-time data-dependency testing provides a generally effective way to exploit implicit parallelism in C or C++ code at the expense of a slight increase in code size and testing overhead. If the function copy is only used in specific ways, however, you can assist the vectorizing compiler as follows: 
+	 <ul type="disc" id="GUID-6D37EB10-13F9-4013-BED4-C4D8A520D14C"> 
+		<li>If the function is mainly used for small values of n or for overlapping memory regions, you can simply prevent vectorization and, hence, the corresponding run-time overhead by inserting a 
+	 <span class="option">#pragma novector 
+	 </span>hint before the loop. 
+	 </li>
+ 
+	 <li>Conversely, if the loop is guaranteed to operate on non-overlapping memory regions, you can provide this information to the compiler by means of a 
+	 <span class="option">#pragma ivdep 
+	 </span>hint before the loop, which informs the compiler that conservatively assumed data dependencies that prevent vectorization can be ignored. This results in vectorization of the loop without run-time data-dependency testing. 
+	 <pre>#pragma ivdep</pre> 
+	 <pre>void copy(char *cp_a, char *cp_b, int n) {</pre> 
+	 <pre>  for (int i = 0; i &lt; n; i++) {</pre> 
+	 <pre>    cp_a[i] = cp_b[i];</pre> 
+	 <pre>  }</pre> 
+	 <pre>}</pre> 
+	 </li>
+ 
+	 </ul>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>You can also use the 
+		  <span class="keyword">restrict</span> keyword. 
+		</p>
+ 
+	 </div> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li><span class="option">#pragma loop count (n)</span>: may be used to advise the compiler of the typical trip count of the loop. This may help the compiler to decide whether vectorization is worthwhile, or whether or not it should generate alternative code paths for the loop. 
+	 </li>
+ 
+	 <li><span class="option">#pragma vector always 
+	 </span>: asks the compiler to vectorize the loop if it is safe to do so, whether or not the compiler thinks that will improve performance. 
+	 </li>
+ 
+	 <li><span class="option">#pragma vector align 
+	 </span>: asserts that data within the following loop is aligned (to a 16 byte boundary, for SSE instruction sets). 
+	 </li>
+ 
+	 <li><span class="option">#pragma novector 
+	 </span>: asks the compiler not to vectorize a particular loop. 
+	 </li>
+ 
+	 <li><span class="option">#pragma vector nontemporal</span>: gives a hint to the compiler that data will not be reused, and therefore to use streaming stores that bypass cache. 
+	 </li>
+ 
+	 </ul>
+ 
+	 </li>
+ 
+	 <li><strong>Keywords: 
+		</strong>The restrict keyword may be used to assert that the memory referenced by a pointer is not aliased, i.e. that it is not accessed in any other way. The keyword requires the use of either the /Qrestrict (-restrict) or /Qc99 (-c99) compiler option. The example under 
+	 <span class="option">#pragma ivdep 
+	 </span>above can also be handled using the 
+	 <span class="keyword">restrict</span> keyword. 
+	 <p>You may use the 
+		<span class="keyword">restrict</span> keyword in the declarations of 
+		<var>cp_a</var> and 
+		<var>cp_b</var>, as shown below, to inform the compiler that each pointer variable provides exclusive access to a certain memory region. The 
+		<span class="keyword">restrict</span> qualifier in the argument list lets the compiler know that there are no other aliases to the memory to which the pointers point. In other words, the pointer for which it is used provides the only means of accessing the memory in question in the scope in which the pointers live. Even if the code gets vectorized without the 
+		<span class="keyword">restrict</span> keyword, the compiler checks for aliasing at run-time, if the 
+		<span class="keyword">restrict</span> keyword was used. You may have to use an extra compiler option, such as 
+	 <span class="option">/Qrestrict</span>(Windows*) or 
+	 <span class="option">-restrict 
+	 </span>(Linux* and MacOS* X) option for the Intel C/C++ compiler. 
+	 <pre>void copy(char * __restrict cp_a, char * __restrict cp_b,</pre> 
+	 <pre>int n) {</pre> 
+	 <pre>  for (int i = 0; i &lt; n; i++) cp_a[i] = cp_b[i];</pre> 
+	 <pre>}</pre> 
+	 </p>
+ 
+	 <p>This method is convenient in case the exclusive access property holds for pointer variables that are used in a large portion of code with many loops because it avoids the need to annotate each of the vectorizable loops individually. Note, however, that both the loop-specific 
+	 <span class="option">#pragma ivdep</span> hint, as well as the pointer variable-specific 
+	 <span class="keyword">restrict</span> hint must be used with care because incorrect usage may change the semantics intended in the original program. 
+	 </p>
+ 
+	 <p>Another example is the following loop that may also not get vectorized because of a potential aliasing problem between pointers 
+		<samp class="codeph">a</samp>, 
+		<samp class="codeph">b</samp> and 
+		<samp class="codeph">c</samp>: 
+		<pre>// potential unsupported loop structure </pre> 
+		<pre>void add(float *a, float *b, float *c) {</pre> 
+		<pre>  for (int i=0; i&lt;SIZE; i++) {</pre> 
+		<pre>    c[i] += a[i] + b[i];</pre> 
+		<pre>  }</pre> 
+		<pre>}</pre> 
+	 </p>
+ 
+	 <p>If the restrict keyword is added to the parameters, the compiler will trust you, that you will not access the memory in question with any other pointer and vectorize the code properly: 
+		<pre>// let the compiler know, the pointers are safe with restrict </pre> 
+		<pre>void add(float * __restrict a, float * __restrict b, float * __restrict c) {</pre> 
+		<pre>  for (int i=0; i&lt;SIZE; i++) {</pre> 
+		<pre>    c[i] += a[i] + b[i];</pre> 
+		<pre>  }</pre> 
+		<pre>}</pre> 
+	 </p>
+ 
+	 <p>The down-side of using 
+		<span class="keyword">restrict</span> is that not all compilers support this keyword, so your source code may lose portability. If you care about source code portability you may want to consider using the compiler option 
+	 <span class="option">/Qansi-alias</span>(Windows*) or 
+	 <span class="option">-ansi-alias</span>(Linux* and MacOS* X) instead. However, compiler options work globally, so you have to make sure they do not cause harm to other code fragments. 
+	 </p>
+ 
+	 </li>
+ 
+	 <li><strong>Options/switches:</strong> You can use options to enable different levels of optimizations to achieve automatic vectorization: 
+		<ul type="disc" id="GUID-A8DB9AAD-D0FA-4ED6-9649-3823676F1D82"> 
+		  <li><strong>Interprocedural optimization (IPO):</strong> Enable IPO using 
+	 <span class="option">/Qip</span> (<span class="option">-ip</span>) option within a single source file, or using 
+	 <span class="option">/Qipo</span> (<span class="option">-ipo</span>) across source files. You provide the compiler with additional information about a loop, such as trip counts, alignment or data dependencies. Enabling IPO may also allow inlining of function calls. 
+	 </li>
+ 
+	 <li><strong>Disambiguation of pointers and arrays:</strong> Use the options 
+	 <span class="option">/Oa</span> (Windows*) or 
+	 <span class="option">–fno-alias</span> (Linux* or MacOS* X) to assert there is no aliasing of memory references, that is, the same memory location is not accessed via different arrays or pointers. Other options make more limited assertions, for example, 
+	 <span class="option">/Qalias-args-</span> (<span class="option">-fargument-noalias</span>) asserts that function arguments cannot alias each other (that is, they cannot overlap). The 
+	 <span class="option">/Qansi-alias</span> (<span class="option">-fargumen-alias</span>) option allows the compiler to assume strict adherence to the aliasing rules in the ISO C standard. Use these options responsibly; if you use these options when memory is aliased it may lead to incorrect results. Use the 
+	 <span class="option">/Qansi-alias-check</span> (<span class="option">-ansi-alias-check</span>) option to enable the ansi-alias checker. The ansi-alias checker checks the source code for potential violations of ANSI aliasing rules and disables unsafe optimizations related to the code for those statements that are identified as potential violations. 
+	 </li>
+ 
+	 <li><strong>High-level optimizations (HLO):</strong> Enable HLO with 
+	 <span class="option">/O3 
+	 </span>(<span class="option">-O3</span>) option. This will enable additional loop optimizations that make it easier for the compiler to vectorize the transformed loops. The HLO report, obtained using the 
+	 <span class="option">/Qopt-report-phase:hlo</span> (<span class="option">-opt-report-phase hlo</span>) option or the corresponding IDE selection, tells you whether some of these additional transformations occurred. 
+	 </li>
+ 
+	 </ul>
+ 
+	 </li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

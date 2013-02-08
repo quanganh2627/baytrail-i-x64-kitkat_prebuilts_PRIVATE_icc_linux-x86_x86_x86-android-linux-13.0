@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fimf-domain-exclusion, Qimf-domain-exclusion">
+<meta name="abstract" content="Indicates the input arguments domain on which math functions must provide correct results.">
+<meta name="description" content="Indicates the input arguments domain on which math functions must provide correct results.">
+<meta name="DC.subject" content="-fimf-domain-exclusion compiler option, /Qimf-domain-exclusion compiler option, math library functions, option indicating domain for input arguments">
+<meta name="keywords" content="-fimf-domain-exclusion compiler option, /Qimf-domain-exclusion compiler option, math library functions, option indicating domain for input arguments">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B.htm#GUID-DC3C7856-118C-4D81-B630-7D27F931C04B">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<meta name="DC.Relation" scheme="URI" content="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE.htm#GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fimf-domain-exclusion, Qimf-domain-exclusion</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fimf_domain_exclusion"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fimf_domain_exclusion"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">fimf-domain-exclusion, Qimf-domain-exclusion</h1>
+
+  <!--Indicates the input arguments domain on which math functions must provide correct results. -->
+  
+<div><p>Indicates the input arguments domain on which math functions must provide correct results. </p>
+
+
+    <div class="section" id="GUID-19296CB9-5185-47A2-B526-B8837D363EE5"><h2>IDE Equivalent</h2>None
+</div>
+<div class="section" id="GUID-55A7CFD5-7150-4464-BC46-D4393E4B256C"><h2>Architectures</h2><p>All</p>
+</div>
+<div class="section" id="GUID-D170A7C6-8A21-40FE-84C9-D48883240263"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fimf-domain-exclusion</span><span class="oper">=</span><span class="var">classlist</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qimf-domain-exclusion</span><span class="oper">:</span><span class="var">classlist</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-728E12C5-89A0-4770-87A0-2DAB2159CC1A"><h2>Arguments</h2>
+      <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>classlist</var></p></td>
+<td valign="top" class="noborder"><p>Is one of the following: </p>
+<ul type="disc" id="GUID-2BE3FA57-DA83-491E-9DC1-8511F237DED6"><li><p>One or more of the following floating-point value classes you can exclude from the function domain without affecting the correctness of your program. The supported class names are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">extremes</span></p></td>
+
+<td valign="top" class="noborder"><p>This class is for values which do not lie within the usual domain of arguments for a given function.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">nans</span></p></td>
+
+<td valign="top" class="noborder"><p>This means "x=Nan".</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">infinities</span></p></td>
+
+<td valign="top" class="noborder"><p>This means "x=infinities".</p>
+
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">denormals</span></p></td>
+
+<td valign="top" class="noborder"><p>This means "x=denormal".</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">zeros</span></p></td>
+
+<td valign="top" class="noborder"><p>This means "x=0".</p>
+</td>
+
+</tr>
+
+</table>
+<p>Each <var>classlist</var> element corresponds to a power of two. The exclusion attribute is the logical or of the associated powers of two (that is, a bitmask). </p>
+<p>The following shows the current mapping from <var>classlist</var> mnemonics to numerical values:</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AB03E5DA-4E8A-4F70-82DC-893AE5EBC240" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top"><p>extremes</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>1</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>nans</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>2</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>infinities</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>4</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>denormals</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>8</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>zeros</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>16</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>none</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>0</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>all</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>31</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>common</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>15</p>
+</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top"><p>other combinations</p>
+</td>
+
+<td class="cellrowborder" valign="top"><p>bitwise OR of the used values</p>
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<p>You must specify the integer value that corresponds to the class that you want to exclude. </p>
+
+<p>Note that on excluded values, unexpected results may occur.</p>
+</li>
+<li><p>One of the following short-hand tokens:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+
+<td valign="top" class="noborder"><p>This means that none of the supported classes are excluded from the domain. To indicate this token, specify 0, as in <span class="option">-fimf-domain-exclusion=0</span> (or <span class="option">/Qimf-domain-exclusion:0</span>).</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">all</span></p></td>
+
+<td valign="top" class="noborder"><p>This means that all of the supported classes are excluded from the domain. To indicate this token, specify 31, as in <span class="option">-fimf-domain-exclusion=31</span> (or <span class="option">/Qimf-domain-exclusion:31</span>).</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">common</span></p></td>
+
+<td valign="top" class="noborder"><p>This is the same as specifying extremes,nans,infinities,denormals. To indicate this token, specify 15 (1 + 2+ 4 + 8), as in <span class="option">-fimf-domain-exclusion=15</span> (or <span class="option">/Qimf-domain-exclusion:15</span>)</p>
+
+</td>
+
+</tr>
+</table>
+</li>
+</ul>
+
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>funclist</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional list of one or more math library functions to which the attribute should be applied. If you specify more than one function, they must be separated with commas.  Precision-specific variants like sin and sinf are considered different functions, so you would need to use <span class="option">-fimf-domain-exclusion=4:sin,sinf</span> (or <span class="option">/Qimf-domain-exclusion:4:sin,sinf</span>) to specify infinities for both the single-precision and double-precision sine functions. </p>
+<p>You also can specify the symbol /f to denote single-precision divides, symbol / to denote double-precision divides, symbol /l to denote extended-precision divides, and symbol /q to denote quad-precision divides. For example, you can specify:</p>
+<p><span class="option">-fimf-domain-exclusion=4</span> or <span class="option">/Qimf-domain-exclusion:4</span></p>
+<p><span class="option">-fimf-domain-exclusion=5:/,powf</span> or <span class="option">/Qimf-domain-exclusion:5:/,powf</span></p>
+<p><span class="option">-fimf-domain-exclusion=23:log,logf,/,sin,cosf</span> or <span class="option">/Qimf-domain-exclusion:23:log,logf,/,sin,cosf</span></p>
+<p>If you don’t specify argument <var>funclist</var>, the domain restrictions apply to all math library functions.</p>
+</td>
+</tr></table>
+
+    </div>
+
+    <div class="section" id="GUID-EBA64379-E7B5-4155-8539-FACEE7700686"><h2>Default</h2>
+      <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> Zero ("0")</p></td>
+<td valign="top" class="noborder"><p> The compiler uses default heuristics when calling math library functions.</p>
+</td>
+</tr></table>
+
+    </div>
+
+    <div class="section" id="GUID-2AF6DAB0-9D03-4402-8502-8F453E385224"><h2>Description</h2>
+      <p>This option indicates the input arguments domain on which math functions must provide correct results. It specifies that your program will function correctly if the functions specified in <var>funclist</var> do not produce standard conforming results on the number classes.</p>
+<p>This option can affect run-time performance and the accuracy of results.  As more classes are excluded, faster code sequences can be used.</p>
+<p>If you need to define the accuracy for a math function of a certain precision, specify the function name of the precision that you need. For example, if you want double precision, you can specify :sin; if you want single precision, you can specify :sinf, as in <span class="option">-fimf-domain-exclusion=denormals:sin</span>  or <span class="option">/Qimf-domain-exclusion:denormals:sin</span>, or <span class="option">-fimf-domain-exclusion=extremes:sqrtf</span> or <span class="option">/Qimf domain-exclusion:extremes:sqrtf</span>.</p>
+<p>If you do not specify any function names, then the setting applies to all functions (and to all precisions). However, as soon as you specify an individual function name, the setting applies only to the function of corresponding precision. So, for example, sinf applies only to the single-precision sine function, sin applies only to the double-precision sine function, sinl applies only to the extended-precision sine function, etc.  </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Many routines in libraries LIBM (Math Library) and SVML (Short Vector Math Library) are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+</div>
+    <p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d28293e429"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d28293e429 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+</div>
+
+    <div class="section" id="GUID-267C04D6-DD48-4687-9770-4096DFD2F686"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  <div class="example" id="EXAMPLE_6E776BE9B0834414A57DBF5FCE0AA8B5"><a name="EXAMPLE_6E776BE9B0834414A57DBF5FCE0AA8B5"><!-- --></a><h2>Example</h2><p>Consider the following single-precision sequence for function exp2f:   </p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C29E9CA3-FB95-4D5C-AD29-F539500E3A00" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<tbody>
+<tr>
+<td class="cellrowborder" align="left" valign="top">Operation:</td>
+
+<td class="cellrowborder" align="left" valign="top">y = exp2f(x)</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" align="left" valign="top">Accuracy:</td>
+
+<td class="cellrowborder" align="left" valign="top">1.014 ulp</td>
+</tr>
+
+<tr>
+<td class="cellrowborder" align="left" valign="top">Instructions:</td>
+
+<td class="cellrowborder" align="left" valign="top">4 (2 without fix-up)</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>The following shows the 2-instruction sequence without the fix-up:</p>
+
+<pre>vcvtfxpntps2dq  zmm1 {k1}, zmm0, 0x50      // zmm1 &lt;-- rndToInt(2^24 * x)</pre>
+<pre>vexp223ps       zmm1 {k1}, zmm1            // zmm1 &lt;-- exp2(x)</pre><p></p>
+<p>However, the above 2-instruction sequence will not correctly process NaNs. To process Nans correctly, the following fix-up must be included following the above instruction sequence:</p>
+<pre>vpxord          zmm2, zmm2, zmm2             // zmm2 &lt;-- 0</pre><pre>vfixupnanps     zmm1 {k1}, zmm0, zmm2 {aaaa} // zmm1 &lt;-- QNaN(x) if x is NaN &lt;F&gt;</pre>
+<p>If the <samp class="codeph">vfixupnanps</samp> instruction is not included, the sequence correctly processes any arguments except NaN values. For example, the following options generate the 2-instruction sequence:</p>
+<pre>-fimf-domain-exclusion=2:exp2f      &lt;- NaN’s are excluded (2 corresponds to NaNs)</pre>
+<pre>-fimf-domain-exclusion=6:exp2f      &lt;- NaN’s and infinities are excluded (4 corresponds to infinities; 2 + 4 = 6)</pre>
+<pre>-fimf-domain-exclusion=7:exp2f      &lt;- NaN’s, infinities, and extremes are excluded (1 corresponds to extremes; 2 + 4 + 1 = 7)</pre>
+<pre>-fimf-domain-exclusion=15:exp2f     &lt;- NaN’s, infinities, extremes, and denormals are excluded (8 corresponds to denormals;  2 + 4 + 1 + 8=15)</pre><p>If the <samp class="codeph">vfixupnanps</samp> instruction is included, the sequence correctly processes any arguments including NaN values. For example, the following options generate the 4-instruction sequence:</p>
+
+<pre>-fimf-domain-exclusion=1:exp2f      &lt;- only extremes are excluded (1 corresponds to extremes)</pre>
+<pre>-fimf-domain-exclusion=4:exp2f      &lt;- only infinities are excluded (4 corresponds to infinities)</pre>
+<pre>-fimf-domain-exclusion=8:exp2f      &lt;- only denormals are excluded (8 corresponds to denormals)</pre>
+<pre>-fimf-domain-exclusion=13:exp2f     &lt;- only extremes, infinities and denormals are excluded (1 + 4 + 8 = 13)</pre>
+
+
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B.htm#GUID-DC3C7856-118C-4D81-B630-7D27F931C04B"><span class="option">fimf-absolute-error, Qimf-absolute-error</span></a>  compiler option</div>
+<div><a href="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079"><span class="option">fimf-accuracy-bits, Qimf-accuracy-bits</span></a>  compiler option</div>
+<div><a href="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE.htm#GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE"><span class="option">fimf-arch-consistency, Qimf-arch-consistency</span></a>  compiler option</div>
+<div><a href="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486"><span class="option">fimf-max-error, Qimf-max-error</span></a>  compiler option</div>
+<div><a href="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3"><span class="option">fimf-precision, Qimf-precision</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

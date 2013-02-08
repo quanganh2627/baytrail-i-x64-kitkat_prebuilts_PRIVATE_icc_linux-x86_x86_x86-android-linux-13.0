@@ -1,0 +1,246 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="String and Block Copy Intrinsics">
+<meta name="DC.subject" content="intrinsics, All Intel Architectures, string and block copy operations">
+<meta name="keywords" content="intrinsics, All Intel Architectures, string and block copy operations">
+<meta name="DC.Relation" scheme="URI" content="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F9F50C07-FA37-4FEB-9826-0FD264045555">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>String and Block Copy Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_allia_string_block_copy"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F9F50C07-FA37-4FEB-9826-0FD264045555">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">String and Block Copy Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-F7A6A13B-169C-4DAC-896A-A5FC01475668"> 
+      <p>The following table lists and describes string and block copy intrinsics that you can use on systems based on IA-32 and Intel&reg; 64 architectures. They may invoke library functions that are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p><span class="option">strncpy()</span> and 
+        <span class="option">strncmp()</span> functions are implemented as intrinsics depending on compiler version and compiler switches like optimization level. 
+        </p>
+ 
+      </div> 
+      </div>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-18208B06-C8A2-46CF-8B88-77421CA4C501" frame="hsides" border="1" rules="all"><thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" valign="top" width="50%" id="d862386e60"> 
+              <p>Intrinsic 
+              </p>
+ 
+            </th>
+ 
+            <th class="row-nocellborder" valign="top" width="50%" id="d862386e66"> 
+              <p>Description 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+</thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">char *_strset(char *, _int32)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Sets all characters in a string to a fixed value. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">int memcmp(const void *cs, const void *ct, size_t n)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Compares two regions of memory. Return &lt;0 if 
+                <span class="keyword">cs</span>&lt;<span class="keyword">ct</span>, 0 if 
+                <span class="keyword">cs</span>=<span class="keyword">ct</span>, or &gt;0 if 
+                <span class="keyword">cs</span>&gt;<span class="keyword">ct</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">void *memcpy(void *s, const void *ct, size_t n)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Copies from memory. Returns 
+                <span class="keyword">s</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">void *memset(void * s, int c, size_t n)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Sets memory to a fixed value. Returns 
+                <span class="keyword">s</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">char *strcat(char * s, const char * ct)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Appends to a string. Returns 
+                <span class="keyword">s</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">int strcmp(const char *, const char *)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Compares two strings. Return &lt;0 if 
+                <span class="keyword">cs</span>&lt;<span class="keyword">ct</span>, 0 if 
+                <span class="keyword">cs</span>=<span class="keyword">ct</span>, or &gt;0 if 
+                <span class="keyword">cs</span>&gt;<span class="keyword">ct</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">char *strcpy(char * s, const char * ct)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Copies a string. Returns 
+                <span class="keyword">s</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">size_t strlen(const char * cs)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Returns the length of string 
+                <span class="keyword">cs</span>. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">int strncmp(char *, char *, int)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Compare two strings, but only specified number of characters. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d862386e60 "> 
+              <p><span class="option">int strncpy(char *, char *, int)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d862386e66 "> 
+              <p>Copies a string, but only specified number of characters. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">Intrinsics for All Intel Architectures</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

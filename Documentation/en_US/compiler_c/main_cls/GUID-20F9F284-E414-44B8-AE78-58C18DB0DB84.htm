@@ -1,0 +1,983 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Function Order Lists, Function Grouping, Function Ordering, and Data Ordering Optimizations">
+<meta name="DC.subject" content="data ordering optimization, function grouping optimization, function order lists, function ordering optimization, profile-guided optimization, function order lists optimization">
+<meta name="keywords" content="data ordering optimization, function grouping optimization, function order lists, function ordering optimization, profile-guided optimization, function order lists optimization">
+<meta name="DC.Relation" scheme="URI" content="GUID-CA2B0F27-8C7A-4C47-B2EE-4893C20D0EAC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-20F9F284-E414-44B8-AE78-58C18DB0DB84">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Function Order Lists, Function Grouping, Function Ordering, and Data Ordering Optimizations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pgo_funcdata_order"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pgo_funcdata_order"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-20F9F284-E414-44B8-AE78-58C18DB0DB84">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Function Order Lists, Function Grouping, Function Ordering, and Data Ordering Optimizations</h1>
+ 
+   
+  <div> 
+	 <p>Instead of doing a full multi-file interprocedural build of your application by using the compiler option 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux* OS) or 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows* OS), you can obtain some of the benefits by having the compiler and linker work together to make global decisions about where to place the 
+		<span>functions</span> and data in your application. These optimizations are not supported on OS X* systems.
+	 </p>
+ 
+	 <p>The following table lists each optimization, the type of 
+		<span>functions</span> or global data it applies to, and the operating systems and architectures that it is supported on.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C83B24AB-7A55-434C-93D4-611BB7FEA1A8" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="middle"> 
+				<th class="cellrowborder" align="left" valign="middle" id="d99189e93">
+				  <p>Optimization
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="middle" id="d99189e99">
+				  <p>Type of 
+					 <span>Function</span> or Data
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="middle" id="d99189e108">
+				  <p>Supported OS and Architectures
+				  </p>
+
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e93 ">
+				  <p><strong>Function Order Lists:</strong> Specifies the order in which the linker should link the non-static routines (<span>functions</span>) of your program. This optimization can improve application performance by improving code locality and reduce paging. Also see 
+					 <a href="GUID-658C23FE-1068-4728-B2EC-F33A15D98DD1.htm#GUID-658C23FE-1068-4728-B2EC-F33A15D98DD1">Comparison of Function Order Lists and IPO Code Layout</a>.
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e99 ">
+				  <p><span class="keyword">extern</span> 
+					 <span>functions</span> 
+					  procedures and library 
+					 <span>functions</span> 
+					  only (not 
+					  static 
+					 <span>functions</span>).
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e108 ">
+				  <p>Windows OS: all Intel architectures
+				  </p>
+ 
+				  <p>Linux OS: not supported
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e93 ">
+				  <p><strong>Function Grouping</strong>: Specifies that the linker should place the extern and static routines (<span>functions</span>) of your program into hot or cold program sections. This optimization can improve application performance by improving code locality and reduce paging. 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e99 ">
+				  <p><span class="keyword">extern</span> 
+					 <span>functions</span> 
+					  and static 
+					 <span>functions</span> 
+					  only (not library 
+					 <span>functions</span>).
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e108 ">
+				  <p>Linux OS: IA-32 and Intel 64 architectures
+				  </p>
+ 
+				  <p>Windows OS: not supported
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e93 ">
+				  <p><strong>Function Ordering:</strong> Enables ordering of static and extern routines using profile information. Specifies the order in which the linker should link the routines (<span>functions</span>) of your program. This optimization can improve application performance by improving code locality and reduce paging.
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e99 ">
+				  <p><span class="keyword">extern</span> 
+					 <span>functions</span> 
+					  and static 
+					 <span>functions</span> 
+					  only (not library 
+					 <span>functions</span>)
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e108 ">
+				  <p>Linux and Windows OS: all Intel architectures
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e93 ">
+				  <p><strong>Data Ordering:</strong> Enables ordering of static global data items 
+					  based on profiling information. Specifies the order in which the linker should link global data of your program. This optimization can improve application performance by improving the locality of static global data, reduce paging of large data sets, and improve data cache use. 
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e99 ">
+				  <p>Static global data 
+					  only
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" align="left" valign="middle" headers="d99189e108 ">
+				  <p>Linux and Windows OS: all Intel architectures
+				  </p>
+
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+
+		</table>
+</div>
+ 
+	 <p>You can use only one of the function-related ordering optimizations listed above. However, you can use the Data Ordering optimization with any one of the function-related ordering optimizations listed above, such as Data Ordering with Function Ordering, or Data Ordering with Function Grouping. In this case, specify the 
+  <span class="option">prof-gen</span> option keyword 
+  <span class="keyword">globdata</span> (needed for Data Ordering) instead of 
+  <span class="keyword">srcpos</span> (needed for function-related ordering).
+  </p>
+ 
+  <p>The following sections show the commands needed to implement each of these optimizations: 
+	 <a href="GUID-20F9F284-E414-44B8-AE78-58C18DB0DB84.htm#FUNCTION_ORDER_LIST_WINDOWS_OS">function order list</a>, 
+	 <a href="GUID-20F9F284-E414-44B8-AE78-58C18DB0DB84.htm#FUNCTION_GROUPING_LINUX_OS">function grouping</a>, 
+	 <a href="GUID-20F9F284-E414-44B8-AE78-58C18DB0DB84.htm#FUNCTION_ORDERING">function ordering</a>, and 
+	 <a href="GUID-20F9F284-E414-44B8-AE78-58C18DB0DB84.htm#DATA_ORDERING">data ordering</a>. For all of these optimizations, omit the 
+	 <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux* OS) or 
+	 <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows OS) or equivalent compiler option.
+  </p>
+ 
+  <div class="section" id="FUNCTION_ORDER_LIST_WINDOWS_OS"><a name="FUNCTION_ORDER_LIST_WINDOWS_OS"><!-- --></a><h2 class="sectiontitle">Generating a Function Order List (Windows OS)</h2> 
+	  
+	 <p>This section provides an example of the process for generating a function order list. Assume you have a 
+		<span>C++</span> program that consists of the following files: 
+		<span class="filepath">file1.</span><span><span class="filepath">cpp</span></span> and 
+		<span class="filepath">file2.</span><span><span class="filepath">cpp</span></span>. Additionally, assume you have created a directory for the profile data files called 
+		<span class="filepath">c:\profdata</span>. You would enter commands similar to the following to generate and use a function order list for your Windows application.
+	 </p>
+ 
+	 <ol id="GUID-042AAF2C-D2C7-4AD3-A8B5-6A710FCD7530"> 
+		<li>
+		  <p>Compile your program using the 
+	 <span class="option">/Qprof-gen:srcpos</span> option. Use the 
+	 <span class="option">/Qprof-dir</span> option to specify the directory location of the profile files. This step creates an instrumented executable.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CA5F8033-2355-4224-8FB4-F99FC9B34EAF" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e362">
+				  <p>Example commands
+				  </p>
+
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e362 "> 
+				  <p><samp class="codeph">icl /Femyprog /Qprof-gen=srcpos /Qprof-dir c:\profdata file1.cpp file2.cpp</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Run the instrumented program with one or more sets of input data. Change your directory to the directory where the executables are located. The program produces a 
+		  <span class="filepath">.dyn</span> file each time it is executed.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F40B6933-A765-4992-80F1-2490E073A38A" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e404"> 
+					 <p>Example commands
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e404 "> 
+					 <p><samp class="codeph">myprog.exe</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Before this step, copy all .dyn and .dpi files into the same directory. Merge the data from one or more runs of the instrumented program by using the 
+		  <a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> to produce the 
+		  <span class="filepath">pgopti.dpi</span> file. Use the 
+	 <span class="option">/prof_dir</span> option to specify the directory location of the .dyn files.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EFB46A00-2750-49F3-9EF9-21AB973150C9" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e452"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e452 "> 
+				  <p><samp class="codeph">profmerge /prof_dir c:\profdata</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Generate the function order list using the proforder tool. (By default, the function order list is produced in the file 
+		  <span class="filepath">proford.txt</span>.)
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-51615A70-F288-4CA6-ADEB-05C23ADDBE72" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e493"> 
+					 <p>Example commands
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e493 "> 
+					 <p><samp class="codeph">proforder /prof_dir c:\profdata /o myprog.txt</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Compile the application with the generated profile feedback by specifying the 
+	 <span class="option">ORDER</span> option to the linker. Use the 
+	 <span class="option">/Qprof-dir</span> option to specify the directory location of the profile files.
+	 </p>
+
+	 </li>
+
+	 </ol>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4996D101-B6EA-4B77-8BA9-7325A8336B93" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e539"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e539 "> 
+				  <p><samp class="codeph">icl /Femyprog /Qprof-dir c:\profdata file1.cpp file2.cpp /link -ORDER:@myprog.txt</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+  </div>
+ 
+  <div class="section" id="FUNCTION_GROUPING_LINUX_OS"><a name="FUNCTION_GROUPING_LINUX_OS"><!-- --></a><h2 class="sectiontitle">Using Function Grouping (Linux OS)</h2> 
+	  
+	 <p>This section provides a general example of the process for using the function grouping optimization. Assume you have a 
+		<span>C++</span> program that consists of the following files: 
+		<span class="filepath">file1.</span><span><span class="filepath">cpp</span></span> and 
+		<span class="filepath">file2.</span><span><span class="filepath">cpp</span></span>. Additionally, assume you have created a directory for the profile data files called 
+		<span class="filepath">profdata</span>. You would enter commands similar to the following to use a function grouping for your Linux application.
+	 </p>
+ 
+	 <ol id="GUID-979572E4-BB4C-47D6-9832-1513F88A1147"> 
+		<li> 
+		  <p>Compile your program using the 
+	 <span class="option">-prof-gen</span> option. Use the 
+	 <span class="option">-prof-dir</span> option to specify the directory location of the profile files. This step creates an instrumented executable.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-17A9DD7F-D72D-4650-A28E-A94CDAB0F8EC" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e611"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e611 "> 
+				  <p><samp class="codeph">icc -o myprog -prof-gen -prof-dir ./profdata file1.cpp file2.cpp</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Run the instrumented program with one or more sets of input data. Change your directory to the directory where the executables are located. The program produces a 
+		  <span class="filepath">.dyn</span> file each time it is executed.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C92943F6-C750-4141-83E9-C069A7AA1770" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e652"> 
+					 <p>Example commands
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e652 "> 
+					 <p><samp class="codeph">./myprog</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Copy all .dyn and .dpi files into the same directory. If needed, you can merge the data from one or more runs of the instrumented program by using the 
+		  <a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> to produce the 
+		  <span class="filepath">pgopti.dpi</span> file.
+		</p>
+
+	 </li>
+ 
+	 <li> 
+		<p>Compile the application with the generated profile feedback by specifying the 
+	 <span class="option">-prof-func-group</span> option to request the function grouping as well as the 
+	 <span class="option">-prof-use</span> option to request feedback compilation. Again, use the 
+	 <span class="option">-prof-dir</span> option to specify the location of the profile files.
+	 </p>
+
+	 </li>
+
+	 </ol>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-79C56BE1-3B0A-417A-916E-1CF784996894" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e714"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e714 "> 
+				  <p><samp class="codeph">icl /Femyprog file1.cpp file2.cpp 
+						<span class="option">-prof-func-group</span> -prof-use -prof-dir ./profdata</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+  </div>
+ 
+  <div class="section" id="FUNCTION_ORDERING"><a name="FUNCTION_ORDERING"><!-- --></a><h2 class="sectiontitle">Using Function Ordering</h2> 
+	  
+	 <p>This section provides an example of the process for using the function ordering optimization. Assume you have a 
+		<span>C++</span> program that consists of the following files: 
+		<span class="filepath">file1.cpp</span> and 
+		<span class="filepath">file2.cpp</span>. Additionally, assume you have created a directory for the profile data files called 
+		<span class="filepath">c:\profdata</span> (on Windows) or 
+		<span class="filepath">./profdata</span> (on Linux). You would enter commands similar to the following to generate and use function ordering for your application.
+	 </p>
+ 
+	 <ol id="GUID-AE768277-47B8-410F-9A0F-92F4E183B488"> 
+		<li> 
+		  <p>Compile your program using the 
+	 <span class="option">-prof-gen=srcpos</span> (Linux) or 
+	 <span class="option">/Qprof-gen:srcpos</span> (Windows) option. Use the 
+	 <span class="option">-prof-dir</span> (Linux) or 
+	 <span class="option">/Qprof-dir</span> (Windows) option to specify the directory location of the profile files. This step creates an instrumented executable.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F3B2CB78-B74C-49F7-A30E-58D6955C3144" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e793"> 
+				  <p>Operating System
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e799"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e793 "> 
+				  <p>Linux
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e799 "> 
+				  <p><samp class="codeph">icc -o myprog -prof-gen=srcpos -prof-dir ./profdata file1.cpp file2.cpp</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+ 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e793 "> 
+				  <p>Windows
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e799 "> 
+				  <p><samp class="codeph">icl /Femyprog /Qprof-gen:srcpos /Qprof-dir c:\profdata file1.cpp file2.cpp</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Run the instrumented program with one or more sets of input data. Change your directory to the directory where the executables are located. The program produces a 
+		  <span class="filepath">.dyn</span> file each time it is executed.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-498F0B28-3F0B-45C9-918B-EC35FECE71BF" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e864"> 
+					 <p>Operating System
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e870"> 
+					 <p>Example commands
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e864 "> 
+					 <p>Linux
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" headers="d99189e870 "> 
+					 <p><samp class="codeph">./myprog</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e864 "> 
+					 <p>Windows
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" headers="d99189e870 "> 
+					 <p><samp class="codeph">myprog.exe</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Copy all .dyn and .dpi files into the same directory. If needed, you can merge the data from one or more runs of the instrumented program by using the 
+		  <a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> to produce the 
+		  <span class="filepath">pgopti.dpi</span> file.
+		</p>
+
+	 </li>
+ 
+	 <li> 
+		<p>Compile the application with the generated profile feedback by specifying the 
+	 <span class="option">-prof-func-order</span> (Linux) or 
+	 <span class="option">/Qprof-func-order</span> (Windows) option to request the function ordering as well as the 
+	 <span class="option">-prof-use</span> (Linux) or 
+	 <span class="option">/Qprof-use</span> (Windows) option to request feedback compilation. Again, use the 
+	 <span class="option">-prof-dir</span> (Linux) or 
+	 <span class="option">/Qprof-dir</span> (Windows) option to specify the location of the profile files.
+	 </p>
+
+	 </li>
+
+	 </ol>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EABF2DD3-EA6C-4D53-90F9-6367D311E1B1" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e966"> 
+				  <p>Operating System
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e972"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e966 "> 
+				  <p>Linux
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e972 "> 
+				  <p><samp class="codeph">icpc -o myprog -prof-dir ./profdata file1.cpp file2.cpp 
+						<span class="option">-prof-func-order</span> 
+						<span class="option">-prof-use</span></samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+ 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e966 "> 
+				  <p>Windows
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e972 "> 
+				  <p><samp class="codeph">icl /Femyprog /Qprof-dir c:\profdata file1.cpp file2.cpp 
+						<span class="option">/Qprof-func-order /Qprof-use</span></samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+  </div>
+ 
+  <div class="section" id="DATA_ORDERING"><a name="DATA_ORDERING"><!-- --></a><h2 class="sectiontitle">Using Data Ordering</h2> 
+	  
+	 <p>This section provides an example of the process for using the data order optimization. Assume you have a 
+		<span>C++</span> program that consists of the following files: 
+		<span class="filepath">file1.cpp</span> and 
+		<span class="filepath">file2.cpp</span>. Additionally, assume you have created a directory for the profile data files called 
+		<span class="filepath">c:\profdata</span> (on Windows) or 
+		<span class="filepath">./profdata</span> (on Linux). You would enter commands similar to the following to use data ordering for your application.
+	 </p>
+ 
+	 <ol id="GUID-0A52692F-1993-4DB2-BA33-A6139746F1FF"> 
+		<li> 
+		  <p>Compile your program using the 
+	 <span class="option">-prof-gen=globdata</span> (Linux) or 
+	 <span class="option">/Qprof-gen:globdata</span> (Windows) option. Use the 
+	 <span class="option">-prof-dir</span> (Linux) or 
+	 <span class="option">/Qprof-dir</span> (Windows) option to specify the directory location of the profile files. This step creates an instrumented executable.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8BC8833B-2870-4D10-B2D8-8B6381408C5D" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e1078"> 
+				  <p>Operating System
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e1084"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e1078 "> 
+				  <p>Linux
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e1084 "> 
+				  <p><samp class="codeph">icc -o myprog -prof-gen=globdata -prof-dir ./profdata file1.cpp file2.cpp</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+ 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e1078 "> 
+				  <p>Windows
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e1084 "> 
+				  <p><samp class="codeph">icl /Femyprog /Qprof-gen=globdata /Qprof-dir c:\profdata file1.cpp file2.cpp</samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Run the instrumented program with one or more sets of input data. If you specified a location other than the current directory, change your directory to the directory where the executables are located. The program produces a 
+		  <span class="filepath">.dyn</span> file each time it is executed.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-361B5D39-1B41-4B3F-A2D4-031E7DDF78B2" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e1149"> 
+					 <p>Operating System
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" id="d99189e1155"> 
+					 <p>Example commands
+					 </p>
+
+				  </th>
+
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e1149 "> 
+					 <p>Linux
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" headers="d99189e1155 "> 
+					 <p><samp class="codeph">./myprog</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d99189e1149 "> 
+					 <p>Windows
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" headers="d99189e1155 "> 
+					 <p><samp class="codeph">myprog.exe</samp>
+					 </p>
+ 
+				  </td>
+
+				</tr>
+
+			 </tbody>
+
+		  </table>
+</div>
+
+	 </li>
+ 
+	 <li> 
+		<p>Copy all .dyn and .dpi files into the same directory. If needed, you can merge the data from one or more runs of the instrumented program by using the 
+		  <a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> to produce the 
+		  <span class="filepath">pgopti.dpi</span> file.
+		</p>
+
+	 </li>
+ 
+	 <li> 
+		<p>Compile the application with the generated profile feedback by specifying the 
+	 <span class="option">-prof-data-order</span> (Linux) or 
+	 <span class="option">/Qprof-data-order</span> option to request the data ordering as well as the 
+	 <span class="option">-prof-use</span> (Linux) or 
+	 <span class="option">/Qprof-use</span> (Windows) option to request feedback compilation. Again, use the 
+	 <span class="option">-prof-dir</span> (Linux) or 
+	 <span class="option">/Qprof-dir</span> (Windows) option to specify the location of the profile files.
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6DBCF5E3-4A32-41A1-B407-95A051113107" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e1249"> 
+				  <p>Operating System
+				  </p>
+
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="top" id="d99189e1255"> 
+				  <p>Example commands
+				  </p>
+
+				</th>
+
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e1249 "> 
+				  <p>Linux
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e1255 "> 
+				  <p><samp class="codeph">icpc -o myprog -prof-dir ./profdata file1.cpp file2.cpp 
+						<span class="option">-prof-data-order</span> 
+						<span class="option">-prof-use</span></samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+ 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d99189e1249 "> 
+				  <p>Windows
+				  </p>
+
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d99189e1255 "> 
+				  <p><samp class="codeph">icl /Femyprog /Qprof-dir c:\profdata file1.cpp file2.cpp 
+						<span class="option">/Qprof-data-order</span> 
+						<span class="option">/Qprof-use</span></samp>
+				  </p>
+ 
+				</td>
+
+			 </tr>
+
+		  </tbody>
+
+		</table>
+</div>
+
+	 </li>
+
+	 </ol>
+
+  </div>
+
+  </div>
+
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CA2B0F27-8C7A-4C47-B2EE-4893C20D0EAC.htm">PGO Tools</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

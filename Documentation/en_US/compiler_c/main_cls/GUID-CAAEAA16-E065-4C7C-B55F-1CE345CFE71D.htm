@@ -1,0 +1,127 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Starting Eclipse*">
+<meta name="DC.subject" content="Eclipse* integration, starting">
+<meta name="keywords" content="Eclipse* integration, starting">
+<meta name="DC.Relation" scheme="URI" content="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-77395CD9-9BDF-4BB4-A01C-5BB2C4F03310.htm#GUID-77395CD9-9BDF-4BB4-A01C-5BB2C4F03310">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CAAEAA16-E065-4C7C-B55F-1CE345CFE71D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Starting Eclipse*</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_start_ec_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_start_ec_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CAAEAA16-E065-4C7C-B55F-1CE345CFE71D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Starting Eclipse*</h1>
+ 
+   
+  <div> 
+    <p>If Eclipse* and CDT are installed on your system, follow these steps to initialize the compiler environment and start Eclipse*: 
+    </p>
+ 
+    <ol id="GUID-BA0434A1-2718-4249-8D42-36793F244B58"> 
+      <li> 
+        <p>Set the necessary environment variables by entering the following at the command line: 
+        </p>
+ 
+        <p> 
+        <ul type="disc" id="GUID-74FA3B19-5511-44A0-A7E0-93D7D70F47E2"> 
+          <li> 
+            <p><span>source 
+                <var>&lt;install-dir&gt;</var>/bin/compilervars.sh 
+                <var>&lt;architecture&gt;</var></span> (for Bash shell) 
+            </p>
+ 
+          </li>
+ 
+          <li> 
+            <p><span>source 
+                <var>&lt;install-dir&gt;</var>/bin/compilervars.csh 
+                <var>&lt;architecture&gt;</var></span> (for C shell) 
+            </p>
+ 
+          </li>
+ 
+        </ul>
+ 
+        </p>
+ 
+        <p>Where 
+          <var>&lt;install-dir&gt;</var> is the location where Intel&reg; C++ Composer XE was installed and 
+          <var>&lt;architecture&gt;</var> is: 
+        </p>
+ 
+        <ul type="disc" id="GUID-3D561697-DF98-42C0-94A6-677DED5CC209"> 
+          <li> 
+            <p><samp class="codeph">ia32</samp>: Compiler and libraries for IA-32 architecture only 
+            </p>
+ 
+          </li>
+ 
+          <li> 
+            <p><samp class="codeph">intel64</samp>: Compiler and libraries for Intel&reg; 64 architecture only 
+            </p>
+ 
+          </li>
+ 
+          </ul>
+ 
+      </li>
+ 
+      <li> 
+        <p>Be sure the 
+          <span>LANG</span> environment variable is set correctly:<br><samp class="codeph">export LANG=en_US</samp> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Start Eclipse*, indicating the Java* runtime environment. For example: 
+        </p>
+ 
+        <p><br><span class="filepath"><var>eclipse-install-dir</var>/eclipse/eclipse</span> 
+  <span class="option">-vm</span> 
+  <var>java-install-dir</var><span class="filepath">/jre1.6.0_20/bin/java</span> 
+  <span class="option">-vmargs -Xmx256m</span> 
+  </p>
+ 
+  </li>
+ 
+  </ol>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">Using Eclipse*</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-77395CD9-9BDF-4BB4-A01C-5BB2C4F03310.htm#GUID-77395CD9-9BDF-4BB4-A01C-5BB2C4F03310">Adding the Compiler and Debugger to Eclipse* 
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

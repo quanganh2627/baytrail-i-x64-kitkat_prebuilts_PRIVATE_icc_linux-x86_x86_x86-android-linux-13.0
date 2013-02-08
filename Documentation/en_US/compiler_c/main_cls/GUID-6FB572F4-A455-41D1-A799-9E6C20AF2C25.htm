@@ -1,0 +1,1376 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="C/C++ Extensions for Array Notations Programming Model">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, C/C++ extensions for array notations, Array Notations, array section, array declarations, operator maps, assignment maps, gather and scatter operations, reduction and shift operations, function maps, programming hints, multi-dimensional casting operations">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, C/C++ extensions for array notations, Array Notations, array section, array declarations, operator maps, assignment maps, gather and scatter operations, reduction and shift operations, function maps, programming hints, multi-dimensional casting operations">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4E06ED4-184F-40E6-A8B4-117947D8C7AD.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5.htm#GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">
+<meta name="DC.Relation" scheme="URI" content="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781.htm#GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6FB572F4-A455-41D1-A799-9E6C20AF2C25">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>C/C++ Extensions for Array Notations Programming Model</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_cean_prog"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_cean_prog"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6FB572F4-A455-41D1-A799-9E6C20AF2C25">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">C/C++ Extensions for Array Notations Programming Model</h1>
+ 
+   
+  <div> 
+	 <p>This section provides the syntax and semantics for the C/C++ language extensions for array notations. 
+	 </p>
+ 
+	 <div class="section" id="GUID-DDDC69AD-A138-4194-8EC7-6D071A88810B"><h2 class="sectiontitle">Array Section Notation</h2> 
+		 
+		<p>In your application code, introduce a section operator in the standard C/C++ language, as follows: 
+		</p>
+ 
+		<pre>section_operator ::= [&lt;lower bound&gt; : &lt;length&gt; : &lt;stride&gt;]</pre> 
+		<p>where the 
+		  <var>&lt;lower bound&gt;</var>, 
+		  <var>&lt;length&gt;</var>, and 
+		  <var>&lt;stride&gt;</var> are of integer types, representing a set of integer values as follows: 
+		  <pre>&lt;lower bound&gt;, &lt;lower bound + &lt;stride&gt;&gt;, …, &lt;lower bound&gt; + (&lt;length&gt; - 1) * &lt;stride&gt;</pre> 
+		</p>
+ 
+		<p>A section operator can occur in place of a subscript operator. The following example is an array section with 
+		  <samp class="codeph">len</samp> elements: 
+		  <samp class="codeph">a[lb], a[lb + str], a[lb + 2*str], …, a[lb + (len-1)*str]</samp>. 
+		  <pre>a[lb:len:str]</pre> 
+		</p>
+ 
+		<p> Length is chosen instead of upper bound because, in declarations, C/C++ deals with lengths of arrays and not upper bounds. Use of length also makes it easier to ensure that array sections match in size. 
+		</p>
+ 
+		<p> Successive section operators designate a sub-array of a multidimensional array object. When absent, the 
+		  <var>&lt;stride&gt;</var> defaults to 1. If the 
+		  <var>&lt;length&gt;</var> is less than 1, the array section is undefined. You can also use 
+		  <samp class="codeph">[:]</samp> as a short hand for a whole array dimension if the size of the dimension is known from the array declaration. If either 
+		  <var>&lt;lower bound&gt;</var> or 
+		  <var>&lt;length&gt;</var> must be specified, you must specify both. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EF3CEB9B-043D-4A58-B81C-F6CAEF93C1A7" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e126">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e126 "> 
+					 <p> 
+						<pre>a[0:3][0:4] // refers to 12 elements in the two-dimensional array a, starting at row 0, column 0, and ending at row 2, column 3.</pre> 
+					 </p>
+ 
+					 <p> 
+						<pre>b[0:2:3] &nbsp;&nbsp;&nbsp;// refers to elements 0 and 3 of the one-dimensional array b</pre> 
+					 </p>
+ 
+					 <p> 
+						<pre>b[:] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//refers to the entire array b</pre> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-22E39DB7-CD65-4B60-A063-18258BAD38B0"><h2 class="sectiontitle">Array Declarations for Array Notations</h2> 
+		 
+		<p>For the array section notation to be useful, the compiler must know the shape and size of an array object. The table below summarizes the different ways of declaring arrays and pointers to array objects in C/C++. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-81C8FFCB-E931-417A-839D-7D33284FA87C" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="16.420361247947454%" id="d351688e178">Length 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="19.047619047619047%" id="d351688e181">Storage Class 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="64.5320197044335%" id="d351688e184">Declaration 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" rowspan="4" valign="top" width="16.420361247947454%" headers="d351688e178 ">Fixed 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Static 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <samp class="codeph">static int a[16][128]</samp> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Auto 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <p> 
+						<samp class="codeph">void foo(void) { 
+						</samp> 
+					 </p>
+ 
+					 <p> 
+						<samp class="codeph">int a[16][128]; 
+						</samp> 
+					 </p>
+ 
+					 <p><samp class="codeph"> } 
+						</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Parameter 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <samp class="codeph">void bar(int a[16][128]); 
+					 </samp> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Heap 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <samp class="codeph">int (*p2d)[128]; 
+					 </samp> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" rowspan="3" valign="top" width="16.420361247947454%" headers="d351688e178 ">Variable (C99) 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Auto 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <p><samp class="codeph"> void foo(int m, int n) { 
+						</samp> 
+					 </p>
+ 
+					 <p> 
+						<samp class="codeph">int a[m][n];</samp> 
+					 </p>
+ 
+					 <p><samp class="codeph"> }</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Parameter 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <samp class="codeph">void bar(int m, int n, int a[m][n]);</samp> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="19.047619047619047%" headers="d351688e181 ">Heap 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="64.5320197044335%" headers="d351688e184 "> 
+					 <p><samp class="codeph"> void bar(int m, int n) {</samp> 
+					 </p>
+ 
+					 <p><samp class="codeph"> int (*p2d)[n];</samp> 
+					 </p>
+ 
+					 <p> 
+						<samp class="codeph">}</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>The variable length array (VLA) notation is a C99 [ISO/IEC 9899] extension. It is supported by the GNU GCC and Intel&reg; C++ compilers. 
+		  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+			 <p>You must use 
+			 <span class="option">–std=c99</span> (Linux* OS and OS X*) or 
+			 <span class="option">/Qstd=c99</span> (Windows* OS) compiler option for the compiler to accept the C99 extensions. 
+		</p>
+ 
+		</div> 
+		</p>
+ 
+		<p>If the base of an array section has incompletely specified dimensions (such as a pointer variable), you must explicitly specify the length of the array section. This is illustrated in the following example. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A7AE87C4-0298-4AEB-BA26-7E9226BA3758" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e351">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e351 "> 
+					 <pre>typedef int (*p2d)[128];</pre> 
+					 <pre>p2d p = (p2d) malloc(sizeof(int)*rows*128);</pre> 
+					 <pre> p[:][:] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// error</pre> 
+					 <pre> p[0:rows][:] // ok</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-449F586A-F339-4BB0-A7B3-2BF304C69915"><h2 class="sectiontitle">Operator Maps</h2> 
+		 
+		<p>Most C/C++ operators are available for array sections: 
+		  <samp class="codeph">+, -, *, /, %, &lt;, ==, &gt;, &lt;=, !=, &gt;=, ++, --, |, &amp;, ^, &amp;&amp;, ||, !, -(unary), +(unary), +=, -=, *=, /=, 
+			 <samp class="codeph">*</samp></samp>(pointer de-referencing). Operators are implicitly mapped to all elements of the array section operands. The operations on different elements can be executed in parallel with-out any ordering constraints. 
+		</p>
+ 
+		<p>Array operands in an operation must have the same rank and size. Rank is defined as the number of array section operators, and size is the length of each array section. A scalar operand is automatically filled to the whole array section of any rank. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0D2A2EB6-0326-45F2-874A-8A01DE17114A" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e403">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e403 "> 
+					 <pre>a[:] * b[:] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// element-wise multiplication</pre> 
+					 <pre>a[3:2][3:2] + b[5:2][5:2] // matrix addition of the 2x2 matrices in a and b starting at a[3][3] and b[5][5]
+</pre> 
+					 <pre>a[0:4][1:2] + b[1:2][0:4] // error, different rank sizes</pre> 
+					 <pre>a[0:4][1:2] + b[0][1] &nbsp;&nbsp;&nbsp;&nbsp;// ok, adds a scalar b[0][1] to an array section.
+</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-F2B48D82-59FD-4A4B-BD2A-B427DB4B0AA4"><h2 class="sectiontitle">Assignment Maps</h2> 
+		 
+		<p> The assignment operator applies in parallel to every element of the array section on the left hand side (LHS). 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1FAE8753-AFF2-4821-A963-98430D2999E0" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e449">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e449 "> 
+					 <pre>a[:][:] = b[:][2][:] + c;</pre> 
+					 <pre>e[:] = d;</pre> 
+					 <pre>e[:] = b[:][1][:]; // error, different rank</pre> 
+					 <pre>a[:][:] = e[:]; &nbsp;&nbsp;&nbsp;// error, different rank</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+
+
+		<p>If there is an overlap between the RHS and the LHS, the behavior is undefined. There is no guarantee that the RHS will be evaluated before assignment to the LHS. If there is aliasing between the LHS and the RHS, the programmer must introduce a temporary array section to evaluate the RHS before assigning to the LHS. One exception is when there is an exact overlap and the stride is the same, then the assignment is well defined. This semantic allows for the most efficient code to be generated. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D458A6D0-561E-4E80-A487-56F37C1580EE" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e488">Example 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e488 "> 
+					 <pre>a[1:s]&nbsp;&nbsp;&nbsp;&nbsp;= a[0:s] + 1;&nbsp;&nbsp;// due to overlap the behavior is undefined </pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>temp[0:s] = a[0:s] +1;&nbsp;&nbsp;// introduce temporary section to resolve</pre> 
+					 <pre>a[1:s]&nbsp;&nbsp;&nbsp;&nbsp;= temp[0:s];&nbsp;&nbsp;// the aliasing</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>a[:] += b[:];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// This is well defined as there is exact overlap and stride 1</pre> 
+					 <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// a[:] = a[:] + b[:];</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-A050F88A-4595-426B-9004-263E618F47D5"><h2 class="sectiontitle">Gather and Scatter</h2> 
+		 
+		<p> When an array section occurs directly under a subscript expression, it designates a set of elements indexed by the values of the array section. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8791A317-40E0-46A0-A169-D9D80A615890" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e546">Example 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e546 "> 
+					 <pre>unsigned index[10] = {0,1,2,3,4,5,6,7,8,9};</pre> 
+					 <pre>float out[10], in[10] = {9,8,7,6,5,4,3,2,1,0};</pre> 
+					 <pre>out[0:5] = in[index[0:5]]; // gather</pre> 
+					 <pre>out[index[5:5]] = in[0:5]; //scatter</pre> 
+					 <pre>for(int i = 0; i &lt; 5; i++){</pre> 
+					 <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cerr &lt;&lt; "out[" &lt;&lt; i &lt;&lt; "]" &lt;&lt; out[i] &lt;&lt; endl;</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>If the index values in a scatter array section overlap with each other, the values for the duplicated locations must be the same, otherwise, the final stored value after the scatter is undefined. 
+		</p>
+ 
+		<p> Depending on the target architecture option chosen, and if the scatter/gather support is available on the target architecture, the compiler may map the array notations operations to the appropriate hardware. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-0EAF95F0-2FAD-4E46-BB00-18FA1FCE704B"><h2 class="sectiontitle">Array Implicit Index</h2> 
+		 
+		<p>In writing code that uses array sections, you may find it useful to explicitly reference the indices of the individual elements in a section. For example, you may decide to fill an array with a function of the element index, rather than with a single value. Conceptually, an array section operation can be thought of as expanding into a loop with an implicit index variable for each relative rank of the section. For each relative rank, the value of the implicit index variable ranges between zero and one less than the length of the triplet with that relative rank. The 
+		  <samp class="codeph">__sec_implicit_index</samp> operation returns the value of the implicit index variable for a specified relative rank. It behaves as a function with the following declaration: 
+		</p>
+ 
+		<p><samp class="codeph">intptr_t __sec_implicit_index(int relative_rank);</samp> 
+		</p>
+ 
+		<p> The argument must be an integer constant expression. For purposes of rank checking, the rank of an implicit index operation is zero, although it is reevaluated for each element, similar to an expression of rank one. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-28663802-4DB1-4C10-97AF-4DD78595C864" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%"> 
+					 <strong> Examples</strong> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%"> 
+					 <p> 
+						<pre>int A[10], B[10][10];</pre> 
+						<pre>// To assign A[0] = 0, A[1] = 1, A[2] = 2,... use:</pre> 
+						<pre>A[:] = __sec_implicit_index(0);</pre> 
+						<pre>// Assign B[i][j] = i+j:</pre> 
+						<pre>B[:][:] = __sec_implicit_index(0) + __sec_implicit_index(1);</pre> 
+						<pre>// The value of __sec_implicit_index is independent of the starting value
+</pre> 
+						<pre>// of the section. In this example, the values are either 0 or 1, even though the
+</pre> 
+						<pre>// actual indices are x+i and y+j.</pre> 
+						<pre>// B[x][y] = 0^0, B[x][y+1] = 0^1, B[x+1][y] = 1^0, B[x+1][y+1] = 1^1</pre> 
+						<pre>B[x:2][y:2] = __sec_implicit_index(0) ^ __sec_implicit_index(1);</pre> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-65BB6F07-596F-457E-BABE-C44D7F2F0E18"><h2 class="sectiontitle">Reduction Operations </h2> 
+		 
+		<p> A 
+		  <em>reduction</em> combines array section elements to generate a scalar result. Intel&reg; Cilk&#8482; Plus supports reductions on array sections. It defines a generic reduction function that applies a user-defined dyadic function 
+		  <span>and a generic mutating reduction function that applies the result of the reduction function</span>. Intel&reg; Cilk&#8482; Plus also has nine built-in common reduction functions. The built-in functions are polymorphic functions that accept int, float, and other C basic data type arguments. The names and descriptions of reduction functions are summarized in the table below followed by details and examples. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4A7F2F1C-51A3-4A93-BB1C-0F201E13F7A1" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="39.8406374501992%" id="d351688e697">Function Prototypes 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="60.1593625498008%" id="d351688e700">Descriptions 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e697 "><samp class="codeph"> __sec_reduce(fun, identity, a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e700 "> 
+					 <p>Generic reduction function. Reduces 
+						<var>fun</var> across the array 
+						<var>a[:]</var> using 
+						<var>identity</var> as the initial value. 
+						<span>Deprecated.</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e697 "><samp class="codeph">result __sec_reduce(initial, a[:], function-id) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e700 "> 
+					 <p>Generic reduction function that supports scalar types as well as C++ arithmetic classes. Performs a reduction operation across array,<var> a[:]</var>, using the reduction function,<var> function-id</var>, with 
+						<var>initial</var> as the initial value. Returns the result of the reduction in 
+						<var>result</var>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e697 "><samp class="codeph">void __sec_reduce_mutating(reduction, a[:], function-id)</samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e700 "> 
+					 <p>Generic mutating reduction function that supports scalar types as well as C++ arithmetic classes. Performs reduction operation across array, 
+						<var>a[:]</var>, using the mutating reduction function, 
+						<var>function-id</var>, with the result of the reducing operation, 
+						<var>reduction</var>, accumulated in the initial value. Returns nothing. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		   
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" colspan="2" valign="top" id="d351688e794"><strong>Built-in Reduction Functions</strong> 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_add(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Adds values passed as arrays. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_mul(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Multiplies values passed as arrays. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_all_zero(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 ">Tests that array elements are all zero. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_all_nonzero(a[:])</samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Tests that array elements are all non-zero. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_any_nonzero(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Tests for any array element that is non-zero. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_min(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Determines the minimum value of array elements. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_max(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Determines the maximum value of array elements. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_min_ind(a[:]) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Determines the index of minimum value of array elements. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e794 "><samp class="codeph">__sec_reduce_max_ind(a[:])</samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e794 "> Determines the index of maximum value of array elements. 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p><strong>Generic reducing function:</strong> the function denoted by 
+		  <var>function-id</var> can be a user-defined function, operator, functor, or lambda expression that require assignment on top of the operation, for example, 
+		  <samp class="codeph">operator+</samp>. The reduction function must be commutative. The element type of the array section is used for: 
+		<ul type="disc" id="GUID-55E34DFE-AB88-411C-BA57-44FD14648BFD"> 
+		  <li> 
+			 <p>lookup and overload resolution of the reduction function 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> the assignment operator needed to assign the return value to the result 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> the copy constructor for the initial value to be assigned to the reduction variable used (if needed). 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>The implementation allows for non-constant function pointers as the reduction function. Also, The returning reduction function can replace the original defined 
+			 <samp class="codeph">__sec_reduce(fun, identity, a[:]);</samp> reduction function with your user-defined function. The original defined reduction function is deprecated. 
+		  </p>
+ 
+		</div> 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E23E2EBF-D448-4810-9A7E-FDA99524C72D" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e957">Example 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e957 "> 
+					 <pre>...</pre> 
+					 <pre>complex&lt;double&gt;  a[N];</pre> 
+					 <pre>complex&lt;double&gt;  result;</pre> 
+					 <pre>...</pre> 
+					 <pre>result = __sec_reduce(complex&lt;double&gt;(0,0), a[:], operator+ );</pre> 
+					 <pre>...</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p><strong>Generic mutating reduction function:</strong> the function denoted by 
+		  <var>function-id</var> can be a user-defined function, operator, functor, or lambda expression that requires assignment on top of the operation, for example, compound assignment 
+		  <samp class="codeph">operator+=</samp>. The reduction function must be commutative. The element type of the array section is used for lookup and overload resolution for the compound reduction function. 
+		  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+			 <p>An assignment operator is not needed for the mutating reduction case. 
+			 </p>
+ 
+		  </div> 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-922F24CA-0ED0-4B8F-9D15-C8A55672D3E2" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1020">Example 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1020 "> 
+					 <pre>...</pre> 
+					 <pre>complex&lt;double&gt;  a[N];</pre> 
+					 <pre>complex&lt;double&gt;  result;</pre> 
+					 <pre>...</pre> 
+					 <pre>result = complex&lt;double&gt;(0,0);</pre> 
+					 <pre>__sec_reduce_mutating(result, a[:], operator+= );</pre> 
+					 <pre>...</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> 
+		  <strong>Built-in reduction functions:</strong> the reduction operation can reduce on multiple ranks. The number of ranks reduced depends on the execution context. For a given execution context of rank 
+		  <var>m</var> and a reduction array section argument with rank 
+		  <var>n</var>, where 
+		  <var>n&gt;m</var>, the last 
+		  <var>n-m</var> ranks of the array section argument are reduced. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CED5D7DF-27EE-4D0D-B362-1C58D3CC145C" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1086">Example 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1086 "> 
+					 <pre>sum = __sec_reduce_add(a[:][:]); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// sum across the whole array 'a'</pre> 
+					 <pre>sum_of_column[:] = __sec_reduce_add(a[:][:]); // sum across the column of 'a'</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-5E7639D2-E1B1-44D9-9172-33B275409DC7"><h2 class="sectiontitle">Shift Operations</h2> 
+		 
+		<p>A 
+		  <em>shift</em> does a shift of the elements in the array section elements to generate a scalar result. Intel&reg; Cilk&#8482; Plus supports shift operations on array sections. The names and descriptions of shift functions are summarized in the table below. The shift and circular shift (rotate) functions are defined for rank one expressions. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C5675120-7C11-471E-95ED-0A84CA869110" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="39.8406374501992%" id="d351688e1132">Function Prototypes 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="60.1593625498008%" id="d351688e1135">Descriptions 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e1132 "><samp class="codeph">b[:] = __sec_shift(a[:], signed shift_val, fill_val)</samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e1135 "> 
+					 <p>Generic shift function. Performs a shift operation on the elements of the array 
+						<var>a[:]</var> towards a higher/lower index value. A positive 
+						<var>shift_val</var> shifts towards lower index values while a negative 
+						<var>shift_val</var> shifts towards higher index values. The 
+						<var>fill_val 
+						</var>argument indicates the fill value of the array section element type that is used to fill the vacated elements. The result is assigned to the return value, 
+						<var>b[:]</var>. The array section argument,<var> a[:]</var> is not modified. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="39.8406374501992%" headers="d351688e1132 "><samp class="codeph">b[:] = __sec_rotate(a[:], signed shift_val) 
+					 </samp> 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="60.1593625498008%" headers="d351688e1135 "> 
+					 <p>Generic rotate function. Performs a circular shift (rotate) of the elements in the array section,<var> a[:]</var>. A positive 
+						<var>shift_val</var> rotates towards lower index values while a negative 
+						<var>shift_val</var> rotates towards higher index values. The result is assigned to the return value, 
+						<var>b[:]</var>. The array section argument 
+						<var>a[:]</var> is not modified. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6FB94178-DEB6-4300-9601-1B0AE3BE3D4D"><h2 class="sectiontitle">Function Maps</h2> 
+		 
+		<p> Maps are implicitly defined on scalar functions. All the array section arguments in a scalar function map call must have the same rank. Scalar arguments are automatically filled 
+		  <span>to</span> match any rank. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D9B0E08C-6F8F-4827-BB8D-F1A36609E306" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1227">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1227 "> 
+					 <pre>a[:] = sin(b[:]);</pre> 
+					 <pre>a[:] = pow(b[:], c); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// b[:]**c</pre> 
+					 <pre>a[:] = pow(c, b[:]); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// c**b[:]</pre> 
+					 <pre>a[:] = foo(b[:]); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// user defined function</pre> 
+					 <pre>a[:] = bar(b[:], c[:][:]); //error, different ranks</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>Mapped function calls are executed in parallel for all the array elements, with no specific ordering. Vector functions may have side effects. When there are conflicts during parallel execution, the program semantics may be different from the serial program. 
+		</p>
+ 
+		<p> Function maps are powerful tools used to apply a set of operations in parallel to all elements of an array section. 
+		</p>
+ 
+		<p>Many routines in the 
+		  <span class="keyword">svml</span> library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-833441B8-4E7D-4E2E-B868-D463622A9B42"><h2 class="sectiontitle">Passing Array Section Arguments</h2> 
+		 
+		<p>Intel&reg; Cilk&#8482; Plus supports a 
+		  <em>vector kernel</em> style of programming, where vector code is encapsulated within a function by declaring array parameters of fixed or parameterized vector lengths. 
+		</p>
+ 
+		<p> The address of the first element of an array section can be passed as argument to an array parameter. The following example illustrates how to combine array notation to achieve vectorization inside a function body using Intel&reg; Cilk&#8482; Plus threading for parallel function calls. 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>The parameter 
+			 <samp class="codeph">float x[m]</samp> depending on an earlier parameter 
+			 <samp class="codeph">int m</samp> is only supported in C99 and not in C++. 
+		  </p>
+ 
+		</div> 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-195BE2A3-0C69-4A3E-B2F2-943035991FE1" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1305">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1305 "> 
+					 <pre>#include &lt;cilk/cilk.h&gt;</pre> 
+					 <pre>void saxpy_vec(int m, float a, float x[m], float y[m]){</pre> 
+					 <pre>&nbsp;y[:]+=a*x[:];</pre> 
+					 <pre>}</pre> 
+					 <pre>void main(void){</pre> 
+					 <pre>&nbsp;int a[2048], b[2048] ;</pre> 
+					 <pre>&nbsp;cilk_for (int i = 0; i &lt; 2048; i +=256){</pre> 
+					 <pre>&nbsp;&nbsp;&nbsp;saxpy_vec(256, 2.0, &amp;a[i], &amp;b[i]);</pre> 
+					 <pre>&nbsp;}</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> By writing the function explicitly with array arguments, you can write portable vector codes using any threading runtime and scheduler. 
+		</p>
+ 
+		<p><strong>Conditionals and if statements</strong> 
+		</p>
+ 
+		<p> Array sections can be used with the C/C++ conditional operator, or in the conditional test of an 
+		  <samp class="codeph">if</samp> statement. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CDCADECE-7B11-4A56-B1E0-F4B022CE16B9" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1374">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1374 "> 
+					 <pre>c[0:n] = (a[0:n] &gt; b[0:n]) ? a[0:n] - b[0:n] : a[0:n];</pre> 
+					 <pre>&nbsp;// is equivalent to:</pre> 
+					 <pre>if (a[0:n] &gt; b[0:n]) {</pre> 
+					 <pre>&nbsp;  c[0:n] = a[0:n] – b[0:n];</pre> 
+					 <pre>}</pre> 
+					 <pre>else {</pre> 
+					 <pre>   c[0:n] = a[0:n];</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> In the above example, each element 
+		  <samp class="codeph">c[i]</samp> of the result array 
+		  <samp class="codeph">c</samp> will be assigned either 
+		  <samp class="codeph">a[i]-b[i]</samp> or 
+		  <samp class="codeph">a[i]</samp>, depending on whether 
+		  <samp class="codeph">a[i]</samp> &gt; 
+		  <samp class="codeph">b[i]</samp>. 
+		</p>
+ 
+		<p>When array sections are used in conditional expressions (either an if-statement condition or a conditional operator), all array sections in every statement in the "true" and "false" clauses must have the same shape. 
+		</p>
+ 
+		<p> Keep in mind that the hardware may need to compute both sides of the conditional and blend them together; the clauses should be kept short, if possible. 
+		</p>
+ 
+		<p><strong>Limitations</strong> 
+		</p>
+ 
+		<p>There are two limitations on the usage of array sections: 
+		</p>
+ 
+		<ul type="disc" id="GUID-A0058716-74E5-43A0-8C05-1D5475D62F92"> 
+		  <li> 
+			 <p>Functions cannot return array section values. To receive output values, two techniques can be used: 
+			 </p>
+
+			 <p><strong>Output array:</strong>
+			 </p>
+ 
+			 <pre>void addit(float out[N], float in[N]) {</pre> 
+			 <pre>    out[:] = in[:] + 4.5f;</pre> 
+			 <pre>}</pre> 
+			 <pre>float A[N],B[N];</pre> 
+			 <pre>addit(A,B);</pre>
+			 <p><strong>Function map:</strong>
+			 </p>
+ 
+			 <pre>float addit(float in) {</pre> 
+			 <pre>    return in + 4.5f;</pre> 
+			 <pre>}</pre> 
+			 <pre>float A[N],B[N];</pre> 
+			 <pre>A[:] = addit(B[:]);</pre> 
+		  </li>
+ 
+		  <li> 
+			 <p>The "true" and "false" clauses of conditional expressions with array sections must not contain the 
+				<samp class="codeph">return</samp>, 
+				<samp class="codeph">break</samp>, 
+				<samp class="codeph">while</samp>, 
+				<samp class="codeph">for</samp>, or 
+				<samp class="codeph">goto</samp> statements. Nested if-statements are allowed. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-19DA3BD0-A44F-4B13-911F-EC17312405B7"><h2 class="sectiontitle">Programming Hints and Examples</h2> 
+		 
+		<p>There is no cost associated with writing an application that mixes scalar and data parallel operations on the same arrays. The Intel compiler uses the array operations in the program to guide vectorization. The following example implements an FIR filter. The scalar code consists of a doubly nested loop where both the inner and outer loop can be vectorized. By writing the program in different ways using array notation, you can direct the compiler to vectorize differently. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F07FD22A-0371-4971-94DC-1BCA623BD5A5" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1541">Example: FIR Scalar Code 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1541 "> 
+					 <pre>for (i=0; i&lt;M-K; i++){</pre> 
+					 <pre>&nbsp;s = 0</pre> 
+					 <pre>&nbsp;for (j=0; j&lt;K; j++){</pre> 
+					 <pre>&nbsp;&nbsp;s+= x[i+j] * c[j];</pre> 
+					 <pre>&nbsp;}</pre> 
+					 <pre>y[i] = s;</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1583">Example: FIR Inner Loop Vector 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1583 "> 
+					 <pre>for (i=0; i&lt;M-K; i++){</pre> 
+					 <pre>&nbsp;y[i] = __sec_reduce_add(x[i:K] * c[0:K]);</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1612">Example: FIR Outer Loop Vector 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1612 "> 
+					 <pre>y[0:M-K] = 0;</pre> 
+					 <pre>for (j=0; j&lt;K; j++){</pre> 
+					 <pre>&nbsp;y[0:M-K]+= x[j:M-K] * c[j];</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> The parallel array assignment semantics enables vectorization of computations on the right hand side (RHS) of the assignment even if the l-value of the assignment may alias with some operands on the RHS. The compiler introduces temporary arrays when aliasing occurs. Temporary arrays increase memory usage and incur extra overhead of writing and reading them. You can help eliminate unnecessary temporary copying by providing better aliasing information such as C99 
+		  <span class="keyword">restrict</span> pointer attribute as shown in the following example: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D88DF5F6-21C0-4A66-8FDC-CE89463B681E" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1653">Example: Using C99 restrict Pointer [no overlapping assignments] 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1653 "> 
+					 <pre>void saxpy_vec(int m, float a, float (&amp;x)[m], float(&amp;y)[m]){</pre> 
+					 <pre>&nbsp;y[:] += a * x[:]; &nbsp;&nbsp;&nbsp;// x may overlap with y,</pre> 
+					 <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// temporary array t[n] allocated by the compiler</pre> 
+					 <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// t[:] = y[:] + a * x[:]; y[:] = t[:]</pre> 
+					 <pre>}</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>void saxpy_vec(int m, float a, float *restrict x, float(&amp;y)[m]){</pre> 
+					 <pre>&nbsp;y[:] += a * x[0:m]; &nbsp;// x and y are disjointed, no temporary array</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>Since the behavior is undefined for overlapping assignments and the compiler does not introduce temporary array sections to resolve the dependencies, the compiler generates efficient code even when there is a possibility for overlap. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0BDF16AA-C40B-4396-8D58-FF22CD02A122" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1708">Example: Using C99 restrict Pointer [overlapping assignments] 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1708 "> 
+					 <pre>void saxpy_vec(int m, float a, float (&amp;x)[m], float(&amp;y)[m]){</pre> 
+					 <pre>&nbsp;y[:] += a * x[:]; //  x may overlap with y, but no temp array allocated</pre> 
+					 <pre>} </pre> 
+					 <pre>// code is vectorized as efficiently as if the restrict keyword is used</pre> 
+					 <pre>void saxpy_vec(int m, float a, float restrict *x, float(&amp;y)[m]){</pre> 
+					 <pre>&nbsp;y[:] += a * x[0:m]; // x and y are disjoint</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> To take full advantage of vector instruction set, it is often beneficial to use a fixed vector length supported by the processor, as illustrated in the next example. The example code computes an average over nine points in a two-dimensional grid (avoiding the 1-element boundary around the grid where the nine-point average is not defined). The core computation is written in vector form as in a function 
+		  <samp class="codeph">nine_point_average</samp>. The application is further parallelized using a 
+		  <span class="keyword">cilk_for</span> loop at the call site. The grain size of the computation is controlled by the two compile time constants, 
+		  <span class="keyword">VLEN</span> and 
+		  <span class="keyword">NROWS</span>, which designate the length of vector operations and the number of rows processed in each invocation. Because the loads of adjacent rows are reused across multiple rows, you gain on memory locality by processing multiple rows inside the function. Using compile time constant for vector length makes the vector code generation more efficient and predictable. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2268F5F3-E4FC-429F-A0D6-3237EF56FAB7" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1768">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1768 "> 
+					 <pre>#include &lt;malloc.h&gt;</pre> 
+					 <pre>#include &lt;cilk/cilk.h&gt;</pre> 
+					 <pre>#define VLEN 4</pre> 
+					 <pre>#define NROWS 4</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>//-------------------------------------------------------------------</pre> 
+					 <pre>// Vector kernel</pre> 
+					 <pre>// for each grid</pre> 
+					 <pre>// o[x][y] = (i[x-1][y-1] + i[x-1][y]+ i[x-1][y+1] +</pre> 
+					 <pre>// i[x][y-1] + i[x][y] + i[x][y+1] +</pre> 
+					 <pre>// i[x+1][y-1] + i[x+1][y] + i[x+1][y+1])/9;</pre> 
+					 <pre>// written with: </pre> 
+					 <pre>// 1) VLEN columns for vectorization</pre> 
+					 <pre>// 2) NROWS rows for the reuse of the adjacent row loads</pre> 
+					 <pre>//--------------------------------------------------------------------</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>void nine_point_average(int h, int w, int i, int j, float in[h][w], float out[h][w])</pre> 
+					 <pre>{</pre> 
+					 <pre>&nbsp;float m[NROWS][VLEN]; </pre> 
+					 <pre>&nbsp;m[:][:] = in[i:NROWS][j:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i+1:NROWS][j:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i+2:NROWS][j:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i:NROWS][j+1:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i+1:NROWS][j+1:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i+2:NROWS][j+1:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i:NROWS][j+2:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i+1:NROWS][j+2:VLEN];</pre> 
+					 <pre>&nbsp;m[:][:] += in[i+2:NROWS][j+2:VLEN];</pre> 
+					 <pre>&nbsp;out[i:NROWS][j:VLEN] = 0.1111f * m[:][:];</pre> 
+					 <pre>}</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>//---------------------------------------------------------------------</pre> 
+					 <pre>// caller</pre> 
+					 <pre>//---------------------------------------------------------------------</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>const int width = 512;</pre> 
+					 <pre>const int height = 512;</pre> 
+					 <pre>typedef float (*p2d)[];</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>int main() {</pre> 
+					 <pre>&nbsp;p2d src = (p2d) malloc(width*height*sizeof(float));</pre> 
+					 <pre>&nbsp;p2d dst = (p2d) malloc(width*height*sizeof(float));</pre> 
+					 <pre>&nbsp;</pre> 
+					 <pre>// …</pre> 
+					 <pre>// perform average over 9 points</pre> 
+					 <pre>&nbsp;cilk_for (int i = 0; i &lt; height - NROWS - 3; i += NROWS) {</pre> 
+					 <pre>&nbsp;&nbsp;for (int j = 0; j &lt; width - VLEN - 3; j += VLEN) {</pre> 
+					 <pre>&nbsp;&nbsp;&nbsp;nine_point_average(height, width, i, j, src, dst);</pre> 
+					 <pre>&nbsp;&nbsp;}</pre> 
+					 <pre>&nbsp;}</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e1949">Command-line entry 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e1949 "> 
+					 <pre>icl -Qstd=c99 test.c</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6F3AF571-5EF9-418F-B244-4A9B4AA1326A"><h2 class="sectiontitle">Multi-Dimensional Casting Operations</h2> 
+		 
+		<p>For arrays of two or more dimensions the C language uses row-major ordering. When porting code to array notation format, it is not uncommon to encounter array access patterns that are impossible to express using array notations. However, you can often convert the array into a form that is suitable. 
+		</p>
+ 
+		<p>For instance, consider that you want to access the data in the center of a 4x4 array. 
+		</p>
+ 
+		<p> 
+		  <img src="GUID-213823EC-D8DF-47C4-9C2A-711C6FAA3855-low.jpg" alt="4x4 array"> 
+		</p>
+ 
+		<p>This 4x4 array can be represented as a two-dimensional array as follows: 
+		</p>
+ 
+		<p><img src="GUID-E7FC9626-AAC1-464B-81E6-F2CFD5446775-low.jpg" alt="one-dimensional array" align="center"> 
+		</p>
+ 
+		<p>If you are porting code in which this 2-dimensional data is represented as a 1-dimensional array there is no way to express this access pattern using array notation alone, unless you convert your array into a 2-dimensional one. You can do this as follows: 
+		</p>
+ 
+		<p> 
+		  <pre>float (*array_2D)[4] = (float (*)[4])array_1D;</pre> 
+		</p>
+ 
+		<p>Using this method, the above access pattern can be made accessible as array notations as follows: 
+		</p>
+ 
+		<p> 
+		  <pre>array_2D[1:2][1:2];</pre> 
+		</p>
+ 
+		<p>You can extend this approach to any dimensionality, as the following example illustrates. 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EA7D4DC0-4013-4DA9-B3CA-AAB0C3EF3D96" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d351688e2024">Example 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d351688e2024 "> 
+					 <pre>#define XRES 48</pre> 
+					 <pre>#define YRES 64</pre> 
+					 <pre>#define ZRES 48</pre> 
+					 <pre>float (*array_3D)[YRES][XRES] = (float (*)[YRES][XRES])array_1D; </pre> 
+					 <pre>array_3D[1:ZRES-2][1:YRES-2][1:XRES-2];</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B4E06ED4-184F-40E6-A8B4-117947D8C7AD.htm">Extensions for Array Notation</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5.htm#GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">User-mandated or SIMD Vectorization 
+		  </a></div>
+<div><a href="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781.htm#GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">Function Annotations and the SIMD Directive for Vectorization 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

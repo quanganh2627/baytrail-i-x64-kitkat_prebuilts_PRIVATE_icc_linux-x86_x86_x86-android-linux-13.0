@@ -1,0 +1,175 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Absolute Value Intrinsics">
+<meta name="DC.subject" content="intrinsics, SSSE3, absolute value operations, _mm_abs_epi8, _mm_abs_epi16, _mm_abs_epi32, _mm_abs_pi8, _mm_abs_pi16, _mm_abs_pi32, Supplemental Streaming SIMD Extensions 3, absolute value intrinsics">
+<meta name="keywords" content="intrinsics, SSSE3, absolute value operations, _mm_abs_epi8, _mm_abs_epi16, _mm_abs_epi32, _mm_abs_pi8, _mm_abs_pi16, _mm_abs_pi32, Supplemental Streaming SIMD Extensions 3, absolute value intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-69E68693-5643-4C2C-ADB7-A95749C0A09D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Absolute Value Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_tni_abs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-69E68693-5643-4C2C-ADB7-A95749C0A09D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Absolute Value Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-8220C1B6-5AB7-4B15-9A1A-8CB567ADE9BE"> 
+      <p>These Supplemental Streaming SIMD Extensions 3 (SSSE3) intrinsics are used to compute absolute values. The prototypes for these intrinsics are in 
+        <span class="filepath">tmmintrin.h</span>. You can also use the 
+        <span class="filepath">ia32intrin.h</span> header file for these intrinsics. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0AE291B5-2F24-473E-8F93-44C814412129"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_abs_epi8 (__m128i a);</span></p></div> 
+      <p>Computes absolute value of signed bytes. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B5C9707C-48B3-4647-9AF0-93F11C93A6BD"> 
+      <p>Interpreting 
+        <var>a</var> and 
+        <var>r</var> as arrays of signed 8-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 16; i++) {
+r[i] = abs(a[i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D076931C-7A6C-4F45-8E72-5900939A7EE2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_abs_epi16 (__m128i a);</span></p></div> 
+      <p>Computes absolute value of signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1372DE86-0DEC-4164-9597-966AD8BE392A"> 
+      <p>Interpreting 
+        <var>a</var> and 
+        <var>r</var> as arrays of signed 16-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++) {
+r[i] = abs(a[i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CE19B7B8-5531-4203-BE79-C74A61FA2E11"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_abs_epi32 (__m128i a);</span></p></div> 
+      <p>Computes absolute value of signed doublewords. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-67E7A35A-37E3-4636-9305-DD27C9BD12DC"> 
+      <p>Interpreting 
+        <var>a</var> and 
+        <var>r</var> as arrays of signed 32-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = abs(a[i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6911385A-AE80-43AE-A920-AB56A4E6D09D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_abs_pi8 (__m64 a);</span></p></div> 
+      <p>Computes absolute value of signed bytes. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D9C25CB0-5F96-4952-A991-6C6EAC472033"> 
+      <p>Interpreting 
+        <var>a</var> and 
+        <var>r</var> as arrays of signed 8-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++) {
+r[i] = abs(a[i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D6D841EA-B3E2-41F5-A7DC-45A06464F942"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_abs_pi16 (__m64 a);</span></p></div> 
+      <p>Computes absolute value of signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-14A7CB8D-078F-478F-9EE9-DC2FAA5FD6ED"> 
+      <p>Interpreting 
+        <var>a</var> and 
+        <var>r</var> as arrays of signed 16-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = abs(a[i]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A0865D57-2B9D-4CDD-AA50-0CB48BC88F6A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_abs_pi32 (__m64 a);</span></p></div> 
+      <p>Computes absolute value of signed doublewords. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7AB1DA4C-CD01-4E6E-82E6-16D9D3B311FD"> 
+      <p>Interpreting 
+        <var>a</var> and 
+        <var>r</var> as arrays of signed 32-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = abs(a[i]);
+}</pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">Intrinsics for Intel&reg; Supplemental Streaming SIMD Extensions 3 (SSSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

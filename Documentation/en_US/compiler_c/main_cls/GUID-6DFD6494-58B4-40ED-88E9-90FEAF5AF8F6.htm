@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="cilk_spawn">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, cilk_spawn">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, cilk_spawn">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F0892FF-830C-45A9-B342-641D282DAF2A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6DFD6494-58B4-40ED-88E9-90FEAF5AF8F6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>cilk_spawn</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_spawn"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6DFD6494-58B4-40ED-88E9-90FEAF5AF8F6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">cilk_spawn</h1>
+ 
+   
+  <div> 
+	 <p>The keyword name is 
+		<span class="keyword">_Cilk_spawn</span>. The header file 
+		<span class="filepath">&lt;cilk/cilk.h&gt;</span> defines macros that provide names with simpler conventions (in this case, 
+		<span class="keyword">cilk_spawn</span>). This document uses the names as defined in 
+		<span class="filepath">cilk.h</span>. 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">cilk_spawn</span> keyword modifies a function call statement to tell the runtime system that the function may (but is not required to) run in parallel with the caller. A 
+		<span class="keyword">cilk_spawn</span> statement can take one of the following forms: 
+	 </p>
+ 
+	 <pre>type var =  cilk_spawn func(<em>args</em>) ; // func () returns a value</pre> 
+	 <p></p>
+ 
+	 <pre>var = cilk_spawn func(<var>args</var>) ; // func () returns a value </pre> 
+	 <p></p>
+ 
+	 <pre>cilk_spawn func(<var>args</var>) ; // func () may return void</pre> 
+	 <p> 
+		<samp class="codeph">func</samp> is the name of a function which may run in parallel with the current 
+		<strong>strand</strong>. A strand is a serial sequence of instructions without any parallel control. The code following the cilk_spawn in the current routine can execute in parallel with 
+		<samp class="codeph">func</samp>. 
+		<samp class="codeph">func(<em>args</em>)</samp> may be a call to a normal (C-style) function, a member function, a lambda function, or a function object that overloads 
+		<samp class="codeph">operator()</samp>. 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph">var</samp> is a variable that can be initialized or assigned from the return value of 
+		<samp class="codeph">func</samp>. (It is the same type or a type convertible from the return value.) It is known as the 
+		<strong>receiver</strong> because it receives the function call result. The receiver must be omitted for void functions. 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph"><var>args</var></samp> are the arguments to the function being spawned. These arguments are evaluated before the spawn takes effect. Be careful to ensure that pass-by-reference and pass-by-address arguments have life spans that extend at least until the next 
+		<span class="keyword">cilk_sync</span> or else the spawned function may outlive the variable and attempt to use it after it has been destroyed. This is an example of a data race. 
+	 </p>
+ 
+	 <p>A spawned function is called a child of the function that spawned it. Conversely, the function that executes the 
+		<span class="keyword">cilk_spawn</span> statement is known as the parent of the spawned function. 
+	 </p>
+ 
+	 <p>A function can be spawned using any expression that is a function. For instance you could use a function pointer or member function pointer, as in: 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph">var = cilk_spawn (object.*pointer) (args);</samp> 
+	 </p>
+ 
+	 <p> You cannot spawn a function as an argument to another function: 
+	 </p>
+ 
+	 <p><samp class="codeph">g(cilk_spawn f()); // Not allowed</samp> 
+	 </p>
+ 
+	 <p> The correct approach is to spawn a function that calls both 
+		<samp class="codeph">f()</samp> and 
+		<samp class="codeph">g()</samp>. This is easily accomplished using a 
+		<span>C++11</span> lambda: 
+	 </p>
+ 
+	 <p><samp class="codeph">cilk_spawn [&amp;]{ g(f()); }();</samp> 
+	 </p>
+ 
+	 <p> Note that the above is different from the following: 
+	 </p>
+ 
+	 <p><samp class="codeph">cilk_spawn g(f());</samp> 
+	 </p>
+ 
+	 <p>In the latter statement, 
+		<samp class="codeph">f()</samp> is executed in the parent before spawning 
+		<samp class="codeph">g()</samp> whereas with the lambda, 
+		<samp class="codeph">f()</samp> and 
+		<samp class="codeph">g()</samp> are both executed in the child. 
+	 </p>
+ 
+	 <p>When spawning named lambda functions, be careful that the lifespan of the lambda extends at least until the next sync, or else the destructor for the lambda will race with the spawned call. For example: 
+	 </p>
+ 
+	 <pre>double i = g();
+if (<em>some condition</em>) {
+   // named lambda with value capture of i
+   auto f = [=i]() { double d = sin(i); f(d); };
+   cilk_spawn f();
+} // Ouch! destructor for f is in parallel with spawned
+call.
+</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F0892FF-830C-45A9-B342-641D282DAF2A.htm">Intel&reg; Cilk&#8482; Plus Keywords</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

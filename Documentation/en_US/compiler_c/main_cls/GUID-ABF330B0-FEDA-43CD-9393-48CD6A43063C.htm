@@ -1,0 +1,555 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="cilk_for">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, cilk_for">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, cilk_for">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F0892FF-830C-45A9-B342-641D282DAF2A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-ABF330B0-FEDA-43CD-9393-48CD6A43063C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>cilk_for</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_for"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-ABF330B0-FEDA-43CD-9393-48CD6A43063C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">cilk_for</h1>
+ 
+   
+  <div> 
+	 <p>The keyword name is 
+		<span class="keyword">_Cilk_for</span>. The header file 
+		<span class="filepath">&lt;cilk/cilk.h&gt;</span> defines macros that provide names with simpler conventions (in this case, 
+		<span class="keyword">cilk_for</span>). This document uses the names as defined in 
+		<span class="filepath">cilk.h</span>. 
+	 </p>
+ 
+	 <p>A 
+		<span class="keyword">cilk_for</span> loop is a replacement for the normal C/C++ 
+		<samp class="codeph">for</samp> loop that permits loop iterations to run in parallel. 
+	 </p>
+ 
+	 <p>The general 
+		<span class="keyword">cilk_for</span> syntax is: 
+	 </p>
+ 
+	 <pre>cilk_for (declaration  and initialization;
+          conditional expression;
+          increment expression)
+   body</pre> 
+	 <p>The following rules apply to the 
+		<span class="keyword">cilk_for</span> statement: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-1A1CDF79-4936-47AB-84F0-C2CBBAE0E5ED"> 
+		<li> 
+		  <p>The declaration must initialize a single variable, called the control variable. 
+			 <span>In C++ (but not C), the variable must also be declared in the 
+				<span class="keyword">cilk_for</span> statement, rather than before it.</span> The constructor's syntactic form does not matter. If the variable type has a default constructor, no explicit initial value is needed. 
+		  </p>
+ 
+		</li>
+ 
+		<li> The conditional expression must compare the control variable to a "termination expression" using one of the following comparison operators: 
+		  <ul type="disc" id="GUID-AADEA665-9030-4E34-829C-CCFC645968E4"> 
+			 <li><samp class="codeph">&lt;</samp> 
+			 </li>
+ 
+			 <li><samp class="codeph">&lt;=</samp> 
+			 </li>
+ 
+			 <li><samp class="codeph">!=</samp> 
+			 </li>
+ 
+			 <li><samp class="codeph">&gt;=</samp> 
+			 </li>
+ 
+			 <li><samp class="codeph">&gt;</samp> 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The termination expression and control variable can appear on either side of the comparison operator, but the control variable cannot occur within the termination expression. The termination expression value must not change from one iteration to the next. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The increment expression must add to or subtract from the control variable using one of the following supported operations: 
+		  </p>
+ 
+		  <ul type="disc" id="GUID-5ED7E910-FE4A-4258-833D-CF554B43624F"> 
+			 <li><samp class="codeph">+=</samp> 
+			 </li>
+ 
+			 <li><samp class="codeph"> -=</samp> 
+			 </li>
+ 
+			 <li><samp class="codeph">++</samp> (prefix or postfix) 
+			 </li>
+ 
+			 <li> 
+				<samp class="codeph">--</samp> (prefix or postfix) 
+			 </li>
+ 
+		  </ul>
+ 
+		  <p>The value added to (or subtracted from) the control variable, like the loop termination expression, must not change from one iteration to the next. 
+		  </p>
+ 
+		</li>
+ 
+		<li>The body of a 
+		  <span class="keyword">cilk_for</span> loop body is executed in parallel, so it should not modify the control variable or modify a nonlocal variable, 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>The runtime converts a 
+		<span class="keyword">cilk_for</span> loop into an efficient divide-and-conquer recursive traversal over the loop iterations. 
+	 </p>
+ 
+	 <p>Sample 
+		<span class="keyword">cilk_for</span> loops include: 
+	 </p>
+ 
+	 <pre>cilk_for (int i = begin; i &lt; end; i += 2)
+     f(i);
+</pre> 
+	 <p></p>
+ 
+	 <pre>cilk_for (T::iterator i(vec.begin()); i != vec.end(); ++i)
+     g(i);
+</pre> 
+	 <p> In C, but not C++, the loop control variable can be declared in advance: 
+	 </p>
+ 
+	 <pre> int i;
+ cilk_for (i = begin; i &lt; end; i += 2)
+      f(i);
+</pre> 
+	 <p>The serialization of a valid Intel&reg; Cilk&#8482; Plus program has the same behavior as the similar C/C++ program, where the serialization of 
+		<span class="keyword">cilk_for</span> is the result of replacing 
+		<span class="keyword">cilk_for</span> with 
+		<samp class="codeph">for</samp>. Therefore, a 
+		<span class="keyword">cilk_for</span> loop must be a valid C/C++ 
+		<samp class="codeph">for</samp> loop, but 
+		<span class="keyword">cilk_for</span> loops have several constraints compared to C/C++ 
+		<samp class="codeph">for</samp> loops. 
+	 </p>
+ 
+	 <p>Since the loop body is executed in parallel, it must not modify the control variable nor should it modify a nonlocal variable, as that would cause a 
+		<strong>data race</strong>. A reducer can often be used to prevent a race. 
+	 </p>
+ 
+	 <p> 
+		<strong>Serial/parallel structure of cilk_for</strong> 
+	 </p>
+ 
+	 <p>Using 
+		<span class="keyword">cilk_for</span> is not the same as spawning each loop iteration. In fact, the Intel compiler converts the loop body to a function that is called recursively using a divide-and-conquer strategy; this provides significantly better performance. The difference can be seen clearly in the Directed Acyclic Graph (DAG) for the two strategies. 
+	 </p>
+ 
+	 <p>First, consider the DAG for a 
+		<span class="keyword">cilk_for</span>, assuming N=8 iterations and a grain size of 1. The numbers label the serial sequence of instructions, known as 
+		<strong> strands</strong>; these numbers indicate which loop iteration is handled by each strand. 
+	 </p>
+ 
+	 <p> 
+		<br><img src="GUID-4A304012-DC9E-4683-816E-3F677B65E407-low.jpg"><br> 
+	 </p>
+ 
+	 <p>At each division of work, half of the remaining work is done in the child and half in the continuation. Importantly, the overhead of both the loop itself and of spawning new work is divided evenly along with the cost of the loop body. 
+	 </p>
+ 
+	 <p>If each iteration takes the same amount of time T to execute, then the 
+		<strong>span</strong>, which is the most expensive path extending from the beginning to the end of the program, is log<sub>2</sub>(N) * T, or 3 * T for 8 iterations. The run-time behavior is well balanced, regardless of the number of iterations or number of workers. 
+	 </p>
+ 
+	 <p> 
+		<strong>Serial/parallel structure when spawning within a serial loop</strong> 
+	 </p>
+ 
+	 <p>Here is the DAG for a serial loop that spawns each iteration. In this case, the work is not well balanced, because each child does the work of only one iteration before incurring the scheduling overhead inherent in entering a sync. For a short loop, or a loop in which the work in the body is much greater than the control and spawn overhead, there will be little measurable performance difference. However, for a loop of many cheap iterations, the overhead cost will overwhelm any advantage provided by parallelism. 
+	 </p>
+ 
+	 <p> 
+		<br><img src="GUID-B12BF5FE-66F8-49CC-9D56-F36A1DC2EC73-low.jpg"><br> 
+	 </p>
+ 
+	 <p><strong>cilk_for body</strong> 
+	 </p>
+ 
+	 <p> The body of a 
+		<span class="keyword">cilk_for</span> loop defines a special region that limits the scope of 
+		<span class="keyword">cilk_for</span> and 
+		<span class="keyword">cilk_sync 
+		</span>statements within it. A 
+		<span class="keyword">cilk_sync</span> statement within a 
+		<span class="keyword">cilk_for</span> waits for completion only of the children that were spawned within the same loop iteration. It will not sync with any other iteration, nor will it sync with any other children of the surrounding function. In addition, there is an implicit 
+		<span class="keyword">cilk_sync</span> at the end of every loop iteration (after block-scoped variable destructors are invoked). As a result, if a function has outstanding children when entering a 
+		<span class="keyword">cilk_for</span> loop, it will have the same outstanding children when exiting the 
+		<span class="keyword">cilk_for</span> loop. Any children that were spawned within the 
+		<span class="keyword">cilk_for</span> loop are guaranteed to have synchronized before the loop terminates. Conversely, none of the children that existed before entering the loop will be synchronized during loop execution. This quality of a 
+		<span class="keyword">cilk_for</span> loop can be used to your advantage (see 
+		<a href="GUID-4E7C022C-557B-4366-9F67-30AAD4C2C6E1.htm#GUID-4E7C022C-557B-4366-9F67-30AAD4C2C6E1">Exception Handling</a>). 
+	 </p>
+ 
+	 <p>If an exception is thrown from within a 
+		<span class="keyword">cilk_for</span> loop body (and not handled within the same iteration), then some of the loop iterations may not run. Unlike a serial execution, it is not completely predictable which iterations will run and which will not. No iteration (other than the one throwing the exception) is aborted in the middle. 
+	 </p>
+ 
+	 <p> Windows* OS: There are restrictions when using Microsoft structured exception handling (specifically, the 
+	 <span class="option">/EHa</span> compiler option and the<samp class="codeph">__try, __except, __finally</samp> and<samp class="codeph">__leave</samp> extensions to C/C++). See Windows* Structured Exception Handling in 
+	 <a href="GUID-4E7C022C-557B-4366-9F67-30AAD4C2C6E1.htm#GUID-4E7C022C-557B-4366-9F67-30AAD4C2C6E1">Exception Handling</a>. 
+	 </p>
+ 
+	 <p> 
+		<strong>cilk_for Type Requirements</strong> 
+	 </p>
+ 
+	 <p>With care, you may use custom C++ data types for the 
+		<span class="keyword">cilk_for</span> control variable. For each custom data type, you need to provide some methods to help the runtime system compute the loop range size so that it can be divided. Types such as integer types and STL random-access iterators have an integral difference type already, and so require no additional work. 
+	 </p>
+ 
+	 <p>Suppose the control variable is declared with type 
+		<samp class="codeph">variable_type</samp> and the loop termination expression has type 
+		<samp class="codeph">termination_type</samp>, as shown here: 
+	 </p>
+ 
+	 <p> 
+		<pre>extern termination_type end;
+extern int incr;
+cilk_for (variable_type var; var != end; var += incr) ;</pre> 
+	 </p>
+ 
+	 <p>You must provide one or two functions to tell the compiler how many times the loop executes; these functions allow the compiler to compute the integer difference between 
+		<samp class="codeph">variable_type</samp> and 
+		<samp class="codeph">termination_type 
+		</samp> variables: 
+	 </p>
+ 
+	 <pre>difference_type operator-(termination_type, variable_type);</pre> 
+	 <p></p>
+ 
+	 <pre>difference_type operator-(variable_type, termination_type);</pre> 
+	 <p>The following applies: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-0D8909A1-A035-4436-9B27-BAA30626F52F"> 
+		<li> 
+		  <p>The argument types need not be exact, but must be convertible from 
+			 <samp class="codeph">termination_type 
+			 </samp>or 
+			 <samp class="codeph">variable_type</samp>. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The first form of operator- is required if the loop could count up; the second is required if the loop could count down. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The arguments may be passed by const reference or value. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The program will call one or the other function at runtime depending on whether the increment is positive or negative. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>You can pick any integral type as the 
+			 <samp class="codeph">difference_type</samp> return value, but it must be the same for both functions. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>It does not matter if the 
+			 <samp class="codeph">difference_type</samp> is signed or unsigned. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Also, you need to tell the system how to add to the control variable by defining: 
+	 </p>
+ 
+	 <pre>variable_type::operator+=(difference_type);</pre> 
+	 <p>If you wrote 
+		<samp class="codeph">-=</samp> or 
+		<samp class="codeph">--</samp> instead of 
+		<samp class="codeph">+=</samp> or 
+		<samp class="codeph">++</samp> in the loop, define 
+		<samp class="codeph">operator-=</samp> instead of 
+		<samp class="codeph">operator+=</samp>. 
+	 </p>
+ 
+	 <p>These operator functions must be consistent with ordinary arithmetic. The compiler assumes that adding one twice is the same as adding two once, and if 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph">X - Y == 10</samp> 
+	 </p>
+ 
+	 <p>then 
+	 </p>
+ 
+	 <p><samp class="codeph">Y + 10 == X</samp> 
+	 </p>
+ 
+	 <p> 
+		<strong>cilk_for Restrictions</strong> 
+	 </p>
+ 
+	 <p>In order to parallelize a loop using the divide and conquer technique, the runtime system must pre-compute the total number of iterations and must be able to pre-compute the value of the loop control variable at every iteration. To enable this computation, the control variable must act as an integer with respect to addition, subtraction, and comparison, even if it is a user-defined type. Integers, pointers, and random access iterators from the standard template library all have integer behavior and thus satisfy this requirement. 
+	 </p>
+ 
+	 <p>In addition, a 
+		<span class="keyword">cilk_for</span> loop has the following limitations, which are not present for a standard C/C++ for loop. The compiler will report an error or warning for violations of the following. 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-AEC0C927-685B-4F34-AF03-E03FC657EB77"> 
+		<li> 
+		  <p>There must be exactly one loop control variable, and the loop initialization clause must assign the value. The following form is not supported: 
+		  </p>
+ 
+		  <p> 
+			 <samp class="codeph">cilk_for (unsigned int i, j = 42; j &lt; 1; i++, j++)</samp> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> The loop control variable must not be modified in the loop body. The following form is not supported: 
+		  </p>
+ 
+		  <p><samp class="codeph">cilk_for (unsigned int i = 1; i &lt; 16; ++i) i = f();</samp> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> The termination and increment values are evaluated once before starting the loop and will not be re-evaluated at each iteration. Therefore, modifying either value within the loop body will not add or remove iterations. The following form is not supported: 
+		  </p>
+ 
+		  <p><samp class="codeph">cilk_for (unsigned int i = 1; i &lt; x; ++i) x = f();</samp> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> In C++, the control variable must be declared in the loop header, not outside the loop. The following form is supported for C, but not C++: 
+			 <samp class="codeph"></samp> 
+		  </p>
+ 
+		  <p><samp class="codeph">int i; cilk_for (i = 0; i &lt; 100; i++)</samp> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> A break or return statement will not work within the body of a 
+			 <span class="keyword">cilk_for</span> loop; the compiler will generate an error message. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> A goto can only be used within the body of a 
+			 <span class="keyword">cilk_for</span> loop if the target is within the loop body. The compiler will generate an error message if there is a goto transfer into or out of a 
+			 <span class="keyword">cilk_for</span> loop body. Similarly, a goto cannot jump into the body of a 
+			 <span class="keyword">cilk_for</span> loop from outside the loop. 
+		  </p>
+ 
+		</li>
+ 
+		<li> A 
+		  <span class="keyword">cilk_for</span> loop may not "wrap around." For example, in C/C++ you can write: 
+		  <samp class="codeph">for (unsigned int i = 0; i != 1; i += 3);</samp> 
+		  <p> and this has well-defined, if surprising, behavior. It means execute the loop 2,863,311,531 times. Such a loop produces unpredictable results when converted to a 
+			 <span class="keyword">cilk_for</span> loop. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p> A 
+			 <span class="keyword">cilk_for</span> loop may not be an infinite loop such as: 
+		  </p>
+ 
+		  <p><samp class="codeph">cilk_for (unsigned int i = 0; i != i; i += 0);</samp> 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p> 
+		<strong>cilk_for Grain Size</strong> 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">cilk_for 
+		</span>statement divides the loop into chunks containing one or more loop iterations. Each chunk is executed serially, and is spawned as a chunk during the execution of the loop. The maximum number of iterations in each chunk is the 
+		<strong>grain size</strong>. 
+	 </p>
+ 
+	 <p>In a loop with many iterations, a relatively large grain size can significantly reduce overhead. Alternately, with a loop that has few iterations, a small grain size can increase the parallelism of the program and thus improve performance as the number of processors increases. 
+	 </p>
+ 
+	 <p> 
+		<strong>Setting the Grain Size</strong> 
+	 </p>
+ 
+	 <p>Use the 
+		<span class="keyword">cilk grainsize</span> pragma to specify the grain size for one 
+		<span class="keyword">cilk_for</span> loop: 
+	 </p>
+ 
+	 <pre>#pragma cilk grainsize = expression</pre> 
+	 <p>For example, you can write: 
+	 </p>
+ 
+	 <p><samp class="codeph">#pragma cilk grainsize = 1</samp> 
+	 </p>
+ 
+	 <p><samp class="codeph">cilk_for (int i=0; i&lt;IMAX; ++i) { . . . }</samp> 
+	 </p>
+ 
+	 <p>If you do not specify a grain size, the system calculates a default that works well for most loops. The default value is set as if the following pragma were in effect: 
+	 </p>
+ 
+	 <p><samp class="codeph">#pragma cilk grainsize = min(2048, N / (8*p))</samp> 
+	 </p>
+ 
+	 <p>where N is the number of loop iterations, and p is the number of workers created during the current program run. This formula will generate parallelism of at least 8 and at most 2048. For loops with few iterations (less than 8 * workers) the grain size will be set to 1, and each loop iteration may run in parallel. For loops with more than (16484 * p) iterations, the grain size will be set to 2048. 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">cilk grainsize</span> pragma is usually used to reduce the grain size (often to 1) for particularly large loops or loops where the amount of work varies widely between iterations. Smaller grain sizes increase parallelism and improve load balancing, at the cost of increased scheduling and function-call overhead. 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">cilk grainsize</span> pragma can also be used to increase the grain size and thus, reduce overhead, especially when the loop body is short. However, once the grain size reaches about 1000 to 2000 iterations, the overhead of the 
+		<span class="keyword">cilk_for</span> becomes inconsequential, even when the amount of work per iteration is very small. At that point, there is no benefit to increasing the grain size any further. In fact, using a grain size that is too large will reduce parallelism and impede load balancing. In general, the larger and more unbalanced the loop iterations, the smaller the grain size should be. 
+	 </p>
+ 
+	 <p>If you specify a grain size of zero, the default formula will be used. The result is undefined if you specify a grain size less than zero. 
+	 </p>
+ 
+	 <p>The expression in the pragma is evaluated at run time. For example, here is an example that sets the grain size based on the number of workers: 
+	 </p>
+ 
+	 <p><samp class="codeph">#pragma cilk grainsize = n/(4*__cilkrts_get_nworkers())</samp> 
+	 </p>
+ 
+	 <p> 
+		<strong>Loop Partitioning at Run Time</strong> 
+	 </p>
+ 
+	 <p>The number of chunks that are executed is approximately the number of iterations N divided by the grain size K. 
+	 </p>
+ 
+	 <p>The Intel compiler generates a divide and conquer recursion to execute the loop. In pseudo-code, the control structure looks like this: 
+	 </p>
+ 
+	 <pre>void run_loop(first, last)
+{
+if (last - first) &lt; grainsize)
+{
+   for (int i=first; i&lt;last ++i) LOOP_BODY;
+}
+else
+{
+   int mid = (last+first)/2;
+   cilk_spawn run_loop(first, mid);
+   run_loop(mid, last);
+  }
+}
+</pre> 
+	 <p>In other words, the loop is split in half repeatedly until the chunk remaining is less than or equal to the grain size. The actual number of iterations run as a chunk will often be less than the grain size. 
+	 </p>
+ 
+	 <p>For example, consider a 
+		<span class="keyword">cilk_for</span> loop of 16 iterations: 
+	 </p>
+ 
+	 <p><samp class="codeph">cilk_for (int i=0; i&lt;16; ++i) { ... }</samp> 
+	 </p>
+ 
+	 <p>With grain size of 4, this will execute exactly 4 chunks of 4 iterations each. However, if the grain size is set to 5, the division will result in 4 unequal chunks consisting of 5, 3, 5 and 3 iterations. 
+	 </p>
+ 
+	 <p>If you work through the algorithm in detail, you will see that for the same loop of 16 iterations, a grain size of 2 and 3 will both result in exactly the same partitioning of 8 chunks of 2 iterations each. 
+	 </p>
+ 
+	 <p> 
+		<strong>Selecting a Good Grain Size Value</strong> 
+	 </p>
+ 
+	 <p>The default grain size usually performs well. Use the following guidelines to select a different value: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-CB6E011C-FCCD-4B3C-BF34-C7287E9987EE"> 
+		<li> 
+		  <p>If the amount of work per iteration varies widely and if the longer iterations are likely to be unevenly distributed, it might make sense to reduce the grain size. This will decrease the likelihood that there is a time-consuming chunk that continues after other chunks have completed, which would result in idle workers with no work to steal. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>If the amount of work per iteration is uniformly small, then it might make sense to increase the grain size. However, the default usually works well in these cases, and you don't want to risk reducing parallelism. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>If you change the grain size, carry out performance testing to ensure that you have made the loop faster, not slower. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F0892FF-830C-45A9-B342-641D282DAF2A.htm">Intel&reg; Cilk&#8482; Plus Keywords</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

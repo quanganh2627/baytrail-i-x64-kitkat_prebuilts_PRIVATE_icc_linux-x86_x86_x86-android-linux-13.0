@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_rsqrt23_ps/ _mm512_mask_rsqrt23_ps">
+<meta name="abstract" content="Calculates reciprocal square root of float32 vector. Corresponding instruction is VRSQRT23PS. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Calculates reciprocal square root of float32 vector. Corresponding instruction is VRSQRT23PS. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_rsqrt23_ps, _mm512_mask_rsqrt23_ps">
+<meta name="keywords" content="_mm512_rsqrt23_ps, _mm512_mask_rsqrt23_ps">
+<meta name="DC.Relation" scheme="URI" content="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EF83C129-28FE-4B03-AC20-E4A397CA345C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_rsqrt23_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_rsqrt23_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EF83C129-28FE-4B03-AC20-E4A397CA345C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_rsqrt23_ps/ _mm512_mask_rsqrt23_ps</h1>
+
+
+<!--Calculates reciprocal square root of float32 vector. Corresponding instruction is 
+ VRSQRT23PS . 
+
+ This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture). 
+--><div><p>Calculates reciprocal square root of float32 vector. Corresponding instruction is 
+<samp class="codeph">VRSQRT23PS</samp>. 
+
+<span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span>
+</p>
+
+
+<div class="section" id="GUID-2AC343B8-2C7D-416F-9BBC-C9013591AF58"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">
+extern __m512 __cdecl _mm512_rsqrt23_ps(__m512 v2);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">
+extern __m512 __cdecl _mm512_mask_rsqrt23_ps(__m512 v1_old, __mmask16 k1, __m512 v2);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-84884AED-E577-4183-992B-415C3F66E341"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float32 vector used for the operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+
+</table>
+
+</div>
+<div class="section" id="GUID-E7232AE3-E050-4140-8A4C-A7E420AF0B01"><h2>Description</h2>
+<p>Calculates reciprocal square root of float32 vector <samp class="codeph">v2</samp> to 0.775 unit of least precision (ULP) accuracy.</p>
+
+
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing.</p>
+</div>
+
+
+<div class="section" id="GUID-A2A55CFB-D27B-4C60-BA49-3E051C8C02BD"><h2>Returns</h2>
+<p>Returns the result of the operation.</p>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

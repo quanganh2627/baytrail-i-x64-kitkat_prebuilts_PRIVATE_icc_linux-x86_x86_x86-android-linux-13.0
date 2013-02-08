@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30506)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30506">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30506">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-10B6E99A-3160-4CF8-BDDD-1D43FE52C2AE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30506)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30506"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30506"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-10B6E99A-3160-4CF8-BDDD-1D43FE52C2AE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30506) </h1>
+
+
+
+<div>
+<div class="section" id="GUID-C06C80B1-08C3-4C24-B8E6-4E02CA19C218"><h2 class="sectiontitle">Message</h2>
+<p>If the following operations(s) can be safely performed unconditionally, the loop at line %d will be vectorized by adding a "%s ivdep" statement right before the loop: %s.</p>
+</div>
+
+
+
+<div class="section" id="GUID-A7B037F6-7661-42DF-AD47-EF42B569B31D"><h2 class="sectiontitle">Advice</h2>
+<p>Add <span>"#pragma ivdep"</span> before the specified loop. </p>
+
+<p>This <span>pragma</span> enables the vectorization of the loop at the specified line. You should ensure that any conditional divide, sqrt, and inverse sqrt operations will not alter the exception semantics expected by the program when they are performed unconditionally.</p>
+</div>
+
+
+<div class="section" id="GUID-0CD425F4-B466-44EB-A069-4E4E9F8A1E95"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following:</p>
+
+<pre>void foo(float *a, int n) {</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0; i&lt;n; i++) {</pre>
+<pre>    if (a[i] &gt; 0) {</pre>
+<pre>      a[i] = 1 / a[i];</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre>  return;</pre>
+<pre>}</pre>
+</div>
+
+<p>In this case, the compiler is unable to vectorize the loop if compiled with floating-point exception semantics (such as <span class="option">/fp:except option</span>) since the condition "a[i] &gt; 0" may be guarding floating-point exceptions for the divide.</p>
+
+<p>If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>void foo(float *a, int n) {</pre>
+<pre>  int i;</pre>
+<pre>#pragma ivdep</pre>
+<pre>  for (i=0; i&lt;n; i++) {</pre>
+<pre>    if (a[i] &gt; 0) {</pre>
+<pre>      a[i] = 1 / a[i];</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre>  return;</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-8952EC6C-18E0-4843-AD9C-1511B4C2698F"><h2 class="sectiontitle">Verify</h2>
+<p>Make sure that the program operands have safe values for all iterations.</p>
+
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

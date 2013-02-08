@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Programming with Auto-parallelization">
+<meta name="DC.subject" content="ALLOCATABLE, data flow, auto-parallelization, guidelines, programming with, data format, partitioning, execution flow, general compiler directives, for auto-parallelization, loops, dependencies, parallelization, multithreading">
+<meta name="keywords" content="ALLOCATABLE, data flow, auto-parallelization, guidelines, programming with, data format, partitioning, execution flow, general compiler directives, for auto-parallelization, loops, dependencies, parallelization, multithreading">
+<meta name="DC.Relation" scheme="URI" content="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-22C9A59B-EFE5-47F4-ACA2-7BA6D2DD16DD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Programming with Auto-parallelization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_qpar_use"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_qpar_use"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-22C9A59B-EFE5-47F4-ACA2-7BA6D2DD16DD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Programming with Auto-parallelization</h1>
+
+
+
+
+<div>
+<p>The auto-parallelization feature implements some concepts of OpenMP*, such as the worksharing construct <span>(with the</span> <span>PARALLEL FOR</span> <span>directive)</span>.  This section provides details on auto-parallelization.</p>
+
+
+<div class="section" id="GUID-51BB92E9-5576-4B9A-AD74-8258E153199B"><h2 class="sectiontitle">Guidelines for Effective Auto-parallelization Usage</h2>
+
+<p>A loop can be parallelized if it meets the following criteria:</p>
+
+
+<ul type="disc" id="GUID-A6D5CAAA-07BC-467C-82F6-126EC38A235E">
+  <li><p>The loop is countable at compile time: this means that an expression representing how many times the loop will execute (also called "the loop trip count") can be generated just before entering the loop.</p>
+</li>
+
+  <li><p>There are no <span class="keyword">FLOW</span> (<span class="keyword">READ</span> after <span class="keyword">WRITE</span>), <span class="keyword">OUTPUT</span> (<span class="keyword">WRITE</span> after <span class="keyword">WRITE</span>) or <span class="keyword">ANTI</span> (<span class="keyword">WRITE</span> after <span class="keyword">READ</span>) loop-carried data dependencies. A loop-carried data dependency occurs when the same memory location is referenced in different iterations of the loop. At the compiler's discretion, a loop may be parallelized if any assumed inhibiting loop-carried dependencies can be resolved by run-time dependency testing.</p>
+</li>
+
+</ul>
+
+
+<p>The compiler may generate a run-time test for the profitability of executing in parallel for loop with loop parameters that are not compile-time constants.</p>
+
+<p><strong>Coding Guidelines</strong></p>
+
+<p>Enhance the power and effectiveness of the auto-parallelizer by following these coding guidelines:</p>
+
+
+<ul type="disc" id="GUID-1A8E75CF-2470-4F78-9CDF-30C360BCF162">
+  <li><p>Expose the trip count of loops whenever possible; specifically use constants where the trip count is known and save loop parameters in local variables.</p>
+</li>
+
+  <li><p>Avoid placing structures inside loop bodies that the compiler may assume to carry dependent data, for example, procedure calls, ambiguous indirect references or global references.</p>
+</li>
+
+  </ul>
+
+</div>
+
+
+<div class="section" id="GUID-D9047FC0-A762-4CA6-A27B-5181F560DBAC"><h2 class="sectiontitle">Auto-parallelization Data Flow</h2>
+
+<p>For auto-parallelization processing, the compiler performs the following steps:</p>
+
+
+<ol id="GUID-46ED6DD8-65F5-400B-B15C-52CC8B32A024">
+  <li><p>Data flow analysis: Computing the flow of data through the program.</p>
+</li>
+
+  <li><p>Loop classification: Determining loop candidates for parallelization based on correctness and efficiency, as shown by <a href="GUID-7D509D35-4132-411A-9B2D-502F88670468.htm#GUID-7D509D35-4132-411A-9B2D-502F88670468">Enabling Auto-parallelization</a>.</p>
+</li>
+
+  <li><p>Dependency analysis: Computing the dependency analysis for references in each loop nest.</p>
+</li>
+
+  <li><p>High-level parallelization: Analyzing dependency graph to determine loops which can execute in parallel, and computing run-time dependency.</p>
+</li>
+
+  <li><p>Data partitioning: Examining data reference and partition based on the following types of access: <span class="keyword">SHARED</span>, <span class="keyword">PRIVATE</span>, and <span class="keyword">FIRSTPRIVATE</span>.</p>
+</li>
+
+  <li><p>Multithreaded code generation: Modifying loop parameters, generating entry/exit per threaded task, and generating calls to parallel run-time routines for thread creation and synchronization.</p>
+</li>
+
+</ol>
+
+</div>
+
+
+<p>Using the <span class="option">-parallel</span> (Linux*) or the <span class="option">/Qparallel</span> (Windows*) option enables parallelization for both Intel&reg; microprocessors and non-Intel microprocessors. The resulting executable may get additional performance gain on Intel microprocessors than on non-Intel microprocessors. The parallelization can also be affected by certain options, such as <span class="option">/arch</span> or <span class="option">/Qx</span> (Windows) or <span class="option">-m</span> or <span class="option">-x </span>(Linux and OS X).</p>
+<p>Options that use OpenMP* are available for both Intel&reg; and non-Intel microprocessors but these options may perform additional optimizations on Intel&reg; microprocessors than they perform on non-Intel microprocessors.  The list of major, user-visible OpenMP constructs and features that may perform differently on Intel&reg; vs. non-Intel microprocessors includes: locks (internal and user visible), the SINGLE construct, barriers (explicit and implicit), parallel loop scheduling, reductions, memory allocation, and thread affinity and binding.</p>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">Automatic Parallelization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compiler Option Mapping Tool">
+<meta name="DC.subject" content="compiler option mapping tool, option mapping tool">
+<meta name="keywords" content="compiler option mapping tool, option mapping tool">
+<meta name="DC.Relation" scheme="URI" content="GUID-4805E249-9CAF-4C51-870E-EFBEC81A4D13.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-48F19691-9CF3-4B95-A8DF-60B6BFB79627">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compiler Option Mapping Tool</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_mapping_tool"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_mapping_tool"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-48F19691-9CF3-4B95-A8DF-60B6BFB79627">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Compiler Option Mapping Tool</h1>
+ 
+   
+  <div> 
+    <p>The Intel compiler's Option Mapping Tool provides an easy method to derive equivalent options between Windows* and Linux*. If you are a Windows-based application developer who is developing an application for Linux OS, you may want to know, for example, the Linux OS equivalent for the 
+  <span class="option">/Oy-</span> option. Likewise, the Option Mapping Tool provides Windows OS equivalents for Intel compiler options supported on Linux OS. 
+  </p>
+ 
+  <p>The Option Mapping Tool is not supported on OS X*.
+  </p>
+ 
+  <div class="section" id="GUID-609685E6-A908-4914-BAFC-E6BCA537BEAF"><h2 class="sectiontitle">Using the Compiler Option Mapping Tool</h2> 
+     
+    <p>You can start the Option Mapping Tool from the command line by: 
+    </p>
+ 
+    <ul type="disc" id="GUID-B3E80C40-E3E8-47CA-9A20-0F69E428966E"> 
+      <li>
+        <p>invoking the compiler and using the 
+    <span class="option">-map-opts</span> option
+    </p>
+
+    </li>
+ 
+    <li>
+      <p>or, executing the tool directly
+      </p>
+
+    </li>
+ 
+    </ul>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3>
+      <p>Compiler options are mapped to their equivalent on the architecture you are using.</p>
+
+    </div> 
+    <p><strong>Calling the Option Mapping Tool with the Compiler</strong>
+    </p>
+ 
+    <p>If you use the compiler to execute the Option Mapping Tool, the following syntax applies:
+    </p>
+ 
+    <pre>&lt;compiler command&gt; &lt;map-opts option&gt; &lt;compiler option(s)&gt;</pre> 
+  </div>
+ 
+  <div class="section" id="GUID-12035F89-8197-4D3B-9B01-AF90AB6AB95B"> 
+    <p><strong>Example:</strong> Finding the Windows OS equivalent for 
+    <span class="option">-fp</span>
+    </p>
+ 
+    <pre>icpc -map-opts -fp</pre> 
+    <pre>Intel&reg; Compiler option mapping tool</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>mapping Linux options to Windows OS for C++</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>'-map-opts' Linux option maps to</pre> 
+    <pre>&nbsp;&nbsp;--&gt; '-Qmap-opts' option on Windows</pre> 
+    <pre>&nbsp;&nbsp;--&gt; '-Qmap_opts' option on Windows</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>'-fp' Linux option maps to</pre> 
+    <pre>&nbsp;&nbsp;--&gt; '-Oy-' option on Windows</pre> 
+  </div>
+ 
+  <div class="section" id="GUID-406EAE71-DC74-4510-9E4D-C9D927F72E6C"> 
+    <p>Output from the Option Mapping Tool also includes:
+    </p>
+ 
+    <ul type="disc" id="GUID-FFC66F80-8E3C-4E98-B209-A7B50CAF94A9"> 
+      <li>
+        <p>option mapping information (not shown here) for options included in the compiler configuration file
+        </p>
+
+      </li>
+ 
+      <li>
+        <p>alternate forms of the option that are supported but may not be documented
+        </p>
+
+      </li>
+ 
+    </ul>
+ 
+    <p>When you call the Option Mapping Tool with the compiler, your source file is not compiled. 
+    </p>
+ 
+    <p><strong>Calling the Option Mapping Tool Directly</strong>
+    </p>
+ 
+    <p>Use the following syntax to execute the Option Mapping Tool directly from a command line environment where the full path to the 
+      <span class="filepath">map_opts</span> executable is known (compiler 
+      <span class="filepath">bin</span> directory):
+    </p>
+ 
+    <pre>map_opts [-nologo] -t&lt;target OS&gt; -l&lt;language&gt; -opts &lt;compiler option(s)&gt;</pre> 
+    <p>where values for:
+    </p>
+ 
+    <ul type="disc" id="GUID-E87C2F79-C0E0-4787-8240-F12592C0BFD9"> 
+      <li>
+        <p><samp class="codeph">&lt;target OS&gt; = {l|linux|w|windows}</samp>
+        </p>
+
+      </li>
+ 
+      <li>
+        <p><samp class="codeph">&lt;language&gt; = {f|fortran|c}</samp>
+        </p>
+
+      </li>
+ 
+    </ul>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-84DAAC13-E99E-4F96-BDCC-A5589E06CE43"> 
+    <p><strong>Example:</strong> Finding the Windows OS equivalent for 
+    <span class="option">-fp</span>
+    </p>
+ 
+    <pre>map_opts -tw -lc -opts -fp</pre> 
+    <pre>Intel&reg; Compiler option mapping tool</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>mapping Linux options to Windows for C++</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>'-fp' Linux option maps to</pre> 
+    <pre>&nbsp;&nbsp;--&gt; '-Oy-' option on Windows</pre> 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-4805E249-9CAF-4C51-870E-EFBEC81A4D13.htm">Tools</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

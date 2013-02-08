@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ftls-model">
+<meta name="abstract" content="Changes the thread local storage (TLS) model.">
+<meta name="description" content="Changes the thread local storage (TLS) model.">
+<meta name="DC.subject" content="-ftls-model compiler option">
+<meta name="keywords" content="-ftls-model compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6ABFB39C-A478-4974-9A38-170AA13BC623">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ftls-model</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ftls_model"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ftls_model"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6ABFB39C-A478-4974-9A38-170AA13BC623">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ftls-model</h1>
+<!--Changes the thread local storage (TLS) model.--><div><p>Changes the thread local storage (TLS) model.</p>
+
+<div class="section" id="GUID-BB136560-F717-4E9D-942F-E549A83F4BF6"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-9C077801-2C8E-48C9-93DF-592DA756D4DF"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-98FA3CE7-CE09-486C-BA0B-D87A9BD01F91"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ftls-model=</span><span class="var">model</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-40E27448-09EB-4509-B720-E43B2986C979"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>model</var></p></td>
+<td valign="top" class="noborder"><p> Determines the TLS model used by the compiler. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">global-dynamic</span></p></td>
+<td valign="top" class="noborder"><p> Generates a generic TLS code. The code can be used everywhere and the code can access variables defined anywhere else. This setting causes the largest size code to be generated and uses the most run time to produce.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">local-dynamic</span></p></td>
+<td valign="top" class="noborder"><p> Generates an optimized TLS code. To use this setting, the thread-local variables must be defined in the same object in which they are referenced.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">initial-exec</span></p></td>
+<td valign="top" class="noborder"><p> Generates a restrictive, optimized TLS code. To use this setting, the thread-local variables accessed must be defined in one of the modules available to the program.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">local-exec</span></p></td>
+<td valign="top" class="noborder"><p> Generates the most restrictive TLS code. To use this setting, the thread-local variables must be defined in the executable.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-265DF0B6-E742-44A7-ACFE-AB86F29201D5"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p> The compiler uses default heuristics when determining the thread-local storage model.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-36162F74-8DEB-4EA9-83FB-17F3186D7D8F"><h2>Description</h2><p>This option changes the thread local storage (TLS) model.  Thread-local storage is a mechanism by which
+variables are allocated in a way that causes one instance of the
+variable per extant thread.</p>
+
+<p> For more information on the thread-storage
+localization models, see the appropriate gcc*
+documentation.</p>
+
+</div>
+
+<div class="section" id="GUID-7E272EED-2D95-43F9-A736-3BB036AC2800"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

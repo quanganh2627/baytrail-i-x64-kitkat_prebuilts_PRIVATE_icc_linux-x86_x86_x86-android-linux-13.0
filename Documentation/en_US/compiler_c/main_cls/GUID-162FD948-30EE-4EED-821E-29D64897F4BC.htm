@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using the Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library">
+<meta name="DC.subject" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, using the library">
+<meta name="keywords" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, using the library">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A6EDDA8-ACD4-49B6-9746-9DA0FCDE9D06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-162FD948-30EE-4EED-821E-29D64897F4BC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using the Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library</title>
+</head>
+<body id="GUID-162FD948-30EE-4EED-821E-29D64897F4BC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">Using the Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library</h1>
+
+  
+  <div><p> Many routines in the libbfp754 library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+<p> To use the library, include the header file, <samp class="codeph">bfp754.h</samp>, in your program. Here is an example program illustrating the use of the library on Linux* OS.</p>
+<pre>//binary.c
+#include &lt;stdio.h&gt;
+#include &lt;bfp754.h&gt;
+int main(){
+  double a64, b64;
+  float c32;
+  a64 = 1.000000059604644775390625;
+  b64 = 1.1102230246251565404236316680908203125e-16;
+  c32 = __binary32_add_binary64_binary64(a64, b64);
+  printf("The addition result using the libary: %8.8f\n", c32);
+  c32 = a64 + b64;
+  printf("The addition result without the libary: %8.8f\n", c32);
+  return 0;
+}
+</pre><p></p>
+<p>The command for compiling <samp class="codeph">binary.c</samp> is:</p>
+<pre>icc -fp-model source -fp-model except binary.c –lbfp754</pre><p></p>
+<p>The output of <samp class="codeph">a.out</samp> will look similar to the following:</p>
+<pre>The addition result using the libary: 1.00000012
+The addition result without the libary: 1.00000000
+</pre></div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5A6EDDA8-ACD4-49B6-9746-9DA0FCDE9D06.htm">Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

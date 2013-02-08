@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="parallel-source-info, Qparallel-source-info">
+<meta name="abstract" content="Enables or disables source location emission when OpenMP* or auto-parallelism code is generated.">
+<meta name="description" content="Enables or disables source location emission when OpenMP* or auto-parallelism code is generated.">
+<meta name="DC.subject" content="/Qparallel-source-info compiler option, -parallel-source-info compiler option">
+<meta name="keywords" content="/Qparallel-source-info compiler option, -parallel-source-info compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BBBE41F7-ECDA-4592-93A1-AEC8C88E1767">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>parallel-source-info, Qparallel-source-info</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_parallel_source_info"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_parallel_source_info"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BBBE41F7-ECDA-4592-93A1-AEC8C88E1767">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">parallel-source-info, Qparallel-source-info</h1>
+<!--Enables or disables source location emission when OpenMP* or auto-parallelism code is generated.--><div><p>Enables or disables source location emission when OpenMP* or auto-parallelism code is generated.</p>
+
+<div class="section" id="GUID-37F41B2D-9BE5-4492-BBE8-59BB948514D9"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-10212F91-6B8F-4D5E-A67A-C207EC240C39"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-CEAE15F5-4088-4118-BF17-644AD4714CCA"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-parallel-source-info</span><span class="delim">[=</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">-no-parallel-source-info</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qparallel-source-info</span></p><p><span class="kwd">/Qparallel-source-info-</span><span class="delim">[:</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-F3735693-25C9-48F6-8E4C-0134C6C56647"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the level of source location emission. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">0</span></p></td>
+<td valign="top" class="noborder"><p>Disables the emission of source location information when OpenMP or auto-parallelism code is generated. This is the same as specifying<span class="option"> -no-parallel-source-info</span> (Linux* OS and OS X*) or<span class="option"> /Qparallel-source-info-</span> (Windows* OS).</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to emit routine name and line information. This is the same as specifying <span class="option">-parallel-source-info</span> (Linux* OS and OS X*) or <span class="option">/Qparallel-source-info</span> (Windows* OS) with no keyword.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to emit path, file, routine name, and line information.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-65AA809B-5A2F-42E1-8607-7DCC42C1A204"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span class="option">-parallel-source-info=1</span><br><span> or <span class="option">/Qparallel-source-info:1</span></span></p></td>
+<td valign="top" class="noborder"><p>When OpenMP* or auto-parallelism code is generated, the routine name and line information is emitted.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-072A0159-D0F5-4761-BBF9-4572D5CD729F"><h2>Description</h2><p>This option enables or disables source location emission when OpenMP or auto-parallelism code is generated.  It also lets you set the level of emission.</p>
+</div>
+
+<div class="section" id="GUID-723E60AA-B553-4F54-A22F-242AB2C6BCBF"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

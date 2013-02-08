@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="cxxlib">
+<meta name="abstract" content="Determines whether the compiler links using the C++ run-time libraries and header files provided by gcc.">
+<meta name="description" content="Determines whether the compiler links using the C++ run-time libraries and header files provided by gcc.">
+<meta name="DC.subject" content="-cxxlib compiler option, gcc C++ run-time libraries, option specifying to link to">
+<meta name="keywords" content="-cxxlib compiler option, gcc C++ run-time libraries, option specifying to link to">
+<meta name="DC.Relation" scheme="URI" content="GUID-6172D550-95F9-432C-84CB-97EAA2536A80.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A0E92522-F837-49BE-AD47-7498CFB14F19">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>cxxlib</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_cxxlib"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_cxxlib"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A0E92522-F837-49BE-AD47-7498CFB14F19">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">cxxlib</h1>
+<!--Determines whether the compiler links using the C++ run-time libraries  and header files  provided by gcc.--><div><p>Determines whether the compiler links using the C++ run-time libraries <span>and header files</span> provided by gcc.</p>
+
+<div class="section" id="GUID-87FB5D0C-DF98-4E21-9124-D07CDA9300AA"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								None</p>
+ <p class="ide">Linux: 
+								<strong>Preprocessor &gt; gcc Compatibility Options</strong></p>
+ <p class="ide">OS X: 
+								<strong>Preprocessor &gt; gcc Compatibility Options</strong></p>
+</div>
+<div class="section" id="GUID-4E8414CD-F7D4-4496-94A9-A9E33649ACD1"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-6A8E18C7-6416-4510-926F-130CA1BE0F88"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-cxxlib</span><span class="delim">[</span><span class="oper">=</span><span class="var">dir</span><span class="delim">]</span></p><p><span class="kwd">-cxxlib-nostd</span></p><p><span class="kwd">-no-cxxlib</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-00592ED6-0C27-4725-89EE-B98063B66538"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>dir</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional top-level location for the gcc binaries and libraries.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-BD1187CB-9080-423B-8B28-4BEB87A8DC15"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+
+<tr> 
+<td valign="top" width="30%" class="noborder"><p>C++: <span class="option">-cxxlib</span><br>C: <span class="option">-no-cxxlib</span></p></td>
+<td valign="top" class="noborder"><p>For C++, the compiler uses the run-time libraries and headers provided by gcc.<br>For C, the compiler uses the default run-time libraries and headers and does not link to any additional C++ run-time libraries and headers. However, if you specify compiler option <span class="option">-std=gnu++98</span>, the default is <span class="option">-cxxlib</span>.</p>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="section" id="GUID-04F6DB17-FCCD-486A-9B25-C028ED8DDEE3"><h2>Description</h2>
+<p>This option determines whether the compiler links using the C++ run-time libraries <span>and header files</span> provided by gcc.</p>
+<p>Option <span class="option">-cxxlib-nostd</span> prevents the compiler from linking with the standard C++ library. </p>
+</div>
+
+<div class="section" id="GUID-410C00CD-E91F-4DF9-A3FA-70654B48223F"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6172D550-95F9-432C-84CB-97EAA2536A80.htm">Linking or Linker Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Vector Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-FC13EE09-8555-414B-8FF2-D7D66CD3975C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-853BD865-DD6C-4FA1-AFC0-A98B5A65BF46.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-14DFBCAF-5602-4170-A73E-5BAC42F04AF1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F3C48E5-0087-4671-9BF1-6086D661D2E6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CF1D6170-61B5-495F-AD9B-B058E59C0466.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B09001A9-F8CD-464F-A05F-C1D1C7CC2FC5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D5E8FCC8-C5B5-46DE-B4C7-690E5105D69B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6A684133-93A6-4399-9027-2D0780D2BAD7.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9616E870-BD7A-49E3-8AB5-C0A178E13D1D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-587833A2-78CC-451D-973B-70801D62865E.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEECC3DA-98C8-4DA2-9200-CD073C874DA6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C4E9820-317B-4A5C-B1D0-A6B6B339B85B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A68F64D-8650-42B7-9AD6-D1B6F98D674C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Vector Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_bk_vector_ops"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Vector Intrinsics</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FC13EE09-8555-414B-8FF2-D7D66CD3975C.htm">Intrinsics for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A.htm">Overview: Vector Operations</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-853BD865-DD6C-4FA1-AFC0-A98B5A65BF46.htm">Arithmetic Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-14DFBCAF-5602-4170-A73E-5BAC42F04AF1.htm">Bitwise Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-7F3C48E5-0087-4671-9BF1-6086D661D2E6.htm">Compare Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-CF1D6170-61B5-495F-AD9B-B058E59C0466.htm">Conversion Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-B09001A9-F8CD-464F-A05F-C1D1C7CC2FC5.htm">Load Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">Gather and Scatter Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-D5E8FCC8-C5B5-46DE-B4C7-690E5105D69B.htm">Intrinsics to Determine Minimum and Maximum Operations</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">Miscellaneous Operations</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-6A684133-93A6-4399-9027-2D0780D2BAD7.htm">Memory and Initialization Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-9616E870-BD7A-49E3-8AB5-C0A178E13D1D.htm">Shift Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-587833A2-78CC-451D-973B-70801D62865E.htm">Store Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-FEECC3DA-98C8-4DA2-9200-CD073C874DA6.htm">Short Vector Math Library Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-2C4E9820-317B-4A5C-B1D0-A6B6B339B85B.htm">Type Cast Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-5A68F64D-8650-42B7-9AD6-D1B6F98D674C.htm">Vector Mask Intrinsics</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">Reduction Intrinsics</a><br>
+</li>
+</ul>
+</div>
+
+</body>
+</html>

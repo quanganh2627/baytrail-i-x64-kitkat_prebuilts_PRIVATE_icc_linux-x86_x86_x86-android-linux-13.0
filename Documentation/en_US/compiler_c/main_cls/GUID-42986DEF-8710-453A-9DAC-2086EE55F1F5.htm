@@ -1,0 +1,546 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="User-mandated or SIMD Vectorization">
+<meta name="DC.subject" content="Vectorization, user-mandated, SIMD, pragma simd">
+<meta name="keywords" content="Vectorization, user-mandated, SIMD, pragma simd">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1EA04294-988E-4152-B584-B028FD6FAC48.htm#GUID-1EA04294-988E-4152-B584-B028FD6FAC48">
+<meta name="DC.Relation" scheme="URI" content="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781.htm#GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>User-mandated or SIMD Vectorization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_simd"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_simd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-42986DEF-8710-453A-9DAC-2086EE55F1F5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">User-mandated or SIMD Vectorization</h1>
+ 
+   
+  <div> 
+	 <p>User-mandated or SIMD vectorization supplements automatic vectorization just like OpenMP parallelization supplements automatic parallelization. The following figure illustrates this relationship. User-mandated vectorization is implemented as a single-instruction-multiple-data (SIMD) feature and is referred to as SIMD vectorization. 
+	 </p>
+ 
+	 <p>The SIMD vectorization feature is available for both Intel&reg; microprocessors and non-Intel microprocessors. Vectorization may call library routines that can result in additional performance gain on Intel microprocessors than on non-Intel microprocessors. The vectorization can also be affected by certain options, such as<span class="option"> /arch</span> or 
+  <span class="option">/Qx</span> (Windows) or 
+  <span class="option">-m</span> or 
+  <span class="option">-x</span> (Linux and OS X). 
+  </p>
+ 
+  <img src="GUID-2ECAB8AD-3765-4CBB-9208-D3BB77087383-low.jpg"> 
+  <p> The following figure illustrates how SIMD vectorization is positioned among various approaches that you can take to generate vector code that exploits vector hardware capabilities. The programs written with SIMD vectorization are very similar to those written using auto-vectorization hints. You can use SIMD vectorization to minimize the amount of code changes that you may have to go through in order to obtain vectorized code. 
+  </p>
+ 
+  <img src="GUID-ECFF4293-6458-4DCF-A847-47A2019922BD-low.jpg"> 
+  <p>SIMD vectorization uses the 
+	 <span><span class="option">#pragma simd</span> pragma</span> to effect loop vectorization. You must add the 
+	 <span>pragma</span> to a loop and recompile for the loop to get vectorized (the options –Qsimd [on Windows* OS] or –simd [on Linux* OS] are enabled by default). 
+  </p>
+ 
+  <p>Consider an example in C++ where the function 
+	 <span class="keyword">add_floats() 
+	 </span>uses too many unknown pointers for the compiler’s automatic runtime independence check optimization to kick in. You can give a data dependence assertion using the auto-vectorization hint via 
+  <span class="option">#pragma ivdep</span> and let the compiler decide whether the auto-vectorization optimization should be applied to the loop. Or you can now enforce vectorization of this loop by using 
+  <span class="option">#pragma simd 
+  </span>. 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5A5CE4BC-D387-4785-BDA9-7DA1CA58FEBF" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" valign="top" width="NaN%" id="d208696e98"> 
+				<p>Example: without #pragma simd 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="NaN%" headers="d208696e98 "> 
+				<pre>[D:/simd] cat example1.c</pre> 
+				<pre>void add_floats(float *a, float *b, float *c, float *d, float *e, int n){</pre> 
+				<pre>&nbsp;int i;</pre> 
+				<pre>&nbsp;for (i=0; i&lt;n; i++){</pre> 
+				<pre>&nbsp;&nbsp;a[i] = a[i] + b[i] + c[i] + d[i] + e[i];</pre> 
+				<pre>&nbsp;}</pre> 
+				<pre>}</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	  
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" valign="top" width="NaN%" id="d208696e145"> 
+				<p>Command line entry and output 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="NaN%" headers="d208696e145 "> 
+				<pre>[D:/simd] icl example1.c –nologo -Qvec-report2 </pre> 
+				<pre>example1.c</pre> 
+				<pre>D:\simd\example1.c(3): (col. 3) remark: loop was not vectorized: existence of vector dependence.</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	  
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" valign="top" width="NaN%" id="d208696e178"> 
+				<p>Example: with #pragma simd 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="NaN%" headers="d208696e178 "> 
+				<pre>[D:/simd] cat example1.c</pre> 
+				<pre>void add_floats(float *a, float *b, float *c, float *d, float *e, int n){</pre> 
+				<pre>&nbsp;int i;</pre> 
+				<pre>&nbsp;<strong>#pragma simd</strong></pre> 
+				<pre>&nbsp;for (i=0; i&lt;n; i++){</pre> 
+				<pre>&nbsp;&nbsp;a[i] = a[i] + b[i] + c[i] + d[i] + e[i];</pre> 
+				<pre>&nbsp;}</pre> 
+				<pre>}</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	  
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" valign="top" width="NaN%" id="d208696e230"> 
+				<p>Command line entry and output 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="NaN%" headers="d208696e230 "> 
+				<pre>[D:/simd] icl example1.c -nologo -Qvec-report2</pre> 
+				<pre>example1.c</pre> 
+				<pre>D:\simd\example1.c(4): (col. 3) remark: SIMD LOOP WAS VECTORIZED.</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	 </table>
+</div>
+ 
+  <p>The one big difference between using the SIMD 
+	 <span>pragma</span> and auto-vectorization hints is that with the SIMD 
+	 <span>pragma</span>, the compiler generates a warning when it is unable to vectorize the loop. With auto-vectorization hints, actual vectorization is still under the discretion of the compiler, even when you use the 
+  <span class="option">#pragma vector always</span> hint. 
+  </p>
+ 
+  <p>The SIMD 
+	 <span>pragma</span> has optional clauses to guide the compiler on how vectorization must proceed. Use these clauses appropriately so that the compiler obtains enough information to generate correct vector code. For more information on the clauses, see the 
+  <span class="option">#pragma simd</span> description. 
+  </p>
+ 
+  <div class="section" id="GUID-075CDC62-E6D6-4499-8380-607FF64DF71E"><h2 class="sectiontitle">Additional Semantics</h2> 
+	  
+	 <p>Note the following points when using 
+	 <span class="option">#pragma simd</span><span>pragma</span>. 
+	 <ul type="disc" id="GUID-0F9DCF50-BA53-463A-B6AA-FEF345793A3E"> 
+		<li>A variable may belong to at most one of private, linear, or reduction (or none of them). 
+		</li>
+ 
+		<li>Within the vector loop, an expression is evaluated as a vector value if it is private, linear, reduction, or it has a sub-expression that is evaluated to a vector value. Otherwise, it is evaluated as a scalar value (that is, broadcast the same value to all iterations). Scalar value does not necessarily mean loop invariant, although that is the most frequently seen usage pattern of scalar value. 
+		</li>
+ 
+		<li>A vector value may not be assigned to a scalar L-value. It is an error. 
+		</li>
+ 
+		<li>A scalar L-value may not be assigned under a vector condition. It is an error. 
+		</li>
+ 
+		<li><span>The 
+			 <span class="keyword">switch</span> statement is not supported.</span></li>
+ 
+	 </ul>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>You may find it difficult to describe vector semantics using SIMD 
+		  <span>pragma</span> for some auto-vectorizable loops. One example is MIN/MAX reduction in C since the language does not have MIN/MAX operators. 
+		</p>
+ 
+	 </div> 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-E96C7B17-F3A2-4040-A4A6-51CBE3A8B2C4"><h2 class="sectiontitle">Using 
+		<span class="keyword">vector</span> Declaration</h2> 
+	  
+	 <p> Consider the following C++ example code with a loop containing the math function, 
+		<span class="keyword">sinf()</span>. All code examples in this section are applicable for the Windows* operating system only. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EF38367D-13F5-4680-BAAE-4D2AB0309FA2" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d208696e349"> 
+				  <p>Example: Loop with math function is auto-vectorized 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d208696e349 "> 
+				  <pre>[D:/simd] cat example2.c</pre> 
+				  <pre>void vsin(float *restrict a, float *restrict b, int n){</pre> 
+				  <pre>int i;</pre> 
+				  <pre>for (i=0; i&lt;n; i++) {</pre> 
+				  <pre>&nbsp;&nbsp;a[i] = sinf(b[i]);</pre> 
+				  <pre>&nbsp;&nbsp;}</pre> 
+				  <pre>}</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		 
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d208696e396"> 
+				  <p>Command-line entry and output 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d208696e396 "> 
+				  <pre>[D:/simd] icl example2.c –nologo –O3 -Qvec-report2 -Qrestrict</pre> 
+				  <pre>example2.c</pre> 
+				  <pre>D:\simd\example2.c(3): (col. 3) remark: LOOP WAS VECTORIZED.</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>When you compile the above code, the loop with 
+		<span class="keyword">sinf()</span> function is auto-vectorized using the appropriate SVML library function provided by the Intel compiler. The auto-vectorizer identifies the entry points, matches up the scalar math library function to the SVML function and invokes it. 
+	 </p>
+ 
+	 <p>However, within this loop if you have a call to your function, 
+		<span class="keyword">foo()</span>, that has the same prototype as 
+		<span class="keyword">sinf()</span>, the auto-vectorizer fails to vectorize the loop because it does not know what 
+		<span class="keyword">foo()</span> does unless it is inlined to this call site. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F824AD0B-943C-42FF-9655-6240152FB0BC" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d208696e451"> 
+				  <p>Example: Loop with user-defined function is NOT auto-vectorized 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d208696e451 "> 
+				  <pre>[D:/simd] cat example2.c</pre> 
+				  <pre>float foo(float);</pre> 
+				  <pre>void vfoo(float *restrict a, float *restrict b, int n){</pre> 
+				  <pre>&nbsp;int i;</pre> 
+				  <pre>&nbsp;for (i=0; i&lt;n; i++){</pre> 
+				  <pre>&nbsp;&nbsp;a[i] = foo(b[i]);</pre> 
+				  <pre>&nbsp;}</pre> 
+				  <pre>}</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		 
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d208696e501"> 
+				  <p>Command-line entry and output 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d208696e501 "> 
+				  <pre>[D:/simd] icl example2.c -nologo -O3 -Qvec-report2 -Qrestrict</pre> 
+				  <pre>example2.c</pre> 
+				  <pre>D:\simd\example2.c(4): (col. 3) remark: loop was not vectorized: existence of vector dependence.</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p> In such cases, you can use the 
+		<span class="keyword">__attribute__((vector))</span>declaration to vectorize the loop. All you need to do is add the 
+		<span class="keyword">vector</span> declaration to the function declaration, and recompile both the caller and callee code. The loop and function are vectorized. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FBD4C636-BB4F-4613-9402-AE23D501DBF4" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d208696e547"> 
+				  <p>Example: Loop with user-defined function with vector declaration is vectorized 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d208696e547 "> 
+				  <pre>[D:/simd] cat example3.c</pre> 
+				  <pre>// foo() and vfoo() do not have to be in the same compilation unit as long</pre> 
+				  <pre>//as both see the same declspec.</pre> 
+				  <pre>__declspec(vector)</pre> 
+				  <pre>float foo(float);</pre> 
+				  <pre>void vfoo(float *restrict a, float *restrict b, int n){</pre> 
+				  <pre>int i;</pre> 
+				  <pre>for (i=0; i&lt;n; i++) {</pre> 
+				  <pre>&nbsp;&nbsp;a[i] = foo(b[i]);</pre> 
+				  <pre>&nbsp;&nbsp;}</pre> 
+				  <pre>}</pre> 
+				  <pre>float foo(float x) {</pre> 
+				  <pre>...</pre> 
+				  <pre>}</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d208696e617"> 
+				  <p>Command-line entry and output 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d208696e617 "> 
+				  <pre>[D:/simd] icl example3.c -nologo -O3 -Qvec-report3 –Qrestrict </pre> 
+				  <pre>example3.c</pre> 
+				  <pre>D:\simd\example3.c(9): (col. 3) remark: LOOP WAS VECTORIZED</pre> 
+				  <pre>D:\simd\example3.c(14): (col. 3) remark: FUNCTION WAS VECTORIZED</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-6EEB04D3-7CC7-4AD3-9BF2-0D19444B4640"><h2 class="sectiontitle">Restrictions on Using 
+		<samp class="codeph">vector</samp> declaration</h2> 
+	  
+	 <p> Vectorization depends on two major factors: hardware and the style of source code. When using the vector declaration, the following features are not allowed: 
+	 <ul type="disc" id="GUID-2130346F-3E1E-4630-95D0-D428748C43D6"> 
+		<li> 
+		  <p>Thread creation and joining through 
+			 <span class="keyword">_Cilk_spawn</span>, 
+			 <span class="keyword">_Cilk_for</span>, OpenMP* 
+			 <span class="keyword">parallel/for/sections/task</span>, and explicit threading API calls 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Using setjmp, longjmp, EH, SEH 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Inline ASM code and VML 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Calling non-vector functions (note that all SVML functions are considered vector functions) 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Locks, barriers, atomic construct, critical sections (presumably this is a special case of the previous one). 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The 
+			 <span class="keyword">GOTO</span> statement 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Intrinsics (for example, SVML intrinsics) 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Function call through function pointer and virtual function 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Any loop/array notation constructs 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><samp class="codeph">Struct</samp> access 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span>The 
+				<span class="keyword">switch</span> statement</span></p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p> Formal parameters must be of the following data types: 
+	 <ul type="disc" id="GUID-9492FE33-8A80-45B0-A18A-1F5C4DA75F41"> 
+		<li>(un)signed 8, 16, 32, or 64-bit integer 
+		</li>
+ 
+		<li>32 or 64-bit floating point 
+		</li>
+ 
+		<li>64 or 128-bit complex 
+		</li>
+ 
+		<li>a pointer (C++ reference is considered a pointer data type) 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-1EA04294-988E-4152-B584-B028FD6FAC48.htm#GUID-1EA04294-988E-4152-B584-B028FD6FAC48"><span class="option">simd</span> pragma 
+		  </a> </div>
+<div><a href="GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781.htm#GUID-38C9CE7E-26DF-4F81-A0AC-B4CEDF284781">Function Annotations and the SIMD Directive for Vectorization 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

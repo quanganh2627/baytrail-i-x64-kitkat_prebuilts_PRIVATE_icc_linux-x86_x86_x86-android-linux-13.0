@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="OpenMP* Affinity Specifications">
+<meta name="DC.subject" content="OpenMP* affinity, specifying, affinity, OpenMP*, specifying">
+<meta name="keywords" content="OpenMP* affinity, specifying, affinity, OpenMP*, specifying">
+<meta name="DC.Relation" scheme="URI" content="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-63AC4A29-3021-40EC-9DF8-8C76C329E1CA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Affinity Specifications</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_omp_affinity_spec"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-63AC4A29-3021-40EC-9DF8-8C76C329E1CA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Affinity Specifications</h1>
+ 
+   
+  <div> 
+	 <p>The coprocessor OS kernel on the coprocessor uses the logical processor number in 
+		<span class="filepath">/proc/cpuinfo</span>, the calls to 
+		<span class="keyword">sched_{get,set}affinity()</span> and 
+		<span class="keyword">sched_getcpu()</span>, and the 
+		<span class="keyword">taskset</span> command. The OpenMP* runtime library uses the logical processor number if you explicitly specify affinity using a 
+		<samp class="codeph">proclist</samp>. 
+	 </p>
+ 
+	 <p> The logical processor number used by the 
+		<span><span>coprocessor OS</span></span> on Intel&reg; MIC Architecture is different from that on the host, and probably not what you expect. There is one logical processor for each hardware thread context. Logical processor 0 is placed on the first hardware context of the highest numbered core. Logical processors from 1 up to the highest, minus three, are placed consecutively on core 0 context 0, core 0 context 1, core 0 context 2, core 0 context 3, core 1, context 0 and so on, with the last three logical processors being on the highest numbered core, with hardware thread contexts 1, 2, and 3. 
+	 </p>
+ 
+	 <p>The simple way to think of this is that you should start enumerating the logical processors to use at logical processor 1, not logical processor 0. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">OpenMP* Considerations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

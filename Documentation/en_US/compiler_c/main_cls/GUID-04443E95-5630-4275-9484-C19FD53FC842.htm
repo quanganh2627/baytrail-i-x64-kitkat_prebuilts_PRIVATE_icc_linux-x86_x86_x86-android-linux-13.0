@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="offload-attribute-target, Qoffload-attribute-target">
+<meta name="abstract" content="Causes the compiler to flag file-scope functions and data objects in the source file with the offload attribute &#34;target(mic)&#34;.">
+<meta name="description" content="Causes the compiler to flag file-scope functions and data objects in the source file with the offload attribute &#34;target(mic)&#34;.">
+<meta name="DC.subject" content="-offload-attribute-target compiler option, /Qoffload-attribute-target compiler option, functions and data objects, option flagging with offload attribute, Intel&reg; MIC Architecture features">
+<meta name="keywords" content="-offload-attribute-target compiler option, /Qoffload-attribute-target compiler option, functions and data objects, option flagging with offload attribute, Intel&reg; MIC Architecture features">
+<meta name="DC.Relation" scheme="URI" content="GUID-BC7CFC27-8FDC-4FC2-AADC-8F4CBD2DC6A0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm#GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462">
+<meta name="DC.Relation" scheme="URI" content="GUID-CCAC04A3-DD2F-4DFF-BD89-7235B321F7F3.htm#GUID-CCAC04A3-DD2F-4DFF-BD89-7235B321F7F3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-04443E95-5630-4275-9484-C19FD53FC842">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>offload-attribute-target, Qoffload-attribute-target</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_offload_attribute_target"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_offload_attribute_target"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-04443E95-5630-4275-9484-C19FD53FC842">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">offload-attribute-target, Qoffload-attribute-target</h1>
+
+  <!--Causes the compiler to flag  file-scope functions  and  data objects in the source file with the offload attribute "target(mic)".  -->
+  
+  <div><p>Causes the compiler to flag <span>file-scope functions</span> and  data objects in the source file with the offload attribute "target(mic)".  </p>
+
+
+    <div class="section" id="GUID-D8B88E1C-3CF6-47B0-8888-00377A5D7DD9"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-4C3765B2-6FD6-4B72-A0BF-43050C38A470"><h2>Architectures</h2>
+      <p>Intel&reg; 64 architecture, targeting Intel&reg; MIC Architecture</p>
+
+    </div>
+
+    <div class="section" id="GUID-A8EADE30-265F-42A3-B973-E7A18F61CA67"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-offload-attribute-target</span><span class="oper">=</span><span class="var">target-name</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-307FF516-9673-4AB1-990D-FEC50D66C592"><h2>Arguments</h2>
+      
+    <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>target-name</var></p></td>
+<td valign="top" class="noborder"><p>Is a specific target. The only supported value for this argument is <span class="keyword">mic</span>. </p>
+</td>
+</tr></table>
+</div>
+
+    <div class="section" id="GUID-BF3C2987-C27F-491B-84FD-7EEBBAD60F8F"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p> The compiler does not flag <span>file-scope functions</span> and data objects in the source file with the offload attribute <span><span class="keyword">target(mic)</span></span>.</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-530B256D-572E-4E7C-AFDC-10690DEC1D66"><h2>Description</h2>
+      
+    <p>This option causes the compiler to flag <span>file-scope functions</span> and data objects in the source file with the offload attribute target(mic).</p>
+
+<p>This option is similar to using the  pragma <span class="keyword">offload_attribute target(mic)</span> to set the attribute <span class="keyword">target(mic)</span>   for all functions and data objects in the file scope. </p>
+<p>Target declspecs/attributes on individual declarations take precedence over any <span class="keyword">offload_attribute</span> pragma in effect, and declspecs, attributes, and pragmas all  take precedence over this option.</p>
+</div>
+
+    <div class="section" id="GUID-B6590C93-15D2-4D52-A4A0-6A3277347B57"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  <div class="example"><h2>Example</h2><p>Consider the following individual source files:</p>
+<pre>subr.c</pre><pre>======</pre><pre>void subr()</pre><pre>{</pre><pre>}</pre><p> </p>
+<pre>main.c</pre><pre>======</pre><pre>int main()</pre><pre>{</pre><pre>  #pragma offload target(mic)</pre><pre>  subr();</pre><pre>}</pre><p> If you compile them as follows, it will properly place an instance of <samp class="codeph">subr</samp> in the host (CPU) and target binaries:</p>
+<pre>icc -c -offload-attribute-target=mic subr.c</pre><pre>icc subr.o main.c</pre></div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BC7CFC27-8FDC-4FC2-AADC-8F4CBD2DC6A0.htm">Offload Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm#GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462">offload_attribute</a> </div>
+<div><a href="GUID-CCAC04A3-DD2F-4DFF-BD89-7235B321F7F3.htm#GUID-CCAC04A3-DD2F-4DFF-BD89-7235B321F7F3">Placing Variables and Functions on the Coprocessor</a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

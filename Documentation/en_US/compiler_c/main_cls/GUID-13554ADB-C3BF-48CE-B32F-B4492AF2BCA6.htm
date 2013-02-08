@@ -1,0 +1,103 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Resetting Profile Information">
+<meta name="DC.subject" content="_PGOPTI_Prof_Reset_All, PGO API, _PGOPTI_Prof_Reset_ALL, counters for dynamic profile, dynamic information, resetting profile counters, profile-guided optimization, resetting dynamic profile counters, profile-optimized code, resetting dynamic counters for, report generation, dynamic profile counters, value-profiling">
+<meta name="keywords" content="_PGOPTI_Prof_Reset_All, PGO API, _PGOPTI_Prof_Reset_ALL, counters for dynamic profile, dynamic information, resetting profile counters, profile-guided optimization, resetting dynamic profile counters, profile-optimized code, resetting dynamic counters for, report generation, dynamic profile counters, value-profiling">
+<meta name="DC.Relation" scheme="URI" content="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-13554ADB-C3BF-48CE-B32F-B4492AF2BCA6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Resetting Profile Information</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pig_res_all"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="Context-id"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-13554ADB-C3BF-48CE-B32F-B4492AF2BCA6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Resetting Profile Information</h1>
+ 
+   
+  <div> 
+	 <p> The 
+		<span class="keyword">_PGOPTI_Prof_Reset_All()</span> function clears the profile information collected by the instrumented application. The prototype of the function call is listed below. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CC2ED42A-0FEC-4B66-93E4-5D9A80B8B84A" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" valign="top" width="NaN%" id="d55273e84"> 
+				  <p>Syntax 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" width="NaN%" headers="d55273e84 "> 
+				  <p><samp class="codeph">void _PGOPTI_Prof_Reset_All(void); 
+					 </samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p> The older version of this function, 
+		<a href="GUID-2E953163-934A-430B-9AC9-D826B78E3BBF.htm#GUID-2E953163-934A-430B-9AC9-D826B78E3BBF"><span class="keyword">_PGOPTI_Prof_Reset()</span></a>, is deprecated. 
+	 </p>
+ 
+	 <p>The new function, 
+		<span class="keyword">_PGOPTI_Prof_Reset_All()</span>, operates much like the deprecated one, 
+		<span class="keyword">_PGOPTI_Prof_Reset()</span>, except on Linux* operating systems, when it is used in connection with shared libraries (.so) and 
+		<span class="filepath">_exit()</span>function to terminate a program. 
+	 </p>
+ 
+	 <p>When 
+		<span class="keyword">_PGOPTI_Prof_Reset_All()</span> function is called, it insures that all the counters within the main application and all the instrumented shared libraries are cleared. All the counters for block execution counts and value profiling information is reset to 0. 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>For routines that were in progress when the reset call was made, the counts for portions of the routine that executed following the call to the reset function may have higher counts than portions of the routine that executed prior to the reset call. 
+		  </p>
+ 
+		</div> 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">PGO API Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

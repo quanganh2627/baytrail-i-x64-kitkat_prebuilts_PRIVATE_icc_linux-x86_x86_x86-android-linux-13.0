@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Gather and Scatter Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9BAEF800-AF90-433B-BAB5-99C374945ADA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B147603-6A6A-4F23-8529-1609A13AB784.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B1A2FCEC-5E93-486A-B824-13699D76E68D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2646E000-5C01-48C7-8CA1-A4EF39DBE33A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-254C3F9D-5DDD-4B27-95E2-B6986B4A852B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4B7608EB-EB7D-4F74-9596-BC6776322DFB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B147603-6A6A-4F23-8529-1609A13AB784.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-44FA3A99-96C0-424C-987D-1A93FE37E312.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F363B62B-CE20-4DBC-AE5B-BDEE51B8D6A0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-55E2D2DD-4542-49E7-8AE9-DC5738969320.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Gather and Scatter Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_bk_gs_ops"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Gather and Scatter Intrinsics</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">Vector Intrinsics</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-9BAEF800-AF90-433B-BAB5-99C374945ADA.htm">_mm512_i32[ext]gather_ps/ _mm512_mask_i32[ext]gather_ps</a><br>
+Gathers float32 vector with int32 indices. Corresponding instruction is <samp class="codeph">VGATHERDPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-8B147603-6A6A-4F23-8529-1609A13AB784.htm">_mm512_i32[ext]gather_epi32/ _mm512_mask_i32[ext]gather_epi32</a><br>
+Gather int32 vector with int32 indices. Corresponding instruction is <samp class="codeph">VPGATHERDD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-B1A2FCEC-5E93-486A-B824-13699D76E68D.htm">_mm512_i32lo[ext]gather_pd/ _mm512_mask_i32lo[ext]gather_pd</a><br>
+Gather float64 vector with int32 indices. Corresponding instruction is <samp class="codeph">VGATHERDPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-2646E000-5C01-48C7-8CA1-A4EF39DBE33A.htm">_mm512_i32lo[ext]gather_epi64/_mm512_mask_i32lo[ext]gather_epi64</a><br>
+Gather int64 vector with int32 indices. Corresponding instruction is <samp class="codeph">VPGATHERDQ</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-254C3F9D-5DDD-4B27-95E2-B6986B4A852B.htm">_mm512_prefetch_i32[ext]gather_ps/ _mm512_mask_prefetch_i32[ext]gather_ps</a><br>
+Gather prefetch float32 vector with int32 indices. Corresponding instructions are <samp class="codeph">VGATHERPF0DPS</samp> and  <samp class="codeph">VGATHERPF1DPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-4B7608EB-EB7D-4F74-9596-BC6776322DFB.htm">_mm512_i32[ext]scatter_ps/ _mm512_mask_i32[ext]scatter_ps</a><br>
+Scatter float32 vector with int32 indices. Corresponding instruction is <samp class="codeph">VSCATTERDPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-44FA3A99-96C0-424C-987D-1A93FE37E312.htm">_mm512_i32lo[ext]scatter_pd/ _mm512_mask_i32lo[ext]scatter_pd</a><br>
+Scatter float64 vector with int32 indices. Corresponding instruction is <samp class="codeph">VSCATTERDPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-F363B62B-CE20-4DBC-AE5B-BDEE51B8D6A0.htm">_mm512_i32lo[ext]scatter_epi64/ _mm512_mask_i32lo[ext]scatter_epi64</a><br>
+Scatter int64 vector with int32 indices. Corresponding instruction is <samp class="codeph">VPSCATTERDQ</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+<li class="ulchildlink"><a href="GUID-55E2D2DD-4542-49E7-8AE9-DC5738969320.htm">_mm512_prefetch_i32[ext]scatter_ps/ _mm512_mask_prefetch_i32[ext]scatter_ps</a><br>
+Scatter prefetch float32 vector with int32 indices. Corresponding instructions are <samp class="codeph">VSCATTERPF0DPS</samp> and  <samp class="codeph">VSCATTERPF1DPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></li>
+</ul>
+</div>
+
+</body>
+</html>

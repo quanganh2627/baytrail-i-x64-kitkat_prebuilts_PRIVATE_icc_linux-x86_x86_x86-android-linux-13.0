@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fomit-frame-pointer, Oy">
+<meta name="abstract" content="Determines whether EBP is used as a general-purpose register in optimizations.">
+<meta name="description" content="Determines whether EBP is used as a general-purpose register in optimizations.">
+<meta name="DC.subject" content="ebp register, option determining use in optimizations, -fomit-frame-pointer compiler option, /Oy compiler option, -fp compiler option">
+<meta name="keywords" content="ebp register, option determining use in optimizations, -fomit-frame-pointer compiler option, /Oy compiler option, -fp compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9ECCD2E7-EBFE-44DC-B07D-415DE59F32CA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fomit-frame-pointer, Oy</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fomit_frame_pointer"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fomit_frame_pointer"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="option_fp_lcase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fp_lcase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9ECCD2E7-EBFE-44DC-B07D-415DE59F32CA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fomit-frame-pointer, Oy</h1>
+<!--Determines whether EBP is used as a general-purpose register in optimizations.--><div><p>Determines whether EBP is used as a general-purpose register in optimizations.</p>
+
+<div class="section" id="GUID-C2D27E99-5BA2-4C3E-B7EA-EFE2C9B84738"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Optimization &gt; Omit Frame Pointers</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Optimization &gt; Provide Frame Pointer</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Optimization &gt; Provide Frame Pointer</strong></p>
+</div>
+<div class="section" id="GUID-41D5CE7E-95F0-4C02-938E-93AD478C7194"><h2>Architectures</h2><p><span class="option">-f[no-]omit-frame-pointer</span>: All</p>
+<p><span class="option">/Oy[-]</span>: IA-32 architecture</p>
+</div>
+
+<div class="section" id="GUID-0452229B-2DB0-44E8-9241-6070E633D7D0"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fomit-frame-pointer</span></p><p><span class="kwd">-fno-omit-frame-pointer</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Oy</span></p><p><span class="kwd">/Oy-</span></p></td></tr></table></div>
+<div class="section" id="GUID-F79F625D-1BED-4573-8A7E-2A6199A1AD22"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-926DC612-A087-4439-97BA-E43DB76920D7"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-fomit-frame-pointer</span><br><span> or <span class="option">/Oy</span></span></p></td>
+<td valign="top" class="noborder"><p>EBP is used as a general-purpose register in optimizations. However, on Linux* and OS X* systems, the default is <span class="option">-fno-omit-frame-pointer</span> if option <span class="option">-O0</span> or <span class="option">-g</span> is specified. <span>On Windows* systems, the default is <span class="option">/Oy-</span> if option <span class="option">/Od</span> is specified.</span></p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-26080B5A-A9C9-4982-90D9-DFAC24B04227"><h2>Description</h2><p>These options determine whether EBP is used as a general-purpose register in optimizations. Options <span class="option">-fomit-frame-pointer</span> and <span class="option">/Oy</span> allow this use. Options <span class="option">-fno-omit-frame-pointer</span> and <span class="option">/Oy-</span> disallow it.</p>
+<p>Some debuggers expect EBP to be used as a stack frame pointer, and cannot produce a stack backtrace unless this is so. The <span class="option">-fno-omit-frame-pointer</span> and <span class="option">/Oy-</span> options direct the compiler to generate code that maintains and uses EBP as a stack frame pointer for all functions so that a debugger can still produce a stack backtrace without doing the following:</p>
+<ul type="disc" id="GUID-D991BD12-0F93-4A78-B81A-4A3FF7467D88"><li><p>For <span class="option">-fno-omit-frame-pointer</span>: turning off optimizations with <span class="option">-O0</span></p>
+</li>
+<li><p>For <span class="option">/Oy-</span>: turning off <span class="option">/O1</span>, <span class="option">/O2</span>, or <span class="option">/O3</span> optimizations</p>
+</li>
+</ul>
+<p>The <span class="option">-fno-omit-frame-pointer</span> option is set when you specify option <span class="option">-O0</span> or the <span class="option">-g</span> option. The <span class="option">-fomit-frame-pointer</span> option is set when you specify option <span class="option">-O1</span>, <span class="option">-O2</span>, or <span class="option">-O3</span>.</p>
+<p>The <span class="option">/Oy</span> option is set when you specify the <span class="option">/O1</span>, <span class="option">/O2</span>, or <span class="option">/O3</span> option. Option <span class="option">/Oy-</span> is set when you specify the <span class="option">/Od</span> option.</p>
+<p>Using the <span class="option">-fno-omit-frame-pointer</span> or <span class="option">/Oy-</span> option reduces the number of available general-purpose registers by 1, and can result in slightly less efficient code.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>There is currently an issue with GCC 3.2 exception handling. Therefore, the Intel compiler ignores this option when GCC 3.2 is installed for C++ and exception handling is turned on (the default).</p>
+</div></div>
+
+<div class="section" id="GUID-6C463AEC-BF9F-4134-8B87-0095C099C353"><h2>Alternate Options</h2><p>Linux and OS X: <span class="option">-fp</span> (this is a deprecated option)</p>
+<p>Windows: None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Holding a Lock Across a Strand Boundary">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, locks">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, locks">
+<meta name="DC.Relation" scheme="URI" content="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C4188036-3BC6-4C37-BDF9-D9686F744174">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Holding a Lock Across a Strand Boundary</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_holding_locks"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C4188036-3BC6-4C37-BDF9-D9686F744174">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Holding a Lock Across a Strand Boundary</h1>
+
+<div>
+<p>The best and easiest practice is to avoid holding a lock across
+strand boundaries. Sibling strands can use the same lock, but there
+are potential problems if a parent shares a lock with a child
+strand. The issues are as follows:</p>
+
+<ul type="disc" id="GUID-0F3A3C8A-C8B9-4231-9C4D-955B2D015A64"><li><p> There is no
+guarantee that a strand created after a  <span class="keyword">cilk_spawn</span> or  <span class="keyword">cilk_sync</span> boundary will continue to
+execute on the same OS thread as the parent strand. Most locking
+synchronization objects, such as a Windows*  OS <span class="keyword">CRITICAL_SECTION</span>,
+must be released on the same thread that allocated them.</p>
+
+</li>
+<li><p> <span class="keyword">cilk_sync </span>exposes
+the application to Intel&reg; Cilk&#8482; Plus runtime synchronization objects. These can
+interact with the application in unexpected ways. Consider the
+following code:</p>
+<pre>#include &lt;cilk/cilk.h&gt;
+#include &lt;tbb/mutex.h&gt;
+#include &lt;iostream&gt;
+void child (tbb::mutex &amp;m, int &amp;a)
+{
+   m.lock();
+   a++;
+   m.unlock();
+}
+
+void parent(int a, int b, int c)
+{
+   tbb::mutex m;
+   try
+   {
+     cilk_spawn child (m, a);
+     m.lock();
+     throw a;
+   }
+   catch (...)
+   {
+     m.unlock();
+   }
+}
+</pre>
+</li>
+</ul>
+<p>There is an implied  <span class="keyword">cilk_sync</span> at the end of a  <samp class="codeph">try</samp> block that contains a  <span class="keyword">cilk_spawn</span>. In the
+event of an exception, execution cannot continue until all children
+have completed. If the parent acquires the lock before a child, the
+application is deadlocked since the catch block cannot be executed
+until all children have completed, and the child cannot complete
+until it acquires the lock. Using a "guard" or "scoped lock" object
+won't help, because the guard object's destructor will not run
+until the catch block is exited.</p>
+
+<p>To make the situation worse, invisible <samp class="codeph">try</samp> blocks are present.
+Any compound statement that declares local variables with
+non-trivial destructors has an implicit try block around it.
+Therefore, by the time the program spawns or acquires a lock, it is
+probably already in a try block.</p>
+
+<p>If a function holds a lock that could be acquired by a child,
+the function should not do anything that might throw an exception
+before it releases the lock. However, since most functions cannot
+guarantee that they won't throw an exception, follow these
+rules:</p>
+
+<ul type="disc" id="GUID-4413B16E-E2E3-4516-A47F-F864B517195C"><li><p> Do not acquire
+a lock that might be acquired by a child strand. In other words,
+lock against your siblings, but not against your children.</p>
+
+</li>
+<li><p> If you need to
+lock against a child, put the code that acquires the lock, performs
+the work, and releases the lock into a separate function and call
+it rather than putting the code in the same function as the
+spawn.</p>
+
+</li>
+<li><p> If a parent
+strand needs to acquire a lock, set the values of one or more
+primitive types, perhaps within a data structure, then release the
+lock. This is safe, provided there are no try blocks, function
+calls that may throw (including overloaded operators), spawns or
+syncs involved while holding the lock. Be sure to pre-compute the
+primitive values before acquiring the lock.</p>
+
+</li>
+</ul>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">Introduction to Using Locks</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Store Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, FP store operations, storeh_pd, storel_pd, store_sd, store1_pd, store_pd, storeu_pd, storer_pd, Intel&reg; Streaming SIMD Extensions 2, FP store intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, FP store operations, storeh_pd, storel_pd, store_sd, store1_pd, store_pd, storeu_pd, storer_pd, Intel&reg; Streaming SIMD Extensions 2, FP store intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-458C5D9E-4688-4E7F-A7D7-0BFB5B756485.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9E8A353F-3333-4849-A728-41EA75AAAD83">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Store Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_fp_store"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9E8A353F-3333-4849-A728-41EA75AAAD83">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Store Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-D9394DC8-9CB0-4BB0-BE5F-311A38F8CA50"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for floating-point store operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The store operations assign the initialized data to the address. 
+      </p>
+ 
+      <p>The detailed description of each intrinsic contains a table detailing the returns. In these tables, 
+        <span class="keyword">dp[n]</span> is an access to the 
+        <span class="keyword">n</span> element of the result. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2725CA9D-3B2D-483D-B3C8-5E819F2226DD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D1381D98-17A1-4135-998D-BEED615C2123" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d523217e85"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d523217e91"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d523217e97"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_stream_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVNTPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_store_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_store1_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVAPD</span> + shuffling 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_store_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVAPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_storeu_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVUPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_storer_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVAPD</span> + shuffling 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_storeh_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVHPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e85 "> 
+                <p><span class="option"> _mm_storel_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d523217e91 "> 
+                <p>Store 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d523217e97 "> 
+                <p><span class="keyword">MOVLPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9425CEEB-9B0F-4BF8-830F-6CD0D8ACDD44"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_store_sd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores the lower DP FP value of 
+        <span class="keyword">a</span>. The address 
+        <span class="keyword">dp</span> need not be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-369AB019-FE23-4B78-9F90-240883C221D6"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3BA9A906-15F5-4D19-9D13-EB06B63BE9DF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d523217e342"> 
+                <p><span class="keyword">*dp</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d523217e342 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-67DF1046-4E71-4A77-BA38-264C7CBF134D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_store1_pd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores the lower DP FP value of 
+        <span class="keyword">a</span> twice. The address 
+        <span class="keyword">dp</span> must be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F4543265-50E8-4AAD-BADF-CB4DF45B5489"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2B470D89-7905-4EE4-9754-7B27FAD5C974" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d523217e399"> 
+                <p><span class="keyword">dp[0]</span> 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d523217e407"> 
+                <p><span class="keyword">dp[1]</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d523217e399 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d523217e407 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1450B6BD-0168-44C1-B437-2689D558C425"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_store_pd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores two DP FP values. The address 
+        <span class="keyword">dp</span> must be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4A7B9E49-83AF-4313-864E-8ABF99988A60"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8E8AF18F-DF31-4735-AA5D-1AB9D576F222" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d523217e468"> 
+                <p><span class="keyword">dp[0]</span> 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d523217e476"> 
+                <p><span class="keyword">dp[1]</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d523217e468 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d523217e476 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B2180DD6-084B-49FE-9FC8-FEA3CDBF632E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_storeu_pd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores two DP FP values. The address 
+        <span class="keyword">dp</span> need not be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-179129FD-2CDF-486D-AA1D-1F2E92BEC3B3"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F278056C-9F0F-4FCC-9948-E514BCF74F9C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d523217e537"> 
+                <p><span class="keyword">dp[0]</span> 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d523217e545"> 
+                <p><span class="keyword">dp[1]</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d523217e537 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d523217e545 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-581ED7C6-5186-453F-94C1-1C9C738CA87E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_storer_pd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores two DP FP values in reverse order. The address 
+        <span class="keyword">dp</span> must be 16-byte aligned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-40B23661-5AF9-4CE0-9077-CE76FD48FF3A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FDCCBC1A-27F7-469F-8323-5473DFC14843" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d523217e607"> 
+                <p><span class="keyword">dp[0]</span> 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d523217e615"> 
+                <p><span class="keyword">dp[1]</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d523217e607 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d523217e615 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-29EA81EC-1A18-4127-9611-ECAD13415F6C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_storeh_pd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores the upper DP FP value of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C5C28530-A525-4689-9618-6100E2432C0F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-14F4E061-AEA7-4E7D-A1AE-DD1CE6F7C07F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d523217e675"> 
+                <p><span class="keyword">*dp</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d523217e675 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CC179B7D-1EE6-4435-959A-1652B667A1BF"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">void _mm_storel_pd(double *dp, __m128d a)</span></p></div> 
+      <p>Stores the lower DP FP value of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-53F2F41C-2A1C-40FF-8B40-497D5DB6B9B7"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2CE6B24E-E8DF-410B-9C3B-DD0EEE0CBD9B" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d523217e727"> 
+                <p><span class="keyword">*dp</span> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d523217e727 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-458C5D9E-4688-4E7F-A7D7-0BFB5B756485.htm">Floating-point Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

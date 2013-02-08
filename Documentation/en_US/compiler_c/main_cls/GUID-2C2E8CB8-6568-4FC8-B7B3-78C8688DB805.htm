@@ -1,0 +1,136 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Creating Libraries">
+<meta name="DC.subject" content="-c compiler option, -fpic compiler option, -shared compiler option, -dynamiclib compiler option, ar tool, shared libraries, static libraries, libraries, -fPIC compiler option, creating your own, shared, static">
+<meta name="keywords" content="-c compiler option, -fpic compiler option, -shared compiler option, -dynamiclib compiler option, ar tool, shared libraries, static libraries, libraries, -fPIC compiler option, creating your own, shared, static">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A80EA2F-5501-4678-B64B-7417BDDB5EC5.htm#GUID-0A80EA2F-5501-4678-B64B-7417BDDB5EC5">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2C2E8CB8-6568-4FC8-B7B3-78C8688DB805">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Creating Libraries</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_create_libs_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_create_libs_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2C2E8CB8-6568-4FC8-B7B3-78C8688DB805">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Creating Libraries</h1>
+ 
+   
+  <div> 
+    <p>Libraries are simply an indexed collection of object files that are included as needed in a linked program. Combining object files into a library makes it easy to distribute your code without disclosing the source. It also reduces the number of command-line entries needed to compile your project. 
+    </p>
+ 
+    <div class="section" id="GUID-5351444E-6B1F-4907-AC88-DB2C89DABEE3"><h2 class="sectiontitle">Static Libraries</h2> 
+       
+      <p>Executables generated using static libraries are no different than executables generated from individual source or object files. Static libraries are not required at runtime, so you do not need to include them when you distribute your executable. At compile time, linking to a static library is generally faster than linking to individual source files. 
+      </p>
+ 
+      <p>To build a static library on Linux* OS: 
+      </p>
+ 
+      <ol id="GUID-C9452A4B-ADDF-45C5-B46F-780BA49B66E5"> 
+        <li> 
+          <p>use the 
+      <span class="option">-c</span> option to generate object files from the source files:<br><samp class="codeph"><strong>icpc -c my_source1.cpp my_source2.cpp my_source3.cpp</strong></samp> 
+      </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>use the GNU* tool 
+          <span class="keyword">ar</span> to create the library file from the object files:<br><samp class="codeph"><strong>ar rc my_lib.a my_source1.o my_source2.o my_source3.o</strong></samp> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>compile and link your project with your new library:<br><samp class="codeph"><strong>icpc main.cpp my_lib.a</strong></samp> 
+        </p>
+ 
+      </li>
+ 
+      </ol>
+ 
+      <p>If your library file and source files are in different directories, use the 
+      <span class="option">-L</span><var>dir</var> option to indicate where your library is located:<br><samp class="codeph"><strong>icpc -L/cpp/libs main.cpp my_lib.a</strong></samp> 
+      </p>
+ 
+      <p>If your library file and source files are in different directories, use the 
+      <span class="option">-L</span><var>dir</var> option to indicate where your library is located:<br><samp class="codeph"><strong>icpc -L/cpp/libs main.cpp my_lib.a</strong></samp> 
+      </p>
+ 
+      <p>If you are using Interprocedural Optimization, see Creating a Library from IPO Objects using 
+        <span class="keyword">xiar</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AAAEA81D-4965-47D8-85BD-541F237C184A"><h2 class="sectiontitle">Shared Libraries</h2> 
+       
+      <p>Shared libraries, also referred to as dynamic libraries or Dynamic Shared Objects (DSO), are linked differently than static libraries. At compile time, the linker insures that all the necessary symbols are either linked into the executable, or can be linked at runtime from the shared library. Executables compiled from shared libraries are smaller, but the shared libraries must be included with the executable to function correctly. When multiple programs use the same shared library, only one copy of the library is required in memory. 
+      </p>
+ 
+      <p>To build a shared library on Linux* OS: 
+      </p>
+ 
+      <ol id="GUID-E5597394-E895-4877-9E2F-1285EFEB450E"> 
+        <li> 
+          <p>use the 
+      <span class="option">-fPIC</span> and 
+      <span class="option">-c</span> options to generate object files from the source files:<br><samp class="codeph"><strong>icpc -fPIC -c my_source1.cpp my_source2.cpp my_source3.cpp</strong></samp> 
+      </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>use the 
+      <span class="option">-shared</span> option to create the library file from the object files:<br><samp class="codeph"><strong>icpc -shared -o my_lib.so my_source1.o my_source2.o my_source3.o</strong></samp> 
+      </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>compile and link your project with your new library:<br><samp class="codeph"><strong>icpc main.cpp my_lib.so</strong></samp> 
+        </p>
+ 
+      </li>
+ 
+      </ol>
+ 
+      </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">Libraries</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-0A80EA2F-5501-4678-B64B-7417BDDB5EC5.htm#GUID-0A80EA2F-5501-4678-B64B-7417BDDB5EC5">Using Intel Shared Libraries 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

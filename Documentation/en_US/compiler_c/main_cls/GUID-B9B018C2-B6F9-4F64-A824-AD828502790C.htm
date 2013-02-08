@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_extpackstorehi_epi64/_mm512_mask_extpackstorehi_epi64">
+<meta name="abstract" content="Packs mask-enabled elements of int64 vector to form an unaligned int64 stream, down-converts it, and stores that portion of the stream that maps to the high 64-byte aligned portion of the memory destination. Corresponding instruction is VPACKSTOREHD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Packs mask-enabled elements of int64 vector to form an unaligned int64 stream, down-converts it, and stores that portion of the stream that maps to the high 64-byte aligned portion of the memory destination. Corresponding instruction is VPACKSTOREHD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_extpackstorehi_epi64, _mm512_mask_extpackstorehi_epi64">
+<meta name="keywords" content="_mm512_extpackstorehi_epi64, _mm512_mask_extpackstorehi_epi64">
+<meta name="DC.Relation" scheme="URI" content="GUID-587833A2-78CC-451D-973B-70801D62865E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B9B018C2-B6F9-4F64-A824-AD828502790C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_extpackstorehi_epi64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_extpackstorehi_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B9B018C2-B6F9-4F64-A824-AD828502790C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_extpackstorehi_epi64/_mm512_mask_extpackstorehi_epi64</h1>
+<!--Packs mask-enabled elements of int64 vector to form an unaligned int64 stream, down-converts it, and stores that portion of the stream that maps to the high 64-byte aligned portion of the memory destination. Corresponding instruction is 
+ VPACKSTOREHD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Packs mask-enabled elements of int64 vector to form an unaligned int64 stream, down-converts it, and stores that portion of the stream that maps to the high 64-byte aligned portion of the memory destination. Corresponding instruction is 
+<samp class="codeph">VPACKSTOREHD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-6EE55105-17D9-427F-BE64-4F4687775712"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern void __cdecl _mm512_mask_extpackstorehi_epi64(void* mt, __m512i v1, _MM_DOWNCONV_EPI64_ENUM conv, int hint); </span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern void __cdecl _mm512_mask_extpackstorehi_epi64(void* mt, __mmask8 k1, __m512i v1, _MM_DOWNCONV_EPI64_ENUM conv, int hint); </span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-0C4E630D-1EDB-478C-B482-05B803E6F785"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1</var></p></td>
+
+<td valign="top" class="noborder"><p>source vector to store elements from</p>
+</td>
+
+</tr>
+
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>conv  </var></p></td>
+
+<td valign="top" class="noborder"><p>Type of conversion, which can be one of the following: 
+    <a name="d89e642"><!-- --></a><ul type="disc" id="d89e642"> 
+      <li><samp class="codeph">_MM_DOWNCONV_EPI64_NONE</samp> - no conversion 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+
+
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><p> vector mask to select elements to add to the stream</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>mt  </var></p></td>
+
+<td valign="top" class="noborder"><p>memory location to store vector elements</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>hint</var></p></td>
+
+<td valign="top" class="noborder"><p>Hint that indicates to the processor that the data is non-temporal. Takes the value 0 or 1, where: 
+    <a name="d89e375"><!-- --></a><ul type="disc" id="d89e375"> 
+      <li><samp class="codeph">_MM_HINT_NONE</samp> = 0 
+      </li>
+ 
+      <li><samp class="codeph">_MM_HINT_NT</samp> = 1 (Store is non-temporal) 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+
+<div class="section" id="GUID-5DE2062D-2370-4C78-A14B-76BEF5AF37E3"><h2>Description</h2>
+<p> Packs and down-converts the mask-enabled
+elements of int64 vector <samp class="codeph">v1</samp> into a byte/word/doubleword stream logically
+mapped starting at element-aligned address (<samp class="codeph">mt − 64</samp>), and stores the
+high-64-byte elements of that stream (those elements of the stream
+that map at or after the first 64-byte-aligned address following
+(<samp class="codeph">mt − 64</samp>), the high cache line in the current implementation).
+The length of the stream depends on the number of enabled masks, as
+elements disabled by the mask are not added to the
+stream.</p>
+
+<p> The mask parameter <samp class="codeph">k1</samp> is not used as a
+writemask for this function. Instead, the mask is used as an
+element selector, choosing which elements are added to the
+stream.</p>
+
+</div>
+
+
+
+<div class="section" id="GUID-D42F3933-97C9-4065-B460-A591A94CE0DA"><h2>Returns</h2><p>Returns nothing.</p>
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-587833A2-78CC-451D-973B-70801D62865E.htm">Store Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

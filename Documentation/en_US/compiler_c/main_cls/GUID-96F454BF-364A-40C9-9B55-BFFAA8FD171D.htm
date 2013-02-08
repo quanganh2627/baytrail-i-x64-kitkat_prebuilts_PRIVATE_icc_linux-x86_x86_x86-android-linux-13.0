@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Profile Function or Loop Execution Time">
+<meta name="DC.subject" content="profile-guided optimization, funtion/loop execution time, user functions">
+<meta name="keywords" content="profile-guided optimization, funtion/loop execution time, user functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-9C4692D9-BBDE-4F36-95B1-58295EAFA5B5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-96F454BF-364A-40C9-9B55-BFFAA8FD171D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Profile Function or Loop Execution Time</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pgo_fnloop"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pgo_fnloop"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-96F454BF-364A-40C9-9B55-BFFAA8FD171D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Profile Function or Loop Execution Time</h1>
+
+
+
+
+<div>
+<p>This topic describes how to profile an application for function or loop execution time.
+Using the instrumentation method to profile function or loop execution time provides an easy means of getting a view of where cycles are being spent in your application.
+The Intel&reg; compiler inserts instrumentation code into your application to collect the time spent in various locations. Such data helps you to identify hotspots that may be candidates for optimization tuning or targeting parallelization.  </p>
+<p> Different levels of instrumentation are available because of the difference in the overhead associated with the inserted probe points that read the CPU cycle counter. The instrumentation  levels, in increasing amount of collected data, are grouped as follows:<ul type="disc" id="GUID-360C5A6E-12F7-4863-BCE1-B304DCC54BAE"><li>function level</li>
+<li>function and loop level</li>
+<li>loop body level</li>
+</ul>
+</p>
+<p>You need not profile the entire application but it is recommended that the same level of instrumentation is used for all instrumented files.
+Compile your application with the command line options described below for all the files for which you require  profile information.  </p>
+<p>After the instrumented application is run, data files containing a summary of the collected data are created in the working directory. View these data files to identify the time proportions of the different parts of your application.</p>
+<div class="section" id="GUID-1696AD68-7A9C-4313-B659-20FFEF0BBE7D"><h2 class="sectiontitle">Compiler Options to Obtain Instrumented Program</h2><p>Use the following command-line compiler options to instrument your application code to profile execution times for functions/loops. When you compile your application using any one of these options, you get an instrumented program. </p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D2059538-1C9E-4D28-B29A-FD270680D352" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="19.377162629757784%" id="d505286e71">Instrumentation Level</th>
+<th class="cellrowborder" valign="top" width="23.70242214532872%" id="d505286e73"> Linux* or MacOS* X Operating System</th>
+<th class="cellrowborder" valign="top" width="17.301038062283737%" id="d505286e75">Windows* Operating System</th>
+<th class="cellrowborder" valign="top" width="39.61937716262975%" id="d505286e77">Description</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="19.377162629757784%" headers="d505286e71 ">Function level</td>
+<td class="cellrowborder" valign="top" width="23.70242214532872%" headers="d505286e73 "><span class="option">-profile-functions</span></td>
+<td class="cellrowborder" valign="top" width="17.301038062283737%" headers="d505286e75 "><span class="option">/Qprofile-functions</span></td>
+<td class="cellrowborder" valign="top" width="39.61937716262975%" headers="d505286e77 ">Instruments function entry/exit points only.<ul type="disc" id="GUID-80851E98-897B-44E7-9771-19C33C86F3E0"><li>Inserts instrumentation calls on the function entry and exit points to collect the cycles spent within the function.</li>
+<li>Data collection is supported for single- threaded applications only.</li>
+<li>The collected data from execution of the instrumented application is placed in the file, <span class="filepath">loop_prof_funcs_&lt;timestamp&gt;.dump</span> in the current working directory.</li>
+</ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="19.377162629757784%" headers="d505286e71 ">Function and loop level</td>
+<td class="cellrowborder" valign="top" width="23.70242214532872%" headers="d505286e73 "><span class="option">-profile-loops=</span><var>&lt;arg&gt;</var></td>
+<td class="cellrowborder" valign="top" width="17.301038062283737%" headers="d505286e75 "><span class="option">/Qprofile-loops:</span><var>&lt;arg&gt;</var></td>
+<td class="cellrowborder" valign="top" width="39.61937716262975%" headers="d505286e77 ">Instruments function and loop entry/exit points:<ul type="disc" id="GUID-14BF5A08-58A1-440C-A6E7-8E4B4A4AE345"><li>The <var>&lt;arg&gt;</var> argument allows you to specify the types of the loops to be  instrumented. The <var>&lt;arg&gt;</var> value must be one of the following: <ul type="disc" id="GUID-BB889315-0D0A-4370-92AF-689BF9A8A67E"><li>inner - to instrument inner loops
+</li>
+<li>outer -  to instrument outer loops</li>
+<li>all - to instrument both inner and outer loops</li>
+</ul>
+ 
+</li>
+<li>Inserts instrumentation calls for function entry and exit points, and before and after instrumentable loops as listed in the  <var>&lt;arg&gt;</var> argument. <div class="Note"><h3 class="NoteTipHead">Note</h3><p>The compiler may be unable to instrument some loops.
+</p>
+</div> </li>
+<li>Data collection is supported for single- threaded applications only.
+</li>
+<li>The collected data from execution of the instrumented application is placed in the files, <span class="filepath">loop_prof_funcs_&lt;timestamp&gt;.dump</span> and <span class="filepath">loop_prof_loops_&lt;timestamp&gt;.dump</span> in the current working directory for the function data and loop data, respectively.<div class="Note"><h3 class="NoteTipHead">Note</h3><p>The instrumentation takes place after many compiler transformations have taken place, so loops that have been restructured, or replicated by the compiler may result in multiple entries in the generated reports. Also, functions may have been inlined into other functions; this may cause the same loop to be listed in multiple functions. </p>
+</div></li>
+</ul>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="19.377162629757784%" headers="d505286e71 "> Loop body level</td>
+<td class="cellrowborder" valign="top" width="23.70242214532872%" headers="d505286e73 "><span class="option">-profile-loops-report=</span><var>[n]</var></td>
+<td class="cellrowborder" valign="top" width="17.301038062283737%" headers="d505286e75 "><span class="option">/Qprofile-loops-report:</span><var>[n]</var></td>
+<td class="cellrowborder" valign="top" width="39.61937716262975%" headers="d505286e77 ">Controls level of instrumentation for loop bodies, where,<ul type="disc" id="GUID-0BF198C2-A1E3-40FA-8505-4823365D86A8"><li>Specifying <var>n=1</var> collects the cycle counts on entry and exits of loops. This is the default value if no value is specified for <var>n</var>.</li>
+<li>Specifying<var> n=2</var> inserts additional instrumentation for collecting  loop iteration counts to compute loop min/max and average iteration counts. Such instrumentation increases overhead in the instrumented application.<div class="Note"><h3 class="NoteTipHead">Note</h3><p><ul type="disc" id="GUID-5B303930-7FFA-4053-9BA5-4A7BFA74A695"><li>Instrumentation takes place after compiler transformations have taken place, so the loop trip count is based on the generated form of the loop, which may be unrolled, and may be different from the original source form.</li>
+<li>This option is effective only when used with the <span class="option">-profile-loops</span> (Linux* and MacOS* X) or <span class="option">/Qprofile-loops</span> (Windows*)option enabled; it acts as a modifier of the <span class="option">-profile-loops</span> or <span class="option">/Qprofile-loops</span> option. </li>
+</ul>
+</p>
+</div></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Because this instrumentation relies on the CPU time stamp counter for collecting timing information, only single threaded applications should be profiled with these options. Using these options with other compiler options that enable parallel code generation is not supported.</p>
+</div></div>
+<div class="section" id="GUID-7371BE62-8DFA-44EA-BFD3-6D0113775456"><h2 class="sectiontitle">Output Formats Obtained on Running Instrumented Program</h2><p>After compiling your application using the options, you obtain an instrumented program. Run this instrumented program with a representative set of data to create one or more data files.</p>
+<p>The output files are produced by a routine that is registered with the<samp class="codeph"> atexit()</samp> routine, and  are created only when the program exits via a standard exit procedure.
+Two formats of the output files are created:<ul type="disc" id="GUID-A64F6739-EBAC-4618-BAFB-1B5B67F74894"><li>A plain text file using ‘tab’ delimiters, which can be viewed within a text editor or a spreadsheet.
+</li>
+<li>An XML data file that can be loaded into the data viewer application.
+</li>
+</ul>
+ </p>
+<p><strong>Text Output Format</strong></p>
+<p>The text output is written into separate files in the current directory. The filenames are <span class="filepath">loop_prof_funcs_&lt;timestamp&gt;.dump</span> and <span class="filepath">loop_prof_loops_&lt;timestamp&gt;.dump</span> for functions and loops respectively. The <samp class="codeph">&lt;timestamp&gt;</samp> value is the same for both files to indicate they are from the same instrumentation run.</p>
+<p>You can load the text files into a spreadsheet by specifying that the data is delimited with ‘tab’ delimiters. </p>
+<p>The function report file contains the following columns:</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-51956B39-06D0-40B4-A574-CB782C669432" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="28.818443804034583%" id="d505286e247">Column Heading</th>
+<th class="cellrowborder" valign="top" width="71.18155619596543%" id="d505286e249">Description</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Time (abs)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "> <p>Total accumulated cycles spent between function entry and exit.</p>
+
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Time %</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Percentage of total application time for cycles between function entry and exit.</p>
+
+ </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Self (abs)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Accumulated cycles spent between function entry and exit less the cycles spent within calls to other instrumented functions.<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Time spent in calls to routines or libraries that were not instrumented are included within this cycle count value.</p>
+</div></p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Self %</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Percentage that self(abs) represents of total application time.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Call count</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Number of times the function was entered.</p>
+
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Exit count</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Number of times the function exit instrumentation was invoked. (In some instances, such as cases involving exception handling, it may be possible for control to transfer out of a function without the exit instrumentation being seen, resulting in this being different than the call count value.)</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Loop ticks (%)</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>The percentage of total application time for the the self time cycles of loops within the function. This field is relevant only when you use <span class="option">–profile-loops</span>(Linux* and MacOS* X) or <span class="option">/Qprofile-loops</span> (Windows*) compiler option.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>Function</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Demangled function name</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e247 "><p>File:line</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e249 "><p>Source file containing the code for the function, and the line number the function begins on.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The loop report file contains the following columns:</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0076AB35-AF05-4401-A851-FD55B40F9BA0" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="28.818443804034583%" id="d505286e336">Column Heading</th>
+<th class="cellrowborder" valign="top" width="71.18155619596543%" id="d505286e338">Description</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Time (abs)</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 "> Total accumulated cycles spent between loop entry and exit.
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Time %</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">Percentage of total application time for cycles between loop entry and exit.
+ </td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Self (abs)</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">Accumulated cycles spent between loop entry and exit less the cycles spent within calls to other instrumented functions/loops.</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Self %</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">Percentage that self(abs) represents of total application time.</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Loop entries</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">Number of times the loop was entered.
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Loop exits</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">Number of times the loop exit instrumentation was invoked. (In some instances, such as cases involving exception handling, it may be possible for control to transfer out of a loop without the exit instrumentation being seen, resulting in this being different than the call count value.)</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Min iteration counts</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">The smallest iteration count for an invocation of the loop. This field is relevant only when you use  instrumentation level = 2, using<span class="option">–profile-loops-report=2</span>(Linux* and MacOS* X) or <span class="option">/Qprofile-loops-report:2</span> (Windows*) compiler option.</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Avg iteration counts</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">The average iteration count for an invocation of the loop. This field is relevant only when you use  instrumentation level = 2, using<span class="option">–profile-loops-report=2</span>(Linux* and MacOS* X) or <span class="option">/Qprofile-loops-report:2</span> (Windows*) compiler option.
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Max iteration counts</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">The largest iteration count for an invocation of the loop. This field is relevant only when you use  instrumentation level = 2, using<span class="option">–profile-loops-report=2</span>(Linux* and MacOS* X) or <span class="option">/Qprofile-loops-report:2</span> (Windows*) compiler option.
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Function </td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 ">Demangled function name that executed the loop; this may be different from the function that contained the loop source code, if that function was inlined into another function.</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Function file:line</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 "> The name of the source file containing the function that executed the loop, and the line number the function begins on.</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="28.818443804034583%" headers="d505286e336 ">Loop file:line</td>
+<td class="cellrowborder" valign="top" width="71.18155619596543%" headers="d505286e338 "> The name of the source file containing the loop body, and the line number the loop body begins on.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>XML Output Format</strong></p>
+<p>The <span class="keyword">INTEL_LOOP_PROF_XML_DUMP</span>
+environment variable is used to control the creation of the XML output format. When <span class="keyword">INTEL_LOOP_PROF_XML_DUMP</span>
+= 0, no XML file is created.</p>
+<p>
+ The XML output file, named<span class="filepath"> loop_prof_&lt;timestamp&gt;.xml</span>, is written into the current directory. This file is viewed with the data viewer utility. The XML data file contains both the function and loop level data.</p>
+<p>Remember, using the environment variable with a value of 0 implies that the data viewer utility is not going to be used
+ since no XML data files are created.
+</p>
+ </div>
+<div class="section" id="GUID-0B472961-BA32-4BD0-BA8C-D400745651C5"><h2 class="sectiontitle">Data Viewer Utility</h2><p>You must have the Java Runtime Environment,
+version 1.6  installed on your system to use the data viewer utility. The JRE v1.6  is not included with the Intel&reg; Compiler package.
+</p>
+<p>The Data Viewer displays the data collected for the functions and loops in a sequence of columns that allows for sorting of individual columns. The Data Viewer also provides the ability to filter the function or loops to only display items that meet some threshold amount (total time % or self time %) of the total application time, or to only show loops that are associated with a particular function. </p>
+
+<p>The Data Viewer is located in the<span class="keyword"> \bin</span> directory of the compiler installation. Double-click on the file <span class="filepath">loopprofileviewer.jar</span> in this directory to launch the Data Viewer utility. Alternatively, use the following commands  from the command line.</p>
+<p>On Windows* operating system:</p>
+<p>On Linux* and MacOS* X operating systems:</p>
+<pre>loopprofileviewer.sh &lt;datafile&gt;</pre><p>or</p>
+<pre>loopprofileviewer.csh &lt;datafile&gt;</pre><p>The main user interface displays an upper pane,<strong> Function Profile</strong>, containing function level data, and a lower pane, <strong>Loop Profile</strong>, containing loop level data. If the XML data file is created using only function level instrumentation, the lower pane is not displayed. Drag the separator between individual panes to resize them or click the up/down arrows available on the separator line. <img src="GUID-70676224-2274-45FA-9E8C-6CB75385B05B-low.jpg"></p>
+<p>The <strong>Function Profile</strong> pane and <strong>Loop Profile</strong> pane contain the set of columns described in the section,  Text Output Format. Click on any of these columns to sort the data based on that column. </p>
+<p>The Data Viewer utility has two specific menus -  the <strong>View</strong> menu and the <strong>Filter</strong> menu
+- in the menu bar besides the generic  <strong>File</strong> and <strong>Help</strong> menus. </p>
+ 
+
+
+<p><strong>View Menu</strong></p>
+<p>The <strong>View</strong> menu allows you to open a window that shows the source code for the line you have selected in the table (these menus are grayed out if no line is selected). To use the <strong>View</strong> menu:<ol id="GUID-1F0DC7AD-BEEB-4FBA-8542-92FB373295E6"><li>Select a line in the <strong>Function Profile</strong> pane.</li>
+<li>Go to <strong>View &gt; Function source for selected function</strong> to see the source code for the selected function.</li>
+<li>Select a line in the <strong>Loop Profile</strong> pane.</li>
+<li>Go to <strong>View &gt; Function source for selected loop</strong>
+to see the source code for the selected function.</li>
+<li>Go to <strong>View &gt; Loop source for selected loop</strong>
+to see the source code for the selected loop.</li>
+</ol>
+</p>
+<p>Alternatively, when the cursor is within the <strong>Function Profile</strong> pane or the <strong>Loop Profile pane</strong>, right-click on any line to display a popup menu that gives access to these <strong>View</strong> menu options.</p>
+<p>By default, the Data Viewer utility displays the most relevant columns based on the data file loaded. Go to <strong>View &gt; Select Columns</strong> to display or hide the columns. In the dialog box that opens, columns not available for the currently loaded data file are grayed out. 
+
+ </p>
+<p><strong>Filter Menu</strong></p>
+<p> The <strong>Filter</strong> menu allows you to limit the data
+displayed in the tables to items that meet some criteria. As an example, you can use the <strong>Filter</strong> menu as follows:<ol id="GUID-430783DB-B6E8-4921-ADC9-B04FD415A536"><li>Go to <strong>Filter &gt; Function Profile &gt; “Self time &gt; 1.00%”</strong> to only list the functions in the <strong>Function Profile</strong> pane that represented more than 1.0 % of the application time. </li>
+<li>Go to <strong>Filter &gt; Set thresholds</strong> to modify the default thresholds used when enabling the filters for total time % or self time %.</li>
+</ol>
+</p>
+
+<p>To 
+display only
+the loops of a particular function, do the following:<ol id="GUID-80705DBF-1D5D-4EC5-BD3B-17321E898242"><li>Select a function in the <strong>Function</strong> column of the <strong>Function Profile</strong> pane.</li>
+<li>Go to <strong>Filter &gt; Loop
+Profile &gt; Show loops for selected function</strong>
+to display the loops for the selected function.</li>
+</ol>
+</p>
+
+<p> Alternatively, when the cursor is within the
+<strong>Function Profile</strong> pane or the <strong>Loop Profile</strong> pane, you can right-click any function to display a popup menu that gives access to these <strong>Filter</strong> menu
+options.</p>
+
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9C4692D9-BBDE-4F36-95B1-58295EAFA5B5.htm">Profile-Guided Optimization (PGO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

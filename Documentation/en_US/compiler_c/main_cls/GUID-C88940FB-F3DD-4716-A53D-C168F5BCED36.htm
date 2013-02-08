@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_svml_round_pd/ _mm512_mask_svml_round_pd">
+<meta name="abstract" content="Rounds off to nearest integer. Vector variant of round(x) function for a float64 argument. &nbsp; This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Rounds off to nearest integer. Vector variant of round(x) function for a float64 argument. &nbsp; This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_svml_round_pd, _mm512_mask_svml_round_pd">
+<meta name="keywords" content="_mm512_svml_round_pd, _mm512_mask_svml_round_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-B540527B-B772-4B72-887B-24B3CCB8C551.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C88940FB-F3DD-4716-A53D-C168F5BCED36">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_svml_round_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_round_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C88940FB-F3DD-4716-A53D-C168F5BCED36">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_svml_round_pd/ _mm512_mask_svml_round_pd</h1>
+<!--Rounds off to nearest integer. Vector variant of 
+ round(x)  function for a float64 argument.     This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Rounds off to nearest integer. Vector variant of 
+<samp class="codeph">round(x)</samp> function for a float64 argument.  &nbsp; <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-81FA37CC-4CF0-4BC5-976F-38553F105E91"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_svml_round_pd(_m512d v1);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_mask_svml_round_pd(_m512d v1_old, __mmask8 k1, _m512d v1);</span></p></td></tr></table></div>
+<div class="section" id="GUID-0F57F057-D01A-4094-AC7A-94B0F318583F"><h2>Parameters</h2>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F5BA624F-BDFD-4625-8A14-5EC00A2982A8" width="100%" frame="void" border="1" rules="none" cellspacing="2"><tbody><tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<var>v1</var>
+
+</td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+vector of float64 values
+</td>
+
+</tr>
+<tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<var>v1_old
+
+</var></td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+<var>v1_old
+
+</var> for zero mask bits
+</td>
+
+</tr>
+<tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<var>k1
+
+</var></td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+Writemask; only those elements of the source vector with corresponding bit set to '1' in the 
+<var>k1
+
+</var> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+<var>k1
+
+</var> are copied from corresponding elements of vector 
+<var>v1_old
+
+</var>
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-8E33ACEB-2F57-4AF2-B73F-B394DA67E08D"><h2>Description</h2>
+<p>Rounds off the elements of vector 
+<var>v1</var> to the nearest integer value. This intrinsic rounds the halfway cases away from zero regardless of the current rounding direction, instead of to the nearest even integer like 
+<samp class="codeph">
+<a href="GUID-CE5D1A79-E847-406F-B9B6-BADC1B15F9A6.htm#GUID-CE5D1A79-E847-406F-B9B6-BADC1B15F9A6">_mm512_rint_pd  _mm512_mask_rint_pd</a>
+</samp> intrinsic.</p>
+<p>The masked variant has two additional arguments: 
+<var>v1_old
+
+</var> and 
+<var>k1
+
+</var>. Those elements of 
+<var>v1</var> with the corresponding bit clear in vector mask 
+<var>k1
+
+</var> are not used in the computation. Instead, the corresponding element from 
+<var>v1_old
+
+</var> is copied to the resulting vector.</p>
+</div>
+<div class="section" id="GUID-A694DB86-6AD4-4BCA-ABC9-002D4E130050"><h2>Returns</h2><p>Returns the result of the operation.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>Many routines in the SVML library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+          </p>
+ 
+        </div></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B540527B-B772-4B72-887B-24B3CCB8C551.htm">Rounding Off Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

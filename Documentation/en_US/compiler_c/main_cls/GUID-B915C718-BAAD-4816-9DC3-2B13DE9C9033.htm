@@ -1,0 +1,322 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="mtune">
+<meta name="abstract" content="Performs optimizations for specific processors.">
+<meta name="description" content="Performs optimizations for specific processors.">
+<meta name="DC.subject" content="-mtune compiler option, -mcpu compiler option, CPU, option performing optimizations for specified, processor, option optimizing for specific">
+<meta name="keywords" content="-mtune compiler option, -mcpu compiler option, CPU, option performing optimizations for specified, processor, option optimizing for specific">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B915C718-BAAD-4816-9DC3-2B13DE9C9033">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>mtune</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_mtune"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_mtune"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B915C718-BAAD-4816-9DC3-2B13DE9C9033">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">mtune</h1>
+<!--Performs optimizations for specific processors.--><div><p>Performs optimizations for specific processors.</p>
+
+<div class="section" id="GUID-5E2FEF07-8465-4975-BA9D-2964D472434D"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Optimization &gt; Optimize for Intel processor</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-5F9D5413-2351-4104-85E4-F11C7C8A2941"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-28253184-A369-4E45-A3C7-9C93AB8E16B7"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-mtune</span><span class="oper">=</span><span class="var">processor</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-2B80714A-FB71-48A7-A953-F765F3162F42"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>processor</var></p></td>
+<td valign="top" class="noborder"><p>Is the processor for which the compiler should perform optimizations.    Possible values are: </p>
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">generic</span></p></td>
+
+<td valign="top" class="noborder"><p>Generates code for the compiler's default behavior.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">core2</span></p></td>
+
+<td valign="top" class="noborder"><p>Optimizes for the Intel&reg; Core&#8482; 2 processor family, including support for MMX&#8482;, Intel&reg; SSE, SSE2, SSE3 and SSSE3 instruction sets.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentium</span></p></td>
+
+<td valign="top" class="noborder"><p>Optimizes for Intel&reg; Pentium&reg; processors.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentium-mmx</span></p></td>
+
+<td valign="top" class="noborder"><p>Optimizes for Intel&reg; Pentium&reg; with MMX technology.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentiumpro</span></p></td>
+
+<td valign="top" class="noborder"><p>Optimizes for Intel&reg; Pentium&reg; Pro, Intel Pentium II, and Intel Pentium III processors.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentium4</span></p></td>
+
+<td valign="top" class="noborder"><p>Optimizes for Intel&reg; Pentium&reg; 4 processors.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentium4m</span></p></td>
+
+<td valign="top" class="noborder"><p>Optimizes for Intel&reg; Pentium&reg; 4 processors with MMX technology.</p>
+</td>
+
+</tr>
+</table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-8F64D40F-FD42-47CD-92A1-74A3D54063B6"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p>generic</p></td>
+<td valign="top" class="noborder"><p> Code is generated for the compiler's default behavior.</p>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="section" id="GUID-C5AE7460-8111-4A29-869B-C4FF7FE707D1"><h2>Description</h2>
+<p>This option performs optimizations for specific processors.</p>
+
+<p> The resulting executable is backwards compatible and generated code is optimized for specific processors. For example, code generated with <span class="option">-mtune=pentium4</span> will run correctly on Core2 processors, but it might not run as fast as if it had been generated using <span class="option">-mtune=core2</span>.</p>
+
+<p>The following table shows on which architecture you can use each value.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3D6A947D-248E-4F36-A2FF-3304FE62913C" frame="border" border="1" cellspacing="0" rules="all">
+
+
+
+
+<thead align="left">
+<tr>
+<th class="cellrowborder" align="left" valign="top" id="d611924e206"><p></p>
+</th>
+
+<th class="cellrowborder" colspan="3" align="left" valign="top" id="d611924e209"><p>Architecture</p>
+</th>
+
+</tr>
+
+<tr>
+<th class="cellrowborder" align="left" valign="top" id="d611924e216"><p><var>processor</var> Value</p>
+</th>
+
+<th class="cellrowborder" align="left" valign="top" id="d611924e222"><p>IA-32 architecture</p>
+</th>
+
+<th class="cellrowborder" align="left" valign="top" id="d611924e226"><p>Intel&reg;  64 architecture</p>
+</th>
+
+<th class="cellrowborder" align="left" valign="top" id="d611924e230">&#xA0;</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">generic</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">core2</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">pentium</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">pentium-mmx</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">pentiumpro</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">pentium4</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" headers="d611924e206 d611924e216 "><p><span class="keyword">pentium4m</span></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e222 "><p>X</p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e226 "><p></p>
+</td>
+
+<td class="cellrowborder" valign="top" headers="d611924e209 d611924e230 ">&#xA0;</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d611924e372"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d611924e372 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+
+</div>
+
+<div class="section" id="GUID-7919A7A6-910A-418F-AB02-A2DD964A5BD5"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-mtune</span></p></td>
+<td valign="top" class="noborder"><p>Linux: <span class="option">-mcpu</span> (this is a deprecated option)
+</p>
+<p>OS X: None
+</p>
+
+<p>Windows: None
+</p>
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

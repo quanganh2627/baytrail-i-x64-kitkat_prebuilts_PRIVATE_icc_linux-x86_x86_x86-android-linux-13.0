@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Strands">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, strands">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, strands">
+<meta name="DC.Relation" scheme="URI" content="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3C07B881-D28B-4743-A7F8-7A9CB8C914B7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Strands</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_strands"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3C07B881-D28B-4743-A7F8-7A9CB8C914B7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Strands</h1>
+
+<div>
+<p>Traditional serial programs are often described using call
+graphs or class hierarchies. Parallel programming adds another
+layer on top of the serial analysis. To diagram, understand and
+analyze the parallel performance of an Intel&reg; Cilk&#8482; Plus program, you need to
+distinguish between sections of code that run serially, and
+sections that may run in parallel.</p>
+
+<p>The term  <strong>strand</strong> describes a
+serial section of the program. More precisely, the definition of a
+strand is "any sequence of instructions without any parallel
+control structures."</p>
+
+<p>According to this definition, a serial program can be made up of
+many sequential strands as short as a single instruction each, a
+single strand consisting of the entire program, or any other
+partitioning. A <strong>maximal strand</strong> is a strand that
+is not part of a longer strand, that is, a strand whose start and
+end points are parallel control structures.</p>
+
+<p>An Intel&reg; Cilk&#8482; Plus program contains two kinds of parallel control structures
+-  spawn and  sync.(A parallel loop, such as <span class="keyword">_Cilk_for</span>, is just a
+convenient notation for decomposing a problem into spawns and
+syncs.) The following illustrates 4 strands (1, 2, 3, 4), a spawn
+(A) and a sync (B). In this figure, only strands (2) and (3) may
+execute in parallel.</p>
+
+<p>
+<br><img src="GUID-F444C55A-31B4-4116-822E-DE334D8FCF13-low.jpg"><br>
+</p>
+
+<p>In this diagram, the strands are represented by lines and arcs
+(edges), while the parallel control structures are represented by
+the circular nodes (vertices). The strand diagram represents a
+Directed Acyclic Graph (DAG) that represents the serial/parallel
+structure of a  program.</p>
+
+<p>An Intel&reg; Cilk&#8482; Plus program fragment that reflects the structure in the
+diagram is as follows:</p>
+
+<pre>...
+do_stuff_1();          // execute strand 1
+ _Cilk_spawn func_3(); // spawn strand 3 at A
+do_stuff_2();         // execute strand 2
+ _Cilk_sync;          // sync at B
+do_stuff_4();        // execute strand 4
+...
+</pre><p>In an Intel&reg; Cilk&#8482; Plus program, a  spawn has
+exactly one input strand and two output strands. A  sync has two or more input strands and
+exactly one output strand. The following diagram shows a DAG with
+two spawns (labeled A and B) and one sync (labeled C). In this
+program, the strands labeled (2) and (3) may execute in parallel,
+while strands (3), (4), and (5) may execute in parallel.</p>
+
+<p>
+<br><img src="GUID-2D860203-4798-4432-8B21-18A7911941C5-low.jpg"><br>
+</p>
+
+<p>A DAG represents the serial/parallel structure of the execution
+of an Intel&reg; Cilk&#8482; Plus program. With different input, the same program may
+have a different DAG. For example, a spawn may execute
+conditionally.</p>
+
+<p>However, the DAG does not depend on the number of processors on
+which the program runs; in fact, the DAG can be determined by
+running the Intel&reg; Cilk&#8482; Plus program on a single processor. A later section
+will describe the execution model and explain how work is divided
+among the number of available processors.</p>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">Intel&reg; Cilk&#8482; Plus Execution Model</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

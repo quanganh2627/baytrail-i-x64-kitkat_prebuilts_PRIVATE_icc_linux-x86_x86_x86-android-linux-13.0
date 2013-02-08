@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30513)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30513">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30513">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-ED16469A-8183-4F24-A7FA-2898C6F9DC40">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30513)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30513"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30513"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-ED16469A-8183-4F24-A7FA-2898C6F9DC40">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30513)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-F24B412F-7C8D-4EA7-B287-D2F545C187DA"><h2 class="sectiontitle">Message</h2><p>Insert a "%s ivdep" statement right before the loop at line %d to vectorize the loop.</p>
+</div>
+
+
+<div class="section" id="GUID-A9C99C70-5993-436E-AFB2-3C231748FF83"><h2 class="sectiontitle">Advice</h2>
+
+
+<p>Add <span>"#pragma ivdep"</span> before the specified loop. This <span>pragma</span> enables the vectorization of the loop at the specified line by ignoring some of the assumed cross-iteration data dependencies.</p>
+
+</div>
+
+
+<div class="section" id="GUID-20D8C4FA-3B8E-49BE-9D5C-A8A560FC00F5"><h2 class="sectiontitle">Example</h2>
+<p>Consider the following: </p>
+
+<pre>void foo(float *a, int x, int n) {</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0; i&lt;n; i++) {</pre>
+<pre>    a[i] = a[i+x]+1;</pre>
+<pre>  }</pre>
+<pre>  return;</pre>
+<pre>}</pre>
+</div>
+
+
+<p>In this case, the compiler is unable to vectorize the loop since x could be -1, where each iteration is dependent on the previous iteration. If x is known to be positive, you can vectorize this loop.</p>
+
+
+
+<p>If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>void foo(float *a, int x, int n) {</pre>
+<pre>  int i;</pre>
+<pre>#pragma ivdep</pre>
+<pre>  for (i=0; i&lt;n; i++) {</pre>
+<pre>    a[i] = a[i+x]+1;</pre>
+<pre>  }</pre>
+<pre>  return;</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-55CDC559-84B2-4A39-A19F-BA63072FC685"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that any arrays in the loop do not have unsafe cross-iteration dependencies. A cross-iteration dependency exists if a memory location is modified in an iteration of the loop and accessed by a <span>read or a write statement</span> in 
+another iteration of the loop. Make sure that there are no such dependencies, or that any cross-iteration dependencies can be safely ignored.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

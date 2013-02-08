@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="sysroot">
+<meta name="abstract" content="Specifies the root directory where headers and libraries are located.">
+<meta name="description" content="Specifies the root directory where headers and libraries are located.">
+<meta name="DC.subject" content="--sysroot compiler option">
+<meta name="keywords" content="--sysroot compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-BC283ACB-C0A8-4BE1-8D86-1974292A3367.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-58432091-B79D-415C-B632-FB3BE50ADE45">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>sysroot</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_sysroot"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_sysroot"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-58432091-B79D-415C-B632-FB3BE50ADE45">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">sysroot</h1>
+
+  <!-- Specifies the root directory where headers and libraries are located.-->
+  
+  <div><p> Specifies the root directory where headers and libraries are located.</p>
+
+    <div class="section" id="GUID-A5C3CE05-88DD-41D9-B29C-AC0D03CB9778"><h2>IDE Equivalent</h2> None
+</div>
+
+    <div class="section" id="GUID-8B9A66D2-A884-4E2B-A828-4DA06714AB64"><h2>Architectures</h2>
+      <p>IA-32, Intel&reg; 64 architecture</p>
+
+    </div>
+
+    <div class="section" id="GUID-C4A3BA55-E684-4AA7-9E67-D30A79AC9DCC"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">--sysroot</span><span class="sep">=</span><span class="var">dir</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table>
+    </div>
+
+    <div class="section" id="GUID-D6FB7401-4E3A-4022-8AEF-7127A555804E"><h2>Arguments</h2>
+      <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>dir</var></p></td>
+<td valign="top" class="noborder"><p> The compiler uses default settings to search for headers and libraries.</p>
+</td>
+</tr></table>
+
+    </div>
+
+    <div class="section" id="GUID-384F9299-CAEE-4E2E-A2B8-110B7A558EDF"><h2>Default</h2>
+      <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p></p>
+</td>
+</tr></table>
+
+    </div>
+
+    <div class="section" id="GUID-2FF2F320-F4B9-47E7-861E-D97BBFB21532"><h2>Description</h2>
+      <p> This option specifies the root directory where headers and libraries are located. </p>
+
+    <p> For example, if the headers and libraries are
+normally located in <span class="filepath">/usr/include</span> and <span class="filepath">/usr/lib</span> respectively,
+<span class="option">--sysroot=/mydir</span> will cause the compiler to search in
+<span class="filepath">/mydir/usr/include</span> and <span class="filepath">/mydir/usr/lib</span> for the headers and
+libraries.</p>
+
+<p>This option is provided for compatibility with gcc.</p>
+
+</div>
+
+    <div class="section" id="GUID-5FA99634-0ECA-4AC2-B399-E8C18096E7A6"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  </div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BC283ACB-C0A8-4BE1-8D86-1974292A3367.htm">Miscellaneous Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

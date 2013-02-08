@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="check-pointers, Qcheck-pointers">
+<meta name="abstract" content="Determines whether the compiler checks bounds for memory access through pointers.">
+<meta name="description" content="Determines whether the compiler checks bounds for memory access through pointers.">
+<meta name="DC.subject" content="-check-pointers compiler option, /Qcheck-pointers compiler option">
+<meta name="keywords" content="-check-pointers compiler option, /Qcheck-pointers compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-389D8F46-C207-40B8-8ED3-A0827894C6FF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>check-pointers, Qcheck-pointers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_check_pointers"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_check_pointers"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">check-pointers, Qcheck-pointers</h1>
+
+  <!--Determines whether the compiler checks bounds for memory access through pointers.-->
+  
+  <div><p>Determines whether the compiler checks bounds for memory access through pointers.</p>
+
+    <div class="section" id="GUID-D8009AE4-0290-4F68-9873-BF8EC4902629"><h2>IDE Equivalent</h2>
+      <p class="ide">Windows: 
+								<strong>Code Generation &gt; Check Pointers</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Code Generation &gt; Check Pointers</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+
+    </div>
+
+    <div class="section" id="GUID-34A62738-E481-4678-8F56-64C284CC381C"><h2>Architectures</h2>
+      <p>IA-32, Intel&reg; 64 architecture</p>
+
+    </div>
+
+    <div class="section" id="GUID-EABAD75E-C0E2-4ADC-B0E2-A1ED25145C1D"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-check-pointers</span><span class="sep">=</span><span class="var">keyword</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qcheck-pointers</span><span class="sep">:</span><span class="var">keyword</span></p></td></tr></table>
+    </div>
+
+    <div class="section" id="GUID-79705E6E-032E-461B-864A-D0B33994AE7B"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="parmname">keyword</span></p></td>
+<td valign="top" class="noborder"><p>Specifies what type of bounds checking occurs. Possible values are:</p>
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+<td valign="top" class="noborder"><p> Disables bounds checking. This is the default.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">rw</span></p></td>
+<td valign="top" class="noborder"><p> Checks bounds for reads and writes through pointers.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">write</span></p></td>
+<td valign="top" class="noborder"><p>Checks bounds for only writes through pointers.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-C1C0C445-D03F-4593-AC13-F9099166B132"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="option">-check-pointers=none</span> or
+<span class="option">/Qcheck-pointers:none</span></p></td>
+<td valign="top" class="noborder"><p>No bounds checking occurs for memory access through pointers.</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-269584A3-E46D-47AB-A022-DB3503C8F945"><h2>Description</h2>
+      
+    <p>This option determines whether the compiler checks bounds for memory access through pointers. It enables checking of all indirect accesses through pointers, and all array accesses.</p>
+<p>The compiler may optimize these checks away when it can determine that an access is safe.</p>
+<p>When <span class="keyword">rw</span> or <span class="keyword">write</span> is specified, option <span class="option">-check-pointers-undimensioned</span> (Linux* OS) or <span class="option">/Qcheck-pointers-undimensioned</span> (Windows* OS) is set and dimensioned and undimensioned arrays are checked.  </p>
+<p>If you do not want undimensioned arrays checked, you must specify option <span class="option">-no-check-pointers-undimensioned</span> (Linux* OS) or <span class="option">/Qcheck-pointers-undimensioned-</span>- (Windows* OS).</p>
+</div>
+
+    <div class="section" id="GUID-7FAC27CB-9F7A-4BA5-93FF-4DED3DC7BE31"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  </div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-389D8F46-C207-40B8-8ED3-A0827894C6FF.htm">check-pointers-undimensioned/Qcheck-pointers-undimensioned</a>  compiler option</div>
+<div><a href="GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B.htm">check-pointers-dangling/Qcheck-pointers-dangling</a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

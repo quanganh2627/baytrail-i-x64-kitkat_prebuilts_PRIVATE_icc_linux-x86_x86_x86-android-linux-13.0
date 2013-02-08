@@ -1,0 +1,106 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Intrinsics Returning Vectors of Undefined Values">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, intrinsics returning vectors of undefined values, _mm_undefined_ps(), _mm_undefined_pd(), _mm_undefined_si128()">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, intrinsics returning vectors of undefined values, _mm_undefined_ps(), _mm_undefined_pd(), _mm_undefined_si128()">
+<meta name="DC.Relation" scheme="URI" content="GUID-7CD76E4D-5690-4CBE-A0FB-C9719E2490FC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-484EC4C3-954D-470F-80EE-FBADA2E9F301.htm#GUID-484EC4C3-954D-470F-80EE-FBADA2E9F301">
+<meta name="DC.Relation" scheme="URI" content="GUID-EB321007-95A8-4033-81F0-8B7F8F33DD57.htm#GUID-EB321007-95A8-4033-81F0-8B7F8F33DD57">
+<meta name="DC.Relation" scheme="URI" content="GUID-40BD85A8-945A-435E-8302-824E2F27F8B9.htm#GUID-40BD85A8-945A-435E-8302-824E2F27F8B9">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-42C8C927-6848-4FDE-A44E-8D8562A3993F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics Returning Vectors of Undefined Values</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_undefval"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-42C8C927-6848-4FDE-A44E-8D8562A3993F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Intrinsics Returning Vectors of Undefined Values</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-E4FB1D10-C123-4455-9513-C507C9E9C788"> 
+      <p> These intrinsics generate vectors of undefined values. The result of the intrinsics is usually used as an argument to another intrinsic that requires all operands to be initialized, and when the content of a particular argument does not matter. These intrinsics are declared in the 
+        <span class="filepath">immintrin.h</span> header file. 
+      </p>
+ 
+      <p> For example, you can use such an intrinsic when you need to calculate a sum of packed double-precision floating-point values located in the 
+        <var>xmm</var> register. To avoid unnecessary moves, you can use the following code to obtain the required result at the low 64 bits: 
+      </p>
+ 
+      <pre>__m128d HILO	= doSomeWork();
+__m128d HI 	= _mm_unpackhi_pd(<strong>HILO, _mm_undefined_pd()</strong>);
+__m128d result	= _mm_add_sd(HI, HILO);</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-7DBC3EE8-DA98-4E74-ACA8-EDCC5D69319D"><h2 class="sectiontitle"> _<em>mm_undefined</em>_ps()</h2> 
+       
+      <p> This intrinsic returns a vector of four single precision floating point elements. The content of the vector is not specified. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3F805AC3-245D-4B64-88D6-E259E60ED1AD"><h2>Syntax</h2> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd"> extern __m128 _mm_undefined_ps(void);</span></p></div> 
+    </div>
+ 
+    <div class="section" id="GUID-0657737F-856E-4853-9CE5-081B696A643F"><h2 class="sectiontitle"> _<em>mm_undefined</em>_pd()</h2> 
+       
+      <p> This intrinsic returns a vector of two double precision floating point elements. The content of the vector is not specified. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F210BE04-AF8C-4072-B5AA-5934D6BB3E4C"><h2>Syntax</h2> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd"> extern __m128d _mm_undefined_pd(void);</span></p></div> 
+    </div>
+ 
+    <div class="section" id="GUID-7293EED4-59A6-4CFC-9B28-15756229528E"><h2 class="sectiontitle"> _<em>mm_undefined</em>_si128()</h2> 
+       
+      <p> This intrinsic returns a vector of four packed doubleword integer elements. The content of the vector is not specified. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-418A0BF0-301A-4859-9341-82CE68D5356E"><h2>Syntax</h2> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd"> extern __m128i _mm_undefined_si128(void);</span></p></div> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7CD76E4D-5690-4CBE-A0FB-C9719E2490FC.htm">Miscellaneous Functions and Intrinsics</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-484EC4C3-954D-470F-80EE-FBADA2E9F301.htm#GUID-484EC4C3-954D-470F-80EE-FBADA2E9F301"> _mm256_undefined_ps() 
+        </a>  Returns a vector of eight single precision floating point elements. No corresponding Intel&reg; AVX instruction.</div>
+<div><a href="GUID-EB321007-95A8-4033-81F0-8B7F8F33DD57.htm#GUID-EB321007-95A8-4033-81F0-8B7F8F33DD57"> _mm256_undefined_si128() 
+        </a>  Returns a vector of eight packed doubleword integer elements. No corresponding Intel&reg; AVX instruction.</div>
+<div><a href="GUID-40BD85A8-945A-435E-8302-824E2F27F8B9.htm#GUID-40BD85A8-945A-435E-8302-824E2F27F8B9">_mm256_undefined_pd() 
+        </a> Returns a vector of four double precision floating point elements. No corresponding Intel&reg; AVX instruction.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

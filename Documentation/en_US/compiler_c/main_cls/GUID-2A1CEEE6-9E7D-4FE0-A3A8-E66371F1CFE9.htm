@@ -1,0 +1,1542 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="C++ Classes and SIMD Operations">
+<meta name="DC.subject" content="Class Libraries, C++ classes and SIMD operations">
+<meta name="keywords" content="Class Libraries, C++ classes and SIMD operations">
+<meta name="DC.Relation" scheme="URI" content="GUID-D91FE4A8-A3A6-4000-B33E-E8D007FCC671.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2A1CEEE6-9E7D-4FE0-A3A8-E66371F1CFE9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>C++ Classes and SIMD Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_cpp_simd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2A1CEEE6-9E7D-4FE0-A3A8-E66371F1CFE9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">C++ Classes and SIMD Operations</h1>
+ 
+   
+  <div> 
+    <p>The use of C++ classes for SIMD operations is based on the concept of operating on arrays, or vectors of data, in parallel. Consider the addition of two vectors, 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>, where each vector contains four elements. Using the integer vector (<span class="keyword">Ivec</span>) class, the elements 
+      <samp class="codeph">A[i]</samp> and 
+      <samp class="codeph">B[i]</samp> from each array are summed as shown in the following example. 
+    </p>
+ 
+    <div class="section" id="GUID-50532E58-436E-40A4-8479-D46C24013FF0"><h2 class="sectiontitle">Typical Method of Adding Elements Using a Loop</h2> 
+       
+      <p> 
+        <pre>short a[4], b[4], c[4];</pre> 
+        <pre>for (i=0; i&lt;4; i++) /* needs four iterations */</pre> 
+        <pre>c[i] = a[i] + b[i]; /* returns c[0], c[1], c[2], c[3] */</pre> 
+      </p>
+ 
+      <p>The following example shows the same results using one operation with 
+        <span class="keyword">Ivec</span> Classes. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-839E50B2-169F-4F3B-9819-4FCC500823D1"><h2 class="sectiontitle">SIMD Method of Adding Elements Using Ivec Classes</h2> 
+       
+      <p> 
+        <pre>sIs16vec4 ivecA, ivecB, ivec C; /*needs one iteration*/</pre> 
+        <pre>ivecC = ivecA + ivecB; /*returns ivecC0, ivecC1, ivecC2, ivecC3 */</pre> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-122466C7-010C-46B3-83F9-1F20A902DE97"><h2 class="sectiontitle">Available Classes</h2> 
+       
+      <p>The Intel C++ SIMD classes provide parallelism, which is not easily implemented using typical mechanisms of C++. The following table shows how the Intel C++ SIMD classes use the classes and libraries. 
+      </p>
+ 
+      <p><strong>SIMD Vector Classes</strong> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8A3E01C6-35BF-4365-8E9C-55BE8EEBC7C3" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+           
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d120308e125"> 
+                <p>Instruction Set 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d120308e131"> 
+                <p>Class 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d120308e137"> 
+                <p>Signedness 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d120308e143"> 
+                <p>Data Type 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="14.000000000000002%" id="d120308e149"> 
+                <p>Size 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="15%" id="d120308e156"> 
+                <p>Elements 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="15%" id="d120308e162"> 
+                <p>Header File 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>MMX&#8482; technology 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I64vec1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">__m64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>64 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I32vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>2 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is32vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>2 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu32vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>2 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I16vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">short</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is16vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">short</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu16vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">short</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I8vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">char</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is8vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">char</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu8vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">char</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">ivec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>Streaming SIMD Extensions 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">F32vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">float</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">fvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">F32vec1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">float</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">fvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>Streaming SIMD Extensions 2 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">F64vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">double</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>64 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>2 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I128vec1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">__m128i</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>128 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I64vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">long int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>64 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is64vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">long int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>64 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu64vec2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">long int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I32vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is32vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu32vec4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>32 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>4 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I16vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is16vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu16vec8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">int</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">I8vec16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unspecified 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">char</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Is8vec16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>signed 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">char</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e125 "> 
+                <p>&nbsp; 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e131 "> 
+                <p><span class="keyword">Iu8vec16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e137 "> 
+                <p>unsigned 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e143 "> 
+                <p><span class="keyword">char</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.000000000000002%" headers="d120308e149 "> 
+                <p>8 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e156 "> 
+                <p>16 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="15%" headers="d120308e162 "> 
+                <p><span class="filepath">dvec.h</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+      <p>Most classes contain similar functionality for all data types and are represented by all available intrinsics. However, some capabilities do not translate from one data type to another without suffering from poor performance, and are therefore excluded from individual classes. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>Intrinsics that take immediate values and cannot be expressed easily in classes are not implemented.<br>(For example,<span class="option"> _mm_shuffle_ps</span>, 
+        <span class="option">_mm_shuffle_pi16</span>, 
+        <span class="option">_mm_shuffle_ps</span>, 
+        <span class="option">_mm_extract_pi16</span>, 
+        <span class="option">_mm_insert_pi16</span> ). 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+    <div class="section" id="GUID-3AD24686-FBDF-4BD3-B410-BE0C3C57068E"><h2 class="sectiontitle">Access to Classes Using Header Files</h2> 
+       
+      <p>The required class header files are installed in the include directory with the Intel&reg;C++ Compiler. To enable the classes, use the 
+        <span class="keyword">#include</span> directive in your program file as shown in the table that follows. 
+      </p>
+ 
+      <p><strong>Include Directives for Enabling Classes</strong> 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-19A8978A-2603-47B4-928B-33DE117AD88A" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="50%" id="d120308e1590"> 
+                <p>Instruction Set Extension 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="50%" id="d120308e1596"> 
+                <p>Include Directive 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d120308e1590 "> 
+                <p>MMX Technology 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d120308e1596 "> 
+                <p><samp class="codeph">#include &lt;ivec.h&gt;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d120308e1590 "> 
+                <p>Streaming SIMD Extensions 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d120308e1596 "> 
+                <p><samp class="codeph">#include &lt;fvec.h&gt;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d120308e1590 "> 
+                <p>Streaming SIMD Extensions 2 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%" headers="d120308e1596 "> 
+                <p><samp class="codeph">#include &lt;dvec.h&gt;</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Each succeeding file from the top down includes the preceding class. You only need to include 
+        <span class="filepath">fvec.h</span> if you want to use both the 
+        <span class="keyword">Ivec</span> and 
+        <span class="keyword">Fvec</span> classes. Similarly, to use all the classes including those for the Streaming SIMD Extensions 2, you need only to include the 
+        <span class="filepath">dvec.h</span> file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-18C187D4-334E-4E04-9F64-D7545D009BB0"><h2 class="sectiontitle">Usage Precautions</h2> 
+       
+      <p>When using the C++ classes, you should follow some general guidelines. More detailed usage rules for each class are listed in 
+        <a href="GUID-894ABEA9-14E8-4771-B805-1035B22734E5.htm#GUID-894ABEA9-14E8-4771-B805-1035B22734E5">Integer Vector Classes</a>, and 
+        <a href="GUID-E963EC28-6796-4F92-9A83-E6E509B50A38.htm#GUID-E963EC28-6796-4F92-9A83-E6E509B50A38">Floating-point Vector Classes</a>. 
+      </p>
+ 
+      <p><strong>Clear MMX Registers</strong> 
+      </p>
+ 
+      <p>If you use both the 
+        <span class="keyword">Ivec</span> and 
+        <span class="keyword">Fvec</span> classes at the same time, your program could mix MMX instructions, called by 
+        <span class="keyword">Ivec</span> classes, with Intel x87 architecture floating-point instructions, called by 
+        <span class="keyword">Fvec</span> classes. Floating-point instructions exist in the following 
+        <span class="keyword">Fvec</span> functions: 
+      </p>
+ 
+      <ul type="disc" id="GUID-911CE3A1-C218-41D0-9069-6D8E0BFE1DE5"> 
+        <li> 
+          <p><span class="keyword">fvec</span> constructors 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>debug functions (<span class="keyword">cout</span> and element access) 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p><span class="keyword">rsqrt_nr</span> 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>MMX registers are aliased on the floating-point registers, so you should clear the MMX state with the EMMS instruction intrinsic before issuing an x87 floating-point instruction, as in the following example. 
+        </p>
+ 
+      </div> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C32ECF1C-C42D-4C93-92C7-DCED9950D03C" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%"> 
+                <p><samp class="codeph">ivecA = ivecA &amp; ivecB;</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%"> 
+                <p>Ivec logical operation that uses MMX instructions 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%"> 
+                <p><samp class="codeph">empty ();</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%"> 
+                <p>clear state 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%"> 
+                <p><samp class="codeph">cout &lt;&lt; f32vec4a;</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="50%"> 
+                <p>F32vec4 operation that uses x87 floating-point instructions 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Caution</h3> 
+        <p>Failure to clear the MMX registers can result in incorrect execution or poor performance due to an incorrect register state. 
+        </p>
+ 
+      </div> 
+      <p><strong>Follow EMMS Instruction Guidelines</strong> 
+      </p>
+ 
+      <p>Intel strongly recommends that you follow the guidelines for using the EMMS instruction. Refer to this topic before coding with the 
+        <span class="keyword">Ivec</span> classes. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D91FE4A8-A3A6-4000-B33E-E8D007FCC671.htm">Introduction to the Class Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

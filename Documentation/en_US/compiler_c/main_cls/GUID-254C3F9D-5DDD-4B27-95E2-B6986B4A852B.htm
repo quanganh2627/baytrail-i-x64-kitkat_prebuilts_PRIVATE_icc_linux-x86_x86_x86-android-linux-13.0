@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_prefetch_i32[ext]gather_ps/ _mm512_mask_prefetch_i32[ext]gather_ps">
+<meta name="abstract" content="Gather prefetch float32 vector with int32 indices. Corresponding instructions are VGATHERPF0DPS and VGATHERPF1DPS. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Gather prefetch float32 vector with int32 indices. Corresponding instructions are VGATHERPF0DPS and VGATHERPF1DPS. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_prefetch_i32gather_ps, _mm512_prefetch_i32extgather_ps, _mm512_mask_prefetch_i32gather_ps, _mm512_mask_prefetch_i32extgather_ps">
+<meta name="keywords" content="_mm512_prefetch_i32gather_ps, _mm512_prefetch_i32extgather_ps, _mm512_mask_prefetch_i32gather_ps, _mm512_mask_prefetch_i32extgather_ps">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-254C3F9D-5DDD-4B27-95E2-B6986B4A852B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_prefetch_i32[ext]gather_ps/ _mm512_mask_prefetch_i32[ext]gather_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_prefetch_i32extgather_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-254C3F9D-5DDD-4B27-95E2-B6986B4A852B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_prefetch_i32[ext]gather_ps/ _mm512_mask_prefetch_i32[ext]gather_ps</h1>
+<!--Gather prefetch float32 vector with int32 indices. Corresponding instructions are  VGATHERPF0DPS  and   VGATHERPF1DPS .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Gather prefetch float32 vector with int32 indices. Corresponding instructions are <samp class="codeph">VGATHERPF0DPS</samp> and  <samp class="codeph">VGATHERPF1DPS</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-0C598C6C-C717-4A0F-986B-EE33765A90DB"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern void __cdecl _mm512_prefetch_i32extgather_ps(__m512i index, void const* mv, _MM_UPCONV_PS_ENUM conv, int scale, int pf_hint);</span></p><p><span class="kwd"> extern void __cdecl _mm512_prefetch_i32gather_ps(__m512i index, void const* mv, int scale, int pf_hint);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern void __cdecl _mm512_mask_prefetch_i32extgather_ps(__m512i index, __mmask16 k1, void const* mv, _MM_UPCONV_PS_ENUM conv, int scale, int pf_hint);</span></p><p><span class="kwd">extern void __cdecl _mm512_mask_prefetch_i32gather_ps(__m512i index, __mmask16 k1, void const* mv, int scale, int pf_hint);</span></p></td></tr></table></div>
+
+<div class="section" id="GUID-620F7CCA-B875-4C74-A2D9-F6E873C0EBFE"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder">Writemask; Only those elements of the source memory with corresponding bit set to '<span>1</span>' in the <samp class="codeph">k1</samp> writemask are prefetched.</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>index</var></p></td>
+
+<td valign="top" class="noborder">int32 vector containing indices in memory 
+<samp class="codeph">mv</samp>. Only the lower eight elements are used as indices. The upper eight elements are not used.</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>mv</var></p></td>
+
+<td valign="top" class="noborder"><p>Pointer to base address in memory 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>conv</var></p></td>
+
+<td valign="top" class="noborder"><p>Type of upconversion, which can be one of the following: 
+    <a name="d89e394"><!-- --></a><ul type="disc" id="d89e394"> 
+      <li><samp class="codeph">_MM_UPCONV_PS_NONE</samp> - no conversion 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_PS_FLOAT16</samp> - sint8 =&gt; float32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_PS_UINT8</samp> - uint8 =&gt; float32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_PS_SINT8</samp> - sint8 =&gt; float32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_PS_UINT16</samp> - uint16 =&gt; float32 
+      </li>
+ 
+      <li><samp class="codeph">_MM_UPCONV_PS_SINT16</samp> - sint16 =&gt; float32 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>scale</var></p></td>
+
+<td valign="top" class="noborder"><p>Scaling factor for calculating address of elements. Takes following values: 1, 2, 4, and 8. The address of the 
+      <var>i</var>-th element in memory is calculated as: 
+      <samp class="codeph">mv + index[<var>i</var>] * scale</samp> 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>pf_hint</var></p></td>
+
+<td valign="top" class="noborder"><p>Prefetch hint. Takes one of the following values: 
+    <a name="d89e775"><!-- --></a><ul type="disc" id="d89e775"> 
+      <li><samp class="codeph">_MM_HINT_T0</samp> – prefetch into L1 with T0 hint 
+      </li>
+ 
+      <li><samp class="codeph">_MM_HINT_T1</samp> – prefetch into L2 with T1 hint 
+      </li>
+ 
+      <li><samp class="codeph">_MM_HINT_T2</samp> – prefetch into L2 with T1 and non-temporal hints 
+      </li>
+ 
+      <li><samp class="codeph">_MM_HINT_NTA</samp> – prefetch into L1 with T0 and non-temporal hints 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+
+
+</table>
+</div>
+<div class="section" id="GUID-D7FBAC0F-1A7D-4973-8DE6-0765C186D0B4"><h2>Description</h2>
+<p>A set of 16 memory locations, to which base address <samp class="codeph">mv</samp> and int32 index vector <samp class="codeph">index</samp>  with scale <var>scale</var> point, are prefetched from memory to L1 or L2 level of cache, depending on the <var>pf_hint</var> parameter.</p>
+<p>The non-masked variant of the intrinsic is equivalent to the masked variant with full mask (<samp class="codeph">k1</samp>=<span>0xffff</span>).</p>
+<p>You can use the simplified versions of this intrinsic, without <samp class="codeph">ext</samp> in the name, if no up-conversion is required.</p>
+
+</div>
+<div class="section" id="GUID-E33889BB-B129-4261-87C0-D030FC8C94EA"><h2>Returns</h2><p>None.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B8C3B7BF-05B6-4B3C-9E07-7707B96CEB1C.htm">Gather and Scatter Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

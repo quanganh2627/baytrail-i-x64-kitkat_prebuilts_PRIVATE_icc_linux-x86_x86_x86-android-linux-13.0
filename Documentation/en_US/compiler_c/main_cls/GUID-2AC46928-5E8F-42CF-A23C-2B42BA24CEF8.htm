@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Setting Environment Variables on the CPU to Modify the Coprocessor's Execution Environment">
+<meta name="DC.subject" content="environment variables, using to control coprocessor's environment">
+<meta name="keywords" content="environment variables, using to control coprocessor's environment">
+<meta name="DC.Relation" scheme="URI" content="GUID-F86235AD-B920-4729-A50B-CD7D198AF7DF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C4F1EB9B-55AE-4F8B-8237-53E09A936BF2.htm#GUID-C4F1EB9B-55AE-4F8B-8237-53E09A936BF2">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Setting Environment Variables on the CPU to Modify the Coprocessor's Execution Environment</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_setting_env_via_envvars"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Setting Environment Variables on the CPU to Modify the Coprocessor's Execution Environment</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>By default, all environment variables defined in the environment of an executing CPU program are replicated to the coprocessor's execution environment when an offload occurs. You can modify this behavior by defining the environment variable 
+		<span class="keyword">MIC_ENV_PREFIX</span>. When you set 
+		<span class="keyword">MIC_ENV_PREFIX</span> to a specific prefix, then not all CPU environment variables are replicated to the coprocessor, but only those environment variables that begin with the value of the 
+		<span class="keyword">MIC_ENV_PREFIX</span> environment variable. The environment variables set on the coprocessor have the prefix value removed. You thus have independent control of OpenMP*<span>, Intel&reg; Cilk&#8482; Plus,</span> and other execution environments that use common environment variable names. 
+	 </p>
+ 
+	 <div class="section" id="GUID-71CD91BD-01D3-4116-9A9E-2DCBA7D61D99"><h2 class="sectiontitle">Setting Multiple Environment Variables on All Coprocessors</h2> 
+		 
+		<p>You can send multiple variables, each with its own value to all coprocessors. 
+		</p>
+ 
+		<p>To do so, use the following form: 
+		</p>
+ 
+		<p> 
+		  <samp class="codeph"><var>mic_prefix</var>_VAR=<var>variable1</var>=<var>value1</var>|<var>variable2</var>=<var>value2</var>|<var>variable3</var>=<var>value3</var>|...</samp> 
+		</p>
+ 
+		<p>Where 
+		  <samp class="codeph"><var>variableN</var></samp> is the variable, and 
+		  <samp class="codeph"><var>valueN</var> 
+		  </samp> is its value. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-C6CB8CAA-16AC-4057-96D8-FE227D6BE7E0"><h2 class="sectiontitle">Specifying a Particular Coprocessor</h2> 
+		 
+		<p>You can specify a particular coprocessor, which is useful when you have multiple coprocessors installed. 
+		</p>
+ 
+		<p>To do so, use the following form: 
+		</p>
+ 
+		<p> 
+		  <samp class="codeph"><var>mic_prefix</var>_<var>card_number</var>_<var>var</var>=<var>value</var></samp> 
+		</p>
+ 
+		<p>Where the value of 
+		  <samp class="codeph"><var>card_number</var></samp> is 0 for the first device, 1 for the second, and so on. 
+		</p>
+ 
+		<p>Similarly, when setting multiple environment variables, specify a particular coprocessor, using 
+		  <samp class="codeph"><var>card_number</var></samp>. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="example" id="EXAMPLE_6ECCE099AA424E3F9DD0199C4D099DB6"><a name="EXAMPLE_6ECCE099AA424E3F9DD0199C4D099DB6"><!-- --></a><h2 class="sectiontitle">Example: Setting a Single Environment Variables on All Coprocessors</h2> 
+		 
+		<p>The following environment variable definitions set 
+		  <span class="keyword">OMP_NUM_THREADS</span> on both the CPU and all installed coprocessors, but with different values. 
+		</p>
+ 
+		<pre><span>MIC_ENV_PREFIX=MIC
+OMP_NUM_THREADS=8
+MIC_OMP_NUM_THREADS=124</span></pre> 
+	 </div>
+ 
+	 <div class="example" id="EXAMPLE_8BE14CDE537C47A79C69E4C5291C24FF"><a name="EXAMPLE_8BE14CDE537C47A79C69E4C5291C24FF"><!-- --></a><h2 class="sectiontitle">Example: Setting Multiple Environment Variables on All Coprocessors</h2> 
+		 
+		<p>The following environment variable definition sets 
+		  <samp class="codeph">X=x</samp> and 
+		  <samp class="codeph">Y=y</samp> on all coprocessors. 
+		</p>
+ 
+		<pre><span>MIC_ENV_PREFIX=MIC
+MIC_VAR X=x|Y=y</span></pre> 
+	 </div>
+ 
+	 <div class="example" id="EXAMPLE_73869DC2BA5B4869B4F10F0902A0978D"><a name="EXAMPLE_73869DC2BA5B4869B4F10F0902A0978D"><!-- --></a><h2 class="sectiontitle">Example: Setting a Single Environment Variables on a Particular Coprocessor</h2> 
+		 
+		<p>The following environment variable definitions set 
+		  <span class="keyword">OMP_NUM_THREADS</span> on both the CPU and the fifth coprocessor installed, but with different values. 
+		</p>
+ 
+		<pre><span>MIC_ENV_PREFIX=MIC
+OMP_NUM_THREADS=8
+MIC_4_OMP_NUM_THREADS=124</span></pre> 
+	 </div>
+ 
+	 <div class="example" id="EXAMPLE_55A66BE342524117B633AA4E9C7D8CF6"><a name="EXAMPLE_55A66BE342524117B633AA4E9C7D8CF6"><!-- --></a><h2 class="sectiontitle">Example: Setting Multiple Environment Variables on a Particular Coprocessor</h2> 
+		 
+		<p>The following environment variable definition sets 
+		  <samp class="codeph">X=x</samp> and 
+		  <samp class="codeph">Y=y</samp> on the fifth coprocessor installed. 
+		</p>
+ 
+		<pre><span>MIC_ENV_PREFIX=MIC
+MIC_4_VAR X=x|Y=y</span></pre> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F86235AD-B920-4729-A50B-CD7D198AF7DF.htm">Controlling the Coprocessor's Execution Environment</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-C4F1EB9B-55AE-4F8B-8237-53E09A936BF2.htm#GUID-C4F1EB9B-55AE-4F8B-8237-53E09A936BF2">Calling Functions on the CPU to Modify the Coprocessor's Execution Environment 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

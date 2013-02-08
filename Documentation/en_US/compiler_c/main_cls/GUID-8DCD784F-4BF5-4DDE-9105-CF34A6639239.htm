@@ -1,0 +1,1229 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="test prioritization Tool">
+<meta name="DC.subject" content="-prof-gen:srcpos compiler option, test priorization tool, .dpi file, .dyn file, .spi file, /Qprof-gen:srcpos compiler option, CPU time, DPI lists, PGO tools, test prioritization tool, application tests, explicit-shape arrays, .dpi, .dyn, .spi, pgopti.spi file, prioritizing application tests, examples, options, requirements, tool options, test prioritization">
+<meta name="keywords" content="-prof-gen:srcpos compiler option, test priorization tool, .dpi file, .dyn file, .spi file, /Qprof-gen:srcpos compiler option, CPU time, DPI lists, PGO tools, test prioritization tool, application tests, explicit-shape arrays, .dpi, .dyn, .spi, pgopti.spi file, prioritizing application tests, examples, options, requirements, tool options, test prioritization">
+<meta name="DC.Relation" scheme="URI" content="GUID-4805E249-9CAF-4C51-870E-EFBEC81A4D13.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>test prioritization Tool</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pgo_prior"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pgo_prior"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">test prioritization Tool</h1>
+ 
+   
+  <div> 
+    <p>The test prioritization tool, also known as the tselect tool, enables the profile-guided optimizations on all supported Intel&reg; architectures, on Linux*, Windows*, and OS X* operating systems, to select and prioritize tests for an application based on prior execution profiles. 
+    </p>
+ 
+    <p>The tool offers a potential of significant time saving in testing and developing large-scale applications where testing is the major bottleneck. 
+    </p>
+ 
+    <p>Development often requires changing applications modules. As applications change, developers can have a difficult time retaining the quality of their functional and performance tests so they are current and on-target. The test prioritization tool lets software developers select and prioritize application tests as application profiles change. 
+    </p>
+ 
+    <p>The information about the tool is separated into the following sections: 
+    </p>
+ 
+    <ul type="disc" id="GUID-DF5C19BA-B4FB-4E37-98FC-1354016CF541"> 
+      <li> 
+        <p><a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#BENS1">Features and benefits</a> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#UREQ">Requirements and syntax</a> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#MODEL">Usage model</a> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#OPTS">Tool options</a> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#RUNNING">Running the tool</a> 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <div class="section" id="BENS1"><a name="BENS1"><!-- --></a><h2 class="sectiontitle">Features and Benefits</h2> 
+       
+      <p>The test prioritization tool provides an effective testing hierarchy based on the code coverage for an application. The following list summarizes the advantages of using the tool: 
+      </p>
+ 
+      <ul type="disc" id="GUID-A2615BCF-3379-4594-90A0-0AAA10EDCD02"> 
+        <li> 
+          <p>Minimizing the number of tests that are required to achieve a given overall coverage for any subset of the application: the tool defines the smallest subset of the application tests that achieve exactly the same code coverage as the entire set of tests. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Reducing the turn-around time of testing: instead of spending a long time on finding a possibly large number of failures, the tool enables the users to quickly find a small number of tests that expose the defects associated with the regressions caused by a change set. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Selecting and prioritizing the tests to achieve certain level of code coverage in a minimal time based on the data of the tests' execution time. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>See Understanding Profile-guided Optimization and 
+        <a href="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F.htm#GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F">Profile an Application</a> for general information on creating the files needed to run this tool. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="UREQ"><a name="UREQ"><!-- --></a><h2 class="sectiontitle">test prioritization Tool Requirements</h2> 
+       
+      <p>The test prioritization tool needs the following items to work: 
+      </p>
+ 
+      <ul type="disc" id="GUID-A02EF38B-780F-4908-A5A4-E377384FAAEC"> 
+        <li> 
+          <p>The .spi file generated by Intel&reg; compilers when compiling the application for the instrumented binaries with the 
+      <span class="option">-prof-gen=srcpos</span> (Linux* and OS X*) or 
+      <span class="option">/Qprof-gen:srcpos</span> (Windows*) option. 
+      </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The .dpi files generated by the 
+          <a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> tool as a result of merging the dynamic profile information .dyn files of each of the application tests. (Run the profmerge tool on all .dyn files that are generated for each individual test and name the resulting .dpi in a fashion that uniquely identifies the test.) 
+        </p>
+ 
+      </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Caution</h3> 
+      <p>The profmerge tool merges all .dyn files that exist in the given directory. Make sure unrelated .dyn files, which may remain from unrelated runs, are not present. Otherwise, the profile information will be skewed with invalid profile data, which can result in misleading coverage information and adverse performance of the optimized code; 
+      </p>
+ 
+    </div> 
+    <ul type="disc" id="GUID-C4758782-2512-434E-BCF0-7F41704133E8"> 
+      <li> 
+        <p>User-generated file containing the list of tests to be prioritized. For successful instrumented code run, you should: 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <ul type="disc" id="GUID-E9C10BA1-AAF7-4F1B-BD48-6C25B8D5BF12"> 
+      <li> 
+        <p>Name each test .dpi file so the file names uniquely identify each test. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Create a .dpi list file, which is a text file that contains the names of all .dpi test files. 
+        </p>
+ 
+        <p><br>Each line of the .dpi list file should include one, and only one .dpi file name. The name can optionally be followed by the duration of the execution time for a corresponding test in the dd:hh:mm:ss format. 
+        </p>
+ 
+        <p><br>For example: 
+          <samp class="codeph">Test1.dpi 00:00:60:35</samp> states that Test1 lasted 0 days, 0 hours, 60 minutes and 35 seconds. 
+        </p>
+ 
+        <p><br>The execution time is optional. However, if it is not provided, then the tool will not prioritize the test for minimizing execution time. It will prioritize to minimize the number of tests only. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>The tool uses the following general syntax: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4E29F7D9-7904-4877-8BFB-122DC99A5A16" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e302"> 
+              <p>Tool Syntax 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e302 "> 
+              <p><samp class="codeph">tselect -dpi_list</samp> 
+                <var>file</var> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p><span class="option">-dpi_list</span> is a required 
+  <a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#OPTS">tool option</a> that sets the path to the list file containing the list of the all .dpi files. All other tool commands are optional. 
+  </p>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+    <p>Windows* only: Unlike the compiler options, which are preceded by forward slash ("/"), the tool options are preceded by a hyphen ("-"). 
+    </p>
+ 
+  </div> 
+  <div class="section" id="MODEL"><a name="MODEL"><!-- --></a><h2 class="sectiontitle">Usage Model</h2> 
+     
+    <p>The following figure illustrates a typical test prioritization tool usage model. 
+    </p>
+ 
+    <div class="fignone" id="TEST_PRIOR_FLOWCHART"><a name="TEST_PRIOR_FLOWCHART"><!-- --></a><br><img src="GUID-39CDD4B4-31E9-414F-AF93-4FAA3E70C2FC-low.gif"><br> 
+    </div>
+ 
+  </div>
+ 
+  <div class="section" id="OPTS"><a name="OPTS"><!-- --></a><h2 class="sectiontitle">test prioritization tool Options</h2> 
+     
+    <p>The tool uses the options that are listed in the following table: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B617B75F-854B-494B-93B8-FAC24932C4D8" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e376"> 
+              <p>Option 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e382"> 
+              <p>Default 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e388"> 
+              <p>Description 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+</thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-help</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Prints tool option descriptions. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-dpi_list</span> 
+              <var>file</var> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Required. Specifies the file name of the file that contains the names of the dynamic profile information (<span class="filepath">.dpi</span>) files. Each line of the file must contain only one 
+                <span class="filepath">.dpi</span> file name, which can be optionally followed by its execution time. The name must uniquely identify the test. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-spi</span> 
+              <var>file</var> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p><span class="filepath">pgopti.spi</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Specifies the file name of the static profile information file (.SPI). 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-o</span> 
+              <var>file</var> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Specifies the file name of the output report file. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-comp</span> 
+              <var>file</var> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Specifies the file name that contains the list of files of interest. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-cutoff</span> 
+              <var>file</var> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Instructs the tool to terminate when the cumulative block coverage reaches a preset percentage, as specified by 
+                <samp class="codeph">value</samp>, of pre-computed total coverage. 
+                <samp class="codeph">value</samp> must be greater than 0.0 (for example, 99.00) but not greater than 100. 
+                <samp class="codeph">value</samp> can be set to 100. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-nototal</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Instructs the tool to ignore the pre-compute total coverage process. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-mintime</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Instructs the tool to minimize testing execution time. The execution time of each test must be provided on the same line of 
+                <span class="filepath">dpi_list</span> file, after the test name in dd:hh:mm:ss format. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-srcbasedir</span> 
+              <var>dir</var> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Specifies a different top level project directory than was used during compiler instrumentation run with the 
+              <span class="option">prof-src-root</span> compiler option to support relative paths to source files in place of absolute paths. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e376 "> 
+              <p><span class="option">-verbose</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e382 "> 
+              <p> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" headers="d481616e388 "> 
+              <p>Instructs the tool to generate more logging information about program progress. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  <div class="section" id="RUNNING"><a name="RUNNING"><!-- --></a><h2 class="sectiontitle">Running the tool</h2> 
+     
+    <p>The following steps demonstrate one simple example for running the tool on IA-32 architectures. 
+    </p>
+ 
+    <ol id="GUID-A103FDF2-2211-4122-99BA-630158BC1D77"> 
+      <li> 
+        <p>Specify the directory by entering a command similar to the following:<br> 
+        </p>
+ 
+        
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D6D749F9-D849-431B-8B32-24A826DB0F67" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+            <thead align="left"> 
+              <tr valign="top"> 
+                <th class="cellrowborder" align="left" valign="top" id="d481616e699"> 
+                  <p>Example 
+                  </p>
+ 
+                </th>
+ 
+              </tr>
+ 
+            </thead>
+ 
+            <tbody> 
+              <tr valign="top"> 
+                <td class="cellrowborder" valign="top" headers="d481616e699 "> 
+                  <p><samp class="codeph">set prof-dir=c:\myApp\prof-dir</samp> 
+                  </p>
+ 
+                </td>
+ 
+              </tr>
+ 
+            </tbody>
+ 
+          </table>
+</div>
+ 
+      </li>
+ 
+      <li> 
+        <p>Compile the program and generate instrumented binary by issuing commands similar to the following: 
+        </p>
+ 
+        
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E052DCD4-4C6C-47F0-B6CE-E8016E48D48E" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+            <thead align="left"> 
+              <tr valign="top"> 
+                <th class="cellrowborder" align="left" valign="top" id="d481616e739"> 
+                  <p>Operating System 
+                  </p>
+ 
+                </th>
+ 
+                <th class="cellrowborder" align="left" valign="top" id="d481616e745"> 
+                  <p>Command 
+                  </p>
+ 
+                </th>
+ 
+              </tr>
+ 
+            </thead>
+ 
+            <tbody> 
+              <tr valign="top"> 
+                <td class="cellrowborder" valign="top" headers="d481616e739 "> 
+                  <p>Linux and OS X 
+                  </p>
+ 
+                </td>
+ 
+                <td class="cellrowborder" valign="top" headers="d481616e745 "> 
+                  <p><samp class="codeph">icpc -prof-gen=srcpos myApp.cpp</samp> 
+                  </p>
+ 
+                </td>
+ 
+              </tr>
+ 
+              <tr valign="top"> 
+                <td class="cellrowborder" valign="top" headers="d481616e739 "> 
+                  <p>Windows 
+                  </p>
+ 
+                </td>
+ 
+                <td class="cellrowborder" valign="top" headers="d481616e745 "> 
+                  <p><samp class="codeph">icl /Qprof-gen:srcpos myApp.cpp</samp> 
+                  </p>
+ 
+                </td>
+ 
+              </tr>
+ 
+            </tbody>
+ 
+          </table>
+</div>
+ 
+        <p>This commands shown above compiles the program and generates instrumented binary 
+          <samp class="codeph">myApp</samp> as well as the corresponding static profile information 
+          <span class="filepath">pgopti.spi</span>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Make sure that unrelated 
+          <span class="filepath">.dyn</span> files are not present by issuing a command similar to the following: 
+        </p>
+ 
+        
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-573A47A3-EDAD-457B-BAE8-7310C888994A" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+            <thead align="left"> 
+              <tr valign="top"> 
+                <th class="cellrowborder" align="left" valign="top" id="d481616e819"> 
+                  <p>Example 
+                  </p>
+ 
+                </th>
+ 
+              </tr>
+ 
+            </thead>
+ 
+            <tbody> 
+              <tr valign="top"> 
+                <td class="cellrowborder" valign="top" headers="d481616e819 "> 
+                  <p><samp class="codeph">rm prof-dir \*.dyn</samp> 
+                  </p>
+ 
+                </td>
+ 
+              </tr>
+ 
+            </tbody>
+ 
+          </table>
+</div>
+ 
+      </li>
+ 
+      <li> 
+        <p>Run the instrumented files by issuing a command similar to the following: 
+        </p>
+ 
+        
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E50415D3-D1ED-451B-8659-C135EDB3F1F3" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+            <thead align="left"> 
+              <tr valign="top"> 
+                <th class="cellrowborder" align="left" valign="top" id="d481616e858"> 
+                  <p>Example 
+                  </p>
+ 
+                </th>
+ 
+              </tr>
+ 
+            </thead>
+ 
+            <tbody> 
+              <tr valign="top"> 
+                <td class="cellrowborder" valign="top" headers="d481616e858 "> 
+                  <p><samp class="codeph">myApp &lt; data1</samp> 
+                  </p>
+ 
+                </td>
+ 
+              </tr>
+ 
+            </tbody>
+ 
+          </table>
+</div>
+ 
+        <p>The command runs the instrumented application and generates one or more new dynamic profile information files that have an extension 
+          <span class="filepath">.dyn</span> in the directory specified by the 
+    <span class="option">-prof-dir</span> step above. 
+    </p>
+ 
+    </li>
+ 
+    <li> 
+      <p>Merge all 
+        <span class="filepath">.dyn</span> file into a single file by issuing a command similar to the following: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-423F7476-40C1-4A49-88FF-9668F47E5C37" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d481616e909"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d481616e909 "> 
+                <p><samp class="codeph">profmerge -prof_dpi Test1.dpi</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The 
+        <a href="GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF.htm#GUID-9E804DFC-FA37-402C-BD54-856965D1A8BF">profmerge and proforder Tools</a> merges all the .dyn files into one file (<span class="filepath">Test1.dpi</span>) that represents the total profile information of the application on Test1. 
+      </p>
+ 
+    </li>
+ 
+    <li> 
+      <p>Again make sure there are no unrelated .dyn files present a second time by issuing a command similar to the following: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-47C5381B-70BD-404E-AA26-80145948F28E" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d481616e959"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d481616e959 "> 
+                <p><samp class="codeph">rm prof-dir \*.dyn</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </li>
+ 
+    <li> 
+      <p>Run the instrumented application and generate one or more new dynamic profile information files that have an extension .dyn in the directory specified the 
+        <samp class="codeph">prof-dir</samp> step above by issuing a command similar to the following: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-197EBD55-8B06-4B6A-8BFF-BCF427B9C969" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d481616e1001"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d481616e1001 "> 
+                <p><samp class="codeph">myApp &lt; data2</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </li>
+ 
+    <li> 
+      <p>Merge all .dyn files into a single file, by issuing a command similar to the following 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B4172DAD-DDEC-4DDB-8338-91986B255BD0" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d481616e1039"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d481616e1039 "> 
+                <p><samp class="codeph">profmerge -prof_dpi Test2.dpi</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>At this step, the profmerge tool merges all the .dyn files into one file (<span class="filepath">Test2.dpi</span>) that represents the total profile information of the application on Test2. 
+      </p>
+ 
+    </li>
+ 
+    <li> 
+      <p>Make sure that there are no unrelated .dyn files present for the final time, by issuing a command similar to the following: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0F6888B1-D76F-4616-91CA-6941C5DCD8DE" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d481616e1084"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d481616e1084 "> 
+                <p><samp class="codeph">rm prof-dir \*.dyn</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </li>
+ 
+    <li> 
+      <p>Run the instrumented application and generates one or more new dynamic profile information files that have an extension .dyn in the directory specified by 
+    <span class="option">-prof-dir</span> by issuing a command similar to the following: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-52F85D44-CD12-4921-970D-56F09D58050F" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1126"> 
+              <p>Example 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1126 "> 
+              <p><samp class="codeph">myApp &lt; data3</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    </li>
+ 
+    <li> 
+      <p>Merge all .dyn file into a single file, by issuing a command similar to the following: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B1E567D7-36A6-467A-8D55-7C6784C04DA2" width="90%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d481616e1165"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d481616e1165 "> 
+                <p><samp class="codeph">profmerge -prof_dpi Test3.dpi</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>At this step, the profmerge tool merges all the .dyn files into one file (<span class="filepath">Test3.dpi</span>) that represents the total profile information of the application on Test3. 
+      </p>
+ 
+    </li>
+ 
+    <li> 
+      <p>Create a file named 
+        <span class="filepath">tests_list</span> with three lines. The first line contains 
+        <span class="filepath">Test1.dpi</span>, the second line contains 
+        <span class="filepath">Test2.dpi</span>, and the third line contains 
+        <span class="filepath">Test3.dpi</span>. 
+      </p>
+ 
+    </li>
+ 
+    </ol>
+ 
+    <p><strong>Tool Usage Examples</strong> 
+    </p>
+ 
+    <p>When these items are available, the test prioritization tool may be launched from the command line in 
+      <samp class="codeph">prof-dir</samp> directory as described in the following examples. 
+    </p>
+ 
+  </div>
+ 
+  <div class="section" id="CASE1"><a name="CASE1"><!-- --></a><h2 class="sectiontitle">Example 1: Minimizing the Number of Tests</h2> 
+     
+    <p>The following example describes how minimize the number of test runs. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-65CCAACC-289F-4848-B46B-C206BEC1CF97" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1246"> 
+              <p>Example Syntax 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1246 "> 
+              <p><samp class="codeph">tselect -dpi_list tests_list -spi pgopti.spi</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>where the 
+      <a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#OPTS"><span class="option">-spi</span> option</a> specifies the path to the .spi file. 
+    </p>
+ 
+    <p>The following sample output shows typical results. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2D1488A8-285A-4A01-9804-D1AEA77704DD" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1292"> 
+              <p>Sample Output 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1292 "> 
+              <pre>Total number of tests   =  3</pre> 
+              <pre>Total block coverage    ~  52.17</pre> 
+              <pre>Total function coverage ~  50.00</pre> 
+              <pre> num  %RatCvrg  %BlkCvrg  %FncCvrg  Test Name @ Options</pre> 
+              <pre> ---  --------  --------  --------  -------------------</pre> 
+              <pre>   1   87.50     45.65     37.50    Test3.dpi</pre> 
+              <pre>   2   100.50    52.17     50.00    Test2.dpi</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>In this example, the results provide the following information: 
+    </p>
+ 
+    <ul type="disc" id="GUID-3C960FA0-3ED9-4FFF-8957-F0A58534BE19"> 
+      <li> 
+        <p>By running all three tests, we achieve 52.17% block coverage and 50.00% function coverage. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Test3 by itself covers 45.65% of the basic blocks of the application, which is 87.50% of the total block coverage that can be achieved from all three tests. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>By adding Test2, we achieve a cumulative block coverage of 52.17% or 100% of the total block coverage of Test1, Test2, and Test3. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Elimination of Test1 has no negative impact on the total block coverage. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+  </div>
+ 
+  <div class="section" id="EX2"><a name="EX2"><!-- --></a><h2 class="sectiontitle">Example 2: Minimizing Execution Time</h2> 
+     
+    <p>Suppose we have the following execution time of each test in the 
+      <span class="keyword">tests_list</span> file: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-702B1969-C6A9-4BCE-95AB-73884B0D2EA0" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1384"> 
+              <p>Sample Output 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1384 "> 
+              <pre>Test1.dpi 00:00:60:35</pre> 
+              <pre>Test2.dpi 00:00:10:15</pre> 
+              <pre>Test3.dpi 00:00:30:45</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>The following command minimizes the execution time by passing the 
+    <span class="option">-mintime</span> option: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F12B9003-C3D0-4842-8A0B-CBA662A426F8" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1427"> 
+              <p>Sample Syntax 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1427 "> 
+              <p><samp class="codeph">tselect -dpi_list tests_list -spi pgopti.spi -mintime</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>The following sample output shows possible results: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B4EFC5F0-FBD1-4617-9A34-6CD455282D5A" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1464"> 
+              <p>Sample Output 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1464 "> 
+              <pre>Total number of tests   =  3</pre> 
+              <pre>Total block coverage    ~  52.17</pre> 
+              <pre>Total function coverage ~  50.00</pre> 
+              <pre>Total execution time    =  1:41:35</pre> 
+              <pre> num  elaspedTime  %RatCvrg  %BlkCvrg  %FncCvrg  Test Name @ Options</pre> 
+              <pre> ---  -----------  --------  --------  --------  -------------------</pre> 
+              <pre>   1   10:15        75.00     39.13     25.00    Test2.dpi</pre> 
+              <pre>   2   41:00        100.00    52.17     50.00    Test3.dpi</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>In this case, the results indicate that the running all tests sequentially would require one hour, 45 minutes, and 35 seconds, while the selected tests would achieve the same total block coverage in only 41 minutes. 
+    </p>
+ 
+    <p>The order of tests is based on minimizing time (first Test2, then Test3) could be different than when prioritization is done based on minimizing the number of tests. See 
+      <a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#CASE1">Example 1</a> shown above: first Test3, then Test2. In Example 2, Test2 is the test that gives the highest coverage per execution time, so Test2 is picked as the first test to run. 
+    </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-6EDE1A6F-7855-4DCD-812A-AD27A3C8674F"><h2 class="sectiontitle">Using Other Options</h2> 
+     
+    <p>The 
+      <a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#OPTS"><span class="option">-cutoff</span> option</a> enables the tool to exit when it reaches a given level of basic block coverage. The following example demonstrates how to the option: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5E49C749-BFD4-4464-83F6-DD8CC7157549" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d481616e1542"> 
+              <p>Example 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d481616e1542 "> 
+              <p><samp class="codeph">tselect -dpi_list tests_list -spi pgopti.spi -cutoff 85.00</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>If the tool is run with the cutoff value of 85.00, as in the above example, only Test3 will be selected, as it achieves 45.65% block coverage, which corresponds to 87.50% of the total block coverage that is reached from all three tests. 
+    </p>
+ 
+    <p>The tool does an initial merging of all the profile information to figure out the total coverage that is obtained by running all the tests. The 
+      <a href="GUID-8DCD784F-4BF5-4DDE-9105-CF34A6639239.htm#OPTS"><span class="option">-nototal</span> option</a> enables you to skip this step. In such a case, only the absolute coverage information will be reported, as the overall coverage remains unknown. 
+    </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-4805E249-9CAF-4C51-870E-EFBEC81A4D13.htm">Tools</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

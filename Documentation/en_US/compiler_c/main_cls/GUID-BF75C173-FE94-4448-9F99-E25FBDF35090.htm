@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Programming Example">
+<meta name="DC.subject" content="Classes, programming example">
+<meta name="keywords" content="Classes, programming example">
+<meta name="DC.Relation" scheme="URI" content="GUID-8FAC8E44-EFD8-4A49-95E5-D051DA1C3A05.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BF75C173-FE94-4448-9F99-E25FBDF35090">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Programming Example</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_ex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BF75C173-FE94-4448-9F99-E25FBDF35090">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Programming Example</h1>
+ 
+   
+  <div> 
+    <p>This sample program uses the 
+      <span class="keyword">F32vec4</span> class to average the elements of a 20 element floating point array. 
+    </p>
+ 
+    <pre>//Include Streaming SIMD Extension Class Definitions</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>#include &lt;fvec.h&gt;</pre> 
+    <pre></pre> 
+    <pre>//Shuffle any 2 single precision floating point from a</pre> 
+    <pre>//into low 2 SP FP and shuffle any 2 SP FP from b</pre> 
+    <pre>//into high 2 SP FP of destination</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>#define SHUFFLE(a,b,i) (F32vec4)_mm_shuffle_ps(a,b,i)</pre> 
+    <pre>#include &lt;stdio.h&gt;</pre> 
+    <pre>#define SIZE 20</pre> 
+    <pre></pre> 
+    <pre>//Global variables</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>float result;</pre> 
+    <pre>_MM_ALIGN16 float array[SIZE];</pre> 
+    <pre></pre> 
+    <pre>//*****************************************************</pre> 
+    <pre>// Function: Add20ArrayElements</pre> 
+    <pre>// Add all the elements of a 20 element array</pre> 
+    <pre>//*****************************************************</pre> 
+    <pre></pre> 
+    <pre>void Add20ArrayElements (F32vec4 *array, float *result)</pre> 
+    <pre>{</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;F32vec4 vec0, vec1;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 = _mm_load_ps ((float *) array); // Load array's first 4 floats</pre> 
+    <pre></pre> 
+    <pre>&nbsp;&nbsp;&nbsp;//*****************************************************</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;// Add all elements of the array, 4 elements at a time</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;//******************************************************</pre> 
+    <pre></pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 += array[1]; // Add elements 5-8</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 += array[2]; // Add elements 9-12</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 += array[3]; // Add elements 13-16</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 += array[4]; // Add elements 17-20</pre> 
+    <pre></pre> 
+    <pre>&nbsp;&nbsp;&nbsp;//*****************************************************</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;// There are now 4 partial sums.</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;// Add the 2 lowers to the 2 raises,</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;// then add those 2 results together</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;//*****************************************************</pre> 
+    <pre></pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec1 = SHUFFLE(vec1, vec0, 0x40);</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 += vec1;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec1 = SHUFFLE(vec1, vec0, 0x30);</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 += vec1;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;vec0 = SHUFFLE(vec0, vec0, 2);</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;_mm_store_ss (result, vec0); // Store the final sum</pre> 
+    <pre>}</pre> 
+    <pre></pre> 
+    <pre>void main(int argc, char *argv[])</pre> 
+    <pre>{</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;int i;</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>//Initialize the array
+</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;for (i=0; i &lt; SIZE; i++)</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;{</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i] = (float) i;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;}</pre> 
+    <pre></pre> 
+    <pre>//Call function to add all array elements</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;Add20ArrayElements (array, &amp;result);</pre> 
+    <pre></pre> 
+    <pre>//Print average array element value</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;printf ("Average of all array values = %f\n", result/20.);</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;printf ("The correct answer is %f\n\n\n", 9.5);</pre> 
+    <pre>}</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8FAC8E44-EFD8-4A49-95E5-D051DA1C3A05.htm">Intel C++ Class Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

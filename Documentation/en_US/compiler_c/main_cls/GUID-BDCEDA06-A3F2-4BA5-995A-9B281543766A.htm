@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="pch">
+<meta name="abstract" content="Tells the compiler to use appropriate precompiled header files.">
+<meta name="description" content="Tells the compiler to use appropriate precompiled header files.">
+<meta name="DC.subject" content="-pch compiler option">
+<meta name="keywords" content="-pch compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4.htm#GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4">
+<meta name="DC.Relation" scheme="URI" content="GUID-9E1C426C-3725-4527-8BDC-0E5EC791A525.htm#GUID-9E1C426C-3725-4527-8BDC-0E5EC791A525">
+<meta name="DC.Relation" scheme="URI" content="GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0.htm#GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BDCEDA06-A3F2-4BA5-995A-9B281543766A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>pch</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_pch"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_pch"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BDCEDA06-A3F2-4BA5-995A-9B281543766A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">pch</h1>
+<!--Tells the compiler to use appropriate precompiled header files. --><div><p>Tells the compiler to use appropriate precompiled header files. </p>
+
+<div class="section" id="GUID-95573D20-C90E-4240-9FC3-269CC7DD9810"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Precompiled Headers &gt; Automatic Processing for Precompiled Headers</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Precompiled Headers &gt; Precompile Prefix Header</strong></p>
+</div>
+<div class="section" id="GUID-454172C1-0903-41D7-9ADC-97E5BDDBA23E"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-9871465C-427B-4F7D-B444-672DB8437388"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-pch</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-50F74909-7BAF-4A12-94CE-A7AB6B4A7151"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-86AAFB44-0D15-4BAB-A07F-8C21BD11CA4B"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not create or use precompiled headers unless you tell it to do so.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-5232B4F2-DEC2-4D2A-A6D1-739D70BE2E72"><h2>Description</h2><p>This option tells the compiler to use appropriate precompiled header (PCH) files. If none are available, they are created as <span class="filepath">sourcefile.pchi</span>. This option is supported for multiple source files.</p>
+<p>The <span class="option">-pch</span> option will use PCH files created from other sources if the headers files are the same. For example, if you compile <span class="filepath">source1.cpp</span> using <span class="option">-pch</span>, then <span class="filepath">source1.pchi</span> is created. If you then compile <span class="filepath">source2.cpp</span> using <span class="option">-pch</span>, the compiler will use <span class="filepath">source1.pchi</span> if it detects the same headers.</p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Depending on how you organize the header files listed in your sources, this option may increase compile times. To learn how to optimize compile times using the PCH options, see "Using Precompiled Header Files" in the User's Guide.</p>
+</div></div>
+
+<div class="section" id="GUID-A178BCBD-FFED-4DE3-AE98-7A04934C964A"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_72D47C0D856042A79268A1FCA7392D4F"><a name="EXAMPLE_72D47C0D856042A79268A1FCA7392D4F"><!-- --></a><h2>Example</h2><p>Consider the following command line:</p>
+<pre>icpc -pch source1.cpp source2.cpp</pre><p>It produces the following output when <span class="keyword">.pchi</span> files do not exist:</p>
+<pre>"source1.cpp": creating precompiled header file "source1.pchi"</pre><pre>"source2.cpp": creating precompiled header file "source2.pchi"</pre><p>It produces the following output when <span class="keyword">.pchi</span> files do exist:</p>
+<pre>"source1.cpp": using precompiled header file"source1.pchi"</pre><pre>"source2.cpp": using precompiled header file "source2.pchi"</pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4.htm#GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4"><span class="option">-pch-create</span></a>  compiler option</div>
+<div><a href="GUID-9E1C426C-3725-4527-8BDC-0E5EC791A525.htm#GUID-9E1C426C-3725-4527-8BDC-0E5EC791A525"><span class="option">-pch-dir</span></a>  compiler option</div>
+<div><a href="GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0.htm#GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0"><span class="option">-pch-use</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

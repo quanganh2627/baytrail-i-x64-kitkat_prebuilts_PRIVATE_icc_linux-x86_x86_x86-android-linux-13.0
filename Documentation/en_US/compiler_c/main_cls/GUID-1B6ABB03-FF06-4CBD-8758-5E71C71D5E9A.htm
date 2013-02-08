@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for Arithmetic Operations">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, arithmetic operations, Advanced Vector Extensions, AVX">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, arithmetic operations, Advanced Vector Extensions, AVX">
+<meta name="DC.Relation" scheme="URI" content="GUID-64E5BFBB-FE9E-47CB-82A7-76C2AD57ED9C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A37B748D-CDA4-42A6-8142-106CE1305BCE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-00F2AC54-4B9E-4C98-BFF0-ADE47DF75537.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-17469569-E73D-4F0D-B9C2-33CDA56AB3CE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F1DBCFA6-FCA6-4784-974C-2E387DBF14A8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D1331F9D-5AA9-46C7-BCCD-A6BD7465DD3C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AB84B741-48FC-4DD0-8541-00D76FA3CFFE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-03AE16C3-FD94-459F-B93D-4BBC4972D408.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8880C568-28CA-442B-B51B-BDF4E855E9A2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-18395E89-347D-4EAA-AB7C-B952233CA8FB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D51C1B4C-6824-4DF8-BAC1-F04E3EC6661C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-03CF84E1-ABFC-47B2-BB73-407CBD3B1523.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F70F4F10-AEB9-475E-BE34-78C6D9BAD962.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-13BE1E61-575B-4C20-BA36-CE88A4B5AE11.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BDC7BB75-03B3-470C-BB4E-AC12B4D11C99.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-73A93D6E-B280-4AFD-8D69-EABCF95909D6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8E54F081-9573-4D96-95DF-A7F4AB45FE97.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DBDF2AB1-47D1-41DE-B16A-8BAB63C1250C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C5A0373C-659B-4DB6-BAEF-415DF791135A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-53E87D8F-C75A-42F5-84DD-6BBE98EF7249.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1B6ABB03-FF06-4CBD-8758-5E71C71D5E9A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Arithmetic Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_bk_arithmeticops"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1B6ABB03-FF06-4CBD-8758-5E71C71D5E9A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Arithmetic Operations</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-64E5BFBB-FE9E-47CB-82A7-76C2AD57ED9C.htm">Intrinsics for Intel&reg; Advanced Vector Extensions</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-A37B748D-CDA4-42A6-8142-106CE1305BCE.htm">_mm256_add_pd</a><br>
+Adds float64 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VADDPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-00F2AC54-4B9E-4C98-BFF0-ADE47DF75537.htm">_mm256_add_ps</a><br>
+Adds float32 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VADDPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-17469569-E73D-4F0D-B9C2-33CDA56AB3CE.htm">_mm256_addsub_pd</a><br>
+Adds odd float64 elements and subtracts even float64 elements of vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VADDSUBPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-F1DBCFA6-FCA6-4784-974C-2E387DBF14A8.htm">_mm256_addsub_ps</a><br>
+Adds odd float32 elements and subtracts even float32 elements of vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VADDSUBPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-D1331F9D-5AA9-46C7-BCCD-A6BD7465DD3C.htm">_mm256_hadd_pd</a><br>
+Adds  horizontal pairs of float64 elements of two vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VHADDPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-AB84B741-48FC-4DD0-8541-00D76FA3CFFE.htm">_mm256_hadd_ps</a><br>
+Adds  horizontal pairs of float32 elements of two vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VHADDPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-03AE16C3-FD94-459F-B93D-4BBC4972D408.htm">_mm256_sub_pd</a><br>
+Subtracts float64 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VSUBPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-8880C568-28CA-442B-B51B-BDF4E855E9A2.htm">_mm256_sub_ps</a><br>
+Subtracts float32 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VSUBPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-18395E89-347D-4EAA-AB7C-B952233CA8FB.htm">_mm256_hsub_pd</a><br>
+Subtracts  horizontal pairs of float64 elements of two vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VHSUBPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-D51C1B4C-6824-4DF8-BAC1-F04E3EC6661C.htm">_mm256_hsub_ps</a><br>
+Subtracts  horizontal pairs of float32 elements of two vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VHSUBPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-03CF84E1-ABFC-47B2-BB73-407CBD3B1523.htm">_mm256_mul_pd</a><br>
+Multiplies float64 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMULPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-F70F4F10-AEB9-475E-BE34-78C6D9BAD962.htm">_mm256_mul_ps</a><br>
+Multiplies float32 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VMULPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-13BE1E61-575B-4C20-BA36-CE88A4B5AE11.htm">_mm256_div_pd</a><br>
+Divides float64 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VDIVPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-BDC7BB75-03B3-470C-BB4E-AC12B4D11C99.htm">_mm256_div_ps</a><br>
+Divides float32 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VDIVPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-73A93D6E-B280-4AFD-8D69-EABCF95909D6.htm">_mm256_dp_ps</a><br>
+Calculates the dot product of  float32 vectors. The corresponding Intel&reg; AVX instruction is <span class="keyword">VDPPS</span>.</li>
+<li class="ulchildlink"><a href="GUID-8E54F081-9573-4D96-95DF-A7F4AB45FE97.htm">_mm256_sqrt_pd</a><br>
+Computes the square root of double-precision floating point values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VSQRTPD</span>.</li>
+<li class="ulchildlink"><a href="GUID-DBDF2AB1-47D1-41DE-B16A-8BAB63C1250C.htm">_mm256_sqrt_ps</a><br>
+Computes the square root of single-precision floating point values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VSQRTPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-C5A0373C-659B-4DB6-BAEF-415DF791135A.htm">_mm256_rsqrt_ps</a><br>
+Computes approximate reciprocals of square roots of float32 values.The corresponding Intel&reg; AVX instruction is <span class="keyword">VRSQRTPS</span>. </li>
+<li class="ulchildlink"><a href="GUID-53E87D8F-C75A-42F5-84DD-6BBE98EF7249.htm">_mm256_rcp_ps</a><br>
+Computes approximate reciprocals of float32 values. The corresponding Intel&reg; AVX instruction is <span class="keyword">VRCPPS</span>.</li>
+</ul>
+</div>
+
+</body>
+</html>

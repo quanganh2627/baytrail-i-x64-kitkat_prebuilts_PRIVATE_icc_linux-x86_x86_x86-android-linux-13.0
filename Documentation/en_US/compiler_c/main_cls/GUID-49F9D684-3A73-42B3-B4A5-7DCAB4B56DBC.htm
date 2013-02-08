@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="finline-limit">
+<meta name="abstract" content="Lets you specify the maximum size of a function to be inlined.">
+<meta name="description" content="Lets you specify the maximum size of a function to be inlined.">
+<meta name="DC.subject" content="inlining, option specifying maximum size of function for, -finline-limit compiler option">
+<meta name="keywords" content="inlining, option specifying maximum size of function for, -finline-limit compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9C9993B8-8396-4F9F-AEE9-6F687A45AFFA.htm#GUID-9C9993B8-8396-4F9F-AEE9-6F687A45AFFA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-49F9D684-3A73-42B3-B4A5-7DCAB4B56DBC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>finline-limit</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_finline_limit"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_finline_limit"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-49F9D684-3A73-42B3-B4A5-7DCAB4B56DBC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">finline-limit</h1>
+<!--Lets you specify the maximum size of a function to be inlined.--><div><p>Lets you specify the maximum size of a function to be inlined.</p>
+
+<div class="section" id="GUID-84C2483E-6B35-48F6-A3B6-570A2422B3BB"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-EE018CEC-9E34-45F0-A277-B3ACF1C4078C"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-97E92A4E-4C12-40A5-8A39-0D75E67DE11B"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-finline-limit</span><span class="oper">=</span><span class="var">n</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-74EA1E7C-F7FB-47E6-8869-6585FE9D45F1"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Must be an integer greater than or equal to zero. It is the maximum number of lines the function can have to be considered for inlining.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-A1D59881-67AF-4C79-9D86-B1C8E138C4E2"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler uses default heuristics when inlining functions.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-ADF3831E-2EE1-420E-BEB3-53DCD30B8C37"><h2>Description</h2><p>This option lets you specify the maximum size of a function to be inlined. The compiler inlines smaller functions, but this option lets you inline large functions. For example, to indicate a large function, you could specify 100 or 1000 for <var>n</var>.</p>
+<p>Note that parts of functions cannot be inlined, only whole functions.</p>
+<p>This option is a modification of the <span class="option">-finline-functions</span> option, whose behavior occurs by default.</p>
+</div>
+
+<div class="section" id="GUID-45E6032F-16FE-4464-94D4-8936FA8AACFB"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">Inlining Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-9C9993B8-8396-4F9F-AEE9-6F687A45AFFA.htm#GUID-9C9993B8-8396-4F9F-AEE9-6F687A45AFFA"><span class="option">finline-functions</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

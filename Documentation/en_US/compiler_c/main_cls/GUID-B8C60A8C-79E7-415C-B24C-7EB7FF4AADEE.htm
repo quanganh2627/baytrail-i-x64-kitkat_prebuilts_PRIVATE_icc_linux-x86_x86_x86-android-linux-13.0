@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="guide, Qguide">
+<meta name="abstract" content="Lets you set a level of guidance for auto-vectorization, auto parallelism, and data transformation.">
+<meta name="description" content="Lets you set a level of guidance for auto-vectorization, auto parallelism, and data transformation.">
+<meta name="DC.subject" content="-guide compiler option, /Qguide compiler option, auto-vectorization, option setting guidance for, auto-parallelism, data transformation">
+<meta name="keywords" content="-guide compiler option, /Qguide compiler option, auto-vectorization, option setting guidance for, auto-parallelism, data transformation">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43">
+<meta name="DC.Relation" scheme="URI" content="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E">
+<meta name="DC.Relation" scheme="URI" content="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A.htm#GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A">
+<meta name="DC.Relation" scheme="URI" content="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28.htm#GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28">
+<meta name="DC.Relation" scheme="URI" content="GUID-C31B8F14-33E1-4076-9692-12F80FEEB052.htm#GUID-C31B8F14-33E1-4076-9692-12F80FEEB052">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>guide, Qguide</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_guide"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_guide"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">guide, Qguide</h1>
+<!--Lets you set a level of guidance for auto-vectorization, auto parallelism, and data transformation.  --><div><p>Lets you set a level of guidance for auto-vectorization, auto parallelism, and data transformation.  </p>
+
+<div class="section" id="GUID-7AE79A01-973A-4F29-808A-90E3AECD6DE2"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Diagnostics &gt;  Guided Auto Parallelism Analysis</strong></p>
+
+	<p class="ide">Linux: 
+								<strong>Compilation Diagnostics
+ &gt;  Enable Guided Auto Parallelism Analysis</strong></p>
+
+	<p class="ide">OS X: 
+								<strong>Diagnostics &gt; Enable Guided Auto Parallelism Analysis
+</strong></p>
+
+
+</div>
+<div class="section" id="GUID-59F68876-68D9-4491-84DB-37B0CA59F8FC"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-64CE2351-D234-45A4-9BBC-3C01B6658D18"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-guide</span><span class="delim">[</span><span class="oper">=</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qguide</span><span class="delim">[</span><span class="oper">:</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-A6A0E205-4540-4F28-9437-B619D46E705B"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional value specifying the level of guidance to be provided.</p>
+<p>The values available are 1 through <span>4</span>. Value 1 indicates a standard level of guidance. Value <span>4</span>
+ indicates the most advanced level of guidance. If <var>n</var> is omitted, the default is <span>4</span>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-98A99911-BF95-40CA-B285-D60E92C8D2A8"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> OFF</p></td>
+<td valign="top" class="noborder"><p>You do not receive guidance about how to improve optimizations for parallelism, vectorization, and data transformation.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-5F685E2C-B137-4D62-BEC7-B94A0B91C847"><h2>Description</h2><p>This option lets you set a level of guidance (advice) for auto-vectorization, auto parallelism, and data transformation. It causes the compiler to generate messages suggesting ways to improve these optimizations. </p>
+<p>When this option is specified, the compiler does not produce any objects or executables. </p>
+<p>You must also specify option <span class="option">–parallel</span> (Linux* OS and OS X*) or <span class="option">/Qparallel</span> (Windows* OS) to receive auto parallelism guidance.</p>
+<p>You can set levels of guidance for the individual guide optimizations by specifying one of the following options:</p>
+<dl id="GUID-1B8C3B9D-6A6A-4C40-8FA8-AE559C40A0C9"><dt class="dlterm">data transformation</dt>
+<dd><span class="option">-guide-data-trans</span> (Linux OS and OS X) or <span class="option">/Qguide-data-trans</span> (Windows OS)
+</dd>
+<dt class="dlterm">auto parallelism
+</dt>
+<dd>              <span class="option">-guide-par</span> (Linux OS and OS X) or <span class="option">/Qguide-par</span> (Windows OS)
+
+</dd>
+<dt class="dlterm">auto-vectorization
+</dt>
+<dd><span class="option">-guide-vec</span> (Linux OS and OS X) or <span class="option">/Qguide-vec</span> (Windows OS)
+
+</dd>
+</dl>
+<p>If you specify <span class="option">-guide</span> or <span class="option">/Qguide</span> and also specify one of the options setting a level of guidance for an individual guide optimization, the value set for the individual guide optimization will override the setting specified in <span class="option">-guide</span> or <span class="option">/Qguide</span>.</p>
+<p>If you do not specify <span class="option">-guide</span> or <span class="option">/Qguide</span>, but specify one of the options setting a level of guidance for an individual guide optimization, option <span class="option">-guide</span> or <span class="option">/Qguide</span>
+ is enabled with the greatest value passed among any of the three individual guide optimizations specified.</p>
+<p>In debug mode, this option has no effect unless option <span class="option">O2</span> (or higher) is explicitly specified in the same command line.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>You can specify <span class="option">–diag-disable</span> (Linux OS and OS X) or <span class="option">/Qdiag-disable</span> (Windows OS) to prevent the compiler from issuing one or more diagnostic messages.
+</p>
+</div>
+</div>
+
+<div class="section" id="GUID-DA68F57B-1944-45ED-AFBF-3E8B79AA3A96"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43"><span class="option">guide-data-trans, Qguide-data-trans</span></a>  compiler option</div>
+<div><a href="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E"><span class="option">guide-par, Qguide-par</span></a>  compiler option</div>
+<div><a href="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A.htm#GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A"><span class="option">guide-vec, Qguide-vec</span></a>  compiler option</div>
+<div><a href="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59"><span class="option">guide-file, Qguide-file</span></a>  compiler option</div>
+<div><a href="GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28.htm#GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28"><span class="option">guide-file-append, Qguide-file-append</span></a>  compiler option</div>
+<div><a href="GUID-C31B8F14-33E1-4076-9692-12F80FEEB052.htm#GUID-C31B8F14-33E1-4076-9692-12F80FEEB052"><span class="option">guide-opt, Qguide-opt</span></a>  compiler option</div>
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7"><span class="option">diag and Qdiag</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

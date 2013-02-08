@@ -1,0 +1,511 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Guided Auto Parallelism">
+<meta name="DC.subject" content="guided auto parallelism, using, options, parallelization, program loops">
+<meta name="keywords" content="guided auto parallelism, using, options, parallelization, program loops">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BB02481-A703-49F5-8B52-0678190FEBBF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm#GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE">
+<meta name="DC.Relation" scheme="URI" content="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E">
+<meta name="DC.Relation" scheme="URI" content="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A.htm#GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43">
+<meta name="DC.Relation" scheme="URI" content="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28.htm#GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28">
+<meta name="DC.Relation" scheme="URI" content="GUID-C31B8F14-33E1-4076-9692-12F80FEEB052.htm#GUID-C31B8F14-33E1-4076-9692-12F80FEEB052">
+<meta name="DC.Relation" scheme="URI" content="GUID-BB1E4E70-96A8-452B-AA33-B7DFD92E6934.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Guided Auto Parallelism</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_gap_using"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_gap_using"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Guided Auto Parallelism</h1>
+ 
+   
+  <div> 
+	 <p>The guided auto parallelism feature of the Intel&reg; Compiler is a tool offering selective advice to improve the performance of serially coded applications. The tool suggests changes that take advantage of the compiler's ability to automatically vectorize and parallelize code as well as improve the efficiency of data operations. The tool does not require that you implement threaded code to improve the execution performance of your code nor does it require that your code is already threaded or parallel code. 
+	 </p>
+ 
+	 <p>To invoke this tool, use the compiler option 
+  <span class="option">–guide</span><var>[=n]</var> (on Linux* operating systems) or 
+  <span class="option">/Qguide</span><var>[:n]</var> (on Windows* operating systems). Using this option causes the compiler to generate messages suggesting ways to optimize the performance of your application. You can also use more specific compiler options such as 
+  <span class="option">–guide-vec</span> , 
+  <span class="option">–guide-par</span>, and 
+  <span class="option">–guide-data-trans</span> (on Linux* OS), or 
+  <span class="option">/Qguide-vec</span>, 
+  <span class="option">/Qguide-par</span>, and 
+  <span class="option">/Qguide-data-trans 
+  </span>(on Windows* OS) to perform individual guided optimizations for vectorizing, parallelizing, and data transformation of your application. 
+  </p>
+ 
+  <p>When any guided auto parallelism option is used, the compiler provides only diagnostic advice. Object files or executables are not created in this mode. See the table below for descriptions of the options. 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C68AD0A0-30DD-4000-85EC-30F78B7DD340" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr valign="middle"> 
+			 <th class="cellrowborder" valign="middle" id="d385371e93"> 
+				<p>Linux* 
+				</p>
+ 
+			 </th>
+ 
+			 <th class="cellrowborder" valign="middle" id="d385371e99"> 
+				<p>Windows* 
+				</p>
+ 
+			 </th>
+ 
+			 <th class="cellrowborder" valign="middle" id="d385371e105"> 
+				<p>Description 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr valign="middle"> 
+			 <td class="cellrowborder" valign="middle" headers="d385371e93 "> 
+				<p><span class="option">-guide</span><var>(=n) 
+				</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e99 "> 
+				<p><span class="option">/Qguide</span><var>[:n]</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e105 ">Lets you set a level (<var>n</var>) of guidance for auto-vectorization, and data transformation analysis. 
+				<p>To obtain guidance for auto parallelism, you must use the<span class="option"> -parallel</span> (Linux*) or 
+				<span class="option">/Qparallel 
+				</span>(Windows*) option along with the 
+				<span class="option">-guide</span> or 
+				<span class="option">/Qguide</span> option. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr valign="middle"> 
+			 <td class="cellrowborder" valign="middle" headers="d385371e93 "> 
+				<p><span class="option">-guide-par</span><var>(=n)</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e99 "> 
+				<p><span class="option">/Qguide-par</span><var>[:n]</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e105 ">Lets you to set a level (<var>n</var>) of guidance only for auto parallelism analysis. 
+				<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+				  <p>You must use the<span class="option"> -parallel</span> (Linux*) or 
+				  <span class="option">/Qparallel 
+				  </span>(Windows*) option along with the 
+				  <span class="option">-guide-par</span> or 
+				  <span class="option">/Qguide-par</span> option to get this advice. 
+				  </p>
+ 
+				</div> 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr valign="middle"> 
+			 <td class="cellrowborder" valign="middle" headers="d385371e93 "> 
+				<p><span class="option">-guide-vec</span><var>(=n)</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e99 "> 
+				<p><span class="option">/Qguide-vec</span><var>[:n]</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e105 "> 
+				<p>Lets you to set a level (<var>n</var>) of guidance only for auto-vectorization analysis. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr valign="middle"> 
+			 <td class="cellrowborder" valign="middle" headers="d385371e93 "> 
+				<p><span class="option">-guide-data-trans</span><var>(=n)</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e99 "> 
+				<p><span class="option">/Qguide-data-trans</span><var>[:n]</var> 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="middle" headers="d385371e105 "> 
+				<p>Lets you to set a level (<var>n</var>) of guidance only for data transformation analysis. 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	 </table>
+</div>
+ 
+  <p>For all of the above options, the optional argument 
+	 <var>n</var> specifies the level of guidance. The argument 
+	 <var>n</var> takes the values 
+	 <samp class="codeph">1-4</samp>. When 
+	 <var>n</var> is not specified, the default is 
+	 <samp class="codeph">4</samp>. If you specify 
+	 <var>n=</var><samp class="codeph">1</samp> 
+	 <span>or 
+		<samp class="codeph">2</samp></span>, a standard level of guidance is provided. 
+  </p>
+ 
+  <p>When you use 
+	 <var>n=</var><samp class="codeph">3</samp> or 
+	 <var>n=</var><samp class="codeph">4</samp>, you may get advanced messages. For example, you may get messages about how to optimize a particular loop-nest or get a message on how exception-handling inside a loop-nest affects optimizations for that loop-nest. Or you may get a message on how to provide extra information to the compiler on cost-modeling (expected values of trip-counts, and so on). 
+  </p>
+ 
+  <p>If you simultaneously specify a level of guidance (<var>n</var>) for the general 
+  <span class="option">-guide</span> or 
+  <span class="option">/Qguide</span> option and also for one or more of the other specific guide options, the level of guidance (<var>n</var>) for the specific guide option overrides the general 
+  <span class="option">-guide</span> or 
+  <span class="option">/Qguide</span> option setting. 
+  </p>
+ 
+  <p>If you do not specify a level of guidance for the general 
+  <span class="option">-guide</span> or<span class="option"> /Qguide</span> option, but do set a level of guidance for one or more of the specific guide options, the 
+  <span class="option">-guide 
+  </span>or 
+  <span class="option">/Qguide</span> option is set equal to the greatest value passed to the specific guide options. 
+  </p>
+ 
+  <div class="section" id="GUID-378DBCA5-3EAD-4946-BF7C-E4593CC37FB8"><h2 class="sectiontitle">Capturing Guidance Messages </h2> 
+	  
+	 <p>The guided auto parallelism tool analyzes all of your serial code or individual parts of your code and generates advisory messages. By default, messages that are generated by the guided auto parallelism tool are output to 
+		<samp class="codeph">stderr</samp>. 
+	 </p>
+ 
+	 <p>To capture messages in a file, use the options listed in the following table. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p> The options listed in the following table must be used with the 
+		<span class="option">-guide</span> or 
+		<span class="option">/Qguide</span>, or 
+		<span class="option">-guide-par</span> or 
+		<span class="option">/Qguide-par</span>, or 
+		<span class="option">-guide-vec</span> or 
+		<span class="option">/Qguide-vec</span>, or 
+		<span class="option">-guide-data-trans</span> or 
+		<span class="option">/Qguide-data-trans</span> options. If not, they are ignored. 
+		</p>
+ 
+	 </div> 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6430C0B7-1302-4EDC-93D7-54F600991ECF" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="middle"> 
+				<th class="cellrowborder" valign="middle" id="d385371e409"> 
+				  <p>Linux* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="middle" id="d385371e415"> 
+				  <p>Windows* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="middle" id="d385371e421"> 
+				  <p>Description 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d385371e409 "> 
+				  <p><span class="option">-guide-file</span><var>[=file_name] 
+				  </var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e415 "> 
+				  <p><span class="option">/Qguide-file</span><var>[:file_name]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e421 "> Gathers all messages generated during a guided auto-parallelization run into the specified file. 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d385371e409 "> 
+				  <p><span class="option">-guide-file-append</span><var>[=file_name]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e415 "> 
+				  <p><span class="option">/Qguide-file-append</span><var>[:file_name]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e421 ">Lets you specify the file into which all messages generated during a guided auto parallelism run should be appended. 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>For the above options the 
+		<var>file_name</var> argument can also include a path. If a path is not specified, the file is created in the current working directory. If there is already a file named 
+		<var>file_name</var>, it is overwritten when you use the 
+	 <span class="option">-guide-file</span> or 
+	 <span class="option">/Qguide-file</span> option. If you do not include an extension as part of the 
+	 <var>file_name</var>, the extension 
+	 <span class="filepath">.guide 
+	 </span>is appended. 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-54C28AE6-EB57-492F-AC18-F42B72612C85"><h2 class="sectiontitle">Configuring Code Regions for GAP Messages</h2> 
+	  
+	 <p>To limit guided auto parallelism analysis to specific regions (hotspots) in your application, use the options mentioned in the table below. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6430C0B7-1302-4EDC-93D7-54F600991ECF" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="middle"> 
+				<th class="cellrowborder" valign="middle" id="d385371e529"> 
+				  <p>Linux* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="middle" id="d385371e535"> 
+				  <p>Windows* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" valign="middle" id="d385371e541"> 
+				  <p>Description 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d385371e529 "> 
+				  <p><span class="option">-guide-opts</span><var>[=string] 
+				  </var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e535 "> 
+				  <p><span class="option">/Qguide-opts</span><var>[:string]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e541 "> Lets you analyze specified code elements, identified by 
+				  <var>string</var>. 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d385371e529 "> 
+				  <p><span class="option">-guide-profile</span><var>(=filename|dir)</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e535 "> 
+				  <p><span class="option">/Qguide-profile</span><var>[:filename|dir]</var> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d385371e541 "> 
+				  <p>Lets you specify a loop profiler data file (or a set of files) when used with option 
+				  <span class="option">-guide</span> or<span class="option"> /Qguide</span>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>You must use the<span class="option"> -guide-opts</span> (Linux*) or 
+	 <span class="option">/Qguide-opts</span> (Windows*) option along with one of the guided auto parallelism options like 
+	 <span class="option">-guide</span>, 
+	 <span class="option">-guide-vec</span>, 
+	 <span class="option">-guide-par</span>, 
+	 <span class="option">-guide-data-trans</span> (on Linux*) or 
+	 <span class="option">/Qguide</span>, 
+	 <span class="option">/Qguide-vec</span>,<span class="option"> /Qguide-par</span>, 
+	 <span class="option">/Qguide-data-trans</span> (Windows*) options. Use the 
+	 <var>string</var> parameter to provide information about known areas of interest (hotspots). The 
+	 <var>string</var> parameter takes one or more of the following variables: 
+	 <var>filename</var>, 
+	 <var>routine</var>, 
+	 <var>range</var>. The compiler parses the 
+	 <var>string</var> parameter and generates syntax errors if there are any. 
+	 </p>
+ 
+	 <div class="dlsyntaxpara"><p style="margin-top:10pt"><b>Syntax</b></p><p class="dlsyntaxpara"><span class="kwd"> -guide-opts</span><span class="oper">=</span><span class="var">string</span></p></div> 
+	 <p>Follow these guidelines when using the 
+		<var>string</var> parameter: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-D89FCB95-AE9E-4BFF-A918-CA3834307C45"> 
+		<li> 
+		  <p> Use only valid file names, routine names and line numbers. The guided auto parallelism tool ignores invalid values and issues a diagnostic message stating what was ignored. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Enclose routine names within single-quotes. Specify original source names (demangled names) as routine names. A routine name alone may not always be sufficient to uniquely identify a routine. You may need to specify additional parameter information to uniquely identify the routine. 
+		  </p>
+ 
+		  <p> For example: 
+		  </p>
+ 
+		  <pre>-guide-opts="foo.cpp,'CLHEP::StaticRandomSta::restore(std::basic_istream&lt;char,std::char_traits&lt;char&gt;&gt;&amp;)'"</pre> 
+		  <pre>-guide-opts="bar.f90,'module_1::routine_name`"</pre> 
+		  <pre>-guide-opts="baz.c,'c_routine_name'"</pre> 
+		  <p>For any specified routine name, the GAP tool first tries to uniquely identify the routine using specified routine information. If that is not possible, then it selects all routines with the specified routine name. The GAP tool uses the parameter information, if specified, to narrow the selection. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>When inlining is involved, use the callee line numbers. The generated messages also use the callee line-numbers. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Alternatively, you can automate and narrow down the targeted regions to specific hotspots in your application code by using the 
+	 <span class="option">-guide-profile</span> (on Linux* OS) or the 
+	 <span class="option">/Qguide-profile</span> option (on Windows* OS) along with the 
+	 <span class="option">-guide</span> or 
+	 <span class="option">/Qguide</span> option. 
+	 </p>
+ 
+	 <div class="dlsyntaxpara"><p style="margin-top:10pt"><b>Syntax</b></p><p class="dlsyntaxpara"><span class="kwd"> -guide-profile</span><span class="oper">=</span><span class="var">filename | dir [ , [ filename | dir ] ... ] 
+		  </span></p></div> 
+	 <p>The region targeted by the 
+	 <span class="option">-guide</span> or 
+	 <span class="option">/Qguide</span> option, when used along with the 
+	 <span class="option">-guide-profile</span> or 
+	 <span class="option">/Qguide-profile</span> option, is configured by processing the XML data file(s) produced from a loop profiler instrumented run. The loop profiler result files are specified as the actual loop profiler data file, or as the directory name where loop profile data files are stored. 
+	 </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BB02481-A703-49F5-8B52-0678190FEBBF.htm">Guided Auto Parallelism</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm#GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE"><span class="option">guide</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E.htm#GUID-99F6F9CD-1059-4A09-854D-7E1F30014B2E"><span class="option">guide-par</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A.htm#GUID-D19C6278-9982-4D0F-91FD-E4C61C697E5A"><span class="option">guide-vec</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43.htm#GUID-ECC9AAB3-874B-441B-B474-D4842C9C4A43"><span class="option">guide-data-trans</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59.htm#GUID-6D265E24-C6EF-4B12-B2AD-59DC478E9D59"><span class="option">guide-file</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28.htm#GUID-5A47F1D7-8BF1-457A-8A95-45D1AAF84D28"><span class="option">guide-file-append</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-C31B8F14-33E1-4076-9692-12F80FEEB052.htm#GUID-C31B8F14-33E1-4076-9692-12F80FEEB052"><span class="option">guide-opts</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-BB1E4E70-96A8-452B-AA33-B7DFD92E6934.htm"><span class="option">guide-profile</span> compiler option 
+		  </a>  
+		  </div></div>
+<div class="linklist"></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

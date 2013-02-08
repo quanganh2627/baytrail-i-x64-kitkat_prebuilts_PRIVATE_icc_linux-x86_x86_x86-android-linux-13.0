@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_delay">
+<meta name="abstract" content="Stalls a thread without blocking other threads. Corresponding instruction is _mm_delay This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Stalls a thread without blocking other threads. Corresponding instruction is _mm_delay This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm_delay_32, _mm_delay_64">
+<meta name="keywords" content="_mm_delay_32, _mm_delay_64">
+<meta name="DC.Relation" scheme="URI" content="GUID-22BCE3AF-3F31-4FEC-825B-4907F69C1984.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F94C7EE3-E460-4CEE-AFDB-8BE25A7FF913">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_delay</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm_delay_16"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F94C7EE3-E460-4CEE-AFDB-8BE25A7FF913">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm_delay</h1>
+<!--Stalls a thread without blocking other threads. Corresponding instruction is 
+ _mm_delay   This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Stalls a thread without blocking other threads. Corresponding instruction is 
+<samp class="codeph">_mm_delay</samp> <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-433867E5-9137-4241-B125-C36FB680DE14"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void __cdecl _mm_delay_32(unsigned int r1);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void __cdecl _mm_delay_64(_MM_UINT64_TYPE r1);</span></p></td></tr></table></div>
+<div class="section" id="GUID-22CAF3B6-5237-42FD-B840-5B4C5B087998"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>r1</var></p></td>
+
+<td valign="top" class="noborder">source operand with 32-, or 64-bit elements</td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-87F1A4CF-662C-4E82-9335-449258A5ECF6"><h2>Description</h2>
+<p>Stalls a thread for a specified clock cycle without blocking other threads. Hints that the processor should not fetch/issue instructions for the current thread for the specified number of clock cycles.</p>
+<p>Any of the following events causes the processor to start fetching instructions for the delayed thread again:</p>
+<ul type="disc" id="GUID-974201C3-D21D-4A7B-BFF9-11D61BAEC1E8">
+<li class="p">
+<p>the counter counting down to zero</p>
+
+</li>
+
+<li class="p">
+<p>an interrupt</p>
+
+</li>
+
+<li class="p">
+<p>an 
+<samp class="codeph">NMI</samp> or 
+<samp class="codeph">SMI</samp></p>
+
+</li>
+
+<li class="p">
+<p>a debug exception</p>
+
+</li>
+
+<li class="p">
+<p>a machine check exception</p>
+
+</li>
+
+<li class="p">
+<p>
+<samp class="codeph">BINIT#, INIT#,</samp> or 
+<samp class="codeph">RESET#</samp> signal.</p>
+
+</li>
+
+</ul>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>
+<p>An interrupt causes the processor to start fetching instructions for that thread only if the state was entered with interrupts enabled.</p>
+</div>
+</div>
+<div class="section" id="GUID-AF558737-BA4E-4B6F-BACD-0B633836A180"><h2>Returns</h2><p>Returns nothing.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-22BCE3AF-3F31-4FEC-825B-4907F69C1984.htm">Scalar Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

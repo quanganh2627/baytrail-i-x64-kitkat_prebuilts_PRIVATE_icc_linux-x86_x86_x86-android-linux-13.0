@@ -1,0 +1,258 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Static Analysis Overview">
+<meta name="DC.subject" content="static analysis, overview, SA (static analysis)">
+<meta name="keywords" content="static analysis, overview, SA (static analysis)">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEC7B612-A511-4C82-8E81-817DFEE8FAE8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9B795CE3-8341-47C1-83A9-614AB60110B3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Static Analysis Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_svover"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_svover"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9B795CE3-8341-47C1-83A9-614AB60110B3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"><span>Static Analysis Overview</span></h1>
+ 
+   
+  <div> 
+	 <div class="section" id="GUID-EB64AB80-E688-4900-8192-150339905C9D"> 
+		<p>Static analysis is the process of finding errors and security weaknesses in software through detailed analysis of source code. Static analysis requires the full Intel&reg; Parallel Studio XE or Intel&reg; C++ Studio XE product. The analysis itself is performed by the compiler; the results are viewed with the Intel&reg; Inspector XE GUI. Analysis can be performed on one machine and the results viewed on another. In this case, only the compiler needs to be installed on the analysis machine. Both the compiler and Intel&reg; Inspector XE must be installed, along with a valid Intel&reg; Parallel Studio XE or Intel&reg; C++ Studio XE license, on the viewing machine. 
+		</p>
+ 
+		<p> Static analysis finds a wide range of errors that could potentially be exploited by an attacker to defeat application security or cause the application to malfunction. Detected errors include buffer overflow, misuse of pointers and heap storage, unsafe or incorrect use of C/C++ or Fortran language features and libraries, and misuse of OpenMP* and Intel&reg; Cilk&#8482; Plus parallel programming constructs. 
+		</p>
+ 
+		<p>See the documentation for Intel&reg; Inspector XE to learn more about the kinds of analysis performed by static analysis and for details about how to use it. 
+		</p>
+ 
+	 </div>
+ 
+	 <p><span>Static analysis</span> requires that your code compile without serious errors using the Intel&reg; Compiler. 
+	 </p>
+ 
+	 <p>Static analysis is not supported on OS X* systems. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>You can use 
+		  <span>static analysis</span> even if you do not plan to use the Intel compiler to build your production binaries. Similarly, you can use it for programs that will be run on a processor type not supported by the Intel compiler. 
+		</p>
+ 
+	 </div> 
+	 <div class="section" id="GUID-A1C1F0AD-2C44-440E-B5B4-3221B966A38B"><h2 class="sectiontitle">How 
+		  <span>Static Analysis</span> Works</h2> 
+		 
+		<p> The compiler performs the requested analysis by operating in a special mode. In this mode, the compiler dedicates more time to analysis and bypasses the instruction generation process entirely. This allows it to find errors that go undetected during ordinary compilation. 
+		  <span>This means your code must compile without serious errors with an Intel compiler, but the results of the compilation cannot be executed. Therefore, you can use static analysis even if you do not plan to use an Intel compiler to build your production binaries.</span> 
+		</p>
+ 
+		<p> 
+		  <span>Static analysis</span> first processes each source file individually, producing a pseudo object module. To avoid destroying your real object modules, keep the pseudo object modules generated during static analysis separate from the real object modules. 
+		</p>
+ 
+		<p>The analysis results are produced in the link step. This is similar to how Inter Procedural Optimization (IPO) operates, where the final instructions are generated only at the link step. This allows 
+		  <span>static analysis</span> to find errors that span procedure and file boundaries. 
+		  <span>This implies that you must invoke the link step with the compiler, not invoke the linker directly.</span> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-8617BC90-A19C-4CE4-80D7-7AB5BBDD773A"><h2 class="sectiontitle">Static Analysis Modes</h2> 
+		 
+		<p> Static analysis sometimes finds inconclusive evidence that a security weakness or a logic error exists. In such cases, there is no right behavior for the tool: emitting a diagnostic message risks a false positive, while keeping silent risks a false negative, that is, a missed real error. To cope with this limitation, static analysis provides three different analysis modes. The best choice depends on your situation and objectives. 
+		</p>
+ 
+		<ul type="disc" id="GUID-8FFBB890-B249-44E9-AC36-2E8356EA01C3"> 
+		  <li> 
+			 <strong>Full</strong> attempts to find all program weaknesses, even at the expense of more false positives. This is appropriate when using the tool for security assurance. The high potential cost of a security weakness in a released product should justify the time needed to work through extra false positives. The Intel&reg; Inspector XE GUI provides numerous techniques for dealing with large results and disposing of groups of similar errors when they are found to be false positives. 
+		  </li>
+ 
+		  <li> 
+			 <p> 
+				<strong>Concise</strong> attempts to reduce false positives by tolerating a higher rate of false negatives. This is appropriate when using the tool for general error detection. The time saved investigating false positives must be weighed against the relatively small increased risk of a false negative. In this mode, a confidence algorithm estimates the probability that a diagnostic will turn out to be true or false. If the estimated confidence is very low, the diagnostic is dropped entirely. Otherwise, the confidence is used to adjust the relative weight on the diagnostic. This can cause a more likely error of lesser impact to be given higher weight than a less likely error of greater impact 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> 
+				<strong>Precise</strong> reduces the false positive rate as low as possible while still providing a useful level of error detection. This is appropriate when using the tool for general error detection. Use this mode to provide a quick "go, no go" screening decision about a source version. The need to strongly avoid false positives significantly reduces the number and type of errors that can be detected. However, the low rate of false positives ensures the best return on time spent investigating analysis results. It also makes it reasonable to set a project policy requiring a clean analysis result in this mode before allowing a source change into a source code control repository 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p> Use the<span class="option"> diag-enable:sc-{full|concise|precise}</span> option to specify the analysis mode. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-DE7853A6-22B3-4AEE-90D6-FF5F11B6A2F6"><h2 class="sectiontitle">Static Analysis: Whole Program vs Single File</h2> 
+		 
+		<p> Static analysis can be enabled for an entire program or on a single file. A supplied compiler option specifies that static analysis should process each source file individually. Skipping the usual whole-program analysis reduces memory requirements and analysis time on large programs but often finds fewer real errors. 
+		</p>
+ 
+		<p> Many errors can only be detected through global, whole-program analysis, and these errors would not be detected if single file analysis is enabled. On the other hand, whole program analysis for very large programs can take a long time. Using single file analysis may greatly reduce the time required (possibly from hours to minutes), which could, in turn, allow you to run analysis more frequently. This is cost-effective, since detecting and fixing bugs earlier is cheaper. 
+		</p>
+ 
+		<p> Single file analysis may cause analysis of some programs to take longer. When a program consists of numerous small files, it can be faster to read everything into memory at once than to process each file individually. In such cases, this single file analysis provides little value and should not be used. 
+		</p>
+ 
+		<p> Use the 
+		<span class="option">diag-enable:sc-single-file</span> option to specify single file analysis. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6EA43F54-C403-4C54-B804-A3EDF962E8A8"><h2 class="sectiontitle">Static Analysis and Enumeration Variables</h2> 
+		 
+		<p> Static analysis provides an option to treat enumeration variables as known values equal to any one of the associated enumeration literals. By default, static analysis treats unknown enumeration variables as unknown integer values. 
+		</p>
+ 
+		<p> Setting this option may uncover additional errors but may also create more false positives. 
+		</p>
+ 
+		<p>Consider the following program: 
+		</p>
+ 
+		<pre>typedef enum {red = -1, yellow = 0, blue= 1} color;
+volatile int v1;
+volatile color v2;
+int x[10];
+int f() {
+    int y1 = v1;
+    int y2 = v1;
+    color y3 = v2;
+    if ((y2 &gt;= -1) &amp;&amp; (y2 &lt;= 1))
+       return (x[y1] + x[y2] + x[y3]);
+    else return 0;
+}
+</pre> 
+		<p> This program uses volatile global variables as a source of unknown values; there are many other ways to encounter unknown values. 
+		</p>
+ 
+		<p> There are three array index operations, any one of which can cause a bounds violation: 
+		</p>
+ 
+		<p> 
+		<ul type="disc" id="GUID-A91D5B90-DB1E-4440-A8FC-196ABEE7F918"> 
+		  <li> 
+			 <p>Static analysis will not flag 
+				<var>x[y1]</var>. Since 
+				<var>y1</var> is a completely unknown integer value, there is no basis to challenge this index operation. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Static analysis will flag 
+				<var>x[y2]</var>. Here, an "if" statement limits the value of 
+				<var>y2</var> to the set {-1,0,1}, yet one of those possible values will cause a bounds violation. This strongly suggests a logic error. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>The third index, 
+				<var>x[y3]</var>, is less clear. There is no "if" statement to indicate what the programmer was thinking. The programmer declared<var> y3</var> as an enumeration type, and this choice effectively limits the possible values of 
+				<var>y3</var> to the set {-1,0,1}, just as the "if" statement did for 
+				<var>y2</var>. Since there is weaker evidence that an error exists, an array index operation like 
+				<var>x[y3]</var> will be flagged if and only if the 
+		<span class="option">sc-enum</span> option is set. 
+		</p>
+ 
+		</li>
+ 
+		</ul>
+ 
+		</p>
+ 
+		<p> Use the 
+		<span class="option">diag-enable:sc-enums</span> option to specifiy treatment of enums. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-2D9D8877-8030-44D0-A707-847E74271E55"><h2 class="sectiontitle">Static Analysis and SAL</h2> 
+		 
+		<p>The Intel compiler supports Microsoft's standard source code annotation language (SAL). SAL enables static checking of calls to external routines that are not provided in source form. Subroutine declarations can be annotated with a set of SAL macros that describe proper usage. 
+		</p>
+ 
+		<p>The compiler will ignore any annotations unless you are compiling with static security analysis enabled. When enabled, static analysis will diagnose violations of the constraints implied by SAL annotations. 
+		</p>
+ 
+		<p>See the Microsoft Visual C++* documentation for detailed descriptions of the SAL annotations. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-92666ED2-124B-4C86-BC43-3288AE717240"><h2 class="sectiontitle"><span>Static Analysis</span> Recommendations</h2> 
+		 
+		<p> It is not necessary to convert your application to build with the Intel&reg; C++ compiler to use static analysis, but static analysis requires source level compatibility with the Intel compiler. If you are not already building with the Intel&reg; C++ compiler, follow the 
+		  <a href="GUID-F0B3EACB-CFBA-4E34-9DC1-92253578ADE1.htm#GUID-F0B3EACB-CFBA-4E34-9DC1-92253578ADE1"> porting guidelines 
+		  </a>. The Intel&reg; C++ compiler is compatible with both the Microsoft Visual C++* and GNU* compilers so most applications do not encounter compatibility issues. 
+		</p>
+ 
+		<p> 
+		  <span>Static analysis</span> is most effective on a complete program; this is because some problems can only be detected by analyzing interactions across source files. You can perform 
+		  <span>static analysis</span> on partial programs or even on single files simply by linking fewer modules. You can also use the single file analysis option to increase processing speed. However, doing this may hide some problems that would be uncovered on whole program analysis. Even if you do not use complete program analysis on a regular basis, be sure to do a periodic scan of everything together to ensure that true program errors do not go undetected. 
+		</p>
+ 
+		<p> If you use 
+		  <span>static analysis</span> on projects that build and link against libraries, analyze a library before analyzing projects that link against that library. When you analyze a project that links against an analyzed library, the modules of the library participate fully in the analysis, as if the library sources were part of the application. 
+		</p>
+ 
+		<p>Analyzing a library by itself diagnoses problems only within that library. The pseudo object modules produced during the compilation step can be combined into a static link library using the standard librarian utility. When you analyze a dynamic library, a static library is produced during the link step in place of the usual export library. Linking against an unanalyzed library is permitted; however, the sources of an unanalyzed library do not participate in the analysis. 
+		</p>
+ 
+		<p>It is often best to start using static analysis in precise mode. (<span class="option">diag-enable:sc-precise</span>) . This helps you address the most obvious problems quickly. You can then move on to a more aggressive analysis mode. 
+		</p>
+ 
+		<p>Closer checking of enumeration variables may reveal additional true errors but may increase false positives. To determine whether the<span class="option"> diag-enable:sc-enums</span> option is useful for you, perform static analysis without 
+		<span class="option">diag-enable:sc-enums</span> and then, without changing the source, run analysis again, this time with 
+		<span class="option">diag-enable:sc-enums</span>. If there are only a few new problems, you should investigate them. If large numbers of new problems are reported, this option may not be useful to you. 
+		</p>
+ 
+		<p> 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FEC7B612-A511-4C82-8E81-817DFEE8FAE8.htm">Static Analysis</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7"><span class="option">diag, /Qdiag</span> compiler option 
+		  </a> Controls the display of diagnostic information.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

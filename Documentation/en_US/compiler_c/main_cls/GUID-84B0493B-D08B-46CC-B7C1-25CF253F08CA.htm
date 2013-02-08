@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Data Races">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, data races">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, data races">
+<meta name="DC.Relation" scheme="URI" content="GUID-778EAE45-702F-49E7-9225-A7B817F8AC56.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-84B0493B-D08B-46CC-B7C1-25CF253F08CA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Data Races</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_data_races"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-84B0493B-D08B-46CC-B7C1-25CF253F08CA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Data Races</h1>
+
+<div>
+<p>Races are a major cause of bugs in parallel programs. </p>
+<p>A <strong> determinacy
+race</strong> occurs when two parallel strands access the
+same memory location and at least one strand performs a write
+operation. The program result depends on which strand "wins the
+race" and accesses the memory first.</p>
+
+<p>A <strong> data race</strong>
+is a special case of a determinacy race. A data race is a race
+condition that occurs when two parallel strands,  holding no locks in common, access the same
+memory location and at least one strand performs a write operation.
+The program result depends on which strand "wins the race" and
+accesses the memory first.</p>
+
+<p>If the parallel accesses are protected by locks,  there is no data race. However, a program using locks
+may not produce deterministic results. A lock can ensure
+consistency by protecting a data structure from being visible in an
+intermediate state during an update, but does not guarantee
+deterministic results.</p>
+
+<p>For example, consider the following program:</p>
+
+<pre>int a = 2; // declare a variable that is
+          // visible to more than one worker
+
+void Strand1()
+{
+   a = 1;
+}
+
+int Strand2()
+{
+   return a;
+}
+
+void Strand3()
+{
+   a = 2;
+}
+int main()
+{
+   int result;
+   cilk_spawn Strand1();
+   result = cilk_spawn Strand2();
+   cilk_spawn Strand3();
+   cilk_sync;
+   std::cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; ", result = "
+             &lt;&lt; result &lt;&lt; std:endl;
+}
+</pre><p>Because  <samp class="codeph">Strand1()</samp>,  <samp class="codeph">Strand2()</samp> and  <samp class="codeph">Strand3()</samp> may run in parallel, the final
+value of  <samp class="codeph">a</samp> and  <samp class="codeph">result </samp>can vary, depending on the order in which
+they run.</p>
+
+<p><samp class="codeph">Strand1()</samp> 
+may write the value of  a before or after  <samp class="codeph">Strand2()</samp> reads
+ <samp class="codeph">a</samp>, so there is
+a  read/write race between  <samp class="codeph">Strand1()</samp> and  <samp class="codeph">Strand2()</samp>.</p>
+
+<p> <samp class="codeph">Strand3()</samp>
+may write the value of  <samp class="codeph">a</samp> before or after  <samp class="codeph">Strand1()</samp> writes
+ <samp class="codeph">a</samp>, so there is
+a  write/write race between  <samp class="codeph">Strand3()</samp> and  <samp class="codeph">Strand1()</samp>.</p>
+
+<p>Some data races are benign. In other words, although there is a
+race, the race does not affect the output of the program.</p>
+
+<p>Here is a simple example:</p>
+
+<pre>bool bFlag = false;
+cilk_for (int i=0; i&lt;N; ++i)
+{
+   if (some_condition()) bFlag = true;
+}
+if (bFlag) do_something();
+</pre><p>This program has a write/write race on the <samp class="codeph">bFlag</samp> variable.
+However, all of the write operations are writing the same value
+(true) and the
+value is not read until after the  <samp class="codeph">cilk_sync</samp> that is implicit at the end of
+the  <samp class="codeph">cilk_for</samp>
+loop.</p>
+
+<p>In this example, the data race is benign. No matter what order
+the loop iterations execute, the program produces the same
+result.</p>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-778EAE45-702F-49E7-9225-A7B817F8AC56.htm">Understanding Race Conditions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

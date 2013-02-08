@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intel&reg; Transactional Synchronization Extensions (Intel&reg; TSX) Programming Considerations">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.Relation" scheme="URI" content="GUID-BAFE2B5E-6AA3-4283-BAB2-F36B00725EB3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-54A84479-DEC6-4D2F-9895-46D278EDA820">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intel&reg; Transactional Synchronization Extensions (Intel&reg; TSX) Programming Considerations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_prog_cons"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-54A84479-DEC6-4D2F-9895-46D278EDA820">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intel&reg; Transactional Synchronization Extensions (Intel&reg; TSX) Programming Considerations</h1>
+ 
+  <!-- 
+  --> 
+   
+  <div><p> 
+  </p>
+ 
+    <p>Typical programmer-identified regions are expected to transactionally execute and commit successfully. However, Intel&reg; Transactional Synchronization Extensions (Intel&reg; TSX) does not provide any such guarantee. A transactional execution may abort for many reasons. To take full advantage of the transactional capabilities, programmers should take into account programming considerations to increase the probability of their transactional execution committing successfully. 
+    </p>
+ 
+    <p>This section discusses various events that may cause transactional aborts. The architecture ensures that updates performed within a transaction that subsequently aborts execution will not become visible: Only a committed transactional execution updates architectural state. Transactional aborts never cause functional failures and only affect performance. 
+    </p>
+ 
+    <p><strong>Instruction Based Considerations</strong> 
+    </p>
+ 
+    <p>Programmers can use any instruction safely inside a transaction (HLE or RTM) and can use transactions at any privilege level. Some instructions will always abort the transactional execution and cause execution to seamlessly and safely transition to a non-transactional path. 
+    </p>
+ 
+    <p>Intel&reg; TSX allows for most common instructions to be used inside transactions without causing aborts. The following operations inside a transaction do not typically cause an abort: 
+    </p>
+ 
+    <ul type="disc" id="GUID-63AB1571-EDA9-4D47-ADE6-7F076254FEE6"> 
+      <li>Operations on the instruction pointer register. 
+      </li>
+ 
+      <li>Operations on general purpose registers (GPRs). 
+      </li>
+ 
+      <li>Operations on the status flags (<span>CF</span>, 
+        <span>OF</span>, 
+        <span>SF</span>, 
+        <span>PF</span>, 
+        <span>AF</span>, and 
+        <span>ZF</span>). 
+      </li>
+ 
+      <li>Operations on XMM and YMM registers. 
+      </li>
+ 
+      <li>Operations on the MXCSR register. 
+      </li>
+ 
+    </ul>
+ 
+    <p> 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>Programmers must be careful when intermixing Intel&reg; Supplemental Streaming Extensions (Intel&reg; SSE) and Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) operations inside a transactional region. Intermixing Intel&reg; SSE instructions accessing XMM registers and Intel&reg; AVX instructions accessing YMM registers may cause transactions to abort. 
+        </p>
+ 
+      </div> 
+    </p>
+ 
+    <p>Programmers may use 
+      <samp class="codeph">REP</samp>/<samp class="codeph">REPNE</samp> prefixed string operations inside transactions. However, long strings may cause aborts. Further, the use of 
+      <samp class="codeph">CLD</samp> and 
+      <samp class="codeph">STD</samp> instructions may cause aborts if they change the value of the 
+      <span>DF</span> flag. However, if 
+      <span>DF</span> is '<span>1</span>', the 
+      <samp class="codeph">STD</samp> instruction will not cause an abort. Similarly, if 
+      <span>DF</span> is 0, the<samp class="codeph">CLD</samp> instruction will not cause an abort. 
+    </p>
+ 
+    <p>Instructions not enumerated here as causing abort when used inside a transaction will typically not cause a transaction to abort (examples include but are not limited to 
+      <samp class="codeph">MFENCE</samp>, 
+      <samp class="codeph">LFENCE</samp>, 
+      <samp class="codeph">SFENCE</samp>, 
+      <samp class="codeph">RDTSC</samp>, 
+      <samp class="codeph">RDTSCP</samp>, etc.). 
+    </p>
+ 
+    <p>The following instructions will abort transactional execution on any implementation: 
+    </p>
+ 
+    <ul type="disc" id="GUID-6DF11C30-0E62-4387-8A80-58B56168E6DB"> 
+      <li><samp class="codeph">XABORT</samp> 
+      </li>
+ 
+      <li><samp class="codeph">CPUID</samp> 
+      </li>
+ 
+      <li><samp class="codeph">PAUSE</samp> 
+      </li>
+ 
+    </ul>
+ 
+    <p>In some implementations, the following instructions may always cause transactional aborts. These instructions are not expected to be commonly used inside typical transactional regions. However, programmers must not rely on these instructions to force a transactional abort, since whether they cause transactional aborts is implementation dependent. 
+    </p>
+ 
+    <ul type="disc" id="GUID-6DBCD29D-E1CF-430E-ACD7-0CCDCE033AFC"> 
+      <li>Operations on X87 and MMX&#8482; architecture state. This includes all MMX&#8482; and X87 instructions, including the 
+        <samp class="codeph">FXRSTOR</samp> and 
+        <samp class="codeph">FXSAVE</samp> instructions. 
+      </li>
+ 
+      <li>Update to non-status portion of EFLAGS: 
+        <samp class="codeph">CLI</samp>, 
+        <samp class="codeph">STI</samp>, 
+        <samp class="codeph">POPFD</samp>, 
+        <samp class="codeph">POPFQ</samp>, 
+        <samp class="codeph">CLTS</samp>. 
+      </li>
+ 
+      <li>Instructions that update segment registers, debug registers and/or control registers: 
+        <samp class="codeph">MOV</samp> to DS/ES/FS/GS/SS, 
+        <samp class="codeph">POP</samp> DS/ES/FS/GS/SS, 
+        <samp class="codeph">LDS</samp>, 
+        <samp class="codeph">LES</samp>, 
+        <samp class="codeph">LFS</samp>, 
+        <samp class="codeph">LGS</samp>, 
+        <samp class="codeph">LSS</samp>, 
+        <samp class="codeph">SWAPGS</samp>, 
+        <samp class="codeph">WRFSBASE</samp>, 
+        <samp class="codeph">WRGSBASE</samp>, 
+        <samp class="codeph">LGDT</samp>, 
+        <samp class="codeph">SGDT</samp>, 
+        <samp class="codeph">LIDT</samp>, 
+        <samp class="codeph">SIDT</samp>, 
+        <samp class="codeph">LLDT</samp>, 
+        <samp class="codeph">SLDT</samp>, 
+        <samp class="codeph">LTR</samp>, 
+        <samp class="codeph">STR</samp>, 
+        <samp class="codeph">Far CALL</samp>, 
+        <samp class="codeph">Far JMP</samp>, 
+        <samp class="codeph">Far RET</samp>, 
+        <samp class="codeph">IRET</samp>, 
+        <samp class="codeph">MOV</samp> to DRx, 
+        <samp class="codeph">MOV</samp> to CR0/CR2/CR3/CR4/CR8, and 
+        <samp class="codeph">LMSW</samp>. 
+      </li>
+ 
+      <li>Ring transitions: SYSENTER, SYSCALL, SYSEXIT, and SYSRET. 
+      </li>
+ 
+      <li>TLB and Cacheability control: 
+        <samp class="codeph">CLFLUSH</samp>, 
+        <samp class="codeph">INVD</samp>, 
+        <samp class="codeph">WBINVD</samp>, 
+        <samp class="codeph">INVLPG</samp>, 
+        <samp class="codeph">INVPCID</samp>, and memory instructions with a non-temporal hint (<samp class="codeph">MOVNTDQA</samp>, 
+        <samp class="codeph">MOVNTDQ</samp>, 
+        <samp class="codeph">MOVNTI</samp>, 
+        <samp class="codeph">MOVNTPD</samp>, 
+        <samp class="codeph">MOVNTPS</samp>, and 
+        <samp class="codeph">MOVNTQ</samp>). 
+      </li>
+ 
+      <li>Processor state save: 
+        <samp class="codeph">XSAVE</samp>, 
+        <samp class="codeph">XSAVEOPT</samp>, and 
+        <samp class="codeph">XRSTOR</samp>. 
+      </li>
+ 
+      <li>Interrupts: INTn, INTO. 
+      </li>
+ 
+      <li>IO: IN, INS, REP INS, OUT, OUTS, REP OUTS and their variants. 
+      </li>
+ 
+      <li>VMX: 
+        <samp class="codeph">VMPTRLD</samp>, 
+        <samp class="codeph">VMPTRST</samp>, 
+        <samp class="codeph">VMCLEAR</samp>, 
+        <samp class="codeph">VMREAD</samp>, 
+        <samp class="codeph">VMWRITE</samp>, 
+        <samp class="codeph">VMCALL</samp>, 
+        <samp class="codeph">VMLAUNCH</samp>, 
+        <samp class="codeph">VMRESUME</samp>, 
+        <samp class="codeph">VMXOFF</samp>, 
+        <samp class="codeph">VMXON</samp>, 
+        <samp class="codeph">INVEPT</samp>, and 
+        <samp class="codeph">INVVPID</samp>. 
+      </li>
+ 
+      <li>SMX: 
+        <samp class="codeph">GETSEC</samp>, 
+        <samp class="codeph">UD2</samp>, 
+        <samp class="codeph">RSM</samp>, 
+        <samp class="codeph">RDMSR</samp>, 
+        <samp class="codeph">WRMSR</samp>, 
+        <samp class="codeph">HLT</samp>, 
+        <samp class="codeph">MONITOR</samp>, 
+        <samp class="codeph">MWAIT</samp>, 
+        <samp class="codeph">XSETBV</samp>, 
+        <samp class="codeph">VZEROUPPER</samp>, 
+        <samp class="codeph">MASKMOVQ</samp>, and 
+        <samp class="codeph">V/MASKMOVDQU</samp>. 
+      </li>
+ 
+    </ul>
+ 
+    <p><strong>Runtime Considerations</strong> 
+    </p>
+ 
+    <p>In addition to instruction-based considerations, runtime events may cause transactional execution to abort. These may be due to data access patterns or microarchitectural implementation causes. The following list is not a comprehensive discussion of all abort causes: 
+    </p>
+ 
+    <p>Any fault or trap in a transaction that must be exposed to software will be suppressed. Transactional execution will abort and execution will transition to a nontransactional execution as if the fault or trap had never occurred. If any exception is not masked, that will result in a transactional abort and it will be as if the exception had never occurred. 
+    </p>
+ 
+    <p>Synchronous exception events (<span>#DE</span>, 
+      <span>#OF</span>, 
+      <span>#NP</span>, 
+      <span>#SS</span>, 
+      <span>#GP</span>, 
+      <span>#BR</span>, 
+      <span>#UD</span>, 
+      <span>#AC</span>, 
+      <span>#XF</span>, 
+      <span>#PF</span>, 
+      <span>#NM</span>, 
+      <span>#TS</span>, 
+      <span>#MF</span>, 
+      <span>#DB</span>, 
+      <span>#BP/INT3</span>) that occur during transactional execution may cause an execution not to commit transactionally, and require a non-transactional execution. These events are suppressed as if they had never occurred. With HLE, since the non-transactional code path is identical to the transactional code path, these events will typically re-appear when the instruction that caused the exception is re-executed non-transactionally, causing the associated synchronous events to be delivered appropriately in the non-transactional execution. 
+    </p>
+ 
+    <p>Asynchronous events (<span>NMI</span>, 
+      <span>SMI</span>, 
+      <span>INTR</span>, 
+      <span>IPI</span>, 
+      <span>PMI</span>, etc.) occurring during transactional execution may cause the transactional execution to abort and transition to nontransactional execution. The asynchronous events will be queued and handled after the transactional abort is processed. 
+    </p>
+ 
+    <p>Transactions only support write-back cacheable memory type operations. A transaction may always abort if it includes operations on any other memory type. This includes instruction fetches to 
+      <samp class="codeph">UC</samp> memory type. 
+    </p>
+ 
+    <p>Memory accesses within a transactional region may require the processor to set the Accessed and Dirty flags of the referenced page table entry. The behavior of how the processor handles this is implementation specific. Some implementations may allow the updates to these flags to become externally visible even if the transactional region subsequently aborts. Some Intel&reg; TSX implementations may choose to abort the transactional execution if these flags need to be updated. Further, a processor's page-table walk may generate accesses to its own transactionally written but uncommitted state. Some Intel&reg; TSX implementations may choose to abort the execution of a transactional region in such situations. The architecture ensures that if the transactional region aborts, the transactionally written state will not be made architecturally visible through the behavior of structures such as TLBs. 
+    </p>
+ 
+    <p>Executing self-modifying code transactionally may also cause transactional aborts. Programmers must continue to follow Intel recommended guidelines for writing self-modifying and cross-modifying code even when employing HLE and RTM. 
+    </p>
+ 
+    <p>While an implementation of RTM and HLE will typically provide sufficient resources for executing common transactional regions, implementation constraints and excessive sizes for transactional regions may cause a transactional execution to abort and transition to a non-transactional execution. The architecture provides no guarantee of the amount of resources available to do transactional execution and does not guarantee that a transactional execution will ever succeed. 
+    </p>
+ 
+    <p>Conflicting requests to a cache line accessed within a transactional region may prevent the transaction from executing successfully. For example, if logical processor 
+      <var>P0</var> reads line A in a transactional region and another logical processor 
+      <var>P1</var> writes A (either inside or outside a transactional region) then logical processor 
+      <var>P0</var> may abort if logical processor 
+      <var>P1</var>’s write interferes with processor 
+      <var>P0</var>'s ability to execute transactionally. 
+    </p>
+ 
+    <p>Similarly, if 
+      <var>P0</var> writes line A in a transactional region and 
+      <var>P1</var> reads or writes A (either inside or outside a transactional region), then 
+      <var>P0</var> may abort if 
+      <var>P1</var>'s access to A interferes with 
+      <var>P0</var>'s ability to execute transactionally. Other coherence traffic may at times appear as conflicting requests and may cause aborts. While these false conflicts may happen, they are expected to be uncommon. The conflict resolution policy to determine whether 
+      <var>P0</var> or 
+      <var>P1</var> aborts in the above scenarios implementation specific. 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BAFE2B5E-6AA3-4283-BAB2-F36B00725EB3.htm">Intrinsics for Intel&reg; Transactional Synchronization Extensions (Intel&reg; TSX)</a></div>
+</div>
+<div class="See Also"><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: SVML Intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEECC3DA-98C8-4DA2-9200-CD073C874DA6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A.htm#GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0CAD7F53-342C-4576-AD6A-FE257F0B978E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: SVML Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_overview_svml"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0CAD7F53-342C-4576-AD6A-FE257F0B978E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: SVML Intrinsics</h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>The intrinsic functions supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI) Short Vector Math Library (SVML) or math intrinsics are vector variants of corresponding scalar math operations. They take vector arguments and perform scalar math operation on each element of the source vectors. The result of the operation is returned in a vector. 
+    </p>
+ 
+    <p>The masked variants of the SVML intrinsics have two additional parameters: 
+      <samp class="codeph">v1_old</samp> and 
+      <samp class="codeph">k1</samp>, where 
+      <samp class="codeph">v1_old</samp> is the old value of the destination vector and 
+      <samp class="codeph">k1</samp> is the mask parameter. 
+    </p>
+ 
+    <p>Masked variants operate only on those elements of the source vectors for which the corresponding bit in the mask parameter is set to '<span>1</span>'. Elements in the result vector for which corresponding bit in mask parameter is '<span>0</span>' take their values from the 
+      <samp class="codeph">v1_old</samp> parameter. 
+    </p>
+ 
+    <p>The SVML intrinsics do not have any corresponding instructions. The prototypes for SVML intrinsics are available in the 
+      <span class="filepath">immintrin.h</span> file. 
+    </p>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>Many routines in the SVML library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+          </p>
+ 
+        </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FEECC3DA-98C8-4DA2-9200-CD073C874DA6.htm">Short Vector Math Library Intrinsics</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A.htm#GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A">Overview: Vector Operations 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

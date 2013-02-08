@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Linking Debug Information">
+<meta name="DC.subject" content="debugging, linking debug information, debug information, linking, OpenMP*, problems debugging with IDB">
+<meta name="keywords" content="debugging, linking debug information, debug information, linking, OpenMP*, problems debugging with IDB">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-23564B0B-7CEA-4C0C-A562-D1A1DFB9E47A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Linking Debug Information</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_xcode_select_icc"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_xcode_select_icc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-23564B0B-7CEA-4C0C-A562-D1A1DFB9E47A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Linking Debug Information</h1>
+ 
+   
+  <div> 
+	 <p><strong>On Windows* operating systems</strong>: Use 
+	 <span class="option">/Zi</span>,<span class="option"> /Zd</span>, or 
+	 <span class="keyword">/Z7</span> at compile time and 
+	 <span class="option">/DEBUG</span> at link time to generate executables with debug information in the .pdb file. 
+	 </p>
+ 
+	 <p><strong>On Linux operating systems</strong>: Use 
+	 <span class="option">-g</span> at compile time. 
+	 </p>
+ 
+	 <p><strong>On OS X* operating systems</strong>: You can link the DWARF debug information from the object files for an executable using 
+		<span class="keyword">dsymutil</span>, a utility included with Xcode*. By linking the debug information in an executable, you eliminate the need to retain object files specifically for debugging purposes. 
+	 </p>
+ 
+	 <p> The utility runs automatically in the following cases: 
+	 </p>
+ 
+	 <a name="d12428e47"><!-- --></a><ul type="disc" id="d12428e47"> 
+		<li> 
+		  <p> When you use the Intel compiler to compile directly from source to executable using the command line. For example: 
+		  </p>
+ 
+		  <pre>icc -g myprogram.c</pre> 
+		  </li>
+ 
+		<li> 
+		  <p> When you compile using Xcode*. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p> In other cases, you must explicitly run 
+		<span class="keyword">dsymutil</span>, such as when you compile using a make file that builds 
+		<samp class="codeph">.o</samp> files and subsequently links the program. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p> If you use IDB to debug an application built with OpenMP*, you may observe problems after running 
+		  <span class="keyword">dsymutil</span>. If so, do not use 
+		  <span class="keyword">dsymutil</span>. Either remove it from your command line or disable it in Xcode. 
+		</p>
+ 
+	 </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

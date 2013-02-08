@@ -1,0 +1,479 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Linking Tools and Options">
+<meta name="DC.subject" content="linking tools, linking options, -qdiag-enable linking option, -qdiag-disable linking option, -qhelp linking option">
+<meta name="keywords" content="linking tools, linking options, -qdiag-enable linking option, -qdiag-disable linking option, -qhelp linking option">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4555A569-67C0-42E7-A0E2-5E5CB05C21B0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Linking Tools and Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="options_ref_related_opts_linking"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.options_ref_related_opts_linking"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4555A569-67C0-42E7-A0E2-5E5CB05C21B0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Linking Tools and Options</h1>
+ 
+   
+  <div> 
+	 <p>This topic describes how to use the Intel&reg; linking tools, 
+		<samp class="codeph">xild</samp> (Linux* OS and OS X*) or 
+		<samp class="codeph">xilink</samp> (Windows* OS). 
+	 </p>
+ 
+	 <p>The Intel linking tools behave differently on different platforms. The following sections summarizes the primary differences between the linking behaviors. 
+	 </p>
+ 
+	 <div class="section" id="GUID-A130EE01-7AE5-4FC1-A150-5ACC9E946DF8"> 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C2816C63-8137-4152-B450-AF717D2D86D0" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="100%" id="d215236e64"> 
+					 <p>Linux OS and OS X Linking Behavior Summary 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%" headers="d215236e64 "> 
+					 <p>The linking tool invokes the compiler to perform IPO if objects containing IR (intermediate representation) are found. (These are mock objects.) It invokes GNU 
+						<samp class="codeph">ld</samp> to link the application. 
+					 </p>
+ 
+					 <p>The command-line syntax for 
+						<samp class="codeph">xild</samp> is the same as that of the GNU linker: 
+					 </p>
+ 
+					 <p><samp class="codeph">xild [&lt;options&gt;] &lt;normal command-line&gt;</samp> 
+					 </p>
+ 
+					 <p>where: 
+					 </p>
+ 
+					 <ul type="disc" id="GUID-5D3701E6-B747-419C-8BBD-8AABC81D5666"> 
+						<li> 
+						  <p><samp class="codeph">[&lt;options&gt;]</samp>: (optional) one or more options supported only by 
+							 <samp class="codeph">xild</samp>. 
+						  </p>
+ 
+						</li>
+ 
+						<li> 
+						  <p><samp class="codeph">&lt;normal command-line&gt;</samp>: linker command line containing a set of valid arguments for 
+							 <samp class="codeph">ld</samp>. 
+						  </p>
+ 
+						</li>
+ 
+					 </ul>
+ 
+					 <p>To create 
+						<samp class="codeph">app</samp> using IPO, use the option 
+					 <span class="option">-o</span><var>filename</var> as shown in the following example: 
+					 </p>
+ 
+					 <p><samp class="codeph">xild 
+						  <span class="option">-qipo-fas</span> 
+						  <span class="option">-oapp a.o b.o c.o</span></samp> 
+					 </p>
+ 
+					 <p>The linking tool calls the compiler to perform IPO for objects containing IR and creates a new list of object(s) to be linked. The linker then calls 
+						<samp class="codeph">ld</samp> to link the object files that are specified in the new list and produce the application with the name specified by the 
+					 <span class="option">-o</span> option. The linker supports the 
+					 <span class="option">-ipo</span>[<var>n</var>] and 
+					 <span class="option">-ipo-separate</span> options. 
+					 </p>
+ 
+					 <p>To display a list of the supported link options from xild, use the following command: 
+					 </p>
+<samp class="codeph">$ xild -qhelp</samp> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-9F682294-630E-4701-808A-7DC1AA8604B2"> 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DF0E7E72-9402-4104-9665-24CE76F9ED77" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="100%" id="d215236e186"> 
+					 <p>Windows OS Linking Behavior Summary 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="100%" headers="d215236e186 "> 
+					 <p>The linking tool invokes the Intel compiler to perform multi-file IPO if objects containing IR (intermediate representation) is found. These are mock objects. It invokes Microsoft* 
+						<span class="filepath">link.exe</span> to link the application. 
+					 </p>
+ 
+					 <p>The command-line syntax for the Intel&reg; linker is the same as that of the Microsoft linker: 
+					 </p>
+ 
+					 <p><samp class="codeph">xilink [&lt;options&gt;] &lt;normal command-line&gt;</samp> 
+					 </p>
+ 
+					 <p>where: 
+					 </p>
+ 
+					 <ul type="disc" id="GUID-3196B72F-E122-41FD-B222-4E9EDEBC077B"> 
+						<li> 
+						  <p><samp class="codeph">[&lt;options&gt;]</samp>: (optional) one or more options supported only by 
+							 <samp class="codeph">xilink</samp>. 
+						  </p>
+ 
+						</li>
+ 
+						<li> 
+						  <p><samp class="codeph">&lt;normal command-line&gt;</samp>: linker command line containing a set of valid arguments for the Microsoft linker. 
+						  </p>
+ 
+						</li>
+ 
+					 </ul>
+ 
+					 <p>To place the multifile IPO executable in 
+						<span class="filepath">ipo_file.exe</span>, use the linker option 
+					 <span class="option">/out:</span><var>filename</var>; for example: 
+					 </p>
+ 
+					 <p><samp class="codeph">xilink 
+						  <span class="option">-qipo-fas</span> 
+						  <span class="option">/out:ipo_file.exe a.obj b.obj c.obj</span></samp> 
+					 </p>
+ 
+					 <p>The linker calls the compiler to perform IPO for objects containing 
+						<samp class="codeph">IR</samp> and creates a new list of object(s) to be linked. The linker calls Microsoft 
+						<span class="filepath">link.exe</span> to link the object files that are specified in the new list and produce the application with the name specified by the 
+					 <span class="option">/out:</span><var>filename</var> linker option. 
+					 </p>
+ 
+					 <p>To display a list of support link options from xilink, use the following command: 
+					 </p>
+ 
+					 <p><samp class="codeph">&gt;&gt; xilink /qhelp</samp> 
+					 </p>
+ 
+					 <p><samp class="codeph">xilink.exe 
+						</samp>accepts all the options of 
+						<samp class="codeph">link.exe</samp> and will pass them on to 
+						<samp class="codeph">link.exe</samp> at the final linking stage. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-4F0D5B0B-9240-4531-BEF8-A7DB3A54B1FE"><h2 class="sectiontitle">Using the Linking Tools</h2> 
+		 
+		<p>You must use the Intel linking tools to link your application if the following conditions apply: 
+		</p>
+ 
+		<ul type="disc" id="GUID-229E5398-D1CA-47DA-9515-6A1646DE23A9"> 
+		  <li> 
+			 <p>Your source files were compiled with multifile IPO enabled. Multi-file IPO is enabled by specifying compiler option 
+		<span class="option">-ipo</span> (Linux OS and OS X) or 
+		<span class="option">/Qipo</span> (Windows OS) . 
+		</p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>You normally would invoke either the GNU linker (<samp class="codeph">ld</samp>) or the Microsoft linker (<span class="filepath">link.exe</span>) to link your application. 
+		  </p>
+ 
+		</li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-B5564B15-1774-401B-ABE8-899467545AD8"><h2 class="sectiontitle">Controlling the Display of Diagnostics</h2> 
+		 
+		<p>The following table provides information on the 
+		<span class="option">-qdiag</span> linking option. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0554929B-3795-4B55-B40D-8B392A399B5A" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d215236e360"> 
+					 <p>Linking Tools Option 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d215236e366"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d215236e360 "> 
+					 <p><span class="keyword">-qdiag</span>-[<var>type</var>]=[<var>diag-list</var>] 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d215236e366 "> 
+					 <p>Controls the display of diagnostic information. 
+					 </p>
+ 
+					 <p>The 
+						<var>type</var> is an action to perform on diagnostics. Possible values are: 
+					 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-102FF6DF-73EC-4460-992B-C673CCFBFE0E" frame="border" border="1" cellspacing="0" rules="all"> 
+						  <tbody> 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="21.83406113537118%"><span class="keyword">enable</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="78.16593886462883%"> 
+								  <p>Enables a diagnostic message or a group of messages. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="21.83406113537118%"><span class="keyword">disable</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="78.16593886462883%"> 
+								  <p>Disables a diagnostic message or a group of messages. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+						  </tbody>
+ 
+						</table>
+</div>
+ 
+					 </p>
+ 
+					 <p>The 
+						<var>diag-list</var> is a diagnostic group or ID value. Possible values are: 
+					 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D02F3040-35DA-45E0-9BFB-BA20AD431808" frame="border" border="1" cellspacing="0" rules="all"> 
+						  <tbody> 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">thread</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages that help in thread-enabling a program. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">vec</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages issued by the vectorizer. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">par</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages issued by the auto-parallelizer (parallel optimizer). 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">openmp</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages issued by the OpenMP* parallelizer. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">warn</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages that have a "warning" severity level. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">error</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages that have an "error" severity level. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">remark</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies diagnostic messages that are remarks or comments. 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">cpu-dispatch</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies the CPU dispatch remarks for diagnostic messages. These remarks are enabled by default. 
+									 </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">id[,id,...]</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies the ID number of one or more messages. If you specify more than one message number, they must be separated by commas. There can be no intervening white space between each "id". 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+							 <tr> 
+								<td class="cellrowborder" valign="top" width="27.932960893854748%"><span class="keyword">tag[,tag,...]</span> 
+								</td>
+ 
+								<td class="cellrowborder" valign="top" width="72.06703910614524%"> 
+								  <p>Specifies the mnemonic name of one or more messages. If you specify more than one mnemonic name, they must be separated by commas. There can be no intervening white space between each "tag". 
+								  </p>
+ 
+								</td>
+ 
+							 </tr>
+ 
+						  </tbody>
+ 
+						</table>
+</div>
+ 
+					 </p>
+ 
+					 <p> The diagnostic messages generated can be affected by certain options, such as 
+					 <span class="option">/arch</span> or 
+					 <span class="option">/Qx</span> (Windows OS) or 
+					 <span class="option">-m</span> or 
+					 <span class="option">-x</span> (Linux OS and OS X). 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> Note that in the above option, you can specify an underscore (_) instead of a dash (-). 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

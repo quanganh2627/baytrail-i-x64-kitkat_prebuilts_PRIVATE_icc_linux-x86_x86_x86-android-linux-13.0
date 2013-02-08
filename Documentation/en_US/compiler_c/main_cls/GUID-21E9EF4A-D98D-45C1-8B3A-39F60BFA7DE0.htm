@@ -1,0 +1,118 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30522)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30522">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30522">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-21E9EF4A-D98D-45C1-8B3A-39F60BFA7DE0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30522)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30522"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30522"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-21E9EF4A-D98D-45C1-8B3A-39F60BFA7DE0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30522)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-6D27ADED-1C52-41AD-9195-80E2D9BBB670"><h2 class="sectiontitle">Message</h2><p>Insert a "%s parallel private(%s)" statement right before the loop at line %d to parallelize the loop.</p>
+</div>
+
+
+<div class="section" id="GUID-ED0111D0-5031-49A9-A2E7-377BCF619E0C"><h2 class="sectiontitle">Advice</h2>
+<p>Add <span>"#pragma parallel private"</span>  before the specified loop. This <span>pragma</span> enables the parallelization of the loop at the specified line.</p>
+</div>
+
+
+<div class="section" id="GUID-8CE41013-2333-47B2-B614-9C9BDAE79404"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>float A[10][10000];</pre>
+<pre>float B[10][10000];</pre>
+<pre>float C[10][10000];</pre>
+<pre>void foo(</pre>
+<pre> int n,</pre>
+<pre> int m1,</pre>
+<pre> int m2</pre>
+<pre>)</pre>
+<pre>{</pre><pre>  int i,j;</pre>
+<pre>  float W[10000];</pre>
+<pre>  for (i =0; i &lt; n; i++) {</pre>
+<pre>    for (j =0; j &lt; m1; j++)</pre>
+<pre>      W[j]  =  A[i][j] * B[i][j];</pre><pre>    for (j =0; j &lt; m2; j++)</pre>
+<pre>      C[i][j] += W[j] + 1.0;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</div>
+
+
+<p>In this case, the compiler does not parallelize the loop since it doesn't know for sure that m1 &gt;= m2.</p>
+
+
+<p>If you know that this property is true, and that no element of W is read before it is written to after the loop, then you can use the recommended pragma.</p>
+
+<p>If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>float A[10][10000];</pre>
+<pre>float B[10][10000];</pre>
+<pre>float C[10][10000];</pre>
+<pre>void foo(</pre>
+<pre> int n,</pre>
+<pre> int m1,</pre>
+<pre> int m2</pre>
+<pre>)</pre>
+<pre>{</pre>
+<pre>  int i,j;</pre>
+<pre>  float W[10000];</pre>
+<pre>#pragma parallel private (W)</pre>
+<pre>  for (i =0; i &lt; n; i++) {</pre>
+<pre>    for (j =0; j &lt; m1; j++)</pre>
+<pre>      W[j]  =  A[i][j] * B[i][j];</pre>
+<pre>    for (j =0; j &lt; m2; j++)</pre>
+<pre>      C[i][j] += W[j] + 1.0;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-CCA1DC6A-B3B5-480E-A5AF-3A7BCEDCF747"><h2 class="sectiontitle">Verify</h2>
+
+<p>Before an element of an array can be <span>read</span> in the loop, there must have been a previous <span>write</span> to it during the same loop iteration. In addition, if an element is <span>read</span> after the loop, there must have been a previous write to it before the <span>read</span> after the loop.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Constructors and Initialization">
+<meta name="DC.subject" content="Class Libraries, floating-point vector classes, constructors and initialization">
+<meta name="keywords" content="Class Libraries, floating-point vector classes, constructors and initialization">
+<meta name="DC.Relation" scheme="URI" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BF4F2175-056F-4F01-B797-3F2688AEE700">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Constructors and Initialization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_fp_const_init"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BF4F2175-056F-4F01-B797-3F2688AEE700">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Constructors and Initialization</h1>
+ 
+   
+  <div> 
+    <p>The following table shows how to create and initialize F32vec objects with the Fvec classes. 
+    </p>
+ 
+    <div class="section" id="GUID-1BE83053-76F5-4CF7-B7E6-828566876E7F"><h2 class="sectiontitle">Constructors and Initialization for Fvec Classes</h2> 
+       
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B883D3BF-02A3-436A-8D63-918C29ACE6B4" frame="border" border="1" cellspacing="0" rules="all"> 
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d631869e56"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="33%" id="d631869e62"> 
+                <p>Intrinsic 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" width="34%" id="d631869e68"> 
+                <p>Returns 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d631869e77">Constructor Declaration 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e56 d631869e77 "> 
+                <p><samp class="codeph">F64vec2 A;</samp><br><samp class="codeph">F32vec4 B;</samp><br><samp class="codeph">F32vec1 C;</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e62 d631869e77 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e68 d631869e77 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+         
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d631869e127">__m128 Object Initialization 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e127 "> 
+                <p><samp class="codeph">F64vec2 A(__m128d mm);</samp><br><samp class="codeph">F32vec4 B(__m128 mm);</samp><br><samp class="codeph">F32vec1 C(__m128 mm);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e127 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e127 "> 
+                <p>N/A 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+         
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d631869e177">Double Initialization 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e177 "> 
+                <p><samp class="codeph">/* Initializes two doubles. */<br>F64vec2 A(double d0, double d1);<br>F64vec2 A = F64vec2(double d0, double d1);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e177 "> 
+                <p><span class="option">_mm_set_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e177 "> 
+                <p>A0 := d0;<br>A1 := d1; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e177 "> 
+                <p><samp class="codeph">F64vec2 A(double d0);</samp><br><samp class="codeph">/* Initializes both return values<br>with the same double precision value */.</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e177 "> 
+                <p><span class="option">_mm_set1_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e177 "> 
+                <p>A0 := d0;<br>A1 := d0; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+         
+           
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" colspan="3" align="left" valign="top" id="d631869e261">Float Initialization 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><samp class="codeph">F32vec4 A(float f3, float f2,<br>float f1, float f0); 
+                  </samp><br><samp class="codeph">F32vec4 A = F32vec4(float f3, float f2,<br>float f1, float f0);</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><span class="option">_mm_set_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e261 "> 
+                <p>A0 := f0;<br>A1 := f1;<br>A2 := f2;<br>A3 := f3; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><samp class="codeph">F32vec4 A(float f0);</samp><br><samp class="codeph">/* Initializes all return values<br>with the same floating point value. */</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><span class="option">_mm_set1_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e261 "> 
+                <p>A0 := f0;<br>A1 := f0;<br>A2 := f0;<br>A3 := f0; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><samp class="codeph">F32vec4 A(double d0);</samp><br><samp class="codeph">/* Initialize all return values with<br>the same double-precision value. */</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><span class="option">_mm_set1_ps(d)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e261 "> 
+                <p>A0 := d0;<br>A1 := d0;<br>A2 := d0;<br>A3 := d0; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><samp class="codeph">F32vec1 A(double d0);</samp><br><samp class="codeph">/* Initializes the lowest value of A<br>with d0 and the other values with 0.*/</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><span class="option">_mm_set_ss(d)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e261 "> 
+                <p>A0 := d0;<br>A1 := 0;<br>A2 := 0;<br>A3 := 0; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><samp class="codeph">F32vec1 B(float f0);</samp><br><samp class="codeph">/* Initializes the lowest value of B<br>with f0 and the other values with 0.*/</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><span class="option">_mm_set_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e261 "> 
+                <p>B0 := f0;<br>B1 := 0;<br>B2 := 0;<br>B3 := 0; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><samp class="codeph">F32vec1 B(int I);<br>/* Initializes the lowest value of B<br>with f0, other values are undefined.*/</samp> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d631869e261 "> 
+                <p><span class="option">_mm_cvtsi32_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="34%" headers="d631869e261 "> 
+                <p>B0 := f0;<br>B1 := {}<br>B2 := {}<br>B3 := {} 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">Floating-point Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

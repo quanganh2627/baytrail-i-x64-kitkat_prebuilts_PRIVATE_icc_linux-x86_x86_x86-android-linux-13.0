@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for Converting Half Floats that Map to Intel&reg; Post-32nm Processor Instructions">
+<meta name="DC.subject" content="intrinsics, Intel&reg; Post-32nm Processor Instruction Extensions, half-float, conversion, _mm_cvtph_ps(), _mm_cvtps_ph()), _mm256_cvtps_ph(), _mm256_cvtph_ps()">
+<meta name="keywords" content="intrinsics, Intel&reg; Post-32nm Processor Instruction Extensions, half-float, conversion, _mm_cvtph_ps(), _mm_cvtps_ph()), _mm256_cvtps_ph(), _mm256_cvtph_ps()">
+<meta name="DC.Relation" scheme="URI" content="GUID-BFB40E93-A69F-402A-858F-1B17A92EBAE8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FD4E3232-CAC6-4540-8153-C58A30A17F0C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-87E7AC48-A3FB-441D-BAAC-22A09E07322C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7679FF37-257B-4F90-8668-5B3AA62587AD.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F4B16726-CD71-4677-9407-9F3C37F484F1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-23C8FF6D-3D66-4961-A3A0-E2A7DC874304.htm#GUID-23C8FF6D-3D66-4961-A3A0-E2A7DC874304">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-473432EF-66C8-4BF0-91AC-B3C6E90F0CD0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Converting Half Floats that Map to Intel&reg; Post-32nm Processor Instructions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_bk_convertpost32_hf"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-473432EF-66C8-4BF0-91AC-B3C6E90F0CD0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Converting Half Floats that Map to Intel&reg; Post-32nm Processor Instructions</h1>
+ 
+   
+  <div> 
+    <p>There are four intrinsics for converting the half-float values. Two of them (<span class="option">_mm_cvtph_ps()</span> and 
+  <span class="option">_mm_cvtps_ph())</span> are declared in the 
+  <span class="filepath">emmintrin.h</span> file, and the other two (<span class="option">_mm256_cvtps_ph()</span> and 
+  <span class="option">_mm256_cvtph_ps()</span>) are declared in the 
+  <span class="filepath">immintrin.h</span> file. 
+  </p>
+ 
+  <p> These intrinsics convert packed half-precision values starting from the first CPUs with the AVX instructions support that do not really have any special instructions performing FP16 conversions. Therefore, the intrinsics are lowered to runtime library function calls and map to Intel&reg; Post 32nm Processor instructions only when such a processor is specified as target CPU using the 
+  <span class="option">-Qx&lt;CPU&gt;/-x&lt;CPU&gt;</span> option, where &lt;CPU&gt; is the name of a CPU with support of the Post 32nm Instruction Extensions. 
+  </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BFB40E93-A69F-402A-858F-1B17A92EBAE8.htm">Intrinsics for Intel&reg; Post-32nm Processor Instruction Extensions</a></div>
+</div>
+<div class="See Also">
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-FD4E3232-CAC6-4540-8153-C58A30A17F0C.htm">_mm_cvtph_ps()</a><br>
+ Converts four half-precision (16-bit) floating point values to single-precision floating point values.</li>
+<li class="ulchildlink"><a href="GUID-87E7AC48-A3FB-441D-BAAC-22A09E07322C.htm">_mm256_cvtph_ps()</a><br>
+ Converts eight half-precision (16-bit) floating point values to single-precision floating point values.</li>
+<li class="ulchildlink"><a href="GUID-7679FF37-257B-4F90-8668-5B3AA62587AD.htm">_mm_cvtps_ph()</a><br>
+Converts four single-precision floating point values to half-precision (16-bit) floating point values.</li>
+<li class="ulchildlink"><a href="GUID-F4B16726-CD71-4677-9407-9F3C37F484F1.htm">_mm256_cvtps_ph()</a><br>
+Converts eight single-precision floating point values to half-precision (16-bit) floating point values.</li>
+</ul>
+<h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-23C8FF6D-3D66-4961-A3A0-E2A7DC874304.htm#GUID-23C8FF6D-3D66-4961-A3A0-E2A7DC874304">Intrinsics for Converting Half Floats 
+        </a></div></div></div> 
+
+</body>
+</html>

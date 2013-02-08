@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Managing Libraries">
+<meta name="DC.subject" content="LD_LIBRARY_PATH, environment variables, managing">
+<meta name="keywords" content="LD_LIBRARY_PATH, environment variables, managing">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5CEDE1B0-52CD-4C92-9C1F-D7B234D81A21">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Managing Libraries</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_manage_libs_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_manage_libs_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5CEDE1B0-52CD-4C92-9C1F-D7B234D81A21">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Managing Libraries</h1>
+ 
+   
+  <div> 
+    <p>During compilation, the compiler reads the 
+      <span>LIBRARY_PATH</span> environment variable for static libraries it needs to link when building the executable. At runtime, the executable will link against dynamic libraries referenced in the 
+      <span>LD_LIBRARY_PATH</span> environment variable. 
+    </p>
+ 
+    <div class="section" id="GUID-5C391319-AF09-4432-B667-0C2F896EF4FE"><h2 class="sectiontitle">Modifying LIBRARY_PATH</h2> 
+       
+      <p>If you want to add a directory, 
+      <span class="option">/libs</span> for example, to the 
+      <span>LIBRARY_PATH</span>, you can do either of the following: 
+      </p>
+ 
+      <ul type="disc" id="GUID-E42619B7-4861-4B27-9216-54DDC39DCF83"> 
+        <li> 
+          <p>command line: 
+            <samp class="codeph">prompt&gt; 
+              <span>export LIBRARY_PATH=/libs:$LIBRARY_PATH</span></samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>startup file: 
+            <samp class="codeph"><span>export LIBRARY_PATH=/libs:$LIBRARY_PATH</span></samp> 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>To compile 
+        <span class="filepath">file.cpp</span> and link it with the library 
+        <span class="filepath">mylib.a</span>, enter the following command: 
+      </p>
+ 
+      <pre><strong>icpc file.cpp mylib.a</strong></pre> 
+      <p>The compiler passes file names to the linker in the following order: 
+      </p>
+ 
+      <ol id="GUID-ECC1D728-96ED-4492-8FD4-71E524CEAB05"> 
+        <li> 
+          <p>the object file 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>any objects or libraries specified at the command line, in a response file, or in a configuration file 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>the Intel&reg; Math Library, 
+            <span class="filepath">libimf.a</span> 
+          </p>
+ 
+        </li>
+ 
+      </ol>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

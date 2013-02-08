@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="Xlinker">
+<meta name="abstract" content="Passes a linker option directly to the linker.">
+<meta name="description" content="Passes a linker option directly to the linker.">
+<meta name="DC.subject" content="linker, option passing linker option to, -Xlinker compiler option">
+<meta name="keywords" content="linker, option passing linker option to, -Xlinker compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-6172D550-95F9-432C-84CB-97EAA2536A80.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D6F27597-3C76-4399-87FD-094A546420B4.htm#GUID-D6F27597-3C76-4399-87FD-094A546420B4">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F70412B-6A95-45D8-BC76-B01D63EBDD99.htm#GUID-0F70412B-6A95-45D8-BC76-B01D63EBDD99">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B8EF12E6-E09A-484F-AE1D-05B933F03E9E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Xlinker</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_xlinker"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_xlinker"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B8EF12E6-E09A-484F-AE1D-05B933F03E9E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">Xlinker</h1>
+<!--Passes a linker option directly to the linker.--><div><p>Passes a linker option directly to the linker.</p>
+
+<div class="section" id="GUID-E24C33CF-704F-4D8C-A084-4E2377EA81B6"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Linker &gt; Miscellaneous &gt; Other Options</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+
+</div>
+<div class="section" id="GUID-EE24AD47-C094-48B7-9632-FA8FA9CAE276"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-C6EAB6A4-3AFA-4BFD-BC2B-4FB01BD66E06"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-Xlinker </span><span class="var">option</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-07FC4B30-B448-4109-BB24-517F261E3620"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>option</var></p></td>
+<td valign="top" class="noborder"><p>Is a linker option.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-4530F0BB-37E2-4EE3-8AA1-4F36AD148305"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>No options are passed directly to the linker.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6D5E06FA-679E-447A-8963-E6DA8177197C"><h2>Description</h2>
+<p>This option passes a linker option directly to the linker.
+<br>If <span class="option">-Xlinker -shared</span> is specified, only <span class="option">-shared</span> is passed to the linker and no special work is done to ensure proper linkage for generating a shared object. <span class="option">-Xlinker</span> just takes whatever arguments are supplied and passes them directly to the linker.</p>
+<p>If you want to pass compound options to the linker, for example "<span class="option">-L $HOME/lib</span>", you must use the following method:</p>
+
+<pre>-Xlinker -L -Xlinker $HOME/lib</pre>
+</div>
+
+<div class="section" id="GUID-7728E95C-A9E1-43CE-9672-62DCA1A8A45C"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6172D550-95F9-432C-84CB-97EAA2536A80.htm">Linking or Linker Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-D6F27597-3C76-4399-87FD-094A546420B4.htm#GUID-D6F27597-3C76-4399-87FD-094A546420B4"><span class="option">shared</span></a>  compiler option</div>
+<div><a href="GUID-0F70412B-6A95-45D8-BC76-B01D63EBDD99.htm#GUID-0F70412B-6A95-45D8-BC76-B01D63EBDD99"><span class="option">link</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

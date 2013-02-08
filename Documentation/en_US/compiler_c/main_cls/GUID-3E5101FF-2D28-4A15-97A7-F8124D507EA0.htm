@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="pch-use">
+<meta name="abstract" content="Tells the compiler to use a precompiled header file.">
+<meta name="description" content="Tells the compiler to use a precompiled header file.">
+<meta name="DC.subject" content="-pch-use compiler option">
+<meta name="keywords" content="-pch-use compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4.htm#GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>pch-use</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_use-pch"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_use-pch"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3E5101FF-2D28-4A15-97A7-F8124D507EA0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">pch-use</h1>
+<!-- Tells the compiler to use a precompiled header file. --><div><p> Tells the compiler to use a precompiled header file. </p>
+
+<div class="section" id="GUID-D0D6AD74-2E35-4B53-9FBE-80D9BB75C96E"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-9015BC99-D122-4063-B553-C928035F0C86"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-5F32B2BE-32BA-4828-8061-1F32B4206772"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-pch-use </span><span class="var">filename</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-8896558C-3744-406B-B7B1-0B62C7CD9F86"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is the name of the precompiled header file to use. A space must appear before the file name. It can include a path.
+</p>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="section" id="GUID-DBD66564-C972-4478-9AC6-0C4863DC754A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not create or use precompiled headers unless you tell it to do so.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-82B8C947-2DB9-4DE7-A97D-0015E369421C"><h2>Description</h2><p>This option tells the compiler to use a precompiled header (PCH) file. </p>
+<p>It is supported for multiple source files when all source files use the same .pchi file.</p>
+<p>This option cannot be used in the same compilation as the <span class="option">-pch-create</span> option.</p>
+<p>To learn how to optimize compile times using the PCH options, see "Using Precompiled Header Files" in the User's Guide.</p>
+</div>
+
+<div class="section" id="GUID-8A9AA409-8951-466A-9480-443B3A2B6517"><h2>Alternate Options</h2><p>Linux and OS X: None</p>
+<p>Windows: <span class="option">/Yu</span></p>
+</div>
+
+<div class="example" id="EXAMPLE_13B8B697F41A49CCBC629C2FC4CF3897"><a name="EXAMPLE_13B8B697F41A49CCBC629C2FC4CF3897"><!-- --></a><h2>Example</h2><p>Consider the following command line:</p>
+<pre>icpc -pch-use /pch/source32.pchi source.cpp</pre><p>It produces the following output:</p>
+<pre>"source.cpp": using precompiled header file /pch/source32.pchi</pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4.htm#GUID-7DCC0B3A-423A-4E25-9F78-CA25E02DB5D4"><span class="option">-pch-create</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

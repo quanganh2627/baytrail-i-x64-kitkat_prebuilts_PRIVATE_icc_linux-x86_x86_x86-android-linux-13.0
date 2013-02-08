@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="falign-functions, Qfnalign">
+<meta name="abstract" content="Tells the compiler to align functions on an optimal byte boundary.">
+<meta name="description" content="Tells the compiler to align functions on an optimal byte boundary.">
+<meta name="DC.subject" content="-falign-functions compiler option, /Qfnalign compiler option, functions, option aligning on byte boundary">
+<meta name="keywords" content="-falign-functions compiler option, /Qfnalign compiler option, functions, option aligning on byte boundary">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-856B6D21-C8BB-49EE-BD7C-3DCD00841094">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>falign-functions, Qfnalign</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_falign_functions"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_falign_functions"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-856B6D21-C8BB-49EE-BD7C-3DCD00841094">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">falign-functions, Qfnalign</h1>
+<!--Tells the compiler to align functions on an optimal byte boundary. --><div><p>Tells the compiler to align functions on an optimal byte boundary. </p>
+
+<div class="section" id="GUID-212A4853-1746-4A72-A753-EAC57C6A49A8"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-422D99FD-AFF3-4C74-A795-077B7F6CB9BD"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-6B64A201-B327-44C5-9E60-DDFC8505BBBC"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-falign-functions</span><span class="delim">[</span><span class="oper">=</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">-fno-align-functions</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qfnalign</span><span class="delim">[</span><span class="oper">:</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">/Qfnalign-</span></p></td></tr></table></div>
+<div class="section" id="GUID-B526955A-BCC7-4113-9468-FDABF77F73E8"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the byte boundary for function alignment. Possible values are 2 or 16.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-89510C05-2AE9-4E34-91A4-B1DCD37FD3EC"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><span class="option">-fno-align-functions</span> <span>or <span class="option">/Qfnalign-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler aligns functions on 2-byte boundaries. This is the same as specifying <span class="option">-falign-functions=2</span> (Linux* OS and OS X*)<span> or <span class="option">/Qfnalign:2</span> (Windows* OS)</span>.</p>
+</td>
+</tr> </table>
+</div>
+
+<div class="section" id="GUID-D1259774-09F8-43CE-8B2F-7829D50C858D"><h2>Description</h2><p>This option tells the compiler to align functions on an optimal byte boundary. If you do not specify <var>n</var>, the compiler aligns the start of functions on 16-byte boundaries.</p>
+</div>
+
+<div class="section" id="GUID-5E4AFC09-736D-41C0-AF8D-838029B82D82"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

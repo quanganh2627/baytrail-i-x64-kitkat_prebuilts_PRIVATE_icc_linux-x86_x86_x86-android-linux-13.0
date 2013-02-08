@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_slli_epi32/ _mm512_mask_slli_epi32">
+<meta name="abstract" content="Performs a logical left shift operation of the int32 vector. &nbsp;Corresponding instruction is VPSLLD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Performs a logical left shift operation of the int32 vector. &nbsp;Corresponding instruction is VPSLLD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_slli_epi32, _mm512_mask_slli_epi32">
+<meta name="keywords" content="_mm512_slli_epi32, _mm512_mask_slli_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-9616E870-BD7A-49E3-8AB5-C0A178E13D1D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-96BFA293-4AE2-47BD-BA33-E0C5592F0228">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_slli_epi32/ _mm512_mask_slli_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_slli_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-96BFA293-4AE2-47BD-BA33-E0C5592F0228">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_slli_epi32/ _mm512_mask_slli_epi32</h1>
+<!--Performs a logical left shift operation of the int32 vector.   Corresponding instruction is   VPSLLD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).-->
+
+<div><p>Performs a logical left shift operation of the int32 vector.  &nbsp;Corresponding instruction is  <samp class="codeph">VPSLLD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-783F75AB-77AC-4723-BA69-19D78696CF05"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_slli_epi32(__m512i v2, unsigned int count);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_mask_slli_epi32(__m512iv1_old, __mmask16 k1, __m512i v2, unsigned int count);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-9B95BC5A-6DD3-438F-B0F4-35C1FCDE6C44"><h2>Parameters</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">int32 vector where the logical left shift operation is performed</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>count</var></p></td>
+
+<td valign="top" class="noborder">specifies the number of bits by which the logical left shift must occur</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="section" id="GUID-D75C040A-518F-45F3-A9EC-7950EA07FA9A"><h2>Description</h2>
+<p>Performs an element-by-element logical left shift of int32 vector 
+<samp class="codeph">v2</samp>, shifting by the number of bits given by immediate <var>count</var>. If the shift value specified by this parameter is greater than 31 then the result of the shift is zero.</p>
+
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing.</p>
+</div>
+
+
+<div class="section" id="GUID-A91DABBE-D883-4C46-B295-8AC567837091"><h2>Returns</h2>
+<p>Returns the result of the operation.</p>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9616E870-BD7A-49E3-8AB5-C0A178E13D1D.htm">Shift Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

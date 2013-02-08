@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Writing Code that Should Not Be Built for CPU-Only Execution">
+<meta name="DC.subject" content="__INTEL_OFFLOAD, preprocessor variables, code, writing only for offload or native builds">
+<meta name="keywords" content="__INTEL_OFFLOAD, preprocessor variables, code, writing only for offload or native builds">
+<meta name="DC.Relation" scheme="URI" content="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D1B56D32-2D79-458C-A27E-A0C27AE122B8.htm#GUID-D1B56D32-2D79-458C-A27E-A0C27AE122B8">
+<meta name="DC.Relation" scheme="URI" content="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm#GUID-2077C232-DB36-4D54-9429-57F4660AB4BB">
+<meta name="DC.Relation" scheme="URI" content="GUID-401EDB00-AD07-4085-97EB-7C68BA42A713.htm#GUID-401EDB00-AD07-4085-97EB-7C68BA42A713">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6D7DB4F7-001B-446D-BE55-3BEDFA76116C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Writing Code that Should Not Be Built for CPU-Only Execution</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_wrtng_non_cpu_only_code"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6D7DB4F7-001B-446D-BE55-3BEDFA76116C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Writing Code that Should Not Be Built for CPU-Only Execution</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>You can write code that should not be built when the target is a CPU-only executable. 
+	 </p>
+ 
+	 <p>By default, the compiler defines the macro 
+		<span class="keyword">__INTEL_OFFLOAD</span>. You can write code within an 
+		<samp class="codeph">#ifdef __INTEL_OFFLOAD</samp> section when the source code is customized for running on the coprocessor, either heterogeneously or natively. 
+	 </p>
+ 
+	 <p>For example, you can use this macro to protect code on the host that should only be executed for an offload build, such as calls to the 
+		<span class="keyword">omp_set_num_threads_target</span> family of APIs in 
+		<span class="filepath">offload.h</span>. 
+	 </p>
+ 
+	 <div class="section" id="GUID-06F62A24-8A3C-4BE1-A4A8-0E1063B1C270"><h2 class="sectiontitle">Example</h2> 
+		 
+		<p>The section for the host compiler works only when you compile with the 
+		<span class="option">no-offload</span> or 
+		<span class="option">mmic</span> compiler option. 
+		</p>
+ 
+		<pre>#ifdef __INTEL_OFFLOAD
+   #ifdef __MIC__
+          printf("Using offload compiler :  Hello from the coprocessor\n");
+   #else  /* __MIC__ */
+        printf("Using offload compiler :  Hello from the CPU\n");
+   #endif  /* __MIC__ */
+   #else
+        printf("Using host compiler :  Hello from the CPU\n");
+#endif</pre> 
+		</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">Offload Using a Pragma</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-D1B56D32-2D79-458C-A27E-A0C27AE122B8.htm#GUID-D1B56D32-2D79-458C-A27E-A0C27AE122B8">Predefined Macros for Intel&reg; MIC&#8482; Architecture 
+		  </a>  
+		  </div>
+<div><a href="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm#GUID-2077C232-DB36-4D54-9429-57F4660AB4BB">no-offload 
+		  </a>  
+		  </div>
+<div><a href="GUID-401EDB00-AD07-4085-97EB-7C68BA42A713.htm#GUID-401EDB00-AD07-4085-97EB-7C68BA42A713">mmic 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

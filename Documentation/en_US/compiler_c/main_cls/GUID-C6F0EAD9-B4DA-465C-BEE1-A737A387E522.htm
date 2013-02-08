@@ -1,0 +1,152 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30532)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30532">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30532">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-718E11DD-126E-42AA-A25B-3156308110A2.htm#GUID-718E11DD-126E-42AA-A25B-3156308110A2">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C6F0EAD9-B4DA-465C-BEE1-A737A387E522">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30532)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30532"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30532"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C6F0EAD9-B4DA-465C-BEE1-A737A387E522">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30532) </h1>
+
+
+
+<div>
+<div class="section" id="GUID-E8CEFB8E-F376-4A3D-9FF9-CE5D7E99C2B6"><h2 class="sectiontitle">Message</h2><p>Store the value of the upper-bound expression (%s) of the loop at line %d into a temporary local variable, and use this variable as the new upper-bound expression of the loop. To do this, insert a statement of the form "temp = %s" right before the loop, where "temp" is the newly created local variable. Make sure to choose a variable name that is unique. Then replace the loop's original upper-bound expression with "temp".</p>
+</div>
+
+
+<div class="section" id="GUID-63B7CBF7-B9BD-475B-BAA3-63603F38C9D3"><h2 class="sectiontitle">Advice</h2>
+<p>You should use a local-variable for the loop upper-bound if the upper-bound does not change during the execution of the loop. This enables the compiler to recognize the loop as a proper counted do loop, which in turn enables various loop optimizations including vectorization and parallelization.</p>
+<p>This message appears when the compiler can output the exact upper-bound variable to be replaced.</p>
+</div>
+
+
+<div class="section" id="GUID-93ADEB75-130C-4CDF-99EC-A330694A5295"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>typedef struct</pre>
+<pre>{</pre>
+<pre>    float*      data;</pre>
+<pre>} Vector;</pre>
+<pre>&nbsp;</pre>
+<pre>typedef struct</pre>
+<pre>{</pre>
+<pre>    int         len;</pre>
+<pre>} NetEnv;</pre>
+<pre>&nbsp;</pre>
+<pre>// This one does not vectorize</pre>
+<pre>void</pre>
+<pre>mul(</pre>
+<pre>    NetEnv*     ne,</pre>
+<pre>    Vector*     rslt,</pre>
+<pre>    Vector*     den,</pre>
+<pre>    Vector*     num)</pre>
+<pre>{</pre>
+<pre>    float*      r;</pre>
+<pre>    float*      d;</pre>
+<pre>    float*      n;</pre>
+<pre>    int i;</pre>
+<pre>&nbsp;</pre>
+<pre>    r = rslt-&gt;data;</pre>
+<pre>    d = den-&gt;data;</pre>
+<pre>    n = num-&gt;data;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (i = 0; i &lt; ne-&gt;len; ++i)</pre>
+<pre>    {</pre>
+<pre>        r[i] = n[i] * d[i];</pre>
+<pre>    }</pre>
+<pre>    return;</pre>
+<pre>}</pre>
+
+</div>
+
+
+<p>In this case, the compiler is unable to vectorize the loop at setting O2, the default. </p>
+<p>If you determine it is safe to do so, you can modify the program code as follows:</p>
+
+<pre>typedef struct</pre>
+<pre>{</pre>
+<pre>    float*      data;</pre>
+<pre>} Vector;</pre>
+<pre>&nbsp;</pre>
+<pre>typedef struct</pre>
+<pre>{</pre>
+<pre>    int         len;</pre>
+<pre>} NetEnv;</pre>
+<pre>&nbsp;</pre>
+<pre>// This one vectorizes</pre>
+<pre>void</pre>
+<pre>mul(</pre>
+<pre>    NetEnv*     ne,</pre>
+<pre>    Vector*     rslt,</pre>
+<pre>    Vector*     den,</pre>
+<pre>    Vector*     num)</pre>
+<pre>{</pre>
+<pre>    float*      r;</pre>
+<pre>    float*      d;</pre>
+<pre>    float*      n;</pre>
+<pre>    int i, local_len;</pre>
+<pre>&nbsp;</pre>
+<pre>    r = rslt-&gt;data;</pre>
+<pre>    d = den-&gt;data;</pre>
+<pre>    n = num-&gt;data;</pre>
+<pre>&nbsp;</pre>
+<pre>    local_len = ne-&gt;len;</pre>
+<pre>    for (i = 0; i &lt; local_len; ++i)</pre>
+<pre>    {</pre>
+<pre>        r[i] = n[i] * d[i];</pre>
+<pre>    }</pre>
+<pre>    return;</pre>
+<pre>}</pre>
+
+
+
+<div class="section" id="GUID-20644DAA-A34F-4A39-B6E9-653625AAAB46"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the value of the upper-bound expression does not change throughout the entire execution of the loop.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-718E11DD-126E-42AA-A25B-3156308110A2.htm#GUID-718E11DD-126E-42AA-A25B-3156308110A2">GAP Message (Diagnostic ID 30531)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

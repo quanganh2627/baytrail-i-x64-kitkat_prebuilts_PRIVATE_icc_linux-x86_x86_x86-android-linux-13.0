@@ -1,0 +1,579 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Vectorization and Loops">
+<meta name="DC.subject" content="loops, parallelization, vectorization">
+<meta name="keywords" content="loops, parallelization, vectorization">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Vectorization and Loops</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_par"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_par"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Vectorization and Loops</h1>
+ 
+   
+  <div> 
+    <p>This topic discusses loop parallelization in the context of vectorization. 
+    </p>
+ 
+    <p>Using the 
+  <span class="option">-parallel</span> (Linux*) or the 
+  <span class="option">/Qparallel</span> (Windows*) option enables parallelization for both Intel&reg; microprocessors and non-Intel microprocessors. The resulting executable may get additional performance gain on Intel microprocessors than on non-Intel microprocessors. The parallelization can also be affected by certain options, such as 
+  <span class="option">/arch</span> or 
+  <span class="option">/Qx</span> (Windows) or 
+  <span class="option">-m</span> or 
+  <span class="option">-x</span> (Linux and OS X). 
+  </p>
+ 
+  <p>Using the 
+  <span class="option">-vec</span> (Linux*) or the 
+  <span class="option">/Qvec</span> (Windows*) option enables vectorization at default optimization levels for both Intel&reg; microprocessors and non-Intel microprocessors. Vectorization may call library routines that can result in additional performance gain on Intel microprocessors than on non-Intel microprocessors. The vectorization can also be affected by certain options, such as 
+  <span class="option">/arch</span> or 
+  <span class="option">/Qx</span> (Windows) or 
+  <span class="option">-m</span> or 
+  <span class="option">-x</span> (Linux and OS X). 
+  </p>
+ 
+  <div class="section" id="GUID-F707C416-4795-44FB-96AA-33A0AF96C503"><h2 class="sectiontitle">Interactions with Loop Parallelization</h2> 
+     
+    <p>Combine the 
+      <a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">-parallel</span></a> (Linux* and OS X*) or 
+      <a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">/Qparallel</span></a> (Windows*) and 
+      <a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">-x</span></a> (Linux) or 
+      <a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">/Qx</span></a> (Windows) options to instructs the compiler to attempt both 
+      <a href="GUID-C109A0DE-0CCF-4FE4-8A03-05DBA5D8BD77.htm#GUID-C109A0DE-0CCF-4FE4-8A03-05DBA5D8BD77">Auto-Parallelization Overview</a> and automatic loop vectorization in the same compilation. 
+    </p>
+ 
+    <p>In most cases, the compiler will consider outermost loops for parallelization and innermost loops for vectorization. If deemed profitable, however, the compiler may even apply loop parallelization and vectorization to the same loop. 
+    </p>
+ 
+  </div>
+ 
+  <p>See 
+    <a href="GUID-22C9A59B-EFE5-47F4-ACA2-7BA6D2DD16DD.htm#GUID-22C9A59B-EFE5-47F4-ACA2-7BA6D2DD16DD">Programming with Auto-parallelization 
+    </a>and 
+    <a href="GUID-D284C1EE-BFA4-4EA3-BB67-4A3E5D50199F.htm#GUID-D284C1EE-BFA4-4EA3-BB67-4A3E5D50199F">Programming Guidelines for Vectorization</a>. 
+  </p>
+ 
+  <p>In some rare cases, a successful loop parallelization (either automatically or by means of OpenMP* directives) may affect the messages reported by the compiler for a non-vectorizable loop in a non-intuitive way; for example, in the cases where 
+  <span class="option">-vec-report2</span> (Linux and OS X) or 
+  <span class="option">/Qvec-report2</span> (Windows) option indicating loops were not successfully vectorized. 
+  </p>
+ 
+  <div class="section" id="GUID-F53E3AA0-D101-46F5-AF89-EA37817D4EC7"><h2 class="sectiontitle">Types of Vectorized Loops</h2> 
+     
+    <p>For integer loops, the 128-bit Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) 
+      <span>and the Intel&reg; Advanced Vector Extensions (Intel&reg; AVX)</span> provide SIMD instructions for most arithmetic and logical operators on 32-bit, 16-bit, and 8-bit integer data types, with limited support for the 64-bit integer data type. 
+    </p>
+ 
+    <p>Vectorization may proceed if the final precision of integer wrap-around arithmetic is preserved. A 32-bit shift-right operator, for instance, is not vectorized in 16-bit mode if the final stored value is a 16-bit integer. Also, note that because the Intel&reg; SSE 
+      <span>and the Intel&reg; AVX</span> instruction sets are not fully orthogonal (shifts on byte operands, for instance, are not supported), not all integer operations can actually be vectorized. 
+    </p>
+ 
+    <p>For loops that operate on 32-bit single-precision and 64-bit double-precision floating-point numbers, Intel&reg; SSE provides SIMD instructions for the following arithmetic operators: addition (+), subtraction (-), multiplication (*), and division (/). 
+    </p>
+ 
+    <p>Additionally, the Streaming SIMD Extensions provide SIMD instructions for the binary 
+      <span class="keyword">MIN</span> and 
+      <span class="keyword">MAX</span> and unary 
+      <span class="keyword">SQRT</span> operators. SIMD versions of several other mathematical operators (like the trigonometric functions 
+      <span class="keyword">SIN</span>, 
+      <span class="keyword">COS</span>, and 
+      <span class="keyword">TAN</span>) are supported in software in a vector mathematical run-time library that is provided with the Intel&reg; compiler of which the compiler takes advantage. 
+    </p>
+ 
+    <p>To be vectorizable, loops must be: 
+    <ul type="disc" id="GUID-ED238314-5067-46CC-B908-DD14F26CE5F6"> 
+      <li> 
+        <p><strong>Countable:</strong> The loop trip count must be known at entry to the loop at runtime, though it need not be known at compile time (that is, the trip count can be a variable but the variable must remain constant for the duration of the loop). This implies that exit from the loop must not be data-dependent. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><strong>Single entry and single exit:</strong> as is implied by stating that the loop must be countable. Consider the following example of a loop that is not vectorizable, due to a second, data-dependent exit: 
+          <pre>void no_vec(float a[], float b[], float c[]){</pre> 
+          <pre>&nbsp;&nbsp;int i = 0.;</pre> 
+          <pre>&nbsp;&nbsp;while (i &lt; 100) {</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;a[i] = b[i] * c[i];</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;//  this is a data-dependent exit condition:</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;if (a[i] &lt; 0.0)</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;break;</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;++i;</pre> 
+          <pre>&nbsp;&nbsp;}</pre> 
+          <pre>}</pre> 
+          <pre>&gt; icc -c -O2 -vec-report2 two_exits.cpp</pre> 
+          <pre>two_exits.cpp(4) (col. 9): remark: loop was not vectorized: nonstandard loop is not a vectorization candidate.</pre> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><strong>Contain straight-line code:</strong> SIMD instruction perform the same operation on data elements from multiple iterations of the original loop, therefore, it is not possible for different iterations to have different control flow; that is, they must not branch. It follows that 
+          <samp class="codeph">switch</samp> statements are not allowed. However,<samp class="codeph"> if</samp> statements are allowed if they can be implemented as masked assignments, which is usually the case. The calculation is performed for all data elements but the result is stored only for those elements for which the mask evaluates to true. To illustrate this point, consider the following example that may be vectorized: 
+          <pre>#include &lt;math.h&gt;</pre> 
+          <pre>void quad(int length, float *a, float *b, float *c, float *restrict x1, float *restrict x2){</pre> 
+          <pre>for (int i=0; i&lt;length; i++) {</pre> 
+          <pre>&nbsp;&nbsp;float s = b[i]*b[i] - 4*a[i]*c[i];</pre> 
+          <pre>&nbsp;&nbsp;if ( s &gt;= 0 ) {</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;s = sqrt(s) ;</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;x2[i] = (-b[i]+s)/(2.*a[i]);</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;x1[i] = (-b[i]-s)/(2.*a[i]);</pre> 
+          <pre>&nbsp;&nbsp;}</pre> 
+          <pre>&nbsp;&nbsp;else {</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;x2[i] = 0.;</pre> 
+          <pre>&nbsp;&nbsp;&nbsp;&nbsp;x1[i] = 0.;</pre> 
+          <pre>&nbsp;&nbsp;}</pre> 
+          <pre>}</pre> 
+          <pre>}</pre> 
+          <pre>&gt; icc -c -restrict -vec-report2 quad.cpp</pre> 
+          <pre>quad5.cpp(5) (col. 3): remark: LOOP WAS VECTORIZED.</pre> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><strong>Innermost loop of a nest:</strong> The only exception is if an original outer loop is transformed into an inner loop as a result of some other prior optimization phase, such as unrolling, loop collapsing or interchange, 
+          <span>or an original outermost loop is transformed to an innermost loop due to loop materialization</span>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><strong>Without function calls:</strong> Even a 
+          <span class="keyword">print</span> statement is sufficient to prevent a loop from getting vectorized. The vectorization report message is typically: 
+          <samp class="codeph">non-standard loop is not a vectorization candidate</samp>. The two major exceptions are for intrinsic math functions and for functions that may be inlined. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+ 
+    <p>Intrinsic math functions such as 
+      <span class="keyword">sin()</span>, 
+      <span class="keyword">log()</span>, 
+      <span class="keyword">fmax()</span>, and so on, are allowed, because the compiler runtime library contains vectorized versions of these functions. See the table below for a list of these functions; most exist in both float and double versions. 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DB6CCCAC-B8F4-4200-845C-220161D62439" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">acos</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">ceil</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">fabs</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">round</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">acosh</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">cos</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">floor</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">sin</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">asin</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">cosh</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">fmax</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">sinh</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">asinh</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">erf</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">fmin</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">sqrt</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">atan</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">erfc</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">log</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">tan</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">atan2</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">erfinv</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">log10</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">tanh</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">atanh</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">exp</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">log2</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">trunc</samp> 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">cbrt</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">exp2</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%"><samp class="codeph">pow</samp> 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="NaN%">&#xA0;</td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    </p>
+ 
+    <p>The loop in the following example may be vectorized because 
+      <span class="keyword">sqrtf()</span> is vectorizable and 
+      <span class="keyword">func()</span> gets inlined. Inlining is enabled at default optimization for functions in the same source file. An inlining report may be obtained by setting the 
+    <span class="option">/Qopt-report-phase ipo_inl 
+    </span>(Windows*) or 
+    <span class="option">-opt-report-phase ipo_inl</span> (Linux* and MacOS* X ) option. 
+    <pre>float func(float x, float y, float xp, float yp) {</pre> 
+    <pre>&nbsp;&nbsp;float denom;</pre> 
+    <pre>&nbsp;&nbsp;denom = (x-xp)*(x-xp) + (y-yp)*(y-yp);</pre> 
+    <pre>&nbsp;&nbsp;denom = 1./sqrtf(denom);</pre> 
+    <pre>&nbsp;&nbsp;return denom;</pre> 
+    <pre>}</pre> 
+    <pre>float trap_int(float y, float x0, float xn, int nx, float xp, float yp) {</pre> 
+    <pre>&nbsp;&nbsp;float x, h, sumx;</pre> 
+    <pre>&nbsp;&nbsp;int i;</pre> 
+    <pre>&nbsp;&nbsp;h = (xn-x0) / nx;</pre> 
+    <pre>&nbsp;&nbsp;sumx = 0.5*( func(x0,y,xp,yp) + func(xn,y,xp,yp) );</pre> 
+    <pre>&nbsp;&nbsp;for (i=1;i&lt;nx;i++) {</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;x = x0 + i*h;</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;sumx = sumx + func(x,y,xp,yp);</pre> 
+    <pre>&nbsp;&nbsp;}</pre> 
+    <pre>&nbsp;&nbsp;sumx = sumx * h;</pre> 
+    <pre>&nbsp;&nbsp;return sumx; </pre> 
+    <pre>}</pre> 
+    <pre>// Command line</pre> 
+    <pre>&gt; icc -c -vec-report2 trap_integ.c</pre> 
+    <pre>trap_int.c(16) (col. 3): remark: LOOP WAS VECTORIZED.</pre> 
+    </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-91F5215B-FCBB-4FC4-9729-8C1AE71D0EF3"><h2 class="sectiontitle">Statements in the Loop Body</h2> 
+     
+    <p>The vectorizable operations are different for floating-point and integer data. 
+    </p>
+ 
+    <p><strong>Integer Array Operations</strong> 
+    </p>
+ 
+    <p>The statements within the loop body may contain 
+      <span class="keyword">char</span>, 
+      <span class="keyword">unsigned char</span>, 
+      <span class="keyword">short</span>, 
+      <span class="keyword">unsigned short</span>, 
+      <span class="keyword">int</span>, and 
+      <span class="keyword">unsigned int</span><em>.</em> Calls to functions such as 
+      <span class="keyword">sqrt</span> and 
+      <span class="keyword">fabs</span> are also supported. Arithmetic operations are limited to addition, subtraction, bitwise 
+      <span class="keyword">AND</span>, 
+      <span class="keyword">OR</span>, and 
+      <span class="keyword">XOR</span> operators, division (via run-time library call), multiplication, 
+      <span class="keyword">min</span>, and 
+      <span class="keyword">max</span>. You can mix data types but this may potentially cost you in terms of lowering efficiency. Some example operators where you can mix data types are multiplication, shift, or unary operators. 
+    </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-58F99C8B-DED2-4937-AD47-E248E9EFF573"><h2 class="sectiontitle">Other Operations</h2> 
+     
+    <p>No statements other than the preceding floating-point and integer operations are allowed. In particular, note that the special 
+      <span class="keyword">__m64</span> 
+      <span class="keyword">__m128</span><span>, and<span class="keyword"> __m256</span></span> data types are not vectorizable. The loop body cannot contain any function calls. Use of the Streaming SIMD Extensions intrinsics ( for example, 
+      <span class="keyword">_mm_add_ps</span>) 
+      <span>or the Intel&reg; AVX intrinsics (for example, 
+        <span class="keyword">_mm256_add_ps</span>)</span> are not allowed. 
+    </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-43CD2D69-FAEE-41D0-A77D-C192AF72B320"><h2 class="sectiontitle">Data Dependency</h2> 
+     
+    <p>Data dependency relations represent the required ordering constraints on the operations in serial loops. Because vectorization rearranges the order in which operations are executed, any auto-vectorizer must have at its disposal some form of 
+      <a href="GUID-E98D4E0A-9730-425D-A898-3BB4AB9B2330.htm#DATA_DEP">data dependency analysis</a>. 
+    </p>
+ 
+    <p>An example where data dependencies prohibit vectorization is shown below. In this example, the value of each element of an array is dependent on the value of its neighbor that was computed in the previous iteration. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8C0D8986-B8AA-4752-B197-9A44E48E3211" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" id="d793494e756"> 
+              <p>Example 1: Data-dependent Loop 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d793494e756 "> 
+              <pre>int i;</pre> 
+              <pre>void dep(float *data){</pre> 
+              <pre>&nbsp;&nbsp;for (i=1; i&lt;100; i++){</pre> 
+              <pre>&nbsp;&nbsp;&nbsp;data[i] = data[i-1]*0.25 + data[i]*0.5 + data[i+1]*0.25;</pre> 
+              <pre>&nbsp;&nbsp;}</pre> 
+              <pre>}</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>The loop in the above example is not vectorizable because the 
+      <span class="keyword">WRITE</span> to the current element 
+      <span class="keyword">DATA(I)</span> is dependent on the use of the preceding element 
+      <span class="keyword">DATA(I-1)</span>, which has already been written to and changed in the previous iteration. To see this, look at the access patterns of the array for the first two iterations as shown below. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EAEC15C6-E6A2-4528-BB76-12CE4F872448" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" align="left" valign="top" id="d793494e816"> 
+              <p>Example 1: Data-dependency Vectorization Patterns 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" headers="d793494e816 "> 
+              <pre>i=1: READ data[0]</pre> 
+              <pre>READ data[1]</pre> 
+              <pre>READ data[2]</pre> 
+              <pre>WRITE data[1]</pre> 
+              <pre>i=2: READ data[1]</pre> 
+              <pre>READ data[2]</pre> 
+              <pre>READ data[3]</pre> 
+              <pre>WRITE data[2]</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>In the normal sequential version of this loop, the value of 
+      <span class="keyword">DATA(1)</span> read from during the second iteration was written to in the first iteration. For vectorization, it must be possible to do the iterations in parallel, without changing the semantics of the original loop. 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-122E5368-1BAA-4ED2-9696-88A4F9AB8C36" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" valign="top" width="NaN%" id="d793494e874">Example 2: Data Independent Loop 
+            </th>
+ 
+          </tr>
+</thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="NaN%" headers="d793494e874 "> 
+              <pre>for(i=0; i&lt;100; i++)</pre> 
+              <pre>a[i]=b[i];</pre> 
+              <pre>//which has the following access pattern</pre> 
+              <pre>read b[0]</pre> 
+              <pre>write a[0]</pre> 
+              <pre>read b[1]</pre> 
+              <pre>write a[1]</pre> 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  <div class="section" id="DATA_DEP"><a name="DATA_DEP"><!-- --></a><h2 class="sectiontitle">Data Dependency Analysis</h2> 
+     
+    <p>Data dependency analysis involves finding the conditions under which two memory accesses may overlap. Given two references in a program, the conditions are defined by: 
+    </p>
+ 
+    <ul type="disc" id="GUID-C21ECBD5-533A-4667-96BE-6A449463FFBE"> 
+      <li> 
+        <p>whether the referenced variables may be aliases for the same (or overlapping) regions in memory 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>for array references, the relationship between the subscripts 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>The data dependency analyzer for array references is organized as a series of tests, which progressively increase in power as well as in time and space costs. 
+    </p>
+ 
+    <p>First, a number of simple tests are performed in a dimension-by-dimension manner, since independency in any dimension will exclude any dependency relationship. Multidimensional arrays references that may cross their declared dimension boundaries can be converted to their linearized form before the tests are applied. 
+    </p>
+ 
+    <p>Some of the simple tests that can be used are the fast greatest common divisor (GCD) test and the extended bounds test. The GCD test proves independency if the GCD of the coefficients of loop indices cannot evenly divide the constant term. The extended bounds test checks for potential overlap of the extreme values in subscript expressions. 
+    </p>
+ 
+    <p>If all simple tests fail to prove independency, the compiler will eventually resort to a powerful hierarchical dependency solver that uses Fourier-Motzkin elimination to solve the data dependency problem in all dimensions. 
+    </p>
+ 
+  </div>
+ 
+  <p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d793494e962"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d793494e962 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

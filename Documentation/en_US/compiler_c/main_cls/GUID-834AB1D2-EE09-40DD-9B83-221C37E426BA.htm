@@ -1,0 +1,165 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Data Types for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)">
+<meta name="DC.Relation" scheme="URI" content="GUID-1979D5FF-C489-42DA-9456-591B23544BC6.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Data Types for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_datatypes"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Data Types for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>Intrinsic functions for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture) use a set of C data types as operands: 
+    </p>
+ 
+    <ul type="disc" id="GUID-868F9C04-D49D-40FF-9104-F09B0EDCF9D2"> 
+      <li> 
+        <p> 
+          <samp class="codeph">__m512</samp> data types 
+          <samp class="codeph">(__m512, __m512i,</samp> and 
+          <samp class="codeph">__m512d)</samp> 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>These data types map directly to the 
+      <samp class="codeph">v</samp> vector registers. 
+    </p>
+ 
+    <p>Another data type, 
+      <samp class="codeph">__mmask16</samp>, is an unsigned short type associated with the mask register values. 
+    </p>
+ 
+    <div class="section" id="GUID-0D56ED61-B288-460C-B0BD-2E9894025D22"><h2 class="sectiontitle">__m512 Data Types</h2> 
+       
+      <p>The 
+        <samp class="codeph">__m512</samp> data types are used to represent the contents of a vector graphic streaming SIMD extension register used by these intrinsic functions. 
+      </p>
+ 
+      <p>The header file 
+        <span class="filepath">immintrin.h</span> declares the following 
+        <samp class="codeph">__m512</samp> data types for the 512-bit vectors: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-397EF6AE-F642-4A91-9472-CC04D4AE18F5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="30.48780487804878%" id="d424746e96">Data type 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="69.51219512195121%" id="d424746e99">For 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top" headers="d424746e96 "> 
+                <samp class="codeph">__m512</samp> 
+              </td>
+ 
+              <td class="row-nocellborder" rowspan="1" colspan="1" valign="top" headers="d424746e99 "> a single precision floating point vector (float32 vector) 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top" headers="d424746e96 "> 
+                <samp class="codeph">__m512i</samp> 
+              </td>
+ 
+              <td class="row-nocellborder" rowspan="1" colspan="1" valign="top" headers="d424746e99 "> an integer 32-bit vector and an integer 64-bit vector (int32/int64 vector) 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top" headers="d424746e96 "> 
+                <samp class="codeph">__m512d</samp> 
+              </td>
+ 
+              <td class="row-nocellborder" rowspan="1" colspan="1" valign="top" headers="d424746e99 "> a double precision floating point vector (float64 vector) 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Therefore, the 
+        <samp class="codeph">__m512</samp> data types can hold sixteen (16) 32-bit floating-point/integer values or eight (8) 64-bit floating point/integer values. In other words, a vector consists of sixteen double-word size elements or eight quad-word size elements. 
+      </p>
+ 
+      <p>The compiler aligns 
+        <samp class="codeph">__m512</samp> local and global data to 64-byte boundaries on the stack. To align 
+        <samp class="codeph">integer</samp>, 
+        <samp class="codeph">float</samp>, or 
+        <samp class="codeph">double</samp> arrays, you can use the 
+        <samp class="codeph">declspec align(64)</samp> statement. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-258568D0-4B6E-482B-AF51-1DC03F34BB78"><h2 class="sectiontitle">Data Type Usage Guidelines</h2> 
+       
+      <p>The __m512 data types are not basic ANSI C data types. You must observe the following usage restrictions: 
+      </p>
+ 
+      <ul type="disc" id="GUID-59865F92-3DA9-4EC3-A0DC-32E9F19413F8"> 
+        <li>Use the data types only on either side of an assignment, as a return value, or as a parameter. You cannot use it with other arithmetic expressions (+, -, etc). 
+        </li>
+ 
+        <li>Use the data type as an object in aggregates, such as unions, to access the byte elements and structures. 
+        </li>
+ 
+        <li>Use the data type only with the intrinsics described in this documentation. 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1979D5FF-C489-42DA-9456-591B23544BC6.htm">Details of Intrinsic Functions for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

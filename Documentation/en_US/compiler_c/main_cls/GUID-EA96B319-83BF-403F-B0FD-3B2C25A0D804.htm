@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_mullo_epi16/32">
+<meta name="abstract" content="Multiplies signed packed 16/32-bit integer data elements of two vectors and stores low bits. The corresponding Intel&reg; AVX2 instruction is VPMULLW or VPMULLD.">
+<meta name="description" content="Multiplies signed packed 16/32-bit integer data elements of two vectors and stores low bits. The corresponding Intel&reg; AVX2 instruction is VPMULLW or VPMULLD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_mullo_epi16 (VPMULLW), _mm256_mullo_epi32 (VPMULLD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_mullo_epi16 (VPMULLW), _mm256_mullo_epi32 (VPMULLD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EA96B319-83BF-403F-B0FD-3B2C25A0D804">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_mullo_epi16/32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_mullo"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_mullo_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_mullo_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EA96B319-83BF-403F-B0FD-3B2C25A0D804">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_mullo_epi16/32 </span></h1>
+
+<!--Multiplies signed packed 16/32-bit integer data elements of two vectors and stores low bits. The corresponding Intel&reg; AVX2 instruction is  VPMULLW  or  VPMULLD .--><div><p>Multiplies signed packed 16/32-bit integer data elements of two vectors and stores low bits. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMULLW</span> or <span class="keyword">VPMULLD</span>.</p>
+
+
+<div class="section" id="GUID-D452ECDC-BDC7-4530-8FA6-3EF3CB63C5F5"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_mullo_epi16(__m256i s1, __m256i s2);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_mullo_epi32(__m256i s1, __m256i s2);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-8768378E-B644-4E46-81C1-B14384EA6582"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr></table>
+</div>
+
+
+<div class="section" id="GUID-5D2959F6-768F-46B0-A878-E760200535D1"><h2>Description</h2>
+<p>Performs a SIMD signed multiply of the packed signed 16- or 32-bit integers in source vectors <var>s1</var> and <var>s2</var> and stores the low 16- or 32-bits of each intermediate 32- or 64-bit result in the destination vector.</p>
+</div>
+
+
+<div class="section" id="GUID-37BCA571-BA74-441A-8F81-B84F79DC1F03"><h2>Returns</h2><p> Result of the multiplication operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">Intrinsics for Arithmetic Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

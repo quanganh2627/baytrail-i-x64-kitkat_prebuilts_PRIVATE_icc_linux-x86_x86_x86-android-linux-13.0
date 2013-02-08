@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30536)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30536">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30536">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5456D8DD-3F4F-4A39-80F9-14FD0F2E4B64.htm#GUID-5456D8DD-3F4F-4A39-80F9-14FD0F2E4B64">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4B50C59D-616D-42E8-B94F-0DE28D5EE6CB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30536)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30536"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30536"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4B50C59D-616D-42E8-B94F-0DE28D5EE6CB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30536)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-36BAE61D-C8C8-4939-9704-1F7617CE9449"><h2 class="sectiontitle">Message</h2><p>Add %s option for better type-based disambiguation analysis by the compiler, if appropriate (the option will apply for the entire compilation). This will improve optimizations such as vectorization for the loop at line %d. </p>
+</div>
+
+
+<div class="section" id="GUID-8BC74F85-0E7D-4E12-861D-22524042ECD1"><h2 class="sectiontitle">Advice</h2>
+<p>Use option <span class="option">-fnoargument-alias</span> (Linux* OS and OS X*) or <span class="option">/Qno-alias-args</span> (Windows* OS) for the specified file. This option will help the compiler to optimize the loop at the specified line. The user has to verify that there is no argument-aliasing for routines in this file before applying this option for the current file. This option is particularly useful for C++ programs since it enables type-based disambiguation between pointers that are passed in as arguments, which in turn enables optimizations such as vectorization and parallelization. </p>
+<p>Option <span class="option">-fargument-alias</span> (Linux* OS and OS X*) and <span class="option">/Qalias-args</span> (Windows* OS) enable or disable the C/C++ rule that function arguments may be aliased. When disabling the rule, you assert that this is safe.</p>
+</div>
+
+
+<div class="section" id="GUID-A22C24FD-2470-44BE-B255-16C6068D94C7"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following example that demonstrates a violation of <span class="option">-fnoargument-alias</span> or <span class="option">/Qno-alias-args</span>: </p>
+
+<pre>void f(double *p, double *q, double *r) {</pre>
+<pre>  int i;</pre>
+<pre>  for (i = 0; i &lt; n; i++)</pre>
+<pre>    p[i] = q[i] + r[i];</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int n, m;</pre>
+<pre>double A[100], B[100];</pre>
+<pre>...</pre>
+<pre>f(&amp;A[n], &amp;A[m], &amp;B[0]);</pre>
+
+</div>
+
+
+
+
+<p>Since both pointers p and q will be pointing to the same array A, there may be overlap depending on the values of n and m.</p>
+<p>Also, you cannot use the restrict keyword for parameters p and q in the function f for this test case.</p>
+<p>You must analyze all the callers of function f in the current file and make sure that such overlap does not exist before applying <span class="option">-fnoargument-alias</span> or <span class="option">/Qno-alias-args</span> or the restrict qualifier. Note that such call sites may occur in other files as well.</p>
+<div class="section" id="GUID-465651FA-C164-4DC4-8343-27C3FF76209C"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the semantics of this option is obeyed for the entire compilation. </p>
+<p>Another way to get the same effect is to add the "restrict" keyword to each pointer-typed formal parameter of the routine "%s". This allows optimizations such as vectorization to be applied to the loop at line %d. Make sure that semantics of the "restrict" pointer qualifier is satisfied; in the routine, all data accessed through the pointer must not be accessed through any other pointer.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-5456D8DD-3F4F-4A39-80F9-14FD0F2E4B64.htm#GUID-5456D8DD-3F4F-4A39-80F9-14FD0F2E4B64">GAP Message (Diagnostic ID 30537)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

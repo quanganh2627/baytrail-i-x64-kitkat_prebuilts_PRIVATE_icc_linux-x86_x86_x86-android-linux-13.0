@@ -1,0 +1,78 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="B">
+<meta name="abstract" content="Specifies a directory that can be used to find include files, libraries, and executables.">
+<meta name="description" content="Specifies a directory that can be used to find include files, libraries, and executables.">
+<meta name="DC.subject" content="-B compiler option, directory, option specifying for includes and libraries, option specifying for executables">
+<meta name="keywords" content="-B compiler option, directory, option specifying for includes and libraries, option specifying for executables">
+<meta name="DC.Relation" scheme="URI" content="GUID-3C8AB042-5B7B-46C5-95AE-A30F2B536FE0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-278ED644-AF4F-40CD-A2AC-15E081B11441">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>B</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_b_ucase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_b_ucase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-278ED644-AF4F-40CD-A2AC-15E081B11441">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">B</h1>
+<!--Specifies a directory that can be used to find include files, libraries, and executables.--><div><p>Specifies a directory that can be used to find include files, libraries, and executables.</p>
+
+<div class="section" id="GUID-5840C9F2-0236-4E96-BF24-54AA19457FF6"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-3687D371-BE49-444E-A5B9-C86D1C81424B"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-7E961A72-C4C3-493C-8E5B-F2955213F585"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-B</span><span class="var">dir</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-809B3B40-AAB1-4800-9D48-4C68270FC3BD"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>dir</var></p></td>
+<td valign="top" class="noborder"><p>Is the directory to be used. If necessary, the compiler adds a directory separator character at the end of <var>dir</var>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-D77C93DC-1275-4D55-9852-31F2C291355F"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler looks for files in the directories specified in your PATH environment variable.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-DE3B0025-4661-402C-824F-0C2EA041F212"><h2>Description</h2><p>This option specifies a directory that can be used to find include files, libraries, and executables.</p>
+<p>The compiler uses <var>dir</var> as a prefix.</p>
+<p>For include files, the <var>dir</var> is converted to <span class="option">-I/</span><var>dir</var>/include. This command is added to the front of the includes passed to the preprocessor.</p>
+<p>For libraries, the <var>dir</var> is converted to <span class="option">-L/</span><var>dir</var>. This command is added to the front of the standard <span class="option">-L</span> inclusions before system libraries are added.</p>
+<p>For executables, if <var>dir</var> contains the name of a tool, such as <span class="keyword">ld</span> or <span class="keyword">as</span>, the compiler will use it instead of those found in the default directories.</p>
+<p>The compiler looks for include files in <var>dir</var> /include while library files are looked for in <var>dir</var>.</p>
+<p>Another way to get the behavior of this option is to use the environment variable <span class="keyword">GCC_EXEC_PREFIX</span>.</p>
+</div>
+
+<div class="section" id="GUID-63EA4BA4-3743-49A9-85FB-905DC20DF845"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3C8AB042-5B7B-46C5-95AE-A30F2B536FE0.htm">Preprocessor Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

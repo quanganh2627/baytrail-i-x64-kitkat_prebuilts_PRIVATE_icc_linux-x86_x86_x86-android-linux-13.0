@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="opt-report-phase, Qopt-report-phase">
+<meta name="abstract" content="Specifies an optimizer phase to use when optimization reports are generated.">
+<meta name="description" content="Specifies an optimizer phase to use when optimization reports are generated.">
+<meta name="DC.subject" content="optimization report, option specifying phase to use for, /Qopt-report-phase compiler option, -opt-report-phase compiler option">
+<meta name="keywords" content="optimization report, option specifying phase to use for, /Qopt-report-phase compiler option, -opt-report-phase compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1E3A28A5-D9A8-4156-B908-26532ECD114B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>opt-report-phase, Qopt-report-phase</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_opt_report_phase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_opt_report_phase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1E3A28A5-D9A8-4156-B908-26532ECD114B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">opt-report-phase, Qopt-report-phase</h1>
+<!--Specifies an optimizer phase to use when optimization reports are generated.--><div><p>Specifies an optimizer phase to use when optimization reports are generated.</p>
+
+<div class="section" id="GUID-9B5B089D-7D37-4DF1-BA6B-E7AE779CED06"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Diagnostics &gt; Optimization Diagnostic Phase</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Optimization Diagnostic Phase</strong></p>
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-61F68D25-42CF-43F7-85EE-526227F9C788"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-2CA58013-328B-4645-9976-F02FEA8E89B4"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-opt-report-phase</span><span class="oper">=</span><span class="var">phase</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qopt-report-phase</span><span class="oper">:</span><span class="var">phase</span></p></td></tr></table></div>
+<div class="section" id="GUID-A5AAACBF-CC49-495B-848B-20D713BA5CE0"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>phase</var></p></td>
+<td valign="top" class="noborder"><p>Is the phase to generate reports for. Some of the possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p>
+<span><span><span class="keyword">offload</span></span></span></p></td>
+
+<td valign="top" class="noborder">
+<p>
+<span><span>The phase for Intel&reg; MIC Architecture. This phase has no effect if option <span class="option">-no-offload</span> is specified. This phase only applies to Intel&reg; MIC Architecture.</span></span></p>
+
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">ipo</span></p></td>
+
+<td valign="top" class="noborder"><p>The Interprocedural Optimizer phase</p>
+
+</td>
+
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">hlo</span></p></td>
+<td valign="top" class="noborder"><p>The High Level Optimizer phase</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">hpo</span></p></td>
+<td valign="top" class="noborder"><p>The High Performance Optimizer phase</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">ilo</span></p></td>
+<td valign="top" class="noborder"><p>The Intermediate Language Scalar Optimizer phase</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">pgo</span></p></td>
+<td valign="top" class="noborder"><p>The Profile Guided Optimization phase</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">all</span></p></td>
+<td valign="top" class="noborder"><p>All optimizer phases</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-0633B6A0-7299-40F4-8C24-88B6F135EF1B"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>No optimization reports are generated.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E6191157-D5B7-4AEB-9D92-B7261BEF74F3"><h2>Description</h2><p>This option specifies an optimizer phase to use when optimization reports are generated.</p>
+<p>This option can be used multiple times on the same command line to generate reports for multiple optimizer phases.</p>
+<p>When one of the logical names for optimizer phases is specified for phase, all reports from that optimizer phase are generated.</p>
+<p> Note that phase <span class="keyword">offload</span> causes the compiler to print a report of the input or output of variables that the host sends to the offload target and variables that the host receives from the target.</p>
+<p>To find all phase possibilities, use option <span class="option">-opt-report-help</span> (Linux OS and OS X) or <span class="option">/Qopt-report-help</span> (Windows OS).</p>
+</div>
+
+<div class="section" id="GUID-65FBD21B-3E37-4D17-B55C-1D06A7C56057"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">Optimization Report Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609"><span class="option">opt-report</span>, <span class="option">Qopt-report</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

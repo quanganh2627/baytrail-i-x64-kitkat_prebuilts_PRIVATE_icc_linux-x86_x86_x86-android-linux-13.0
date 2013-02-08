@@ -1,0 +1,175 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Hyperbolic Functions">
+<meta name="DC.subject" content="Math library, Hyperbolic Functions, acosh library function, asinh library function, atanh library function, cosh library function, sinh library function, sinhcosh library function, tanh library function">
+<meta name="keywords" content="Math library, Hyperbolic Functions, acosh library function, asinh library function, atanh library function, cosh library function, sinh library function, sinhcosh library function, tanh library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-35D44872-F55D-4172-BC76-76C2C996A5CF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Hyperbolic Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_hyper"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-35D44872-F55D-4172-BC76-76C2C996A5CF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Hyperbolic Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+    </p>
+
+    <p>The Intel math library supports the following hyperbolic functions:
+    </p>
+ 
+    <div class="section" id="ACOSH"><a name="ACOSH"><!-- --></a><h2 class="sectiontitle">acosh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">acosh</span> function returns the inverse hyperbolic cosine of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt; 1
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double acosh(double x);</samp><br> 
+        <samp class="codeph">long double acoshl(long double x);</samp><br> 
+        <samp class="codeph">float acoshf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ASINH"><a name="ASINH"><!-- --></a><h2 class="sectiontitle">asinh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">asinh</span> function returns the inverse hyperbolic sine of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double asinh(double x);</samp><br> 
+        <samp class="codeph">long double asinhl(long double x);</samp><br> 
+        <samp class="codeph">float asinhf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ATANH"><a name="ATANH"><!-- --></a><h2 class="sectiontitle">atanh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">atanh</span> function returns the inverse hyperbolic tangent of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &gt; 1<br><strong>errno</strong>: ERANGE, for x = 1 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double atanh(double x);</samp><br> 
+        <samp class="codeph">long double atanhl(long double x);</samp><br> 
+        <samp class="codeph">float atanhf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="COSH"><a name="COSH"><!-- --></a><h2 class="sectiontitle">cosh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cosh</span> function returns the hyperbolic cosine of x, (<samp class="codeph">e</samp><sup>x</sup> + 
+        <samp class="codeph">e</samp><sup>-x</sup>)/2.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double cosh(double x);</samp><br> 
+        <samp class="codeph">long double coshl(long double x);</samp><br> 
+        <samp class="codeph">float coshf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SINH"><a name="SINH"><!-- --></a><h2 class="sectiontitle">sinh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sinh</span> function returns the hyperbolic sine of 
+        <samp class="codeph">x</samp>, (e<sup>x</sup> - e<sup>-x</sup>)/2.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double sinh(double x);</samp><br> 
+        <samp class="codeph">long double sinhl(long double x);</samp><br> 
+        <samp class="codeph">float sinhf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SINHCOSH"><a name="SINHCOSH"><!-- --></a><h2 class="sectiontitle">sinhcosh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">sinhcosh</span> function returns both the hyperbolic sine and hyperbolic cosine of 
+        <samp class="codeph">x</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">void sinhcosh(double x, double *sinval, double *cosval);</samp><br> 
+        <samp class="codeph">void sinhcoshl(long double x, long double *sinval, long double *cosval);</samp><br> 
+        <samp class="codeph">void sinhcoshf(float x, float *sinval, float *cosval);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="TANH"><a name="TANH"><!-- --></a><h2 class="sectiontitle">tanh</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">tanh</span> function returns the hyperbolic tangent of 
+        <samp class="codeph">x</samp>, (e<sup>x</sup> - e<sup>-x</sup>) / (e<sup>x</sup> + e<sup>-x</sup>).
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double tanh(double x);</samp><br> 
+        <samp class="codeph">long double tanhl(long double x);</samp><br> 
+        <samp class="codeph">float tanhf(float x);</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

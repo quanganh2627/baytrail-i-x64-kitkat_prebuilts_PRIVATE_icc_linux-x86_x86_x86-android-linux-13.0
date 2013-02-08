@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking for Dangling Pointers">
+<meta name="DC.subject" content="pointer checker, checking for dangling pointers">
+<meta name="keywords" content="pointer checker, checking for dangling pointers">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B.htm#GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-86D9AB31-92B0-415E-BA71-62E2075B192F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking for Dangling Pointers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_check_dang"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_check_dang"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-86D9AB31-92B0-415E-BA71-62E2075B192F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Checking for Dangling Pointers</h1>
+ 
+   
+  <div> 
+	 <p> When dangling pointer checking or heap is enabled, the compiler uses a wrapper for the C runtime function 
+		<span class="keyword">free()</span> and the C++ 
+		<span class="keyword">delete</span> operator. These wrappers find all pointers that point to the block being freed, and change their bounds so that any access through the pointer will cause a bound violation. The bounds of these dangling pointers are actually set to: 
+	 </p>
+ 
+	 <p><samp class="codeph">lower_bound(p) = 2; 
+		</samp> 
+	 </p>
+ 
+	 <p><samp class="codeph">upper_bound(p) = 0; 
+		</samp> 
+	 </p>
+ 
+	 <p> If your program gets a bound violation with these bounds, it is a reference through a dangling pointer. 
+	 </p>
+ 
+	 <p> When dangling pointer checking is enabled for stack, the compiler finds all pointers that point to the locals of the function and changes their bounds in the same way as heap pointers above, just before the function exits. 
+	 </p>
+ 
+	 <p> If you have a custom memory allocator, you can enable it to do dangling pointer checking. The 
+		<span class="keyword">free()</span> function of your custom memory allocator should call this function in the pointer checker runtime code: 
+	 </p>
+ 
+	 <p><samp class="codeph">void __chkp_invalidate_dangling(void *ptr, size_t size); 
+		</samp> 
+	 </p>
+ 
+	 <p> This function is declared in the 
+		<span class="filepath">chkp.h</span> file. You must include that header file to use this function because it uses a custom call interface. 
+	 </p>
+ 
+	 <p><strong> Example: 
+		</strong> 
+	 </p>
+ 
+	 <pre>#include &lt;chkp.h&gt;
+	 void my_free(void *ptr) 
+	  {	
+	  size_t size = my_get_size(ptr);	 
+	 // do the free	 
+ __chkp_invalidate_dangling(ptr, size);	
+	 }
+</pre> 
+	 <p> You can also enabled dangling pointer checking in any function you use to override the C++ delete operator. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B.htm#GUID-68B0A2A1-1EF6-48B6-B20B-12356BA72B1B">check-pointers-dangling, Qcheck-pointers 
+		  </a>  Determines whether the compiler checks for dangling pointer references.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

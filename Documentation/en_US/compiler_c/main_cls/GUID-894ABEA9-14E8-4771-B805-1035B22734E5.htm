@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Integer Vector Classes">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, ivec classes">
+<meta name="keywords" content="Class Libraries, integer vector classes, ivec classes">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-894ABEA9-14E8-4771-B805-1035B22734E5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Integer Vector Classes</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_ovrvw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-894ABEA9-14E8-4771-B805-1035B22734E5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Integer Vector Classes</h1>
+ 
+   
+  <div> 
+    <p>The 
+      <span class="keyword">Ivec</span> classes provide an interface to SIMD processing using integer vectors of various sizes. The class hierarchy is represented in the following figure. 
+    </p>
+ 
+    <p><strong>Ivec Class Hierarchy</strong> 
+    </p>
+ 
+    <br><img src="GUID-04F44958-B971-4D07-99F1-2FBE2D5CA905-low.jpg"><br> 
+    <p>The 
+      <span class="keyword">M64</span> and 
+      <span class="keyword">M128</span> classes define the 
+      <span class="keyword">__m64</span> and 
+      <span class="keyword">__m128i</span> data types from which the rest of the 
+      <span class="keyword">Ivec</span> classes are derived. The first generation of child classes are derived based solely on bit sizes of 128, 64, 32, 16, and 8 respectively for the 
+      <span class="keyword">I128vec1</span>, 
+      <span class="keyword">I64vec1</span>, 
+      <span class="keyword">164vec2</span>, 
+      <span class="keyword">I32vec2</span>, 
+      <span class="keyword">I32vec4</span>, 
+      <span class="keyword">I16vec4</span>, 
+      <span class="keyword">I16vec8</span>, 
+      <span class="keyword">I8vec16</span>, and 
+      <span class="keyword">I8vec8</span> classes. The latter seven of the these classes require specification of signedness and saturation. 
+    </p>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Caution</h3> 
+      <p>Do not intermix the 
+        <span class="keyword">M64</span> and 
+        <span class="keyword">M128</span> data types. You will get unexpected behavior if you do. 
+      </p>
+ 
+    </div> 
+    <p>The signedness is indicated by the 
+      <samp class="codeph">s</samp> and 
+      <samp class="codeph">u</samp> in the class names: 
+    </p>
+ 
+    <p><span class="keyword">Is64vec2</span><br><span class="keyword">Iu64vec2</span><br><span class="keyword">Is32vec4</span><br><span class="keyword">Iu32vec4</span><br><span class="keyword">Is16vec8</span><br><span class="keyword">Iu16vec8</span><br><span class="keyword">Is8vec16</span><br><span class="keyword">Iu8vec16</span><br><span class="keyword">Is32vec2</span><br><span class="keyword">Iu32vec2</span><br><span class="keyword">Is16vec4</span><br><span class="keyword">Iu16vec4</span><br><span class="keyword">Is8vec8</span><br><span class="keyword">Iu8vec8</span><br> 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

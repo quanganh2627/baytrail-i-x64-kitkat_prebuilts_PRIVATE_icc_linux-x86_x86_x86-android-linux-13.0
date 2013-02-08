@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_blend_epi32, _mm256_blend_epi16/32">
+<meta name="abstract" content="Conditionally blends data elements of source vector depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is VPBLENDD or VPBLENDW.">
+<meta name="description" content="Conditionally blends data elements of source vector depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is VPBLENDD or VPBLENDW.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, blend operations, _mm_blend_epi32, _mm256_blend_epi16 (VPBLENDW), _mm256_blend_epi32 (VPBLENDD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, blend operations, _mm_blend_epi32, _mm256_blend_epi16 (VPBLENDW), _mm256_blend_epi32 (VPBLENDD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F3BFEA9-1AAA-4799-A271-EF64FB22731F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5369B2B5-B1E1-4D96-85AB-2019982667B4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_blend_epi32, _mm256_blend_epi16/32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_blend"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm_blend_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blend_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blend_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5369B2B5-B1E1-4D96-85AB-2019982667B4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm_blend_epi32, _mm256_blend_epi16/32 </span></h1>
+
+
+<!--Conditionally blends data elements of source vector depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is  VPBLENDD  or  VPBLENDW .--><div><p>Conditionally blends data elements of source vector depending on bits in a mask. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPBLENDD</span> or <span class="keyword">VPBLENDW</span>.</p>
+
+
+<div class="section" id="GUID-0C0BC44D-E9D3-4865-B89F-4ED94A277E52"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128i _mm_blend_epi32(__m128i s1, __m128i s2, const int mask);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_blend_epi16(__m256i s1, __m256i s2, const int mask);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_blend_epi32(__m256i s1, __m256i s2, const int mask);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-1C6F4472-F09B-4108-B933-E4CA8899CEEE"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+	<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>8-bit immediate used for the operation</p>
+</td>
+
+    </tr></table>
+</div>
+
+
+<div class="section" id="GUID-1EE5F926-33F6-40E6-831A-55A92D1F79B4"><h2>Description</h2>
+<p>Performs a blend operation by conditionally copying 16/32-bit [word/doubleword] elements from source vectors <var>s2</var> and <var>s1</var>, depending on mask bits defined in <var>mask</var>. The mask bits are the least significant 8 bits in <var>mask </var> when  the 256-bit intrinsics, <span class="option">_mm256_blend_epi16</span>/<span class="option">_mm256_blend_epi32</span>, are used, and 4 bits when  the 128-bit intrinsic, <span class="option">_mm_blend_epi32</span>, is used.</p>
+<p>Each word/doubleword element of the destination vector is copied from the corresponding word/doubleword element in <var>s2</var> if a mask bit is 1, or is copied from the corresponding word/doubleword element in <var>s1</var> if a mask bit is 0.</p>
+</div>
+
+
+<div class="section" id="GUID-BE3C58E5-8E8A-49E5-948C-E06D7284B937"><h2>Returns</h2><p> Result of the blend operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F3BFEA9-1AAA-4799-A271-EF64FB22731F.htm">Intrinsics for Blend Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

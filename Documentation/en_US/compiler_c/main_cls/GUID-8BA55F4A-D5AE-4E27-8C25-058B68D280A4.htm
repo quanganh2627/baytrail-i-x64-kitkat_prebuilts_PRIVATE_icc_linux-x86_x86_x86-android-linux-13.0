@@ -1,0 +1,1874 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Thread Affinity Interface (Linux* and Windows*)">
+<meta name="DC.subject" content="KMP_AFFINITY, modifier, offset, permute, type, OMP directives, environment variables, dual core thread affinity, thread affinity, topology maps, KMP_TOPOLOGY_METHOD environment variable, KMP_TOPOLOGY_METHOD">
+<meta name="keywords" content="KMP_AFFINITY, modifier, offset, permute, type, OMP directives, environment variables, dual core thread affinity, thread affinity, topology maps, KMP_TOPOLOGY_METHOD environment variable, KMP_TOPOLOGY_METHOD">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Thread Affinity Interface (Linux* and Windows*)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_openmp_thread_affinity"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_openmp_thread_affinity"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Thread Affinity Interface (Linux* and Windows*)</h1>
+ 
+   
+  <div> 
+    <p>The Intel&reg; runtime library has the ability to bind OpenMP threads to physical processing units. The interface is controlled using the 
+      <span class="keyword">KMP_AFFINITY</span> environment variable. Depending on the system (machine) topology, application, and operating system, thread affinity can have a dramatic effect on the application speed. 
+    </p>
+ 
+    <p><var>Thread affinity</var> restricts execution of certain threads (virtual execution units) to a subset of the physical processing units in a multiprocessor computer. Depending upon the topology of the machine, thread affinity can have a dramatic effect on the execution speed of a program. 
+    </p>
+ 
+    <p>Thread affinity is supported on Windows OS systems and versions of Linux OS systems that have kernel support for thread affinity, but is not supported by Mac OS* X. The thread affinity interface is supported only for Intel&reg; processors. 
+    </p>
+ 
+    <p>The Intel compiler's OpenMP runtime library has the ability to bind OpenMP threads to physical processing units. There are three types of interfaces you can use to specify this binding, which are collectively referred to as the Intel OpenMP Thread Affinity Interface: 
+    </p>
+ 
+    <ul type="disc" id="GUID-756889B2-5858-46C1-8C85-106AF20347AC"> 
+      <li> 
+        <p>The high-level affinity interface uses an environment variable to determine the machine topology and assigns OpenMP threads to the processors based upon their physical location in the machine. This interface is controlled entirely by 
+          <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#KMP_AFFINITY_ENVIRONMENT_VARIABLE">the KMP_AFFINITY environment variable</a>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The 
+          <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#EXPLICITLY_SPECIFYING_OS_PROC_IDS__GOMP_CPU_AFFINITY">mid-level affinity interface</a> uses an environment variable to explicitly specifies which processors (labeled with integer IDs) are bound to OpenMP threads. This interface provides compatibility with the GNU gcc* GOMP_CPU_AFFINITY environment variable, but you can also invoke it by using the KMP_AFFINITY environment variable. The GOMP_CPU_AFFINITY environment variable is supported on Linux systems only, but users on Windows or Linux systems can use the similar functionality provided by the KMP_AFFINITY environment variable. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The 
+          <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#LOW_LEVEL_AFFINITY_API">low-level affinity interface</a> uses APIs to enable OpenMP threads to make calls into the OpenMP runtime library to explicitly specify the set of processors on which they are to be run. This interface is similar in nature to 
+          <span class="keyword">sched_setaffinity</span> and related functions on Linux* systems or to 
+          <span class="keyword">SetThreadAffinityMask</span> and related functions on Windows* systems. In addition, you can specify certain options of the KMP_AFFINITY environment variable to affect the behavior of the low-level API interface. For example, you can set the affinity type KMP_AFFINITY to disabled, which disables the low-level affinity interface, or you could use the KMP_AFFINITY or GOMP_CPU_AFFINITY environment variables to set the initial affinity mask, and then retrieve the mask with the low-level API interface. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>The following terms are used in this section: 
+    </p>
+ 
+    <ul type="disc" id="GUID-E3BB0416-BCB5-40C2-9298-73478D83BAE5"> 
+      <li> 
+        <p>The total number of processing elements on the machine is referred to as the number of 
+          <var>OS thread contexts.</var> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Each processing element is referred to as an Operating System processor, or 
+          <var>O</var><var>S proc</var>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Each OS processor has a unique integer identifier associated with it, called an 
+          <var>OS proc ID</var>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The term 
+          <var>package</var> refers to a single or multi-core processor chip. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The term 
+          <var>OpenMP Global Thread ID</var> (GTID) refers to an integer which uniquely identifies all threads known to the Intel OpenMP runtime library. The thread that first initializes the library is given GTID 0. In the normal case where all other threads are created by the library and when there is no nested parallelism, then 
+          <var>n-threads-var</var> - 1 new threads are created with GTIDs ranging from 1 to 
+          <var>ntheads-var</var> - 1, and each thread's GTID is equal to the OpenMP thread number returned by function 
+          <span class="keyword">omp_get_thread_num</span>(). The high-level and mid-level interfaces rely heavily on this concept. Hence, their usefulness is limited in programs containing nested parallelism. The low-level interface does not make use of the concept of a GTID, and can be used by programs containing arbitrarily many levels of parallelism. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>The environment variables are available for both Intel&reg; and non-Intel microprocessors but they may perform additional optimizations for Intel&reg; microprocessors than they perform for non-Intel microprocessors. 
+    </p>
+
+    <div class="section" id="KMP_AFFINITY_ENVIRONMENT_VARIABLE"><a name="KMP_AFFINITY_ENVIRONMENT_VARIABLE"><!-- --></a><h2 class="sectiontitle">The 
+        <span class="keyword">KMP_AFFINITY</span> Environment Variable</h2> 
+       
+      <p>The 
+        <span class="keyword">KMP_AFFINITY</span> environment variable uses the following general syntax: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-481980C3-709F-462E-9885-313C8441656A" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e220"> 
+                <p>Syntax 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e220 "> 
+                <p>KMP_AFFINITY=[&lt;<var>modifier</var>&gt;,...]&lt;<var>type</var>&gt;[,&lt;<var>permute</var>&gt;][,&lt;<var>offset</var>&gt;] 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>For example, to list a machine topology map, specify 
+        <span class="keyword">KMP_AFFINITY=verbose,none</span> to use a 
+        <var>modifier</var> of 
+        <span class="keyword">verbose</span> and a 
+        <var>type</var> of 
+        <span class="keyword">none.</span> 
+      </p>
+ 
+      <p>The following table describes the supported specific arguments. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7F0B6C9D-C4CE-4436-A209-1B01EC90F396" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e287"> 
+                <p>Argument 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e293"> 
+                <p>Default 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e299"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e287 "> 
+                <p><a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#MODIFIER"><span class="keyword">modifier</span></a> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e293 "> 
+                <p><span class="keyword">noverbose</span> 
+                </p>
+ 
+                <p><span class="keyword">respect</span> 
+                </p>
+ 
+                <p><span class="keyword">granularity=core</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e299 "> 
+                <p>Optional. String consisting of keyword and specifier. 
+                </p>
+ 
+                <ul type="disc" id="GUID-0C135F8A-F024-45AB-895F-2FD8B75DA07F"> 
+                  <li> 
+                    <p><samp class="codeph">granularity=&lt;<var>specifier</var>&gt;</samp><br>takes the following specifiers: 
+                      <span class="keyword">fine</span>, 
+                      <span class="keyword">thread</span>, and 
+                      <span class="keyword">core</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">norespect</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">noverbose</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">nowarnings</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><samp class="codeph">proclist={&lt;<var>proc-list</var>&gt;}</samp> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">respect</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">verbose</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">warnings</span> 
+                    </p>
+ 
+                  </li>
+ 
+                </ul>
+ 
+                <p>The syntax for 
+                  <samp class="codeph">&lt;<var>proc-list</var>&gt;</samp> is explained in 
+                  <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#EXPLICITLY_SPECIFYING_OS_PROC_IDS__GOMP_CPU_AFFINITY">mid-level affinity interface</a>. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e287 "> 
+                <p><a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#AFFINITY_TYPES"><span class="keyword">type</span></a> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e293 "> 
+                <p><span class="keyword">none</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e299 "> 
+                <p>Required string. Indicates the thread affinity to use. 
+                </p>
+ 
+                <ul type="disc" id="GUID-7C5191A2-C484-4897-AC11-EC17C065FA90"> 
+                  <li> 
+                    <p><span class="keyword">compact</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">disabled</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">explicit</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">none</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">scatter</span> 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">logical</span> (deprecated; instead use 
+                      <span class="keyword">compact</span>, but omit any 
+                      <span class="keyword">permute value</span>) 
+                    </p>
+ 
+                  </li>
+ 
+                  <li> 
+                    <p><span class="keyword">physical</span> (deprecated; instead use 
+                      <span class="keyword">scatter,</span> possibly with an 
+                      <span class="keyword">offset value</span>) 
+                    </p>
+ 
+                  </li>
+ 
+                </ul>
+ 
+                <p>The 
+                  <span class="keyword">logical</span> and 
+                  <span class="keyword">physical</span> types are 
+                  <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#DEPRECATED_TYPES">deprecated</a> but supported for backward compatibility. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e287 "> 
+                <p><a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#PERMUTE_AND_OFFSET_COMBINATIONS_WITH_TYPE"><span class="keyword">permute</span></a> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e293 "> 
+                <p><span class="keyword">0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e299 "> 
+                <p>Optional. Positive integer value. Not valid with type values of 
+                  <span class="keyword">explicit</span>, 
+                  <span class="keyword">none</span>, or 
+                  <span class="keyword">disabled</span>. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e287 "> 
+                <p><a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#PERMUTE_AND_OFFSET_COMBINATIONS_WITH_TYPE"><span class="keyword">offset</span></a> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e293 "> 
+                <p><span class="keyword">0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e299 "> 
+                <p>Optional. Positive integer value. Not valid with type values of 
+                  <span class="keyword">explicit</span>, 
+                  <span class="keyword">none</span>, or 
+                  <span class="keyword">disabled</span>. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="AFFINITY_TYPES"><a name="AFFINITY_TYPES"><!-- --></a><h2 class="sectiontitle">Affinity Types</h2> 
+       
+      <p>Type is the only required argument. 
+      </p>
+ 
+      <p><strong>type = none (default)</strong> 
+      </p>
+ 
+      <p>Does not bind OpenMP threads to particular thread contexts; however, if the operating system supports affinity, the compiler still uses the OpenMP thread affinity interface to determine machine topology. Specify 
+        <span class="keyword">KMP_AFFINITY=verbose,none</span> to list a machine topology map. 
+      </p>
+ 
+      <p><strong>type = compact</strong> 
+      </p>
+ 
+      <p>Specifying 
+        <span class="keyword">compact</span> assigns the OpenMP thread &lt;<var>n</var>&gt;+1 to a free thread context as close as possible to the thread context where the &lt;<var>n</var>&gt; OpenMP thread was placed. For example, in a topology map, the nearer a node is to the root, the more significance the node has when sorting the threads. 
+      </p>
+ 
+      <p><strong>type = disabled</strong> 
+      </p>
+ 
+      <p>Specifying 
+        <span class="keyword">disabled</span> completely disables the thread affinity interfaces. This forces the OpenMP run-time library to behave as if the affinity interface was not supported by the operating system. This includes the low-level API interfaces such as 
+        <span class="keyword">kmp_set_affinity</span> and 
+        <span class="keyword">kmp_get_affinity</span>, which have no effect and will return a nonzero error code. 
+      </p>
+ 
+      <p><strong>type = explicit</strong> 
+      </p>
+ 
+      <p>Specifying 
+        <span class="keyword">explicit</span> assigns OpenMP threads to a list of OS proc IDs that have been explicitly specified by using the proclist= modifier, which is required for this affinity type. See 
+        <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#EXPLICITLY_SPECIFYING_OS_PROC_IDS__GOMP_CPU_AFFINITY">Explicitly Specifying OS Proc IDs (GOMP_CPU_AFFINITY)</a>. 
+      </p>
+ 
+      <p><strong>type = scatter</strong> 
+      </p>
+ 
+      <p>Specifying 
+        <span class="keyword">scatter</span> distributes the threads as evenly as possible across the entire system. 
+        <span class="keyword">scatter</span> is the opposite of 
+        <span class="keyword">compact</span>; so the leaves of the node are most significant when sorting through the machine topology map. 
+      </p>
+ 
+      <p id="DEPRECATED_TYPES"><a name="DEPRECATED_TYPES"><!-- --></a><strong>Deprecated Types: logical and physical</strong> 
+      </p>
+ 
+      <p>Types 
+        <span class="keyword">logical</span> and 
+        <span class="keyword">physical</span> are deprecated and may become unsupported in a future release. Both are supported for backward compatibility. 
+      </p>
+ 
+      <p>For 
+        <span class="keyword">logical</span> and 
+        <span class="keyword">physical</span> affinity types, a single trailing integer is interpreted as an 
+        <span class="keyword">offset</span> specifier instead of a 
+        <span class="keyword">permute</span> specifier. In contrast, with 
+        <span class="keyword">compact</span> and 
+        <span class="keyword">scatter</span> types, a single trailing integer is interpreted as a 
+        <span class="keyword">permute</span> specifier. 
+      </p>
+ 
+      <ul type="disc" id="GUID-1A00A16C-A398-4889-ACFC-021E46DC8119"> 
+        <li> 
+          <p>Specifying 
+            <span class="keyword">logical</span> assigns OpenMP threads to consecutive logical processors, which are also called hardware thread contexts. The type is equivalent to 
+            <span class="keyword">compact</span>, except that the 
+            <span class="keyword">permute</span> specifier is not allowed. Thus, 
+            <span class="keyword">KMP_AFFINITY=logical,</span><span class="keyword">n</span> is equivalent to 
+            <span class="keyword">KMP_AFFINITY=compact,0,</span><span class="keyword">n</span> (this equivalence is true regardless of the whether or not a 
+            <span class="keyword">granularity=fine</span> modifier is present). 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Specifying 
+            <span class="keyword">physical</span> assigns threads to consecutive physical processors (cores). For systems where there is only a single thread context per core, the type is equivalent to 
+            <span class="keyword">logical</span>. For systems where multiple thread contexts exist per core, 
+            <span class="keyword">physical</span> is equivalent to 
+            <span class="keyword">compact</span> with a 
+            <span class="keyword">permute</span> specifier of 1; that is, 
+            <span class="keyword">KMP_AFFINITY=physical,</span><span class="keyword">n</span> is equivalent to 
+            <span class="keyword">KMP_AFFINITY=compact,1,</span><span class="keyword">n</span> (regardless of the whether or not a 
+            <span class="keyword">granularity=fine</span> modifier is present). This equivalence means that when the compiler sorts the map it should permute the innermost level of the machine topology map to the outermost, presumably the thread context level. This type does not support the 
+            <span class="keyword">permute</span> specifier. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p id="EXAMPLES_OF_TYPES_COMPACT_AND_SCATTER"><a name="EXAMPLES_OF_TYPES_COMPACT_AND_SCATTER"><!-- --></a><strong>Examples of Types 
+          <span class="keyword">compact</span> and 
+          <span class="keyword">scatter</span></strong> 
+      </p>
+ 
+      <p>The following figure illustrates the topology for a machine with two processors, and each processor has two cores; further, each core has Hyper-Threading Technology (HT Technology) enabled. 
+      </p>
+ 
+      <p>The following figure also illustrates the binding of OpenMP thread to hardware thread contexts when specifying 
+        <span class="keyword">KMP_AFFINITY=granularity=fine,compact</span>. 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN1"><a name="OPTAPS_KMP_AFFIN1"><!-- --></a><br><img src="GUID-929D6021-EC7F-4B33-A663-326A9DCCBC4C-low.jpg"><br> 
+      </div>
+ 
+      <p>Specifying 
+        <span class="keyword">scatter</span> on the same system as shown in the figure above, the OpenMP threads would be assigned the thread contexts as shown in the following figure, which shows the result of specifying 
+        <span class="keyword">KMP_AFFINITY=granularity=fine,scatter</span>. 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN2"><a name="OPTAPS_KMP_AFFIN2"><!-- --></a><br><img src="GUID-4AC75B18-ADA4-4094-B67D-AC5372918B2B-low.jpg"><br> 
+      </div>
+ 
+    </div>
+ 
+    <div class="section" id="PERMUTE_AND_OFFSET_COMBINATIONS_WITH_TYPE"><a name="PERMUTE_AND_OFFSET_COMBINATIONS_WITH_TYPE"><!-- --></a><h2 class="sectiontitle">permute and offset combinations</h2> 
+       
+      <p>For both 
+        <span class="keyword">compact</span> and 
+        <span class="keyword">scatter</span>, 
+        <span class="keyword">permute</span> and 
+        <span class="keyword">offset</span> are allowed; however, if you specify only one integer, the compiler interprets the value as a permute specifier. Both 
+        <span class="keyword">permute</span> and 
+        <span class="keyword">offset</span> default to 0. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">permute</span> specifier controls which levels are most significant when sorting the machine topology map. A value for permute forces the mappings to make the specified number of most significant levels of the sort the least significant, and it inverts the order of significance. The root node of the tree is not considered a separate level for the sort operations. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">offset</span> specifier indicates the starting position for thread assignment. 
+      </p>
+ 
+      <p>The following figure illustrates the result of specifying 
+        <span class="keyword">KMP_AFFINITY=granularity=fine,compact,0,3</span>. 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN3"><a name="OPTAPS_KMP_AFFIN3"><!-- --></a><br><img src="GUID-4CD409D1-0B74-4B5C-8B4A-53CC14A8719E-low.jpg"><br> 
+      </div>
+ 
+      <p>Consider the hardware configuration from the previous example, running an OpenMP application which exhibits data sharing between consecutive iterations of loops. We would therefore like consecutive threads to be bound close together, as is done with 
+        <span class="keyword">KMP_AFFINITY=compact</span>, so that communication overhead, cache line invalidation overhead, and page thrashing are minimized. Now, suppose the application also had a number of parallel regions which did not utilize all of the available OpenMP threads. It is desirable to avoid binding multiple threads to the same core and leaving other cores not utilized, since a thread normally executes faster on a core where it is not competing for resources with another active thread on the same core. Since a thread normally executes faster on a core where it is not competing for resources with another active thread on the same core, you might want to avoid binding multiple threads to the same core while leaving other cores unused. The following figure illustrates this strategy of using 
+        <span class="keyword">KMP_AFFINITY=granularity=fine,compact,1,0</span> as a setting. 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN4"><a name="OPTAPS_KMP_AFFIN4"><!-- --></a><br><img src="GUID-834A4CC5-BE33-4DD2-95FE-0ED923D446A1-low.jpg"><br> 
+      </div>
+ 
+      <p>The OpenMP thread 
+        <var>n</var>+1 is bound to a thread context as close as possible to OpenMP thread 
+        <var>n</var>, but on a different core. Once each core has been assigned one OpenMP thread, the subsequent OpenMP threads are assigned to the available cores in the same order, but they are assigned on different thread contexts. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="MODIFIER"><a name="MODIFIER"><!-- --></a><h2 class="sectiontitle">Modifier Values for Affinity Types</h2> 
+       
+      <p>Modifiers are optional arguments that precede type. If you do not specify a modifier, the 
+        <span class="keyword">noverbose</span>, 
+        <span class="keyword">respect</span>, and 
+        <span class="keyword">granularity=core</span> modifiers are used automatically. 
+      </p>
+ 
+      <p>Modifiers are interpreted in order from left to right, and can negate each other. For example, specifying 
+        <span class="keyword">KMP_AFFINITY=verbose,noverbose,scatter</span> is therefore equivalent to setting 
+        <span class="keyword">KMP_AFFINITY=noverbose,scatter</span>, or just 
+        <span class="keyword">KMP_AFFINITY=scatter</span>. 
+      </p>
+ 
+      <p><strong>modifier = noverbose (default)</strong> 
+      </p>
+ 
+      <p>Does not print verbose messages. 
+      </p>
+ 
+      <p><strong>modifier = verbose</strong> 
+      </p>
+ 
+      <p>Prints messages concerning the supported affinity. The messages include information about the number of packages, number of cores in each package, number of thread contexts for each core, and OpenMP thread bindings to physical thread contexts. 
+      </p>
+ 
+      <p>Information about binding OpenMP threads to physical thread contexts is indirectly shown in the form of the mappings between hardware thread contexts and the operating system (OS) processor (proc) IDs. The affinity mask for each OpenMP thread is printed as a set of OS processor IDs. 
+      </p>
+ 
+      <p>For example, specifying 
+        <span class="keyword">KMP_AFFINITY=verbose,scatter</span> on a dual core system with two processors, with Hyper-Threading Technology (HT Technology) disabled, results in a message listing similar to the following when then program is executed: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-76BC4E12-D906-49BB-BC6E-F8560A642BBB" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1003"> 
+                <p>Verbose, scatter message 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1003 "> 
+                <pre>...</pre> 
+                <pre>KMP_AFFINITY: Affinity capable, using global cpuid info</pre> 
+                <pre>KMP_AFFINITY: Initial OS proc set respected:</pre> 
+                <pre>{0,1,2,3}</pre> 
+                <pre>KMP_AFFINITY: 4 available OS procs - Uniform topology of</pre> 
+                <pre>KMP_AFFINITY: 2 packages x 2 cores/pkg x 1 threads/core (4 total cores)</pre> 
+                <pre>KMP_AFFINITY: OS proc to physical thread map ([] =&gt; level not in map):</pre> 
+                <pre>KMP_AFFINITY: OS proc 0 maps to package 0 core 0 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: OS proc 2 maps to package 0 core 1 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: OS proc 1 maps to package 3 core 0 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: OS proc 3 maps to package 3 core 1 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: Internal thread 0 bound to OS proc set {0}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 2 bound to OS proc set {2}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 3 bound to OS proc set {3}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 1 bound to OS proc set {1}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The verbose modifier generates several standard, general messages. The following table summarizes how to read the messages. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7610EE8B-B485-454C-B254-C66249572BAB" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1083"> 
+                <p>Message String 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1089"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1083 "> 
+                <p>"affinity capable" 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1089 "> 
+                <p>Indicates that all components (compiler, operating system, and hardware) support affinity, so thread binding is possible. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1083 "> 
+                <p>"using global cpuid info" 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1089 "> 
+                <p>Indicates that the machine topology was discovered by binding a thread to each operating system processor and decoding the output of the 
+                  <span class="keyword">cpuid</span> instruction. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1083 "> 
+                <p>"using local cpuid info" 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1089 "> 
+                <p>Indicates that compiler is decoding the output of the 
+                  <span class="keyword">cpuid</span> instruction, issued by only the initial thread, and is assuming a machine topology using the number of operating system processors. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1083 "> 
+                <p>"using /proc/cpuinfo" 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1089 "> 
+                <p>Linux* only. Indicates that 
+                  <span class="keyword">cpuinfo</span> is being used to determine machine topology. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1083 "> 
+                <p>"using flat" 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1089 "> 
+                <p>Operating system processor ID is assumed to be equivalent to physical package ID. This method of determining machine topology is used if none of the other methods will work, but may not accurately detect the actual machine topology. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1083 "> 
+                <p>"uniform topology of" 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1089 "> 
+                <p>The machine topology map is a full tree with no missing leaves at any level. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The mapping from the operating system processors to thread context ID is printed next. The binding of OpenMP thread context ID is printed next unless the affinity type is 
+        <span class="keyword">none</span>. The thread level is contained in brackets (in the listing shown above). This implies that there is no representation of the thread context level in the machine topology map. For more information, see 
+        <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#DETERMINING_MACHINE_TOPOLOGY">Determining Machine Topology</a>. 
+      </p>
+ 
+      <p><strong>modifier = granularity</strong> 
+      </p>
+ 
+      <p>Binding OpenMP threads to particular packages and cores will often result in a performance gain on systems with Intel processors with Intel&reg; Hyper-Threading Technology (Intel&reg; HT Technology) enabled; however, it is usually not beneficial to bind each OpenMP thread to a particular thread context on a specific core. Granularity describes the lowest levels that OpenMP threads are allowed to float within a topology map. 
+      </p>
+ 
+      <p>This modifier supports the following additional specifiers. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F11E9A38-733B-45D3-B6AA-2D3382F51550" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1233"> 
+                <p>Specifier 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1239"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1233 "> 
+                <p><span class="keyword">core</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1239 "> 
+                <p>Default. Broadest granularity level supported. Allows all the OpenMP threads bound to a core to float between the different thread contexts. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1233 "> 
+                <p><span class="keyword">fine</span> or 
+                  <span class="keyword">thread</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1239 "> 
+                <p>The finest granularity level. Causes each OpenMP thread to be bound to a single thread context. The two specifiers are functionally equivalent. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Specifying 
+        <span class="keyword">KMP_AFFINITY=verbose,granularity=core,compact</span> on the same dual core system with two processors as in the previous section, but with HT Technology enabled, results in a message listing similar to the following when the program is executed: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-59CB74BF-A4BF-4B76-8FA8-4AEDDB6AB45C" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1305"> 
+                <p>Verbose, granularity=core,compact message 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1305 "> 
+                <pre>KMP_AFFINITY: Affinity capable, using global cpuid info</pre> 
+                <pre>KMP_AFFINITY: Initial OS proc set respected:</pre> 
+                <pre>{0,1,2,3,4,5,6,7}</pre> 
+                <pre>KMP_AFFINITY: 8 available OS procs - Uniform topology of</pre> 
+                <pre>KMP_AFFINITY: 2 packages x 2 cores/pkg x 2 threads/core (4 total cores)</pre> 
+                <pre>KMP_AFFINITY: OS proc to physical thread map ([] =&gt; level not in map):</pre> 
+                <pre>KMP_AFFINITY: OS proc 0 maps to package 0 core 0 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 4 maps to package 0 core 0 thread 1</pre> 
+                <pre>KMP_AFFINITY: OS proc 2 maps to package 0 core 1 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 6 maps to package 0 core 1 thread 1</pre> 
+                <pre>KMP_AFFINITY: OS proc 1 maps to package 3 core 0 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 5 maps to package 3 core 0 thread 1</pre> 
+                <pre>KMP_AFFINITY: OS proc 3 maps to package 3 core 1 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 7 maps to package 3 core 1 thread 1</pre> 
+                <pre>KMP_AFFINITY: Internal thread 0 bound to OS proc set {0,4}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 1 bound to OS proc set {0,4}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 2 bound to OS proc set {2,6}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 3 bound to OS proc set {2,6}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 4 bound to OS proc set {1,5}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 5 bound to OS proc set {1,5}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 6 bound to OS proc set {3,7}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 7 bound to OS proc set {3,7}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p id="FIGURE_COMPACT_VERBOSE6"><a name="FIGURE_COMPACT_VERBOSE6"><!-- --></a>The affinity mask for each OpenMP thread is shown in the listing (above) as the set of operating system processor to which the OpenMP thread is bound. 
+      </p>
+ 
+      <p>The following figure illustrates the machine topology map, for the above listing, with OpenMP thread bindings. 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN6"><a name="OPTAPS_KMP_AFFIN6"><!-- --></a><br><img src="GUID-26C7384D-FF80-4D10-B779-C9FFC8BC5E0B-low.jpg"><br> 
+      </div>
+ 
+      <p>In contrast, specifying 
+        <span class="keyword">KMP_AFFINITY=verbose,granularity=fine,compact</span> or 
+        <span class="keyword">KMP_AFFINITY=verbose,granularity=thread,compact</span> binds each OpenMP thread to a single hardware thread context when the program is executed: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CA257653-82AB-4B57-B3DC-DFDA4CD0DA1F" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1422"> 
+                <p>Verbose, granularity=fine,compact message 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1422 "> 
+                <pre>KMP_AFFINITY: Affinity capable, using global cpuid info</pre> 
+                <pre>KMP_AFFINITY: Initial OS proc set respected:</pre> 
+                <pre>{0,1,2,3,4,5,6,7}</pre> 
+                <pre>KMP_AFFINITY: 8 available OS procs - Uniform topology of</pre> 
+                <pre>KMP_AFFINITY: 2 packages x 2 cores/pkg x 2 threads/core (4 total cores)</pre> 
+                <pre>KMP_AFFINITY: OS proc to physical thread map ([] =&gt; level not in map):</pre> 
+                <pre>KMP_AFFINITY: OS proc 0 maps to package 0 core 0 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 4 maps to package 0 core 0 thread 1</pre> 
+                <pre>KMP_AFFINITY: OS proc 2 maps to package 0 core 1 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 6 maps to package 0 core 1 thread 1</pre> 
+                <pre>KMP_AFFINITY: OS proc 1 maps to package 3 core 0 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 5 maps to package 3 core 0 thread 1</pre> 
+                <pre>KMP_AFFINITY: OS proc 3 maps to package 3 core 1 thread 0</pre> 
+                <pre>KMP_AFFINITY: OS proc 7 maps to package 3 core 1 thread 1</pre> 
+                <pre>KMP_AFFINITY: Internal thread 0 bound to OS proc set {0}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 1 bound to OS proc set {4}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 2 bound to OS proc set {2}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 3 bound to OS proc set {6}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 4 bound to OS proc set {1}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 5 bound to OS proc set {5}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 6 bound to OS proc set {3}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 7 bound to OS proc set {7}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The OpenMP to hardware context binding for this example was illustrated in the 
+        <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#EXAMPLES_OF_TYPES_COMPACT_AND_SCATTER">first example</a>. 
+      </p>
+ 
+      <p>Specifying 
+        <span class="keyword">granularity=fine</span> will always cause each OpenMP thread to be bound to a single OS processor. This is equivalent to 
+        <span class="keyword">granularity=thread</span>, currently the finest granularity level. 
+      </p>
+ 
+      <p><strong>modifier = respect (default)</strong> 
+      </p>
+ 
+      <p>Respect the process' original affinity mask, or more specifically, the affinity mask in place for the thread that initializes the OpenMP run-time library. The behavior differs between Linux and Windows OS: 
+      </p>
+ 
+      <ul type="disc" id="GUID-2C9DABA7-A968-4BD4-9DAD-66176D492D8E"> 
+        <li> 
+          <p>On Windows: Respect original affinity mask for the process. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>On Linux: Respect the affinity mask for the thread that initializes the OpenMP run-time library. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>Specifying 
+        <span class="keyword">KMP_AFFINITY=verbose,compact</span> for the same system used in the previous example, with HT Technology enabled, and invoking the library with an initial affinity mask of {4,5,6,7} (thread context 1 on every core) causes the compiler to model the machine as a dual core, two-processor system with HT Technology disabled. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-564A6AA9-C0CF-499D-99D8-9C2F35F3CC4E" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1565"> 
+                <p>Verbose,compact message 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1565 "> 
+                <pre>KMP_AFFINITY: Affinity capable, using global cpuid info</pre> 
+                <pre>KMP_AFFINITY: Initial OS proc set respected:</pre> 
+                <pre>{4,5,6,7}</pre> 
+                <pre>KMP_AFFINITY: 4 available OS procs - Uniform topology of</pre> 
+                <pre>KMP_AFFINITY: 2 packages x 2 cores/pkg x 1 threads/core (4 total cores)</pre> 
+                <pre>KMP_AFFINITY: OS proc to physical thread map ([] =&gt; level not in map):</pre> 
+                <pre>KMP_AFFINITY: OS proc 4 maps to package 0 core 0 [thread 1]</pre> 
+                <pre>KMP_AFFINITY: OS proc 6 maps to package 0 core 1 [thread 1]</pre> 
+                <pre>KMP_AFFINITY: OS proc 5 maps to package 3 core 0 [thread 1]</pre> 
+                <pre>KMP_AFFINITY: OS proc 7 maps to package 3 core 1 [thread 1]</pre> 
+                <pre>KMP_AFFINITY: Internal thread 0 bound to OS proc set {4}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 1 bound to OS proc set {6}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 2 bound to OS proc set {5}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 3 bound to OS proc set {7}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 4 bound to OS proc set {4}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 5 bound to OS proc set {6}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 6 bound to OS proc set {5}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 7 bound to OS proc set {7}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Because there are eight thread contexts on the machine, by default the compiler created eight threads for an OpenMP 
+        <span class="keyword">parallel</span> construct. 
+      </p>
+ 
+      <p>The brackets around thread 1 indicate that the thread context level is ignored, and is not present in the topology map. The following figure illustrates the corresponding machine topology map. 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN7"><a name="OPTAPS_KMP_AFFIN7"><!-- --></a><br><img src="GUID-332B3E39-DA95-41F5-B9AE-7F85B4BF8DB7-low.jpg"><br> 
+      </div>
+ 
+      <p>When using the local 
+        <span class="keyword">cpuid</span> information to determine the machine topology, it is not always possible to distinguish between a machine that does not support Hyper-Threading Technology (HT Technology) and a machine that supports it, but has it disabled. Therefore, the compiler does not include a level in the map if the elements (nodes) at that level had no siblings, with the exception that the package level is always modeled. As mentioned earlier, the package level will always appear in the topology map, even if there only a single package in the machine. 
+      </p>
+ 
+      <p><strong>modifier = norespect</strong> 
+      </p>
+ 
+      <p>Do not respect original affinity mask for the process. Binds OpenMP threads to all operating system processors. 
+      </p>
+ 
+      <p>In early versions of the OpenMP run-time library that supported only the 
+        <span class="keyword">physical</span> and 
+        <span class="keyword">logical</span> affinity types, 
+        <span class="keyword">norespect</span> was the default and was not recognized as a modifier. 
+      </p>
+ 
+      <p>The default was changed to 
+        <span class="keyword">respect</span> when types 
+        <span class="keyword">compact</span> and 
+        <span class="keyword">scatter</span> were added; therefore, thread bindings for the 
+        <span class="keyword">logical</span> and 
+        <span class="keyword">physical</span> affinity types may have changed with the newer compilers in situations where the application specified a partial initial thread affinity mask. 
+      </p>
+ 
+      <p><strong>modifier = nowarnings</strong> 
+      </p>
+ 
+      <p>Do not print warning messages from the affinity interface. 
+      </p>
+ 
+      <p><strong>modifier = warnings (default)</strong> 
+      </p>
+ 
+      <p>Print warning messages from the affinity interface (default). 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="DETERMINING_MACHINE_TOPOLOGY"><a name="DETERMINING_MACHINE_TOPOLOGY"><!-- --></a><h2 class="sectiontitle">Determining Machine Topology</h2> 
+       
+      <p>On IA-32 and Intel&reg; 64 architecture systems, if the package has an APIC (Advanced Programmable Interrupt Controller), the compiler will use the 
+        <span class="keyword">cpuid</span> instruction to obtain the 
+        <span class="keyword">package id</span>, 
+        <span class="keyword">core id</span>, and 
+        <span class="keyword">thread context id</span>. Under normal conditions, each thread context on the system is assigned a unique APIC ID at boot time. The compiler obtains other pieces of information obtained by using the 
+        <var>cpuid</var> instruction, which together with the number of OS thread contexts (total number of processing elements on the machine), determine how to break the APIC ID down into the 
+        <span class="keyword">package ID</span>, 
+        <span class="keyword">core ID</span>, and 
+        <span class="keyword">thread context ID</span>. 
+      </p>
+ 
+      <p>There are two ways to specify the APIC ID in the 
+        <var>cpuid</var> instruction - the legacy method in leaf 4, and the more modern method in leaf 11. Only 256 unique APIC IDs are available in leaf 4. Leaf 11 has no such limitation. 
+      </p>
+ 
+      <p>Normally, all 
+        <span class="keyword">core ids</span> on a package and all 
+        <span class="keyword">thread context ids</span> on a core are contiguous; however, numbering assignment gaps are common for 
+        <span class="keyword">package ids</span>, as shown in the figure above. 
+      </p>
+ 
+      <p>If the compiler cannot determine the machine topology using any other method, but the operating system supports affinity, a warning message is printed, and the topology is assumed to be 
+        <span class="keyword">flat</span>. For example, a flat topology assumes the operating system process 
+        <var>N</var> maps to package 
+        <var>N</var>, and there exists only one thread context per core and only one core for each package. (This assumption is always the case for processors based on IA-64 architecture running Windows.) 
+      </p>
+ 
+      <p>If the machine topology cannot be accurately determined as described above, the user can manually copy 
+        <span class="filepath">/proc/cpuinfo</span> to a temporary file, correct any errors, and specify the machine topology to the OpenMP runtime library via the environment variable 
+        <span class="keyword">KMP_CPUINFO_FILE=&lt;temp_filename&gt;</span>, as described in the section KMP_CPUINFO_FILE and /proc/cpuinfo. 
+      </p>
+ 
+      <p>Regardless of the method used in determining the machine topology, if there is only one thread context per core for every core on the machine, the thread context level will not appear in the topology map. If there is only one core per package for every package in the machine, the core level will not appear in the machine topology map. The topology map need not be a full tree, because different packages may contain a different number of cores, and different cores may support a different number of thread contexts. 
+      </p>
+ 
+      <p>The package level will always appear in the topology map, even if there only a single package in the machine. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="KMP_CPUINFO_AND__PROC_CPUINFO"><a name="KMP_CPUINFO_AND__PROC_CPUINFO"><!-- --></a><h2 class="sectiontitle"><span class="keyword">KMP_CPUINFO_FILE</span> and 
+      <span class="option">/proc/cpuinfo</span></h2> 
+       
+      <p>One of the methods the Intel compiler OpenMP runtime library can use to detect the machine topology on Linux* systems is to parse the contents of 
+        <span class="filepath">/proc/cpuinfo</span>. If the contents of this file (or a device mapped into the Linux file system) are insufficient or erroneous, you can consider copying its contents to a writable temporary file &lt;<var>temp_file</var>&gt;,correct it or extend it with the necessary information, and set KMP_CPUINFO_FILE=&lt;<var>temp_file</var>&gt;. 
+      </p>
+ 
+      <p>If you do this, the OpenMP runtime library will read the &lt;<var>temp_file</var>&gt; location pointed to by KMP_CPUINFO_FILE instead of the information contained in 
+        <span class="filepath">/proc/cpuinfo</span> or attempting to detect the machine topology by decoding the 
+        <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#DETERMINING_MACHINE_TOPOLOGY">APIC</a> IDs. That is, the information contained in the &lt;<var>temp_file</var>&gt; overrides these other methods. You can use the KMP_CPUINFO_FILE interface on Windows* systems, where 
+        <span class="filepath">/proc/cpuinfo</span> does not exist. 
+      </p>
+ 
+      <p>The content of 
+        <span class="filepath">/proc/cpuinfo</span> or &lt;<var>temp_file</var>&gt; should contain a list of entries for each processing element on the machine. Each processor element contains a list of entries (descriptive name and value on each line). A blank line separates the entries for each processor element. Only the following fields are used to determine the machine topology from each entry, either in &lt;<var>temp_file</var>&gt; or 
+      <span class="option">/proc/cpuinfo</span>: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9D06BF04-16CA-4125-8BF5-362BF554CB23" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1862"> 
+                <p>Field 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e1868"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1862 "> 
+                <p>processor : 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1868 "> 
+                <p>Specifies the OS ID for the processing element. The OS ID must be unique. The 
+                  <span class="keyword">processor</span> and 
+                  <span class="keyword">physical id</span> fields are the only ones that are required to use the interface. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1862 "> 
+                <p>physical id : 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1868 "> 
+                <p>Specifies the package ID, which is a physical chip ID. Each package may contain multiple cores. The package level always exists in the Intel compiler OpenMP run-time library's model of the machine topology. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1862 "> 
+                <p>core id : 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1868 "> 
+                <p>Specifies the core ID. If it does not exist, it defaults to 0. If every package on the machine contains only a single core, the core level will not exist in the machine topology map (even if some of the core ID fields are non-zero). 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1862 "> 
+                <p>thread id : 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1868 "> 
+                <p>Specifies the thread ID. If it does not exist, it defaults to 0. If every core on the machine contains only a single thread, the thread level will not exist in the machine topology map (even if some thread ID fields are non-zero). 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e1862 "> 
+                <p>node_<var>n</var> id : 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e1868 "> 
+                <p>This is a extension to the normal contents of 
+                  <span class="filepath">/proc/cpuinfo</span> that can be used to specify the nodes at different levels of the memory interconnect on Non-Uniform Memory Access (NUMA) systems. Arbitrarily many levels 
+                  <var>n</var> are supported. The node_0 level is closest to the package level; multiple packages comprise a node at level 0. Multiple nodes at level 0 comprise a node at level 1, and so on. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Each entry must be spelled exactly as shown, in lowercase, followed by optional whitespace, a colon (:), more optional whitespace, then the integer ID. Fields other than those listed are simply ignored. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>It is common for the 
+          <span class="keyword">thread id</span> field to be missing from 
+          <span class="filepath">/proc/cpuinfo</span> on many Linux variants, and for a field labeled 
+          <span class="keyword">siblings</span> to specify the number of threads per node or number of nodes per package. However, the Intel compiler OpenMP runtime library ignores fields labeled 
+          <span class="keyword">siblings</span> so it can distinguish between the 
+          <span class="keyword">thread id</span> and 
+          <span class="keyword">siblings</span> fields. When this situation arises, the warning message 
+          <span class="keyword">Physical node/pkg/core/thread ids not unique</span> appears (unless the 
+          <span class="keyword">type specified is nowarnings</span>). 
+        </p>
+ 
+      </div> 
+      </div>
+ 
+    <div class="section" id="GUID-377B1C93-906E-4E9A-AF5A-1BD5B05A8E4B"><h2 class="sectiontitle">Windows* Processor Groups</h2> 
+       
+      <p>On a 64-bit Windows* operating system, it is possible for multiple processor groups to accommodate more than 64 processors. Each group is limited in size, up to a maximum value of 64 processors. 
+      </p>
+ 
+      <p> If multiple processor groups are detected, the default is to model the machine as a 2-level tree, where level 0 are for the processors in a group, and level 1 are for the different groups. Threads are assigned to a group until there are as many OpenMP threads bound to the groups as there are processors in the group. Subsequent threads are assigned to the next group, and so on. 
+      </p>
+ 
+      <p>By default, threads are allowed to float among all processors in a group, that is to say, granularity equals the group [granularity=group]. You can override this binding and explicitly use another affinity type like compact, scatter, and so on. If you do so, the granularity must be sufficiently fine to prevent a thread from being bound to multiple processors in different groups. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B62E2EF0-56C3-40D5-8263-485B6D4EEA1B"><h2 class="sectiontitle">Using a Specific Machine Topology Modeling Method (KMP_TOPOLOGY_METHOD)</h2> 
+       
+      <p>You can set the 
+        <span class="keyword">KMP_TOPOLOGY_METHOD</span> environment variable to force OpenMP to use a particular machine topology modeling method. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-595B4918-F816-4776-AC30-F3B25856497F" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e2043"> 
+                <p>Value 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e2049"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2043 "> 
+                <p><var>cpuid leaf 11 :</var> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2049 "> 
+                <p>Decodes the APIC identifiers as specfied by leaf 11 of the 
+                  <var>cpuid</var> instruction. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2043 "> 
+                <p><var>cpuid leaf 4 :</var> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2049 "> 
+                <p>Decodes the APIC identifiers as specified in leaf 4 of the 
+                  <var>cpuid</var> instruction. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2043 "> 
+                <p><var>cpuinfo :</var> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2049 "> 
+                <p>If KMP_CPUINFO_FILE is not specified, forces OpenMP to parse /proc/cpuinfo to determine the topology (Linux* OS only). If KMP_CPUINFO_FILE is specified as described above, uses it (Windows* or Linux* OS). 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2043 "> 
+                <p><var>group :</var> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2049 "> 
+                <p>Models the machine as a 2-level map, with level 0 specifying the different processors in a group, and level 1 specifying the different groups (Windows* 64-bit only) . 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2043 "> 
+                <p><var>flat :</var> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2049 "> 
+                <p>Models the machine as a flat (linear) list of processors. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="EXPLICITLY_SPECIFYING_OS_PROC_IDS__GOMP_CPU_AFFINITY"><a name="EXPLICITLY_SPECIFYING_OS_PROC_IDS__GOMP_CPU_AFFINITY"><!-- --></a><h2 class="sectiontitle">Explicitly Specifying OS Processor IDs (GOMP_CPU_AFFINITY)</h2> 
+       
+      <p>Instead of allowing the library to detect the hardware topology and automatically assign OpenMP threads to processing elements, the user may explicitly specify the assignment by using a list of operating system (OS) processor (proc) IDs. However, this requires knowledge of which processing elements the OS proc IDs represent. 
+      </p>
+ 
+      <p>This list may either be specified by using the proclist modifier along with the explicit affinity type in the KMP_AFFINITY environment variable, or by using the GOMP_CPU_AFFINITY environment variable (for compatibility with 
+        <span class="keyword">gcc</span>) when using the 
+        <a href="GUID-BAD5FFB7-D761-45CA-B539-E041CD0486E9.htm#GUID-BAD5FFB7-D761-45CA-B539-E041CD0486E9">OpenMP* Source Compatibility and Interoperability with Other Compilers</a>. 
+      </p>
+ 
+      <p>On Linux systems when using the Intel OpenMP compatibility libraries enabled by the compiler option 
+      <span class="option">-openmp-lib compat</span>, you can use the GOMP_CPU_AFFINITY environment variable to specify a list of OS processor IDs. Its syntax is identical to that accepted by 
+      <span class="keyword">libgomp</span> (assume that &lt;<var>proc_list</var>&gt; produces the entire GOMP_CPU_AFFINITY environment string): 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F325278F-17A9-4D1D-B225-D1308AC06844" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_list</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;entry&gt; | &lt;<var>elem</var>&gt; , &lt;list&gt; | &lt;elem&gt; &lt;whitespace&gt; &lt;list&gt; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>elem</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_spec</var>&gt; | &lt;<var>range</var>&gt; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_spec</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_id</var>&gt; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>range</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_id</var>&gt; - &lt;<var>proc_id</var>&gt; | &lt;<var>proc_id</var>&gt; - &lt;<var>proc_id</var>&gt; : &lt;int&gt; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_id</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;positive_int&gt; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>OS processors specified in this list are then assigned to OpenMP threads, in order of OpenMP Global Thread IDs. If more OpenMP threads are created than there are elements in the list, then the assignment occurs modulo the size of the list. That is, OpenMP Global Thread ID 
+        <var>n</var> is bound to list element 
+        <var>n</var> mod &lt;<var>list_size</var>&gt;. 
+      </p>
+ 
+      <p>Consider the machine previously mentioned: a dual core, dual-package machine without Hyper-Threading Technology (HT Technology) enabled, where the OS proc IDs are assigned in the same manner as the example in a previous figure. Suppose that the application creates 6 OpenMP threads instead of 4 (the default), oversubscribing the machine. If 
+        <span class="keyword">GOMP_CPU_AFFINITY=3,0-2,</span> then OpenMP threads are bound as shown in the figure below, just as should happen when compiling with 
+        <span class="keyword">gcc</span> and linking with 
+        <span class="keyword">libgomp</span>: 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN8"><a name="OPTAPS_KMP_AFFIN8"><!-- --></a><br><img src="GUID-EA46A538-61B1-4477-BD6C-218301C7C82D-low.jpg"><br> 
+      </div>
+ 
+      <p>The same syntax can be used to specify the OS proc ID list in the proclist=[&lt;proc_list&gt;] modifier in the KMP_AFFINITY environment variable string. There is a slight difference: in order to have strictly the same semantics as in the 
+        <span class="keyword">gcc</span> OpenMP runtime library 
+        <span class="keyword">libgomp</span>: the GOMP_CPU_AFFINITY environment variable implies 
+        <span class="keyword">granularity=fine</span>. If you specify the OS proc list in the KMP_AFFINITY environment variable without a 
+        <span class="keyword">granularity=</span> specifier, then the default 
+        <span class="keyword">granularity</span> is not changed. That is, OpenMP threads are allowed to float between the different thread contexts on a single core. Thus GOMP_CPU_AFFINITY=<span class="keyword">&lt;proc_list&gt;</span> is an alias for KMP_AFFINITY=<span class="keyword">granularity=fine,proclist=[&lt;proc_list&gt;],explicit</span> 
+      </p>
+ 
+      <p>In the KMP_AFFINITY environment variable string, the syntax is extended to handle operating system processor ID sets. The user may specify a set of operating system processor IDs among which an OpenMP thread may execute ("œfloat") enclosed in brackets: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B49A5DD2-6CE9-4B56-9118-B38F45AC8743" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>proc_list</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;proc_id&gt; | { &lt;float_list&gt; } 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;<var>float_list</var>&gt; := 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top"> 
+                <p>&lt;proc_id&gt; | &lt;proc_id&gt; , &lt;float_list&gt; 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>This allows functionality similarity to the 
+        <span class="keyword">granularity= specifier</span>, but it is more flexible. The OS processors on which an OpenMP thread executes may exclude other OS processors nearby in the machine topology, but include other distant OS processors. Building upon the previous example, we may allow OpenMP threads 2 and 3 to "œfloat" between OS processor 1 and OS processor 2 by using KMP_AFFINITY="<span class="keyword">granularity=fine,proclist=[3,0,{1,2},{1,2}],explicit</span>", as shown in the figure below: 
+      </p>
+ 
+      <div class="fignone" id="OPTAPS_KMP_AFFIN9"><a name="OPTAPS_KMP_AFFIN9"><!-- --></a><br><img src="GUID-F84BC7C9-5CC9-4C0F-B04F-0B5E4CF669EF-low.jpg"><br> 
+      </div>
+ 
+      <p>If 
+        <span class="keyword">verbose</span> were also specified, the output when the application is executed would include: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-25EB563A-89E5-4FD5-A2CA-A8C3CFBD91CD" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" align="left" valign="top" id="d471851e2442"> 
+                <p><samp class="codeph">KMP_AFFINITY="<span class="keyword">granularity=verbose,fine,proclist=[3,0,{1,2},{1,2}],explicit</span>"</samp> 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2442 "> 
+                <pre>KMP_AFFINITY: Affinity capable, using global cpuid info</pre> 
+                <pre>KMP_AFFINITY: Initial OS proc set respected: {0,1,2,3}</pre> 
+                <pre>KMP_AFFINITY: 4 available OS procs - Uniform topology of</pre> 
+                <pre>KMP_AFFINITY: 2 packages x 2 cores/pkg x 1 threads/core (4 total cores)</pre> 
+                <pre>KMP_AFFINITY: OS proc to physical thread map ([] =&gt; level not in map):</pre> 
+                <pre>KMP_AFFINITY: OS proc 0 maps to package 0 core 0 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: OS proc 2 maps to package 0 core 1 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: OS proc 1 maps to package 3 core 0 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: OS proc 3 maps to package 3 core 1 [thread 0]</pre> 
+                <pre>KMP_AFFINITY: Internal thread 0 bound to OS proc set {3}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 1 bound to OS proc set {0}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 2 bound to OS proc set {1,2}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 3 bound to OS proc set {1,2}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 4 bound to OS proc set {3}</pre> 
+                <pre>KMP_AFFINITY: Internal thread 5 bound to OS proc set {0}}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="LOW_LEVEL_AFFINITY_API"><a name="LOW_LEVEL_AFFINITY_API"><!-- --></a><h2 class="sectiontitle">Low Level Affinity API</h2> 
+       
+      <p>Instead of relying on the user to specify the OpenMP thread to OS proc binding by setting an environment variable before program execution starts (or by using the 
+        <span class="keyword">kmp_settings</span> interface before the first parallel region is reached), each OpenMP thread may determine the desired set of OS procs on which it is to execute and bind to them with the 
+        <span class="keyword">kmp_set_affinity</span> API call. 
+      </p>
+ 
+      <p>The C/C++ API interfaces follow, where the type name 
+        <span class="keyword">kmp_affinity_mask_t</span> is defined in 
+        <span class="filepath">omp.h</span>: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-ED8898DF-6BF5-4E99-B6B2-87CD69CEB629" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" valign="top" id="d471851e2548"> 
+                <p>Syntax 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d471851e2554"> 
+                <p>Description 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">int kmp_set_affinity (kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Sets the affinity mask for the current OpenMP thread to 
+                  <span>*</span><span class="keyword">mask</span>, where 
+                  <span>*</span><span class="keyword">mask</span> is a set of OS proc IDs that has been created using the API calls listed below, and the thread will only execute on OS procs in the set. Returns either a zero (0) upon success or a nonzero error code. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">int kmp_get_affinity (kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Retrieves the affinity mask for the current OpenMP thread, and stores it in 
+                  <span>*</span><span class="keyword">mask</span>, which must have previously been initialized with a call to 
+                  <span class="keyword">kmp_create_affinity_mask()</span>. Returns either a zero (0) upon success or a nonzero error code. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">int kmp_get_affinity_max_proc (void)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Returns the maximum OS proc ID that is on the machine, plus 1. All OS proc IDs are guaranteed to be between 0 (inclusive) and 
+                  <span class="keyword">kmp_get_affinity_max_proc()</span> (exclusive). 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">void kmp_create_affinity_mask (kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Allocates a new OpenMP thread affinity mask, and initializes 
+                  <span>*</span><span class="keyword">mask</span> to the empty set of OS procs. The implementation is free to use an object of 
+                  <span class="keyword">kmp_affinity_mask_kind</span> either as the set itself, a pointer to the actual set, or an index into a table describing the set. Do not make any assumption as to what the actual representation is. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">void kmp_destroy_affinity_mask (kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Deallocates the OpenMP thread affinity mask. For each call to 
+                  <span class="keyword">kmp_create_affinity_mask()</span>, there should be a corresponding call to 
+                  <span class="keyword">kmp_destroy_affinity_mask()</span>. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">int kmp_set_affinity_mask_proc (int proc, kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Adds the OS proc ID proc to the set 
+                  <span>*</span><span class="keyword">mask</span>, if it is not already. Returns either a zero (0) upon success or a nonzero error code. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">int kmp_unset_affinity_mask_proc (int proc, kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>If the OS proc ID proc is in the set 
+                  <span>*</span><span class="keyword">mask</span>, it removes it. Returns either a zero (0) upon success or a nonzero error code. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2548 "> 
+                <p><samp class="codeph">int kmp_get_affinity_mask_proc (int proc, kmp_affinity_mask_t *mask)</samp> 
+                </p>
+ 
+                </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d471851e2554 "> 
+                <p>Returns 1 if the OS proc ID proc is in the set 
+                  <span>*</span><span class="keyword">mask</span>; if not, it returns 0. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Once an OpenMP thread has set its own affinity mask via a successful call to 
+        <span class="keyword">kmp_affinity_set_mask()</span>, then that thread remains bound to the corresponding OS proc set until at least the end of the parallel region, unless reset via a subsequent call to 
+        <span class="keyword">kmp_affinity_set_mask()</span>. 
+      </p>
+ 
+      <p>Between parallel regions, the affinity mask (and the corresponding OpenMP thread to OS proc bindings) can be considered thread private data objects, and have the same persistence as described in the OpenMP Application Program Interface. For more information, see the OpenMP API specification (http://www.openmp.org), some relevant parts of which are provided below: 
+      </p>
+ 
+      <p>"In order for the affinity mask and thread binding to persist between two consecutive active parallel regions, all three of the following conditions must hold: 
+      </p>
+ 
+      <ul type="disc" id="GUID-866EFB7F-4995-45AA-852F-64A8E1BD3BB0"> 
+        <li> 
+          <p>Neither parallel region is nested inside another explicit parallel region. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>The number of threads used to execute both parallel regions is the same. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>The value of the dyn-var internal control variable in the enclosing task region is false at entry to both parallel regions." 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>Therefore, by creating a parallel region at the start of the program whose sole purpose is to set the affinity mask for each thread, the user can mimic the behavior of the KMP_AFFINITY environment variable with low-level affinity API calls, if program execution obeys the three aforementioned rules from the OpenMP specification. Consider again the example presented in the 
+        <a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#FIGURE_COMPACT_VERBOSE6">previous figure</a>. To mimic KMP_AFFINITY=compact, in each OpenMP thread with global thread ID 
+        <var>n</var>, we need to create an affinity mask containing OS proc IDs 
+        <var>n</var> modulo 
+        <var>c</var>, 
+        <var>n</var> modulo 
+        <var>c</var> + 
+        <var>c</var>, and so on, where 
+        <var>c</var> is the number of cores. This can be accomplished by inserting the following C code fragment into the application that gets executed at program startup time: 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-49A0DFB5-B971-4162-9F67-22C5D0A8EAE8" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+          <thead align="left"> 
+            <tr valign="top"> 
+              <th class="cellrowborder" valign="top" id="d471851e2829"> 
+                <p>Example 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr valign="top"> 
+              <td class="cellrowborder" valign="top" headers="d471851e2829 "> 
+                <pre>int main() {</pre> 
+                <pre>#pragma omp parallel</pre> 
+                <pre>{</pre> 
+                <pre>int tmax = omp_get_max_threads();</pre> 
+                <pre>int tnum = omp_get_thread_num();</pre> 
+                <pre>int nproc = omp_get_num_procs();</pre> 
+                <pre>int ncores = nproc / 2;</pre> 
+                <pre>int i;</pre> 
+                <pre>kmp_affinity_mask_t mask;</pre> 
+                <pre>kmp_create_affinity_mask(&amp;mask);</pre> 
+                <pre>for (i = tnum % ncores; i &lt; tmax; i += ncores) {</pre> 
+                <pre>kmp_set_affinity_mask_proc(i, &amp;mask);</pre> 
+                <pre>}</pre> 
+                <pre>if (kmp_set_affinity(&amp;mask) != 0) &lt;error&gt;;</pre> 
+                <pre>}</pre> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>This program fragment was written with knowledge about the mapping of the OS proc IDs to the physical processing elements of the target machine. On another machine, or on the same machine with a different OS installed, the program would still run, but the OpenMP thread to physical processing element bindings could differ. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">OpenMP* Library Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Predefined Macros for Intel&reg; MIC Architecture">
+<meta name="DC.subject" content="macros, preprocessor variables, setting macros">
+<meta name="keywords" content="macros, preprocessor variables, setting macros">
+<meta name="DC.Relation" scheme="URI" content="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A.htm#GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A">
+<meta name="DC.Relation" scheme="URI" content="GUID-401EDB00-AD07-4085-97EB-7C68BA42A713.htm#GUID-401EDB00-AD07-4085-97EB-7C68BA42A713">
+<meta name="DC.Relation" scheme="URI" content="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm#GUID-2077C232-DB36-4D54-9429-57F4660AB4BB">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="GUID-6D7DB4F7-001B-446D-BE55-3BEDFA76116C.htm#GUID-6D7DB4F7-001B-446D-BE55-3BEDFA76116C">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D1B56D32-2D79-458C-A27E-A0C27AE122B8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Predefined Macros for Intel&reg; MIC Architecture</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cncpt_macros"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D1B56D32-2D79-458C-A27E-A0C27AE122B8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Predefined Macros for Intel&reg; MIC Architecture</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <a name="SIMPLETABLE_C032146C47544B6B9825659A6690D427"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="SIMPLETABLE_C032146C47544B6B9825659A6690D427" border="1" class="simpletableborder"><tr><th valign="bottom" align="left" id="d729437e48">macro</th>
+<th valign="bottom" align="left" id="d729437e50">When it is defined</th>
+<th valign="bottom" align="left" id="d729437e52">Compiler options that define it</th>
+ 
+		</tr>
+<tr><td valign="top" headers="d729437e48"> 
+			 <p><samp class="codeph">__MIC__</samp> 
+			 </p>
+</td>
+<td valign="top" headers="d729437e50"> 
+			 <p> This macro is defined by the compiler while building code to run on the coprocessor. 
+			 </p>
+ 
+			 <p> You can use this macro to protect code that should only be compiled for and executed on the coprocessor<span>, such as intrinsic functions that only run on Intel&reg; MIC Architecture, or the corresponding header files, such as 
+				  <span class="filepath">zmmintrins.h</span></span>. 
+			 </p>
+</td>
+<td valign="top" headers="d729437e52"> 
+			 <p>Defined by default. Builds code that runs on the CPU and the coprocessor, but this macro is only defined during the coprocessor compilation. Undefined when you use 
+			 <span class="option">no-offload</span>. 
+			 </p>
+ 
+			 <p> 
+			 <span class="option">-mmic</span>: Builds code that runs only on the coprocessor. This macro is defined. 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr><td valign="top" headers="d729437e48"> 
+			 <p><samp class="codeph">__KNC__</samp> 
+			 </p>
+</td>
+<td valign="top" headers="d729437e50"> 
+			 <p> This macro is defined by the compiler while building code to run on the variant of the Intel&reg; MIC Architecture known as the Intel&reg; Xeon Phi&#8482; coprocessor.
+			 </p>
+ 
+			 <p> You can use this macro to protect code that should only be compiled for and executed on an Intel&reg; MIC Architecture-based coprocessor, such as Intel&reg; MIC Architecture-specific intrinsic functions. 
+			 </p>
+ 
+		  </td>
+<td valign="top" headers="d729437e52"> 
+			 <p>Defined by default. Builds code that runs on the CPU and the coprocessor, but this macro is only defined during the coprocessor compilation. Undefined when you use 
+			 <span class="option">no-offload</span>. 
+			 </p>
+ 
+			 <p> 
+			 <span class="option">-mmic</span> : Builds code that runs only on the coprocessor. This macro is defined. 
+			 </p>
+ 
+		  </td>
+ 
+		</tr>
+<tr><td valign="top" headers="d729437e48"> 
+			 <p><samp class="codeph">__INTEL_OFFLOAD</samp> 
+			 </p>
+</td>
+<td valign="top" headers="d729437e50"> 
+			 <p>This macro is defined by the compiler when building code to run on the CPU and on the coprocessor. 
+			 </p>
+ 
+			 <p>You can use this macro in conjunction with the 
+			 <span class="option">no-offload</span> or 
+			 <span class="option">mmic</span> compiler option to protect code on the host that should only be executed for an offload build, such as calls to the 
+			 <span class="keyword">omp_set_num_threads_target</span> family of APIs in 
+			 <span class="filepath">offload.h</span>. 
+			 </p>
+</td>
+<td valign="top" headers="d729437e52"> 
+			 <p>Defined by default. Builds code that runs on the CPU and the coprocessor. Undefined when you use 
+			 <span class="option">no-offload</span> or 
+			 <span class="option">mmic</span>. 
+			 </p>
+</td>
+ 
+		</tr>
+</table>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">Offload Using a Pragma</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A.htm#GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A">About Building Native Intel&reg; MIC Architecture Applications 
+		  </a></div>
+<div><a href="GUID-401EDB00-AD07-4085-97EB-7C68BA42A713.htm#GUID-401EDB00-AD07-4085-97EB-7C68BA42A713">mmic 
+		  </a>  
+		  </div>
+<div><a href="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm#GUID-2077C232-DB36-4D54-9429-57F4660AB4BB">no-offload 
+		  </a>  
+		  </div>
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code Using a 
+			 <span>Pragma</span></a></div>
+<div><a href="GUID-6D7DB4F7-001B-446D-BE55-3BEDFA76116C.htm#GUID-6D7DB4F7-001B-446D-BE55-3BEDFA76116C"> Writing Code that Should Not Be Built for CPU-Only Execution 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

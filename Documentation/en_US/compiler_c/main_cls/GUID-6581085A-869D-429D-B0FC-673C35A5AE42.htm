@@ -1,0 +1,136 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Minimum and Maximum Operators">
+<meta name="DC.subject" content="Class Libraries, floating-point vector classes, minimum and maximum operators">
+<meta name="keywords" content="Class Libraries, floating-point vector classes, minimum and maximum operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6581085A-869D-429D-B0FC-673C35A5AE42">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Minimum and Maximum Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_fp_minmax"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6581085A-869D-429D-B0FC-673C35A5AE42">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Minimum and Maximum Operators</h1>
+ 
+   
+  <div> 
+    <p>Compute the minimums of the two double precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">F64vec2 R = simd_min(F64vec2 A, F64vec2 B)</samp> 
+      <br> 
+      <samp class="codeph">R0 := min(A0,B0);</samp> 
+      <br> 
+      <samp class="codeph">R1 := min(A1,B1);</samp> 
+      <br>Corresponding intrinsic: 
+      <span class="keyword">_mm_min_pd</span> 
+    </p>
+ 
+    <p>Compute the minimums of the four single precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">F32vec4 R = simd_min(F32vec4 A, F32vec4 B)</samp> 
+      <br> 
+      <samp class="codeph">R0 := min(A0,B0);</samp> 
+      <br> 
+      <samp class="codeph">R1 := min(A1,B1);</samp> 
+      <br> 
+      <samp class="codeph">R2 := min(A2,B2);</samp> 
+      <br> 
+      <samp class="codeph">R3 := min(A3,B3);</samp> 
+      <br>Corresponding intrinsic: 
+      <span class="keyword">_mm_min_ps</span> 
+    </p>
+ 
+    <p>Compute the minimum of the lowest single precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">F32vec1 R = simd_min(F32vec1 A, F32vec1 B)</samp> 
+      <br> 
+      <samp class="codeph">R0 := min(A0,B0);</samp> 
+      <br>Corresponding intrinsic: 
+      <span class="keyword">_mm_min_ss</span> 
+    </p>
+ 
+    <p>Compute the maximums of the two double precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">F64vec2 simd_max(F64vec2 A, F64vec2 B)</samp> 
+      <br> 
+      <samp class="codeph">R0 := max(A0,B0);</samp> 
+      <br> 
+      <samp class="codeph">R1 := max(A1,B1);</samp> 
+      <br>Corresponding intrinsic: 
+      <span class="keyword">_mm_max_pd</span> 
+    </p>
+ 
+    <p>Compute the maximums of the four single precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">F32vec4 R = simd_man(F32vec4 A, F32vec4 B)</samp> 
+      <br> 
+      <samp class="codeph">R0 := max(A0,B0);</samp> 
+      <br> 
+      <samp class="codeph">R1 := max(A1,B1);</samp> 
+      <br> 
+      <samp class="codeph">R2 := max(A2,B2);</samp> 
+      <br> 
+      <samp class="codeph">R3 := max(A3,B3);</samp> 
+      <br>Corresponding intrinsic: 
+      <span class="keyword">_mm_max_ps</span> 
+    </p>
+ 
+    <p>Compute the maximum of the lowest single precision floating-point values of 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>. 
+    </p>
+ 
+    <p><samp class="codeph">F32vec1 simd_max(F32vec1 A, F32vec1 B)</samp> 
+      <br> 
+      <samp class="codeph">R0 := max(A0,B0);</samp> 
+      <br>Corresponding intrinsic: _<span class="keyword">mm_max_ss</span> 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">Floating-point Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Allocating and Freeing Aligned Memory Blocks">
+<meta name="DC.subject" content="intrinsics, memory allocation">
+<meta name="keywords" content="intrinsics, memory allocation">
+<meta name="DC.Relation" scheme="URI" content="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D0927A8E-A220-4F50-8697-C89BBE6EFC95">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Allocating and Freeing Aligned Memory Blocks</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intref_allocate_free_aligned_mem"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D0927A8E-A220-4F50-8697-C89BBE6EFC95">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Allocating and Freeing Aligned Memory Blocks</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-71E1524D-E6AF-48D8-9F86-6947842326AF"> 
+      <p>To allocate and free aligned blocks of memory use the 
+      <span class="option">_mm_malloc</span> and 
+      <span class="option">_mm_free</span> intrinsics. These intrinsics are based on 
+      <span class="keyword">malloc</span> and 
+      <span class="keyword">free</span>, which are in the 
+      <span class="keyword">libirc.a</span> library. You need to include 
+      <span class="filepath">malloc.h</span>. The syntax for these intrinsics is as follows: 
+      </p>
+ 
+      <p><span class="option">void* _mm_malloc (size_t size, size_t align )</span> 
+      </p>
+ 
+      <p><span class="option">void _mm_free (void *p)</span> 
+      </p>
+ 
+      <p>The 
+      <span class="option">_mm_malloc</span> routine takes an extra parameter, which is the alignment constraint. This constraint must be a power of two. The pointer that is returned from 
+      <span class="option">_mm_malloc</span> is guaranteed to be aligned on the specified boundary. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>Memory that is allocated using 
+        <span class="option">_mm_malloc</span> must be freed using 
+        <span class="option">_mm_free 
+        </span>. Calling 
+        <span class="keyword">free</span> on memory allocated with<span class="option"> _mm_malloc</span> or calling 
+        <span class="option">_mm_free</span> on memory allocated with 
+        <span class="keyword">malloc</span> will cause unpredictable behavior. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">Data Alignment, Memory Allocation Intrinsics, and Inline Assembly</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

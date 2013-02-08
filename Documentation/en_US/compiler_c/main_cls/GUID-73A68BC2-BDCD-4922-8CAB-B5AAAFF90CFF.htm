@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Introduction to Reducers">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, reducers">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, reducers">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-73A68BC2-BDCD-4922-8CAB-B5AAAFF90CFF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Introduction to Reducers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_reducer_intro"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-73A68BC2-BDCD-4922-8CAB-B5AAAFF90CFF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Introduction to Reducers</h1>
+ 
+   
+  <div> 
+	 <p><strong>Reducers</strong> address the problem of 
+		<span><span>computing a value by incrementally updating a variable in parallel code without data races on that variable</span></span>. Conceptually, a reducer is a variable that can be safely used by multiple strands running in parallel. The runtime ensures that each worker has access to a private copy of the variable, eliminating the possibility of races without requiring locks. When the strands synchronize, 
+		<span><span>the variable instances are merged -- or reduced -- into a single variable</span></span>. 
+	 </p>
+ 
+	 <p>Reducers have several attractive properties: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-EA4B950F-F649-4A9B-938A-3DB4A2085842"> 
+		<li> 
+		  <p>Reducers allow reliable access to nonlocal variables without races. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Reducers do not require locks and therefore avoid the problem of lock contention (and subsequent loss of parallelism) that arises from using locks to protect nonlocal variables. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Defined and used correctly, reducers retain serial semantics. The result of a program that uses reducers is the same as the serial version, and the result does not depend on the number of processors or how the workers are scheduled. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Reducers are implemented efficiently, incurring minimal overhead. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Reducers can be used independently of the program's control structure, unlike constructs that are defined over specific control structures such as loops. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Reducers can be used without significantly restructuring existing code. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Reducers are defined by writing 
+		<span>C++</span> templates that provide an interface to the runtime system. 
+	 </p>
+ 
+	 <p>At some point, you may want to write your own reducer. 
+		<a href="GUID-275AA577-EE90-4829-B1EA-01B7EB64C26F.htm#GUID-275AA577-EE90-4829-B1EA-01B7EB64C26F">Advanced Topic How to Write a New Reducer</a> provides more information. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

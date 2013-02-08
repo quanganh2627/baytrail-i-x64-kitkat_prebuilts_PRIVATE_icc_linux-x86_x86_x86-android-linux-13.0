@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="novector">
+<meta name="abstract" content="Specifies that the loop should never be vectorized.">
+<meta name="description" content="Specifies that the loop should never be vectorized.">
+<meta name="DC.subject" content="pragma novector">
+<meta name="keywords" content="pragma novector">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm#GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CFBEC461-748D-4162-A669-C4F42848267F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>novector</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_novector"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CFBEC461-748D-4162-A669-C4F42848267F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>novector</span></h1>
+
+<!--Specifies that the loop should never be vectorized.-->
+<div><p>Specifies that the loop should never be vectorized.</p>
+
+<div class="section" id="GUID-88C74BF7-9331-4590-B94C-38810347CFE2"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma novector</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-61A3A638-BCCC-4C1A-BCCD-6EFDB964C525"><h2>Arguments</h2><p>None</p>
+</div>
+
+
+<div class="section" id="GUID-4D788F70-A3A8-42BB-9E94-91B6A5FF4696"><h2>Description</h2>
+<p>The <span class="keyword">novector</span> pragma specifies that a particular loop should never be vectorized, even if it is legal to do so. When avoiding vectorization of a loop is desirable (when vectorization results in a performance regression rather than improvement), the <span class="keyword">novector</span> pragma can be used in the source text to disable vectorization of a loop. This behavior is in contrast to the <span class="keyword">vector always</span> pragma.</p>
+
+</div>
+
+
+<div class="section" id="GUID-468CED2F-1AEA-4FBB-B738-4B915889B1EA"><h2>Example</h2>
+<p><strong>Example: Using the novector pragma</strong></p>
+
+<p>When you know the trip count (<samp class="codeph">ub - lb</samp>) is too low to make vectorization worthwhile, you can use novector to tell the compiler not to vectorize, even if the loop is considered vectorizable.</p>
+
+<pre>void foo(int lb, int ub)</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;#pragma novector</pre>
+<pre>&nbsp;&nbsp;for(j=lb; j&lt;ub; j++)</pre>
+<pre>&nbsp;&nbsp;{</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[j]=a[j]+b[j];</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm#GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850"><span class="keyword">vector</span> pragma</a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="g, Zi, Z7">
+<meta name="abstract" content="Tells the compiler to generate full debugging information in the object file or a project database (PDB) file.">
+<meta name="description" content="Tells the compiler to generate full debugging information in the object file or a project database (PDB) file.">
+<meta name="DC.subject" content="debug information, option generating full, /Z7 compiler option, /Zi compiler option, -g compiler option">
+<meta name="keywords" content="debug information, option generating full, /Z7 compiler option, /Zi compiler option, -g compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D8C7575F-412B-4D5D-AA0E-7F3BD94DFD88.htm#GUID-D8C7575F-412B-4D5D-AA0E-7F3BD94DFD88">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-226DE90E-D4C8-420B-B560-0997839D17C4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>g, Zi, Z7</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_g"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_g"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-226DE90E-D4C8-420B-B560-0997839D17C4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">g, Zi, Z7</h1>
+<!--Tells the compiler to generate full debugging information in the object file or a project database (PDB) file. --><div><p>Tells the compiler to generate full debugging information in the object file or a project database (PDB) file. </p>
+
+<div class="section" id="GUID-E2F532E3-2C7E-4DB5-908A-7036E4EB2F85"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>General &gt; Debug Information Format</strong></p>
+
+<p class="ide">Linux: 
+								<strong>General &gt; Include Debug Information</strong></p>
+
+<p class="ide">OS X: 
+								<strong>General &gt; Generate Debug Information</strong></p>
+</div>
+<div class="section" id="GUID-5F4B2528-31BA-4BA5-800C-60045203AD92"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-A139FD26-59F9-409A-8444-B40DA9A2646C"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-g</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Zi</span></p><p><span class="kwd">/Z7</span></p></td></tr></table></div>
+<div class="section" id="GUID-17C0158A-BD32-4226-B00C-D7B01AC8E78F"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-74F91616-242C-44EB-A3BC-C8ABD99AF97A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>No debugging information is produced in the object file or in a PDB file.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-37812C2B-06AF-4CA4-8E50-7D04D208AB28"><h2>Description</h2><p>Options <span class="option">-g</span> (Linux* OS and OS X*)
+ and <span class="option">/Z7</span> (Windows* OS) tell the compiler to generate symbolic debugging information in the object file, which increases the size of the object file. The <span class="option">/Zi</span> option (Windows OS) tells the compiler to generate symbolic debugging information in a PDB file. </p>
+<p> If you want to name the file, use option <span class="option">/Fd</span>; otherwise, the PDB file used by the compilation step will be named vc90.pdb in Microsoft Visual Studio* 2008, and vc100.pdb in Microsoft Visual Studio* 
+2010.  Note that Microsoft Visual Studio users do not normally need to specify this option because the environment sets it correctly.</p>
+
+<p>The compiler does not support the generation of debugging information in assemblable files. If you specify these options, the resulting object file will contain debugging information, but the assemblable file will not.</p>
+<p>These options turn off <span class="option">O2</span> and make <span class="option">O0</span> (Linux OS and OS X) or <span class="option">Od</span> (Windows OS) the default unless <span class="option">O2</span> (or higher) is explicitly specified in the same command line.</p>
+<p> On Linux* OS and OS X*, specifying the <span class="option">-g</span> or <span class="option">-O0</span> option sets the <span class="option">-fno-omit-frame-pointer</span> option. <span><span>On Linux* OS, the <span class="option">-debug inline-debug-info</span> option will be enabled by default if you compile with optimizations (option <span class="option">-O2</span> or higher) and debugging is enabled (option <span class="option">-g</span>)</span></span>.</p>
+</div>
+
+<div class="section" id="GUID-7E330A88-4974-4D33-91D6-F03117188AEC"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr>
+			<td valign="top" width="30%" class="noborder"><p><span class="option">/Zi</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: None</p>
+<p>Windows: <span class="option">/debug:full</span>, <span class="option">/debug:all</span>, <span class="option">/debug</span>, or <span class="option">/ZI</span></p>
+</td>
+</tr></table>
+
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-D8C7575F-412B-4D5D-AA0E-7F3BD94DFD88.htm#GUID-D8C7575F-412B-4D5D-AA0E-7F3BD94DFD88"><span class="option">Fd</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

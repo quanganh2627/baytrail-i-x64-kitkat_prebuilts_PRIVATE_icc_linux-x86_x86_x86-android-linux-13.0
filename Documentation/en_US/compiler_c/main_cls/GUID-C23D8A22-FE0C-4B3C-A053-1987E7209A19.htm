@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking Arrays">
+<meta name="DC.subject" content="pointer checker, checking arrays">
+<meta name="keywords" content="pointer checker, checking arrays">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-389D8F46-C207-40B8-8ED3-A0827894C6FF.htm#GUID-389D8F46-C207-40B8-8ED3-A0827894C6FF">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C23D8A22-FE0C-4B3C-A053-1987E7209A19">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking Arrays</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_check_arrays"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_check_arrays"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-C23D8A22-FE0C-4B3C-A053-1987E7209A19">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Checking Arrays</h1>
+ 
+   
+  <div> 
+	 <p>The C and C++ language allows you to define arrays in another module with the 
+		<samp class="codeph"><span class="keyword">extern</span></samp> keyword. These arrays can be defined without specifying the dimensions, for example: 
+	 </p>
+ 
+	 <pre>extern char an_undimensioned_array [];</pre> 
+	 <p>The compiler allows more than one definition for externally defined arrays. During link time, the compiler uses the array definition with the largest bounds. 
+	 </p>
+ 
+	 <p>To check these arrays, the compiler defines a global symbol that marks the end of the array. However, checking undimensioned arrays can lead to a multiple defined linker error. 
+	 </p>
+ 
+	 <p>To fix this linker error, do one of the following: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-4E3B3F38-49AE-4BCD-887B-9896C93CD67A"> 
+		<li> 
+		  <p>Use only one array definition 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Use the 
+	 <span class="option">/Qcheck-pointers-undimensioned- 
+	 </span>(Windows* OS) or the 
+	 <span class="option">-no-check-pointers-undimensioned</span> (Linux* OS) compiler option to disable checking arrays without bounds. 
+	 </p>
+ 
+	 </li>
+ 
+	 </ul>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>This compiler option suppresses checking in the module that declares an array without bounds. The pointer checker will still check the arrays in modules that actually define the arrays with bounds. 
+		</p>
+ 
+	 </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-389D8F46-C207-40B8-8ED3-A0827894C6FF.htm#GUID-389D8F46-C207-40B8-8ED3-A0827894C6FF">check-pointers-undimensioned, Qcheck-pointers-undimensioned 
+		  </a> Determines whether the compiler checks bounds for memory access through arrays that are declared without dimensions.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

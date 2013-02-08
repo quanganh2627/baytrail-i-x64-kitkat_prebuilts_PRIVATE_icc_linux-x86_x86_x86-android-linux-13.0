@@ -1,0 +1,205 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="par-schedule, Qpar-schedule">
+<meta name="abstract" content="Lets you specify a scheduling algorithm for loop iterations.">
+<meta name="description" content="Lets you specify a scheduling algorithm for loop iterations.">
+<meta name="DC.subject" content="/Qpar-schedule compiler option, -par-schedule compiler option">
+<meta name="keywords" content="/Qpar-schedule compiler option, -par-schedule compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DD3B3E68-F715-47B1-B20A-D8E134F91EA9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>par-schedule, Qpar-schedule</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_par_schedule"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_par_schedule"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DD3B3E68-F715-47B1-B20A-D8E134F91EA9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">par-schedule, Qpar-schedule</h1>
+<!--Lets you specify a scheduling algorithm for loop iterations. --><div><p>Lets you specify a scheduling algorithm for loop iterations. </p>
+
+<div class="section" id="GUID-0A27164D-45A8-43A8-814D-BD9E9F6AD6F1"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-3697A721-9243-4BCD-AF3F-0145D9817EA0"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-F10F3DC7-D896-4116-BB71-DA6710793B82"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-par-schedule-</span><span class="var">keyword</span><span class="delim">[</span><span class="oper">=</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-schedule-</span><span class="var">keyword</span><span class="delim">[</span><span class="oper">[:]</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-557AC4EE-3CA0-441D-B443-DCD5F0BA650A"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>keyword</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the scheduling algorithm or tuning method. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">auto</span></p></td>
+<td valign="top" class="noborder"><p>Lets the compiler or run-time system determine the scheduling algorithm.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">static</span></p></td>
+<td valign="top" class="noborder"><p>Divides iterations into contiguous pieces.</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">static-balanced</span></p></td>
+<td valign="top" class="noborder"><p>Divides iterations into even-sized chunks.</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">static-steal</span></p></td>
+<td valign="top" class="noborder"><p>Divides iterations into even-sized chunks, but allows threads to steal parts of chunks
+from neighboring threads. </p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">dynamic</span></p></td>
+<td valign="top" class="noborder"><p>Gets a set of iterations dynamically.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">guided</span></p></td>
+<td valign="top" class="noborder"><p>Specifies a minimum number of iterations.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">guided-analytical</span></p></td>
+<td valign="top" class="noborder"><p>Divides iterations by using exponential distribution or dynamic distribution. </p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">runtime</span></p></td>
+<td valign="top" class="noborder"><p>Defers the scheduling decision until run time.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the size of the chunk or the number of iterations for each chunk. This setting
+can only be specified for static, dynamic, and guided. For more information, see
+the descriptions of each keyword below. </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-49A106E7-92E9-4EAD-8B27-288002D1667F"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>static-balanced</p></td>
+<td valign="top" class="noborder"><p>Iterations are divided into even-sized chunks and the chunks are assigned to the
+threads in the team in a round-robin fashion in the order of the thread number.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6D3E26C6-80B7-4769-B39E-332224C73542"><h2>Description</h2><p>This option lets you specify a scheduling algorithm for loop iterations.
+It specifies how iterations are to be divided among the threads of the team. </p>
+<p>This option is only useful when specified with option <span class="option">-parallel</span> (Linux* OS and OS X*) or <span class="option">/Qparallel</span> (Windows* OS).</p>
+<p>This option affects performance tuning and can provide better performance during
+auto-parallelization. It does nothing if it is used with option <span class="option">-openmp</span> (Linux* OS and OS X*) or option <span class="option">/Qopenmp</span> (Windows* OS).</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C98DD7E0-DA0D-41B8-97AD-4B8E5BBF3702" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr> <th class="noborder" align="left" valign="top" width="50%" id="d762411e185"><p>Option</p>
+</th>
+ <th class="noborder" align="left" valign="top" width="50%" id="d762411e189"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> <tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-auto</span> or <span class="option">/Qpar-schedule-auto</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Lets the compiler or run-time system determine the scheduling algorithm. Any possible
+mapping may occur for iterations to threads in the team.</p>
+</td>
+ </tr>
+<tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-static</span> or <span class="option">/Qpar-schedule-static</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Divides iterations into contiguous pieces (chunks) of size <var>n</var>. The chunks are assigned
+to threads in the team in a round-robin fashion in the order of the thread number.
+Note that the last chunk to be assigned may have a smaller number of iterations.</p>
+
+<p>If no <var>n</var> is specified, the iteration space is divided into chunks that are approximately
+equal in size, and each thread is assigned at most one chunk.</p>
+</td>
+ </tr>
+ 
+<tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-static-balanced</span> or <span class="option">/Qpar-schedule-static-balanced</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Divides iterations into even-sized chunks. The chunks are assigned to the threads
+in the team in a round-robin fashion in the order of the thread number. </p>
+</td>
+ </tr>
+
+<tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-static-steal</span> or <span class="option">/Qpar-schedule-static-steal</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Divides iterations into even-sized chunks, but when a thread completes its chunk,
+it can steal parts of chunks assigned to neighboring threads. </p>
+<p>Each thread keeps track
+of L and U, which represent the lower and upper bounds of its chunks respectively.
+Iterations are executed starting from the lower bound, and simultaneously, L is updated
+to represent the new lower bound.
+</p>
+</td>
+ </tr>
+
+<tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-dynamic</span> or <span class="option">/Qpar-schedule-dynamic</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Can be used to get a set of iterations dynamically. Assigns iterations to threads
+in chunks as the threads request them. The thread executes the chunk of iterations,
+then requests another chunk, until no chunks remain to be assigned.</p>
+<p> 
+As each thread finishes a piece of the iteration space, it dynamically gets the next
+set of iterations. Each chunk contains <var>n</var> iterations, except for the last chunk to
+be assigned, which may have fewer iterations. If no <var>n</var> is specified, the default is
+1.
+</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-guided</span> or <span class="option">/Qpar-schedule-guided</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Can be used to specify a minimum number of iterations. Assigns iterations to threads
+in chunks as the threads request them. The thread executes the chunk of iterations,
+then requests another chunk, until no chunks remain to be assigned. 
+ </p>
+<p>For a chunk of size 1, the size of each chunk is proportional to the number of unassigned
+iterations divided by the number of threads, decreasing to 1.
+</p>
+<p>For an <var>n</var> with value
+<var>k</var> (greater than 1), the size of each chunk is determined in the same way with the
+restriction that the chunks do not contain fewer than <var>k</var> iterations (except for the
+last chunk to be assigned, which may have fewer than <var>k</var> iterations). If no <var>n</var> is specified,
+the default is 1.
+</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-guided-analytical</span> or <span class="option">/Qpar-schedule-guided-analytical</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Divides iterations by using exponential distribution or dynamic distribution. The
+method depends on run-time implementation. Loop bounds are calculated with faster
+synchronization and chunks are dynamically dispatched at run time by threads in the
+team.</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="50%" headers="d762411e185 "><p><span class="option">-par-schedule-runtime</span> or <span class="option">/Qpar-schedule-runtime</span></p>
+</td>
+ <td class="noborder" valign="top" width="50%" headers="d762411e189 "><p>Defers the scheduling decision until run time. The scheduling algorithm and chunk
+size are then taken from the setting of environment variable OMP_SCHEDULE.</p>
+</td>
+ </tr>
+</tbody>
+</table>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This option may behave differently on Intel&reg; microprocessors than on non-Intel microprocessors.</p>
+</div></div>
+
+<div class="section" id="GUID-9637D202-BE91-4A21-A459-ACED89C65852"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_max_epu8/16/32">
+<meta name="abstract" content="Determines the maximum value between two vectors with packed unsigned byte/word/doubleword integers. The corresponding Intel&reg; AVX2 instruction is VPMAXUB, VPMAXUW, or VPMAXUD.">
+<meta name="description" content="Determines the maximum value between two vectors with packed unsigned byte/word/doubleword integers. The corresponding Intel&reg; AVX2 instruction is VPMAXUB, VPMAXUW, or VPMAXUD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, compare operations, _mm256_max_epu8 (VPMAXUB), _mm256_max_epu16 (VPMAXUW), _mm256_max_epu32 (VPMAXUD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, compare operations, _mm256_max_epu8 (VPMAXUB), _mm256_max_epu16 (VPMAXUW), _mm256_max_epu32 (VPMAXUD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-8159052B-18A3-4D39-9454-8B2B1C673564.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FB363847-9BAB-4163-BF69-0C383635BB69">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_max_epu8/16/32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_maxi"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_max_epu8"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_max_epu16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_max_epu32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FB363847-9BAB-4163-BF69-0C383635BB69">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_max_epu8/16/32</span></h1>
+
+
+<!--Determines the maximum value between two vectors with  packed unsigned byte/word/doubleword integers. The corresponding Intel&reg; AVX2 instruction is  VPMAXUB ,  VPMAXUW , or  VPMAXUD .--><div><p>Determines the maximum value between two vectors with  packed unsigned byte/word/doubleword integers. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMAXUB</span>, <span class="keyword">VPMAXUW</span>, or <span class="keyword">VPMAXUD</span>.</p>
+
+
+<div class="section" id="GUID-FBC5C0A3-95E1-477C-81CE-25E7F017CAB1"><h2>Syntax</h2>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_max_epu8(__m256i s1, __m256i s2);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_max_epu16(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_max_epu32(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+    
+<div class="section" id="GUID-8182E440-D7C6-4D58-B371-5EFB628EC2D6"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-AF41F4DB-7FE6-499C-9A96-EBC3FBADC6CE"><h2>Description</h2>
+
+<p>Performs a SIMD compare of the packed unsigned byte, word, or doubleword integers in source vectors <var>s1</var> and <var>s2</var> and returns the maximum value for each pair of integers to the destination vector.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-E798817D-F8B6-4EAD-BD8F-E936A42BB98D"><h2>Returns</h2>
+<p> Destination vector with result of the compare operation.</p>
+
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8159052B-18A3-4D39-9454-8B2B1C673564.htm">Intrinsics for Compare Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

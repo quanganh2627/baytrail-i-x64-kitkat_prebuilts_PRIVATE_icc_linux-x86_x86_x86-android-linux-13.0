@@ -1,0 +1,489 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using the -fp-model (/fp) Option">
+<meta name="DC.subject" content="/fp compiler option, how to use, -fp-model compiler option">
+<meta name="keywords" content="/fp compiler option, how to use, -fp-model compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A.htm#GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using the -fp-model (/fp) Option</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_fp_model"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using the -fp-model (/fp) Option</h1>
+ 
+   
+  <div> 
+    <p>The 
+  <span class="option">-fp-model</span> (Linux* and OS X*) or 
+  <span class="option">/fp</span> (Windows*) option allows you to control the optimizations on floating-point data. You can use this option to tune the performance, level of accuracy, or result consistency for floating-point applications across platforms and optimization levels. 
+  </p>
+ 
+  <p>For applications that do not require support for denormalized numbers, the 
+  <span class="option">-fp-model</span> or 
+  <span class="option">/fp</span> option can be combined with the 
+  <span class="option">-ftz</span> (Linux*and OS X*) or 
+  <span class="option">/Qftz</span> (Windows*) option to flush denormalized results to zero in order to obtain improved runtime performance on processors based on all Intel&reg; architectures. 
+  </p>
+ 
+  <p>You can use keywords to specify the semantics to be used. The keywords specified for this option may influence the choice of math routines that are invoked. Many routines in the 
+    <span class="keyword">libirc</span>, 
+    <span class="keyword">libm</span>, and 
+    <span class="keyword">svml</span> library are more highly optimized for Intel microprocessors than for non-Intel microprocessors. Possible values of the keywords are as follows: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BA522273-C601-4C74-9BAA-B68C1AA28F2D" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="30%" id="d376969e88"> 
+            <p>Keyword 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="70%" id="d376969e94"> 
+            <p>Description 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">precise</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p><span>Enables value-safe optimizations on floating-point data.</span></p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">fast[=1|2]</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p>Enables more aggressive optimizations on floating-point data. 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">strict</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p>Enables 
+              <span class="keyword">precise</span> and 
+              <span class="keyword">except</span>, disables contractions, 
+              <span>and enables pragma 
+                <span class="option">stdc fenv_access</span>. 
+              </span></p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">source</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p><span>Rounds intermediate results to source-defined precision and enables value-safe optimizations.</span></p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">double</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p>Rounds intermediate results to 53-bit (double) precision and enables value-safe optimizations. 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">extended</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p>Rounds intermediate results to 64-bit (extended) precision and enables value-safe optimizations. 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="30%" headers="d376969e88 "> 
+            <p><span class="keyword">[no-]except</span> (Linux* and OS X*) or<br><span class="keyword">except[-]</span> (Windows*) 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="70%" headers="d376969e94 "> 
+            <p>Determines whether strict floating-point exception semantics are used. 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p>The default value of the option is 
+  <span class="option">-fp-model fast=1</span> or 
+  <span class="option">/fp:fast=1</span>, which means that the compiler uses more aggressive optimizations on floating-point calculations. 
+  </p>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+    <p>Using the default option keyword 
+    <span class="option">-fp-model fast</span> or 
+    <span class="option">/fp:fast</span>, you may get significant differences in your result depending on whether the compiler uses x87 or SSE/AVX instructions to implement floating-point operations. Results are more consistent when the other option keywords are used. 
+    </p>
+ 
+  </div> 
+  <p>Several examples are provided to illustrate the usage of the keywords. These examples show: 
+  </p>
+ 
+  <ul type="disc" id="GUID-01340D25-A730-4387-B1F2-FDCA66154BB7"> 
+    <li> 
+      <p>A small example of source code<br>Note that the same source code is considered in all the included examples. 
+      </p>
+ 
+    </li>
+ 
+    <li> 
+      <p>The semantics that are used to interpret floating-point calculations in the source code 
+      </p>
+ 
+    </li>
+ 
+    <li> 
+      <p>One or more possible ways the compiler may interpret the source code<br>Note that there are several ways the compiler may interpret the code; we show just some of these possibilities. 
+      </p>
+ 
+    </li>
+ 
+  </ul>
+ 
+  <div class="section" id="GUID-2BAB0F5B-F0C7-4961-9E5C-57788027AE68"><h2 class="sectiontitle"><span class="option">-fp-model fast</span> or 
+    <span class="option">/fp:fast</span></h2> 
+     
+    <p>Example source code: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = 4.0f + 0.1f + t1 + t2;</pre> 
+    <p>When this option is specified, the compiler applies the following semantics: 
+    </p>
+ 
+    <ul type="disc" id="GUID-7CEE23B5-ECC6-420F-8BD1-521C2F4FE9E3"> 
+      <li> 
+        <p>Additions may be performed in any order 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Intermediate expressions may use 
+          <span class="keyword">single, double,</span> or 
+          <span class="keyword">extended</span> 
+          <span class="keyword">double</span> precision 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The constant addition may be pre-computed, assuming the default rounding mode 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Using these semantics, some possible ways the compiler may interpret the original code are given below: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = (float)((double)t1 + (double)t2) + 4.1f;</pre> 
+    <pre>&nbsp;</pre> 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = (t1 + t2) + 4.1f;</pre> 
+    <pre></pre> 
+    <pre></pre> 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = (t1 + 4.1f) + t2;</pre> 
+    <pre></pre> 
+    </div>
+ 
+  <p></p>
+ 
+  <div class="section" id="GUID-1241A298-216B-4A19-9F74-BEC83983243D"><h2 class="sectiontitle"><span class="option">-fp-model extended</span> or 
+    <span class="option">/fp:extended</span></h2> 
+     
+    <p>This setting is equivalent to 
+    <span class="option">-fp-model precise</span> on Linux* operating systems based on the IA-32 architecture. 
+    </p>
+ 
+    <p>Example source code: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = 4.0f + 0.1f + t1 + t2;</pre> 
+    <p>When this option is specified, the compiler applies the following semantics: 
+    </p>
+ 
+    <ul type="disc" id="GUID-60DDCA35-904A-4340-9997-BB5C528B0347"> 
+      <li> 
+        <p>Additions are performed in program order 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Intermediate expressions use extended double precision 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The constant addition may be pre-computed, assuming the default rounding mode 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Using these semantics, a possible way the compiler may interpret the original code is shown below: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = (float)(((long double)4.1 + (long double)t1) + (long double)t2);</pre> 
+  </div>
+ 
+  <p></p>
+ 
+  <div class="section" id="GUID-469EDCB9-690E-4C96-BE10-751C9E6A3EFE"><h2 class="sectiontitle"><span class="option">-fp-model source</span> or 
+    <span class="option">/fp:source</span></h2> 
+     
+    <p>This setting is equivalent to 
+    <span class="option">-fp-model precise</span> or 
+    <span class="option">/fp:precise</span> on systems based on the Intel&reg; 64 architecture. 
+    </p>
+ 
+    <p>Example source code: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = 4.0f + 0.1f + t1 + t2;</pre> 
+    <pre></pre> 
+    <p>When this option is specified, the compiler applies the following semantics: 
+    </p>
+ 
+    <ul type="disc" id="GUID-7EAEBA2D-D35F-468D-B9E2-DD19169A5B00"> 
+      <li> 
+        <p>Additions are performed in program order 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Intermediate expressions use the precision specified in the source code, that is, single-precision 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The constant addition may be pre-computed, assuming the default rounding mode 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Using these semantics, a possible way the compiler may interpret the original code is shown below: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = ((4.1f + t1) + t2);</pre> 
+    <pre></pre> 
+    </div>
+ 
+  <p></p>
+ 
+  <div class="section" id="GUID-9D0745A9-1893-4AF5-8861-B81832136D3E"><h2 class="sectiontitle"><span class="option">-fp-model double</span> or 
+    <span class="option">/fp:double</span></h2> 
+     
+    <p>This setting is equivalent to 
+    <span class="option">-fp-model precise</span> or 
+    <span class="option">/fp:precise</span> on Windows systems based on the IA-32 architecture. 
+    </p>
+ 
+    <p>Example source code: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = 4.0f + 0.1f + t1 + t2;</pre> 
+    <p>When this option is specified, the compiler applies the following semantics: 
+    </p>
+ 
+    <ul type="disc" id="GUID-E11DC86F-31A0-4D60-9ABC-D02ED6BD76F3"> 
+      <li> 
+        <p>Additions are performed in program order 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Intermediate expressions use double precision 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The constant addition may be pre-computed, assuming the default rounding mode 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Using these semantics, a possible way the compiler may interpret the original code is shown below: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = (float)(((double)4.1 + (double)t1) + (double)t</pre> 
+  </div>
+ 
+  <p></p>
+ 
+  <div class="section" id="GUID-77F03D53-8C83-4626-B2BD-C9B20D63F8D7"><h2 class="sectiontitle"><span class="option">-fp-model strict</span> or 
+    <span class="option">/fp:strict</span></h2> 
+     
+    <p>Example source code: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = 4.0f + 0.1f + t1 + t2;</pre> 
+    <pre></pre> 
+    <p>When this option is specified, the compiler applies the following semantics: 
+    </p>
+ 
+    <ul type="disc" id="GUID-20FF4DDA-231C-406A-921B-8B1E99BE1E2A"> 
+      <li> 
+        <p>Additions are performed in program order 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><span>Expression evaluation matches expression evaluation under keyword 
+            <span class="keyword">precise</span>. 
+          </span> 
+          </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The constant addition is not pre-computed because there is no way to tell what rounding mode will be active when the program runs. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Using these semantics, a possible way the compiler may interpret the original code is shown below: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0 = (float)((((long double)4.0f + (long double)0.1f) + (long double)t1) + (long double)t2);</pre> 
+    <pre></pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">Understanding Floating-point Operations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A.htm#GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A"><span class="option">-fp-model</span> compiler option 
+        </a> &nbsp; 
+        </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

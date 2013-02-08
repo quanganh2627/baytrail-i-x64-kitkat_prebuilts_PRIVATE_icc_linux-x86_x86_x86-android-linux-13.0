@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="Qcov-gen">
+<meta name="abstract" content="Produces an instrumented object file that can be used with the codecov or tselect tool.">
+<meta name="description" content="Produces an instrumented object file that can be used with the codecov or tselect tool.">
+<meta name="DC.subject" content="/Qcov-gen compiler option, codecov tool, option producing an instrumented file for, tselect tool">
+<meta name="keywords" content="/Qcov-gen compiler option, codecov tool, option producing an instrumented file for, tselect tool">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-43B9DD4E-EC8B-47B2-A233-259C03F12024.htm#GUID-43B9DD4E-EC8B-47B2-A233-259C03F12024">
+<meta name="DC.Relation" scheme="URI" content="GUID-920476B9-2B4D-4662-B3C8-600D29FABEFF.htm#GUID-920476B9-2B4D-4662-B3C8-600D29FABEFF">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B2CCF78B-441D-434D-BEA2-15295FF3D41F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Qcov-gen</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_qcov_gen"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_qcov_gen"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B2CCF78B-441D-434D-BEA2-15295FF3D41F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">Qcov-gen</h1>
+<!--Produces an instrumented object file that can be used with the codecov or tselect tool.--><div><p>Produces an instrumented object file that can be used with the codecov or tselect tool.</p>
+
+<div class="section" id="GUID-FBEC97D4-F636-4440-9649-62D3A7CED791"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>General &gt; Code Coverage Build Options</strong></p>
+
+	<p class="ide">Linux: 
+								None</p>
+
+	<p class="ide">OS X: 
+								None</p>
+
+</div>
+<div class="section" id="GUID-1CB55BD7-D8D4-4E99-9ED6-B57DFCA1F22A"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-49F97910-8FFF-4462-817F-95568A21FFD2"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qcov-gen</span></p><p><span class="kwd">/Qcov-gen-</span></p></td></tr></table></div>
+<div class="section" id="GUID-56D5F407-A2C2-4000-8FBE-94E67411BB3D"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-370EB854-457C-4B03-A165-22B65508AB53"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">/Qcov-gen-</span>
+</p></td>
+<td valign="top" class="noborder"><p>The instrumented object file is not produced. </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6F73CEEA-788C-4B6A-9987-BCFAF4D8A928"><h2>Description</h2><p>This option produces an instrumented object file that can be used with the code-coverage tool (codecov) or the test prioritization tool (tselect). The instrumented code is included in the object file in preparation for instrumented execution.</p>
+<p>This option also creates a static profile information file (.spi) that can be used with the codecov or tselect tool. </p>
+<p>Option <span class="option">/Qcov-gen</span> should be used to minimize the instrumentation overhead if you are interested in using the instrumentation only for code coverage. You should use <span class="option">/Qprof-gen:srcpos</span> if you intend to use the collected data for code coverage and profile feedback.</p>
+</div>
+
+<div class="section" id="GUID-694729BA-CF8B-4E39-8052-73BDCFD393F1"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-43B9DD4E-EC8B-47B2-A233-259C03F12024.htm#GUID-43B9DD4E-EC8B-47B2-A233-259C03F12024">Qcov-dir</a> compiler option</div>
+<div><a href="GUID-920476B9-2B4D-4662-B3C8-600D29FABEFF.htm#GUID-920476B9-2B4D-4662-B3C8-600D29FABEFF">Qcov-file</a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

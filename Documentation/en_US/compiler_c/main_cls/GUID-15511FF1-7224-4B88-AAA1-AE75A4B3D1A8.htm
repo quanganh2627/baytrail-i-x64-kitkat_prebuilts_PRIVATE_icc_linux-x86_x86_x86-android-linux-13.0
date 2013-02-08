@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="inline-min-size, Qinline-min-size">
+<meta name="abstract" content="Specifies the upper limit for the size of what the inliner considers to be a small routine.">
+<meta name="description" content="Specifies the upper limit for the size of what the inliner considers to be a small routine.">
+<meta name="DC.subject" content="inlining, option specifying upper limit for small routine, /Qinline-min-size compiler option, -inline-min-size compiler option">
+<meta name="keywords" content="inlining, option specifying upper limit for small routine, /Qinline-min-size compiler option, -inline-min-size compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908.htm#GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908">
+<meta name="DC.Relation" scheme="URI" content="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>inline-min-size, Qinline-min-size</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_inline_min_size"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_inline_min_size"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-15511FF1-7224-4B88-AAA1-AE75A4B3D1A8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">inline-min-size, Qinline-min-size</h1>
+<!--Specifies the upper limit for the size of what the inliner considers to be a small routine.--><div><p>Specifies the upper limit for the size of what the inliner considers to be a small routine.</p>
+
+<div class="section" id="GUID-AF4D6F7D-66C4-48AF-85B1-B5D1B6FCDB80"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-C3A27302-CE51-461D-9D5E-6269504BFBAD"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-B67CD382-AD1D-4281-B113-3B5C1E16B6B4"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-inline-min-size</span><span class="oper">=</span><span class="var">n</span></p><p><span class="kwd">-no-inline-min-size</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qinline-min-size</span><span class="oper">=</span><span class="var">n</span></p><p><span class="kwd">/Qinline-min-size-</span></p></td></tr></table></div>
+<div class="section" id="GUID-3A9F19F7-59B9-4E02-883E-A13F6A87FCF7"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is a positive integer that specifies the maximum size of what the inliner considers to be a small routine.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-0C4CE6CD-0311-4D8B-BF16-89C418ACA211"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-inline-min-size</span> <br><span> or<span class="option">/Qinline-min-size-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses default heuristics for inline routine expansion.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-F0300183-C48B-4936-954F-1D71C1F0F814"><h2>Description</h2><p>This option specifies the upper limit for the size of what the inliner considers to be a small routine (<span>a function</span>). The inliner classifies routines as small, medium, or large. This option specifies the boundary between what the inliner considers to be small and medium-size routines.</p>
+<p>The inliner has a preference to inline small routines. So, when a routine is smaller than or equal to the specified size, it is very likely to be inlined.</p>
+<p>If you specify <span class="option">-no-inline-min-size</span> (Linux* OS and OS X*) or <span class="option">/Qinline-min-size-</span> (Windows* OS), there is no limit to the size of small routines. Every routine is a small routine; there are no medium or large routines.</p>
+<p>To see compiler values for important inlining limits, specify compiler option <span class="option">-opt-report</span> (Linux OS and OS X) or <span class="option">/Qopt-report</span> (Windows OS).</p>
+<p>To see compiler values for important inlining limits, specify compiler option <span class="option">-opt-report</span> (Linux OS and OS X) or <span class="option">/Qopt-report</span> (Windows OS).</p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>When you use this option to increase the default limit, the compiler may do so much additional inlining that it runs out of memory and terminates with an "out of memory" message.</p>
+</div></div>
+
+<div class="section" id="GUID-03DB2D8A-9E2A-4F07-AA90-7F0994E5D151"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">Inlining Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908.htm#GUID-430C0A19-33C6-4099-BF05-FDD2BCA65908"><span class="option">inline-max-size</span>, <span class="option">Qinline-max-size</span></a>  compiler option</div>
+<div><a href="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609"><span class="option">opt-report</span>, <span class="option">Qopt-report</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

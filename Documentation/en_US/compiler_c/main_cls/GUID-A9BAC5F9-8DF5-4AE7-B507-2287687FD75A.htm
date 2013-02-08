@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="FA">
+<meta name="abstract" content="Specifies the contents of an assembly listing file.">
+<meta name="description" content="Specifies the contents of an assembly listing file.">
+<meta name="DC.subject" content="/FA compiler option">
+<meta name="keywords" content="/FA compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A9BAC5F9-8DF5-4AE7-B507-2287687FD75A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>FA</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fa_ucase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fa_ucase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A9BAC5F9-8DF5-4AE7-B507-2287687FD75A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">FA</h1>
+<!--Specifies the contents of an assembly listing file.
+--><div><p>Specifies the contents of an assembly listing file.
+</p>
+
+<div class="section" id="GUID-78C533A9-1D98-4FA3-9AD8-ADB099A7B4EA"><h2>IDE Equivalent</h2> <p class="ide">Windows: 
+								<strong>Output Files &gt; Assembler Output</strong></p>
+ <p class="ide">Linux: 
+								None</p>
+ <p class="ide">OS X: 
+								None</p>
+</div>
+<div class="section" id="GUID-79C7510E-8E6E-434B-909D-DBC2CD746B1A"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-6AF148E3-B786-4BE2-8573-CD3EC52BA6BD"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/FA</span><span class="delim">[</span><span class="var">specifier</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-90C5E757-3AB5-4A50-909B-39BAE5603D12"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>specifier</var></p></td>
+<td valign="top" class="noborder"><p>Denotes the contents of the assembly listing file. Possible values are <span class="italic">c</span>, <span class="italic">s</span>, or <span class="italic">cs</span>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-F6850B7C-FC18-46D6-9173-EE98B05D996A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>No source or machine code annotations
+ appear in the assembly listing file, if one is produced.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-629550C3-E586-4BA6-8F45-471B4ED6870F"><h2>Description</h2><p>These options specify what information, in addition to the assembly code, should be generated in the assembly listing file.</p>
+<p>To use this option, you must also specify option <span class="option">/Fa</span>, which causes an assembly listing to be generated.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D9149095-7308-4313-8BB5-5E6D3B61864D" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr> <th class="noborder" align="left" valign="top" width="30%" id="d553708e110"><p>Option</p>
+</th>
+ <th class="noborder" align="left" valign="top" width="70%" id="d553708e114"><p>Description</p>
+</th>
+</tr>
+</thead>
+<tbody> <tr> <td class="noborder" valign="top" width="30%" headers="d553708e110 "><p><span class="option">/FA</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d553708e114 "><p>Produces an assembly listing without source or machine code annotations.
+</p>
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d553708e110 "><p><span class="option">/FAc</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d553708e114 "><p>Produces an assembly listing with machine code annotations.</p>
+</td>
+ </tr>
+<tr> <td class="noborder" valign="top" width="30%" headers="d553708e110 "><p><span class="option">/FAs</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d553708e114 "><p>Produces an assembly listing with source code annotations.</p>
+<p>Note that if you use alternate option <span class="option">-fsource-asm</span>, you must also specify the <span class="option">-S</span> option.</p>
+
+</td>
+ </tr>
+ <tr> <td class="noborder" valign="top" width="30%" headers="d553708e110 "><p><span class="option">/FAcs</span></p>
+</td>
+ <td class="noborder" valign="top" width="70%" headers="d553708e114 "><p>Produces an assembly listing with source and machine code  annotations.</p>
+</td>
+ </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="section" id="GUID-B5417E81-B873-4142-90F4-A2FF923DCE35"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="option">/FAc</span></p></td>
+
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-fcode-asm</span></p>
+
+<p>Windows: None</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="option">/FAs
+</span></p></td>
+<td valign="top" class="noborder"><p>Linux and OS X: <span class="option">-fsource-asm</span></p>
+
+<p>Windows: None</p>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7B4E047B-289D-43F3-80DD-D6A7F7737FFF.htm">Output, Debug, and Precompiled Header (PCH) Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

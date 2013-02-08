@@ -1,0 +1,125 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Details about Intrinsic Functions Supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI)">
+<meta name="DC.Relation" scheme="URI" content="GUID-1979D5FF-C489-42DA-9456-591B23544BC6.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA.htm#GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C25BE2A4-7927-4868-A1B9-402DEE3DC62D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Details about Intrinsic Functions Supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_overview_details"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C25BE2A4-7927-4868-A1B9-402DEE3DC62D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Details about Intrinsic Functions Supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI)</h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>Most intrinsic functions map directly to Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI). The Intel&reg; IMCI are extensions of the existing Intel&reg; 64 architecture based vector graphic streaming SIMD instructions. 
+    </p>
+ 
+    <p>The exclusive features of the intrinsic functions (and corresponding instructions) are: 
+    </p>
+ 
+    <ul type="disc" id="GUID-05E12C0F-A9D6-4815-B829-F99FD6A6E2DB"> 
+      <li> 
+        <p>The intrinsics/instructions operate in the same memory address space as the standard Intel&reg; 64 instructions. 
+        </p>
+ 
+      </li>
+
+      <li class="kadov-p"> 
+        <p>They use special registers that enable packed data of up to 512 bits in length for optimal vector graphic streaming SIMD processing. 
+        </p>
+ 
+      </li>
+ 
+      <li class="kadov-p"> 
+        <p>The native 
+          <a href="GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA.htm#GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA">Data Types</a> enable packing of up to 16 elements of data of 32-bits (float/integer) in one register. 
+        </p>
+ 
+      </li>
+ 
+      <li class="kadov-p"> 
+        <p>For computational and data manipulation instructions, there are 
+          <strong>two</strong> corresponding C intrinsics that implement that instruction directly. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Vector mask support is provided through eight vector mask registers allow conditional execution over the 16 elements in a vector instruction and the results merge into the original destination.
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Most functions are ternary: two sources with a different destination or three sources with one source as destination. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <div class="section" id="GUID-CC0877A6-D84A-4F2C-8DA7-6425E404833E"><h2 class="sectiontitle">Registers</h2> 
+       
+      <p>The intrinsics/instructions operate upon special registers referred to as vectors (<samp class="codeph">v</samp>). A vector is defined as a sequence of packed data elements. intrinsics/instructions use at least one vector. 
+      </p>
+ 
+      <ul type="disc" id="GUID-4764779F-895D-4A29-A757-99EADB3BFF4D"> 
+        <li> 
+          <p>There are 
+            <strong>32 vectors (v0 to v31), each of 512-bits</strong> in size; they pack sixteen elements of 32 bits, or eight elements of 64 bits. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>In addition to the SIMD processing capability, special instructions such as 
+            <samp class="codeph">vgather</samp>/<samp class="codeph">vscatter</samp> provide support to manipulate irregular data patterns of memory, enabling vectorization of algorithms with complex data structures. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1979D5FF-C489-42DA-9456-591B23544BC6.htm">Details of Intrinsic Functions for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA.htm#GUID-834AB1D2-EE09-40DD-9B83-221C37E426BA">Data Types for Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture) 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

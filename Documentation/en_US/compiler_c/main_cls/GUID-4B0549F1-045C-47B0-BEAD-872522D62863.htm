@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="False Sharing">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, false sharing">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, false sharing">
+<meta name="DC.Relation" scheme="URI" content="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4B0549F1-045C-47B0-BEAD-872522D62863">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>False Sharing</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_false_sharing"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4B0549F1-045C-47B0-BEAD-872522D62863">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">False Sharing</h1>
+ 
+   
+  <div> 
+	 <p> Multiple levels of cache, divided into cache lines, speed access to memory in parallel processing. False sharing is a common problem in shared memory parallel processing. It occurs when two or more cores hold a copy of the same memory cache line. 
+	 </p>
+ 
+	 <p>If one core writes 
+		<span><span>to a variable in</span></span> a cache line, that entire cache line is invalidated on all other cores. Even though another core may not be using that data (reading or writing), it may be using another element of data on the same cache line. The second core will need to reload the line before it can access its own data again. 
+	 </p>
+ 
+	 <p>The cache hardware ensures data coherency, but at a potentially high performance cost if false sharing is frequent. A good technique to identify false sharing problems is to catch unexpected sharp increases in last-level cache misses using hardware counters or other performance tools. 
+	 </p>
+ 
+	 <p>As a simple example, consider a spawned function with a 
+		<span class="keyword">for</span> loop that increments array values. The array is volatile to force the compiler to generate store instructions rather than hold values in registers or optimize the loop. 
+	 </p>
+ 
+	 <pre>volatile int x[32];
+
+void f(volatile int *p)
+{
+   for (int i = 0; i &lt; 100000000; i++)
+   {
+     ++p[0];
+     ++p[16];
+   }
+}
+
+int main()
+{
+   cilk_spawn f(&amp;x[0]);
+   cilk_spawn f(&amp;x[1]);
+   cilk_spawn f(&amp;x[2]);
+   cilk_spawn f(&amp;x[3]);
+   cilk_sync;
+   return 0;
+ }
+</pre> 
+	 <p>The 
+		<samp class="codeph">x[]</samp> elements are four bytes wide, and a 64-byte cache line would hold 16 elements. There are no data races, and the results will be correct when the loop completes. However, cache line contention as the individual strands update adjacent array elements can degrade performance, sometimes significantly. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

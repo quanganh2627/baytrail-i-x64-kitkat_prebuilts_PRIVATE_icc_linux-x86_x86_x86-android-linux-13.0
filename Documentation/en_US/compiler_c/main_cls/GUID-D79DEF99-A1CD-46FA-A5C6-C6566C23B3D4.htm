@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="traceback">
+<meta name="abstract" content="Tells the compiler to generate extra information in the object file to provide source file traceback information when a severe error occurs at run time.">
+<meta name="description" content="Tells the compiler to generate extra information in the object file to provide source file traceback information when a severe error occurs at run time.">
+<meta name="DC.subject" content="traceback information, option providing, /traceback compiler option, -traceback compiler option">
+<meta name="keywords" content="traceback information, option providing, /traceback compiler option, -traceback compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D79DEF99-A1CD-46FA-A5C6-C6566C23B3D4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>traceback</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_traceback"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_traceback"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D79DEF99-A1CD-46FA-A5C6-C6566C23B3D4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">traceback</h1>
+<!--Tells the compiler to generate extra information in the object file to provide source file traceback information when a severe error occurs at run time.--><div><p>Tells the compiler to generate extra information in the object file to provide source file traceback information when a severe error occurs at run time.</p>
+
+<div class="section" id="GUID-ACDA4144-CAA3-42EF-BE05-833D3CBB7175"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Runtime &gt; Generate Traceback Information</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Runtime &gt; Generate Traceback Information</strong></p>
+</div>
+<div class="section" id="GUID-BED00A9E-4C51-484D-8398-B8B25FD977BA"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-53A8564D-0723-47BA-88F2-83173135B84A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-traceback</span></p><p><span class="kwd">-notraceback</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/traceback</span></p><p><span class="kwd">/notraceback</span></p></td></tr></table></div>
+<div class="section" id="GUID-ADE0042D-1A9F-4B23-AA7D-C06D0DB64941"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-949B817E-281F-40D5-9A3D-A07E68519E18"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">notraceback</span></p></td>
+<td valign="top" class="noborder"><p>No extra information is generated in the object file to produce traceback information.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C07A3E92-7408-43A0-B5D2-4104F6E8B540"><h2>Description</h2><p>This option tells the compiler to generate extra information in the object file to provide source file traceback information when a severe error occurs at run time.<span> This is intended for use with C code that is to be linked into a Fortran program.</span></p>
+<p>When the severe error occurs, source file, routine name, and line number correlation information is displayed along with call stack hexadecimal addresses (program counter trace).</p>
+<p>Note that when a severe error occurs, advanced users can also locate the cause of the error using a map file and the hexadecimal addresses of the stack displayed when the error occurs.</p>
+<p>This option increases the size of the executable program, but has no impact on run-time execution speeds.</p>
+<p>It functions independently of the debug option.</p>
+<p>On Windows* systems, <span class="option">traceback</span> sets the <span class="option">/Oy-</span> option, which forces the compiler to use EBP as the stack frame pointer.</p>
+<p>On Windows* systems, the linker places the traceback information in the executable image, in a section named ".trace". To see which sections are in an image, use the command:</p>
+<pre>link -dump -summary your_app_name.exe</pre><p>To see more detailed information, use the command:</p>
+<pre>link -dump -headers your_app_name.exe</pre><p>On Linux* systems, to display the section headers in the image (including the header for the .trace section, if any), use the command:</p>
+<pre>objdump -h your_app_name.exe</pre><p>On OS X* systems, to display the section headers in the image, use the command:</p>
+<pre>otool -l your_app_name.exe</pre></div>
+
+<div class="section" id="GUID-C55D7CC3-CA0A-4249-A92A-2ABE128315B2"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

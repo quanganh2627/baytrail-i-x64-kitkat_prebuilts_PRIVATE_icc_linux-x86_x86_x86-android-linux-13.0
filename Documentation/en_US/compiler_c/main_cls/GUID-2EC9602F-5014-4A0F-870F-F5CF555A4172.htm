@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30519)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30519">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30519">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2EC9602F-5014-4A0F-870F-F5CF555A4172">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30519)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30519"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30519"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2EC9602F-5014-4A0F-870F-F5CF555A4172">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30519) </h1>
+
+
+
+<div>
+<div class="section" id="GUID-DED8D59A-0ABF-4D47-977A-BD192912AEE4"><h2 class="sectiontitle">Message</h2><p>Insert a "%s parallel" statement right before the loop at line %d to parallelize the loop.</p>
+</div>
+
+
+<div class="section" id="GUID-75A3002A-05BD-4E5D-BD87-1729736952E6"><h2 class="sectiontitle">Advice</h2>
+<p>Add <span>"#pragma parallel"</span> before the specified loop. This <span>pragma</span> enables the parallelization of the loop at the specified line by ignoring assumed cross-iteration data dependencies.</p>
+</div>
+
+
+<div class="section" id="GUID-844C0050-4411-4A15-8EC0-90842E04E4ED"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>void foo(float *a, int m, int n) {</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0; i&lt;n; i++) {</pre>
+<pre>    a[i] = a[i+m]+1;</pre>
+<pre>  }</pre>
+<pre>  return;</pre>
+<pre>}</pre>
+
+</div>
+
+
+<p>In this case, the compiler is unable to parallelize the loop without further information about m. For example, if m is negative, then each iteration will be dependent on the previous iteration. However, if m is known to be greater than n, you can parallelize the loop.</p>
+
+<p>If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>void foo(float *a, int m, int n) {</pre>
+<pre>  int i;</pre>
+<pre>#pragma parallel</pre>
+<pre>  for (i=0; i&lt;n; i++) {</pre>
+<pre>    a[i] = a[i+m]+1;</pre>
+<pre>  }</pre>
+<pre>  return;</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-BB03CECE-7395-4EEC-8C95-832BD01A0AAD"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that any arrays in the loop do not have cross-iteration dependencies. A cross-iteration dependency exists if a memory location is modified in an iteration of the loop and accessed by a <span>read or a write statement</span> in another iteration of the loop.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="About Creating Offload Libraries with xiar and xild">
+<meta name="DC.subject" content="libraries, creating offload, xiar, xild">
+<meta name="keywords" content="libraries, creating offload, xiar, xild">
+<meta name="DC.Relation" scheme="URI" content="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-896A68BA-D30F-4553-A9A4-7545C5E6EA41">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>About Creating Offload Libraries with xiar and xild</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_libs_xi_tools"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-896A68BA-D30F-4553-A9A4-7545C5E6EA41">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">About Creating Offload Libraries with xiar and xild</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>Using 
+		<span class="keyword">xiar</span> or the equivalent 
+		<span class="keyword">xild -lib</span> to create a static archive library containing routines with offload code requires the following actions: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-E50DC379-D563-4D21-8144-D86C029CD051"> 
+		<li> 
+		  <p>Specify the 
+	 <span class="option">-qoffload-build</span> option, which causes 
+	 <span class="keyword">xiar</span> to create both a library that for the CPU, 
+	 <span class="filepath"><var>lib</var>.a</span>, and a corresponding library for the coprocessor, 
+	 <span class="filepath"><var>lib</var>MIC.a</span>. 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p> When supplying the name of the library and the list of its member files to 
+		  <span class="keyword">xiar</span> or 
+		  <span class="keyword">xild</span>, include only the file names associated with the CPU library and CPU object files, such as 
+		  <span class="filepath">lib.a</span> and 
+		  <span class="filepath">file.o</span>. 
+		  <span class="keyword">xiar</span> and 
+		  <span class="keyword">xild</span> automatically manipulate the corresponding coprocessor library and member files, 
+		  <span class="filepath">libMIC.a</span> and 
+		  <span class="filepath">fileMIC.o</span>, respectively. 
+		</p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p>Use the same options available to 
+		  <span class="keyword">ar</span>, including 
+	 <span class="option">d</span> (Delete), 
+	 <span class="option">r</span> (Replace), 
+	 <span class="option">m</span> (Move) and 
+	 <span class="option">x</span> (Extract). For more information, see the man page for 
+	 <span class="keyword">ar</span>. 
+	 </p>
+ 
+	 <p>The syntax to use these options is as follows: 
+	 </p>
+ 
+	 <p><samp class="codeph">xiar –qoffload-build 
+		  <var>ar options</var> 
+		  <var>archive</var> [<var>member</var>...]</samp> 
+	 </p>
+ 
+	 <p><samp class="codeph">xild -lib –qoffload-build 
+		  <var>ar options</var> 
+		  <var>archive</var> [<var>member</var>...]</samp> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p>When linking a static archive that contains offload code,  use the linker options 
+	 <span class="option">-L</span><var>path</var> and 
+	 <span class="option">-l</span><var>libname</var>. The compiler driver automatically incorporates the corresponding coprocessor library, 
+	 <span class="filepath"><var>lib</var>MIC.a</span>, into the linking phase. 
+	 </p>
+ 
+	 </li>
+ 
+	 </ul>
+ 
+	 <div class="section" id="GUID-54E2A756-FF3F-4C67-B3FE-2516BA5D63FB"><h2 class="sectiontitle">Example</h2> 
+		 
+		<p>The following 
+		  <span class="keyword">xiar</span> command creates or modifies the CPU library 
+		  <span class="filepath">libsample.a</span> and coprocessor library 
+		  <span class="filepath">libsampleMIC.a</span>: 
+		</p>
+ 
+		<pre>xiar -qoffload-build rcs libsample.a obj1.o obj2.o</pre> 
+		<p><span class="filepath">libsample.a</span> contains the CPU object files 
+		  <span class="filepath">obj1.o</span> and 
+		  <span class="filepath">obj2.o</span>.<span class="filepath"> libsampleMIC.a</span> contains the coprocessor object files 
+		  <span class="filepath">obj1MIC.o</span> and 
+		  <span class="filepath">obj2MIC.o</span>. 
+		</p>
+ 
+		<p>Either of the following commands compiles and links 
+		  <span class="filepath">myprogram.c</span> with the static library: 
+		</p>
+ 
+		<pre>icc myprogram.c libsample.a
+icc myprogram.c -lsample</pre> 
+		</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">Programming for Intel&reg; MIC Architecture</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

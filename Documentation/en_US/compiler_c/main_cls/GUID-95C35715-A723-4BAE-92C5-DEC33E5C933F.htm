@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="How the Compiler Defines Bounds Information for Pointers">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.subject" content="pointer checker, how bounds are defined">
+<meta name="keywords" content="pointer checker, how bounds are defined">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-95C35715-A723-4BAE-92C5-DEC33E5C933F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>How the Compiler Defines Bounds Information for Pointers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_cmplr_defines"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_cmplr_defines"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-95C35715-A723-4BAE-92C5-DEC33E5C933F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">How the Compiler Defines Bounds Information for Pointers</h1>
+ 
+  <!--
+  --> 
+   
+  <div><p>
+  </p>
+ 
+	 <p>The following defines how the compiler determines the bound information for pointers. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p> In each section, 
+		  <samp class="codeph">lower_bound(p)</samp> refers to the lower bound associated with 
+		  <samp class="codeph">p</samp> and 
+		  <samp class="codeph">upper_bound(p)</samp> refers to the upper bound associated with 
+		  <samp class="codeph">p</samp>. 
+		</p>
+ 
+	 </div> 
+	 <div class="section" id="SECTION_094B5699AB4B4D96B7BF50C71504C576"><a name="SECTION_094B5699AB4B4D96B7BF50C71504C576"><!-- --></a><h2 class="sectiontitle">Pointers created by the 
+		  <span class="keyword">alloca()</span> function</h2> 
+		 
+		<p> 
+		  <pre>p = alloca(size);
+
+// lower_bound (p) is (char *)p
+// upper_bound (p) is lower_bound(p) + size - 1</pre> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-F0F103F9-93B0-4469-83DA-282E707A1298"><h2 class="sectiontitle">Pointers created by the 
+		  <span class="keyword">calloc()</span> function</h2> 
+		 
+		<p> 
+		  <pre>p = calloc(num, size);
+
+// lower_bound(p) is (char *)p
+// upper_bound(p) is lower_bound(p) + size * num - 1</pre> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-5534CF89-951E-474A-9DEC-64D807BFE13F"><h2 class="sectiontitle">Pointers created by the 
+		  <span class="keyword">malloc()</span> function</h2> 
+		 
+		<p> 
+		  <pre>p = malloc(size);
+
+// lower_bound(p) is (char *)p
+// upper_bound(p) is lower_bound(p) + size - 1</pre> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="SECTION_5EC2DD684A2940468CD2EF10C24D9E47"><a name="SECTION_5EC2DD684A2940468CD2EF10C24D9E47"><!-- --></a><h2 class="sectiontitle">Pointers created by casting</h2> 
+		 
+		<p> 
+		  <pre>p = (T *)q;
+
+// lower_bound(p) is lower_bound(q)
+// upper_bound(p) is upper_bound(q)</pre> 
+		</p>
+ 
+		<p> Casting a pointer does not affect the bounds of a pointer. If you cast a pointer to a new type that is larger than the bounds associated with the original pointer, you will get an out-of-bounds error when you try to access any member or element outside the original bounds. If you cast a pointer to a smaller type than the original pointer, you can still access the original data. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="SECTION_7B231264D39B4754B9230CD7DB7442AB"><a name="SECTION_7B231264D39B4754B9230CD7DB7442AB"><!-- --></a><h2 class="sectiontitle"> Pointers created for a variable length array in a structure</h2> 
+		 
+		<p> 
+		  <pre>typedef struct {
+
+	int num;
+	int a[];
+
+} T;
+
+q = malloc(sizeof(T) + sizeof(int) * num);
+p = &amp;q-&gt;a;
+
+// lower_bound(p) is (char *)&amp;q-&gt;a
+// upper_bound(p) is upper_bound(q)</pre> 
+		</p>
+ 
+		<p>When you define an array as the last member of a structure, the upper bound is not narrowed and is allowed to access all of the array elements allocated by the 
+		  <span class="keyword">malloc()</span> function. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6C14B474-8881-47F9-992E-E9068D56CC57"><h2 class="sectiontitle">Pointers defined by the address (<samp class="codeph">&amp;</samp>) operator</h2> 
+		 
+		<p> 
+		  <pre>p = &amp;v;
+
+// lower_bound(p) is (char *)&amp;v
+// upper_bound(p) is (char *)&amp;v + sizeof(v) - 1
+
+p = &amp;v.m;
+
+// lower_bound(p) is (char *)&amp;v + offsetof(typeof(v),  m)
+// upper_bound(p) is lower_bound(p) + sizeof(v.m) – 1
+
+p = &amp;q-&gt;m;
+
+// lower_bound(p) is (char *)q + offsetof(typeof(*q),  m)
+// upper_bound(p) is lower_bound(p) + sizeof(q-&gt;m) – 1
+</pre> 
+		</p>
+ 
+		<p> 
+		  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+			 <p> The bounds information is narrowed to the size of the member when you point to a member of a structure, union, or class. 
+			 </p>
+ 
+		  </div> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="SECTION_9C25A268585C46E58065DFD8EC2B42BA"><a name="SECTION_9C25A268585C46E58065DFD8EC2B42BA"><!-- --></a><h2 class="sectiontitle">Pointers defined by the 
+		  <samp class="codeph">new</samp> operator</h2> 
+		 
+		<p> 
+		  <pre>p = new T;
+
+// lower_bound(p) is (char *)p
+// upper_bound(p) is lower_bound(p) + sizeof(T) - 1</pre> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="SECTION_B97E5139E2154C559C0F333E06F0BBAE"><a name="SECTION_B97E5139E2154C559C0F333E06F0BBAE"><!-- --></a><h2 class="sectiontitle">Pointers defined by the addresses in an array</h2> 
+		 
+		<p> 
+		  <pre>T a[X][Y];
+
+p = a;
+p = &amp;a[x];
+p = &amp;a[x][y];
+
+// lower_bound(p) is (char *)a
+// upper_bound(p) is lower_bound(p) + sizeof(a) - 1</pre> 
+		</p>
+ 
+		<p> When you take the address of an element of an array or the address of a single row of a multi-dimensioned array, the bounds are not narrowed to the size of the element. You can increment or decrement the pointer throughout the array. 
+		  <pre>p = &amp;a[x][y].m;
+// lower_bound(p) is (char *)&amp;a[n][m] + offsetof(T, m)
+// upper_bound(p) is lower_bound(p) + sizeof(T.m) – 1</pre> 
+		</p>
+ 
+		<p>When you take the address of a member of an element, the bounds are narrowed to the size of the member. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="SECTION_3C50BDC0005943A9B17DFA08C04856C1"><a name="SECTION_3C50BDC0005943A9B17DFA08C04856C1"><!-- --></a><h2 class="sectiontitle">Pointers defined by copies of pointers</h2> 
+		 
+		<p> 
+		  <pre>p = q;
+p = q + expr;
+p = q – expr;
+
+// lower_bound(p) is lower_bound(q)
+// upper_bound(p) is upper_bound(q)</pre> 
+		</p>
+ 
+		<p>The bounds are copied from 
+		  <samp class="codeph">q</samp>. Offsetting the pointer on the right does not affect the bounds. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="SECTION_D5084DF5895042B0B72592AB2B8C834D"><a name="SECTION_D5084DF5895042B0B72592AB2B8C834D"><!-- --></a><h2 class="sectiontitle"> Pointers defined by incrementing or decrementing a pointer</h2> 
+		 
+		<p> 
+		  <pre>p++;
+p--;
+++p;
+--p;
+p += expr;
+p -= expr;</pre> 
+		</p>
+ 
+		<p>The bounds do not change when you increment or decrement a pointer. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

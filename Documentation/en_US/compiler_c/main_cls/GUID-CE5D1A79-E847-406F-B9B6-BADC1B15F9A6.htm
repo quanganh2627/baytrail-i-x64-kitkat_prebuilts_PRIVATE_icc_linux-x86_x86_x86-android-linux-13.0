@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_rint_pd/ _mm512_mask_rint_pd">
+<meta name="abstract" content="Rounds off to nearest even integer. Vector variant of rint(x) function for a float64 argument. &nbsp; This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Rounds off to nearest even integer. Vector variant of rint(x) function for a float64 argument. &nbsp; This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_rint_pd, _mm512_mask_rint_pd">
+<meta name="keywords" content="_mm512_rint_pd, _mm512_mask_rint_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-B540527B-B772-4B72-887B-24B3CCB8C551.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CE5D1A79-E847-406F-B9B6-BADC1B15F9A6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_rint_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_rint_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CE5D1A79-E847-406F-B9B6-BADC1B15F9A6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_rint_pd/ _mm512_mask_rint_pd</h1>
+<!--Rounds off to nearest even integer. Vector variant of 
+ rint(x)  function for a float64 argument.     This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Rounds off to nearest even integer. Vector variant of 
+<samp class="codeph">rint(x)</samp> function for a float64 argument.  &nbsp; <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-40F9247A-5640-40A8-88DB-AB7FD021E5BA"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_rint_pd(_m512d v1);
+</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_mask_rint_pd(_m512d v1_old, __mmask8 k1, _m512d v1);</span></p></td></tr></table></div>
+<div class="section" id="GUID-D90DDADE-AF2A-46EB-84D2-157AD0BA70DE"><h2>Parameters</h2>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FCBEC6EB-450D-47CF-9BE4-4E0671E9C945" width="100%" frame="void" border="1" rules="none" cellspacing="2"><tbody><tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<var>v1</var>
+
+</td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+vector of float64 values
+</td>
+
+</tr>
+<tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<var>v1_old
+
+</var></td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+<var>v1_old
+
+</var> for zero mask bits
+</td>
+
+</tr>
+<tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<var>k1
+
+</var></td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+Writemask; only those elements of the source vector with corresponding bit set to '1' in the 
+<var>k1
+
+</var> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+<var>k1
+
+</var> are copied from corresponding elements of vector 
+<var>v1_old
+
+</var>
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-1E2E77C9-005B-4634-AE77-5EC3ADB7DB8D"><h2>Description</h2>
+<p>Rounds off the elements of vector 
+<var>v1</var> to the nearest even integer value.</p>
+<p>The masked variant has two additional arguments: 
+<var>v1_old
+
+</var> and 
+<var>k1
+
+</var>. Those elements of 
+<var>v1</var> with the corresponding bit clear in vector mask 
+<var>k1
+
+</var> are not used in the computation. Instead, the corresponding element from 
+<var>v1_old
+
+</var> is copied to the resulting vector.</p>
+</div>
+<div class="section" id="GUID-FA0D5301-4C72-4B3B-9C56-BDD07BCEB2B1"><h2>Returns</h2><p>Returns the result of the operation.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>Many routines in the SVML library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+          </p>
+ 
+        </div></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-B540527B-B772-4B72-887B-24B3CCB8C551.htm">Rounding Off Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

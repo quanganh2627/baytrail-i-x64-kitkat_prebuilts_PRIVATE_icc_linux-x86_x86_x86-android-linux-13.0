@@ -1,0 +1,547 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Multiplication Operators">
+<meta name="DC.subject" content="Class Libraries, integer vector classes, multiplication operators">
+<meta name="keywords" content="Class Libraries, integer vector classes, multiplication operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-95DCBBB3-99E1-4DE2-9ADE-80715F7C1DE9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Multiplication Operators</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_int_mult"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-95DCBBB3-99E1-4DE2-9ADE-80715F7C1DE9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Multiplication Operators</h1>
+ 
+   
+  <div> 
+    <p>The multiplication operators can only accept and return data types from the 
+      <span class="keyword">I[s|u]16vec4</span> or 
+      <span class="keyword">I[s|u]16vec8</span> classes, as shown in the following example. 
+    </p>
+ 
+    <p><strong>Syntax Usage for Multiplication Operators</strong> 
+    </p>
+ 
+    <p>Explicitly convert B to 
+      <span class="keyword">Is16vec4</span>. 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 A,C; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu32vec2 B; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A * C; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A * (Is16vec4)B; 
+      </samp> 
+    </p>
+ 
+    <p>Return nearest common ancestor type, 
+      <span class="keyword">I16vec4</span> 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 A; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">Iu16vec4 B; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">I16vec4 C; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = A + B; 
+      </samp> 
+    </p>
+ 
+    <p>The 
+      <span class="keyword">mul_high</span> and 
+      <span class="keyword">mul_add</span> functions take 
+      <span class="keyword">Is16vec4</span> data only. 
+    </p>
+ 
+    <p><samp class="codeph">Is16vec4 A,B,C,D; 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">C = mul_high(A,B); 
+      </samp> 
+    </p>
+ 
+    <p><samp class="codeph">D = mul_add(A,B);</samp> 
+    </p>
+ 
+    <p><strong>Multiplication Operators with Corresponding Intrinsics</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C7276247-F51A-445C-927E-993D303558B6" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" colspan="2" align="left" valign="top" id="d500728e151">Symbols 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e154"> 
+              <p>Syntax Usage 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e160"> 
+              <p>Intrinsic 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e151 "> 
+              <p>* 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e151 "> 
+              <p>*= 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e154 "> 
+              <p>R = A * B<br>R *= A 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e160 "> 
+              <p><span class="option">_mm_mullo_pi16</span><br><span class="option">_mm_mullo_epi16</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e151 "> 
+              <p><span class="keyword">mul_high</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e151 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e154 "> 
+              <p><samp class="codeph">R = mul_high(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e160 "> 
+              <p><span class="option">_mm_mulhi_pi16</span><br><span class="option">_mm_mulhi_epi16</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e151 "> 
+              <p><span class="keyword">mul_add</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e151 "> 
+              <p>N/A 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e154 "> 
+              <p><samp class="codeph">R = mul_high(A, B)</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e160 "> 
+              <p><span class="option">_mm_madd_pi16</span><br><span class="option">_mm_madd_epi16</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>The multiplication return operators always return the nearest common ancestor as listed in the table that follows. The two operands must be 16 bits in size, otherwise you must explicitly indicate typecasting. 
+    </p>
+ 
+    <p><strong>Multiplication Operator Overloading</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6D47F2BD-16E5-4394-98C8-5C3B38F42D9B" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e306"> 
+              <p>R 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e312"> 
+              <p>Mul 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e318"> 
+              <p>A 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e324"> 
+              <p>B 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e306 "> 
+              <p><samp class="codeph">I16vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e312 "> 
+              <p><span class="keyword">*</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e318 "> 
+              <p><samp class="codeph">I[s|u]16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e324 "> 
+              <p><samp class="codeph">I[s|u]16vec4 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e306 "> 
+              <p><samp class="codeph">I16vec8 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e312 "> 
+              <p><span class="keyword">*</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e318 "> 
+              <p><samp class="codeph">I[s|u]16vec8 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e324 "> 
+              <p><samp class="codeph">I[s|u]16vec8 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e306 "> 
+              <p><samp class="codeph">Is16vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e312 "> 
+              <p><span class="keyword">mul_add</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e318 "> 
+              <p><samp class="codeph">Is16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e324 "> 
+              <p><samp class="codeph">Is16vec4 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e306 "> 
+              <p><samp class="codeph">Is16vec8</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e312 "> 
+              <p><span class="keyword">mul_add</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e318 "> 
+              <p><samp class="codeph">Is16vec8 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e324 "> 
+              <p><samp class="codeph">Is16vec8 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e306 "> 
+              <p><samp class="codeph">Is32vec2 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e312 "> 
+              <p><span class="keyword">mul_high</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e318 "> 
+              <p><samp class="codeph">Is16vec4 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e324 "> 
+              <p><samp class="codeph">Is16vec4 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e306 "> 
+              <p><samp class="codeph">Is32vec4 R</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e312 "> 
+              <p><span class="keyword">mul_high</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e318 "> 
+              <p><samp class="codeph">s16vec8 A</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e324 "> 
+              <p><samp class="codeph">Is16vec8 B</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p></p>
+ 
+    <p>The following table shows the return values and data type assignments for operands of the multiplication operators with assignment. All operands must be 16 bytes in size. If the operands are not the right size, you must use an explicit typecast. 
+    </p>
+ 
+    <p><strong>Multiplication with Assignment</strong> 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B856F87F-6CBA-4097-8729-D3C546CB04F7" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e576"> 
+              <p>Return Value &reg; 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e582"> 
+              <p>Left Side &reg; 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e588"> 
+              <p>Mul 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="25%" id="d500728e594"> 
+              <p>Right Side (A) 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e576 "> 
+              <p><samp class="codeph">I[x]16vec8</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e582 "> 
+              <p><samp class="codeph">I[x]16vec8</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e588 "> 
+              <p><span class="keyword">*=</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e594 "> 
+              <p><samp class="codeph">I[s|u]16vec8 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e576 "> 
+              <p><samp class="codeph">I[x]16vec4</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e582 "> 
+              <p><samp class="codeph">I[x]16vec4</samp> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e588 "> 
+              <p><span class="keyword">*=</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="25%" headers="d500728e594 "> 
+              <p><samp class="codeph">I[s|u]16vec4 A;</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E8823D7E-4614-42A0-814E-B37EC0369E4E.htm">Integer Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

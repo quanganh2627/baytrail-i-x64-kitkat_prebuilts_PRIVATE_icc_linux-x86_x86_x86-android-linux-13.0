@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Reducing the Impact of Denormal Exceptions">
+<meta name="DC.subject" content="floating-point exceptions, denormal exceptions">
+<meta name="keywords" content="floating-point exceptions, denormal exceptions">
+<meta name="DC.Relation" scheme="URI" content="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1659EAE1-583E-44EE-BDEA-7C68C46061C7.htm#GUID-1659EAE1-583E-44EE-BDEA-7C68C46061C7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Reducing the Impact of Denormal Exceptions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_reduce_denorm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Reducing the Impact of Denormal Exceptions</h1>
+ 
+   
+  <div> 
+    <p>Denormalized floating-point values are those that are too small to be represented in the normal manner; that is, the mantissa cannot be left-justified. Denormal values require hardware or operating system interventions to handle the computation, so floating-point computations that result in denormal values may have an adverse impact on performance. 
+    </p>
+ 
+    <p>There are several ways to handle denormals to increase the performance of your application: 
+    </p>
+ 
+    <ul type="disc" id="GUID-0EFB89DC-2ED9-4842-8BA8-6B67F91E4612"> 
+      <li> 
+        <p>Scale the values into the normalized range 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Use a higher precision data type with a larger range 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Flush denormals to zero 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>For example, you can translate them to normalized numbers by multiplying them using a large scalar number, doing the remaining computations in the normal space, then scaling back down to the denormal range. Consider using this method when the small denormal values benefit the program design. 
+    </p>
+ 
+    <p>Consider using a higher precision data type with a larger range; for example, by converting variables declared as 
+      <span class="keyword">float</span> to be declared as 
+      <span class="keyword">double</span>. Understand that making the change can potentially slow down your program. Storage requirements will increase, which will increase the amount of time for loading and storing data from memory. Higher precision data types can also decrease the potential throughput of SSE and AVX operations. 
+    </p>
+ 
+    <p>If you change the type declaration of a variable, you might also need to change associated library calls, unless these are generic; 
+      <span>; for example, 
+        <span class="keyword">cos()</span> instead of 
+        <span class="keyword">cosf()</span>.</span>. Another strategy that might result in increased performance is to increase the amount of precision of intermediate values using the 
+  <span class="option">-fp-model [double|extended]</span> option. However, this strategy might not eliminate all denormal exceptions, so you must experiment with the performance of your application. You should verify that the gain in performance from eliminating denormals is greater than the overhead of using a data type with higher precision and greater dynamic range. 
+  </p>
+ 
+  <p>Finally, in many cases denormal numbers can be treated safely as zero without adverse effects on program results. 
+    <span>Depending on the target architecture, use flush-to-zero (FTZ) options.</span> 
+  </p>
+ 
+  <div class="section" id="GUID-CEED1841-10DC-485D-87A7-0DCFC904BBD1"><h2 class="sectiontitle">IA-32 and Intel&reg; 64 Architectures</h2> 
+     
+    <p>These architectures take advantage of the FTZ (flush-to-zero) and DAZ (denormals-are-zero) capabilities of Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) instructions. 
+    </p>
+ 
+    <p>The compiler, by default, inserts code into the main routine to enable FTZ and DAZ at optimization levels higher than 
+    <span class="option">-O0</span>. To enable FTZ and DAZ at 
+    <span class="option">-O0</span>, compile the source file containing 
+    <span>main()</span>PROGRAM using 
+    <span class="option">–ftz</span> or 
+    <span class="option">/Qftz</span> option. When 
+    <span class="option">-ftz</span> or 
+    <span class="option">/Qftz</span> option is used on IA-32-based systems with the option 
+    <span class="option">–mia32</span> or 
+    <span class="option">/arch:IA32</span>, the compiler inserts code to conditionally enable FTZ and DAZ flags based on a run-time processor check. 
+    </p>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+      <p>After using flush-to-zero, ensure that your program still gives correct results when treating denormalized values as zero. 
+      </p>
+ 
+    </div> 
+  </div>
+ 
+  <p></p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">Tuning Performance</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-1659EAE1-583E-44EE-BDEA-7C68C46061C7.htm#GUID-1659EAE1-583E-44EE-BDEA-7C68C46061C7">Setting the FTZ and DAZ Flags 
+        </a></div><div> 
+        <p class="linkinfo">Intel&reg; 64 and IA-32 Architectures Software Developer's Manual, Volume 1: Basic Architecture 
+        </p>
+ 
+      </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

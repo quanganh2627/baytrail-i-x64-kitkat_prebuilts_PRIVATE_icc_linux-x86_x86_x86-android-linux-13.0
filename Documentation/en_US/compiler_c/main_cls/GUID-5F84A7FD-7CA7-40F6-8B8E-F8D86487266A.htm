@@ -1,0 +1,229 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Vector Operations">
+<meta name="DC.subject" content="vector operations">
+<meta name="keywords" content="vector operations">
+<meta name="DC.Relation" scheme="URI" content="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E903C1C4-A361-4D12-9A3A-DD1047B4A2A3.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CC152FEB-33D6-43E5-8C6E-921527915A4E.htm#GUID-CC152FEB-33D6-43E5-8C6E-921527915A4E">
+<meta name="DC.Relation" scheme="URI" content="GUID-B225E659-E0AD-4AE2-8806-EC5FD0119B01.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B3955B5A-D8BC-4D60-B1C5-B2C3DB3E7EEF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Vector Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_ovrview_vectorops"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5F84A7FD-7CA7-40F6-8B8E-F8D86487266A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Vector Operations</h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>Almost all vector intrinsic functions supporting Intel&reg; Initial Many Core Instructions (Intel&reg; IMCI) have the form: 
+    </p>
+ 
+    <p> 
+      <samp class="codeph">vop v1 {k1}, v2, S(v3/m)</samp> 
+    </p>
+ 
+    <p>where 
+      <samp class="codeph">v1</samp> is a destination operand. The instructions are writemasked, so only those elements with the corresponding bit set in vector mask register 
+      <samp class="codeph">k1</samp> are computed and stored into 
+      <samp class="codeph">v1</samp>. Elements in 
+      <samp class="codeph">v1</samp> with the corresponding bit clear in 
+      <samp class="codeph">k1</samp> retain their previous values. 
+    </p>
+ 
+    <p>This means that the destination vector 
+      <samp class="codeph">v1</samp> is also the source vector and it should be passed to the intrinsic function as an additional parameter. 
+    </p>
+ 
+    <div class="section" id="GUID-D24A7B3B-93EF-4BDC-A106-55DE6E28D17B"><h2 class="sectiontitle">Intrinsics for Vector Operations</h2> 
+       
+      <p>The 512-bit vector intrinsics work in an element-wise manner: the first element of the first source vector is operated on together with the first element of the second source vector, and the result is stored in the first element of a destination vector, and so on for the remaining seven or 15 elements. 
+      </p>
+ 
+    </div>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+      <p>The contents of a 512-bit vector may be treated as either eight or 16 elements, depending on the intrinsic. For example, in the intrinsic functions: 
+      <ul type="disc" id="GUID-9F34AC65-8EC5-493D-96DD-23099D316376"> 
+        <li><samp class="codeph">_mm512_add_ps</samp>/<samp class="codeph">_mm512_mask_add_ps</samp>, the vector operands are treated as sixteen float32 elements. 
+        </li>
+ 
+        <li><samp class="codeph">_mm512_add_pd</samp> 
+          <samp class="codeph">_mm512_mask_add_pd</samp>, the vector operands are treated as eight float64 elements. 
+        </li>
+ 
+      </ul>
+ 
+      </p>
+ 
+      <p>The vector mask register that serves as the writemask for a vector intrinsic determines which element locations are actually operated upon; the mask can disable the operation and update for any combination of element locations. 
+      </p>
+ 
+      <p>Most vector intrinsics have three different vector operands (typically, two sources and one destination) except those instructions that have a single source and thus use only two operands. 
+      </p>
+ 
+      <p>In addition, any of the source vectors can be a result of permutation operations on memory registers or vectors. 
+      </p>
+ 
+    </div> 
+    <div class="section" id="GUID-4154E126-4774-455A-9D01-A9B472E92450"><h2 class="sectiontitle">Unmasked and Masked Variants of Intrinsic Functions</h2> 
+       
+      <p>To simplify the usage and to enable compiler optimizations, we provide pairs of intrinsics for each vector instruction - an unmasked variant and a masked variant. 
+      </p>
+ 
+      <p>It is important to understand the following points about the variants: 
+      </p>
+ 
+      <ul type="disc" id="GUID-5333258E-8E44-44CB-B107-75CC2034AE58"> 
+        <li> 
+          <p>In the unmasked variant, the vectors are passed as parameters ( 
+            <samp class="codeph">v2</samp> and 
+            <samp class="codeph">v3</samp>) for which the corresponding bits are set to '<span>1</span>' in the default mask register 
+            <samp class="codeph">k0</samp>. The mask register 
+            <samp class="codeph">k0</samp> is not part of the argument list. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p> 
+        <samp class="codeph">_mm512_&lt;vop&gt;(v2, v3)</samp> 
+      </p>
+ 
+      <ul type="disc" id="GUID-9F955DDC-528C-49CA-9EB5-E64A3B43C9E1"> 
+        <li> 
+          <p>In the masked variant, two additional registers are passed as parameters - 
+            <samp class="codeph">v1_old</samp> and 
+            <samp class="codeph">k1</samp>. 
+          </p>
+ 
+          <p> 
+            <samp class="codeph">_mm512_mask_&lt;vop&gt;(v1_old, k1, v2, v3)</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Those elements in 
+            <samp class="codeph">v2</samp> and 
+            <samp class="codeph">v3</samp> with the corresponding bit clear (set to '<span>0</span>') in vector mask 
+            <samp class="codeph">k1</samp> are not used for the operation. Instead, the corresponding element from 
+            <samp class="codeph">v1_old</samp> is copied to the result vector. The following piece of code explains this concept: 
+          </p>
+ 
+          <p> 
+            <pre>if (mask[i] == 1)
+Result[i] = v2[i] + v3[i]
+else
+Result[i] = v1_old[i]</pre> 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AEF482D2-7A55-4274-9C24-891388C21A4F"><h2 class="sectiontitle">Example of Masked Vector Usage</h2> 
+       
+      <p>To make the workings of the masked vector 
+        <samp class="codeph">k1</samp> clear, here is an example. 
+      </p>
+ 
+      <p>Consider an intrinsic that performs an element-by-element addition operation with carry, where the two source vectors are 
+        <samp class="codeph">v1</samp> and 
+        <samp class="codeph">v3</samp>. The vector 
+        <samp class="codeph">carry</samp> holds the carry over value. Vector 
+        <samp class="codeph">k2_old</samp> supplies elements to resulting vector under certain circumstances. 
+      </p>
+ 
+      <p>For the masked variant of the intrinsic, the vector 
+        <samp class="codeph">k1</samp> is a mask of 16 bits. If the bit number '<span>3</span>' in 
+        <samp class="codeph">k1</samp> is set to '<span>1</span>' then the third element of the resulting vector will be the result of addition between the third element of 
+        <samp class="codeph">v1</samp> vector and the third element of 
+        <samp class="codeph">v3</samp> vector, and the third element of 
+        <samp class="codeph">carry</samp> will be the carry of that sum. 
+      </p>
+ 
+      <p>In addition, if bit number two in the mask 
+        <samp class="codeph">k1</samp> is '<span>0</span>', then the second element of the resulting vector will be equal to the second element of vector 
+        <samp class="codeph">v1</samp>, and the second element of 
+        <samp class="codeph">carry</samp> will be equal to the second element of 
+        <samp class="codeph">k2_old</samp>. 
+      </p>
+ 
+      <p>The code below demonstrates how it works: 
+      </p>
+ 
+      <p> 
+        <pre>for (n=0; n &lt; 16; n++) {
+   res[i] = v1[i]
+   *carry[i] = k2_old[i]
+     if ( k1[i] == 1 ) {
+         res[i] = res[i] + v3[i]
+         *carry[i] = Carry(v1[i] + v3[i])
+       }
+}</pre> 
+      </p>
+ 
+    </div>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+      <p>The 
+        <samp class="codeph">v1_old</samp> vector is used similarly to the 
+        <samp class="codeph">k2_old</samp> vector. It supplies elements to the resulting vector when the elements undergoing the operation have corresponding bit set to '<span>0</span>' in the mask 
+        <samp class="codeph">k1</samp> vector. 
+      </p>
+ 
+    </div> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FBB22202-A6D3-4460-9269-1D7F69C3E110.htm">Vector Intrinsics</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E903C1C4-A361-4D12-9A3A-DD1047B4A2A3.htm">Shuffle Intrinsics 
+        </a></div>
+<div><a href="GUID-CC152FEB-33D6-43E5-8C6E-921527915A4E.htm#GUID-CC152FEB-33D6-43E5-8C6E-921527915A4E">_mm512_add_setc_pi 
+        </a> &nbsp; 
+        </div>
+<div><a href="GUID-B225E659-E0AD-4AE2-8806-EC5FD0119B01.htm">_mm512[_mask]_add_ps 
+        </a> &nbsp; 
+        </div>
+<div><a href="GUID-B3955B5A-D8BC-4D60-B1C5-B2C3DB3E7EEF.htm">_mm512[_mask]_add_pd 
+        </a> &nbsp; 
+        </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prof-data-order, Qprof-data-order">
+<meta name="abstract" content="Enables or disables data ordering if profiling information is enabled.">
+<meta name="description" content="Enables or disables data ordering if profiling information is enabled.">
+<meta name="DC.subject" content="/Qprof-data-order compiler option, -prof-data-order compiler options, profiling information, option using to order static data items">
+<meta name="keywords" content="/Qprof-data-order compiler option, -prof-data-order compiler options, profiling information, option using to order static data items">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AD4BD72C-E96B-4797-B361-5D8D26DFBD08.htm#GUID-AD4BD72C-E96B-4797-B361-5D8D26DFBD08">
+<meta name="DC.Relation" scheme="URI" content="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">
+<meta name="DC.Relation" scheme="URI" content="GUID-17717E16-9D70-442B-8149-C3EF4492C857.htm#GUID-17717E16-9D70-442B-8149-C3EF4492C857">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B020B329-3F0E-4250-9CD8-2A8366512A3F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prof-data-order, Qprof-data-order</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_prof_data_order"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_prof_data_order"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B020B329-3F0E-4250-9CD8-2A8366512A3F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">prof-data-order, Qprof-data-order</h1>
+<!--Enables or disables data ordering if profiling information is enabled.--><div><p>Enables or disables data ordering if profiling information is enabled.</p>
+
+<div class="section" id="GUID-16376A6C-A202-4611-9566-B29B84991CC5"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-FCE45A45-7C9D-4880-809A-6CA8BB499E5A"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-6417E055-9484-44B9-B8A4-142488B64E40"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-prof-data-order</span></p><p><span class="kwd">-no-prof-data-order</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprof-data-order</span></p><p><span class="kwd">/Qprof-data-order-</span></p></td></tr></table></div>
+<div class="section" id="GUID-82A23019-6E5F-413D-9A7B-6973F423A149"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-EBE6C9AB-71ED-4EA5-B6C9-9FD8AF1DCFFD"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-prof-data-order</span> <br><span> or<span class="option">/Qprof-data-order-</span></span></p></td>
+<td valign="top" class="noborder"><p> Data ordering is disabled.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-CCC6C658-CC7B-4B8B-8CAB-C209C4EFEB90"><h2>Description</h2><p>This option enables or disables data ordering if profiling information is enabled. It controls the use of profiling information to order static program data items. </p>
+<p>For this option to be effective, you must do the following:</p>
+<ul type="disc" id="GUID-9857C78E-5807-466B-A179-64291E7701EB"><li><p>For instrumentation compilation, you must specify <span class="option">-prof-gen=globdata</span> (Linux* OS) or <span class="option">/Qprof-gen:globdata</span> (Windows* OS). </p>
+</li>
+<li><p>For feedback compilation, you must specify <span class="option">-prof-use</span> (Linux OS) or <span class="option">/Qprof-use</span> (Windows OS). You must not use multi-file optimization by specifying options such as option <span class="option">-ipo</span> (Linux OS) or <span class="option">/Qipo</span> (Windows OS), or option <span class="option">-ipo-c</span> (Linux OS) or <span class="option">/Qipo-c</span> (Windows OS). </p>
+</li>
+</ul>
+</div>
+
+<div class="section" id="GUID-B0C2AD28-8F99-4C00-9471-B107E9C2AEF5"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-AD4BD72C-E96B-4797-B361-5D8D26DFBD08.htm#GUID-AD4BD72C-E96B-4797-B361-5D8D26DFBD08">prof-gen, Qprof-gen</a> compiler option</div>
+<div><a href="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">prof-use, Qprof-use</a> compiler option</div>
+<div><a href="GUID-17717E16-9D70-442B-8149-C3EF4492C857.htm#GUID-17717E16-9D70-442B-8149-C3EF4492C857">prof-func-order, Qprof-func-order</a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

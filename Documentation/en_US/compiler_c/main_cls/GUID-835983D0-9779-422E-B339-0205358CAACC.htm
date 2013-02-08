@@ -1,0 +1,244 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Understanding Lambda-Capture">
+<meta name="DC.subject" content="Lambda Expressions, lambda-capture">
+<meta name="keywords" content="Lambda Expressions, lambda-capture">
+<meta name="DC.Relation" scheme="URI" content="GUID-AE49EE4C-7140-4F31-9A3C-1D06D9E87D98.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-835983D0-9779-422E-B339-0205358CAACC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Understanding Lambda-Capture</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_lambda_lambdacapt"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-835983D0-9779-422E-B339-0205358CAACC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Understanding Lambda-Capture</h1>
+ 
+  
+  <div> 
+    <p>A lambda expression can refer to identifiers declared outside the lambda expression. If the identifier is a local variable or a reference with automatic storage duration, it is an up-level reference and must be "captured" by the lambda expression. Such a lambda expression must be introduced by [<em>lambda-capture<sub>opt</sub></em>], where 
+      <em>lambda-capture<sub>opt</sub></em> specifies whether identifiers are captured by reference or by copy. The table below summarizes forms of 
+      <em>lambda-capture<sub>opt</sub></em>.
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-08DF4A50-06AD-40D0-AF9A-B2F1CCB23B94" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="20%" id="d425199e62">
+              <p>Symbol
+              </p>
+
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="80%" id="d425199e68">
+              <p>Indicates
+              </p>
+
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d425199e62 ">
+              <p><samp class="codeph">[]</samp>
+              </p>
+
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="80%" headers="d425199e68 ">
+              <p>Nothing to capture: an up-level reference is an error
+              </p>
+
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d425199e62 ">
+              <p><samp class="codeph">[&amp;x, y, ...]</samp>
+              </p>
+
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="80%" headers="d425199e68 ">
+              <p>Capture as specified: identifiers prefixed by 
+                <samp class="codeph">&amp;</samp> are captured by reference; other identifiers are captured by copy. An up-level reference to any variable not explicitly listed is an error
+              </p>
+
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d425199e62 ">
+              <p><samp class="codeph">[&amp;]</samp>
+              </p>
+
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="80%" headers="d425199e68 ">
+              <p>Capture by reference: an up-level reference implicitly captures the variable by reference
+              </p>
+
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d425199e62 ">
+              <p><samp class="codeph">[=]</samp>
+              </p>
+
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="80%" headers="d425199e68 ">
+              <p>Capture by copy: an up-level reference implicitly captures the variable by copy
+              </p>
+
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d425199e62 ">
+              <p><samp class="codeph">[&amp;, x, y, ...]</samp>
+              </p>
+
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="80%" headers="d425199e68 ">
+              <p>Capture by reference with exceptions: listed variables are captured by value/copy (no listed variable may be prefixed by 
+                <samp class="codeph">&amp;</samp>)
+              </p>
+
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="20%" headers="d425199e62 ">
+              <p><samp class="codeph">[=, &amp;x, &amp;y, ...]</samp>
+              </p>
+
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="80%" headers="d425199e68 ">
+              <p>Capture by copy with exceptions: listed variables are captured by reference only (every listed variable must be prefixed by 
+                <samp class="codeph">&amp;</samp>)
+              </p>
+
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>No identifier may appear twice in the list. In the following code that sets 
+      <samp class="codeph">area</samp> to the sum of the areas of four circles, the notation 
+      <samp class="codeph">[&amp;area,pi]</samp> specifies that 
+      <samp class="codeph">area</samp> is captured by reference and 
+      <samp class="codeph">pi</samp> by copy.
+    </p>
+ 
+    <pre>float radius[] = {2,3,5,7};</pre> 
+    <pre>float area=0;</pre> 
+    <pre>float pi = 3.14f;</pre> 
+    <pre>for_each(radius, radius+4, [&amp;area,pi](float r) {return area+=pi*r*r;}) </pre> 
+    <div class="section" id="GUID-52989483-DF70-4C38-8B6A-B61F725BF01B"><h2 class="sectiontitle">Specifying Default Capture</h2> 
+       
+      <p>When a default capture is specified, the list must specify only the other kind of capture. In other words, if you specify that the default capture is by reference, then you must list (and only list) the variables that should be captured by copy. For example, if your intent is to capture 
+        <samp class="codeph">x</samp> by reference and 
+        <samp class="codeph">y</samp> by copy, and both 
+        <samp class="codeph">x</samp> and 
+        <samp class="codeph">y</samp> appear in the function body, the following code illustrates what is correct and incorrect code:
+      </p>
+ 
+      <pre>[&amp;,&amp;x,y]</pre> 
+      <pre>&nbsp;//ERROR - default is capture-by-reference; list only capture-by-copy variable, y</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[&amp;,y]</pre> 
+      <pre>&nbsp;//CORRECT - default is capture-by-reference; listed variable, y, should not have &amp; prefix</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[=,&amp;x,y]&nbsp;&nbsp;</pre> 
+      <pre>&nbsp;//ERROR - default is capture-by-copy; listed variable, x, must be prefixed with &amp; </pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[=,&amp;x]&nbsp;&nbsp;</pre> 
+      <pre>&nbsp;//CORRECT - default is capture by copy; listed variable must be prefixed with &amp;</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[&amp;x]&nbsp;&nbsp;&nbsp;</pre> 
+      <pre>&nbsp;//ERROR - no default capture; you must list y separately to be captured by copy</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[y]&nbsp;&nbsp;&nbsp;&nbsp;</pre> 
+      <pre>&nbsp;//ERROR - again no default capture is specified, so you must list &amp;x separately to be captured by reference</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[&amp;x,y]&nbsp;&nbsp;&nbsp;</pre> 
+      <pre>&nbsp;//CORRECT - since no default is specified, every variable is listed with its capture mode.</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-7DD4B12B-C93B-4BC1-98EF-0C26588D5BB7"><h2 class="sectiontitle">Default Binding Modes</h2> 
+       
+      <p>The following lambda expressions demonstrate default binding modes. All three expressions are semantically equivalent. Each captures 
+        <samp class="codeph">x</samp> and 
+        <samp class="codeph">y</samp> by reference, and captures 
+        <samp class="codeph">a</samp> and 
+        <samp class="codeph">b</samp> by copy. 
+      </p>
+ 
+      <pre>[&amp;x,&amp;y,a,b](float r) {x=a; y=b;}</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[&amp;,a,b](float r) {x=a; y=b;}</pre> 
+      <pre>&nbsp;</pre> 
+      <pre>[=,&amp;x,&amp;y](float r) {x=a; y=b;}</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-F7CFB3D0-76B3-4AC8-99F1-8EB57F06CB1F"><h2 class="sectiontitle">Referring to 
+        <samp class="codeph">this</samp></h2> 
+       
+      <p>If a lambda expression occurs inside a member function, it can refer to 
+        <samp class="codeph">this</samp>. Because 
+        <samp class="codeph">this</samp> is not a variable, it cannot be captured by reference. Even when it is captured implicitly in a lambda expression introduced by 
+        <samp class="codeph">[&amp;]</samp>, it is captured by copy.
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AE49EE4C-7140-4F31-9A3C-1D06D9E87D98.htm">Intel's C++ lambda Extensions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

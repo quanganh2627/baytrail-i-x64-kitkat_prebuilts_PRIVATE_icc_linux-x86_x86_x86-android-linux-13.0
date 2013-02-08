@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_xsaveopt()">
+<meta name="abstract" content="Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory, optimizing the save operation if possible.">
+<meta name="description" content="Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory, optimizing the save operation if possible.">
+<meta name="DC.subject" content="intrinsics, for managing extended processor states and registers, _xsaveopt()">
+<meta name="keywords" content="intrinsics, for managing extended processor states and registers, _xsaveopt()">
+<meta name="DC.Relation" scheme="URI" content="GUID-581B0137-E8F1-4E7E-80E9-301B5DF7E05F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-34F1A9DB-1B28-4EF3-B6D1-613210BBB96F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_xsaveopt()</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_manextxsaveopt"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-34F1A9DB-1B28-4EF3-B6D1-613210BBB96F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"> _xsaveopt()</h1>
+
+<!--Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory, optimizing the save operation if possible.-->
+
+<div><p>Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory, optimizing the save operation if possible.</p>
+
+
+
+<div class="section" id="GUID-36898F3C-4C40-426D-8653-F888D632F2D3"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern void _xsaveopt(void *mem, unsigned __int64 save_mask);</span></p></td></tr></table>
+</div>
+
+<div class="section" id="GUID-9504855C-2BAA-411F-9A2D-E30C514E5100"><h2>Arguments</h2><dl id="GUID-D0411A13-9EEE-4090-89C3-0E498E7B89CE"><dt class="dlterm"> <var>mem</var></dt>
+<dd> <p>A memory reference to <samp class="codeph">FXSAVE</samp> area. The 512-bytes memory addressed by the reference must be 16-bytes aligned.</p>
+</dd>
+</dl>
+
+<dl id="GUID-01EA1A38-BB15-44CF-8A56-B2FD58598786"><dt class="dlterm"> <var>save_mask</var></dt>
+<dd> <p>A bit mask specifying the extended states to be saved.</p>
+</dd>
+</dl>
+
+</div>
+
+
+<div class="section" id="GUID-6A355558-E283-45D2-89FE-B03F3113550E"><h2>Description</h2>
+<p> Saves the states of <span class="keyword">x87 FPU</span>, <span class="keyword">MMX</span>, <span class="keyword">XMM</span>, <span class="keyword">YMM</span>, and <span class="keyword">MXCSR</span> registers to memory, optimizing the save operation if possible. This intrinsic maps to <span class="option">XSAVEOPT</span> instruction.</p>
+
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-581B0137-E8F1-4E7E-80E9-301B5DF7E05F.htm">Intrinsics for Saving and Restoring the Extended Processor States</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

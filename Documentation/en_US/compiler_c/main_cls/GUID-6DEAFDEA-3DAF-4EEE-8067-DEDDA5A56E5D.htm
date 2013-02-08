@@ -1,0 +1,692 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="OpenMP* Directives and Clauses Summary">
+<meta name="DC.subject" content="ORDERED, overview of OpenMP* directives and clauses, OpenMP* Fortran directives, clauses for, PARALLEL DO, summary of OpenMP* directives and clauses, PARALLEL OpenMP* directive, PARALLEL SECTIONS, summary of OpenMP* directives, PRIVATE, summary of data scope attribute clauses, REDUCTION, changing number of threads, summary table of, parallel regions, worksharing">
+<meta name="keywords" content="ORDERED, overview of OpenMP* directives and clauses, OpenMP* Fortran directives, clauses for, PARALLEL DO, summary of OpenMP* directives and clauses, PARALLEL OpenMP* directive, PARALLEL SECTIONS, summary of OpenMP* directives, PRIVATE, summary of data scope attribute clauses, REDUCTION, changing number of threads, summary table of, parallel regions, worksharing">
+<meta name="DC.Relation" scheme="URI" content="GUID-743582C0-7967-4DB2-A5B5-1A6B42D31EFE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-346BAAA5-CF2D-4A26-9194-CA840BFB34E5.htm#GUID-346BAAA5-CF2D-4A26-9194-CA840BFB34E5">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6DEAFDEA-3DAF-4EEE-8067-DEDDA5A56E5D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Directives and Clauses Summary</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_dirs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_dirs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6DEAFDEA-3DAF-4EEE-8067-DEDDA5A56E5D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Directives and Clauses Summary</h1>
+ 
+   
+  <div> 
+	 <p>This is a summary of the OpenMP* 
+		<span>pragmas</span> and clauses supported in the Intel&reg; Compiler. For detailed information about the OpenMP API, see the 
+		<em>OpenMP Application Program Interface</em> Version 
+		<span>3.1</span> specification, which is available from the OpenMP web site (http://www.openmp.org/). 
+	 </p>
+ 
+	 <div class="section" id="GUID-A19F60F9-338A-4772-8BD4-224D2D375410"><h2 class="sectiontitle">OpenMP 
+		  <span>Pragmas</span></h2> 
+		 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C4AE8943-773F-4959-80E7-06A02E34145C" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" width="33.11258278145696%" id="d341641e95"> 
+					 <p><span>Pragma</span></p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" width="66.88741721854305%" id="d341641e102"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">parallel</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Defines a parallel region. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">task</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Indicates that the associated structured block should be executed in parallel as part of the enclosing parallel construct. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">sections</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Identifies a non-iterative worksharing construct that specifies a set of structured blocks that are to be divided among threads in a team. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">section</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Indicates that the associated structured block should be executed in parallel as part of the enclosing sections construct. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">single</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Identifies a construct that specifies that the associated structured block is executed by only one thread in the team. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">parallel for</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>A shortcut for a 
+						<span class="keyword">parallel</span> region that contains a single 
+						<span class="keyword">for</span> directive. 
+					 </p>
+ 
+					 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+						<p>The 
+						  <span class="keyword">parallel for</span> OpenMP directive must be immediately followed by a 
+						  <span class="keyword">for</span> statement. If you place other statement or an OpenMP directive between the 
+						  <span class="keyword">parallel for</span> directive and the 
+						  <span class="keyword">for</span> statement, the Intel C++ Compiler issues a syntax error. 
+						</p>
+ 
+						</div> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">for</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="ClassicCCommon" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Identifies an iterative work-sharing construct that specifies a region in which the iterations of the associated loop should be executed in parallel. Each iteration is executed by one of the threads in the team. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">parallel sections</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Provides a shortcut form for specifying a parallel region containing a single 
+						<span class="keyword">sections</span> construct. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">master</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Identifies a construct that specifies a structured block that is executed by only the master thread of the team. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><samp class="codeph"><span class="keyword">critical</span>[<var>name</var>]</samp> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Identifies a construct that restricts execution of the associated structured block to a single thread at a time. Each thread waits at the beginning of the critical construct until no other thread is executing a critical construct with the same 
+						<span class="keyword">name</span> argument. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">taskwait</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Indicates a wait on the completion of child tasks generated since the beginning of the current task. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">taskyield</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Indicates that the current task can be suspended in favor of a different task. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">barrier</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Synchronizes all the threads in a team. Each thread waits until all of the other threads in that team have reached this point. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">atomic update</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Synchronizes with other atomic operations on a given variable. Updates the variable atomically with the indicated operation. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">atomic read</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Synchronizes with other atomic operations on a given variable. Reads the variable atomically. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">atomic write</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Synchronizes with other atomic operations on a given variable. Writes a new value into the variable. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">atomic capture</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Synchronizes with other atomic operations on a given variable. Captures the old value of a variable atomically, then applies the indicated operation to the variable. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><samp class="codeph">flush [(<var>list</var>)]</samp> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Specifies a cross-thread sequence point at which the implementation is required to ensure that all the threads in a team have a consistent view of certain objects in memory. The optional 
+						<var>list</var> argument consists of a comma-separated list of variables to be flushed. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><span class="keyword">ordered</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>The 
+						 structured block 
+						<span>following this directive</span> is executed in the order in which iterations would be executed in a sequential loop. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="33.11258278145696%" headers="d341641e95 "> 
+					 <p><samp class="codeph">threadprivate (<var>list</var>)</samp> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="66.88741721854305%" headers="d341641e102 "> 
+					 <p>Makes the named file-scoped, namespace-scoped, or static block-scoped variables specified private to a thread. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-D1E5DA81-4623-4578-A78E-00177A02E068"><h2 class="sectiontitle">OpenMP Clauses</h2> 
+		 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D119B1C1-DFEB-4EBF-A055-1A42CBE64370" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="25%" id="d341641e521"> 
+					 <p>Clause 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="75%" id="d341641e527"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">private</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p><span>Declares variables to be 
+						  <span class="keyword">private</span> to each thread in a team.</span> 
+						<span><span>Private copies of the variable are not initialized before they are used.</span></span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">firstprivate</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Provides a superset of the functionality provided by the 
+						<span class="keyword">private</span> clause. Each private data object is initialized with the value of the original object. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">lastprivate</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Provides a superset of the functionality provided by the 
+						<span class="keyword">private</span> clause. When exiting the region, the original object is updated with the value of the private copy from the last sequential iteration of the associated loop, or the lexically last section construct. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">shared</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Shares variables among all the threads in a team. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">default</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Sets the default data attributes of variables in the region. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">reduction</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Performs a reduction on scalar variables. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">ordered</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>The structured block following an 
+						<span class="keyword">ordered</span> directive is executed in the order in which iterations would be executed in a sequential loop. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><samp class="codeph">if (<var>expression</var>)</samp> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>If the 
+						<span class="keyword">if(expression)</span>clause is present, the enclosed code block is executed in parallel only if the 
+						<var>expression</var> evaluates to 
+						<span class="keyword">TRUE</span>. Otherwise the code block is serialized. 
+					 </p>
+ 
+					 <p>The expression must be a scalar of type logical. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">schedule</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Specifies how iterations of the 
+						<span class="keyword">for</span> loop are divided among the threads of the team. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><samp class="codeph">collapse(<var>n</var>)</samp> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Specifies how many nested loops of a 
+						<samp class="codeph">for</samp> loop associated with the OpenMP 
+						<samp class="codeph">for</samp> construct should be collapsed into a single loop for running in parallel. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">copyin</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Provides a mechanism to copy the data values of the master thread to the 
+						<span class="keyword">threadprivate</span> variables of the thread team within the construct. 
+					 </p>
+ 
+					 </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">copyprivate</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Provides a mechanism to use a private variable to broadcast a value from the data environment of one implicit task to the data environments of the other implicit tasks belonging to the parallel region. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">nowait</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Indicates that an implementation may omit the barrier at the end of the worksharing region. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><span class="keyword">untied</span> 
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p>Indicates that a resumed task does not have to be executed by same thread executing it before it was suspended. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><div class="revUpdte"><span class="keyword">mergeable</span> 
+					 </div></p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p><div class="revUpdte">Indicates that the task defined by this task pragma need not create a private data environment for the task, but if the task execution is deferred, then the private data environment is created. 
+					 </div></p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="25%" headers="d341641e521 "> 
+					 <p><div class="revUpdte"><span class="keyword">final</span>(<var>expr</var>) 
+					 </div></p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="75%" headers="d341641e527 "> 
+					 <p><div class="revUpdte">The 
+						<var>expr</var> is evaluated, and if the value is true, then this task and all its descendant tasks are not deferred (not executed in parallel). 
+					 </div></p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-743582C0-7967-4DB2-A5B5-1A6B42D31EFE.htm">OpenMP* Directives</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-346BAAA5-CF2D-4A26-9194-CA840BFB34E5.htm#GUID-346BAAA5-CF2D-4A26-9194-CA840BFB34E5">Intel-Specific Pragmas 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

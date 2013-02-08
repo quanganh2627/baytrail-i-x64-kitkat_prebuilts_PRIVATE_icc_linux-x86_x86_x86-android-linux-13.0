@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Remainder Functions">
+<meta name="DC.subject" content="Math library, Remainder Functions, fmod library function, remainder library function, remquo library function">
+<meta name="keywords" content="Math library, Remainder Functions, fmod library function, remainder library function, remquo library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-479F2942-193B-4359-B387-DFFBF5FE0BFE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Remainder Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_rem"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-479F2942-193B-4359-B387-DFFBF5FE0BFE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Remainder Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.
+    </p>
+
+    <p>The Intel math library supports the following remainder functions:
+    </p>
+ 
+    <div class="section" id="FMOD"><a name="FMOD"><!-- --></a><h2 class="sectiontitle">fmod</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">fmod</span> function returns the value 
+        <samp class="codeph">x-n*y</samp> for integer 
+        <samp class="codeph">n</samp> such that if 
+        <samp class="codeph">y</samp> is nonzero, the result has the same sign as 
+        <samp class="codeph">x</samp> and magnitude less than the magnitude of 
+        <samp class="codeph">y</samp>.
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for y = 0
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double fmod(double x, double y);</samp><br> 
+        <samp class="codeph">long double fmodl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float fmodf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="REMAINDER"><a name="REMAINDER"><!-- --></a><h2 class="sectiontitle">remainder</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">remainder</span> function returns the value of 
+        <samp class="codeph">x REM y</samp> as required by the IEEE standard.
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double remainder(double x, double y);</samp><br> 
+        <samp class="codeph">long double remainderl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float remainderf(float x, float y);</samp>
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="REMQUO"><a name="REMQUO"><!-- --></a><h2 class="sectiontitle">remquo</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">remquo</span> function returns the value of 
+        <samp class="codeph">x REM y</samp>. In the object pointed to by 
+        <samp class="codeph">quo</samp> the function stores a value whose sign is the sign of 
+        <samp class="codeph">x/y</samp> and whose magnitude is congruent modulo 2<sup>n</sup> of the integral quotient of x/y. N is an implementation-defined integer. For all systems, N is equal to 31. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double remquo(double x, double y, int *quo);</samp><br> 
+        <samp class="codeph">long double remquol(long double x, long double y, int *quo);</samp><br> 
+        <samp class="codeph">float remquof(float x, float y, int *quo);</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

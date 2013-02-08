@@ -1,0 +1,266 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Intel Math Library">
+<meta name="DC.subject" content="Math Library, using on Linux* OS">
+<meta name="keywords" content="Math Library, using on Linux* OS">
+<meta name="DC.Relation" scheme="URI" content="GUID-555BCF06-BE12-4E32-871D-8452E731C7B3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9BF8C176-DB94-48B0-BF65-A573003974CD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Intel Math Library</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_lin_using"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9BF8C176-DB94-48B0-BF65-A573003974CD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Intel Math Library</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+    </p>
+ 
+    <p>To use the Intel math library, include the header file, 
+      <span class="filepath">mathimf.h</span>, in your program. Here are two example programs that illustrate the use of the math library on Linux* operating systems. 
+    </p>
+ 
+    <div class="section" id="GUID-BEDBFBD4-C7D2-40BF-87F6-177A36307CA0"><h2 class="sectiontitle">Example Using Real Functions</h2> 
+       
+      <pre>// real_math.c</pre> 
+      <pre></pre> 
+      <pre>#include &lt;stdio.h&gt;</pre> 
+      <pre>#include &lt;mathimf.h&gt;</pre> 
+      <pre></pre> 
+      <pre>int main() {</pre> 
+      <pre></pre> 
+      <pre> float fp32bits;</pre> 
+      <pre> double fp64bits;</pre> 
+      <pre> long double fp80bits;</pre> 
+      <pre> long double pi_by_four = 3.141592653589793238/4.0;</pre> 
+      <pre></pre> 
+      <pre>// pi/4 radians is about 45 degrees</pre> 
+      <pre></pre> 
+      <pre> fp32bits = (float) pi_by_four; // float approximation to pi/4</pre> 
+      <pre> fp64bits = (double) pi_by_four; // double approximation to pi/4</pre> 
+      <pre> fp80bits = pi_by_four; // long double (extended) approximation to pi/4</pre> 
+      <pre></pre> 
+      <pre>// The sin(pi/4) is known to be 1/sqrt(2) or approximately .7071067 </pre> 
+      <pre></pre> 
+      <pre> printf("When x = %8.8f, sinf(x) = %8.8f \n", fp32bits, sinf(fp32bits));</pre> 
+      <pre> printf("When x = %16.16f, sin(x) = %16.16f \n", fp64bits, sin(fp64bits));</pre> 
+      <pre> printf("When x = %20.20Lf, sinl(x) = %20.20f \n", fp80bits, sinl(fp80bits));</pre> 
+      <pre></pre> 
+      <pre> return 0;</pre> 
+      <pre>}</pre> 
+      <p></p>
+ 
+      <p>The command for compiling 
+        <span class="filepath">real_math.c</span> is: 
+      </p>
+ 
+      <p><samp class="codeph">icc real_math.c</samp> 
+      </p>
+ 
+      <p>The output of 
+        <span class="filepath">a.out</span> will look like this: 
+      </p>
+ 
+      <p><samp class="codeph">When x = 0.78539816, sinf(x) = 0.70710678</samp> 
+      </p>
+ 
+      <p><samp class="codeph">When x = 0.7853981633974483, sin(x) = 0.7071067811865475</samp> 
+      </p>
+ 
+      <p><samp class="codeph">When x = 0.78539816339744827900, sinl(x) = 0.70710678118654750275</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6D3AE48F-A450-415B-AAD9-C9FAA08FFE0C"><h2 class="sectiontitle">Example Using Complex Functions</h2> 
+       
+      <pre>// complex_math.c</pre> 
+      <pre></pre> 
+      <pre>#include &lt;stdio.h&gt;</pre> 
+      <pre>#include &lt;complex.h&gt;</pre> 
+      <pre></pre> 
+      <pre>int main()</pre> 
+      <pre>{</pre> 
+      <pre></pre> 
+      <pre>&nbsp; float _Complex c32in,c32out;</pre> 
+      <pre>&nbsp; double _Complex c64in,c64out;</pre> 
+      <pre>&nbsp; double pi_by_four= 3.141592653589793238/4.0;</pre> 
+      <pre></pre> 
+      <pre>&nbsp; c64in = 1.0 + I* pi_by_four;</pre> 
+      <pre></pre> 
+      <pre>// Create the double precision complex number 1 + (pi/4) * i </pre> 
+      <pre>// where I is the imaginary unit.</pre> 
+      <pre></pre> 
+      <pre>&nbsp; c32in = (float _Complex) c64in;</pre> 
+      <pre></pre> 
+      <pre>// Create the float complex value from the double complex value.</pre> 
+      <pre></pre> 
+      <pre>&nbsp; c64out = cexp(c64in);</pre> 
+      <pre>&nbsp; c32out = cexpf(c32in);</pre> 
+      <pre></pre> 
+      <pre>// Call the complex exponential,</pre> 
+      <pre>// cexp(z) = cexp(x+iy) = e^ (x + i y) = e^x * (cos(y) + i sin(y))</pre> 
+      <pre></pre> 
+      <pre>&nbsp;printf("When z = %7.7f + %7.7f i, cexpf(z) = %7.7f + %7.7f i \n"</pre> 
+      <pre>&nbsp;,crealf(c32in),cimagf(c32in),crealf(c32out),cimagf(c32out));</pre> 
+      <pre>&nbsp;printf("When z = %12.12f + %12.12f i, cexp(z) = %12.12f + %12.12f i \n"</pre> 
+      <pre>&nbsp;,creal(c64in),cimag(c64in),creal(c64out),cimagf(c64out));</pre> 
+      <pre></pre> 
+      <pre>&nbsp; return 0;</pre> 
+      <pre>}</pre> 
+      <p></p>
+ 
+      <p>The command to compile 
+        <span class="filepath">complex_math.c</span> is: 
+        <samp class="codeph"></samp> 
+      </p>
+ 
+      <p><samp class="codeph">icc -std=c99 complex_math.c</samp> 
+      </p>
+ 
+      <p>The output of 
+        <span class="filepath">a.out</span> will look like this: 
+      </p>
+ 
+      <p><samp class="codeph">When z = 1.0000000 + 0.7853982 i, cexpf(z) = 1.9221154 + 1.9221156 i</samp> 
+      </p>
+ 
+      <p><samp class="codeph">When z = 1.000000000000 + 0.785398163397 i, cexp(z) = 1.922115514080 + 1.922115514080 i</samp> 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p><span class="keyword">_Complex</span> data types are supported in C but not in C++ programs. It is necessary to include the 
+        <span class="option">-std=c99</span> compiler option when compiling programs that require support for 
+        <span class="keyword">_Complex</span> data types. 
+        </p>
+ 
+      </div> 
+      <p><strong>Exception Conditions</strong> 
+      </p>
+ 
+      <p>If you call a math function using argument(s) that may produce undefined results, an error number is assigned to the system variable 
+        <span class="keyword">errno</span>. Math function errors are usually domain errors or range errors. 
+      </p>
+ 
+      <p><strong>Domain errors</strong> result from arguments that are outside the domain of the function. For example, 
+        <span class="keyword">acos</span> is defined only for arguments between -1 and +1 inclusive. Attempting to evaluate 
+        <samp class="codeph">acos(-2)</samp> or 
+        <samp class="codeph">acos(3)</samp> results in a domain error, where the return value is 
+        <span class="keyword">QNaN</span>. 
+      </p>
+ 
+      <p><strong>Range errors</strong> occur when a mathematically valid argument results in a function value that exceeds the range of representable values for the floating-point data type. Attempting to evaluate 
+        <samp class="codeph">exp(1000)</samp> results in a range error, where the return value is 
+        <span class="keyword">INF</span>. 
+      </p>
+ 
+      <p>When domain or range error occurs, the following values are assigned to 
+        <span class="keyword">errno</span>: 
+      </p>
+ 
+      <ul type="disc" id="GUID-ADF1312F-B8B9-4D3A-A228-3C16BB504295"> 
+        <li> 
+          <p>domain error (EDOM): 
+            <samp class="codeph">errno = 33</samp> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>range error (ERANGE): 
+            <samp class="codeph">errno = 34</samp> 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>The following example shows how to read the 
+        <span class="keyword">errno</span> value for an 
+        <span class="keyword">EDOM</span> and 
+        <span class="keyword">ERANGE</span> error. 
+      </p>
+ 
+      <pre>// errno.c</pre> 
+      <pre></pre> 
+      <pre>#include &lt;errno.h&gt;</pre> 
+      <pre>#include &lt;mathimf.h&gt;</pre> 
+      <pre>#include &lt;stdio.h&gt; </pre> 
+      <pre></pre> 
+      <pre>int main(void)</pre> 
+      <pre>{ </pre> 
+      <pre>&nbsp; double neg_one=-1.0;</pre> 
+      <pre>&nbsp; double zero=0.0; </pre> 
+      <pre></pre> 
+      <pre>// The natural log of a negative number is considered a domain error - EDOM</pre> 
+      <pre>&nbsp; printf("log(%e) = %e and errno(EDOM) = %d \n",neg_one,log(neg_one),errno); </pre> 
+      <pre></pre> 
+      <pre>// The natural log of zero is considered a range error - ERANGE</pre> 
+      <pre>&nbsp; printf("log(%e) = %e and errno(ERANGE) = %d \n",zero,log(zero),errno);</pre> 
+      <pre>}</pre> 
+      <p></p>
+ 
+      <p>The output of 
+        <span class="filepath">errno.c</span> will look like this: 
+      </p>
+ 
+      <p><samp class="codeph">log(-1.000000e+00) = nan and errno(EDOM) = 33</samp> 
+      </p>
+ 
+      <p><samp class="codeph">log(0.000000e+00) = -inf and errno(ERANGE) = 34</samp> 
+      </p>
+ 
+      <p>For the math functions in this section, a corresponding value for 
+        <span class="keyword">errno</span> is listed when applicable. 
+      </p>
+ 
+      <p><strong>Other Considerations</strong> 
+      </p>
+ 
+      <p>Some math functions are inlined automatically by the compiler. The functions actually inlined may vary and may depend on any vectorization or processor-specific compilation options used. 
+      </p>
+ 
+      <p> It is strongly recommended to use the default rounding mode (round-to-nearest-even) when calling math library transcendental functions and compiling with default optimization or higher. Faster implementations - in terms of latency and/or throughput - of these functions are validated under the default round-to-nearest-even mode. Using other rounding modes may make results generated by these faster implementations less accurate, or set unexpected floating-point status flags. This behavior may be avoided by 
+      <span class="option">-no-fast-transcendentals</span>, which disables calls to the faster implementations of math functions, or by<span class="option"> -fp-model strict</span>, which warns the compiler that it cannot assume default settings for the floating-point environment. 
+      </p>
+ 
+      <p>A change of the default precision control or rounding mode may affect the results returned by some of the mathematical functions. See 
+        <em><a href="GUID-B7EF9B88-011D-4035-90BC-AEC3519C39C6.htm#GUID-B7EF9B88-011D-4035-90BC-AEC3519C39C6">Overview: Tuning Performance</a></em> in<em> Floating-point Operations&gt;Tuning Performance.</em> 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-555BCF06-BE12-4E32-871D-8452E731C7B3.htm">Intel Math Library</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

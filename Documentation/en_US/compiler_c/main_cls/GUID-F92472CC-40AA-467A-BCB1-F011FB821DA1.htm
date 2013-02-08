@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_i32gather_ps, _mm256_i32gather_ps">
+<meta name="abstract" content="Gathers 2/4 packed single-precision floating point values from memory referenced by the given base address, dword indices, and scale. The corresponding Intel&reg; AVX2 instruction is VGATHERDPS.">
+<meta name="description" content="Gathers 2/4 packed single-precision floating point values from memory referenced by the given base address, dword indices, and scale. The corresponding Intel&reg; AVX2 instruction is VGATHERDPS.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, GATHER operations, _mm_mask_i32gather_ps (VGATHERDPS), _mm256_mask_i32gather_ps (VGATHERDPS)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, GATHER operations, _mm_mask_i32gather_ps (VGATHERDPS), _mm256_mask_i32gather_ps (VGATHERDPS)">
+<meta name="DC.Relation" scheme="URI" content="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F92472CC-40AA-467A-BCB1-F011FB821DA1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_i32gather_ps, _mm256_i32gather_ps</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_i32gather_ps"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_i32gather_ps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F92472CC-40AA-467A-BCB1-F011FB821DA1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm_i32gather_ps, _mm256_i32gather_ps</span> </h1>
+
+
+<!--Gathers 2/4 packed single-precision floating point values from memory  referenced by the given base address, dword indices, and scale. The corresponding Intel&reg; AVX2 instruction is  VGATHERDPS .--><div><p>Gathers 2/4 packed single-precision floating point values from memory  referenced by the given base address, dword indices, and scale. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VGATHERDPS</samp>.</p>
+
+
+<div class="section" id="GUID-770A6894-08FE-4B7C-ADA7-E6C7C4938A1E"><h2>Syntax</h2>
+  
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128 _mm_mask_i32gather_ps(float const * base, __m128i vindex, const int scale);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _mm256_mask_i32gather_ps(float const * base, __m256i vindex, const int scale);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-5E113D4D-8281-4849-A968-421231AEDE3B"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>base</var></p></td>
+
+      <td valign="top" class="noborder"><p>the base address used to reference the loaded FP elements.</p>
+</td>
+
+    </tr>
+	
+ <tr><td valign="top" width="30%" class="noborder"><p><var>vindex</var></p></td>
+<td valign="top" class="noborder"><p>the vector of dword indices used to reference the loaded FP elements.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>scale</var></p></td>
+ <td valign="top" class="noborder"><p>32-bit scale used to address the loaded FP elements.</p>
+</td>
+</tr></table>
+
+</div>
+
+
+<div class="section" id="GUID-94DC5358-605B-4CE7-BC4C-8A62385DBDB3"><h2>Description</h2>
+<p>The intrinsics load 2/4 packed single-precision floating-point values from memory using dword indices.</p>
+
+<p>Below is the pseudo-code for the intrinsics:</p>
+<p><samp class="codeph">_mm_i32gather_ps()</samp>:</p>
+<pre>result[31:0] = mem[base+vindex[31:0]*scale];
+result[63:32] = mem[base+vindex[63:32]*scale];
+result[95:64] = mem[base+vindex[95:64]*scale];
+result127:96] = mem[base+vindex[127:96]*scale];</pre><p> <samp class="codeph">_mm256_i32gather_ps()</samp>:</p>
+<pre>result[31:0] = mem[base+vindex[31:0]*scale];
+result[63:32] = mem[base+vindex[63:32]*scale];
+result[95:64] = mem[base+vindex[95:64]*scale];
+result127:96] = mem[base+vindex[127:96]*scale];
+result[159:128] = mem[base+vindex[159:128]*scale];
+result[191:160] = mem[base+vindex[191:160]*scale];
+result[223:192] = mem[base+vindex[223:192]*scale];
+result[255:224] = mem[base+vindex[255:224]*scale];</pre></div>
+
+
+
+
+<div class="section" id="GUID-AF9AD708-6E7B-468D-B3D6-2C1A20D029B8"><h2>Returns</h2><p>A 128/256-bit vector with unconditionally gathered single-precision FP values.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC.htm">Intrinsics for GATHER Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

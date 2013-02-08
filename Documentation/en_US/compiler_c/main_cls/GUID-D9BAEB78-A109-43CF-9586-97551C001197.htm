@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prof-hotness-threshold, Qprof-hotness-threshold">
+<meta name="abstract" content="Lets you set the hotness threshold for function grouping and function ordering.">
+<meta name="description" content="Lets you set the hotness threshold for function grouping and function ordering.">
+<meta name="DC.subject" content="-prof-hotness-threshold compiler option, /Qprof-hotness-threshold compiler option, hotness threshold, option setting">
+<meta name="keywords" content="-prof-hotness-threshold compiler option, /Qprof-hotness-threshold compiler option, hotness threshold, option setting">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">
+<meta name="DC.Relation" scheme="URI" content="GUID-42651DB3-2B00-4ED0-9FD9-9F85B9AC1E91.htm#GUID-42651DB3-2B00-4ED0-9FD9-9F85B9AC1E91">
+<meta name="DC.Relation" scheme="URI" content="GUID-17717E16-9D70-442B-8149-C3EF4492C857.htm#GUID-17717E16-9D70-442B-8149-C3EF4492C857">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D9BAEB78-A109-43CF-9586-97551C001197">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prof-hotness-threshold, Qprof-hotness-threshold</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_prof_hotness_threshold"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_prof_hotness_threshold"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D9BAEB78-A109-43CF-9586-97551C001197">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">prof-hotness-threshold, Qprof-hotness-threshold</h1>
+<!--Lets you set the hotness threshold for function grouping and function ordering. --><div><p>Lets you set the hotness threshold for function grouping and function ordering. </p>
+
+<div class="section" id="GUID-E2F7FD43-01DA-43B1-851D-CFDAA6314F87"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-D331EA19-2310-4795-86CA-E9789E2CCFB2"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-D595699A-830B-4FC4-8D24-09E504F75EE9"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-prof-hotness-threshold</span><span class="oper">=</span><span class="var">n</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprof-hotness-threshold</span><span class="oper">:</span><span class="var">n</span></p></td></tr></table></div>
+<div class="section" id="GUID-9EC50D4D-B9B1-4130-8B0B-5F1B3FFAF1ED"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the hotness threshold. <var>n</var> is a percentage having a value between 0 and 100 inclusive. If you specify 0, there will be no hotness threshold setting in effect for function grouping and function ordering.  </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-FC2D57EE-4404-4FE8-BE48-E3BD874600AB"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler's default hotness threshold setting of 10 percent is in effect for function grouping and function ordering.  </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-5F52511C-4C7C-4737-9FAA-9D67B5238C81"><h2>Description</h2><p>This option lets you set the hotness threshold for function grouping and function ordering.</p>
+<p>The "hotness threshold" is the percentage of functions in the application that should be placed in the application's hot region.  The hot region is the most frequently executed part of the application.  By grouping these functions together into one hot region, they have a greater probability of remaining resident in the instruction cache. This can enhance the application's performance.</p>
+<p>For this option to take effect, you must specify option  <span class="option">-prof-use</span> (Linux* OS) or  <span class="option">/Qprof-use</span> (Windows* OS) and one of the following:</p>
+<ul type="disc" id="GUID-7CACF663-E02B-43ED-999F-3D3E175B19A2"><li><p>On Linux systems: <span class="option">-prof-func-groups</span> or <span class="option">-prof-func-order</span></p>
+</li>
+<li><p>On Windows systems: <span class="option">/Qprof-func-order</span></p>
+</li>
+</ul>
+</div>
+
+<div class="section" id="GUID-082BDCEE-7496-4C91-AFCD-E716977F9CB2"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407.htm#GUID-CF2F3E3D-C086-4792-B1F2-165956EFC407">prof-use, Qprof-use</a> compiler option</div>
+<div><a href="GUID-42651DB3-2B00-4ED0-9FD9-9F85B9AC1E91.htm#GUID-42651DB3-2B00-4ED0-9FD9-9F85B9AC1E91">prof-func-groups</a> compiler option</div>
+<div><a href="GUID-17717E16-9D70-442B-8149-C3EF4492C857.htm#GUID-17717E16-9D70-442B-8149-C3EF4492C857">prof-func-order, Qprof-func-order</a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using IPO">
+<meta name="DC.subject" content="-ipo compiler option, /Qipo compiler option, IR, capturing IPO output, compiling with IPO, intermediate representation (IR), interprocedural optimizations, capturing intermediate output, compiling, linking, using, linking with IPO, mock object files">
+<meta name="keywords" content="-ipo compiler option, /Qipo compiler option, IR, capturing IPO output, compiling with IPO, intermediate representation (IR), interprocedural optimizations, capturing intermediate output, compiling, linking, using, linking with IPO, mock object files">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BAC44C7F-5A85-45D7-9595-F2AA2595F399">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using IPO</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_exe"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_exe"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BAC44C7F-5A85-45D7-9595-F2AA2595F399">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Using IPO</h1>
+
+
+
+<div>
+
+<p>This topic discusses how to use IPO from a command line.</p>
+
+
+<div class="section" id="GUID-1AEA6401-B649-4863-B637-6CF3F3AE2808"><h2 class="sectiontitle">Compiling and Linking Using IPO</h2>
+
+<p>The steps to enable IPO for compilations targeted for all supported architectures are the same: compile and link.</p>
+
+<p>First, compile your source files with <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux* and OS X*) or <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows*) as illustrated below:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6EBFB028-044E-4A98-B5AF-84EADD2CFF12" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="34.36426116838488%" id="d615953e102"><p>Operating System </p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="65.63573883161511%" id="d615953e106"><p>Example Command</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr>
+  <td class="cellrowborder" align="left" valign="top" width="34.36426116838488%" headers="d615953e102 "><p>Linux and OS X</p>
+</td>
+
+  <td class="cellrowborder" align="left" valign="top" width="65.63573883161511%" headers="d615953e106 "><p><samp class="codeph">icpc -ipo -c a.cpp b.cpp c.cpp</samp></p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" align="left" valign="top" width="34.36426116838488%" headers="d615953e102 "><p>Windows*</p>
+</td>
+
+  <td class="cellrowborder" align="left" valign="top" width="65.63573883161511%" headers="d615953e106 "><p><samp class="codeph">icl /Qipo /c a.cpp b.cpp c.cpp</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>The output of the above example command differs according to operating system:</p>
+
+
+<ul type="disc" id="GUID-F9859BC7-436A-4A8A-B05E-DEED2C4151AE">
+  <li><p>Linux and OS X: The commands produce <span class="filepath">a.o</span>, <span class="filepath">b.o</span>, and <span class="filepath">c.o</span> object files.</p>
+</li>
+
+  <li><p>Windows: The commands produce <span class="filepath">a.obj</span>, <span class="filepath">b.obj</span>, and <span class="filepath">c.obj</span> object files.</p>
+</li>
+
+</ul>
+
+
+<p>Use<span> <a href="GUID-901DA056-846F-4778-B904-4533DE2B5067.htm#GUID-901DA056-846F-4778-B904-4533DE2B5067"><span class="option">-c</span></a> (Linux and OS X) or</span> <a href="GUID-901DA056-846F-4778-B904-4533DE2B5067.htm#GUID-901DA056-846F-4778-B904-4533DE2B5067"><span class="option">/c</span></a> (Windows) option to stop compilation after generating <span><span class="filepath">.o</span> or</span> <span class="filepath">.obj</span> files. The output files contain compiler intermediate representation (IR) corresponding to the compiled source files. <span>(See the section below on <a href="GUID-BAC44C7F-5A85-45D7-9595-F2AA2595F399.htm#CAPTURING">Capturing the Intermediate IPO Output</a>.)</span></p>
+
+<p>Second, link the resulting files. The following example command will produce an executable named <span class="filepath">app</span>:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F44AE8C9-A9D6-428A-B8DE-91589FB938C6" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" id="d615953e224"><p>Operating System </p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" id="d615953e228"><p>Example Command</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr>
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e224 "><p>Linux and OS X</p>
+</td>
+
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e228 "><p><samp class="codeph">icpc -o app a.o b.o c.o</samp></p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e224 "><p>Windows</p>
+</td>
+
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e228 "><p><samp class="codeph">icl /Feapp a.obj b.obj c.obj</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>The command invoke the compiler on the objects containing IR and creates a new list of objects to be linked. Alternately, you can use the <span><span class="keyword">xild</span> (Linux and OS X) or</span> <span class="keyword">xilink</span> (Windows) tool, with the appropriate linking options.</p>
+</div>
+
+
+<div class="section" id="GUID-3AC0A182-DBEB-43E7-87C1-BF8D528E8184"><h2 class="sectiontitle">Combining the Steps</h2>
+
+<p>The separate compile and link commands demonstrated above can be combined into a single command, as shown in the following examples:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6A3B51B0-FF60-4B16-AA00-046CB6A7A2FB" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" id="d615953e290"><p>Operating System </p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" id="d615953e294"><p>Example Command</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr>
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e290 "><p>Linux and OS X</p>
+</td>
+
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e294 "><p><samp class="codeph">icpc -ipo -o app a.cpp b.cpp c.cpp</samp></p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e290 "><p>Windows</p>
+</td>
+
+  <td class="cellrowborder" align="left" valign="top" headers="d615953e294 "><p><samp class="codeph">icl /Qipo /Feapp a.cpp b.cpp c.cpp</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>The <span class="keyword">icl/icpc</span> command, shown in the examples above, calls <span><samp class="codeph">GCC ld</samp> (Linux and OS X) or</span> Microsoft* <span class="filepath">link.exe</span> (Windows only) to link the specified object files and produce the executable application, which is specified by the <span><a href="GUID-E214CA77-2985-47D7-AA85-AF85622EF995.htm#GUID-E214CA77-2985-47D7-AA85-AF85622EF995"><span class="option">-o</span></a> (Linux and OS X) or</span> <span><a href="GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC.htm#GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC"><span class="option">/Fe</span></a></span> (Windows) option.</p>
+
+</div>
+
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3>
+<p>Linux and OS X: Using <span class="keyword">icpc</span> allows the compiler to use standard C++ libraries automatically; <span class="keyword">icc</span> will not use the standard C++ libraries automatically.</p>
+
+<p>The Intel linking tools emulate the behavior of compiling at <span><a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O0</span></a> (Linux and OS X) and</span> <a href="GUID-BD394DA2-18C4-45A8-A9BD-92204832058E.htm#GUID-BD394DA2-18C4-45A8-A9BD-92204832058E"><span class="option">/Od</span></a> (Windows) option.</p>
+
+<p>Multi-file IPO is applied only to the source files that have intermediate representation (IR); otherwise, the object file passes to link stage.</p>
+
+</div>
+
+<div class="section" id="CAPTURING"><a name="CAPTURING"><!-- --></a><h2 class="sectiontitle">Capturing Intermediate IPO Output</h2>
+
+<p>The <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> (Linux and OS X) or <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">/Qipo-c</span></a> (Windows*) and <a href="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299.htm#GUID-7E9D1246-3877-4745-AF64-FDE874BA5299"><span class="option">-ipo-S</span></a> (Linux and OS X) or <a href="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299.htm#GUID-7E9D1246-3877-4745-AF64-FDE874BA5299"><span class="option">/Qipo-S</span></a> (Windows) options are useful for analyzing the effects of multi-file IPO, or when experimenting with multi-file IPO between modules that do not make up a complete program.</p>
+
+
+<ul type="disc" id="GUID-4D3FEFBE-C659-43A8-B5BF-2B21FF343400">
+  <li><p>Use the <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> option to optimize across files and produce an object file. The option performs optimizations as described for the <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> option but stops prior to the final link stage, leaving an optimized object file. The default name for this file is <span class="filepath">ipo_out.o</span> (Linux and OS X) or <span class="filepath">ipo_out.obj</span> (Windows).</p>
+</li>
+
+  <li><p>Use the <a href="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299.htm#GUID-7E9D1246-3877-4745-AF64-FDE874BA5299"><span class="option">-ipo-S</span></a> option to optimize across files and produce an assembly file. The option performs optimizations as described for <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a>, but stops prior to the final link stage, leaving an optimized assembly file. The default name for this file is <span class="filepath">ipo_out.s</span> (Linux) or <span class="filepath">ipo_out.asm</span> (Windows).</p>
+</li>
+
+</ul>
+
+
+<p>For both options, you can use the <a href="GUID-E214CA77-2985-47D7-AA85-AF85622EF995.htm#GUID-E214CA77-2985-47D7-AA85-AF85622EF995"><span class="option">-o</span></a> (Linux and OS X) or <span><a href="GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC.htm#GUID-9CE622DE-7BEC-4CA8-B2FF-5C0F6E35FAEC"><span class="option">/Fe</span></a></span> (Windows) option to specify a different name.</p>
+
+<p>These options generate multiple outputs if multi-object IPO is being used. The name of the first file is taken from the value of the <a href="GUID-E214CA77-2985-47D7-AA85-AF85622EF995.htm#GUID-E214CA77-2985-47D7-AA85-AF85622EF995"><span class="option">-o</span></a> (Linux and OS X) or <span>/Fe</span> (Windows) option.</p>
+
+<p>The names of subsequent files are derived from the first file with an appended numeric value to the file name. For example, if the first object file is named <span class="filepath">foo.o</span> (Linux and OS X) or <span class="filepath">foo.obj</span> (Windows), the second object file will be named <span class="filepath">foo1.o</span> or <span class="filepath">foo1.obj</span>.</p>
+
+<p>You can use the object file generated with the <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> (Linux and OS X) or <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">/Qipo-c</span></a> (Windows) option, but you will not get the same benefits from the optimizations applied that would otherwise if the whole program analysis condition had been satisfied.</p>
+
+<p>The object file created using the <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> option is a real object file, in contrast to the mock file normally generated using IPO; however, the generated object file is significantly different than the mock object file. It does not contain the IR information needed to fully optimize the application using IPO.</p>
+
+<p>The compiler generates a message indicating the name of each object or assembly file it generates. These files can be added to the real link step to build the final application.</p>
+
+</div>
+
+
+<div class="section" id="ILP32"><a name="ILP32"><!-- --></a><h2 class="sectiontitle">Using <span>-auto-ilp32 (Linux* OS) or</span> /Qauto-ilp32 (Windows* OS) Option</h2>
+
+<p>On Linux systems based on Intel&reg; 64 architecture, the <span class="option">-auto-ilp32</span> option has no effect unless you specify SSE3 or higher suffix for the <span class="option">-x</span> option.</p>
+
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">Interprocedural Optimization (IPO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

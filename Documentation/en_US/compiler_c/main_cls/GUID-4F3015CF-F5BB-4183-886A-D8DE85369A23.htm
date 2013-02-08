@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="mp1, Qprec">
+<meta name="abstract" content="Improves floating-point precision and consistency.">
+<meta name="description" content="Improves floating-point precision and consistency.">
+<meta name="DC.subject" content="floating-point precision, option improving general, /Qprec compiler option, -mp1 compiler option">
+<meta name="keywords" content="floating-point precision, option improving general, /Qprec compiler option, -mp1 compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4F3015CF-F5BB-4183-886A-D8DE85369A23">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>mp1, Qprec</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_mp1_lcase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_mp1_lcase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4F3015CF-F5BB-4183-886A-D8DE85369A23">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">mp1, Qprec</h1>
+<!--Improves floating-point precision and consistency.--><div><p>Improves floating-point precision and consistency.</p>
+
+<div class="section" id="GUID-24D05129-7911-4FB7-B170-7D0DAD86528C"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-B38DDDE3-988F-494D-BBC6-AB759E4F4566"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-F0558F92-D871-4E66-AE2E-61EEBD61F846"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-mp1</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprec</span></p></td></tr></table></div>
+<div class="section" id="GUID-A4712A97-4E47-4F94-9A83-3441FB3F5690"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-FC772BA0-9D86-4012-BDF2-5F095B9E0AE1"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler provides good accuracy and run-time performance at the expense of less consistent floating-point results.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9A96FCDF-7287-44EE-9CB3-CB760E3A0F79"><h2>Description</h2><p>This option improves floating-point consistency. It ensures the out-of-range check of operands of transcendental functions and improves the accuracy of floating-point compares.</p>
+<p>This option prevents the compiler from performing optimizations that change NaN comparison semantics and causes all values to be truncated to declared precision before they are used in comparisons. It also causes the compiler to use library routines that give better precision results compared to the X87 transcendental instructions.</p>
+<p>This option disables fewer optimizations and has less impact on performance than option <span class="option">-fp-model precise</span> (Linux* OS and OS X*) or option <span class="option">/fp:precise</span> (Windows* OS).</p>
+</div>
+
+<div class="section" id="GUID-50EFECA2-B18B-4820-9FCE-85D9756C3FD3"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div class="See Also"><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

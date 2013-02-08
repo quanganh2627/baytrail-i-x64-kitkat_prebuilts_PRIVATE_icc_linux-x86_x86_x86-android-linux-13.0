@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_xsave()">
+<meta name="abstract" content="Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory.">
+<meta name="description" content="Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory.">
+<meta name="DC.subject" content="intrinsics, for managing extended processor states and registers, _xsave()">
+<meta name="keywords" content="intrinsics, for managing extended processor states and registers, _xsave()">
+<meta name="DC.Relation" scheme="URI" content="GUID-581B0137-E8F1-4E7E-80E9-301B5DF7E05F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-600A8149-D580-4C87-8D1C-D724CE494BE4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_xsave()</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_manextxsave"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-600A8149-D580-4C87-8D1C-D724CE494BE4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"> _xsave()</h1>
+
+<!-- Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory.-->
+
+<div><p> Saves the states of x87 FPU, MMX, XMM, YMM, and MXCSR registers to memory.</p>
+
+
+
+<div class="section" id="GUID-8F4ACF2C-69CE-446D-B16C-EAA9E4385AE4"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern void _xsave(void *mem, unsigned __int64 save_mask);</span></p></td></tr></table>
+</div>
+
+<div class="section" id="GUID-0C54CFCF-7AD9-4F19-9186-EBCC45A61045"><h2>Arguments</h2><dl id="GUID-8C585B93-8325-45AF-84A2-779D25C7F24E"><dt class="dlterm"> <var>mem</var></dt>
+<dd> <p>A memory reference to <samp class="codeph">FXSAVE</samp> area. The 512-bytes memory addressed by the reference must be 16-bytes aligned.</p>
+</dd>
+</dl>
+
+
+<dl id="GUID-34A90236-0899-4540-AEF9-950B89DB2947"><dt class="dlterm"> <var>save_mask</var></dt>
+<dd> <p>A bit mask specifying the extended states to be saved.</p>
+</dd>
+</dl>
+</div>
+
+
+<div class="section" id="GUID-17252059-AE45-42AC-B2D8-8C7C8777B552"><h2>Description</h2>
+<p> Saves the states of <span class="keyword">x87 FPU</span>, <span class="keyword">MMX</span>, <span class="keyword">XMM</span>, <span class="keyword">YMM</span>, and <span class="keyword">MXCSR</span> registers to memory. This intrinsic maps to <span class="option">XSAVE</span> instruction.</p>
+
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-581B0137-E8F1-4E7E-80E9-301B5DF7E05F.htm">Intrinsics for Saving and Restoring the Extended Processor States</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

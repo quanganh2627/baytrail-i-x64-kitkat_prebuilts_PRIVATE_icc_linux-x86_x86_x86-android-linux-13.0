@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_maskload_epi32/64, _mm256_maskload_epi32/64">
+<meta name="abstract" content="Conditionally loads dwords/qwords from the specified memory location, depending on the mask bits associated with each data element. The corresponding Intel&reg; AVX2 instruction is VPMASKMOVD or VPMASKMOVQ.">
+<meta name="description" content="Conditionally loads dwords/qwords from the specified memory location, depending on the mask bits associated with each data element. The corresponding Intel&reg; AVX2 instruction is VPMASKMOVD or VPMASKMOVQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, masked load and store operations, _mm256_maskload_epi32 (VPMASKMOVD), _mm256_maskload_epi64 (VPMASKMOVQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, masked load and store operations, _mm256_maskload_epi32 (VPMASKMOVD), _mm256_maskload_epi64 (VPMASKMOVQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-2F4ED91E-EB85-4B7B-9B7B-6212D8A48B02.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D860724A-15FA-4F77-8F7F-AD8C7B53B698">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_maskload_epi32/64, _mm256_maskload_epi32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_mskld"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_maskload_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_maskload_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D860724A-15FA-4F77-8F7F-AD8C7B53B698">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm_maskload_epi32/64, _mm256_maskload_epi32/64</span> </h1>
+
+
+<!-- Conditionally loads dwords/qwords from the specified memory location, depending on the mask bits associated with each data element. The corresponding Intel&reg; AVX2 instruction is  VPMASKMOVD  or  VPMASKMOVQ .--><div><p> Conditionally loads dwords/qwords from the specified memory location, depending on the mask bits associated with each data element. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMASKMOVD</span> or <span class="keyword">VPMASKMOVQ</span>.</p>
+
+
+<div class="section" id="GUID-E816E73D-2E1F-4E29-BDC9-1DA1B9B7C768"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m128i _mm_maskload_epi32(int const * addr, __m128i mask);</span></p></td></tr></table>
+  
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_maskload_epi32(int const * addr, __m256i mask);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m128i _mm_maskload_epi64(__int64 const * addr, __m128i mask);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_maskload_epi64(__int64 const * addr, __m256i mask);</span></p></td></tr></table>
+  </div>
+
+
+<div class="section" id="GUID-6E4274C1-D729-4824-9435-889F4FCFB642"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>addr</var></p></td>
+
+      <td valign="top" class="noborder"><p> pointer to data to be loaded</p>
+</td>
+
+    </tr>
+	<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>mask</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source  vector</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-A8E52721-2F35-49AC-B803-BDE47FDD2A83"><h2>Description</h2>
+
+<p> Conditionally loads 32/64-bit data elements from the memory referenced by the <samp class="codeph">addr</samp> and stores it into the corresponding data element of the result vector. If an element of mask is 0, the 32/64-bit zero is written to the corresponding element of the result vector. The mask bit for each data element is the most significant bit of that element in mask. </p>
+</div>
+
+
+
+
+<div class="section" id="GUID-2F5D5CF3-7BFC-434D-AEE9-5CB860B49CF3"><h2>Returns</h2><p>Result of the masked load operation.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2F4ED91E-EB85-4B7B-9B7B-6212D8A48B02.htm">Intrinsics for Masked Load/Store Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

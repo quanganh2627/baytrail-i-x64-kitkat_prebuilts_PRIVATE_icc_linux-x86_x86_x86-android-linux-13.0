@@ -1,0 +1,58 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Quiet-Computational Operations Functions">
+<meta name="DC.subject" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, quiet-computational operations, copy, negate, copysign">
+<meta name="keywords" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, quiet-computational operations, copy, negate, copysign">
+<meta name="DC.Relation" scheme="URI" content="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-273C883C-ABB7-48CB-BC5B-6160F805E657">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Quiet-Computational Operations Functions</title>
+</head>
+<body id="GUID-273C883C-ABB7-48CB-BC5B-6160F805E657">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">Quiet-Computational Operations Functions</h1>
+
+  <div><p>Many routines in the libbfp754 library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+<p>The Intel&reg; IEEE 754-2008 Binary Conformance Library supports the following functions for quiet-computational operations:</p>
+<div class="section" id="COPY"><a name="COPY"><!-- --></a><h2 class="sectiontitle">  copy</h2><p><strong>Description:</strong> The function copies input floating-point number <samp class="codeph">x</samp> to output in the same floating-point format, without any change to the sign.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_copy(float x);</samp><br><samp class="codeph">double __binary64_copy(double x);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>When the input is a signaling <samp class="codeph">NaN</samp>, two different outcomes are allowed by the standard. The operation could either signal invalid exception with quieted signaling <samp class="codeph">NaN</samp> as output, or deliver signaling <samp class="codeph">NaN</samp> as output without signaling any exception.</p>
+</div></div>
+<div class="section" id="NEGATE"><a name="NEGATE"><!-- --></a><h2 class="sectiontitle">    negate</h2><p><strong>Description:</strong> The function copies input floating-point number <samp class="codeph">x</samp> to output in the same floating-point format, reversing the sign.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_negate(float x);</samp><br><samp class="codeph">double __binary64_negate(double x);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>When the input is a signaling <samp class="codeph">NaN</samp>, two different outcomes are allowed by the standard. The operation could either signal invalid exception with quieted signaling <samp class="codeph">NaN</samp> as output, or deliver signaling <samp class="codeph">NaN</samp> as output without signaling any exception.</p>
+</div></div>
+<div class="section" id="ABS"><a name="ABS"><!-- --></a><h2 class="sectiontitle">      abs</h2><p><strong>Description:</strong> The function copies input floating-point number <samp class="codeph">x</samp> to output in the same floating-point format, setting the sign to positive.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_abs(float x);</samp><br><samp class="codeph">double __binary64_abs(double x);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>When the input is a signaling <samp class="codeph">NaN</samp>, two different outcomes are allowed by the standard. The operation could either signal invalid exception with quieted signaling <samp class="codeph">NaN</samp> as output, or deliver signaling <samp class="codeph">NaN</samp> as output without signaling any exception.</p>
+</div></div>
+<div class="section" id="COPYSIGN"><a name="COPYSIGN"><!-- --></a><h2 class="sectiontitle">        copysign</h2><p><strong>Description:</strong> The function copies input floating-point number <samp class="codeph">x</samp> to output in the same floating-point format, with the same sign as <samp class="codeph">y</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_copysign(float x, float y);</samp><br><samp class="codeph">double __binary64_copysign(double x, double y);</samp></p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>When the first input is a signaling <samp class="codeph">NaN</samp>, two different outcomes are allowed by the standard. The operation could either signal invalid exception with quieted signaling <samp class="codeph">NaN</samp> as output, or deliver signaling <samp class="codeph">NaN</samp> as output without signaling any exception.</p>
+</div></div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm">Function List</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

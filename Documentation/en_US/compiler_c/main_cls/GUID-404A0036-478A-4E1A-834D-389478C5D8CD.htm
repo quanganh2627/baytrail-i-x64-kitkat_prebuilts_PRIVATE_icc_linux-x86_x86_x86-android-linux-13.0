@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_zeroall">
+<meta name="abstract" content="Zeroes all YMM registers. The corresponding Intel&reg; AVX instruction is VZEROALL.">
+<meta name="description" content="Zeroes all YMM registers. The corresponding Intel&reg; AVX instruction is VZEROALL.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_zeroall (VZEROALL)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, miscellaneous operations, _mm256_zeroall (VZEROALL)">
+<meta name="DC.Relation" scheme="URI" content="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-404A0036-478A-4E1A-834D-389478C5D8CD">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_zeroall</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_zeroall"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-404A0036-478A-4E1A-834D-389478C5D8CD">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_zeroall</span></h1>
+
+
+<!--Zeroes all YMM registers. The corresponding Intel&reg; AVX instruction is  VZEROALL .--><div><p>Zeroes all YMM registers. The corresponding Intel&reg; AVX instruction is <span class="keyword">VZEROALL</span>.</p>
+
+
+<div class="section" id="GUID-2745D86A-1EF1-4B70-B377-D2435E0D48AE"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern void _mm256_zeroall(void);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-C10ABA50-B2B5-452D-88B0-BC7B4FF72A86"><h2>Arguments</h2><p>None</p>
+
+  
+</div>
+
+
+<div class="section" id="GUID-C7EA5192-7C82-46A5-894E-38CE823E4DE4"><h2>Description</h2>
+<p>Zeroes all <samp class="codeph">YMM</samp> registers. This intrinsic is useful to clear all the YMM registers when transitioning between Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) instructions and legacy Intel&reg; Supplemental SIMD Extensions (Intel&reg; SSE) instructions. </p>
+<p>There is no transition penalty if an application clears the bits of all <samp class="codeph">YMM</samp> registers (sets to ‘0’) via <span class="keyword">VZEROALL</span>, the corresponding instruction for this intrinsic, before transitioning between Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) instructions and legacy Intel&reg; Supplemental SIMD Extensions (Intel&reg; SSE) instructions.</p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-654A34C9-C23E-455D-963B-0BF1F5ABFAFB"><h2>Returns</h2><p> Nothing
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-290F279F-1BC4-4A46-858A-10D41F58B81F.htm">Intrinsics for Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

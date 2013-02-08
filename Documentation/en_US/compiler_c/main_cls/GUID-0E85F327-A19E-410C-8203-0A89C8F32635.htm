@@ -1,0 +1,729 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using the OpenMP* Libraries">
+<meta name="DC.subject" content="OpenMP* Libraries, using">
+<meta name="keywords" content="OpenMP* Libraries, using">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0E85F327-A19E-410C-8203-0A89C8F32635">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using the OpenMP* Libraries</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_compat_libs_using"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_compat_libs_using"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0E85F327-A19E-410C-8203-0A89C8F32635">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using the OpenMP* Libraries</h1>
+ 
+   
+  <div> 
+    <p>This section describes the steps needed to set up and use the OpenMP* Libraries from the command line. On Windows* systems, you can also build applications compiled with the OpenMP libraries in the Microsoft Visual Studio* development environment. 
+    </p>
+ 
+    <p>For a summary of the support provided by the libraries provided with Intel compilers, see 
+      <a href="GUID-BAD5FFB7-D761-45CA-B539-E041CD0486E9.htm#GUID-BAD5FFB7-D761-45CA-B539-E041CD0486E9">OpenMP* Source Compatibility and Interoperability with Other Compilers</a>. 
+    </p>
+ 
+    <p>For a list of the options and libraries used by the OpenMP libraries, see 
+      <a href="GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7.htm#GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7">OpenMP* Support Libraries</a>. 
+    </p>
+ 
+    <p>Set up your environment for access to the Intel compiler to ensure that the appropriate OpenMP library is available during linking. On Windows systems, you can either execute the appropriate batch (.bat) file or use the command-line window supplied in the compiler program folder that already has the environment set up. On Linux and Mac OS systems, you can source the appropriate script file (<span>iccvars</span> file). 
+    </p>
+ 
+    <p>During compilation, ensure that the version of 
+    <span class="filepath">omp.h</span> used when compiling is the version provided by that compiler. For example, on Linux systems when compiling with the GNU C/C++ compiler, use the 
+    <span class="filepath">omp.h</span> provided with the GNU C/C++ compiler. 
+  </p>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Caution</h3> 
+    <p>Be aware that when using the GNU*/Microsoft* compiler, you may inadvertently use inappropriate header/module files. To avoid this, copy the header/module file(s) to a separate directory and put it in the appropriate 
+      <samp class="codeph">include</samp> path using the 
+    <span class="option">-I</span> option. 
+    </p>
+ 
+  </div> 
+  <p>If a program uses data structures or classes that contain members with data types defined in 
+    <span class="filepath">omp.h</span> file, then source files that use those data structures should all be compiled with the same 
+    <span class="filepath">omp.h</span> file. 
+  </p>
+ 
+  <p>The following table lists the commands used by the various command-line compilers for both C and C++ source files.: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5CB498F1-9DE1-4B60-B2F4-FCB3282790A3" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+      <thead align="left"> 
+        <tr valign="middle"> 
+          <th class="cellrowborder" align="left" valign="middle" id="d41721e102"> 
+            <p>Operating System 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="middle" id="d41721e108"> 
+            <p>C Source Module 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="middle" id="d41721e114"> 
+            <p> C++ Source Module 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr valign="middle"> 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e102 "> 
+            <p>Linux* 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e108 "> 
+            <p>GNU: 
+              <span class="keyword">gcc</span><br>Intel: 
+              <span class="keyword">icc</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e114 "> 
+            <p>GNU: 
+              <span class="keyword">g++</span><br>Intel: 
+              <span class="keyword">icpc</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr valign="middle"> 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e102 "> 
+            <p>Mac OS* X 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e108 "> 
+            <p>GNU: 
+              <span class="keyword">gcc</span><br>Intel: 
+              <span class="keyword">icc</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e114 "> 
+            <p>GNU: 
+              <span class="keyword">g++</span><br>Intel: 
+              <span class="keyword">icpc</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr valign="middle"> 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e102 "> 
+            <p>Windows* 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e108 "> 
+            <p>Visual C++: 
+              <span class="keyword">cl</span><br>Intel: 
+              <span class="keyword">icl</span> 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" align="left" valign="middle" headers="d41721e114 "> 
+            <p>Visual C++: 
+              <span class="keyword">cl</span><br>Intel: 
+              <span class="keyword">icl</span> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p>For information on the OpenMP libraries and options used by the Intel compiler, see 
+    <a href="GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7.htm#GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7">OpenMP* Support Libraries</a>. 
+  </p>
+ 
+  <div class="section" id="GUID-DAD4F933-8D44-4F58-9B69-E93542EE9C8D"><h2 class="sectiontitle">Using Intel OpenMP* Libraries from Visual Studio*</h2> 
+     
+    <p>When using systems running a Windows OS, you can make certain changes in the Visual C++ Visual Studio 2005 development environment to allow you to use the Intel C++ Compiler and Visual C++ to create applications that use the Intel OpenMP libraries. 
+    </p>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+      <p>Microsoft Visual C++ must have the symbol 
+        <span class="keyword">_OPENMP_NOFORCE_MANIFEST</span> defined or it will include the manifest for the 
+        <span class="filepath">vcomp90</span> dlls. While this may not appear to cause a problem on the build system, it will cause a problem when the application is moved to another system that does not have this DLL installed. 
+      </p>
+ 
+    </div> 
+    <p>Set the project 
+      <strong>Property Pages</strong> to indicate the Intel OpenMP run-time library location: 
+    </p>
+ 
+    <ol id="GUID-EAFEE107-F469-4BD5-BFD9-F510B65B933D"> 
+      <li> 
+        <p>Open the project's property pages in from the main menu: 
+          <b class="uicontrol">Project</b> &gt; 
+          <b class="uicontrol">Properties</b> (or right click the Project name and select 
+          <b class="uicontrol">Properties</b>) . 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Select 
+          <b class="uicontrol">Configuration Properties</b> &gt; 
+          <b class="uicontrol">Linker</b> &gt; 
+          <b class="uicontrol">General</b> &gt; 
+          <b class="uicontrol">Additional Library Directories</b> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Enter the path to the Intel compiler libraries. For example, for an IA-32 architecture system, enter: 
+        </p>
+ 
+        <pre>&lt;<var>Intel_compiler_installation_path</var>&gt;\IA32\LIB</pre> 
+      </li>
+ 
+    </ol>
+ 
+    <p>Make the Intel OpenMP dynamic run-time library accessible at run-time; you must specify the corresponding path: 
+    </p>
+ 
+    <ol id="GUID-B98232FD-EF10-4EAC-89C4-F5125E00A8BA"> 
+      <li> 
+        <p>Open the project's property pages in from the main menu: 
+          <b class="uicontrol">Project</b> &gt; 
+          <b class="uicontrol">Properties</b> (or right click the Project name and select 
+          <b class="uicontrol">Properties</b>). 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Select 
+          <b class="uicontrol">Configuration Properties</b> &gt; 
+          <b class="uicontrol">Debugging</b> &gt; 
+          <b class="uicontrol">Environment</b> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Enter the path to the Intel compiler libraries. For example, for an IA-32 architecture system, enter: 
+          <pre>PATH=%PATH%;&lt;<var>Intel_compiler_installation_path</var>&gt;\IA32\Bin</pre> 
+        </p>
+ 
+      </li>
+ 
+    </ol>
+ 
+    <p>Add the Intel OpenMP run-time library name to the linker options and exclude the default Microsoft OpenMP run-time library: 
+    </p>
+ 
+    <ol id="GUID-B027E076-0D1D-4871-8627-596B58F25CFF"> 
+      <li> 
+        <p>Open the project's property pages in from the main menu: 
+          <b class="uicontrol">Project</b> &gt; 
+          <b class="uicontrol">Properties</b> (or right click the Project name and select 
+          <b class="uicontrol">Properties</b>). 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Select 
+          <b class="uicontrol">Configuration Properties</b> &gt; 
+          <b class="uicontrol">Linker</b> &gt; 
+          <b class="uicontrol">Command Line</b> &gt; 
+          <b class="uicontrol">Additional Options</b> 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Enter the OpenMP library name and the Visual C++ linker option, 
+    <span class="option">/nodefaultlib</span>. 
+    </p>
+ 
+    </li>
+ 
+    </ol>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-358E8BFF-3620-45A3-9B5C-6442EE6E80C4"><h2 class="sectiontitle">Command-Line Examples, Linux OS and Mac OS X</h2> 
+     
+    <p>To compile and link (build) the entire application with one command using the Intel OpenMP libraries, specify the following Intel compiler command: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B02E646D-4DB7-4DCF-84BA-CE0245D4DD8F" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e432"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e438"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e432 "> 
+              <p>C source 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e438 "> 
+              <p><samp class="codeph">icc -openmp hello.c</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e432 "> 
+              <p>C++ source 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e438 "> 
+              <p><samp class="codeph">icpc -openmp hello.cpp</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>By default, the Intel compilers perform a dynamic link of the OpenMP libraries. To perform a static link (not recommended), add the option 
+    <span class="option">-openmp-link static</span>. The Intel compiler option 
+    <a href="GUID-C95229C0-55C7-4FAE-B6D0-39D9C46761BE.htm#GUID-C95229C0-55C7-4FAE-B6D0-39D9C46761BE"><span class="option">-openmp-link</span></a> controls whether the linker uses static or dynamic OpenMP libraries on Linux OS and Mac OS X systems (default is 
+    <span class="option">-openmp-link dynamic</span>). 
+    </p>
+ 
+    <p>You can also use both Intel C++ 
+      <span class="keyword">icc/icpc</span> and GNU 
+      <span class="keyword">gcc/g++</span> compilers to compile parts of the application and create object files (object-level interoperability). In this example, the GNU compiler compiles the C file 
+      <span class="filepath">foo.c</span> (the 
+      <span class="keyword">gcc</span> option 
+    <span class="option">-fopenmp</span> enables OpenMP support), and the Intel compiler links the application using the Intel OpenMP library: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A19E3E01-6FD8-4174-B3EB-E81FEEA0205A" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e533"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e539"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e533 "> 
+              <p>C source 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e539 "> 
+              <p><samp class="codeph">gcc -fopenmp -c foo.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp foo.o</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e533 "> 
+              <p>C++ source 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e539 "> 
+              <p><samp class="codeph">g++ -fopenmp -c foo.cpp</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icpc -openmp foo.o</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>When using GNU 
+      <span class="keyword">gcc</span> or 
+      <span class="keyword">g++</span> compiler to link the application with the Intel compiler OpenMP compatibility library, you need to explicitly pass the Intel OpenMP library name using the 
+    <span class="option">-l</span> option, the Linux 
+    <span class="keyword">pthread</span> library using the 
+    <span class="option">-l</span> option, and path to the Intel libraries where the Intel C++ compiler is installed using the 
+    <span class="option">-L</span> option: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BF274A02-C111-4258-92FF-6F50C2E2489E" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e630"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e636"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e630 "> 
+              <p>C source 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e636 "> 
+              <p><samp class="codeph">gcc -fopenmp -c foo.c bar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">gcc foo.o bar.o -liomp5 -lpthread -L&lt;icc_dir&gt;/lib</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>You can mix object files, but it is easier to use the Intel compiler to link the application so you do not need to specify the 
+      <span class="keyword">gcc</span> 
+    <span class="option">-l</span> option, 
+    <span class="option">-L</span> option, and the 
+    <span class="option">-lpthread</span> option: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-30B48881-2AC7-4AA1-A6E5-93DC0380897D" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e698"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e704"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e698 "> 
+              <p>C source 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e704 "> 
+              <p><samp class="codeph">gcc -fopenmp -c foo.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp -c bar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp foo.o bar.o</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>You can mix OpenMP object files compiled with the GNU gcc compiler, the Intel&reg; C++ Compiler, and the Intel&reg; Fortran Compiler. 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>You cannot mix object files compiled by the Intel Fortran compiler and the 
+          <samp class="codeph">gfortran</samp> compiler. 
+        </p>
+ 
+      </div> 
+    </p>
+ 
+    <p>The table illustrates examples of using the Intel Fortran compiler or the GNU Fortran compiler to link all the objects: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-40E0FAF9-A4FD-410E-99C4-992C4C20B7E6" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e772"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e778"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e772 "> 
+              <p>Mixed C and Fortran sources 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e778 "> 
+              <p><samp class="codeph">ifort -openmp -c foo.f</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp -c ibar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">gcc -fopenmp -c gbar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">ifort -openmp foo.o ibar.o gbar.o</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DF188508-17DA-4D88-8566-75E3647F87C2" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e835"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e841"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e835 "> 
+              <p>Mixed C and GNU Fortran sources 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e841 "> 
+              <p><samp class="codeph">gfortran -fopenmp -c foo.f</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp -c ibar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">gcc -fopenmp -c gbar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">gfortran foo.o ibar.o gbar.o -lirc -liomp5 -lpthread -lc -L&lt;icc_dir&gt;/lib</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    <p>Alternatively, you could use the Intel compiler to link the application, but need to pass multiple 
+      <span class="keyword">gfortran</span> libraries using the 
+    <span class="option">-l</span> options on the link line: 
+    </p>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-07993E4A-A897-49EE-9B7A-42B19ACA1359" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr valign="top"> 
+            <th class="cellrowborder" valign="top" width="30%" id="d41721e907"> 
+              <p>Type of File 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" valign="top" width="70%" id="d41721e913"> 
+              <p>Commands 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr valign="top"> 
+            <td class="cellrowborder" valign="top" width="30%" headers="d41721e907 "> 
+              <p>Mixed C and Fortran sources 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="70%" headers="d41721e913 "> 
+              <p><samp class="codeph">gfortran -fopenmp -c foo.f</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp -c ibar.c</samp> 
+              </p>
+ 
+              <p><samp class="codeph">icc -openmp foo.o bar.o -lgfortranbegin -lgfortran</samp> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">OpenMP* Library Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

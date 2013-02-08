@@ -1,0 +1,589 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Loop Constructs">
+<meta name="DC.subject" content="COS, correct usage of, DO constructs, correct usage of countable loop, endian data, loop constructs, loops, constructs, vectorizing">
+<meta name="keywords" content="COS, correct usage of, DO constructs, correct usage of countable loop, endian data, loop constructs, loops, constructs, vectorizing">
+<meta name="DC.Relation" scheme="URI" content="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F6ADE969-EC9D-4670-AB1A-93CD4CF4BE94">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Loop Constructs</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_vec_lpcs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_vec_lpcs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F6ADE969-EC9D-4670-AB1A-93CD4CF4BE94">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Loop Constructs</h1>
+
+
+
+
+<div>
+<p><span>Loops can be formed with the usual <span class="keyword">for</span> and <span class="keyword">while</span> constructs.</span> The loops must have a single entry and a single exit to be vectorized. The following examples illustrate loop constructs that can and cannot be vectorized.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-869C99D3-8B7E-45B8-B5BA-60A679B47F90" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e71"><p>Example: Vectorizable structure</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" headers="d849470e71 ">
+
+<pre>void vec(float a[], float b[], float c[])</pre>
+<pre>{</pre>
+<pre>  int i = 0;</pre>
+<pre>  while (i &lt; 100) {</pre>
+<pre>// The if branch is inside body of loop.</pre>
+<pre>    a[i] = b[i] * c[i];</pre>
+<pre>    if (a[i] &lt; 0.0)</pre>
+<pre>        a[i] = 0.0;</pre>
+<pre>        i++;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>The following example shows a loop that cannot be vectorized because of the inherent potential for an early exit from the loop.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-921AFAB5-88F9-412C-8DFD-D77B20BBFE85" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e130"><p>Example: Non-vectorizable structure</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" headers="d849470e130 ">
+
+<pre>void no_vec(float a[], float b[], float c[])</pre>
+<pre>{</pre>
+<pre>  int i = 0;</pre>
+<pre>  while (i &lt; 100) {</pre>
+<pre>    if (a[i] &lt; 50)</pre>
+<pre>// The next statement is a second exit</pre>
+<pre>// that allows an early exit from the loop.</pre>
+<pre>      break;</pre>
+<pre>    ++i;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<div class="section" id="GUID-8C28AB18-4B07-4417-82F2-87898B514845"><h2 class="sectiontitle">Loop Exit Conditions</h2>
+
+<p>Loop exit conditions determine the number of iterations a loop executes. For example, fixed indexes for loops determine the iterations. The loop iterations must be countable; in other words, the number of iterations must be expressed as one of the following:</p>
+
+
+<ul type="disc" id="GUID-5459BB34-AA1E-4282-9905-DA45985CDD11">
+  <li><p>A constant</p>
+</li>
+
+  <li><p>A loop invariant term</p>
+</li>
+
+  <li><p>A linear function of outermost loop indices</p>
+</li>
+
+</ul>
+
+
+<p>In the case where a loops exit depends on computation, the loops are not countable. The examples below show loop constructs that are countable and non-countable.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-50EE0785-9589-4CFD-831B-CF91EE6FCC35" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e214"><p>Example: Countable Loop</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e214 ">
+
+<pre>void cnt1(float a[], float b[], float c[],</pre>
+<pre>          int n, int lb)</pre>
+<pre>{</pre>
+<pre>// Exit condition specified by "N-1b+1"</pre>
+<pre>  int cnt=n, i=0;</pre>
+<pre>  while (cnt &gt;= lb) {</pre>
+<pre>// lb is not affected within loop.</pre>
+<pre>    a[i] = b[i] * c[i];</pre>
+<pre>    cnt--;</pre>
+<pre>    i++;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>The following example demonstrates a different countable loop construct.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4B17D9E7-6487-49F4-A19B-8EC42EF68073" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e280"><p>Example: Countable Loop</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e280 ">
+
+<pre>void cnt2(float a[], float b[], float c[],</pre>
+<pre>          int m, int n)</pre>
+<pre>{</pre>
+<pre>// Number of iterations is "(n-m+2)/2".</pre>
+<pre>  int i=0, l;</pre>
+<pre>  for (l=m; l&lt;n; l+=2) {</pre>
+<pre>    a[i] = b[i] * c[i];</pre>
+<pre>    i++;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p>The following examples demonstrates a loop construct that is non-countable due to dependency loop variant count value.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F74F28AC-93F3-4D2B-825D-8F49D7C884B4" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e338"><p>Example: Non-Countable Loop</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e338 ">
+
+<pre>void no_cnt(float a[], float b[], float c[])</pre>
+<pre>{</pre>
+<pre>  int i=0;</pre>
+<pre>// Iterations dependent on a[i].</pre>
+<pre>  while (a[i]&gt;0.0) {</pre>
+<pre>    a[i] = b[i] * c[i];</pre>
+<pre>    i++;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+<div class="section" id="GUID-9B2C79B6-4F0F-4302-9756-05A3B6B8A893"><h2 class="sectiontitle">Strip-mining and Cleanup</h2>
+
+<p>Strip-mining, also known as loop sectioning, is a loop transformation technique for enabling SIMD-encodings of loops, as well as a means of improving memory performance. By fragmenting a large loop into smaller segments or strips, this technique transforms the loop structure in two ways:</p>
+
+
+<ul type="disc" id="GUID-137A9389-97D7-45B5-B90C-112476D3D15D">
+  <li><p>It increases the temporal and spatial locality in the data cache if the data are reusable in different passes of an algorithm.</p>
+</li>
+
+  <li><p>It reduces the number of iterations of the loop by a factor of the length of each vector, or number of operations being performed per SIMD operation. In the case of Streaming SIMD Extensions, this vector or strip-length is reduced by 4 times: four floating-point data items per single Streaming SIMD Extensions single-precision floating-point SIMD operation are processed.</p>
+</li>
+
+</ul>
+
+
+<p>First introduced for vectorizers, this technique consists of the generation of code when each vector operation is done for a size less than or equal to the maximum vector length on a given vector machine.</p>
+
+<p>The compiler automatically strip-mines your loop and generates a cleanup loop. For example, assume the compiler attempts to strip-mine the following loop:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6F800600-6CE1-4D0B-92D9-CACBD7E75BAD" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e418"><p>Example1: Before Vectorization</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" headers="d849470e418 ">
+
+<pre>i=0;</pre>
+<pre>while(i&lt;n)</pre>
+<pre>{</pre>
+<pre>  // Original loop code </pre>
+<pre>  a[i]=b[i]+c[i];</pre>
+<pre>  ++i;</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p>The compiler might handle the strip mining and loop cleaning by restructuring the loop in the following manner:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9A0E6726-064C-4708-AD63-23EB309A8EEF" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e467"><p>Example 2: After Vectorization</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e467 ">
+
+<pre>// The vectorizer generates the following two loops </pre>
+<pre>i=0;</pre>
+<pre>while(i&lt;(n-n%4))</pre>
+<pre>{</pre>
+<pre>  // Vector strip-mined loop</pre>
+<pre>  // Subscript [i:i+3] denotes SIMD execution</pre>
+<pre>  a[i:i+3]=b[i:i+3]+c[i:i+3];</pre>
+<pre>  i=i+4;</pre>
+<pre>}</pre>
+<pre>while(i&lt;n)</pre>
+<pre>{</pre>
+<pre>  // Scalar clean-up loop</pre>
+<pre>  a[i]=b[i]+c[i];</pre>
+<pre>  ++i;</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p><strong>Loop Blocking</strong></p>
+
+<p>It is possible to treat loop blocking as strip-mining in two or more dimensions. Loop blocking is a useful technique for memory performance optimization. The main purpose of loop blocking is to eliminate as many cache misses as possible. This technique transforms the memory domain into smaller chunks rather than sequentially traversing through the entire memory domain. Each chunk should be small enough to fit all the data for a given computation into the cache, thereby maximizing data reuse.</p>
+
+<p>Consider the following example, loop blocking allows arrays <var>A</var> and <var>B</var> to be blocked into smaller rectangular chunks so that the total combined size of two blocked (A and B) chunks is smaller than cache size, which can improve data reuse.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-26873304-6D56-4FFF-B28E-A4C5EE7CD559" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e555"><p>Example 3: Original loop</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e555 ">
+
+<pre>#include &lt;time.h&gt;</pre>
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>#define MAX 7000</pre>
+<pre>void add(int a[][MAX], int b[][MAX]);</pre>
+<pre>int main()</pre>
+<pre>{</pre>
+<pre>int i, j;</pre>
+<pre>int A[MAX][MAX];</pre>
+<pre>int B[MAX][MAX];</pre>
+<pre>time_t start, elaspe;</pre>
+<pre>int sec;</pre>
+<pre>//Initialize array</pre>
+<pre>for(i=0;i&lt;MAX;i++)</pre>
+<pre>{</pre>
+<pre>  for(j=0;j&lt;MAX; j++)</pre>
+<pre>  {</pre>
+<pre>    A[i][j]=j;</pre>
+<pre>    B[i][j]=j;</pre>
+<pre>  }</pre>
+<pre> }</pre>
+<pre> start= time(NULL);</pre>
+<pre> add(A, B);</pre>
+<pre> elaspe=time(NULL);</pre>
+<pre> sec = elaspe - start;</pre>
+<pre> printf("Time %d",sec); //List time taken to complete add function</pre>
+<pre>}</pre>
+<pre>void add(int a[][MAX], int b[][MAX])</pre>
+<pre>{</pre>
+<pre> int i, j;</pre>
+<pre> for(i=0;i&lt;MAX;i++)</pre>
+<pre>  {</pre>
+<pre>  for(j=0; j&lt;MAX;j++)</pre>
+<pre>   {</pre>
+<pre>     a[i][j] = a[i][j] + b[j][i]; //Adds two matrices</pre>
+<pre>   }</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p>The following example illustrates loop blocking the <span class="keyword">add</span> function (from the previous example). In order to benefit from this optimization you might have to increase the cache size.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AB2E8F5F-C3E2-4BE6-B994-DE6C991A396C" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e702"><p>Example 4: Transformed Loop after blocking</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e702 ">
+
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>#include &lt;time.h&gt;</pre>
+<pre>#define MAX 7000</pre>
+<pre>void add(int a[][MAX], int b[][MAX]);</pre>
+<pre>int main()</pre>
+<pre>{</pre>
+<pre>#define BS 8  //Block size is selected as the loop-blocking factor.</pre>
+<pre>int i, j;</pre>
+<pre>int A[MAX][MAX];</pre>
+<pre>int B[MAX][MAX];</pre>
+<pre>time_t start, elaspe;</pre>
+<pre>int sec;</pre>
+<pre>//initialize array</pre>
+<pre>for(i=0;i&lt;MAX;i++)</pre>
+<pre> {</pre>
+<pre>  for(j=0;j&lt;MAX;j++)</pre>
+<pre>  {</pre>
+<pre>    A[i][j]=j;</pre>
+<pre>    B[i][j]=j;</pre>
+<pre>  }</pre>
+<pre> }</pre>
+<pre>start= time(NULL);</pre>
+<pre>add(A, B);</pre>
+<pre>elaspe=time(NULL);</pre>
+<pre>sec = elaspe - start;</pre>
+<pre>printf("Time %d",sec); //Display time taken to complete loopBlocking function</pre>
+<pre>}</pre>
+<pre>void add(int a[][MAX], int b[][MAX])</pre>
+<pre>{</pre>
+<pre>int i, j, ii, jj;</pre>
+<pre>for(i=0;i&lt;MAX;i+=BS)</pre>
+<pre> {</pre>
+<pre> for(j=0; j&lt;MAX;j+=BS)</pre>
+<pre>  {</pre>
+<pre>   for(ii=i; ii&lt;i+BS; ii++)//outer loop</pre>
+<pre>    {</pre>
+<pre>     for(jj=j;jj&lt;j+BS; jj++) //Array B experiences one cache miss</pre>
+<pre>      {                      //for every iteration of outer loop</pre>
+<pre>        a[ii][jj] = a[ii][jj] + b[jj][ii]; //Add the two arrays</pre>
+<pre>      }</pre>
+<pre>    }</pre>
+<pre>  }</pre>
+<pre> }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+<div class="section" id="GUID-E67C1473-92C6-48AF-BDD9-5A0E155FCCB3"><h2 class="sectiontitle">Loop Interchange and Subscripts: Matrix Multiply</h2>
+
+<p>Loop interchange is often used for improving memory access patterns. Matrix multiplication is commonly written as shown in the following example:</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A7062975-8452-49E5-B8F3-E1C491909E6C" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e873"><p>Example: Typical Matrix Multiplication</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e873 ">
+
+<pre>void matmul_slow(float *a[], float *b[], float *c[])</pre>
+<pre>{</pre>
+<pre>  int N = 100;</pre>
+<pre>  for (int i = 0; i &lt; N; i++)</pre>
+<pre>    for (int j = 0; j &lt; N; j++)</pre>
+<pre>      for (int k = 0; k &lt; N; k++)</pre>
+<pre>        c[i][j] = c[i][j] + a[i][k] * b[k][j];</pre>
+<pre>}</pre>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<p>The use of <span class="keyword">B(K,J)</span>is not a stride-1 reference and therefore will not be vectorized efficiently.</p>
+
+<p>If the loops are interchanged, however, all the references will become stride-1 as shown in the following example.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2F032496-F235-42C2-A21F-F510F7D7EE6B" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d849470e931"><p>Example: Matrix Multiplication with Stride-1</p>
+</th>
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d849470e931 ">
+
+<pre>void matmul_fast(float *a[], float *b[], float *c[])</pre>
+<pre>{</pre>
+<pre>  int N = 100;</pre>
+<pre>  for (int i = 0; i &lt; N; i++)</pre>
+<pre>    for (int k = 0; k &lt; N; k++)</pre>
+<pre>      for (int j = 0; j &lt; N; j++)</pre>
+<pre>        c[i][j] = c[i][j] + a[i][k] * b[k][j];</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>Interchanging is not always possible because of dependencies, which can lead to different results.</p>
+
+
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7D541D6D-4929-4F35-A58D-B67F9A897AA0.htm">Automatic Vectorization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

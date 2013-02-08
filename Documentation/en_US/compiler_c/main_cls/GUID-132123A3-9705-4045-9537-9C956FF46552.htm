@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_broadcastsd_pd">
+<meta name="abstract" content="Takes the low packed double-precision floating-point data element from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is VBROADCASTSD.">
+<meta name="description" content="Takes the low packed double-precision floating-point data element from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is VBROADCASTSD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, broadcast operations, _mm_broadcastsd_pd (VBROADCASTSD), _mm256_broadcastsd_pd (VBROADCASTSD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, broadcast operations, _mm_broadcastsd_pd (VBROADCASTSD), _mm256_broadcastsd_pd (VBROADCASTSD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-96EA5DE2-87C7-4292-8149-08459514A829.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-132123A3-9705-4045-9537-9C956FF46552">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_broadcastsd_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_broadcastsd_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-132123A3-9705-4045-9537-9C956FF46552">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_broadcastsd_pd</span>   </h1>
+<!-- Takes the low packed double-precision floating-point data element from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is  VBROADCASTSD .--><div><p> Takes the low packed double-precision floating-point data element from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VBROADCASTSD</span>.</p>
+
+
+<div class="section" id="GUID-C4111029-BDFA-4019-A85A-58E181FCD9A3"><h2>Syntax</h2>   
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256d _mm256_broadcastsd_pd(__m128d val);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-FDD9C12B-DA0A-4F0A-A14F-EA5424A23DF1"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>val</var></p></td>
+
+<td valign="top" class="noborder"><p>__m128 vector containing the 64-bit element to be broadcasted</p>
+</td>
+</tr>
+</table>
+</div>
+
+
+<div class="section" id="GUID-6A4D6338-AB2F-4D9D-BD8C-867748051503"><h2>Description</h2>
+<p>Takes the low packed double-precision floating-point (float64) data element from the source operand and broadcasts it to all elements of the result vector. The source operand is  <samp class="codeph">__m128d</samp>; only the low 64 bits of this operand are broadcasted. </p>
+<p>The 128-bit version of this intrinsics is <span class="keyword">_mm_broadcastsd_pd</span>. The intrinsic's syntax is <span class="keyword">extern __m128d _mm_broadcastsd_pd(__m128d val)</span>;  This intrinsic is an alias for <span class="keyword">_mm_movedup_pd()</span> intrinsic. Please, see <a href="GUID-6C7D58DF-EEF8-46DE-8362-684355BBC64C.htm#GUID-6C7D58DF-EEF8-46DE-8362-684355BBC64C">Double-precision Floating-point Vector Intrinsics</a> for details.</p>
+</div>
+
+
+<div class="section" id="GUID-4FFFDC8A-0DB4-4148-97F7-9A26506E5447"><h2>Returns</h2><p>Return result of the broadcast operation.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96EA5DE2-87C7-4292-8149-08459514A829.htm">Intrinsics for Broadcast Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Specifying Symbol Visibility Explicitly">
+<meta name="DC.subject" content="visibility declaration attribute, compiler options, for visibility">
+<meta name="keywords" content="visibility declaration attribute, compiler options, for visibility">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-091C387B-E637-4115-BFC9-1874DD56F50E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Specifying Symbol Visibility Explicitly</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_spec_vis_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_spec_vis_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-091C387B-E637-4115-BFC9-1874DD56F50E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Specifying Symbol Visibility Explicitly</h1>
+ 
+   
+  <div> 
+	 <p>You can explicitly set the visibility of an individual symbol using the 
+		<span class="keyword">visibility</span> attribute on a data or function declaration. For example: 
+	 </p>
+ 
+	 <pre>int i __attribute__ ((visibility("default")));</pre> 
+	 <pre>void __attribute__ ((visibility("hidden"))) x () {...}</pre> 
+	 <pre>extern void y() __attribute__ ((visibility("protected")));</pre> 
+	 <p>The 
+		<span class="keyword">visibility</span> declaration attribute accepts one of the five keywords: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-E490FBD9-4E69-4824-98F8-ADEB004F2436"> 
+		<li> 
+		  <p><span class="keyword">external</span> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">default</span> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">protected</span> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">hidden</span> 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p><span class="keyword">internal</span> 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>The value of the 
+		<span class="keyword">visibility</span> declaration attribute overrides the default set by the 
+	 <span class="option">-fvisibility</span>, 
+	 <span class="option">-fpic</span>, or 
+	 <span class="option">-fno-common</span> attributes. 
+	 </p>
+ 
+	 <p>If you have a number of symbols for which you wish to specify the same 
+		<span class="keyword">visibility</span> attribute, you can set the visibility using one of the five command line options: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-5AB5B381-F4EF-41F9-A06A-F87DEE9BD9EB"> 
+		<li> 
+		  <p><span class="option">-fvisibility-external=</span><var>file</var> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility-default=</span><var>file</var> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility-protected=</span><var>file</var> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility-hidden=</span><var>file</var> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility-internal=</span><var>file</var> 
+	 </p>
+ 
+	 </li>
+ 
+	 </ul>
+ 
+	 <p>where 
+		<var>file</var> is the pathname of a file containing a list of the symbol names whose visibility you wish to set. The symbol names in the file are separated by white space (blanks, TAB characters, or newlines). For example, the command line option: 
+	 </p>
+ 
+	 <p><span class="option">-fvisibility-protected=prot.txt</span> 
+	 </p>
+ 
+	 <p>where file 
+		<span class="filepath">prot.txt</span> contains: 
+	 </p>
+ 
+	 <pre>a
+&nbsp;&nbsp;&nbsp;&nbsp;b c d
+&nbsp;&nbsp;e</pre> 
+	 <p>sets protected visibility for symbols a, b, c, d, and e. This has the same effect as 
+	 </p>
+ 
+	 <p><samp class="codeph">__attribute__ ((visibility=("protected")))</samp> 
+	 </p>
+ 
+	 <p>on the declaration for each of the symbols. Note that these two ways to explicitly set visibility are mutually exclusive – you may use 
+		<samp class="codeph">__attribute((visibility()))</samp> on the declaration, or specify the symbol name in a file, but not both. 
+	 </p>
+ 
+	 <p>You can set the default visibility for symbols using one of the command line options: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-1AE5EDEF-D6CB-4F03-AFE2-202E866B7D86"> 
+		<li> 
+		  <p><span class="option">-fvisibility=external</span> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility=default</span> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility=protected</span> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility=hidden</span> 
+	 </p>
+ 
+	 </li>
+ 
+	 <li> 
+		<p><span class="option">-fvisibility=internal</span> 
+	 </p>
+ 
+	 </li>
+ 
+	 </ul>
+ 
+	 <p>This option sets the visiblity for symbols not specified in a visibility list file and that do not have 
+		<samp class="codeph">__attribute__ ((visibility=()))</samp> in their declaration. For example, the command line options: 
+	 </p>
+ 
+	 <p><span class="option">-fvisibility=protected -fvisibility-default=prot.txt</span> 
+	 </p>
+ 
+	 <p>where file 
+		<span class="filepath">prot.txt</span> is as previously described, will cause all global symbols except a, b, c, d, and e to have protected visibility. Those five symbols, however, will have default visibility and thus be preemptable. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

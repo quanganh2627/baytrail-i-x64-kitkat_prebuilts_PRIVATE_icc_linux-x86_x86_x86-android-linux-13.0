@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Requesting Compiler Reports with the xi* Tools">
+<meta name="DC.subject" content="compiler reports, requesting with xi* tools, report generation, using xi* tools">
+<meta name="keywords" content="compiler reports, requesting with xi* tools, report generation, using xi* tools">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-B1C4874C-CFB3-4E49-A143-6E632E2FF76E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Requesting Compiler Reports with the xi* Tools</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_reports"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_reports"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-B1C4874C-CFB3-4E49-A143-6E632E2FF76E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Requesting Compiler Reports with the xi* Tools</h1>
+
+
+
+
+<div>
+
+<p>The compiler option <a href="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609"><span class="option">-opt-report</span></a> (Linux* and OS X*) or <a href="GUID-BF508348-05E0-4AE8-80FB-326294283609.htm#GUID-BF508348-05E0-4AE8-80FB-326294283609"><span class="option">/Qopt-report</span></a> (Windows*) generates optimization reports with different levels of detail. Related compiler options, listed under <a href="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm#GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC">Optimization Report Options</a>, allow you to specify the phase, direct output to a file (instead of <samp class="codeph">stderr</samp>), and request reports from all routines with names containing a string as part of their name.</p>
+
+<p>The xi* tools are used with inter-procedural optimization (IPO) during the final stage of IPO compilation.  You can request compiler reports to be generated during the final IPO compilation by using certain options. The supported xi* tools are:</p>
+
+
+<ul type="disc" id="GUID-DB630BE9-AEF5-45CC-BEAA-D1C856616A31">
+  <li><p>Linker tools: <span class="keyword">xilink</span> (Windows) and <span class="keyword">xild</span> (Linux and OS X)</p>
+</li>
+
+  <li><p>Library tools: <span class="keyword">xilib</span> (Windows), <span class="keyword">xiar</span> (Linux and OS X), <span class="keyword">xilibtool</span> (OS X)</p>
+</li>
+
+</ul>
+
+
+<p>The following tables lists the compiler report options for the xi* tools. These options are equivalent to the corresponding compiler options, but occur during the final IPO compilation.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-733E500F-127E-45C0-9F71-341EF6F3B9F8" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+  
+  
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" width="33.33333333333333%" id="d588433e107"><p>Tool Option</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="66.66666666666666%" id="d588433e111"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d588433e107 "><p><span class="option">-qopt-report</span>[=<var>n</var>]</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d588433e111 "><p>Enables optimization report generation with different levels of detail, directed to <samp class="codeph">stderr</samp>. Valid values for <var>n</var> are 0 through 3. By default, when you specify this option without passing a value the compiler will generate a report with a medium level of detail.</p>
+</td>
+
+</tr>
+
+
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d588433e107 "><p><span class="option">-qopt-report-file=</span><var>file</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d588433e111 "><p>Generates an optimization report and directs the report output to the specified <var>file</var> name. If you omit the path, the file is created in the current directory. To create the file in a different directory, specify the full path to the output file and its file name.</p>
+</td>
+
+</tr>
+
+
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d588433e107 "><p><span class="option">-qopt-report-phase=</span><var>name</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d588433e111 "><p>Specifies the optimization phase <var>name</var> to use when generating reports. If you do not specify a phase the compiler defaults to all. You can request a list of all available phase by using the -qopt-report-help option.</p>
+</td>
+
+</tr>
+
+
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d588433e107 "><p><span class="option">-qopt-report-routine=</span><var>string</var></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d588433e111 "><p>Generates reports from all routines with names containing a <var>string</var> as part of their name. If not specified, the compiler will generate reports on all routines.</p>
+</td>
+</tr>
+
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="33.33333333333333%" headers="d588433e107 "><p><span class="option">-qopt-report-help</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="66.66666666666666%" headers="d588433e111 "><p>Displays the optimization phases available.</p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">Interprocedural Optimization (IPO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="OpenMP* Support Libraries">
+<meta name="DC.subject" content="KMP_LIBRARY, OMP directives, compatibility libraries, legacy libraries, library file names, support libraries, multithreading, subroutines in the OpenMP* run-time library, for OpenMP*, worker thread">
+<meta name="keywords" content="KMP_LIBRARY, OMP directives, compatibility libraries, legacy libraries, library file names, support libraries, multithreading, subroutines in the OpenMP* run-time library, for OpenMP*, worker thread">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Support Libraries</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_libs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_libs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Support Libraries</h1>
+ 
+   
+  <div> 
+	 <p>The Intel&reg; Compiler provides support libraries for OpenMP*. There are several kinds of libraries: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-EA629795-911E-4CE9-94CC-6D69D67D27C1"> 
+		<li> 
+		  <p><strong>Performance:</strong> supports parallel OpenMP execution. 
+		  </p>
+ 
+		</li>
+ 
+		
+		<li> 
+		  <p><strong>Stubs:</strong> supports serial execution of OpenMP applications. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>Each kind of library is available for both dynamic and static linking on Linux* and Mac OS* X operating systems. Only dynamic linking is supported on Windows* operating systems. 
+	 </p>
+ 
+	 <div class="section" id="GUID-02616E29-A28C-44D1-87DA-0630F0D57A3D"><h2 class="sectiontitle">Performance Libraries</h2> 
+		 
+		<p>To use these libraries, specify the 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">-openmp</span></a> (Linux* and Mac OS* X) or 
+		  <a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">/Qopenmp</span></a> (Windows*) compiler option. Options that use OpenMP* are available for both Intel&reg; and non-Intel microprocessors but these options may perform additional optimizations on Intel&reg; microprocessors than they perform on non-Intel microprocessors. The list of major, user-visible OpenMP* constructs and features that may perform differently on Intel&reg; vs. non-Intel microprocessors includes: locks (internal and user visible), the SINGLE construct, barriers (explicit and implicit), parallel loop scheduling, reductions, memory allocation, and thread affinity and binding. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E176E7E4-E3AC-48B5-BBFB-762968781D33" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="middle"> 
+				  <th class="cellrowborder" align="left" valign="middle" id="d251153e116"> 
+					 <p>Operating System 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="middle" id="d251153e122"> 
+					 <p>Dynamic Link 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="middle" id="d251153e128"> 
+					 <p> Static Link 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e116 "> 
+					 <p>Linux 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e122 "> 
+					 <p><span class="filepath">libiomp5.so</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e128 "> 
+					 <p><span class="filepath">libiomp5.a</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e116 "> 
+					 <p>Mac OS X 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e122 "> 
+					 <p><span class="filepath">libiomp5.dylib</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e128 "> 
+					 <p><span class="filepath">libiomp5.a</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e116 "> 
+					 <p>Windows 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e122 "> 
+					 <p><span class="filepath">libiomp5md.lib</span><br><span class="filepath">libiomp5md.dll</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e128 ">None 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>Many routines in the OpenMP* support libraries are more highly optimized for Intel microprocessors than for non-Intel microprocessors. 
+		</p>
+ 
+	 </div>
+ 
+	 
+	 <div class="section" id="GUID-1E990249-7E8F-45F8-BAE0-7A88007F00B1"><h2 class="sectiontitle">Stubs Libraries </h2> 
+		 
+		<p>To use these libraries, specify 
+		  <a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">-openmp-stubs</span></a> (Linux* and Mac OS* X) or 
+		  <a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">/Qopenmp-stubs</span></a> (Windows*) compiler option. These allow you to compile OpenMP applications in serial mode and provide stubs for OpenMP routines and extended Intel-specific routines. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1E65B70F-01E1-44BC-9EE7-416B54BB5D26" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="middle"> 
+				  <th class="cellrowborder" align="left" valign="middle" id="d251153e253"> 
+					 <p>Operating System 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="middle" id="d251153e259"> 
+					 <p>Dynamic Link 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="middle" id="d251153e265"> 
+					 <p>Static Link 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e253 "> 
+					 <p>Linux 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e259 "> 
+					 <p><span class="filepath">libiompstubs5.so</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e265 "> 
+					 <p><span class="filepath">libiompstubs5.a</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e253 "> 
+					 <p>Mac OS X 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e259 "> 
+					 <p><span class="filepath">libiompstubs5.dylib</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e265 "> 
+					 <p><span class="filepath">libiompstubs5.a</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e253 "> 
+					 <p>Windows 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e259 "> 
+					 <p><span class="filepath">libiompstubs5md.lib</span> 
+						<br><span class="filepath">libiompstubs5md.dll</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" headers="d251153e265 "> 
+					 <p>None
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="EXECUTION_MODES"><a name="EXECUTION_MODES"><!-- --></a><h2 class="sectiontitle">Execution modes</h2> 
+		 
+		<p>The Intel compiler enables you to run an application under different execution modes specified at run time; the libraries support the turnaround, throughput, and serial modes. Use the 
+		  <span class="keyword">KMP_LIBRARY</span> 
+		  <a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">environment variable</a> to select the modes at run time. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0B952892-381D-4A9B-B5B1-E40471B44BDA" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="middle"> 
+				  <th class="cellrowborder" align="left" valign="middle" width="25%" id="d251153e382"> 
+					 <p>Mode 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="middle" width="75%" id="d251153e388"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="25%" headers="d251153e382 "> 
+					 <p>throughput 
+					 </p>
+ 
+					 <p>(default) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="75%" headers="d251153e388 "> 
+					 <p>The throughput mode allows the program to yield to other running programs and adjust resource usage to produce efficient execution in a dynamic environment. 
+					 </p>
+ 
+					 <p>In a multi-user environment where the load on the parallel machine is not constant or where the job stream is not predictable, it may be better to design and tune for throughput. This minimizes the total time to run multiple jobs simultaneously. In this mode, the worker threads yield to other threads while waiting for more parallel work. 
+					 </p>
+ 
+					 <p>After completing the execution of a parallel region, threads wait for new parallel work to become available. After a certain period of time has elapsed, they stop waiting and sleep. Until more parallel work becomes available, sleeping allows processor and resources to be used for other work by non-OpenMP threaded code that may execute between parallel regions, or by other applications. 
+					 </p>
+ 
+					 <p>The amount of time to wait before sleeping is set either by the 
+						<span class="keyword">KMP_BLOCKTIME</span> environment variable or by the 
+						<span class="keyword">kmp_set_blocktime()</span> function. A small blocktime value may offer better overall performance if your application contains non-OpenMP threaded code that executes between parallel regions. A larger blocktime value may be more appropriate if threads are to be reserved solely for use for OpenMP execution, but may penalize other concurrently-running OpenMP or threaded applications. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="25%" headers="d251153e382 "> 
+					 <p>turnaround 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="75%" headers="d251153e388 "> 
+					 <p>The turnaround mode is designed to keep active all processors involved in the parallel computation, which minimizes execution time of a single job. In this mode, the worker threads actively wait for more parallel work, without yielding to other threads (although they are still subject to 
+						<span class="keyword">KMP_BLOCKTIME</span> control). In a dedicated (batch or single user) parallel environment where all processors are exclusively allocated to the program for its entire run, it is most important to effectively use all processors all of the time. 
+					 </p>
+ 
+					 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+						<p>Avoid over-allocating system resources. The condition can occur if either too many threads have been specified, or if too few processors are available at run time. If system resources are over-allocated, this mode will cause poor performance. The throughput mode should be used instead if this occurs. 
+						</p>
+ 
+					 </div> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="25%" headers="d251153e382 "> 
+					 <p>serial 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="75%" headers="d251153e388 "> 
+					 <p>The serial mode forces parallel applications to run as a single thread. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">OpenMP* Library Support</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">Setting Environment Variables 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Shuffle Intrinsics">
+<meta name="DC.subject" content="intrinsics, SSSE3, shuffle operations, Supplemental Streaming SIMD Extensions 3, shuffle intrinsics, _mm_shuffle_epi8, _mm_shuffle_pi8">
+<meta name="keywords" content="intrinsics, SSSE3, shuffle operations, Supplemental Streaming SIMD Extensions 3, shuffle intrinsics, _mm_shuffle_epi8, _mm_shuffle_pi8">
+<meta name="DC.Relation" scheme="URI" content="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BF84D909-7493-42B4-8004-61A01A7F36B8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Shuffle Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_tni_shuffle"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BF84D909-7493-42B4-8004-61A01A7F36B8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Shuffle Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-8515918D-B906-42B3-A341-98AAC1F0C3F4"> 
+      <p>These Supplemental Streaming SIMD Extensions 3 (SSSE3) intrinsics are used to perform shuffle operations. The prototypes for these intrinsics are in 
+        <span class="filepath">tmmintrin.h</span>. You can also use the 
+        <span class="filepath">ia32intrin.h</span> header file for these intrinsics. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C7B63776-4783-4BAF-B618-72C0EDE4BE8B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_shuffle_epi8 (__m128i a, __m128i b);</span></p></div> 
+      <p>Shuffle bytes from 
+        <var>a</var> according to contents of 
+        <var>b</var>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-44E7A47B-7B06-4392-B354-C21B02B57DF1"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of unsigned 8-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 16; i++){
+&nbsp;if (b[i] &amp; 0x80){
+  r[i] =  0;
+ }
+ else&nbsp;{
+  r[i] = a[b[i] &amp; 0x0F];
+ }
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6CA5EE6F-8B3E-4D10-8653-4BBB22B7C74E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_shuffle_pi8 (__m64 a, __m64 b);</span></p></div> 
+      <p>Shuffle bytes from 
+        <var>a</var> according to contents of 
+        <var>b</var>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E7355565-4F9A-4305-83F3-169BC0188FD1"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of unsigned 8-bit integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 8; i++){
+&nbsp;if (b[i] &amp; 0x80){
+  r[i] =  0;
+ }
+else {
+ r[i] = a[b[i] &amp; 0x07];
+ }
+}</pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">Intrinsics for Intel&reg; Supplemental Streaming SIMD Extensions 3 (SSSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

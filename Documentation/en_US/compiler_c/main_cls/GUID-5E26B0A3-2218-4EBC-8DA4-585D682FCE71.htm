@@ -1,0 +1,354 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="About Asynchronous Data Transfer">
+<meta name="DC.subject" content="asynchronous data transfer, data, transferring asynchronously, transferring data asynchronously">
+<meta name="keywords" content="asynchronous data transfer, data, transferring asynchronously, transferring data asynchronously">
+<meta name="DC.Relation" scheme="URI" content="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6563F12D-5155-4B6D-AD96-7534EC251FD1.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">
+<meta name="DC.Relation" scheme="URI" content="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A.htm#GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A">
+<meta name="DC.Relation" scheme="URI" content="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E.htm#GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5E26B0A3-2218-4EBC-8DA4-585D682FCE71">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>About Asynchronous Data Transfer</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="Term:intel.cpp.cncpt_about_async_data"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-5E26B0A3-2218-4EBC-8DA4-585D682FCE71">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">About Asynchronous Data Transfer</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>To transfer data between the CPU and the coprocessor, use the<span><samp class="codeph">offload_transfer</samp> pragma</span> with either all 
+		<samp class="codeph">in</samp> clauses or all 
+		<samp class="codeph">out</samp> clauses. Without a 
+		<samp class="codeph">signal</samp> clause the data transfer is synchronous: The next statement is executed only after the data transfer is complete. 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph">offload_transfer</samp> with a 
+		<samp class="codeph">signal</samp> makes the data transfer asynchronous. The tag specified in the 
+		<samp class="codeph">signal</samp> clause is an address expression associated with that dataset. The data transfer is initiated and the CPU can continue past the 
+		<span>pragma</span> statement. 
+	 </p>
+ 
+	 <p> A later 
+		<span>pragma</span> written with a 
+		<samp class="codeph">wait</samp> clause causes the activity specified in the 
+		<span>pragma</span> to begin only after all the data associated with the tag has been received. The data is placed into the variables specified when the data transfer was initiated. These variables must still be accessible. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p> The 
+		  <samp class="codeph">signal</samp> and 
+		  <samp class="codeph">wait</samp> clauses and the 
+		  <samp class="codeph">offload_wait</samp> construct refer to a specific target device, so you must specify 
+		  <samp class="codeph"><var>target-number</var></samp> in the 
+		  <samp class="codeph">target()</samp> clause. 
+		</p>
+ 
+		<p>Querying a signal before the signal has been initiated results in undefined behavior, and a runtime abort of the application. For example, consider a query of a signal (SIG1) on target device 0, where the signal was actually initiated for target device 1. The signal was initiated for target device 1, so there is no signal (SIG1) associated with target device 0, and therefore the application aborts. 
+		</p>
+ 
+	 </div> 
+	 <p>If, during an asynchronous offload, a signal is created in one thread, Thread A, and waited for in a different thread, Thread B, you are responsible for ensuring that Thread B does not query the signal before Thread A has initiated the asynchronous offload to set up the signal. Thread B querying the signal before Thread A has initiated the asynchronous offload to set up the signal, results in a runtime abort of the application. 
+	 </p>
+ 
+	 <p>If 
+		<samp class="codeph"><var>if-specifier</var></samp> evaluates to false and you use a 
+		<samp class="codeph">signal (<var>tag</var>)</samp> clause, then the signal is undefined and any wait on this signal has undefined behavior. 
+	 </p>
+ 
+	 <div class="section" id="GUID-B85D79AD-8B50-4BAA-BECD-389F4F02A7D7"><h2 class="sectiontitle"> Asynchronous Data Transfer From the CPU to the Coprocessor</h2> 
+		 
+		<p>To transfer data asynchronously from the CPU to the coprocessor, use a 
+		  <samp class="codeph">signal</samp> clause in an 
+		  <span><samp class="codeph">offload_transfer</samp> pragma</span> with 
+		  <samp class="codeph">in</samp> clauses. The variables listed in the 
+		  <samp class="codeph">in</samp> clauses form a data set. The 
+		  <span>pragma</span> initiates the data transfer of those variables from the CPU to the coprocessor. A subsequent 
+		  <span><samp class="codeph">offload</samp> pragma</span> with a 
+		  <samp class="codeph">wait</samp> clause that uses the same value for 
+		  <samp class="codeph"><var>tag</var></samp> as that used in the 
+		  <samp class="codeph">signal</samp> clause causes the statement controlled by the 
+		  <span>pragma</span> to begin execution on the coprocessor only after the data transfer is complete. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-1CABD2D6-1BAC-453B-A6BB-81FE9AEF7B10"><h2 class="sectiontitle"> Asynchronous Data Transfer From the Coprocessor to the CPU</h2> 
+		 
+		<p>To transfer data asynchronously from the coprocessor to the CPU, use the 
+		  <samp class="codeph">signal</samp> and 
+		  <samp class="codeph">wait</samp> clauses in two different pragmas/directives. The first offload performs the computation, but only initiates the data transfer. The second pragma causes a wait for the data transfer to complete. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-EBCE8D3A-E56B-40C1-8812-6594552D6FF2"><h2 class="sectiontitle">Examples: Coprocessor to CPU and CPU to Coprocessor</h2> 
+		 
+		<p>The example below demonstrates various asynchronous data transfers between the CPU and coprocessor. 
+		</p>
+ 
+		<pre>     1  #include &lt;stdio.h&gt;
+     2
+     3  __attribute__((target(mic)))
+     4             void add_inputs(int N, float *f1, float*f2);
+     5
+     6  void display_vals(int id, int N, float*f2);
+     7
+     8  int main()
+     9  {
+    10     const int N = 5;
+    11     float *f1, *f2;
+    12     int i, j;
+    13
+    14     f1 = (float *)_mm_malloc(N*sizeof(float),4096);
+    15     f2 = (float *)_mm_malloc(N*sizeof(float),4096);
+    16
+    17     for (i=0;i&lt;N;i++){
+    18        f1[i]=i+1;
+    19        f2[i]=0.0;
+    20     }
+    21
+</pre> 
+		<p>Section 1 below (lines 22-56) demonstrates asynchronous data transfers, using 
+		  <samp class="codeph">IN</samp> and 
+		  <samp class="codeph">OUT</samp>, between the CPU and coprocessor with asynchronous computation. The data transfer of the arrays 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp>is initiated at lines 28-30. The 
+		  <samp class="codeph">offload_transfer</samp> does not initiate a computation. Its only purpose is to start transferring data for 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> to the coprocessor. At lines 40-44 the CPU initiates the computation, with the function 
+		  <samp class="codeph">add_inputs</samp>, on the coprocessor and continues execution to the 
+		  <samp class="codeph">offload_wait</samp> at line 51. The offloaded function uses the data 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp>, whose transfer was initiated earlier on the CPU. The execution of the offloaded region on the coprocessor begins only after the transfers of 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> are complete and the signal tag, (f1) is set accordingly. While the offloaded region executes on the coprocessor, the CPU waits at line 51 pending completion of the computation and data transfer of the results in 
+		  <samp class="codeph">f2</samp> to the CPU. Execution on the CPU only continues beyond line 50 after the data for 
+		  <samp class="codeph">f2</samp> is transferred to the CPU and the signal tag (f2) is set accordingly. 
+		</p>
+ 
+		<pre>22     //-----------  Section 1   --------------------------------------
+    23
+    24     // Asynchronous transfer IN (to coprocessor) of f1 and f2
+    25     //
+    26     // CPU issues send and then continues
+    27
+    28     #pragma offload_transfer target(mic:0)  signal (f1) \
+    29                     in( f1 : length(N) alloc_if(1) free_if(0) ) \
+    30                     in( f2 : length(N) alloc_if(1) free_if(0) )
+    31
+    32     // Asynchronous compute and transfer OUT (to CPU) of f2
+    33     //
+    34     // CPU issues request to perform computation and continues
+    35     //
+    36     // Coprocessor receives offload request, waits for pre-sent
+    37     // data.  After receiving data, performs computation and
+    38     // transfers (asynchronous) data OUT (to CPU)
+    39
+    40     #pragma offload target(mic:0) wait(f1) signal (f2) \
+    41                     in( N ) \
+    42                     nocopy( f1 : alloc_if(0) free_if(1) ) \
+    43                     out( f2 : length(N) alloc_if(0) free_if(1) )
+    44     add_inputs(N, f1, f2);
+    45
+    46     // Wait for offload completion
+    47     //
+    48     // CPU waits for completion of previous offload and
+    49     // data transfer out (to CPU) of f2
+    50
+    51     #pragma offload_wait target(mic:0)  wait(f2)
+    52
+    53
+    54     // Show current values
+    55     display_vals(1, N, f2);
+    56
+</pre> 
+		<p>In the same example, section 2 (lines 57-90) demonstrates multiple asynchronous data transfers, using 
+		  <samp class="codeph">IN</samp>, from the CPU to the coprocessor with synchronous computation and synchronous data transfer, using 
+		  <samp class="codeph">OUT</samp>, from the coprocessor to the CPU. Multiple independent asynchronous data transfers can occur at any time. The 
+		  <samp class="codeph">offload_transfer</samp> sends 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> to the coprocessor at different times, first 
+		  <samp class="codeph">f1</samp> in lines 63-64, and then 
+		  <samp class="codeph">f2</samp> in lines 68-69. The transfers are independent. At lines 81-85 the execution of the offloaded region and the function 
+		  <samp class="codeph">add_inputs</samp> on the coprocessor begins only after the transfers of 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> are complete and the signal tags (<samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> ) are both set accordingly. Execution on the CPU waits for the completion of the offloaded computation and data transfer of the results in 
+		  <samp class="codeph">f2</samp> to the CPU. The data transfer of 
+		  <samp class="codeph">f2</samp> to the CPU occurs synchronous with the execution of the offloaded region. 
+		</p>
+ 
+		<pre>    57     //-----------  Section 2   --------------------------------------
+    58
+    59     // Independent asynchronous transfers IN (to coprocessor)
+    60     //
+    61     // CPU issues send and continues
+    62
+    63     #pragma offload_transfer target(mic:0)  signal (f1) \
+    64                     in( f1 : length(N) alloc_if(1) free_if(0) )
+    65
+    66     // CPU issues send and continues
+    67
+    68     #pragma offload_transfer target(mic:0)  signal (f2) \
+    69                     in( f2 : length(N) alloc_if(1) free_if(0) )
+    70
+    71     // Wait for independent transfers IN (to coprocessor),
+    72     // perform synchronous compute and data transfers out
+    73     //
+    74     // CPU issues request to perform computation and waits for
+    75     // completion
+    76     //
+    77     // Coprocessor receives offload request, waits for pre-sent
+    78     // data. After receiving data, performs computation and
+    79     // transfers (synchronous) data OUT (to CPU)
+    80
+    81     #pragma offload target(mic:0) wait(f1 , f2) \
+    82                     in( N ) \
+    83                     nocopy( f1 : alloc_if(0) free_if(1) ) \
+    84                     out( f2 : length(N) alloc_if(0) free_if(1) )
+    85     add_inputs(N, f1, f2);
+    86
+    87
+    88     // Show current values
+    89     display_vals(2, N, f2);
+    90</pre> 
+		<p>Section 3 (lines 91-132) in the example demonstrates an independent asynchronous data transfer (IN) from the CPU to the coprocessor with synchronous computation and data transfer (<samp class="codeph">IN</samp>) from the coprocessor to the CPU, followed by an independent asynchronous data transfer (<samp class="codeph">OUT</samp>) from the coprocessor to the CPU. The offloaded function uses the data 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> . The transfer of 
+		  <samp class="codeph">f2</samp> was initiated earlier on the CPU at lines 97-98. The execution of the offloaded region on lines 111-115 on the coprocessor begins only after the transfers of 
+		  <samp class="codeph">f1</samp> and 
+		  <samp class="codeph">f2</samp> are complete and the signal tag (<samp class="codeph">f2</samp>) is set accordingly for the transfer of 
+		  <samp class="codeph">f2</samp> . After the offloaded region executes on the coprocessor, the computed results of 
+		  <samp class="codeph">f2</samp> remain on the coprocessor and execution on the CPU continues beyond line 115. At lines 122-123, the CPU initiates an asynchronous data transfer (<samp class="codeph">OUT</samp>) from the coprocessor to the CPU for the computed results for 
+		  <samp class="codeph">f2</samp> and continues execution to line 128 where the CPU waits for the completion of the transfer of 
+		  <samp class="codeph">f2</samp> . Execution on the CPU continues beyond line 128 only after the data for 
+		  <samp class="codeph">f2</samp> is transferred to the CPU and the signal tag (<samp class="codeph">f2</samp>) is set accordingly. 
+		</p>
+ 
+		<pre>    91     //-----------  Section 3   --------------------------------------
+    92
+    93     // Asynchronous transfer IN (to coprocessor) of f2
+    94     //
+    95     // CPU issues send and then continues
+    96
+    97     #pragma offload_transfer target(mic:0)  signal(f2) \
+    98                     in( f2 : length(N) alloc_if(1) free_if(0) )
+    99
+   100     // Synchronous transfer IN (to coprocessor) of f1 with
+   101     // synchronous compute of f2 where new computed values
+   102     // of f2 remain on coprocessor
+   103     //
+   104     // CPU transfers values IN (to coprocessor) of f1, then issues
+   105     // request to perform computation and waits for completion
+   106     //
+   107     // Coprocessor receives offload request, waits for pre-sent
+   108     // data for f2.  After receiving data, performs the
+   109     // computation and holds the results in f2 on coprocessor
+   110
+   111     #pragma offload target(mic:0) wait(f2) \
+   112                     in( N ) \
+   113                     in ( f1 : length(N) alloc_if(1) free_if(0) ) \
+   114                     nocopy( f2 )
+   115     add_inputs(N, f1, f2);
+   116
+   117
+   118     // CPU waits for completion of previous offload, then
+   119     // initiates asynchronous transfer OUT (to CPU) of f2
+   120     // and continues
+   121
+   122     #pragma offload_transfer target(mic:0)  signal (f2) \
+   123                     out( f2 : length(N) alloc_if(0) free_if(1) )
+   124
+   125
+   126     // CPU waits for completion of transfer of f2 to the CPU
+   127
+   128     #pragma offload_wait target(mic:0)  wait(f2)
+   129
+   130     // Show current values
+   131     display_vals(3, N, f2);
+   132
+   133  }
+   134
+   135  void add_inputs (int N, float *f1, float*f2)
+   136  {
+   137     int i;
+   138
+   139     for (i=0; i&lt;N; i++){
+   140        f2[i] = f2[i] + f1[i];
+   141     }
+   142  }
+   143
+   144  void display_vals (int id, int N, float *f2)
+   145  {
+   146     int i;
+   147
+   148     printf("\nResults after Offload #%d:\n",id);
+   149     for (i=0; i&lt;N; i++){
+   150       printf("     f2[%d]= %f\n",i,f2[i]);
+   151     }
+   152  }
+</pre> 
+		<p>The following example double buffers inputs to an offload. 
+		</p>
+ 
+		<pre>#pragma offload_attribute(push, target(mic))
+int count = 25000000;
+int iter = 10;
+float *in1, *out1;
+float *in2, *out2;
+#pragma offload_attribute(pop)
+</pre> 
+	 </div>
+ 
+	 </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">Programming for Intel&reg; MIC Architecture</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-6563F12D-5155-4B6D-AD96-7534EC251FD1.htm">About Asynchronous Data Transfer 
+		  </a>  
+		  </div>
+<div><a href="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">offload 
+		  </a>  
+		  </div>
+<div><a href="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A.htm#GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A">offload_transfer 
+		  </a>  
+		  </div>
+<div><a href="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E.htm#GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E">offload_wait 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

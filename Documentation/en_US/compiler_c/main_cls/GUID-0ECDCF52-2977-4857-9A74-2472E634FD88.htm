@@ -1,0 +1,140 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="inline, noinline, forceinline">
+<meta name="abstract" content="Specify inlining of all calls in a statement.">
+<meta name="description" content="Specify inlining of all calls in a statement.">
+<meta name="DC.subject" content="pragma inline, pragma forceinline, pragma noinline">
+<meta name="keywords" content="pragma inline, pragma forceinline, pragma noinline">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0ECDCF52-2977-4857-9A74-2472E634FD88">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>inline, noinline, forceinline</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_std"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0ECDCF52-2977-4857-9A74-2472E634FD88">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>inline, noinline, forceinline</span></h1>
+
+<!--Specify inlining of all calls in a statement.-->
+<div><p>Specify inlining of all calls in a statement.</p>
+
+<div class="section" id="GUID-F731C5B4-07BD-44A1-9366-C6449CD8C437"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma inline [recursive]</span></p><p><span class="kwd">#pragma forceinline [recursive]</span></p><p><span class="kwd">#pragma noinline</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-3219DAE4-240F-4AA8-8C37-0B677C1771E1"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><span class="keyword">recursive</span></p></td>
+
+      <td valign="top" class="noborder"><p>indicates that the pragma applies to all of the calls that are called by these calls, recursively, down the call chain</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-F26F3431-4E61-43C2-BACF-B46CF962F40B"><h2>Description</h2>
+<p>These are statement-specific inlining pragmas.  Each can be placed before a C/C++ statement, and will then apply to all of the calls within a statement and all calls within statements nested within that statement.</p>
+
+
+<p>The <samp class="codeph">forceinline</samp>
+ pragma indicates that the calls in question should be inlined whenever the compiler is  capable of doing so.</p>
+
+<p>The 
+<samp class="codeph">inline</samp>
+pragma is a hint to the compiler that the user prefers that the calls in question be inlined, but expects the compiler not to inline them if its heuristics determine that the inlining would be overly aggressive and might slow down the compilation of the source code excessively, create too large of an executable, or degrade performance.</p>
+
+<p>The 
+<samp class="codeph">noinline</samp> pragma indicates that the calls in question should not be inlined.</p>
+
+
+<p>These statement-specific pragmas take precedence over the corresponding function-specific pragmas.</p>
+
+</div>
+
+
+<div class="section" id="GUID-EF27837C-50CC-482B-9ACA-0C1DC9A37376"><h2>Example</h2>
+<p>The following example uses <samp class="codeph">#pragma forceinline recursive</samp>.  The <samp class="codeph">#pragma forceinline recursive</samp> applies to the call 'sun(a,b)' as well as the call 'fun(a,b)' called inside 'sun(a,b)'.</p>
+
+<pre>#include &lt;stdio.h&gt;</pre><pre></pre>
+
+<pre>static void fun(float a[100][100], float b[100][100])</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;inti , j;</pre>
+<pre></pre>
+<pre>&nbsp;&nbsp;for (i = 0; i &lt; 100; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; 100; j++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[i][j] = 2 * i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i][j] = 4 * j;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;}</pre><pre>&nbsp;&nbsp;}</pre><pre>}</pre>
+<pre></pre>
+
+
+<pre>static void sun(float a[100][100], float b[100][100])</pre><pre>{</pre>
+
+<pre>&nbsp;&nbsp;int i, j;</pre>
+<pre></pre>
+<pre>&nbsp;&nbsp;for (i = 0; i &lt; 100; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; 100; j++) {</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[i][j] = 2 * i;</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i][j] = 4 * j;</pre>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;fun(a, b);</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+
+<pre></pre>
+<pre>static float a[100][100];</pre>
+<pre>static float b[100][100];</pre>
+<pre></pre>
+<pre>extern int main()</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;int i, j;</pre>
+
+<pre></pre>
+
+<pre>&nbsp;&nbsp;for (i = 0; i &lt; 100; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; 100; j++) {</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[i][j] = i + j;</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i][j] = i - j;</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;}</pre><pre>&nbsp;&nbsp;}</pre><pre>&nbsp;&nbsp;for (i = 0; i &lt; 99; i++) {</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;fun(a, b);</pre><pre>#pragma forceinline recursive</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; 99; j++) {</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun(a, b);</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;}</pre><pre>&nbsp;&nbsp;}</pre><pre>&nbsp;&nbsp;fprintf(stderr, "%d %d\n", a[99][9], b[99][99]);</pre><pre>}</pre>
+
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

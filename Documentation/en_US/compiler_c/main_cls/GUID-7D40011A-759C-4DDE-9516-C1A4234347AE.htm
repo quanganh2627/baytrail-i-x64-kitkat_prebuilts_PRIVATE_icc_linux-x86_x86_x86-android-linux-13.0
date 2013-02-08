@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Programming Tradeoffs in Floating-point Applications">
+<meta name="DC.subject" content="Floating-point Operations, programming tradeoffs">
+<meta name="keywords" content="Floating-point Operations, programming tradeoffs">
+<meta name="DC.Relation" scheme="URI" content="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC.htm#GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7D40011A-759C-4DDE-9516-C1A4234347AE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Programming Tradeoffs in Floating-point Applications</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_intro"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7D40011A-759C-4DDE-9516-C1A4234347AE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Programming Tradeoffs in Floating-point Applications</h1>
+ 
+   
+  <div> 
+    <p>In general, the programming objectives for floating-point applications fall into the following categories: 
+    </p>
+ 
+    <ul type="disc" id="GUID-6021D6A3-FE34-474D-8217-FBF8C5424ED7"> 
+      <li> 
+        <p><strong>Accuracy:</strong> The application produces results that are close to the correct result. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><strong>Reproducibility and portability:</strong> The application produces consistent results across different runs, different sets of build options, different compilers, different platforms, and different architectures. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p><strong>Performance:</strong> The application produces fast, efficient code. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Based on the goal of an application, you will need to make tradeoffs among these objectives. For example, if you are developing a 3D graphics engine, then performance may be the most important factor to consider, and reproducibility and accuracy may be your secondary concerns. 
+    </p>
+ 
+    <p>The Intel&reg; Compiler provides several compiler options that allow you to tune your applications based on specific objectives. Broadly speaking there are the floating-point specific options, such as the 
+  <span class="option">-fp-model</span> (Linux* and OS X* operating systems) or 
+  <span class="option">/fp</span> (Windows* operating system) option, and the fast-but-low-accuracy options, such as the 
+  <span class="option">-fimf-max-error</span> (Linux* and MacOS* X) or 
+  <span class="option">/Qimf-max-error</span> (Windows*) option. The compiler optimizes and generates code differently when you specify these different compiler options. You should select appropriate compiler options by carefully balancing your programming objectives and making tradeoffs among these objectives. Some of these options may influence the choice of math routines that will be invoked. Many routines in the 
+  <span class="keyword">libirc</span>, 
+  <span class="keyword">libm</span>, and 
+  <span class="keyword">svml</span> library are more highly optimized for Intel microprocessors than for non-Intel microprocessors. 
+  </p>
+ 
+  <div class="section" id="GUID-E9D709F1-14C7-4069-8A09-ADB49D7A137B"><h2 class="sectiontitle">Using Floating-point Options</h2> 
+     
+    <p>Take the following code as an example: 
+    </p>
+ 
+    <pre>float t0, t1, t2;</pre> 
+    <pre>...</pre> 
+    <pre>t0=t1+t2+4.0f+0.1f;</pre> 
+    <p>If you specify the 
+    <span class="option">-fp-model extended</span> (Linux* and OS X*) or 
+    <span class="option">/fp:extended</span> (Windows*) option in favor of accuracy, the compiler generates the following assembly code: 
+    </p>
+ 
+    <pre>fld &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _t1</pre> 
+    <pre>fadd &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _t2</pre> 
+    <pre>fadd &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _Cnst4.0</pre> 
+    <pre>fadd &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _Cnst0.1</pre> 
+    <pre>fstp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _t0</pre> 
+    <p>The above code maximizes accuracy because it utilizes the highest mantissa precision available on the target platform. However, the code might suffer in performance due to the overhead of managing the x87 stack and it might yield results that cannot be reproduced on other platforms that do not have an equivalent extended precision type. 
+    </p>
+ 
+    <p>If you specify the 
+    <span class="option">-fp-model source</span> (Linux* and OS X*) or 
+    <span class="option">/fp:source</span> (Windows*) option in favor of reproducibility and portability, the compiler generates the following assembly code: 
+    </p>
+ 
+    <pre>movss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _t1</pre> 
+    <pre>addss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _t2</pre> 
+    <pre>addss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _Cnst4.0</pre> 
+    <pre>addss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _Cnst0.1</pre> 
+    <pre>movss &nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _t0, xmm0</pre> 
+    <p>The above code maximizes portability by preserving the original order of the computation and by using the well-defined IEEE single-precision type for all computations. It is not as accurate as the previous implementation because the intermediate rounding error is greater compared to extended precision. And it is not the highest performance implementation because it does not take advantage of the opportunity to precompute 
+      <samp class="codeph">4.0f + 0.1f.</samp> 
+    </p>
+ 
+    <p>If you specify the 
+    <span class="option">-fp-model fast</span> (Linux* and OS X*) or 
+    <span class="option">/fp:fast</span> (Windows*) option in favor of performance, the compiler generates the following assembly code: 
+    </p>
+ 
+    <pre>movss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _Cnst4.1</pre> 
+    <pre>addss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _t1</pre> 
+    <pre>addss &nbsp;&nbsp;&nbsp;&nbsp;xmm0, DWORD PTR _t2</pre> 
+    <pre>movss &nbsp;&nbsp;&nbsp;&nbsp;DWORD PTR _t0, xmm0</pre> 
+    <p>The above code maximizes performance by using Intel&reg; SSE instructions and precomputing 
+      <samp class="codeph">4.0f + 0.1f.</samp> It is not as accurate as the first implementation, again due to greater intermediate rounding error. It will not provide reproducible results like the second implementation because it must reorder the addition in order to precompute 
+      <samp class="codeph">4.0f + 0.1f</samp>, and you cannot expect that all compilers, on all platforms, at all optimization levels will reorder the addition in the same way. 
+    </p>
+ 
+  </div>
+ 
+  <p>For many other applications, the considerations may be more complicated. 
+  </p>
+ 
+  <div class="section" id="GUID-939A3B50-331D-4503-BAF7-F670021920C9"><h2 class="sectiontitle">Using Fast-but-low-accuracy Options</h2> 
+     
+    <p>The fast-but-low-accuracy options provide an easy way to control the accuracy of mathematical functions and utilize performance/accuracy tradeoffs offered by the Intel mathematical libraries. You can specify accuracy, via a command line interface, for all math functions or a selected set of math functions at the level more precise than low, medium or high. 
+    </p>
+ 
+    <p>You specify the accuracy requirements as a set of function attributes that the compiler uses for selecting an appropriate function implementation in the math libraries. Examples using the attribute, 
+      <samp class="codeph">max-error</samp>, is presented here. For example, use the following option: 
+      <pre><span class="option">-fimf-max-error</span>=<var>2</var></pre> to specify relative error of 2 ulps (<strong>u</strong>nit in the 
+      <strong>l</strong>ast 
+      <strong>p</strong>lace) for all single, double, long double, and quad precision functions. 
+    </p>
+ 
+    <p>To specify 12 bits of accuracy for a 
+      <samp class="codeph">sin</samp> function, use: 
+      <pre><span class="option">–fimf-sin-accuracy-bits</span>=<var>12</var></pre> 
+    </p>
+ 
+    <p>To specify relative error of 10 ulps for a 
+      <samp class="codeph">sin</samp> function, and 4 ulps for other math functions called in the source file you are compiling, use: 
+      <pre><span class="option">-fimf-sin-max-error</span>=<var>10</var> <span class="option">-fimf-max-error</span>=<var>4</var></pre> 
+    </p>
+ 
+    <p>Intel&reg; compiler defines the default value for the 
+      <samp class="codeph">max-error</samp> attribute depending on the 
+    <span class="option">/fp</span> option and 
+    <span class="option">/Qfast-transcendentals</span> settings. In 
+    <span class="option">/fp:fast</span> mode or if fast but less accurate math functions are explicitly enabled by 
+    <span class="option">/Qfast-transcendentals-</span>, then the Intel&reg; compiler sets 
+    <samp class="codeph">max-error=</samp><var>4.0</var> for the call. Otherwise, it sets 
+    <samp class="codeph">max-error=</samp><var>0.6</var>. 
+    </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">Understanding Floating-point Operations</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC.htm#GUID-7A192C38-2D26-41C6-BDFE-4D402E00ADFC">Using -fp-model(/fp) Options 
+        </a></div>
+<div><a href="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486"><span class="option">-fimf-max-error</span> compiler option 
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

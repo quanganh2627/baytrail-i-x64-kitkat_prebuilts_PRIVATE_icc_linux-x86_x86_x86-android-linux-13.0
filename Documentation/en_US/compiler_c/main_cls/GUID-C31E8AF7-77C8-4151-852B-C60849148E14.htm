@@ -1,0 +1,353 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Packed Format Conversion Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE4, packed format conversion operations, _mm_cvtepi8_epi32, _mm_cvtepi8_epi64, _mm_cvtepi8_epi16, _mm_cvtepi32_epi64, _mm_cvtepi16_epi32, _mm_cvtepi16_epi64, _mm_cvtepu8_epi32, _mm_cvtepu8_epi64, _mm_cvtepu8_epi16, _mm_cvtepu32_epi64, _mm_cvtepu16_epi32, _mm_cvtepu16_epi64, PMOVSXBD, PMOVSXBQ, PMOVSXBW, PMOVSXDQ, PMOVSXWD, PMOVSXWQ, PMOVZXBD, PMOVZXBQ, PMOVZXBW, PMOVZXDQ, PMOVZXWD, PMOVZXWQ, Intel&reg; Streaming SIMD Extensions 4, packed format conversion intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE4, packed format conversion operations, _mm_cvtepi8_epi32, _mm_cvtepi8_epi64, _mm_cvtepi8_epi16, _mm_cvtepi32_epi64, _mm_cvtepi16_epi32, _mm_cvtepi16_epi64, _mm_cvtepu8_epi32, _mm_cvtepu8_epi64, _mm_cvtepu8_epi16, _mm_cvtepu32_epi64, _mm_cvtepu16_epi32, _mm_cvtepu16_epi64, PMOVSXBD, PMOVSXBQ, PMOVSXBW, PMOVSXDQ, PMOVSXWD, PMOVSXWQ, PMOVZXBD, PMOVZXBQ, PMOVZXBW, PMOVZXDQ, PMOVZXWD, PMOVZXWQ, Intel&reg; Streaming SIMD Extensions 4, packed format conversion intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-1BFB4ADA-FFE9-4D0F-A6D6-24F69B7EC69C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C31E8AF7-77C8-4151-852B-C60849148E14">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Packed Format Conversion Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse41_pack_formconv"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C31E8AF7-77C8-4151-852B-C60849148E14">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Packed Format Conversion Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-13B7AE4A-6E82-4A23-9BDA-848D1B928B22"> 
+      <p>These Intel&reg; Streaming SIMD Extensions 4 (Intel&reg; SSE4) intrinsics convert a packed integer to a zero-extended or sign-extended integer with wider type. The prototypes for these intrinsics are in the 
+        <span class="filepath">smmintrin.h</span> file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E3B6241C-2209-4AC3-8F9E-4EF129F2F047"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EA4C383F-1A5A-42BB-BB91-11EFD9C597F6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="44.883720930232556%" id="d645337e109"> 
+                <p>Intrinsic Syntax 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="31.860465116279073%" id="d645337e115"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="23.25581395348837%" id="d645337e121"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE4 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepi8_epi32(__m128i a)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Sign extend four bytes into four doublewords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVSXBD</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepi8_epi64 (__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Sign extend two bytes into two quadwords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVSXBQ</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepi8_epi16(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Sign extend eight bytes into eight words 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVSXBW</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepi32_epi64(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Sign extend two doublewords into two quadwords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVSXDQ</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepi16_epi32(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Sign extend four words into four doublewords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVSXWD</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepi16_epi64(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Sign extend two words into two quadwords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVSXWQ</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepu8_epi32(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Zero extend four bytes into four doublewords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVZXBD</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepu8_epi64(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Zero extend two bytes into two quadwords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVZXBQ</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepu8_epi16(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Zero extend eight bytes into eight words 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVZXBW</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepu32_epi64(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Zero extend two doublewords into two quadwords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVZXDQ</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepu16_epi32(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Zero extend four words into four doublewords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVZXWD</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="44.883720930232556%" headers="d645337e109 "> 
+                <p><span class="option">__m128i _mm_cvtepu16_epi64(__m128i a) 
+                </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="31.860465116279073%" headers="d645337e115 "> 
+                <p>Zero extend two words into two quadwords 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="23.25581395348837%" headers="d645337e121 "> 
+                <p><samp class="codeph">PMOVZXWQ</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1BFB4ADA-FFE9-4D0F-A6D6-24F69B7EC69C.htm">Vectorizing Compiler and Media Accelerators</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

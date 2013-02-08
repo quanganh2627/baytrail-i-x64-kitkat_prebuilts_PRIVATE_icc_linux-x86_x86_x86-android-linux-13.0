@@ -1,0 +1,276 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Parallel Processing Model">
+<meta name="DC.subject" content="OMP directives, parallel processing thread model, parallel processing, thread model, program loops, parallel processing model, synchronization, parallel processing model for">
+<meta name="keywords" content="OMP directives, parallel processing thread model, parallel processing, thread model, program loops, parallel processing model, synchronization, parallel processing model for">
+<meta name="DC.Relation" scheme="URI" content="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1DC5D614-B61A-415F-8CED-C06154B828A7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Parallel Processing Model</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_proc"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_proc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1DC5D614-B61A-415F-8CED-C06154B828A7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Parallel Processing Model</h1>
+ 
+   
+  <div> 
+	 <p>A program containing OpenMP* API compiler directives begins execution as a single thread, called the initial thread of execution. The initial thread executes sequentially until the first parallel construct is encountered. 
+	 </p>
+ 
+	 <p>In the OpenMP API, the 
+		<span><span class="keyword">#pragma omp parallel</span></span> directive define<span>s</span> the extent of the parallel construct. When the initial thread encounters a parallel construct, it creates a team of threads, with the initial thread becoming the master of the team. All program statements enclosed by the parallel construct are executed in parallel by each thread in the team, including all routines called from within the enclosed statements. 
+	 </p>
+ 
+	 <p>The statements enclosed lexically within a construct define the static extent of the construct. The dynamic extent includes all statements encountered during the execution of a construct by a thread, including all called routines. 
+	 </p>
+ 
+	 <p>When a thread encounters the end of a structured block enclosed by a parallel construct, the thread waits until all threads in the team have arrived. When that happens the team is dissolved, and only the master thread continues execution of the code following the parallel construct. The other threads in the team enter a wait state until they are needed to form another team. You can specify any number of parallel constructs in a single program. As a result, thread teams can be created and dissolved many times during program execution. 
+	 </p>
+ 
+	 <p>The following example illustrates, from a high level, the execution model for the OpenMP constructs. The comments in the code explain the structure of each construct or section. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C375D290-888A-40FB-97C2-C2CBAEB9FAAE" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d90833e78"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d90833e78 "> 
+				  <pre>main() {                    // Begin serial execution.</pre> 
+				  <pre>...                         // Only the initial thread executes</pre> 
+				  <pre>#pragma omp parallel        // Begin a parallel construct and form</pre> 
+				  <pre>   {                        // a team.</pre> 
+				  <pre>     #pragma omp sections   // Begin a worksharing construct.</pre> 
+				  <pre>     {</pre> 
+				  <pre>       #pragma omp section  // One unit of work.</pre> 
+				  <pre>       {...}</pre> 
+				  <pre>       #pragma omp section  // Another unit of work.</pre> 
+				  <pre>       {...}</pre> 
+				  <pre>     }                      // Wait until both units of work complete.</pre> 
+				  <pre>    ...                     // This code is executed by each team member.</pre> 
+				  <pre>   #pragma omp for nowait   // Begin a worksharing Construct</pre> 
+				  <pre>     for(...)</pre> 
+				  <pre>     {                      // Each iteration chunk is unit of work.</pre> 
+				  <pre>      ...                   // Work is distributed among the team members. </pre> 
+				  <pre>     }                      // End of worksharing construct.</pre> 
+				  <pre>                            // nowait was specified so threads proceed.</pre> 
+				  <pre>    #pragma omp critical    // Begin a critical section.</pre> 
+				  <pre>    {...}                   // Only one thread executes at a time.</pre> 
+				  <pre>   ...                      // This code is executed by each team member.</pre> 
+				  <pre>   #pragma omp barrier      // Wait for all team members to arrive.</pre> 
+				  <pre>   ...                      // This code is executed by each team member.</pre> 
+				  <pre>}                           // End of Parallel Construct</pre> 
+				  <pre>                            // Disband team and continue serial execution.</pre> 
+				  <pre>...                         // Possibly more parallel constructs.</pre> 
+				  <pre>}                           // End serial execution.</pre> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <div class="section" id="GUID-910D9F18-126B-4E71-90A2-411E507A6F83"><h2 class="sectiontitle">Using Orphaned Directives</h2> 
+		 
+		<p>In routines called from within parallel constructs, you can also use directives. Directives that are not in the static extent of the parallel construct, but are in the dynamic extent, are called orphaned directives. Orphaned directives allow you to execute portions of your program in parallel with only minimal changes to the sequential version of the program. Using this functionality, you can code parallel constructs at the top levels of your program call tree and use directives to control execution in any of the called routines. For example: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C62B854A-C161-49F6-915C-26C32B3E240E" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" align="left" valign="top" id="d90833e199"> 
+					 <p>Example 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" headers="d90833e199 "> 
+					 <pre>int main(void)</pre> 
+					 <pre>{</pre> 
+					 <pre>   #pragma omp parallel</pre> 
+					 <pre>   {</pre> 
+					 <pre>      phase1();</pre> 
+					 <pre>   }</pre> 
+					 <pre>}</pre> 
+					 <pre><span class="keyword">v</span>oid phase1(void)</pre> 
+					 <pre>{</pre> 
+					 <pre>   #pragma omp for // This is an orphaned pragma.</pre> 
+					 <pre>   for(i=0; i &lt; n; i++)</pre> 
+					 <pre>   {</pre> 
+					 <pre>     some_work(i);</pre> 
+					 <pre>   }</pre> 
+					 <pre>}</pre> 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>This is an orphaned 
+		  <span class="keyword">for</span> loop directive since the parallel region is not lexically present in 
+		  <span class="keyword">routine</span> 
+		  <span class="keyword">phase 1</span>. 
+		</p>
+ 
+		<p><strong>Data Environment Controls</strong> 
+		</p>
+ 
+		<p>You can control the data environment within parallel and worksharing constructs. Using directives and data environment clauses on directives, you can privatize named global-lifetime objects by using 
+		  <span class="keyword">THREADPRIVATE</span> directive, or control data scope attributes by using the data environment clauses for directives that support them. 
+		</p>
+ 
+		<p>The data scope attribute clauses are: 
+		</p>
+ 
+		<ul type="disc" id="GUID-205CDB65-7EC9-462A-93EE-85F4A714ABFE"> 
+		  <li> 
+			 <p><span class="keyword">default</span> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">private</span> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">firstprivate</span> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">lastprivate</span> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">reduction</span> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">shared</span> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>The data copying clauses are: 
+		</p>
+ 
+		<ul type="disc" id="GUID-64B63F5A-07AF-44A1-9C9B-DFE96B63B8CF"> 
+		  <li> 
+			 <p><span class="keyword">copyin</span> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">copyprivate</span> 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>You can use several directive clauses to control the data scope attributes of variables for the duration of the construct in which you specify them; however, if you do not specify a data scope attribute clause on a directive, the behavior for the variable is determined by the default scoping rules, which are described in the OpenMP API specification, for the variables affected by the directive. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-846C221D-64FD-4653-9675-D70B1551DCF2"><h2 class="sectiontitle">Determining How Many Threads to Use</h2> 
+		 
+		<p>For applications where the workload depends on application input that can vary widely, delay the decision about the number of threads to employ until runtime when the input sizes can be examined. Examples of workload input parameters that affect the thread count include things like matrix size, database size, image/video size and resolution, depth/breadth/bushiness of tree-based structures, and size of list based structures. Similarly, for applications designed to run on systems where the processor count can vary widely, defer the number of threads to employ until application run-time when the machine size can be examined. 
+		</p>
+ 
+		<p>For applications where the amount of work is unpredictable from the input data, consider using a calibration step to understand the workload and system characteristics to aid in choosing an appropriate number of threads. If the calibration step is expensive, the calibration results can be made persistent by storing the results in a permanent place like the file system. 
+		</p>
+ 
+		<p>Avoid simultaneously using more threads than the number of processing units on the system. This situation causes the operating system to multiplex threads on the processors and typically yields sub-optimal performance. 
+		</p>
+ 
+		<p>When developing a library as opposed to an entire application, provide a mechanism whereby the user of the library can conveniently select the number of threads used by the library, because it is possible that the user has higher-level parallelism that renders the parallelism in the library unnecessary or even disruptive. 
+		</p>
+ 
+		<p>Use the 
+		  <span class="keyword">num_threads</span> clause on parallel regions to control the number of threads employed and use the 
+		  <samp class="codeph">if 
+		  </samp>clause on parallel regions to decide whether to employ multiple threads at all. The 
+		  <span class="keyword">omp_set_num_threads</span> routine can also be used, but it also affects parallel regions created by the calling thread. The 
+		  <span class="keyword">num_threads</span> clause is local in its effect, so it does not impact other parallel regions. 
+		</p>
+
+
+
+		<p>By default, the Intel OpenMP runtime lets you to create a large number of threads and active nested parallel regions. Use 
+		  <span class="keyword">omp_get_thread_limit()</span> and 
+		  <span class="keyword">omp_get_max_active_levels()</span> to determine the limits. Developers should carefully consider their thread usage and nesting of parallelism to avoid overloading the system. The 
+		  <span class="keyword">OMP_THREAD_LIMIT</span> environment variable limits the number of OpenMP threads to use for the whole OpenMP program. The 
+		  <span class="keyword">OMP_MAX_ACTIVE_LEVELS</span> environment variable limits the number of active nested parallel regions. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">OpenMP* Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

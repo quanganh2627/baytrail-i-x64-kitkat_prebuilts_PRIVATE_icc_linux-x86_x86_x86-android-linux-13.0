@@ -1,0 +1,357 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Interprocedural Optimization (IPO) Overview">
+<meta name="DC.subject" content="linking tools IR, Intel&reg; linking tools, intermediate representation (IR), interprocedural optimizations, compilation, linking, overview, whole program analysis, linking tools, xild, xilink">
+<meta name="keywords" content="linking tools IR, Intel&reg; linking tools, intermediate representation (IR), interprocedural optimizations, compilation, linking, overview, whole program analysis, linking tools, xild, xilink">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F72F0700-46DA-4FB7-9B73-6ADC12F9D086">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Interprocedural Optimization (IPO) Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_mult"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_mult"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F72F0700-46DA-4FB7-9B73-6ADC12F9D086">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Interprocedural Optimization (IPO) Overview</h1>
+ 
+   
+  <div> 
+	 <p>Interprocedural Optimization (IPO) is an automatic, multi-step process that allows the compiler to analyze your code to determine where you can benefit from specific optimizations. When you use 
+		<a href="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm#GUID-C774BC96-8334-4765-998F-1C53F995B331">IPO options</a> along with the 
+  <span class="option">-x</span> or 
+  <span class="option">-ax</span> (Linux* OS) options, or the 
+  <span class="option">/Qx</span> or 
+  <span class="option">/Qax</span> (Windows* OS) options, you may see additional optimizations for Intel microprocessors than for non-Intel microprocessors. 
+  </p>
+ 
+  <p>The compiler may apply the following optimizations for the listed architectures: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7F3E28E6-71FA-4DEC-AA75-5F0783B8CED4" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" align="left" valign="top" width="36.36363636363637%" id="d852833e99"> 
+				<p>Architecture 
+				</p>
+ 
+			 </th>
+ 
+			 <th class="cellrowborder" align="left" valign="top" width="63.63636363636363%" id="d852833e105"> 
+				<p>Optimization 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" align="left" valign="top" width="36.36363636363637%" headers="d852833e99 "> 
+				<p>All supported Intel&reg; architectures 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" align="left" valign="top" width="63.63636363636363%" headers="d852833e105 "> 
+				<ul type="disc" id="GUID-66CD3C4C-D2C6-4138-B687-EBA87A70B454"> 
+				  <li> 
+					 <p>inlining 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>constant propagation 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>mod/ref analysis 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>alias analysis 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>forward substitution 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>routine key-attribute propagation 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>address-taken analysis 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>partial dead call elimination 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>symbol table data promotion 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>common block variable coalescing 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>dead function elimination 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>un-referenced variable removal 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>whole program analysis 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>array dimension padding 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>common block splitting 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>stack frame alignment 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>structure splitting and field reordering 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>formal parameter alignment analysis 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>C++ class hierarchy analysis 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>indirect call conversion 
+					 </p>
+ 
+				  </li>
+ 
+				  <li> 
+					 <p>specialization 
+					 </p>
+ 
+				  </li>
+ 
+				</ul>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" align="left" valign="top" width="36.36363636363637%" headers="d852833e99 "> 
+				<p>IA-32 and Intel&reg; 64 architectures 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" align="left" valign="top" width="63.63636363636363%" headers="d852833e105 "> 
+				<p> 
+				<ul type="disc" id="GUID-73B301D9-F5F4-4895-AA5B-25CFFBBC3759"> 
+				  <li> 
+					 <p>Passing arguments in registers to optimize calls and register usage 
+					 </p>
+ 
+				  </li>
+ 
+				</ul>
+ 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  </tbody>
+ 
+	 </table>
+</div>
+ 
+  <div class="section" id="GUID-9C14E6F1-A192-4269-9DE9-DC11852B6E25"><h2 class="sectiontitle">IPO Compilation Models</h2> 
+	  
+	 <p> IPO supports two compilation models - single-file compilation and multi-file compilation. 
+	 </p>
+ 
+	 <p>Single-file compilation uses the 
+		<a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">-ip</span></a> (Linux* OS and OS X*) or 
+		<a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">/Qip</span></a> (Windows* OS) option, and results in one, real object file for each source file being compiled. During single-file compilation the compiler performs inline function expansion for calls to procedures defined within the current source file. 
+	 </p>
+ 
+	 <p>The compiler performs some single-file interprocedural optimization at the default optimization level: 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O2</span></a> (Linux* and OS X*) or 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">/O2</span></a> (Windows*); additionally the compiler may perform some inlining for the 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">-O1</span></a> (Linux* and OS X*) or 
+		<a href="GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608.htm#GUID-CDCCCACD-A61C-40C5-A342-E452C95E1608"><span class="option">/O1</span></a> (Windows*) optimization level, like inlining functions marked with inlining 
+		<span>pragmas or attributes (GNU C and C++) and C++ class member functions with bodies included in the class declaration</span>. 
+	 </p>
+ 
+	 <p>Multi-file compilation uses the 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux and OS X) or 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) option, and results in one or more mock object files rather than normal object files. (See the 
+		<var>Compilation</var> section below for information about mock object files.) Additionally, the compiler collects information from the individual source files that make up the program. Using this information, the compiler performs optimizations across functions and procedures in different source files. See 
+		<a href="GUID-00D25374-54FB-444D-A694-6189634C0B25.htm#GUID-00D25374-54FB-444D-A694-6189634C0B25">Inline Function Expansion</a>. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>Inlining and other optimizations are improved by profile information. For a description of how to use IPO with profile information for further optimization, see 
+		  <a href="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F.htm#GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F">Profile an Application</a>. 
+		</p>
+ 
+		<p>OS X*: Intel&reg;-based systems running OS X do not support a multiple object compilation model. 
+		</p>
+ 
+	 </div> 
+  </div>
+ 
+  <div class="section" id="GUID-E290A3B4-0135-4D49-838F-739A6A0D7DBE"><h2 class="sectiontitle">Compiling with IPO</h2> 
+	  
+	 <p>As each source file is compiled with IPO, the compiler stores an intermediate representation (IR) of the source code in a mock object file that includes summary information used for optimization. The mock object files contain the IR instead of the normal object code. Mock object files can be ten times or more larger than the size of normal object files. 
+	 </p>
+ 
+	 <p>During the IPO compilation phase only the mock object files are visible. 
+		<span>The Intel compiler does not expose the real object files during IPO unless you also specify the 
+		  <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> (Linux and OS X) or 
+		  <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">/Qipo-c</span></a> (Windows) option.</span> 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-6A721068-2DA9-4E30-88CC-468205DC163F"><h2 class="sectiontitle">Linking with IPO</h2> 
+	  
+	 <p>When you link with the 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux and OS X) or 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) option the compiler is invoked a final time. The compiler performs IPO across all object files that have an IR equivalent. The mock objects must be linked with the Intel compiler or by using the Intel linking tools. The compiler calls the linkers indirectly by using aliases (or wrappers) for the native linkers, so you must modify 
+		<var>make</var> files to account for the different linking tool names. For information on using the linking tools, see 
+		<a href="GUID-BAC44C7F-5A85-45D7-9595-F2AA2595F399.htm#GUID-BAC44C7F-5A85-45D7-9595-F2AA2595F399">Using IPO</a>; see the 
+		<a href="GUID-4555A569-67C0-42E7-A0E2-5E5CB05C21B0.htm#GUID-4555A569-67C0-42E7-A0E2-5E5CB05C21B0">Linking Tools and Options</a> topic for detailed information. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Caution</h3> 
+		<p>Linking the mock object files with 
+		  <var>ld</var> (Linux and OS X) or 
+		  <var>link.exe</var> (Windows) will cause linkage errors. You must use the Intel linking tools to link mock object files. 
+		</p>
+ 
+		<p>During the compilation process, the compiler first analyzes the summary information and then produces mock object files for source files of the application. 
+		</p>
+ 
+	 </div> 
+  </div>
+ 
+  <div class="section" id="GUID-769CF52D-5B3B-4F47-8CAF-0387D63D164F"><h2 class="sectiontitle">Whole Program Analysis</h2> 
+	  
+	 <p>The compiler supports a large number of IPO optimizations that can be applied or have its effectiveness greatly increased when the whole program condition is satisfied. 
+	 </p>
+ 
+	 <p>Whole program analysis, when it can be done, enables many interprocedural optimizations. During the analysis process, the compiler reads all Intermediate Representation (IR) in the mock file, object files, and library files to determine if all references are resolved and whether or not a given symbol is defined in a mock object file. Symbols that are included in the IR in a mock object file for both data and functions are candidates for manipulation based on the results of whole program analysis. 
+	 </p>
+ 
+	 <p>There are two types of whole program analysis - object reader method and table method. Most optimizations can be applied if either type of whole program analysis determine that the whole program conditions exists; however, some optimizations require the results of the object reader method, and some optimizations require the results of table method. 
+	 </p>
+ 
+	 <p><strong>Object reader method</strong> 
+	 </p>
+
+
+
+	 <p>In the object reader method, the object reader emulates the behavior of the native linker and attempts to resolve the symbols in the application. If all symbols are resolved correctly, the whole program condition is satisfied. This type of whole program analysis is more likely to detect the whole program condition. 
+	 </p>
+ 
+	 <p>Often the object files and libraries accessed by the compiler do not represent the whole program; there are many dependencies to well-known libraries. IPO linking, whole program analysis, determines whether or not the whole program can be detected using the available compiler resources. 
+	 </p>
+ 
+	 <p><strong>Table method</strong> 
+	 </p>
+ 
+	 <p>In the table method the compiler analyzes the mock object files and generates a call-graph. 
+	 </p>
+ 
+	 <p>The compiler contains detailed tables about all of the functions for all important language-specific libraries, like 
+		<span class="keyword">libc</span>. In this second method, the compiler constructs a call-graph for the application. The compiler then compares the function table and application call-graph. For each unresolved function in the call-graph, the compiler attempts to resolve the calls. If the compiler can resolve the functions call, the whole program condition exists. 
+	 </p>
+ 
+  </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">Interprocedural Optimization (IPO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

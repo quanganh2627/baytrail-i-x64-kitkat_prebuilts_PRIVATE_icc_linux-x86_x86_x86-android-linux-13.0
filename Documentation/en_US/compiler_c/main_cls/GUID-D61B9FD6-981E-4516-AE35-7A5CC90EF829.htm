@@ -1,0 +1,304 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compiler Options for Interoperability">
+<meta name="DC.subject" content="interoperability options, compiler options, for interoperability">
+<meta name="keywords" content="interoperability options, compiler options, for interoperability">
+<meta name="DC.Relation" scheme="URI" content="GUID-7A45E9A3-3346-48FF-AD2C-80BEB6C12891.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-32E7B1B9-008E-4978-B59C-EC50197EFF7A.htm#GUID-32E7B1B9-008E-4978-B59C-EC50197EFF7A">
+<meta name="DC.Relation" scheme="URI" content="GUID-68D54640-CA6A-4003-BDB0-B6DAE60B5133.htm#GUID-68D54640-CA6A-4003-BDB0-B6DAE60B5133">
+<meta name="DC.Relation" scheme="URI" content="GUID-DBB862E9-1B78-4EB7-88A3-36AED5B23211.htm#GUID-DBB862E9-1B78-4EB7-88A3-36AED5B23211">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0E92522-F837-49BE-AD47-7498CFB14F19.htm#GUID-A0E92522-F837-49BE-AD47-7498CFB14F19">
+<meta name="DC.Relation" scheme="URI" content="GUID-3923525B-3A78-464C-9351-1D6F078083DA.htm#GUID-3923525B-3A78-464C-9351-1D6F078083DA">
+<meta name="DC.Relation" scheme="URI" content="GUID-C9114DD8-2D48-4D82-B05B-3D80123F80BD.htm#GUID-C9114DD8-2D48-4D82-B05B-3D80123F80BD">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D61B9FD6-981E-4516-AE35-7A5CC90EF829">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compiler Options for Interoperability</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_interop_options_comm"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_interop_options_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D61B9FD6-981E-4516-AE35-7A5CC90EF829">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Compiler Options for Interoperability</h1>
+
+
+
+
+<div>
+<p>The Intel&reg; C++ Compiler options that affect gcc* interoperability include:</p>
+
+<ul type="disc" id="GUID-0AF6A8C7-A62C-4F7A-8B3B-ADD195B4A70C">
+<li><p><span class="option">-gcc-name=</span><var>dir</var></p>
+</li>
+
+<li><p><span class="option">-gcc-version=</span><var>nnn</var></p>
+</li>
+<li><p><span class="option">-gxx-name=</span><var>dir</var></p>
+</li>
+
+<li><p><span class="option">-cxxlib</span></p>
+</li>
+
+<li><p><span class="option">-fabi-version=</span><var>n</var></p>
+</li>
+
+<li><p><span class="option">-no-gcc</span></p>
+</li>
+
+</ul>
+
+
+<div class="section" id="GUID-5E1834A3-5C6B-4352-B890-ECAEA6B62A22"><h2 class="sectiontitle">-gcc-name option</h2>
+
+<p>The <span class="option">-gcc-name=</span><var>dir</var> option, used with <span class="option">-cxxlib</span>, lets you specify the full-path location of gcc if the compiler cannot locate the gcc C++ libraries. Use this option when referencing a non-standard gcc installation.</p>
+
+</div>
+
+
+<div class="section" id="GUID-C8C03C61-B1B6-43D0-9F31-595CCB2A81F4"><h2 class="sectiontitle">-gcc-version option</h2>
+
+<p>The <span class="option">-gcc-version=</span><var>nnn</var> option provides compatible behavior with gcc, where <var>nnn</var> indicates the gcc version. The <span class="option">-gcc-version</span> option is ON by default, and the value of <var>nnn</var> depends on the version of gcc installed on your system. This option selects the version of gcc with which you achieve ABI interoperability.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F425D51B-883E-4A16-B7A3-D352C5924474" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="50%" id="d739912e136"><p>Installed Version<br>of gcc</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="50%" id="d739912e142"><p>Default Value<br>of -gcc-version</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>older than<br>version 3.2</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>not set</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>3.2</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>320</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>3.3</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>330</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>3.4</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>340</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>4.0</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>400</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>4.1</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>410</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>4.2</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>420</p>
+</td>
+
+</tr>
+<tr><td class="cellrowborder" valign="top" width="50%" headers="d739912e136 "><p>4.3</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%" headers="d739912e142 "><p>430</p>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+<div class="section" id="GUID-C9245DEC-DEAE-4F3A-931B-37486A97E1C0"><h2 class="sectiontitle">-gxx-name option</h2><p>The <span class="option">-gxx-name=</span><var>dir</var> option specifies that the g++ compiler should be used to set up the environment for C++ compilations.</p>
+
+</div>
+<div class="section" id="GUID-43599E4F-E07D-4C2C-B913-86CE9342E001"><h2 class="sectiontitle">-cxxlib option</h2>
+
+<p>The <span class="option">-cxxlib</span>[=<var>dir</var>] option (ON by default) builds your applications using the C++ libraries and header files included with the gcc compiler. They include:</p>
+
+<ul type="disc" id="GUID-28C134C6-E617-41A2-B0A8-25EB0AA75E79">
+<li><p><span class="keyword">libstdc++</span> standard C++ header files</p>
+</li>
+
+<li><p><span class="keyword">libstdc++</span> standard C++ library</p>
+</li>
+
+<li><p><span class="keyword">libgcc</span> C++ language support</p>
+</li>
+
+</ul>
+
+<p>Use the optional argument, =<var>dir</var>, to specify the top-level location for the gcc binaries and libraries.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>The Intel C++ Compiler is compatible with gcc 3.2, 3.3, 3.4, 4.0, 4.1 and 4.2.</p>
+</div>
+<p>When you compile and link your application, the resulting C++ object files and libraries can interoperate with C++ object files and libraries generated by gcc 3.2 or higher. This means that third-party C++ libraries built with gcc 3.2 will work with C++ code generated by the Intel Compiler.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>gcc 3.2, 3.3, and 3.4 are not interoperable. gcc 4.0, 4.1, and 4.2 are interoperable. By default, the Intel compiler will generate code that is interoperable with the version of gcc it finds on your system.</p>
+</div>
+<p>By default, the Intel C++ Compiler uses headers and libraries included with the product, when the system includes a version of gcc less than 3.2.</p>
+
+<p>If you build one shared library against the Intel C++ libraries, build a second shared library against the gnu C++ libraries, and use both libraries in a single application, you will have two C++ run-time libraries in use. Since the application might use symbols from both libraries, the following problems may occur:</p>
+
+<ul type="disc" id="GUID-F6117BCD-55D6-43EE-8032-01EDB3BF17FF">
+<li><p>partially initialized libraries</p>
+</li>
+
+<li><p>lost I/O operations from data put in unaccessed buffers</p>
+</li>
+
+<li><p>other unpredictable results, such as jumbled output</p>
+</li>
+
+</ul>
+
+<p>The Intel C++ Compiler does not support more than one run-time library in one application.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>If you successfully compile your application using more than one run-time library, the resulting program will likely be very unstable, especially when new code is linked against the shared libraries.</p>
+</div>
+</div>
+
+
+<div class="section" id="GUID-5A4025EA-F41F-44B9-BF2B-CF859F7CCAB2"><h2 class="sectiontitle">-fabi-version</h2>
+
+<p>The <span class="option">-fabi-version=</span><var>n</var> option directs the compiler to select a specific ABI implementation. By default, the Intel compiler uses the ABI implementation that corresponds to the installed version of gcc. Both gcc 3.2 and 3.3 are not fully ABI-compliant.</p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3ADA0F70-BD69-4074-A11E-2C7F507EF7C9" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="20%" id="d739912e363"><p>Value of n</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="80%" id="d739912e367"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+  <td class="cellrowborder" valign="top" width="20%" headers="d739912e363 "><p><var>n</var>=0</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="80%" headers="d739912e367 "><p>Select most recent ABI implementation</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="20%" headers="d739912e363 "><p><var>n</var>=1</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="80%" headers="d739912e367 "><p>Select g++ 3.2 compatible ABI implementation</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="20%" headers="d739912e363 "><p><var>n</var>=2</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="80%" headers="d739912e367 "><p>Select most conformant ABI implementation</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7A45E9A3-3346-48FF-AD2C-80BEB6C12891.htm">gcc* Interoperability</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-32E7B1B9-008E-4978-B59C-EC50197EFF7A.htm#GUID-32E7B1B9-008E-4978-B59C-EC50197EFF7A">Specifying Alternate Tools and Paths</a></div>
+<div><a href="GUID-68D54640-CA6A-4003-BDB0-B6DAE60B5133.htm#GUID-68D54640-CA6A-4003-BDB0-B6DAE60B5133"><span class="option">-gcc-name</span></a>  compiler option</div>
+<div><a href="GUID-DBB862E9-1B78-4EB7-88A3-36AED5B23211.htm#GUID-DBB862E9-1B78-4EB7-88A3-36AED5B23211"><span class="option">-gcc-version</span></a>  compiler option</div>
+<div><a href="GUID-A0E92522-F837-49BE-AD47-7498CFB14F19.htm#GUID-A0E92522-F837-49BE-AD47-7498CFB14F19"><span class="option">-cxxlib</span></a>  compiler option</div>
+<div><a href="GUID-3923525B-3A78-464C-9351-1D6F078083DA.htm#GUID-3923525B-3A78-464C-9351-1D6F078083DA"><span class="option">-fabi-version</span></a>  compiler option</div>
+<div><a href="GUID-C9114DD8-2D48-4D82-B05B-3D80123F80BD.htm#GUID-C9114DD8-2D48-4D82-B05B-3D80123F80BD"><span class="option">-no-gcc</span></a>  compiler option</div><div>
+    <p class="linkinfo">For more information on ABI conformance, see http://www.codesourcery.com/</p>
+
+  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

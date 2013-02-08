@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Configuration Files">
+<meta name="DC.subject" content="configuration files">
+<meta name="keywords" content="configuration files">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Relation" scheme="URI" content="GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362.htm#GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Configuration Files</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_config_files_comm"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_config_files_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Configuration Files</h1>
+ 
+   
+  <div> 
+	 <p>You can decrease the time you spend entering command-line options by using the configuration file to automate command-line entries. Add any valid command-line option to the configuration file. The compiler processes options in the configuration file in the order they appear followed by the command-line options that you specify when you invoke the compiler. Options in the configuration file are executed every time you run the compiler. If you have varying option requirements for different projects, use response files. 
+	 </p>
+ 
+	 <div class="section" id="GUID-628430D2-0956-4F07-9FC8-686C03F163D9"><h2 class="sectiontitle">How to Use Configuration Files</h2> 
+		 
+		<p>The following example illustrates a basic configuration file. The text following the "#" character is recognized as a comment. The configuration file, 
+		  <span><span class="filepath">icc.cfg</span> and 
+			 <span class="filepath">icpc.cfg</span></span>, is located in the same directory as the compiler's executable file. You should modify the configuration file environment variable if you need to specify a different location for the configuration file 
+		  . 
+		</p>
+ 
+		<pre># Sample configuration file.</pre> 
+		<pre>-I/my_headers</pre> 
+		<p>In this example, the compiler reads the configuration file and invokes the 
+		<span class="option">-I</span> option every time you run the compiler, along with any options you specify on the command line. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">Environment Variables 
+		  </a></div>
+<div><a href="GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362.htm#GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362">Using Response Files 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking Bounds">
+<meta name="DC.subject" content="pointer checker, checking bounds">
+<meta name="keywords" content="pointer checker, checking bounds">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6.htm#GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-35036DDA-62B4-402F-8A21-1201C2706BF3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking Bounds</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_check_bounds"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_check_bounds"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-35036DDA-62B4-402F-8A21-1201C2706BF3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Checking Bounds</h1>
+ 
+   
+  <div> 
+	 <p>The pointer checker checks indirect accesses through pointers for accesses that are out of bounds. 
+	 </p>
+ 
+	 <div class="section" id="GUID-8DB2D615-5DE6-4748-9319-F817937B18B4"><h2 class="sectiontitle">Checking Bounds on Read/Write Operations</h2> 
+		 
+		<p>To check the bounds of pointers, compile your module with 
+		<span class="option">/Qcheck-pointers:rw</span> (Windows* OS) or<span class="option"> -check-pointers=rw 
+		</span>(Linux* OS) compiler option. When you specify this compiler option with the<var> rw</var> argument, 
+		</p>
+ 
+		<p>You can also check bounds by specifying the 
+		  <var>write</var> argument, as in 
+		<span class="option">/Qcheck-pointers:write</span> (Windows* OS) or<span class="option"> -check-pointers=write 
+		</span>(Linux* OS). This also checks the bounds of pointers, but only for pointer write operations. 
+		</p>
+ 
+		<p>Consider the case where you create an array with ten elements using the 
+		  <span class="keyword">malloc()</span> function and then you write a character to each array element: 
+		</p>
+ 
+		<pre>char *buf = malloc(10);
+for (int i=0; i&lt;=10; i++)
+{
+   buf[i] = ‘A’ + i;
+}</pre> 
+		<p>The array has ten elements, but the loop iterates eleven times. On the eleventh iteration, the function writes a character to the eleventh element of the array, which is outside of the allocated memory. Regardless of whether you specify bounds checking for read and write operations or only write operations. the pointer checker will report an out-of-bounds error. Even in the case of a statically allocated buffer, the pointer checker will still report an error. 
+		</p>
+ 
+		<p>Now consider this case: 
+		</p>
+ 
+		<pre>fprintf(stderr, "buf[%d]=%d\n",i,buf[i]);</pre> 
+		<p>Here, the reference to 
+		  <samp class="codeph">buf[i]</samp> is a read (or load) operation. Therefore, an out-of-bounds error will not be reported if you specified pointer checking only for write operations. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-5AFEAD02-7B5A-4F86-8BEA-E07A479486C3"><h2 class="sectiontitle">Pointer Arithmetic and Pointer Checking</h2> 
+		 
+		<p> Pointer arithmetic does not affect the pointer checker. A pointer can go out of range as long as the pointer does not make an indirect reference to an out of range address. 
+		</p>
+ 
+		<p>In the case where you create an array with 100 elements, the following applies: 
+		</p>
+ 
+		<pre>char *p = malloc(100);
+
+p += 200;	   // pointer is out of range, but no error
+
+p[-101] = 0; // access is still in range, 
+             // i.e. it is the original p[99]
+
+p[0] = 0;    // out-of-bounds error occurs here
+             // because it is original p[200]</pre> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6.htm#GUID-7E8868FF-51FD-4BAD-9E97-1CE6B96D50B6">check-pointers, Qcheck-pointers 
+		  </a> Determines whether the compiler checks bounds for memory access through pointers.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Denormal Numbers">
+<meta name="DC.subject" content="denormals, subnormal numbers, denormal numbers">
+<meta name="keywords" content="denormals, subnormal numbers, denormal numbers">
+<meta name="DC.Relation" scheme="URI" content="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F.htm#GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-66BC7B8D-1204-4E52-BE87-036BA174DE00">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Denormal Numbers</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_denormal_num"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-66BC7B8D-1204-4E52-BE87-036BA174DE00">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Denormal Numbers</h1>
+ 
+   
+  <div> 
+    <p>A normalized number is a number for which both the exponent (including bias) and the most significant bit of the mantissa are non-zero. For such numbers, all the bits of the mantissa contribute to the precision of the representation.
+    </p>
+ 
+    <p>The smallest normalized single-precision floating-point number greater than zero is about 1.1754943<sup>-38</sup>. Smaller numbers are possible, but those numbers must be represented with a zero exponent and a mantissa whose leading bit(s) are zero, which leads to a loss of precision. These numbers are called denormalized numbers or denormals (newer specifications refer to these as subnormal numbers).
+    </p>
+ 
+    <p>Denormal computations use hardware and/or operating system resources to handle denormals; these can cost hundreds of clock cycles. Denormal computations take much longer to calculate  than normal computations. 
+      </p>
+ 
+    <p>There are several ways to avoid denormals and increase the performance of your application: 
+    </p>
+ 
+    <ul type="disc" id="GUID-A20A2A91-CF73-4AA8-AC7A-747AF0605C1D"> 
+      <li>Scale the values into the normalized range.
+      </li>
+ 
+      <li>Use a higher precision data type with a larger range.
+      </li>
+ 
+      <li>Flush denormals to zero.
+      </li>
+ 
+    </ul>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">Understanding Floating-point Operations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F.htm#GUID-4008A3DE-AA68-4805-9FC6-D93A1BF82A8F">Reducing Impact of Denormal Exceptions
+        </a></div><div> 
+        <p class="linkinfo">Intel&reg; 64 and IA-32 Architectures Software Developer's Manual, Volume 1: Basic Architecture
+        </p>
+ 
+        <p class="linkinfo">Institute of Electrical and Electronics Engineers, Inc*. (IEEE) web site for information about the current floating-point standards and recommendations
+        </p>
+ 
+      </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Checking Multi-Threaded Code">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.subject" content="pointer checker, checking multi-threaded code">
+<meta name="keywords" content="pointer checker, checking multi-threaded code">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AA671509-2FF5-4183-A9D9-163E78AC070F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Checking Multi-Threaded Code</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_check_mthread"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_check_mthread"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-AA671509-2FF5-4183-A9D9-163E78AC070F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Checking Multi-Threaded Code</h1>
+ 
+  <!--
+  --> 
+   
+  <div><p>
+  </p>
+ 
+	 <p>A common assumption is that reading or writing a pointer is an atomic operation that cannot be interrupted by starting another thread. This is not the case with using the pointer checker to check pointers in multi-threaded modules. 
+	 </p>
+ 
+	 <p>When you read or write a pointer from memory, the bounds information associated with the pointer must also be read or written. Reading and writing bounds information takes multiple instructions. While a thread is in the process of writing a pointer and its bounds, it could be swapped out for another thread. If that thread then writes to the same pointer, you can end up with a pointer and bounds information that are not synchronized—the pointer is from one thread and the bounds information is from another thread. 
+	 </p>
+ 
+	 <p>To synchronize the pointer and bounds information in multi-threaded code, use a locking mechanism, such as a mutex or critical section when reading or writing a pointer in memory locations shared by more than one thread. Typically, accesses to shared memory are already protected this way. 
+	 </p>
+ 
+	 <p>If your application relies on a pointer read or a pointer write that is atomic and performs reads or writes to shared pointers without such locking, you can get extraneous bounds violations unless you protect these accesses. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

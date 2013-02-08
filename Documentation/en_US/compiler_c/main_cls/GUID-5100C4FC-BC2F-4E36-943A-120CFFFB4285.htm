@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Inline Assembly">
+<meta name="DC.subject" content="intrinsics, inline assembly">
+<meta name="keywords" content="intrinsics, inline assembly">
+<meta name="DC.Relation" scheme="URI" content="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5100C4FC-BC2F-4E36-943A-120CFFFB4285">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Inline Assembly</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intref_data_align_ma_ia_linux_ia"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5100C4FC-BC2F-4E36-943A-120CFFFB4285">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Inline Assembly</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-C981FD31-9816-4263-9611-6FDD49FE518F"><h2 class="sectiontitle">Microsoft* Style Inline Assembly</h2> 
+       
+      <p>The Intel&reg; C++ Compiler supports Microsoft-style inline assembly with the 
+      <span class="option">-use-msasm</span> compiler option. See the Microsoft documentation for the proper syntax. 
+      </p>
+ 
+      </div>
+ 
+    <div class="section" id="GUID-644215B1-DACD-44CB-917E-0199FCA963E7"><h2 class="sectiontitle">GNU*-like Style Inline Assembly (IA-32 architecture and Intel&reg; 64 architecture only)</h2> 
+       
+      <p>The Intel&reg; C++ Compiler supports GNU-like style inline assembly. The syntax is as follows: 
+      </p>
+ 
+      <p><samp class="codeph">asm-keyword [ volatile-keyword ] ( asm-template [ asm-interface ] ) ;</samp> 
+      </p>
+ 
+      <p>The Intel&reg; C++ Compiler also supports mixing UNIX* and Microsoft* style asms. Use the 
+        <samp class="codeph">__asm__</samp> keyword for GNU-style ASM when using the 
+      <span class="option">-use_msasm</span> switch. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>The Intel&reg; C++ Compiler supports gcc-style inline ASM if the assembler code uses AT&amp;T* System V/386 syntax. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+    <div class="section" id="GUID-F9DA3EC2-2FF0-4F8B-A207-9E10275E4E96"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FDA15952-30F3-458E-9321-9D8E4DA8F26C" frame="hsides" border="1" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="27.624309392265197%" id="d263208e87"> 
+                <p>Syntax Element 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="72.37569060773481%" id="d263208e93">Description 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "> 
+                <p><span class="option">asm-keyword</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 "> 
+                <p>Assembly statements begin with the keyword 
+                  <samp class="codeph">asm</samp>. Alternatively, either 
+                  <samp class="codeph">__asm</samp> or 
+                  <samp class="codeph">__asm__</samp> may be used for compatibility. When mixing UNIX* and Microsoft* style asm, use the 
+                  <samp class="codeph">__asm__</samp> keyword. 
+                </p>
+ 
+                <p>The compiler only accepts the 
+                  <samp class="codeph">__asm__</samp> keyword. The 
+                  <samp class="codeph">asm</samp> and 
+                  <samp class="codeph">__asm</samp>keywords are reserved for Microsoft* style assembly statements. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">volatile-keyword</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 "> 
+                <p>If the optional keyword 
+                  <span class="keyword">volatile</span> is given, the 
+                  <samp class="codeph">asm</samp> is volatile. Two volatile 
+                  <samp class="codeph">asm</samp> statements are never moved past each other, and a reference to a volatile variable is not moved relative to a volatile 
+                  <samp class="codeph">asm</samp>. Alternate keywords 
+                  <span class="keyword">__volatile</span> and 
+                  <span class="keyword">__volatile__</span> may be used for compatibility. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">asm-template</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 "> 
+                <p>The 
+                  <samp class="codeph">asm-template</samp> is a C language ASCII string that specifies how to output the assembly code for an instruction. Most of the template is a fixed string; everything but the substitution-directives, if any, is passed through to the assembler. The syntax for a substitution directive is a 
+                <span class="option">%</span> followed by one or two characters. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">asm-interface</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 "> 
+                <p>The 
+                  <samp class="codeph">asm-interface</samp> consists of three parts: 
+                </p>
+ 
+                <ol id="GUID-61932F49-AA6F-4529-962E-36E5DF3EF348"> 
+                  <li>An optional 
+                    <samp class="codeph">output-list</samp> 
+                  </li>
+ 
+                  <li>An optional 
+                    <samp class="codeph">input-list</samp> 
+                  </li>
+ 
+                  <li>An optional 
+                    <samp class="codeph">clobber-list</samp> 
+                  </li>
+ 
+                </ol>
+ 
+                <p>These are separated by colon (:) characters. If the 
+                  <samp class="codeph">output-list</samp> is missing, but an 
+                  <samp class="codeph">input-list</samp> is given, the input list may be preceded by two colons (::) to take the place of the missing 
+                  <samp class="codeph">output-list</samp>. If the 
+                  <samp class="codeph">asm-interface</samp> is omitted altogether, the 
+                  <samp class="codeph">asm</samp> statement is considered volatile regardless of whether a 
+                  <samp class="codeph">volatile-keyword</samp> was specified. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">output-list</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 ">An 
+                <samp class="codeph">output-list</samp> consists of one or more output-specs separated by commas. For the purposes of substitution in the 
+                <samp class="codeph">asm-template</samp>, each output-spec is numbered. The first operand in the 
+                <samp class="codeph">output-list</samp> is numbered 
+                <span>0</span>, the second is 
+                <span>1</span>, and so on. Numbering is continuous through the 
+                <samp class="codeph">output-list</samp> and into the 
+                <samp class="codeph">input-list</samp>. The total number of operands is limited to 30 (i.e. 0-29). 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">input-list</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 ">Similar to an 
+                <samp class="codeph">output-list</samp>, an 
+                <samp class="codeph">input-list</samp>consists of one or more input-specs separated by commas. For the purposes of substitution in the 
+                <samp class="codeph">asm-template</samp>, each input-spec is numbered, with the numbers continuing from those in the 
+                <samp class="codeph">output-list</samp>. 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">clobber-list</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 ">A 
+                <samp class="codeph">clobber-list</samp> tells the compiler that the 
+                <samp class="codeph">asm</samp> uses or changes a specific machine register that is either coded directly into the 
+                <samp class="codeph">asm</samp> or is changed implicitly by the assembly instruction. The 
+                <samp class="codeph">clobber-list</samp> is a comma-separated list of 
+                <samp class="codeph">clobber-specs</samp>. 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">input-spec</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 ">The 
+                <samp class="codeph">input-specs</samp> tell the compiler about expressions whose values may be needed by the inserted assembly instruction. In order to describe fully the input requirements of the 
+                <samp class="codeph">asm</samp>, you can list input-specs that are not actually referenced in the 
+                <samp class="codeph">asm-template</samp>. 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="27.624309392265197%" headers="d263208e87 "><span class="option">clobber-spec</span> 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="72.37569060773481%" headers="d263208e93 ">Each 
+                <samp class="codeph">clobber-spec</samp> specifies the name of a single machine register that is clobbered. The register name may optionally be preceded by a 
+                <span class="option">%</span>. You can specify any valid machine register name. It is also legal to specify "memory" in a 
+                <samp class="codeph">clobber-spec</samp>. This prevents the compiler from keeping data cached in registers across the 
+                <samp class="codeph">asm</samp> statement. 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BF574E15-A604-4EF6-89E9-6887D4B7D6BA"> 
+      <p></p>
+ 
+      <p>When compiling an assembly statement on Linux*, the compiler simply emits the asm-template to the assembly file after making any necessary operand substitutions. The compiler then calls the GNU* assembler to generate machine code. In contrast, on Windows* the compiler itself must assemble the text contained in the asm-template string into machine code. In essence, the compiler contains a built-in assembler. 
+      </p>
+ 
+      <p>The compiler’s built-in assembler supports the GNU* 
+        <samp class="codeph">.byte</samp> directive but does not support other functionality of the GNU* assembler, so there are limitations in the contents of the asm-template. The following assembler features are not currently supported. 
+      </p>
+ 
+      <ul type="disc" id="GUID-D2B6DAD7-3535-4B7A-BC67-A92B44252CA6"> 
+        <li> 
+          <p>Directives other than the 
+            <samp class="codeph">.byte</samp> directive 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Symbols* 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6EFF6095-297A-43F9-B8BA-962CF90C6F43"> 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>* Direct symbol references in the asm-template are not supported. To access a C++ object, use the 
+          <samp class="codeph">asm-interface</samp> with a substitution directive. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+    <div class="section" id="GUID-D8C1AD56-09D5-4B9D-9EE0-F365937034C6"><h2 class="sectiontitle">Example</h2> 
+       
+      <p>Incorrect method for accessing a C++ object: 
+      </p>
+ 
+      <p><samp class="codeph">__asm__("addl $5, _x"); 
+        </samp>
+      </p>
+ 
+      <p>Proper method for accessing a C++ object: 
+      </p>
+ 
+      <p><samp class="codeph">__asm__("addl $5, %0" : "+rm" (x)); 
+        </samp>
+      </p>
+ 
+      <p>Additionally, there are some restrictions on the usage of labels. The compiler only allows local labels, and only references to labels within the same assembly statement are permitted. A local label has the form “<var>N:</var>”, where 
+        <var>N</var> is a non-negative integer. 
+        <var>N</var> does not have to be unique, even within the same assembly statement. To reference the most recent definition of label 
+        <var>N</var>, use “<var>Nb</var>”. To reference the next definition of label 
+        <var>N</var>, use “<var>Nf</var>”. In this context, “<var>b</var>” means backward and “<var>f</var>” means forward. For more information, refer to the GNU assembler documentation. 
+      </p>
+ 
+      <p>GNU-style inline assembly statements on Windows* OS use the same assembly instruction format as on Linux* OS which is often referenced as AT&amp;T* assembly syntax. This means that destination operands are on the right and source operands are on the left. This operand order is the reverse of Intel assembly syntax. 
+      </p>
+ 
+      <p>Due to the limitations of the compiler's built-in assembler, many assembly statements that compile and run on Linux* will not compile on Windows*. On the other hand, assembly statements that compile and run on Windows* should also compile and run on Linux*. 
+      </p>
+ 
+      <p>This feature provides a high-performance alternative to Microsoft-style inline assembly statements when portability between Windows*, Linux*, and OS X* is important. Its intended use is in small primitives where high-performance integration with the surrounding C++ code is essential. 
+      </p>
+ 
+      <pre>#ifdef _WIN64 
+#define INT64_PRINTF_FORMAT "I64" 
+#else 
+#define __int64 long long 
+#define INT64_PRINTF_FORMAT "L" 
+#endif 
+#include &lt;stdio.h&gt; 
+typedef struct {
+    __int64 lo64;
+    __int64 hi64; 
+} my_i128; 
+#define ADD128(out, in1, in2)                      \
+    __asm__("addq %2, %0; adcq %3, %1" :           \
+            "=r"(out.lo64), "=r"(out.hi64) :       \
+            "emr" (in2.lo64), "emr"(in2.hi64),     \
+            "0" (in1.lo64), "1" (in1.hi64));
+
+extern int 
+main() 
+{
+    my_i128 val1, val2, result;
+    val1.lo64 = ~0;
+    val1.hi64 = 0;
+
+    val2.hi64 = 65;
+    ADD128(result, val1, val2);
+    printf("0x%016" INT64_PRINTF_FORMAT "x%016"   INT64_PRINTF_FORMAT "x\n",
+            val1.hi64, val1.lo64);
+
+    printf("+0x%016" INT64_PRINTF_FORMAT "x%016" INT64_PRINTF_FORMAT "x\n",
+            val2.hi64, val2.lo64);
+
+    printf("------------------------------------\n");
+    printf("0x%016" INT64_PRINTF_FORMAT "x%016" INT64_PRINTF_FORMAT "x\n",
+            result.hi64, result.lo64);
+    return 0; 
+}</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-900E81C0-BE95-4630-994D-CB5D7452E293"> 
+      <p></p>
+ 
+      <p>This example, written for Intel&reg; 64 architecture, shows how to use a GNU-style inline assembly statement to add two 128-bit integers. In this example, a 128-bit integer is represented as two 
+        <samp class="codeph">__int64</samp> objects in the 
+        <samp class="codeph">my_i128</samp> structure. The inline assembly statement used to implement the addition is contained in the 
+        <samp class="codeph">ADD128</samp> macro, which takes three 
+        <samp class="codeph">my_i128</samp> arguments representing three 128-bit integers. The first argument is the output. The next two arguments are the inputs. The example compiles and runs using the Intel&reg; C++ Compiler on Linux* or Windows*, producing the following output. 
+      </p>
+ 
+      <pre>  0x0000000000000000ffffffffffffffff 
++ 0x00000000000000410000000000000001 
+------------------------------------ 
++ 0x00000000000000420000000000000000</pre> 
+      <p></p>
+ 
+      <p>In the GNU-style inline assembly implementation, the asm interface specifies all the inputs, outputs, and side effects of the 
+        <samp class="codeph">asm</samp> statement, enabling the compiler to generate very efficient code. 
+      </p>
+ 
+      <pre>mov       r13, 0xffffffffffffffff 
+mov       r12, 0x000000000 
+add       r13, 1 
+adc       r12, 65</pre> 
+      <p></p>
+ 
+      <p>It is worth noting that when the compiler generates an assembly file on Windows*, it uses Intel syntax even though the assembly statement was written using AT&amp;T* assembly syntax. 
+      </p>
+ 
+      <p>The compiler moves in<samp class="codeph">1.lo64</samp> into a register to match the constraint of operand 4. Operand 4's constraint of "<span>0</span>" indicates that it must be assigned the same location as output operand 0. And operand 0's constraint is "<samp class="codeph">=r</samp>", indicating that it must be assigned an integer register. In this case, the compiler chooses r13. In the same way, the compiler moves in 
+        <samp class="codeph">1.hi64</samp> into register r12. 
+      </p>
+ 
+      <p>The constraints for input operands 2 and 3 allow the operands to be assigned a register location ("<span class="keyword">r</span>"), a memory location ("<span class="keyword">m</span>"), or a constant signed 32-bit integer value ("<samp class="codeph">e</samp>"). In this case, the compiler chooses to match operands 2 and 3 with the constant values 
+        <samp class="codeph">1</samp> and 
+        <samp class="codeph">65</samp>, enabling the 
+        <samp class="codeph">add</samp> and 
+        <samp class="codeph">adc</samp> instructions to utilize the "register-immediate" forms. 
+      </p>
+ 
+      <p>The same operation is much more expensive using a Microsoft-style inline assembly statement, because the interface between the assembly statement and the surrounding C++ code is entirely through memory. Using Microsoft* assembly, the 
+        <samp class="codeph">ADD128</samp> macro might be written as follows. 
+      </p>
+ 
+      <pre>#define ADD128(out, in1, in2)                      \
+    {                                              \
+        __asm mov rax, in1.lo64                    \
+        __asm mov rdx, in1.hi64                    \
+        __asm add rax, in2.lo64                    \
+        __asm adc rdx, in2.hi64                    \
+        __asm mov out.lo64, rax                    \
+        __asm mov out.hi64, rdx                    \
+     }</pre> 
+      <p></p>
+ 
+      <p>The compiler must add code before the assembly statement to move the inputs into memory, and it must add code after the assembly statement to retrieve the outputs from memory. This prevents the compiler from exploiting some optimization opportunities. Thus, the following assembly code is produced. 
+      </p>
+ 
+      <pre>        mov       QWORD PTR [rsp+32], -1
+        mov       QWORD PTR [rsp+40], 0
+        mov       QWORD PTR [rsp+48], 1
+        mov       QWORD PTR [rsp+56], 65
+
+; Begin ASM
+
+        mov       rax, QWORD PTR [rsp+32]
+        mov       rdx, QWORD PTR [rsp+40]
+        add       rax, QWORD PTR [rsp+48]
+        adc       rdx, QWORD PTR [rsp+56]
+        mov       QWORD PTR [rsp+64], rax
+        mov       QWORD PTR [rsp+72], rdx
+
+; End ASM
+
+        mov       rdx, QWORD PTR [rsp+72]
+        mov       r8, QWORD PTR [rsp+64]</pre> 
+      <p></p>
+ 
+      <p>The operation that took only four instructions and no memory references using GNU-style inline assembly takes twelve instructions with twelve memory references using Microsoft-style inline assembly. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-801063E6-0144-4025-8852-2BBBB38D526A.htm">Data Alignment, Memory Allocation Intrinsics, and Inline Assembly</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

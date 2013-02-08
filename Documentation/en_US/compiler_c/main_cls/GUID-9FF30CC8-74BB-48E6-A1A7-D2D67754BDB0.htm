@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="parallel/noparallel">
+<meta name="abstract" content="The parallel pragma helps the compiler resolve dependencies thereby facilitating auto-parallelization of the immediately following loop. The noparallel pragma prevents auto-parallelization of the immediately following loop.">
+<meta name="description" content="The parallel pragma helps the compiler resolve dependencies thereby facilitating auto-parallelization of the immediately following loop. The noparallel pragma prevents auto-parallelization of the immediately following loop.">
+<meta name="DC.subject" content="pragma parallel, pragma noparallel">
+<meta name="keywords" content="pragma parallel, pragma noparallel">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9FF30CC8-74BB-48E6-A1A7-D2D67754BDB0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>parallel/noparallel</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_parallel"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9FF30CC8-74BB-48E6-A1A7-D2D67754BDB0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>parallel/noparallel</span></h1>
+
+<!--The  parallel  pragma helps the compiler resolve dependencies thereby facilitating auto-parallelization of the immediately following 
+ loop. The  noparallel  pragma prevents auto-parallelization of the immediately following loop.-->
+<div><p>The <span class="keyword">parallel</span> pragma helps the compiler resolve dependencies thereby facilitating auto-parallelization of the immediately following 
+ loop. The <span class="keyword">noparallel</span> pragma prevents auto-parallelization of the immediately following loop.</p>
+
+<div class="section" id="GUID-DC6E2DFA-91D8-415D-B1D0-7A8B17EEDFED"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma parallel
+</span><span class="delim">[</span><span class="var">clause</span><span class="delim">[ [</span><span class="sep">,</span><span class="delim">]</span><span class="var">clause</span><span class="delim">]</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma noparallel</span></p></td></tr></table>
+
+</div>
+
+
+<div class="section" id="GUID-482B1E78-094E-4A32-8122-B0FAABB2215C"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr><td valign="top" width="30%" class="noborder"><p><var>clause</var></p></td>
+<td valign="top" class="noborder"><p><var>clause</var> can be any of the following:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">always [assert]</span></p></td>
+<td valign="top" class="noborder"><p>The <samp class="codeph">always</samp> clause overrides compiler heuristics that estimate whether parallelizing a loop would increase performance. Using this clause on a loop that the compiler finds to be parallelizable tells the compiler to parallelize the loop even if doing so might not improve performance.</p>
+<p>If <samp class="codeph">assert</samp> is added, the compiler will generate an
+error-level assertion  test to display a message saying that the compiler efficiency heuristics indicate that the loop cannot be vectorized.
+</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">private</span>( <var>var</var> [ :<var>expr</var> ] ...)</p></td>
+<td valign="top" class="noborder"><p>Specifies a list of scalar and array variables (<var>var</var>) to privatize. An array or pointer variable can take an optional argument (<var>expr</var>) which is an int32 or int64 expression denoting the number of array elements to privatize.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">lastprivate</span>( <var>var</var> [ :<var>expr</var> ] ... )</p></td>
+<td valign="top" class="noborder"><p>Provides a superset of the functionality provided by the <samp class="codeph">private</samp> clause. Variables that appear in a <samp class="codeph">lastprivate</samp> list are subject to private clause semantics. In addition, when the parallel region is exited, each variable has the value that results from the sequentially last iteration of the loop up exiting the parallel loop.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">firstprivate</span>( <var>var</var> [ :<var>expr</var> ] ... )</p></td>
+<td valign="top" class="noborder"><p>Provides a superset of the functionality provided by the <samp class="codeph">private</samp> clause. Variables that appear in a <samp class="codeph">firstprivate</samp> list are subject to <samp class="codeph">private</samp> clause semantics. In addition, its initial value is broadcast to all private instances upon entering the parallel loop.</p>
+</td>
+</tr></table>
+</td>
+</tr><tr>
+      <td valign="top" width="30%" class="noborder"><p>
+</p></td>
+
+      <td valign="top" class="noborder"><p>Like the <samp class="codeph">private</samp> clause, both the <samp class="codeph">firstprivate</samp>, and the <samp class="codeph">lastprivate</samp>
+clauses specify a list of scalar and array variables  (<var>var</var>) to privatize. An array or pointer variable can take an optional argument (expr) which is an int32 or int64 expression denoting the number of array elements to privatize.</p>
+<p>The same <var>var</var> is not allowed to appear in both the <samp class="codeph">private</samp> and the <samp class="codeph">lastprivate</samp> clauses for the same loop.</p>
+<p>The same <var>var</var> is not allowed to appear in both the <samp class="codeph">private</samp> and the <samp class="codeph">firstprivate</samp> clauses for the same loop.</p>
+<p>When <var>expr</var> is absent, the rules on <var>var</var> are the same as with <samp class="codeph">OpenMP 3.0</samp>. A summary of  rules to be observed is as follows:</p>
+<ul type="disc" id="GUID-228F4212-B707-47D7-BA52-A04C267B30C6"><li><p><var>var</var> must not be part of another variable (as an array or structure element)</p>
+</li>
+<li><p>
+						<var>var</var> must not have a <samp class="codeph">const</samp>-qualified type unless it is of class type with a mutable member</p>
+</li>
+<li><p>
+						<var>var</var> must not have an incomplete type or a reference type</p>
+</li>
+<li><p>if <var>var</var> is of class type (or array thereof), then it requires an accessible, unambiguous default constructor for the class type. Furthermore, if this <var>var</var> is in a <samp class="codeph">lastprivate</samp> clause, then it also requires an accessible, unambiguous copy assignment operator for the class type.</p>
+</li>
+</ul>
+<p>When <var>expr</var> is present, the same rules apply, but <var>var</var>
+must be an array or a pointer
+variable.</p>
+<ul type="disc" id="GUID-99C21CF1-2F82-47A5-A29C-17E2082F4223"><li><p>If <samp class="codeph"><var>var</var></samp> is an array, then only its first <var>expr</var> elements are privatized. Without <var>expr</var>, the entire array is privatized.</p>
+</li>
+<li><p>If <var>var</var> is a pointer, then the first <var>expr</var> elements are privatized
+(element size given by the pointer’s target type). Without <var>expr</var>, only the pointer variable itself is privatized.</p>
+</li>
+<li><p>Program behavior is undefined if <var>expr</var> evaluates to a non-positive value, or if it exceeds the array size.</p>
+</li>
+</ul>
+
+
+
+</td>
+</tr>
+
+
+  
+
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-0B3AC780-EC9F-4BD8-A862-F6FACA6220AD"><h2>Description</h2>
+<p>The <samp class="codeph"><span class="keyword">parallel</span></samp>       pragma    instructs the compiler to ignore potential dependencies that it assumes could exist and which would prevent correct parallelization in the immediately following loop. However, if dependencies are proven, they are not ignored.</p>
+
+
+<p>The <samp class="codeph"><span class="keyword">noparallel</span></samp>
+ pragma
+prevents autoparallelization of the immediately following loop.</p>
+
+<p>These pragmas take effect only if autoparallelization is enabled by the option <span class="option">/Qparallel</span> (Windows* operating system) or <span class="option">-parallel</span> (Linux* or OS X* operating systems). Using this option enables parallelization for both Intel&reg; microprocessors and non-Intel microprocessors. The resulting executable may get additional performance gain on Intel&reg; microprocessors than on non-Intel microprocessors. The parallelization can also be affected by certain options, such as <span class="option">/arch</span> or <span class="option">/Qx </span> (Windows* operating system) or <span class="option">-m</span> or <span class="option">-x</span> (Linux* OS and OS X* operating systems).</p>
+
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Use <samp class="codeph">#pragma parallel</samp> with care. If a loop has cross-iteration dependencies, annotating it with this pragma can lead to incorrect program behavior.</p>
+</div>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Use <samp class="codeph">#pragma parallel</samp> always only if it is known that parallelizing the annotated loop will improve its performance.</p>
+</div></div>
+
+
+<div class="section" id="GUID-B6DB88FB-5666-4CB6-8F23-5354743669F4"><h2>Example</h2>
+
+<p>The following example illustrates how to use the <samp class="codeph">#pragma parallel</samp>.</p>
+
+<pre>void example(double *A, double *B, double *C, double *D)</pre>
+<pre>{</pre><pre>&nbsp;&nbsp;int i;</pre>
+<pre>&nbsp;&nbsp;#pragma parallel</pre>
+<pre>&nbsp;&nbsp;for (i=0; i&lt;10000; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;A[i] += B[i] + C[i];</pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;C[i] += A[i] + D[i];</pre>
+<pre>&nbsp;&nbsp;}</pre><pre>}</pre>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,1384 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Set Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer set operations, setzero_si128, setr_epi8, setr_epi32, setr_epi64, set1_epi8, set1_epi16, setr_epi16, set1_epi32, set1_epi64, set_epi8, set_epi16, set_epi32, set_epi64, Intel&reg; Streaming SIMD Extensions 2, integer set intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer set operations, setzero_si128, setr_epi8, setr_epi32, setr_epi64, set1_epi8, set1_epi16, setr_epi16, set1_epi32, set1_epi64, set_epi8, set_epi16, set_epi32, set_epi64, Intel&reg; Streaming SIMD Extensions 2, integer set intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7EC08804-66F5-4F9C-95AC-32546F8BCD9B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Set Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_int_set"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7EC08804-66F5-4F9C-95AC-32546F8BCD9B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Set Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-1EF540B2-C2AF-4C0E-BFC2-A43B91A77B67"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer set operations are listed in this topic. These intrinsics are composite intrinsics because they require more than one instruction to implement them. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span>, 
+        <span class="keyword">R1</span>...<span class="keyword">R15</span> represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BF60D013-8CD5-4743-9327-BF43F4126A64"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-93DACD9F-87E2-487E-9C0C-FC328AACA49A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d406292e101"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d406292e107"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d406292e113"> 
+                <p>Corresponding<br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set two integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set_epi64x</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set two integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set four integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set eight integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set sixteen integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set1_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set two integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set1_epi64x</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set two integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set1_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set four integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set1_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set eight integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_set1_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set sixteen integer values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_setr_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set two integer values in reverse order 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_setr_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set four integer values in reverse order 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_setr_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set eight integer values in reverse order 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_setr_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set sixteen integer values in reverse order 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e101 "> 
+                <p><span class="option"> _mm_setzero_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d406292e107 "> 
+                <p>Set to zero 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d406292e113 "> 
+                <p><span class="keyword">Composite</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7758BCA4-2F2A-428C-AA64-880554DC50D1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set_epi64(__m64 q1, __m64 q0)</span></p></div> 
+      <p>Sets the two 64-bit integer values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-44ED2729-B3C0-4145-8138-151F7FF95D9D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-63315D52-A016-4518-BD9F-FFF4F1AE29B9" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d406292e529"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d406292e535"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d406292e529 "> 
+                <p><span class="keyword">q0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d406292e535 "> 
+                <p><span class="keyword">q1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B85FC144-71BD-4582-86B2-536EA7F68B64"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set_epi64x(__int64 b, __int64 a)</span></p></div> 
+      <p>Sets the two 64-bit integer values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BD1B7A7B-881D-406F-849C-06A90D97D8E8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1E29464C-776E-4FD1-A5D9-DB14C62C55DC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d406292e592"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d406292e598"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d406292e592 "> 
+                <p><span class="keyword">a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d406292e598 "> 
+                <p><span class="keyword">b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1507138F-7A27-4062-8990-28B68049ED86"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set_epi32(int i3, int i2, int i1, int i0)</span></p></div> 
+      <p>Sets the four signed 32-bit integer values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6C77696B-9409-4BB4-AFDC-540FA20D182C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CF147335-8EC9-4D06-9A0C-6457412B204A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e656"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e662"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e668"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e674"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e656 "> 
+                <p><span class="keyword">i0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e662 "> 
+                <p><span class="keyword">i1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e668 "> 
+                <p><span class="keyword">i2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e674 "> 
+                <p><span class="keyword">i3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-30014202-C994-48B3-8189-F14A66762756"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set_epi16(short w7, short w6, short w5, short w4, short w3, short w2, short w1, short w0)</span></p></div> 
+      <p>Sets the eight signed 16-bit integer values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ED6BCE84-F1AC-42D6-A722-99D6EA4F6BD1"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AF4ADC40-5B14-430D-99B8-958C24FA7161" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e748"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e754"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e760"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e766"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e748 "> 
+                <p><span class="keyword">w0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e754 "> 
+                <p><span class="keyword">w1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e760 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e766 "> 
+                <p><span class="keyword">w7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3B312D3E-3F73-437D-B870-969EF866FF37"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set_epi8(char b15, char b14, char b13, char b12, char b11, char b10, char b9, char b8, char b7, char b6, char b5, char b4, char b3, char b2, char b1, char b0)</span></p></div> 
+      <p>Sets the 16 signed 8-bit integer values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E1EEA213-7042-4D97-BB74-85D43B414480"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C09F5D81-EC9D-4C66-9E77-9E5ACF1F3C7F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e841"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e847"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e853"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e859"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e841 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e847 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e853 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e859 "> 
+                <p><span class="keyword">b15</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A3079FB2-7C57-4E45-9EF9-FEF58F9E8BC8"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set1_epi64(__m64 q)</span></p></div> 
+      <p>Sets the two 64-bit integer values to 
+        <span class="keyword">q</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BE0D9ABF-CED0-4D7C-9EBF-2FEF0308479F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-81E70210-A3BA-4BA9-841F-0849E5CC03AE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d406292e934"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d406292e940"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d406292e934 "> 
+                <p><span class="keyword">q</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d406292e940 "> 
+                <p><span class="keyword">q</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F7F82691-FD3A-48BB-A74C-6BFD0B53C158"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set1_epi64x(__int64 a)</span></p></div> 
+      <p>Sets the two 64-bit integer values to 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CB57773A-2F9A-4252-932B-A1652CD1B662"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E1A8716D-1A8F-4B39-9A9E-0E0B24A3A6F4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d406292e999"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d406292e1005"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d406292e999 "> 
+                <p><span class="keyword">a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d406292e1005 "> 
+                <p><span class="keyword">a</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-105BD554-98A5-4FDA-B9BB-081ABE2DD55F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set1_epi32(int i)</span></p></div> 
+      <p>Sets the four signed 32-bit integer values to 
+        <span class="keyword">i</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0E697A05-E943-4AF3-8574-8CEB1B5C90F7"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-720B643D-033E-4E96-8EA5-339AA1D43EBC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1067"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1073"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1079"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e1085"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1067 "> 
+                <p><span class="keyword">i</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1073 "> 
+                <p><span class="keyword">i</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1079 "> 
+                <p><span class="keyword">i</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e1085 "> 
+                <p><span class="keyword">i</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7876891B-42F4-4D80-A0E8-65C82780C28A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set1_epi16(short w)</span></p></div> 
+      <p>Sets the eight signed 16-bit integer values to 
+        <span class="keyword">w</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B7468BE8-876B-4B9C-8603-107A01747DCD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-28AC6DF7-C70F-4789-B944-98F58D4BACAB" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1162"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1168"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1174"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e1180"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1162 "> 
+                <p><span class="keyword">w</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1168 "> 
+                <p><span class="keyword">w</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1174 "> 
+                <p><span class="keyword">w</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e1180 "> 
+                <p><span class="keyword">w</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BD83818B-51FE-45DD-AF46-6553187244F1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_set1_epi8(char b)</span></p></div> 
+      <p>Sets the 16 signed 8-bit integer values to 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B0208003-17B5-4994-B5F7-5E2736496E11"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-079AD936-1DF2-4425-9835-F2323B700766" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1257"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1263"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1269"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e1275"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1257 "> 
+                <p><span class="keyword">b</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1263 "> 
+                <p><span class="keyword">b</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1269 "> 
+                <p><span class="keyword">b</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e1275 "> 
+                <p><span class="keyword">b</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D6A81E5C-1F05-4D31-B6D8-55FC54EFDD03"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_setr_epi64(__m64 q0, __m64 q1)</span></p></div> 
+      <p>Sets the two 64-bit integer values in reverse order. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-10D5936C-691C-4084-90D2-FDB428338DF5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BB53DE6C-778F-4B68-A586-D63FC8C20EB2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d406292e1348"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d406292e1354"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d406292e1348 "> 
+                <p><span class="keyword">q0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d406292e1354 "> 
+                <p><span class="keyword">q1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BA924360-E18E-4949-BEC4-BF3DCD7D9C89"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_setr_epi32(int i0, int i1, int i2, int i3)</span></p></div> 
+      <p>Sets the four signed 32-bit integer values in reverse order. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8286CD8C-F944-42A5-BC15-E712A3136B70"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9DFE7894-AB17-4F2B-8BC9-11057F8E0834" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1412"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1418"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1424"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e1430"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1412 "> 
+                <p><span class="keyword">i</span><span class="keyword">0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1418 "> 
+                <p><span class="keyword">i</span><span class="keyword">1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1424 "> 
+                <p><span class="keyword">i</span><span class="keyword">2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e1430 "> 
+                <p><span class="keyword">i</span><span class="keyword">3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5D4DBFD9-C14D-486A-A84E-CB87AF429A10"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_setr_epi16(short w0, short w1, short w2, short w3, short w4, short w5, short w6, short w7)</span></p></div> 
+      <p>Sets the eight signed 16-bit integer values in reverse order. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-77EEB07D-F497-49B7-83F9-64E36A77693F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5393099F-A4D8-4D84-A6F8-34F5F86864D0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1512"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1518"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1524"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e1530"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1512 "> 
+                <p><span class="keyword">w0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1518 "> 
+                <p><span class="keyword">w1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1524 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e1530 "> 
+                <p><span class="keyword">w7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4CF0D8DD-C5DE-4D9D-9A43-BC9157155699"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_setr_epi8(char b15, char b14, char b13, char b12, char b11, char b10, char b9, char b8, char b7, char b6, char b5, char b4, char b3, char b2, char b1, char b0)</span></p></div> 
+      <p>Sets the 16 signed 8-bit integer values in reverse order. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AAFED3E0-6BC0-47AB-B49B-6F3AD98C3610"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6AA84734-1DCD-4DAD-81B2-4EADF97A0A62" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1605"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1611"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d406292e1617"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d406292e1623"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1605 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1611 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d406292e1617 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d406292e1623 "> 
+                <p><span class="keyword">b15</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-98CA56C0-D3E0-484E-BD20-A6DAC3B23328"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_setzero_si128()</span></p></div> 
+      <p>Sets the 128-bit value to zero. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-057AE8F0-BCD0-41EF-A1E6-810B9B2B7DCF"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-04A29672-DC0F-45A4-848E-4B824021F243" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d406292e1694"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d406292e1694 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

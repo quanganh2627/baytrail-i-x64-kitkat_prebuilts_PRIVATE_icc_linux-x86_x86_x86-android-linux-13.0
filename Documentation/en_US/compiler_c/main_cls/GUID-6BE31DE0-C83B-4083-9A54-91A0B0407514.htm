@@ -1,0 +1,78 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="tcollect, Qtcollect">
+<meta name="abstract" content="Inserts instrumentation probes calling the Intel&reg; Trace Collector API.">
+<meta name="description" content="Inserts instrumentation probes calling the Intel&reg; Trace Collector API.">
+<meta name="DC.subject" content="/Qtcollect compiler option, -tcollect compiler option, Intel&reg; Trace Collector API, option inserting probes to call">
+<meta name="keywords" content="/Qtcollect compiler option, -tcollect compiler option, Intel&reg; Trace Collector API, option inserting probes to call">
+<meta name="DC.Relation" scheme="URI" content="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1BF149C3-D8BE-4659-9C18-9879DCE05C14.htm#GUID-1BF149C3-D8BE-4659-9C18-9879DCE05C14">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6BE31DE0-C83B-4083-9A54-91A0B0407514">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>tcollect, Qtcollect</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_tcollect"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_tcollect"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6BE31DE0-C83B-4083-9A54-91A0B0407514">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">tcollect, Qtcollect</h1>
+<!--Inserts instrumentation probes calling the Intel&reg; Trace Collector API.--><div><p>Inserts instrumentation probes calling the Intel&reg; Trace Collector API.</p>
+
+<div class="section" id="GUID-F8EDBD58-EC68-4273-AA90-5B5FD768A01D"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-CF29E236-AF40-4F38-9193-023459785C45"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-25BDC138-6DFB-4BE8-9E39-B4AC280906D6"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-tcollect</span><span class="delim">[</span><span class="oper"></span><span class="var">lib</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qtcollect</span><span class="delim">[</span><span class="oper">:</span><span class="var">lib</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-4A148DF9-9933-4520-B1A3-3EE3D1094809"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>lib</var></p></td>
+<td valign="top" class="noborder"><p>Is one of the Intel&reg; Trace Collector libraries; for example, VT, VTcs, VTmc, or VTfs. If you do not specify <var>lib</var>, the default library is VT.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-4213797D-D267-4BEF-A5D8-1362EE7C60F3"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Instrumentation probes are not inserted into compiled applications.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C135B7D0-8723-4FBB-97E6-5F9EFA855DC3"><h2>Description</h2><p>This option inserts instrumentation probes calling the Intel&reg; Trace Collector API. To use this option, you must have the Intel&reg; Trace Collector installed and set up through one of its set-up scripts. This tool is a component of the Intel&reg; Trace Analyzer and Collector.</p>
+<p>This option provides a flexible and convenient way of instrumenting functions of a compiled application. For every function, the entry and exit points are instrumented at compile time to let the Intel&reg; Trace Collector record functions beyond the default MPI calls. For non-MPI applications (for example, threaded or serial), you must ensure that the Intel&reg; Trace Collector is properly initialized (VT_initialize/VT_init).</p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>Be careful with full instrumentation because this feature can produce very large trace files.</p>
+</div><p>For more details, see the Intel&reg; Trace Collector User Guide.</p>
+</div>
+
+<div class="section" id="GUID-EE0B9BEB-0F9B-4644-958C-B6717BED87C6"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5BA29F7E-BEDC-4D94-AAC4-D96EBBFF2DEC.htm">Optimization Report Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-1BF149C3-D8BE-4659-9C18-9879DCE05C14.htm#GUID-1BF149C3-D8BE-4659-9C18-9879DCE05C14">tcollect-filter, Qtcollect-filter</a> compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

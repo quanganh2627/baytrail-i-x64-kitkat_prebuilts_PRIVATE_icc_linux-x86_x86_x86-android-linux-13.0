@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30758)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30758">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30758">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-897EC2F3-9319-48C4-9B13-2C8091B68B6C.htm#GUID-897EC2F3-9319-48C4-9B13-2C8091B68B6C">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EF643587-2BCB-44F9-A18C-52E856450DC7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30758)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30758"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30758"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EF643587-2BCB-44F9-A18C-52E856450DC7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30758)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-E32A91D4-AAF7-4B3A-9CC4-73B0D2CBC47A"><h2 class="sectiontitle">Message</h2><p>Remove unused field(s) "%s" from the struct "%s". </p>
+<p>This message is emitted even without whole-program recognition in advanced mode.</p>
+</div>
+
+
+<div class="section" id="GUID-44C623C0-2EFA-417C-A296-56C9FBDAFE3B"><h2 class="sectiontitle">Advice</h2>
+<p>Some unused fields were seen in a class or structure type. If the unused fields can be removed from the structure definition, it will lead to reduced memory usage and better cache utilization since the cache will no longer be filled with unused data. </p>
+<p>The advice is based on the analysis of the source code that is seen. You must verify that the fields that are reported as unused are not accessed elsewhere in the application. You also need to be careful when removing unused fields if the code relies on the structure fields to be laid out in a specific order. As an example, if the application code uses the address of a field to access other fields, it may stop working once unused fields are removed. Note that such code is not considered valid in the first place.</p>
+</div>
+
+
+<div class="section" id="GUID-B62F8E2E-4FF2-4351-BB0F-C3077E56CE93"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>//unused_field_2.c</pre> 
+<pre>struct str {</pre>
+<pre>    int a1, b1, c1, d1, e1;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>extern struct str sp[];</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func1() {</pre>
+<pre>    int i, ret = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret += sp[i].b1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func2() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].a1;</pre>
+<pre>        ret -= sp[i].c1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>int hot_func3() {</pre>
+<pre>    int ret = 0, i;</pre>
+<pre>    for (i = 0; i &lt; 1000000; i++) {</pre>
+<pre>        ret += sp[i].d1;</pre>
+<pre>    }</pre>
+<pre>    return ret;</pre>
+<pre>} </pre>
+</div>
+
+
+
+
+<p>In this case, if the unused fields can be removed, the only source change needed would be the following:</p>
+
+<pre>//unused_field_2.c</pre><pre>struct str {</pre><pre>    int a1, b1, c1, d1;</pre><pre>};</pre><pre>...</pre><div class="section" id="GUID-38B32437-CC95-41D5-A645-2AA791600160"><h2 class="sectiontitle">Verify</h2>
+
+<p>The suggestion is based on the field references in the current compilation. Please make sure that there are no references to these fields across the entire application.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-897EC2F3-9319-48C4-9B13-2C8091B68B6C.htm#GUID-897EC2F3-9319-48C4-9B13-2C8091B68B6C">GAP Message (Diagnostic ID 30757)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_testz_pd, _mm_testz_pd">
+<meta name="abstract" content="Performs a packed bit test of two float64 256-bit or 128-bit vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is VTESTPD.">
+<meta name="description" content="Performs a packed bit test of two float64 256-bit or 128-bit vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is VTESTPD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, packed test operations, _mm256_testz_pd (VTESTPD), _mm_testz_pd (VTESTPD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, packed test operations, _mm256_testz_pd (VTESTPD), _mm_testz_pd (VTESTPD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-D388423A-101E-4DBE-9CA9-54BE82B375B3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8EFAEC85-AC33-412C-BD09-68A740AD5764">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_testz_pd, _mm_testz_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_testz_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8EFAEC85-AC33-412C-BD09-68A740AD5764">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_testz_pd, _mm_testz_pd</span></h1>
+
+
+<!--Performs a packed bit test of two float64 256-bit or 128-bit vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is  VTESTPD .--><div><p>Performs a packed bit test of two float64 256-bit or 128-bit vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is <span class="keyword">VTESTPD</span>.</p>
+
+
+<div class="section" id="GUID-6784DF74-479F-40BF-8024-F34A91ED2435"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256 _mm256_testz_pd(__m256 s1, __m256 s2);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128 _mm_testz_pd(__m128 s1, __m128 s2);
+</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-148392C2-9818-426F-A612-55DFEF9016E4"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>first float64 source  vector</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>second float64 source vector</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-BD81C9F2-654C-4996-908E-43C28CC6BB42"><h2>Description</h2>
+<p>Allows setting of the ZF flag. The ZF flag is set based on the result of a bitwise AND operation between the first and second source vectors. The corresponding instruction, <span class="keyword">VTESTPD</span>, sets the ZF flag if all the resulting bits are 0. If the resulting bits are non-zeros, the instruction clears the ZF flag.
+</p>
+<p>The <span class="option">_mm_testz_pd</span> intrinsic sets the ZF flag according to results of the 128-bit float64 source vectors. The <span class="option">_m256_testz_pd</span> intrinsic sets  the ZF flag according to the results of the 256-bit float64 source vectors.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <p> Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) instructions include a full compliment of 128-bit SIMD instructions. Such Intel&reg; AVX instructions, with vector length of 128-bits, zeroes the upper 128 bits of the <span class="keyword">YMM</span> register. The lower 128 bits of the <span class="keyword">YMM</span> register is aliased to the corresponding SIMD <span class="keyword">XMM</span> register.</p>
+</div>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-362168B8-851B-4B53-A625-C06F540DE3A0"><h2>Returns</h2><p> Non-zero if ZF flag is set
+</p>
+<p>Zero if the ZF flag is not set
+</p>
+
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D388423A-101E-4DBE-9CA9-54BE82B375B3.htm">Intrinsics for Packed Test Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

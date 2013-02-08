@@ -1,0 +1,628 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Details about Intrinsics">
+<meta name="DC.subject" content="intrinsics, data types, registers">
+<meta name="keywords" content="intrinsics, data types, registers">
+<meta name="DC.Relation" scheme="URI" content="GUID-6387FF7F-5815-4653-B553-62189555A12A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Details about Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_overview_details"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Details about Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-2D5F82F7-D115-4885-AF88-2DCB3CA734E6"> 
+      <p>All instructions use the following features: 
+      </p>
+ 
+      <ul type="disc" id="GUID-BE765608-1F31-4614-8063-B90AB8B0889A"> 
+        <li> 
+          <p>Registers 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Data Types 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-200C790F-D30F-4604-99FA-CA7D3A3AC4C6"><h2 class="sectiontitle">Registers</h2> 
+       
+      <p>Intel&reg; processors provide special register sets for different instructions. 
+      </p>
+ 
+      <p>The MMX&#8482; instructions use eight 64-bit registers (<span class="keyword">mm0</span> to 
+        <span class="keyword">mm7</span>) which are aliased on the floating-point stack registers. 
+      </p>
+ 
+      <p>The Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) and the Advanced Encryption Standard (AES) instructions use eight 128-bit registers (<span class="keyword">xmm0</span> to 
+        <span class="keyword">xmm7</span>). 
+      </p>
+ 
+      <p>Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) instructions use 256-bit registers which are extensions of the 128-bit SIMD registers. 
+      </p>
+ 
+      <p>Because each of these registers can hold more than one data element, the processor can process more than one data element simultaneously. This processing capability is also known as single-instruction multiple data processing (SIMD). 
+      </p>
+ 
+      <p>For each computational and data manipulation instruction in the new extension sets, there is a corresponding C intrinsic that implements that instruction directly. This frees you from managing registers and assembly programming. Further, the compiler optimizes the instruction scheduling so that your executable runs faster. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9CBD1159-BC53-4175-B360-001FDCB159A5"><h2 class="sectiontitle">Data Types</h2> 
+       
+      <p>Intrinsic functions use new C data types as operands, representing the new registers that are used as the operands to these intrinsic functions. 
+      </p>
+ 
+      <p>The following table details for which instructions each of the new data types are available. A 'Yes' indicates that the data type is available for that group of intrinsics; an 'NA' indicates that the data type is not available for that group of intrinsics. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-04E4F6CD-8760-47CF-9828-1230C5441B9B" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="24.51433857539315%" id="d5698e118"> 
+                <p> Data Types --&gt; 
+                </p>
+ 
+                <p>Technology 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="9.250693802035153%" id="d5698e127">__m64 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="9.71322849213691%" id="d5698e130"> 
+                <p>__m128 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="9.990749306197964%" id="d5698e136"> 
+                <p>__m128d 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="10.45328399629972%" id="d5698e142"> 
+                <p>__m128i 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="11.378353376503238%" id="d5698e149">__m256 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="11.378353376503238%" id="d5698e152">__m256d 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="13.32099907493062%" id="d5698e155">__m256i 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "><strong>MMX&#8482; Technology Intrinsics 
+                </strong> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" align="left" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "> 
+                <p><strong>Intel&reg; Streaming SIMD Extensions Intrinsics</strong> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "> 
+                <p><strong>Intel&reg; Streaming SIMD Extensions 2 Intrinsics</strong> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "> 
+                <p><strong>Intel&reg; Streaming SIMD Extensions 3 Intrinsics 
+                  </strong> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "> 
+                <p><strong>Advanced Encryption Standard Intrinsics + Carry-less Multiplication Intrinsic 
+                  </strong> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "> 
+                <p><strong>Half-Float Intrinsics 
+                  </strong> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>NA 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="24.51433857539315%" headers="d5698e118 "> 
+                <p><strong>Intel&reg; Advanced Vector Extensions Intrinsics</strong> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.250693802035153%" headers="d5698e127 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.71322849213691%" headers="d5698e130 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="9.990749306197964%" headers="d5698e136 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="10.45328399629972%" headers="d5698e142 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e149 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="11.378353376503238%" headers="d5698e152 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="13.32099907493062%" headers="d5698e155 "> 
+                <p>Yes 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D3CB72C6-9FA9-4D79-A45E-F71F10C0C049"><h2 class="sectiontitle">__m64 Data Type</h2> 
+       
+      <p>The 
+        <span class="keyword">__m64</span> data type is used to represent the contents of an MMX register, which is the register that is used by the MMX&#8482; technology intrinsics. The 
+        <span class="keyword">__m64</span> data type can hold eight 8-bit values, four 16-bit values, two 32-bit values, or one 64-bit value. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4880F87F-107C-41F7-9127-8ED3353A587D"><h2 class="sectiontitle">__m128 Data Types</h2> 
+       
+      <p>The 
+        <span class="keyword">__m128</span> data type is used to represent the contents of a SSE register used by the Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics. 
+      </p>
+ 
+      <p>Conventionally, the 
+        <span class="keyword">__m128</span> data type can hold four 32-bit floating-point values, while the 
+        <span class="keyword">__m128d</span> data type can hold two 64-bit floating-point values, and the 
+        <span class="keyword">__m128i</span> data type can hold sixteen 8-bit, eight 16-bit, four 32-bit, or two 64-bit integer values. 
+      </p>
+ 
+      <p>The compiler aligns 
+        <span class="keyword">__m128d and _m128i</span> local and global data to 16-byte boundaries on the stack. To align 
+        <span class="keyword">integer</span>, 
+        <span class="keyword">float</span>, or 
+        <span class="keyword">double</span> arrays, use the 
+      <span class="option">declspec align</span> statement as follows: 
+      </p>
+ 
+      <pre>typedef struct __declspec(align(16)) { float f[4]; } __m128;</pre> 
+      <pre>typedef struct __declspec(align(16)) { double d[2]; } __m128d;</pre> 
+      <pre>typedef struct __declspec(align(16)) { int i[4]; } __m128i;</pre> 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>The 
+          <span class="keyword">__m128</span> data type is handled conventionally (that is, interpreted as 4 floating-point values) on IA-32 architecture-based platforms (for x86 processors). 
+           The Intel&reg; Debugger, however, interprets the 
+          <span class="keyword">__128</span> data type as four floating-point values on all platforms. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+    <div class="section" id="GUID-9BEE4215-F5D4-4964-82B8-45A9516609A0"><h2 class="sectiontitle">Accessing __m128i Data </h2> 
+       
+      <p>In the IA-32 and Intel&reg; 64 architecture-based systems, to access 8-bit data, use the 
+      <span class="option">mm_extract</span> intrinsics as follows: 
+      </p>
+ 
+      <pre>#define _mm_extract_epi8(x, imm) \</pre> 
+      <pre>((((imm) &amp; 0x1) == 0) ?   \</pre> 
+      <pre>_mm_extract_epi16((x), (imm) &gt;&gt; 1) &amp; 0xff : \</pre> 
+      <pre>_mm_extract_epi16(_mm_srli_epi16((x), 8), (imm) &gt;&gt; 1))</pre> 
+      <p>To access 16-bit data, use: 
+      </p>
+ 
+      <pre>int _mm_extract_epi16(__m128i a, int imm)</pre> 
+      <p>To access 32-bit data, use: 
+      </p>
+ 
+      <pre>#define _mm_extract_epi32(x, imm) \</pre> 
+      <pre>_mm_cvtsi128_si32(_mm_srli_si128((x), 4 * (imm)))</pre> 
+      <p>To access 64-bit data (Intel&reg; 64 architecture only), use: 
+      </p>
+ 
+      <pre>#define _mm_extract_epi64(x, imm) \</pre> 
+      <pre>_mm_cvtsi128_si64(_mm_srli_si128((x), 8 * (imm)))</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-8332D86C-40A1-4771-A350-57CF9E578D6B"><h2 class="sectiontitle">__m256 Data Types</h2> 
+       
+      <p>The 
+        <span class="keyword">__m256 
+        </span>data type is used to represent the contents of the extended SSE register - the 
+        <span class="keyword">YMM</span> register, used by the Intel&reg; AVX intrinsics. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">__m256</span> data type can hold eight 32-bit floating-point values, while the 
+        <span class="keyword">__m256d</span> data type can hold four 64-bit double precision floating-point values, and the 
+        <span class="keyword">__m256i 
+        </span> data type can hold thirty-two 8-bit, sixteen 16-bit, eight 32-bit, or four 64-bit integer values. See 
+        <a href="GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9.htm#GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9">Details for Intel&reg; AVX Intrinsics</a> for more information. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ECA30204-E56E-4BE0-A524-954F68FDA6C8"><h2 class="sectiontitle">Data Types Usage Guidelines</h2> 
+       
+      <p>These data types are not basic ANSI C data types. You must observe the following usage restrictions: 
+      <ul type="disc" id="GUID-DC7AF854-587D-445C-973B-9A167447638B"> 
+        <li> 
+          <p>Use data types only on either side of an assignment, as a return value, or as a parameter. You cannot use it with other arithmetic expressions (+, -, etc). 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use data types as objects in aggregates, such as unions, to access the byte elements and structures. 
+          </p>
+ 
+        </li>
+
+
+        <li> 
+          <p>Use data types only with the respective intrinsics described in this documentation. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6387FF7F-5815-4653-B553-62189555A12A.htm">Overview</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

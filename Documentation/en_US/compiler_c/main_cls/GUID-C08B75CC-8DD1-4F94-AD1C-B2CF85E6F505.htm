@@ -1,0 +1,300 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_Cilk_offload">
+<meta name="abstract" content="Controls synchronous and asynchronous execution of functions on the CPU and coprocessor. This keyword only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Controls synchronous and asynchronous execution of functions on the CPU and coprocessor. This keyword only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="_Cilk_offload, keyword, _Cilk_offload_to">
+<meta name="keywords" content="_Cilk_offload, keyword, _Cilk_offload_to">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8E5078C5-85F8-40BD-932E-49E935943EBA.htm#GUID-8E5078C5-85F8-40BD-932E-49E935943EBA">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_Cilk_offload</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optref_offload_kwd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">_Cilk_offload</h1>
+ 
+<!--Controls
+  synchronous and asynchronous execution of functions on the CPU and coprocessor.  
+This keyword only applies to Intel&reg; MIC Architecture.--> 
+ 
+<div><p>Controls
+  synchronous and asynchronous execution of functions on the CPU and coprocessor.  
+This keyword only applies to Intel&reg; MIC Architecture.</p>
+
+<div class="section" id="GUID-9BD572D5-FA8E-470A-A434-E5649517B87A"><h2>Syntax</h2> 
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="var">lvalue</span><span class="oper"> = 
+	 </span><span class="kwd">_Cilk_offload</span><span class="delim"> 
+	 </span><span class="var">func_name 
+	 </span><span class="delim">( 
+	 </span><span class="var">rvalue 
+	 </span><span class="delim">)</span></p><p><span class="var">lvalue</span><span class="oper"> = 
+	 </span><span class="kwd">_Cilk_offload_to 
+	 </span><span class="delim">( 
+	 </span><span class="var">target-number 
+	 </span><span class="delim">) 
+	 </span><span class="var">func_name 
+	 </span><span class="delim">( 
+	 </span><span class="var">rvalue 
+	 </span><span class="delim">)</span></p><p><span class="var">lvalue</span><span class="oper"> = 
+	 </span><span class="kwd">_Cilk_spawn 
+	 </span><span class="kwd">_Cilk_offload 
+	 </span><span class="var">func_name 
+	 </span><span class="delim">( 
+	 </span><span class="var">rvalue 
+	 </span><span class="delim">)</span></p><p><span class="var">lvalue</span><span class="oper"> = 
+	 </span><span class="kwd">_Cilk_spawn 
+	 </span><span class="kwd">_Cilk_offload_to 
+	 </span><span class="delim">( 
+	 </span><span class="var">target-number 
+	 </span><span class="delim">) 
+	 </span><span class="var">func_name 
+	 </span><span class="delim">( 
+	 </span><span class="var">rvalue 
+	 </span><span class="delim">)</span></p><p><span class="kwd">_Cilk_offload</span><span class="delim"> 
+	 </span><span class="kwd">_Cilk_for 
+	 </span><span class="delim">( 
+	 </span><span class="var">init-expr</span><span class="sep">; 
+	 </span><span class="var">test-expr</span><span class="sep">; 
+	 </span><span class="var">incr-expr</span><span class="delim">)</span></p><p><span class="kwd">_Cilk_offload_to 
+	 </span><span class="delim">( 
+	 </span><span class="var">target-number 
+	 </span><span class="delim">) 
+	 </span><span class="kwd">_Cilk_for 
+	 </span><span class="delim">( 
+	 </span><span class="var">init-expr</span><span class="sep">; 
+	 </span><span class="var">test-expr</span><span class="sep">; 
+	 </span><span class="var">incr-expr</span><span class="delim">)</span></p></td></tr></table> </div>
+ 
+<div class="section" id="GUID-B7E17F18-FB7E-41D5-8BD3-CDD58BF78E05"><h2>Arguments</h2> 
+<dl id="GUID-48DFF9AB-F3D2-4AAC-8244-57F06279E4E8"> 
+   
+	 <dt class="dlterm"> 
+		<var>lvalue</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p> An expression that designates an object. 
+		</p>
+ 
+	 </dd>
+ 
+   
+   
+	 <dt class="dlterm"> 
+		<var>rvalue</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p> An expression that represents a value. 
+		</p>
+ 
+	 </dd>
+ 
+   
+   
+	 <dt class="dlterm"> 
+		<var>func_name</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p>A function name. 
+		</p>
+ 
+	 </dd>
+ 
+   
+   
+	 <dt class="dlterm"><var>target-number</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p>An expression whose value is interpreted as
+		  follows:
+		</p>
+
+		<dl id="GUID-DF602F8D-856B-4B89-883D-879D70DEAC24"> 
+		  <dt class="dlterm"><samp class="codeph">-1</samp></dt>
+<dd> 
+				<p> This value specifies execution on the
+target. The runtime system chooses the specific target.
+Execution on the CPU is not allowed. If the correct target hardware needed to run
+the offloaded program is not available on the system, the program
+fails with an error message.</p>
+
+</dd>
+ 
+		   
+		  <dt class="dlterm"><samp class="codeph">&gt;=0</samp></dt>
+<dd> 
+				<p id="d68860e207"><a name="d68860e207"><!-- --></a>A value greater than
+				  or equal to zero specifies execution on a specific target. The <span>number of the </span>specific
+				  target is determined as follows: 
+				</p>
+ 
+				<p id="d68860e213"><a name="d68860e213"><!-- --></a><samp class="codeph"><var>target</var>=<var>target-number</var>
+					 % 
+					 <var>number_of_targets</var></samp> 
+				</p>
+<p> If the correct target hardware needed to run the offloaded program is not available on the system, the program fails with an error message.</p>
+</dd>
+ 
+		   
+		  <dt class="dlterm"><samp class="codeph">&lt;-1</samp></dt>
+<dd> 
+				<p id="d68860e234"><a name="d68860e234"><!-- --></a>This value is reserved. 
+				</p>
+ 
+			 </dd>
+ 
+		   
+		</dl>
+ 
+		<p>For example, in a
+		  system with four targets: 
+		</p>
+ 
+		<ul type="disc" id="GUID-D50A5FA9-418C-4DB4-9B68-B122EE8D77D7"> 
+		  <li> 
+			 <p>specifying 2 or 6 tells the runtime systems to
+				execute the code on target 2, because both 
+				<samp class="codeph">2 % 4</samp> and 
+				<samp class="codeph">6 % 4</samp> equal 
+				<samp class="codeph">2</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Specifying 1000 tells the runtime systems to
+				execute the code on target 0, because 
+				<samp class="codeph">1000 % 4 = 0</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </dd>
+ 
+   
+   
+	 <dt class="dlterm"> 
+		<var>init-expr</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p> An initialization expression for a 
+		  <span class="keyword">_Cilk_for loop</span>. 
+		</p>
+ 
+	 </dd>
+ 
+   
+   
+	 <dt class="dlterm"> 
+		<var>test-expr</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p> A test expression for a 
+		  <span class="keyword">_Cilk_for loop</span>. 
+		</p>
+ 
+	 </dd>
+ 
+   
+   
+	 <dt class="dlterm"> 
+		<var>incr-expr</var> 
+	 </dt>
+ 
+	 <dd> 
+		<p> An increment expression for a 
+		  <span class="keyword">_Cilk_for loop</span>. 
+		</p>
+ 
+	 </dd>
+ 
+   
+</dl>
+ </div>
+ 
+<div class="section" id="GUID-50DA88FC-DB10-44E4-B899-D1A5A1C03472"><h2>Description</h2>
+ 
+<p><span class="keyword"> _Cilk_offload</span> before a function call indicates that the
+  runtime system chooses whether to execute the function being called on the
+  coprocessor synchronously, or the CPU, and if multiple coprocessors are
+  available, on which coprocessor. 
+</p>
+ 
+<p>Placing the keyword 
+  <span class="keyword">_Cilk_offload</span> between a 
+  <span class="keyword">_Cilk_spawn</span> keyword and a call results in asynchronous
+  execution on the CPU using the normal Intel&reg; Cilk&#8482; Plus rules, and a
+  synchronous offload of the function by an Intel&reg; Cilk&#8482; Plus task, effectively
+  doing an asynchronous offload. Just as in normal Intel&reg; Cilk&#8482; Plus usage, you
+  need a 
+  <span class="keyword">_Cilk_sync</span> keyword before the CPU can use the results of
+  the offloaded function. 
+</p>
+ 
+<p><span class="keyword"> _Cilk_offload</span> before a 
+  <span class="keyword">_Cilk_for</span> loop specifies that the entire loop be executed
+  on the coprocessor. 
+</p>
+ 
+<p><samp class="codeph"><span class="keyword"> _Cilk_offload_to</span>
+	 (<var>target-number</var>)</samp> specifies mandatory offload to a
+  coprocessor. 
+  <var>target-number</var> determines the specific coprocessor. 
+</p>
+</div>
+ 
+<div class="example"><h2>Example</h2> 
+  <p>Offload function calls: 
+	  
+	  
+  </p>
+<pre>z =  _Cilk_offload func(a);
+z =  _Cilk_spawn _Cilk_offload func(a);</pre> 
+  <p>Offload 
+	 <span class="keyword">_Cilk_for</span> loop: 
+	  
+  </p>
+<pre>_Cilk_offload _Cilk_for ( init-expr; test-expr; incr-expr ) {
+...
+}</pre> 
+  
+</div>
+ </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-8E5078C5-85F8-40BD-932E-49E935943EBA.htm#GUID-8E5078C5-85F8-40BD-932E-49E935943EBA">Using Shared Memory</a></div></div></div> 
+</body>
+</html>

@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Work and Span">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, work and span">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, work and span">
+<meta name="DC.Relation" scheme="URI" content="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-83D8631F-8ECA-498A-A091-CF952FE77A24">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Work and Span</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_work_span"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-83D8631F-8ECA-498A-A091-CF952FE77A24">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Work and Span</h1>
+
+<div>
+<p>Once you have a method of describing the serial/parallel
+structure of an Intel&reg; Cilk&#8482; Plus program, you can begin to analyze the program's
+performance and scalability.</p>
+
+<p>Consider a more complex program, represented in the
+following diagram:</p>
+
+<p>
+<br><img src="GUID-E8B7EA98-DAEF-4DCF-AFC7-D52D79AB7284-low.jpg"><br>
+</p>
+
+<p>This DAG represents the parallel structure of some Intel&reg; Cilk&#8482; Plus program.
+To construct a program that has this DAG, it is useful to add
+labels to the strands to indicate the number of milliseconds it
+takes to execute each strand:</p>
+
+<p>
+<br><img src="GUID-7D173756-BF5E-458E-ABB8-FE7F4781BC91-low.jpg"><br>
+</p>
+
+<p> <strong>Work</strong></p>
+
+<p>The total amount of processor time required to complete the
+program is the sum of all the numbers. This value is defined as the
+<strong>work</strong>.</p>
+
+<p>In this DAG, the work is 181 milliseconds for the 25 strands
+shown, and if the program runs on a single processor, the program
+should run for 181 milliseconds.</p>
+
+<p> <strong>Span</strong></p>
+
+<p>The <strong>span</strong>,
+sometimes called the critical path length, is the  most expensive path that extends from the
+beginning to the end of the program. In this DAG, the span is 68
+milliseconds, as shown in the following diagram:</p>
+
+<p>
+<br><img src="GUID-0C5F332D-2E41-4457-B74E-C1CEFE14C8C8-low.jpg"><br>
+</p>
+
+<p>Under ideal circumstances (for instance, when there is no
+scheduling overhead) and when an unlimited number of processors are
+available, this program should run for 68 milliseconds.</p>
+
+<p>You can use the work and span to predict how an Intel&reg; Cilk&#8482; Plus program  will
+speed up and scale on multiple processors.</p>
+
+<p>When analyzing an Intel&reg; Cilk&#8482; Plus program, you need to consider the running
+time of the program on various numbers of processors. The following
+notations are helpful:</p>
+
+<p><samp class="codeph">T(P)</samp> is the execution time of the program on <samp class="codeph">P</samp> processors.</p>
+
+<p><samp class="codeph">T(1)</samp> is the Work</p>
+
+<p><samp class="codeph">T(∞)</samp> is the Span</p>
+
+<p>On 2 processors, the execution time can never be less than <samp class="codeph">T(1)
+/ 2</samp>. In general, the Work Law can be stated as:</p>
+
+<p><samp class="codeph">T(P) &gt;= T(1)/P</samp></p>
+
+<p>Similarly, for <samp class="codeph">P</samp> processors, the execution time is never less
+than the execution time on an infinite number of processors.
+Therefore, the Span Law can be stated as:</p>
+
+<p><samp class="codeph">T(P) &gt;= T(∞)</samp></p>
+
+<p> <strong>Speed up
+and Parallelism</strong></p>
+
+<p>If a program runs twice as fast on 2 processors, then the
+speedup is 2. Therefore, speedup on <samp class="codeph">P</samp>
+processors can be stated as:</p>
+
+<p><samp class="codeph">T(1)/T(P)</samp></p>
+
+<p>An interesting consequence of the speedup formula is that if
+<samp class="codeph">T(1)</samp> increases faster than <samp class="codeph">T(P)</samp>, then speedup increases as the work
+increases. Some algorithms, for example, do extra work in order to
+take advantage of additional processors. Such algorithms are
+typically slower than a corresponding serial algorithm on one or
+two processors, but begin to show speedup on three or more
+processors. This situation is not common, but is worth noting.</p>
+
+<p>The maximum possible speedup would occur using an infinite
+number of processors. Parallelism is defined as
+the hypothetical speedup on an infinite number of processors.
+Therefore,  parallelism can be defined as:</p>
+
+<p><samp class="codeph">T(1)/T(∞)</samp></p>
+
+<p>Parallelism puts an upper bound on the speedup you can expect.
+If the code you are parallelizing has a parallelism of 2.7, for
+example, then you will achieve reasonable speedup on 2 or three
+processors, but no additional speedup on four or more processors.
+Thus, algorithms that are tuned to a small number of cores do not
+scale to larger machines. In general, if parallelism is less than
+5-10 times the number of available processors, then you should
+expect less than linear speedup because the scheduler will not
+always be able to keep all of the processors busy.</p>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54163CE9-E866-4C6D-B0D4-0613DD2EA984.htm">Intel&reg; Cilk&#8482; Plus Execution Model</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

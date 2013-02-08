@@ -1,0 +1,138 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Debug Operations">
+<meta name="DC.subject" content="Class Libraries, floating-point vector classes, debug operators">
+<meta name="keywords" content="Class Libraries, floating-point vector classes, debug operators">
+<meta name="DC.Relation" scheme="URI" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F33F65AB-F729-40D7-ACCB-7E39713DFBEE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Debug Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_fp_debug"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F33F65AB-F729-40D7-ACCB-7E39713DFBEE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Debug Operations</h1>
+ 
+   
+  <div> 
+    <p>The debug operations do not map to any compiler intrinsics for MMX&#8482; technology or Streaming SIMD Extensions. They are provided for debugging programs only. Use of these operations may result in loss of performance, so you should not use them outside of debugging. 
+    </p>
+ 
+    <div class="section" id="GUID-ED5521A6-D91F-42AD-BBAE-9B81DA166A27"><h2 class="sectiontitle">Output Operations</h2> 
+       
+      <p>The two single, double-precision floating-point values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in decimal format as follows: 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; F64vec2 A;</samp><br><samp class="codeph">"[1]:A1 [0]:A0"</samp><br>Corresponding intrinsics: none 
+      </p>
+ 
+      <p>The four, single-precision floating-point values of 
+        <samp class="codeph">A</samp> are placed in the output buffer and printed in decimal format as follows: 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; F32vec4 A;</samp><br><samp class="codeph">"[3]:A3 [2]:A2 [1]:A1 [0]:A0"</samp><br>Corresponding intrinsics: none 
+      </p>
+ 
+      <p>The lowest, single-precision floating-point value of 
+        <samp class="codeph">A</samp> is placed in the output buffer and printed. 
+      </p>
+ 
+      <p><samp class="codeph">cout &lt;&lt; F32vec1 A;</samp><br>Corresponding intrinsics: none 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-07693CA3-14F0-4392-9BCD-13B9CF09FAAA"><h2 class="sectiontitle">Element Access Operations</h2> 
+       
+      <p><samp class="codeph">double d = F64vec2 A[int i]</samp> 
+      </p>
+ 
+      <p>Read one of the two, double-precision floating-point values of 
+        <samp class="codeph">A</samp> without modifying the corresponding floating-point value. Permitted values of 
+        <samp class="codeph">i</samp> are 0 and 1. For example: 
+      </p>
+ 
+      <p>If DEBUG is enabled and 
+        <samp class="codeph">i</samp> is not one of the permitted values (0 or 1), a diagnostic message is printed and the program aborts. 
+      </p>
+ 
+      <p><samp class="codeph">double d = F64vec2 A[1];</samp><br>Corresponding intrinsics: none 
+      </p>
+ 
+      <p>Read one of the four, single-precision floating-point values of 
+        <samp class="codeph">A</samp> without modifying the corresponding floating point value. Permitted values of 
+        <samp class="codeph">i</samp> are 0, 1, 2, and 3. For example: 
+      </p>
+ 
+      <p><samp class="codeph">float f = F32vec4 A[int i]</samp> 
+      </p>
+ 
+      <p>If DEBUG is enabled and 
+        <samp class="codeph">i</samp> is not one of the permitted values (0-3), a diagnostic message is printed and the program aborts. 
+      </p>
+ 
+      <p><samp class="codeph">float f = F32vec4 A[2];</samp><br>Corresponding intrinsics: none 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-77B2E138-DE72-4DEE-B9C4-BE2E16F624EA"><h2 class="sectiontitle">Element Assignment Operations</h2> 
+       
+      <p><samp class="codeph">F64vec4 A[int i] = double d;</samp> 
+      </p>
+ 
+      <p>Modify one of the two, double-precision floating-point values of 
+        <samp class="codeph">A</samp>. Permitted values of 
+        <samp class="codeph">int i</samp> are 0 and 1. For example: 
+      </p>
+ 
+      <p><samp class="codeph">F32vec4 A[1] = double d;</samp><br><samp class="codeph">F32vec4 A[int i] = float f;</samp> 
+      </p>
+ 
+      <p>Modify one of the four, single-precision floating-point values of 
+        <samp class="codeph">A</samp>. Permitted values of 
+        <samp class="codeph">int i</samp> are 0, 1, 2, and 3. For example: 
+      </p>
+ 
+      <p>If DEBUG is enabled and 
+        <samp class="codeph">int i</samp> is not one of the permitted values (0-3), a diagnostic message is printed and the program aborts. 
+      </p>
+ 
+      <p><samp class="codeph">F32vec4 A[3] = float f;</samp><br>Corresponding intrinsics: none. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA.htm">Floating-point Vector Classes</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Template Instantiation">
+<meta name="DC.subject" content="template instantiation, compiler options, for templates">
+<meta name="keywords" content="template instantiation, compiler options, for templates">
+<meta name="DC.Relation" scheme="URI" content="GUID-2E0707EB-DF84-4341-9899-327883A0D62B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A1ADA8B2-F8F2-47F5-B497-C8CC95F4AFA3.htm#GUID-A1ADA8B2-F8F2-47F5-B497-C8CC95F4AFA3">
+<meta name="DC.Relation" scheme="URI" content="GUID-4D74670E-2DA6-49F4-A676-C21FAB951B90.htm#GUID-4D74670E-2DA6-49F4-A676-C21FAB951B90">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1D583AC3-CECD-4C35-9FB6-575FE635816E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Template Instantiation</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_temp_ins_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_temp_ins_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1D583AC3-CECD-4C35-9FB6-575FE635816E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Template Instantiation</h1>
+
+
+
+
+<div>
+<p>The Intel&reg; C++ Compiler supports <span class="keyword">extern</span> template, which lets you specify that a template in a specific translation unit will not be instantiated because it will be instantiated in a different translation unit or different library. The compiler now includes additional support for:</p>
+
+<ul type="disc" id="GUID-2535D945-68D7-4286-A208-52441A247D0C">
+<li><p><strong>inline template</strong> – instantiates the compiler support data for the class (i.e. the vtable) for a class without instantiating its members.</p>
+</li>
+
+<li><p><strong>static template</strong> – instantiates the static data members of the template, but not the virtual tables or member functions.</p>
+</li>
+
+</ul>
+
+<p>You can now use the following options to gain more control over the point of template instantiation:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7C05326A-D5D6-4314-BF85-A1112BA3F781" frame="border" border="1" cellspacing="0" rules="all">
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="20%" id="d89390e78"><p>Option</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="80%" id="d89390e82"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+  <td class="cellrowborder" valign="top" width="20%" headers="d89390e78 "><p><span class="option">-fno-implicit-templates</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="80%" headers="d89390e82 "><p>Never emit code for non-inline templates which are instantiated implicitly (i.e. by use). only emit code for explicit instantiations.</p>
+</td>
+
+</tr>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="20%" headers="d89390e78 "><p><span class="option">-fno-implicit-inline-templates</span></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="80%" headers="d89390e82 "><p>Do not emit code for implicit instantiations of inline templates either. The default is to handle inlines differently so that compilations, with and without optimization, will need the same set of explicit instantiations.</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2E0707EB-DF84-4341-9899-327883A0D62B.htm">Language Conformance</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A1ADA8B2-F8F2-47F5-B497-C8CC95F4AFA3.htm#GUID-A1ADA8B2-F8F2-47F5-B497-C8CC95F4AFA3"><span class="option">-fno-implicit-templates</span></a>  compiler option</div>
+<div><a href="GUID-4D74670E-2DA6-49F4-A676-C21FAB951B90.htm#GUID-4D74670E-2DA6-49F4-A676-C21FAB951B90"><span class="option">-fno-implicit-inline-templates</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

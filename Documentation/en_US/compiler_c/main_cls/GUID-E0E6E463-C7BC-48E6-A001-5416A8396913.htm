@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_xend">
+<meta name="abstract" content="Specifies the end of a restricted transactional memory (RTM) code region. The corresponding Intel&reg; AVX2 instruction is XEND.">
+<meta name="description" content="Specifies the end of a restricted transactional memory (RTM) code region. The corresponding Intel&reg; AVX2 instruction is XEND.">
+<meta name="DC.subject" content="_xend">
+<meta name="keywords" content="_xend">
+<meta name="DC.Relation" scheme="URI" content="GUID-DF2BFA5A-47E3-45C8-8B2F-061B85AFEF6D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E0E6E463-C7BC-48E6-A001-5416A8396913">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_xend</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_xend"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E0E6E463-C7BC-48E6-A001-5416A8396913">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_xend</span></h1>
+
+
+<!--Specifies the end of a restricted transactional memory (RTM) code region. The corresponding Intel&reg; AVX2 instruction is  XEND .-->
+
+
+<div><p>Specifies the end of a restricted transactional memory (RTM) code region. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">XEND</span>.</p>
+
+
+<div class="section" id="GUID-AA59FAF4-49D7-4198-9D82-0A17D0DA9ABF"><h2>Syntax</h2>
+ <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">
+void _xend(void);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-4E94AA78-F445-445F-9183-80AF305FD56F"><h2>Arguments</h2><p>None.</p>
+
+</div>
+
+
+<div class="section" id="GUID-ED6A866E-6733-4E31-98D1-A8ACBB95DA8E"><h2>Description</h2>
+<p>Specifies the end of restricted transactional memory code region. If this is the outermost transaction (including this <samp class="codeph">xend</samp> instruction, the number of <samp class="codeph">xbegin</samp> matches the number of <samp class="codeph">xend</samp> instructions) then the processor will attempt to commit processor state automatically.</p>
+
+
+<p>If the commit fails, the processor will rollback all register and memory updates performed during the RTM execution.</p>
+<p>The logical processor will resume execution at the fallback address computed from the outermost <samp class="codeph">xbegin</samp> instruction. The EAX register is updated to reflect RTM abort information. When <samp class="codeph">xend</samp> is executed outside a transaction will cause a general protection fault (<span>#GP</span>).</p>
+
+
+
+<p>The model instruction sequence for <samp class="codeph">xend</samp> support is:
+<pre>__inline void _xend()
+{ __asm { 
+xend 
+  }
+}</pre>
+</p>
+ 
+</div>
+
+
+<div class="section" id="GUID-EE470786-7742-46A5-9859-1DECF4EA9584"><h2>Returns</h2>
+<p>Result .</p>
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DF2BFA5A-47E3-45C8-8B2F-061B85AFEF6D.htm">Intrinsics for Restricted Transactional Memory Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

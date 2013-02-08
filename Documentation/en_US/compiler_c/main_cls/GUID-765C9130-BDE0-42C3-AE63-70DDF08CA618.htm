@@ -1,0 +1,269 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compiler Option Descriptions and General Rules">
+<meta name="DC.subject" content="compiler options, general rules for, overview of descriptions of">
+<meta name="keywords" content="compiler options, general rules for, overview of descriptions of">
+<meta name="DC.Relation" scheme="URI" content="GUID-C049864C-4C7A-4124-8BD3-045B7D82F2FA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-765C9130-BDE0-42C3-AE63-70DDF08CA618">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compiler Option Descriptions and General Rules</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="options_ref_overview"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.options_ref_overview"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-765C9130-BDE0-42C3-AE63-70DDF08CA618">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Compiler Option Descriptions and General Rules</h1>
+ 
+   
+  <div> 
+	 <p>This section includes descriptions of all the current Linux* OS, OS X*, and Windows* OS compiler options. The option names are arranged by functional category, and within each category, the options are listed in alphabetical order. 
+	 </p>
+ 
+	 <p> In addition, you can find the compiler options in alphabetical order within the index. In general, a single dash (-) precedes the names of the Linux* and OS X* options, and a slash (/) precedes the names of the Windows* options. 
+	 </p>
+
+	 <p>Note that some online help formats do not offer an index.
+	 </p>
+
+	 <div class="section" id="GUID-B051AF9F-2336-44EF-9AB8-0272B2B3D52A"><h2 class="sectiontitle">Option Descriptions</h2> 
+		 
+		<p>Each option description contains the following information: 
+		</p>
+ 
+		<ul type="disc" id="GUID-EB859945-97DB-4312-9639-5447B2B48825"> 
+		  <li> 
+			 <p>A short description of the option. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>IDE Equivalent<br>This shows information related to the integrated development environment (IDE) Property Pages on Windows*, Linux*, and OS X* systems. It shows on which Property Page the option appears, and under what category it's listed. The Windows IDE is Microsoft* Visual Studio* .NET; the Linux IDE is Eclipse*; the OS X IDE is Xcode*. If the option has no IDE equivalent, it will specify "None". 
+				</p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Architectures<br><span><span>This shows the architectures where the option is valid. Most options are valid on all supported architectures, so "All" will appear most often. 
+				</span></span> 
+			 </p>
+ 
+			 <p>However, some options are restricted to certain architectures. These options will show the names of the architectures where the option is valid. Current possibilities are as follows: 
+			 </p>
+ 
+			 <ul type="disc" id="GUID-399E4F31-50EE-494B-9E36-E5912321F19D"> 
+				<li> 
+				  <p>IA-32 architecture 
+				  </p>
+ 
+				</li>
+ 
+				<li> 
+				  <p>Intel&reg; 64 architecture 
+				  </p>
+ 
+				</li>
+ 
+				<li> 
+				  <p>Intel&reg; 64 architecture, targeting Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture) 
+				  </p>
+ 
+				  <p>Note that within the relevant compiler option descriptions, this architecture will be referred to as: Intel&reg; 64 architecture, targeting Intel&reg; MIC Architecture 
+				  </p>
+ 
+				</li>
+ 
+			 </ul>
+ 
+			 <p>Certain operating systems are not available on all the above architectures. For the latest information, please check your Release Notes. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Syntax<br>This shows the syntax on Linux and OS X systems and the syntax on Windows systems. If the option has no syntax on one of these systems, that is, the option is not valid on a particular system, it will specify "None". 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Arguments<br>This shows any arguments (parameters) that are related to the option. If the option has no arguments, it will specify "None". 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Default<br>This shows the default setting for the option. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Description<br>This shows the full description of the option. It may also include further information on any applicable arguments. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Alternate Options<br>These are options that are synonyms of the described option. If there are no alternate options, it will specify "None".<br>Many options have an older spelling where underscores ("_") instead of hyphens ("-") connect the main option names. The older spelling is a valid alternate option name. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>Some option descriptions may also have the following: 
+		</p>
+ 
+		<ul type="disc" id="GUID-2B130623-0110-4B34-8084-811D441DED71"> 
+		  <li> 
+			 <p>Example<br>This shows a short example that includes the option 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>See Also<br>This shows where you can get further information on the option or related options. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-F8400FD7-6A54-40DF-A298-BDD8037EC2C3"><h2 class="sectiontitle">General Rules for Compiler Options</h2> 
+		 
+		<p>You cannot combine options with a single dash (Linux OS and OS X) or slash (Windows OS). For example: 
+		</p>
+ 
+		<ul type="disc" id="GUID-531EFAAF-E349-42AE-B0C9-A713965B3D5E"> 
+		  <li> 
+			 <p>On Linux and OS X systems: This is incorrect: 
+		<span class="option">-wc</span>; this is correct: 
+		<span class="option">-w -c</span> 
+		</p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>On Windows systems: This is incorrect: 
+		<span class="option">/wc</span>; this is correct: 
+		<span class="option">/w /c</span> 
+		</p>
+ 
+		</li>
+ 
+		</ul>
+ 
+		<p><span>All compiler options are case sensitive. 
+		  </span>Some options have different meanings depending on their case; for example, option "c" prevents linking, but option "C"<span> places comments in preprocessed source output.</span></p>
+ 
+		<p>Options specified on the command line apply to all files named on the command line. 
+		</p>
+ 
+		<p>Options can take arguments in the form of file names, strings, letters, or numbers. If a string includes spaces, the string must be enclosed in quotation marks. For example: 
+		</p>
+ 
+		<ul type="disc" id="GUID-8B57E265-26A2-4056-A6F9-6629DA32F05C"> 
+		  <li> 
+			 <p>On Linux and OS X systems, 
+		<span class="option">-dynamic-linker 
+		</span><var>mylink</var> (file name) or 
+		<span class="option">-U</span><var>macro3</var> (string) 
+		</p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>On Windows systems, 
+		<span class="option">/Fa</span><span class="filepath">myfile.s</span> (file name) or 
+		<span class="option">/V</span><var>"version 5.0"</var> (string) 
+		</p>
+ 
+		</li>
+ 
+		</ul>
+ 
+		<p>Compiler options can appear in any order. 
+		</p>
+ 
+		<p>On Windows systems, all compiler options must precede 
+		<span class="option">/link</span> options, if any, on the command line. 
+		</p>
+ 
+		<p>Unless you specify certain options, the command line will both compile and link the files you specify. 
+		</p>
+ 
+		<p>You can abbreviate some option names, entering as many characters as are needed to uniquely identify the option. 
+		</p>
+ 
+		<p>Certain options accept one or more keyword arguments following the option name. For example, the 
+		<span class="option">arch</span> option accepts several keywords. 
+		</p>
+ 
+		<p>To specify multiple keywords, you typically specify the option multiple times. However, there are exceptions; for example, the following are valid: 
+		<span class="option">-axNB</span> (Linux OS) or 
+		<span class="option">/QaxNB</span> (Windows OS). 
+		</p>
+ 
+		<p>Compiler options remain in effect for the whole compilation unless overridden by a compiler 
+		  <span>#pragma</span>. 
+		</p>
+ 
+		<p>To disable an option, specify the negative form of the option. 
+		</p>
+ 
+		<p>On Windows systems, you can also disable one or more 
+		  <span><span>optimization</span></span> options by specifying option 
+		<span class="option">/Od</span> last on the command line. 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>On Windows systems, the 
+		  <span class="option">/Od</span> option is part of a mutually-exclusive group of options that includes 
+		  <span class="option">/Od</span>, 
+		  <span class="option">/O1</span>, 
+		  <span class="option">/O2</span>, 
+		  <span class="option">/O3</span>, and 
+		  <span class="option">/Ox</span>. The last of any of these options specified on the command line will override the previous options from this group. 
+		  </p>
+ 
+		</div> 
+		<p>If there are enabling and disabling versions of an option on the command line, the last one on the command line takes precedence. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C049864C-4C7A-4124-8BD3-045B7D82F2FA.htm">Compiler Option Categories and Descriptions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

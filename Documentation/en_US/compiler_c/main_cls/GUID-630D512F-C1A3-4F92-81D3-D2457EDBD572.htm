@@ -1,0 +1,274 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="omp atomic">
+<meta name="abstract" content="Ensures that a specific memory location is updated atomically, which prevents the possibility of multiple, simultaneous reading and writing of threads.">
+<meta name="description" content="Ensures that a specific memory location is updated atomically, which prevents the possibility of multiple, simultaneous reading and writing of threads.">
+<meta name="DC.subject" content="omp atomic">
+<meta name="keywords" content="omp atomic">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-630D512F-C1A3-4F92-81D3-D2457EDBD572">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>omp atomic</title>
+</head>
+<body id="GUID-630D512F-C1A3-4F92-81D3-D2457EDBD572">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">omp atomic</h1>
+
+<!--Ensures that a specific memory location is updated atomically, which prevents the possibility of multiple, simultaneous reading and writing of threads.-->
+
+<div><p>Ensures that a specific memory location is updated atomically, which prevents the possibility of multiple, simultaneous reading and writing of threads.</p>
+
+
+
+<div class="section" id="GUID-9083B82F-D559-43CD-91B3-01EBB964C6B8"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> #pragma omp atomic [ read | write | update | capture ]</span><span class="var"> </span></p></td></tr></table><p>  <samp class="codeph"><var>expression-stmt</var></samp></p>
+
+<p>OR</p>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> #pragma omp atomic capture</span></p></td></tr></table><p><samp class="codeph"><var> structured-block</var></samp></p>
+</div>
+
+<div class="section" id="GUID-159ED4E5-257D-40F5-ABAB-5FB5118432AA"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>If the<var> clause</var> is</p></td>
+<td valign="top" class="noborder"><table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">read</span></p></td>
+<td valign="top" class="noborder"><p><em>expression-stmt</em> is of the form  <em>v = x;</em></p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">write</span></p></td>
+<td valign="top" class="noborder"><p><em>expression-stmt</em> is of the form   <em>x = expr;</em></p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">update</span> (or not present)</p></td>
+<td valign="top" class="noborder"><p><em>expression-stmt</em> is one of the forms:</p>
+<p>
+<em> x++;</em></p>
+<p>
+<em> x--;</em></p>
+<p>
+<em> ++x;</em></p>
+<p>
+<em> --x;</em></p>
+<p>
+<em>x binop=
+expr;</em></p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">capture</span></p></td>
+<td valign="top" class="noborder"><p><em>expression-stmt</em> is one of the forms:</p>
+<p>
+<em> v = x++;</em>
+</p>
+<p>
+<em> v = x--;</em></p>
+<p>
+<em> v = ++x;</em></p>
+<p>
+<em> v = --x;</em></p>
+<p>
+<em> v = x binop=
+expr;</em></p>
+<p> OR if a <em>structured-block</em> is used, it is in one of the
+following forms:</p>
+<p>
+<em> {v = x; x binop=
+expr}</em></p>
+<p>
+<em>{x binop= expr; v =
+x}</em></p>
+</td>
+</tr></table>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> </p></td>
+<td valign="top" class="noborder"><p> In the above expressions:</p>
+<p>
+<ul type="disc" id="GUID-6FE33188-E059-4C0E-8D68-FF73E0ACFF54">
+<li>
+<p><em>x</em> and
+<em>v</em> (as applicable) are both <em>l-value</em> expressions
+with scalar type.</p>
+
+</li>
+
+<li>
+<p>During the
+execution of an atomic region, multiple syntactic occurrences of
+<em>x</em> must designate the same storage location.</p>
+
+</li>
+
+<li>
+<p>Neither of
+<em>v</em> and <em>expr</em> (as applicable) may access the storage
+location designated by <em>x</em>.</p>
+
+</li>
+
+<li>
+<p><em>expr</em>   is an
+expression with scalar type.</p>
+
+</li>
+
+<li>
+<p><em>binop</em> is one
+of <strong>+, *, -, /, &amp;, ^, |, &lt;&lt;, or &gt;&gt;</strong>.</p>
+
+</li>
+<li><em>binop, binop=,</em> <strong>++,</strong> and <strong>--</strong> are not overloaded
+operators.</li>
+
+</ul>
+
+</p>
+
+
+ </td>
+</tr></table>
+
+</div>
+
+
+<div class="section" id="GUID-562EE3ED-51B9-4B17-8566-42A8A7305949"><h2>Description</h2>
+<p>  The binding thread set for an atomic region is all threads. Atomic regions enforce exclusive access with respect to other atomic regions that access the same storage location <em>x</em> among all the threads in the program without regard to the teams to which the threads belong.</p>
+
+<p> Note that the following
+restriction applies to the <samp class="codeph">#pragma omp atomic</samp>: all atomic accesses to the storage locations designated by <em>x</em> throughout the program must have the same type and type parameters.</p>
+
+<p> The following table describes what
+happens when you specify one of the clauses in an <samp class="codeph">atomic</samp>
+construct.
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A1B33A03-AFA0-48E2-AAF4-96E0E3C2F83E" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d309858e264"> <p>Clause</p>
+</th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d309858e268"><p> Result</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="NaN%" headers="d309858e264 "><samp class="codeph">read</samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d309858e268 "><p>Causes an atomic read of the location designated by <em>x</em> regardless of the native machine word size.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d309858e264 "><samp class="codeph">write</samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d309858e268 "><p>Causes an atomic write of the location designated by <em>x</em> regardless of the native machine word size.</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d309858e264 "><samp class="codeph">[update]</samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d309858e268 "><p> Causes an atomic
+update of the location designated by <em>x</em> using the designated
+operator or intrinsic. The following rules also apply:</p>
+
+<p>
+<ul type="disc" id="GUID-34690CBC-D38E-4E86-BD33-123A6BECCEC0"><li>The evaluation of <em>expr</em> or <em>expr-list</em>
+need not be atomic with respect to the read or write of the
+location designated by <em>x</em>.</li>
+<li>No task scheduling points occur between the
+read and the write of the location designated by
+<em>x</em>.</li>
+</ul>
+
+</p>
+
+
+
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d309858e264 "><samp class="codeph">capture</samp></td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d309858e268 "><p> Causes an atomic update of the location
+designated by <em>x</em> using the designated operator or intrinsic
+while also capturing the original or final value of the location
+designated by <em>x</em> with respect to the atomic update. The following
+rules also apply:</p>
+
+<p><ul type="disc" id="GUID-11FE66D2-2880-47B9-850E-F6DA5E7529B2"><li>The original or final value of the location
+designated by <em>x</em> is written in the location designated by
+<em>v</em>, depending on the form of the <samp class="codeph">atomic</samp> construct, structured
+block, or statements, following the usual language
+semantics.</li>
+<li> Only the read and write of the location designated
+by <em>x</em> are performed mutually atomically.</li>
+<li>The evaluation of <em>expr</em> or <em>expr-list</em>,
+and the write to the location designated by <em>v</em> do not need to
+be atomic with respect to the read or write of the location
+designated by <em>x</em>.</li>
+</ul>
+
+
+</p>
+
+
+
+<p>No task scheduling points occur between the
+read and the write of the location designated by <em>x</em>.</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p> Any combination of two or more of
+these <samp class="codeph">atomic</samp> constructs enforces mutually exclusive access to the
+locations designated by <em>x</em>.</p>
+
+<p> A race condition exists when two
+unsynchronized threads access the same shared variable with at
+least one thread modifying the variable; this can cause
+unpredictable results. To avoid race conditions, all accesses of
+the locations designated by <em>x</em> that could potentially occur in
+parallel must be protected with an <samp class="codeph">atomic</samp> construct.</p>
+
+<p> Atomic regions do not guarantee
+exclusive access with respect to any accesses outside of atomic
+regions to the same storage location <em>x</em> even if those
+accesses occur during a <samp class="codeph">critical</samp> or <samp class="codeph">ordered</samp> region, while an OpenMP*
+lock is owned by the executing task, or during the execution of a
+<samp class="codeph">reduction</samp> clause.</p>
+
+<p> However, other OpenMP*
+synchronization can ensure the desired exclusive access. For
+example, a  <samp class="codeph">barrier</samp> pragma following a series of atomic updates
+to <em>x</em> guarantees that subsequent accesses do not form a race
+condition with the atomic accesses.</p>
+
+
+
+</div>
+
+
+<div class="section" id="GUID-24460E43-D730-47C2-90E0-D3AD81E54D4F"><h2 class="sectiontitle">Examples:</h2><pre>#pragma omp atomic update
+     k += n*mass;		 // k is updated atomically
+</pre><p></p>
+<pre>#pragma omp atomic read
+     tmp = c;		//  c is read atomically 
+</pre><p></p>
+<pre>#pragma omp atomic write
+     count = n*m;		// count is written atomically
+</pre><p></p>
+<pre>#pragma omp atomic capture
+     { d = v; v += n; } // atomically update v, but capture original value of v in d
+</pre><p></p>
+<pre>#pragma omp atomic capture
+     { o = c++; }	    	// capture the old value of c, then increment c
+</pre><p></p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

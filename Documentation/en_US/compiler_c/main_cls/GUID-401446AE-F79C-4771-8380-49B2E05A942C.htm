@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Lambda Expressions with Intel&reg; Threading Building Blocks">
+<meta name="DC.subject" content="Lambda Expressions, Example with Intel&reg; TBB">
+<meta name="keywords" content="Lambda Expressions, Example with Intel&reg; TBB">
+<meta name="DC.Relation" scheme="URI" content="GUID-FE02CFE5-FB3C-4965-8A2C-326CB2BDAD9D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-401446AE-F79C-4771-8380-49B2E05A942C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Lambda Expressions with Intel&reg; Threading Building Blocks</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_lambda_tbb_eg"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-401446AE-F79C-4771-8380-49B2E05A942C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Lambda Expressions with Intel&reg; Threading Building Blocks</h1>
+ 
+   
+  <div> 
+    <p> Intel&reg; Threading Building Blocks (Intel&reg; TBB) provide common parallel algorithm patterns in the form of function templates. These templates often require passing in snippets of code as function objects. C++11 lambda expressions simplify writing such function objects. Therefore, Intel&reg; TBB and C++11 lambda expressions are a powerful combination for parallelizing code. 
+    </p>
+ 
+    <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+      <p>For more information on Intel&reg; TBB, see the Intel&reg; TBB documentation. 
+      </p>
+ 
+    </div> 
+    <p>Consider the following serial code: 
+    </p>
+ 
+    <pre>void SerialApplyFoo( float b[], const float a[], size_t n ){</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;for( size_t i=0; i&lt;n; ++i )</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i] = Foo(a[i]);</pre> 
+    <pre>}</pre> 
+    <p>If it is safe to execute the iterations in parallel, you can rewrite the loop using Intel&reg; TBB and a lambda expression: 
+    </p>
+ 
+    <pre>void ParallelApplyFoo (float b[], const float a[], size_t n){</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;tbb::parallel_for (size_t(0), n, [=](size_t i) {</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i] = Foo(a[i]);</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;});</pre> 
+    <pre>}</pre> 
+    <p>You can also use Lambda expressions with the range-based algorithms in Intel&reg; TBB. Here, the previous example is expressed in range form: 
+    </p>
+ 
+    <pre>void ParallelApplyFoo (float b[], const float a[], size_t n){
+</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;tbb::parallel_for(</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbb::blocked_range&lt;size_t&gt;(0,n),</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[=](tbb::blocked_range&lt;size_t&gt; r) {</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (size_t i=r.begin(); i!=r.end(); ++i)</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i] = Foo(a[i]);</pre> 
+    <pre>&nbsp;&nbsp;&nbsp;&nbsp;});</pre> 
+    <pre>}</pre> 
+    <p> Both examples can be written using C++ conforming to standard 
+      <em>ISO/IEC 14882:1998</em> (known as C++98). This requires manually crafting function objects for the body of the loop. The examples are simpler to write using lambda expressions, which rely on the compiler to do the tedious crafting. 
+    </p>
+ 
+    <p></p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FE02CFE5-FB3C-4965-8A2C-326CB2BDAD9D.htm">Supporting the C++11 Lambda Feature</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

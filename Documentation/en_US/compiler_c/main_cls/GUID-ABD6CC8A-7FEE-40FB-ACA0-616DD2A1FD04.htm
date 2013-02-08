@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_may_i_use_cpu_feature">
+<meta name="abstract" content="Queries the processor dynamically at the source level (this intrinsic does not perform a vendor check) to determine if processor-specific features are available.">
+<meta name="description" content="Queries the processor dynamically at the source level (this intrinsic does not perform a vendor check) to determine if processor-specific features are available.">
+<meta name="DC.subject" content="_may_i_use_cpu_feature">
+<meta name="keywords" content="_may_i_use_cpu_feature">
+<meta name="DC.Relation" scheme="URI" content="GUID-53C8406E-757B-4E75-AD34-7E9250B62D74.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3EF0AFA5-1082-4075-B38A-D52589B47EC0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-197FE65C-470F-4979-87F3-3BC50D066D9F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-ABD6CC8A-7FEE-40FB-ACA0-616DD2A1FD04">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_may_i_use_cpu_feature</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_cpu_feature"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-ABD6CC8A-7FEE-40FB-ACA0-616DD2A1FD04">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_may_i_use_cpu_feature</h1>
+
+
+<!--Queries the processor dynamically at the source level (this intrinsic does not perform a vendor check) to determine if processor-specific features are available.-->
+<div><p>Queries the processor dynamically at the source level (this intrinsic does not perform a vendor check) to determine if processor-specific features are available.</p>
+
+
+<div class="section" id="GUID-86A3F8EF-32A5-4E21-B6B4-2F2EAA7CCD4F"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern int _may_i_use_cpu_feature(unsigned __int64);</span></p></td></tr></table>
+    </div>
+
+
+    <div class="section" id="GUID-2E785FA6-C353-4BF4-BAE7-16091F2E84AC"><h2>Arguments</h2> 
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>unsigned __int64</var></p></td>
+
+      <td valign="top" class="noborder"><p>an  unsigned __int64 bitset representing one or more cpuid features.  The arguments for feature query accepted by this intrinsics are:</p>
+
+<p>_FEATURE_GENERIC_IA32</p>
+
+<p>_FEATURE_FPU</p>
+
+<p>_FEATURE_CMOV</p>
+
+<p>_FEATURE_MMX</p>
+
+<p>_FEATURE_FXSAVE</p>
+
+<p>_FEATURE_SSE</p>
+
+<p>_FEATURE_SSE2</p>
+
+<p>_FEATURE_SSE3</p>
+
+<p>_FEATURE_SSSE3</p>
+
+<p>_FEATURE_SSE4_1</p>
+
+<p>_FEATURE_SSE4_2</p>
+
+<p>_FEATURE_POPCNT</p>
+
+<p>_FEATURE_MOVBE</p>
+
+<p>_FEATURE_PCLMULQDQ</p>
+
+<p>_FEATURE_AES</p>
+
+<p>_FEATURE_F16C</p>
+
+<p>_FEATURE_AVX</p>
+
+<p>_FEATURE_RDRND</p>
+
+<p>_FEATURE_FMA</p>
+
+<p>_FEATURE_BMI</p>
+
+<p>_FEATURE_LZCNT</p>
+
+</td>
+</tr></table>
+</div>
+
+
+<div class="section" id="GUID-BE35A79C-8DC9-4B2A-9F1F-97D9F88B10C7"><h2>Description</h2> 
+     <p>This intrinsic will query the processor on which it is running to check to see if the given feature is (or features are) available. This check is dynamically performed at the point in the source where it is called. For example: </p>
+
+<p><pre>if (_may_i_use_cpu_feature(_FEATURE_SSE4_2)) { 
+			Use SSE4.2 intrinsics; 
+}
+
+Else { 
+			Use generic code; 
+} </pre></p>
+
+
+<p>The “_may_i_use_feature” intrinsic, in this case, will dynamically check to see if the code is being executed on a processor that supports SSE4.2, and return true if it is supported (false, otherwise).  The “_may_i_use_feature” also accepts multiple features within a single argument, for example:</p>
+
+
+<p><pre>if (_may_i_use_cpu_feature(_FEATURE_SSE | 
+					_FEATURE_SSE2 | 
+					_FEATURE_SSE3 | 
+					_FEATURE_SSSE3 | 
+					_FEATURE_MOVBE) &amp;&amp; 
+					!_may_i_use_cpu_feature(_FEATURE_SSE4_1)) {
+printf(“\nYou are running on an Atom processor.”\n”);
+}  </pre></p>
+
+
+
+<p>This intrinsic does not perform processor vendor checks that other features do (<samp class="codeph">-m &lt;cpu&gt; </samp>type option).</p>
+
+
+</div>
+
+
+<div class="section" id="GUID-C75E1271-243A-485E-8E4C-F46151FE42F2"><h2>Returns</h2>
+<p>Result of the feature query, true or false (1 or 0) for whether the set of features is available on the machine on which the intrinsic is executed.</p>
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-53C8406E-757B-4E75-AD34-7E9250B62D74.htm">Intrinsics for Miscellaneous Operations</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm">m</a> Tells the compiler which features it may target, including which instruction sets it may generate.</div>
+<div><a href="GUID-3EF0AFA5-1082-4075-B38A-D52589B47EC0.htm">Targeting Processors Manually</a></div>
+<div><a href="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm">ax, Qax</a> Tells the compiler to generate multiple, feature-specific auto-dispatch code paths for Intel&reg; processors if there is a performance benefit. </div>
+<div><a href="GUID-197FE65C-470F-4979-87F3-3BC50D066D9F.htm">optimization_parameter</a>   Tells the compiler to generate code specialized for a particular processor, at the function level, similar to the  -m (/arch)  options.</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

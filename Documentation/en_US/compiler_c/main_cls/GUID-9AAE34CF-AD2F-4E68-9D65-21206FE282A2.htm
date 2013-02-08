@@ -1,0 +1,78 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_kortestz">
+<meta name="abstract" content="Performs a bitwise OR operation between two vector masks and sets ZF flag. Corresponding instruction is KORTEST. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Performs a bitwise OR operation between two vector masks and sets ZF flag. Corresponding instruction is KORTEST. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_kortestz">
+<meta name="keywords" content="_mm512_kortestz">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A68F64D-8650-42B7-9AD6-D1B6F98D674C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9AAE34CF-AD2F-4E68-9D65-21206FE282A2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_kortestz</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_kortestz"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9AAE34CF-AD2F-4E68-9D65-21206FE282A2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_kortestz</h1>
+<!--Performs a bitwise OR operation between two vector masks and sets ZF flag. Corresponding instruction is 
+ KORTEST .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Performs a bitwise OR operation between two vector masks and sets ZF flag. Corresponding instruction is 
+<samp class="codeph">KORTEST</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-43D86E82-FE77-432D-9DF9-74F2DDBC62B5"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern int __cdecl _mm512_kortestz(__mmask16 k1, __mmask16 k2);  &nbsp;</span></p></td></tr></table>
+</div>
+<div class="section" id="GUID-245DAC45-3BF6-415D-BAC8-74655E1052C2"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder">vector mask
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k2</var></p></td>
+
+<td valign="top" class="noborder">vector mask
+</td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-3232D025-ABB5-4B70-B40C-90BEC0A3FD0D"><h2>Description</h2>
+<p>Performs a bitwise OR operation between vector masks 
+<samp class="codeph">k2</samp> and 
+<samp class="codeph">k1</samp>. If the result of the operation is all zeros (<span>0</span>), the <samp class="codeph">ZF</samp> flag is set, otherwise not.</p>
+</div>
+<div class="section" id="GUID-83B9A2A2-AD7D-4167-81B4-A0EA44323B4B"><h2>Returns</h2><p>Returns a non-zero value if <samp class="codeph">ZF</samp> flag is set (when both 
+<samp class="codeph">k1</samp> and 
+<samp class="codeph">k2</samp> are zero). Otherwise, '<span>0</span>' is returned.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5A68F64D-8650-42B7-9AD6-D1B6F98D674C.htm">Vector Mask Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

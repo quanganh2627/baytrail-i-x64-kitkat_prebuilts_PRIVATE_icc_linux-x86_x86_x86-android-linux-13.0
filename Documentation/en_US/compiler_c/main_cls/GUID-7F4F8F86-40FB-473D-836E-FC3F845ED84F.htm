@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for Arithmetic Operations">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, Advanced Vector Extensions 2, AVX2">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, Advanced Vector Extensions 2, AVX2">
+<meta name="DC.Relation" scheme="URI" content="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-47601266-1C98-4455-8B42-780354CEAAFA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4735A59-E9C9-4614-8027-B9BDF8E15266.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E229D906-FB6C-488B-8BD0-CAD549572BBE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5FE9F763-FAD2-48AE-B851-FA378BCB44C8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2BF2037-4FBC-42BB-96A9-47412B53A022.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0E742F7A-7CE6-4B7A-9D55-D7CF0EDC3893.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4F381D46-663C-4367-B60C-2DD10837ADFE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A9566F6-8539-4EAA-9912-EDD0DE173EC0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-30224444-50CD-4832-B553-796911CD33F8.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-854EDF35-BD46-4758-A738-313BF8F0566D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AA1E2A28-D4D6-4218-AB02-AF4F83524FF0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-5F4560F2-8733-4720-9F79-F1E7D1DF5394.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EE1DD209-4E89-4DAA-BEC0-679279927B88.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-60FFD6ED-DD75-4095-85B8-B53EC7D10F31.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-10098368-4EC7-423A-8DCC-E98897867027.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-44994705-B037-4049-BD32-9E1A31A2DBBE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E45BDDEE-3306-4C24-9173-D53797F26A38.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3CCA2138-98D8-4D39-B444-F6E4E64DA9D0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EA96B319-83BF-403F-B0FD-3B2C25A0D804.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FD9AEE45-3A79-43B0-947E-7FF81D7DEDBA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-96EC3F0E-053E-4E70-9004-04E5F00B4AB7.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-504F7BAB-BE6A-4013-A869-D8522C7EADA9.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-44D7E223-A36B-4810-BFCA-9B4F78D61A04.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Arithmetic Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_bk_avx2_arith"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Arithmetic Operations</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">Intrinsics for Intel&reg; Advanced Vector Extensions 2</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-47601266-1C98-4455-8B42-780354CEAAFA.htm">_mm256_abs_epi8/16/32</a><br>
+Computes  the  absolute value of the signed packed integer data elements of a given vector. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPABSB</span>, <span class="keyword">VPABSW</span>, or <span class="keyword">VPABSD</span>.</li>
+<li class="ulchildlink"><a href="GUID-D4735A59-E9C9-4614-8027-B9BDF8E15266.htm">_mm256_add_epi8/16/32/64</a><br>
+Adds signed/unsigned packed  8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPADDB</span>, <span class="keyword">VPADDW</span>, <span class="keyword">VPADDD</span>, or <span class="keyword">VPADDQ</span>.</li>
+<li class="ulchildlink"><a href="GUID-E229D906-FB6C-488B-8BD0-CAD549572BBE.htm">_mm256_adds_epi8/16</a><br>
+Adds the signed 8/16-bit integer data elements  with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPADDSB</span> or <span class="keyword">VPADDSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-5FE9F763-FAD2-48AE-B851-FA378BCB44C8.htm">_mm256_adds_epu8/16</a><br>
+Adds the  unsigned 8/16-bit integer data elements  with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPADDUSB</span> or <span class="keyword">VPADDUSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-C2BF2037-4FBC-42BB-96A9-47412B53A022.htm">_mm256_sub_epi8/16/32/64</a><br>
+Subtracts signed/unsigned packed  8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPSUBB</span>, <span class="keyword">VPSUBW</span>, <span class="keyword">VPADDD</span>, or <span class="keyword">VPSUBQ</span>.</li>
+<li class="ulchildlink"><a href="GUID-0E742F7A-7CE6-4B7A-9D55-D7CF0EDC3893.htm">_mm256_subs_epi8/16</a><br>
+Subtracts the signed 8/16-bit integer data elements  with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPSUBSB</span> or <span class="keyword">VPSUBSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-4F381D46-663C-4367-B60C-2DD10837ADFE.htm">_mm256_subs_epu8/16</a><br>
+Subtracts the unsigned 8/16-bit integer data elements  with saturation of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPSUBUSB</span> or <span class="keyword">VPSUBUSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-3A9566F6-8539-4EAA-9912-EDD0DE173EC0.htm">_mm256_avg_epu8/16</a><br>
+Computes the average of unsigned 8/16-bit integer data elements  of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPAVGB</span> or <span class="keyword">VPAVGW</span>.</li>
+<li class="ulchildlink"><a href="GUID-30224444-50CD-4832-B553-796911CD33F8.htm">_mm256_hadd_epi16/32</a><br>
+Horizontally adds adjacent signed packed  16/32-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPHADDW</span> or <span class="keyword">VPHADDD</span>.</li>
+<li class="ulchildlink"><a href="GUID-854EDF35-BD46-4758-A738-313BF8F0566D.htm">_mm256_hadds_epi16</a><br>
+Horizontally adds adjacent signed packed  16-bit integer data elements of two vectors with saturation. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPHADDSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-AA1E2A28-D4D6-4218-AB02-AF4F83524FF0.htm">_mm256_hsub_epi16/32</a><br>
+Horizontally subtracts adjacent signed packed  16/32-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPHSUBW</span> or <span class="keyword">VPHSUBD</span>.</li>
+<li class="ulchildlink"><a href="GUID-5F4560F2-8733-4720-9F79-F1E7D1DF5394.htm">_mm256_hsubs_epi16</a><br>
+Horizontally subtracts adjacent signed packed  16-bit integer data elements of two vectors with saturation. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPHSUBSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-EE1DD209-4E89-4DAA-BEC0-679279927B88.htm">_mm256_madd_epi16</a><br>
+Multiplies signed packed  16-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMADDW</span>.</li>
+<li class="ulchildlink"><a href="GUID-60FFD6ED-DD75-4095-85B8-B53EC7D10F31.htm">_mm256_maddubs_epi16</a><br>
+Multiplies unsigned packed  16-bit integer data elements of one vector with signed elements of second vector. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMADDUBSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-10098368-4EC7-423A-8DCC-E98897867027.htm">_mm256_mul_epi32</a><br>
+Multiplies two vectors with packed doubleword signed integer values. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMULDQ</span>.</li>
+<li class="ulchildlink"><a href="GUID-44994705-B037-4049-BD32-9E1A31A2DBBE.htm">_mm256_mul_epu32</a><br>
+Multiplies two vectors with packed doubleword unsigned integer values. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMULUDQ</span>.</li>
+<li class="ulchildlink"><a href="GUID-E45BDDEE-3306-4C24-9173-D53797F26A38.htm">_mm256_mulhi_epi16</a><br>
+Multiplies signed packed 16/32-bit integer data elements of two vectors and stores high bits. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMULHW</span>.</li>
+<li class="ulchildlink"><a href="GUID-3CCA2138-98D8-4D39-B444-F6E4E64DA9D0.htm">_mm256_mulhi_epu16</a><br>
+Multiplies unsigned packed 16/32-bit integer data elements of two vectors and stores high bits. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMULHUW</span>.</li>
+<li class="ulchildlink"><a href="GUID-EA96B319-83BF-403F-B0FD-3B2C25A0D804.htm">_mm256_mullo_epi16/32</a><br>
+Multiplies signed packed 16/32-bit integer data elements of two vectors and stores low bits. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPMULLW</span> or <span class="keyword">VPMULLD</span>.</li>
+<li class="ulchildlink"><a href="GUID-FD9AEE45-3A79-43B0-947E-7FF81D7DEDBA.htm">_mm256_mulhrs_epi16</a><br>
+Multiplies extended packed unsigned integers  of two vectors with round and scale. The corresponding Intel&reg; AVX2  instruction is <span class="keyword">VPMULHRSW</span>.</li>
+<li class="ulchildlink"><a href="GUID-96EC3F0E-053E-4E70-9004-04E5F00B4AB7.htm">_mm256_sign_epi8/16/32</a><br>
+Changes the sign of elements in one source vector depending on the sign of  corresponding element in other source vector. The corresponding Intel&reg; AVX2 instruction is <span class="keyword"> VPSIGNB, VPSIGNW, or VPSIGND.</span></li>
+<li class="ulchildlink"><a href="GUID-504F7BAB-BE6A-4013-A869-D8522C7EADA9.htm">_mm256_mpsadbw_epu8</a><br>
+Performs multiple sum of absolute differences on extended packed unsigned integer values ofs two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VMPSADBW</span>.</li>
+<li class="ulchildlink"><a href="GUID-44D7E223-A36B-4810-BFCA-9B4F78D61A04.htm">_mm256_sad_epu8</a><br>
+Computes  sum of absolute differences between extended packed unsigned values of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPSADBW</span>.</li>
+</ul>
+</div>
+
+</body>
+</html>

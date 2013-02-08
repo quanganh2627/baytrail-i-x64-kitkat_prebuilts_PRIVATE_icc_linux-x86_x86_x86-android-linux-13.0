@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Understanding Code Layout and Multi-Object IPO">
+<meta name="DC.subject" content="code layout, interprocedural optimizations">
+<meta name="keywords" content="code layout, interprocedural optimizations">
+<meta name="DC.Relation" scheme="URI" content="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6D267501-D14F-4B11-B5A9-558AEBF96BB3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Understanding Code Layout and Multi-Object IPO</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_lay"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_lay"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6D267501-D14F-4B11-B5A9-558AEBF96BB3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Understanding Code Layout and Multi-Object IPO</h1>
+
+
+
+
+<div>
+<p>One of the optimizations performed during an IPO compilation is code layout. The analysis performed by the compiler during multi-file IPO determines a layout order for all of the routines for which it has intermediate representation (IR) information. For a multi-object IPO compilation, the compiler must tell the linker about the desired order.</p>
+
+<p>If you are generating an executable in the link step, the compiler does all of this automatically. However, if you are generating object files instead of an executable, the compiler generates a layout script, which contains the correct information needed to optimally link the executable when you are ready to create it.</p>
+
+<p>This linking tool script must be taken into account if you use either <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">-ipo-c</span></a> or <a href="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299.htm#GUID-7E9D1246-3877-4745-AF64-FDE874BA5299"><span class="option">-ipo-S</span></a> (Linux*) or <a href="GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C.htm#GUID-CE89F74F-97DD-4C0F-8D11-9B723172218C"><span class="option">/Qipo-c</span></a> or <a href="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299.htm#GUID-7E9D1246-3877-4745-AF64-FDE874BA5299"><span class="option">/Qipo-S</span></a> (Windows*). With these options, the IPO compilation and actual linking are done by different invocations of the compiler. When this occurs, the compiler issues a message indicating that it is generating an explicit linker script, <span class="filepath">ipo_layout.script</span>.</p>
+
+<p>The Windows linker (link.exe) automatically collates these sections lexigraphically in the desired order.</p>
+
+<p>The compiler first puts each routine in a named text section that varies depending on the operating system:</p>
+
+<p>Windows:</p>
+
+
+<ul type="disc" id="GUID-DC071040-24F1-419F-8AE8-5CCF17103852">
+  <li><p>The first routine is placed in <span class="filepath">.text$00001</span>, the second is placed in <span class="filepath">.text$00002</span>, and so on.</p>
+</li>
+
+</ul>
+
+
+<p>Linux:</p>
+
+
+<ul type="disc" id="GUID-37D83C42-8B0B-414B-AB35-B73BF3483387">
+  <li><p>The first routine is placed in <span class="filepath">.text00001</span>, the second is placed in <span class="filepath">.text00002</span>, and so on. It then generates a linker script that tells the linker to first link contributions from <span class="filepath">.text00001</span>, then <span class="filepath">.text00002</span>.</p>
+</li>
+
+</ul>
+
+
+<p>When <span class="filepath">ipo_layout.script</span> is generated, you should modify your link command if you want to use the script to optimize code layout:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6C8D37C0-8309-47E8-BCA8-52F2F331013A" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+<thead align="left"><tr><th class="cellrowborder" align="left" valign="top" id="d340454e137"><p>Example</p>
+</th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" align="left" valign="top" headers="d340454e137 "><pre>--script=ipo_layout.script</pre></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>If your application already requires a custom linker script, you can place the necessary contents of <span class="filepath">ipo_layout.script</span> in your script.</p>
+
+<p>The layout-specific content of <samp class="codeph">ipo_layout.script</samp> is at the beginning of the description of the <span class="filepath">.text</span> section. For example, to describe the layout order for 12 routines:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6A8B1705-31A7-4DCB-82A9-F94FCF4141B4" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" id="d340454e173"><p>Example output</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr>
+<td class="cellrowborder" align="left" valign="top" headers="d340454e173 ">
+
+<pre>.text     :</pre>
+<pre>{</pre>
+<pre>*(.text00001) *(.text00002) *(.text00003) *(.text00004) *(.text00005)</pre>
+<pre>*(.text00006) *(.text00007) *(.text00008) *(.text00009) *(.text00010)</pre>
+<pre>*(.text00011) *(.text00012)</pre>
+<pre>...</pre>
+
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>For applications that already require a linker script, you can add this section of the <span class="filepath">.text</span> section description to the customized linker script. If you add these lines to your linker script, it is desirable to add additional entries to account for future development. The addition is harmless, since the "r;*("¦)" syntax makes these contributions optional.</p>
+
+<p>If you choose to not use the linker script your application will still build, but the layout order will be random. This may have an adverse affect on application performance, particularly for large applications.</p>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2C521F58-6303-4748-9736-A59A5B73B025.htm">Interprocedural Optimization (IPO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

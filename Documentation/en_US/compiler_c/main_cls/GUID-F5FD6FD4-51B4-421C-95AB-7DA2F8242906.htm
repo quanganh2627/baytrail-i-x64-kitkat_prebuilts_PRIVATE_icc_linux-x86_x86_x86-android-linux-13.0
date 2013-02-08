@@ -1,0 +1,185 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Subtraction Intrinsics">
+<meta name="DC.subject" content="intrinsics, SSSE3, subtraction operations, Supplemental Streaming SIMD Extensions 3, subtraction intrinsics, _mm_hsub_epi16, _mm_hsub_epi32, _mm_hsubs_epi16, _mm_hsub_pi16, _mm_hsub_pi32, _mm_hsubs_pi16">
+<meta name="keywords" content="intrinsics, SSSE3, subtraction operations, Supplemental Streaming SIMD Extensions 3, subtraction intrinsics, _mm_hsub_epi16, _mm_hsub_epi32, _mm_hsubs_epi16, _mm_hsub_pi16, _mm_hsub_pi32, _mm_hsubs_pi16">
+<meta name="DC.Relation" scheme="URI" content="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F5FD6FD4-51B4-421C-95AB-7DA2F8242906">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Subtraction Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_tni_sub"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F5FD6FD4-51B4-421C-95AB-7DA2F8242906">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Subtraction Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-A73B985F-7A3D-4D7D-8410-C085907EE02C"> 
+      <p>These Supplemental Streaming SIMD Extensions 3 (SSSE3) intrinsics are used for horizontal subtraction. The prototypes for these intrinsics are in 
+        <span class="filepath">tmmintrin.h</span>. You can also use the 
+        <span class="filepath">ia32intrin.h</span> header file for these intrinsics. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1809E45A-26B5-4A2B-BAE0-4392A9152113"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_hsub_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Subtract horizontally packed signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-95FD402D-05CB-4155-93FB-311E8B21F221"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = a[2*i] - a[2i+1];
+r[i+4] = b[2*i] - b[2*i+1];
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3CF4666F-926E-4600-9356-0B88A32B30C9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_hsub_epi32 (__m128i a, __m128i b);</span></p></div> 
+      <p>Subtracts horizontally packed signed doublewords. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-29ACD478-FB5F-4B39-9C67-06415CF1C3A7"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 32-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = a[2*i] - a[2i+1];
+r[i+2] = b[2*i] - b[2*i+1];
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-45BB3D53-582F-42D6-B630-C81F68CC452F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128i _mm_hsubs_epi16 (__m128i a, __m128i b);</span></p></div> 
+      <p>Subtracts horizontally packed signed words with signed saturation. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9E8DC5E1-7384-4CD0-A66C-855DD040A638"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 4; i++) {
+r[i] = signed_saturate_to_word(a[2*i] - a[2i+1]);
+r[i+4] = signed_saturate_to_word(b[2*i] - b[2*i+1]);
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B81723A7-39E4-4D6F-BC53-CB99AF2DFC80"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_hsub_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Subtracts horizontally packed signed words. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-18057519-3876-4CDF-906F-99EDCCB8BB1B"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = a[2*i] - a[2i+1];
+r[i+2] = b[2*i] - b[2*i+1];
+}</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-581791E6-0995-4D9F-9AC0-3354AEFB93DA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_hsub_pi32 (__m64 a, __m64 b);</span></p></div> 
+      <p>Subtracts horizontally packed signed doublewords. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-17ECBF77-C32A-44A9-8BC8-ACFC7B517A34"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 32-bit signed integers: 
+      </p>
+ 
+      <pre>r[0] = a[0] - a[1];
+r[1] = b[0] - b[1];</pre> 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-18B50814-E3B2-415E-B9BD-65954D78D683"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m64 _mm_hsubs_pi16 (__m64 a, __m64 b);</span></p></div> 
+      <p>Subtracts horizontally packed signed words with signed saturation. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F7040D0F-EB8C-4B0C-A467-E1B48E8C0BF4"> 
+      <p>Interpreting 
+        <var>a</var>, 
+        <var>b</var>, and 
+        <var>r</var> as arrays of 16-bit signed integers: 
+      </p>
+ 
+      <pre>for (i = 0; i &lt; 2; i++) {
+r[i] = signed_saturate_to_word(a[2*i] - a[2i+1]);
+r[i+2] = signed_saturate_to_word(b[2*i] - b[2*i+1]);
+}</pre> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8D3039E1-8048-4BEB-A8B1-A881A962340C.htm">Intrinsics for Intel&reg; Supplemental Streaming SIMD Extensions 3 (SSSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

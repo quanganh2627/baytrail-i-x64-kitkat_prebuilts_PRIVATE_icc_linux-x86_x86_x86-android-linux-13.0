@@ -1,0 +1,109 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Multi-version Compiler Support">
+<meta name="DC.subject" content="Eclipse* projects, multi-version compiler support, compilers, using multiple versions">
+<meta name="keywords" content="Eclipse* projects, multi-version compiler support, compilers, using multiple versions">
+<meta name="DC.Relation" scheme="URI" content="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CB26F006-671D-4B2C-A429-A0018FCED50C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Multi-version Compiler Support</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_new_ec"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_new_ec"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CB26F006-671D-4B2C-A429-A0018FCED50C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Multi-version Compiler Support</h1>
+ 
+   
+  <div> 
+    <p>Different versions of the Intel&reg; C++ compiler can be selected for compiling Eclipse* projects. Eclipse* Executable, Shared Library, Static Library, and Makefile projects, Eclipse* configurations (and the toolchain the configuration is based on) are used to provide this support. Refer to the Intel&reg; C++ Composer XE Release Notes for a list of the currently supported compiler versions by platform. 
+    </p>
+ 
+    <p>Select the version of the Intel&reg; C++ Compiler to build your project. You do this by selecting the configuration associated with the desired version of the compiler prior to building your project. You can create the desired configurations for the versions of the compiler that you would like to build either through the 
+      <b class="uicontrol">Manage Configurations</b> interface within the IDE, accessible via the project's properties. Right click the project and select 
+      <span> 
+        <b class="uicontrol">Properties</b> &gt; <b class="uicontrol">C/C++ Build</b></span> and select either 
+      <b class="uicontrol">Settings</b> or 
+      <b class="uicontrol">Tool Chain Editor</b>. 
+    </p>
+ 
+    <p>On the 
+      <b class="uicontrol">Configuration</b> line, select 
+      <b class="uicontrol">Manage Configurations</b>. The 
+      <b class="uicontrol">Manage Configurations</b> dialog box appears. 
+    </p>
+ 
+    <p>To create configurations using the 
+      <b class="uicontrol">Manage Configurations</b> interface: 
+    </p>
+ 
+    <ol id="GUID-A14AB0BB-F847-4DB1-B041-1DE50B2FB35F"> 
+      <li> 
+        <p>Click 
+          <b class="uicontrol">New</b>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Give the project a unique 
+          <b class="uicontrol">Name</b>. The configuration name will be used as a directory name in the file system, so reserved characters such as $ or * are not allowed. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Select where you wish to 
+          <b class="uicontrol">Copy settings from</b>. Available options are 
+          <b class="uicontrol">Existing configuration</b>, 
+          <b class="uicontrol">Default configuration</b>, 
+          <b class="uicontrol">Import from projects</b>, and 
+          <b class="uicontrol">Import predefined</b>. 
+        </p>
+ 
+      </li>
+ 
+    </ol>
+ 
+    <p> Within configurations, you can set distinct project properties, like compiler options, to be used with different versions of the Intel&reg; C++ Compiler and select and modify compiler versions to use by changing the active configuration. The active configuration is the configuration in effect when your application is built within the Eclipse* IDE. 
+    </p>
+ 
+    <p>If you have multiple instances of the same major version of the compiler installed on your system (and a configuration with that major version that is active for an Eclipse* Executable, Shared Library, or Static Library Project, ) with different minor versions, the Eclipse* IDE will use the compiler with its environment established, via execution of 
+      <span class="filepath"><var>&lt;install-dir&gt;</var>/bin/compilervars.[c]sh</span> by default. If no compiler environment is established a project, the most current compiler (the one with the highest minor version number) will be used. For an Eclipse*/CDT Makefile Project, the compiler environment must be established to enable successful invocation of the compiler. 
+    </p>
+ 
+    <p>For any project, you can set the compiler environment by specifying it within Eclipse*, overriding any other environment specifications for the compiler. 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">Using Eclipse*</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

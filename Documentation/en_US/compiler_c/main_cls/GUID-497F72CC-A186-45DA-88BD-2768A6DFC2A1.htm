@@ -1,0 +1,788 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Floating-point Intrinsics">
+<meta name="DC.subject" content="intrinsics, All Intel Architectures, floating point operations">
+<meta name="keywords" content="intrinsics, All Intel Architectures, floating point operations">
+<meta name="DC.Relation" scheme="URI" content="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-497F72CC-A186-45DA-88BD-2768A6DFC2A1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Floating-point Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_allia_fp"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-497F72CC-A186-45DA-88BD-2768A6DFC2A1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Floating-point Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-D0A7532C-C47B-4B67-BD59-23807BDDF1BC"> 
+      <p>The following table lists and describes floating point intrinsics that you can use across all Intel and compatible architectures. Floating-point intrinsic functions may invoke library functions that are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+      </p>
+ 
+    </div>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-67ED68B1-4032-41A4-B334-91AFA3CC5632" frame="hsides" border="1" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" valign="top" width="40%" id="d227125e52"> 
+              <p>Intrinsic 
+              </p>
+ 
+            </th>
+ 
+            <th class="row-nocellborder" valign="top" width="60%" id="d227125e58"> 
+              <p>Description 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double fabs(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the absolute value of a floating-point value. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double log(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the natural logarithm ln(x), x&gt;0, with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float logf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the natural logarithm ln(x), x&gt;0, with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double log10(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the base 10 logarithm log10(x), x&gt;0, with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float log10f(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the base 10 logarithm log10(x), x&gt;0, with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double exp(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the exponential function with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float expf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the exponential function with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double pow(double, double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the value of x to the power y with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float powf(float, float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the value of x to the power y with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double sin(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the sine of x with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float sinf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the sine of x with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double cos(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the cosine of x with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float cosf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the cosine of x with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double tan(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the tangent of x with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float tanf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the tangent of x with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double acos(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the inverse cosine of x with double precison 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float acosf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Returns the inverse cosine of x with single precison 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double acosh(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute the inverse hyperbolic cosine of the argument with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float acoshf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute the inverse hyperbolic cosine of the argument with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double asin(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse sine of the argument with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float asinf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse sine of the argument with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double asinh(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse hyperbolic sine of the argument with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float asinhf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse hyperbolic sine of the argument with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double atan(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse tangent of the argument with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float atanf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse tangent of the argument with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double atanh(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse hyperbolic tangent of the argument with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float atanhf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Compute inverse hyperbolic tangent of the argument with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double cabs(double complex z)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes absolute value of complex number. The intrinsic argument is a complex number made up of two double precison elements, one real and one imaginary. The input parameter z is made up of two values of double type passed together as a single argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float cabsf(float complex z)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes absolute value of complex number. The intrinsic argument is a complex number made up of two single precison elements, one real and one imaginary. The input parameter z is made up of two values of float type passed together as a single argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double ceil(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes smallest integral value of double precison argument not less than the argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float ceilf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes smallest integral value of single precison argument not less than the argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double cosh(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the hyperbolic cosine of double precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float coshf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the hyperbolic cosine of single precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float fabsf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes absolute value of single precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double floor(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the largest integral value of the double precison argument not greater than the argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float floorf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the largest integral value of the single precison argument not greater than the argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double fmod(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the floating-point remainder of the division of the first argument by the second argument with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float fmodf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the floating-point remainder of the division of the first argument by the second argument with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double hypot(double, double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the length of the hypotenuse of a right angled triangle with double precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float hypotf(float, float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the length of the hypotenuse of a right angled triangle with single precison. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double rint(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the integral value represented as double using the IEEE rounding mode. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float rintf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the integral value represented with single precison using the IEEE rounding mode. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double sinh(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the hyperbolic sine of the double precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float sinhf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the hyperbolic sine of the single precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float sqrtf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the square root of the single precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">double tanh(double)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the hyperbolic tangent of the double precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="40%" headers="d227125e52 "> 
+              <p><span class="option">float tanhf(float)</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="60%" headers="d227125e58 "> 
+              <p>Computes the hyperbolic tangent of the single precison argument. 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6038DE63-DEFE-48D2-9CD7-C510D88DC7DF.htm">Intrinsics for All Intel Architectures</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

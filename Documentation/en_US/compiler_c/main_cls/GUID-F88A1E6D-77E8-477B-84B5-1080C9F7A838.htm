@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Intel&reg; C++ Compiler Pragmas">
+<meta name="DC.subject" content="Pragmas, overview">
+<meta name="keywords" content="Pragmas, overview">
+<meta name="DC.Relation" scheme="URI" content="GUID-DD32852C-A0F9-4AC6-BF67-D10D064CC87A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F88A1E6D-77E8-477B-84B5-1080C9F7A838">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Intel&reg; C++ Compiler Pragmas</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_ovrvw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F88A1E6D-77E8-477B-84B5-1080C9F7A838">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Overview: Intel&reg; C++ Compiler Pragmas</h1>
+
+
+<div>
+
+<p>Pragmas are directives that provide instructions to the compiler for use in specific cases. For example, you can use the <span class="keyword">novector</span> pragma to specify that a loop should never be vectorized. The keyword <span class="keyword">#pragma</span> is standard in the C++ language, but individual pragmas are machine-specific or operating system-specific, and vary by compiler.</p>
+
+<p>Some pragmas provide the same functionality as compiler options. Pragmas override behavior specified by compiler options.</p>
+
+<p> Some pragmas are available for both Intel&reg; and non-Intel microprocessors but they may perform additional optimizations for Intel&reg; microprocessors than they perform for non-Intel microprocessors. Refer to the individual pragma page for detailed description.</p>
+<p>The Intel&reg; C++ Compiler pragmas are categorized as follows:</p>
+
+
+<ul type="disc" id="GUID-D0F70E3B-5D7A-4774-B227-17985BD359EF">
+<li><p><a href="GUID-346BAAA5-CF2D-4A26-9194-CA840BFB34E5.htm#GUID-346BAAA5-CF2D-4A26-9194-CA840BFB34E5">Intel-Specific Pragmas</a> - pragmas developed or modified by Intel to work specifically with the Intel&reg; C++ Compiler</p>
+</li>
+
+<li><p><a href="GUID-0B88D6DE-D06F-4C57-A313-11291B202C39.htm#GUID-0B88D6DE-D06F-4C57-A313-11291B202C39">Intel Supported Pragmas</a> - pragmas developed by external sources that are supported by the Intel&reg; C++ Compiler for compatibility reasons</p>
+</li>
+
+</ul>
+
+
+<div class="section" id="GUID-AEC8E171-397D-4276-9D64-684FC0B01519"><h2 class="sectiontitle">Using Pragmas</h2>
+
+<p>You enter pragmas into your C++ source code using the following syntax:</p>
+
+<p><samp class="codeph">#pragma &lt;pragma name&gt;</samp></p>
+
+</div>
+
+
+<div class="section" id="GUID-DA6DFEB4-E67C-42B7-858B-72E1B070D0DA"><h2 class="sectiontitle">Individual Pragma Descriptions</h2>
+
+<p>Each pragma description has the following details:</p>
+
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CA6AE359-B15E-49E5-AB71-7BB4E51E243E" frame="border" border="1" cellspacing="0" rules="all">
+
+
+
+<thead align="left">
+<tr>
+  <th class="cellrowborder" align="left" valign="top" width="30%" id="d859368e98"><p>Section</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="70%" id="d859368e102"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d859368e98 "><p><strong>Short Description</strong></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d859368e102 "><p>Contains a brief description of what the pragma does </p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d859368e98 "><p><strong>Syntax</strong></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d859368e102 "><p>Contains the pragma syntax</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d859368e98 "><p><strong>Arguments</strong></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d859368e102 "><p>Contains a list of the arguments with descriptions </p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d859368e98 "><p><strong>Description</strong></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d859368e102 "><p>Contains a detailed description of what the pragma does </p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d859368e98 "><p><strong>Example</strong></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d859368e102 "><p>Contains typical usage example/s</p>
+</td>
+
+</tr>
+
+
+<tr>
+  <td class="cellrowborder" valign="top" width="30%" headers="d859368e98 "><p><strong>See Also</strong></p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="70%" headers="d859368e102 "><p>Contains links or paths to other pragmas or related topics</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DD32852C-A0F9-4AC6-BF67-D10D064CC87A.htm">Pragmas</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

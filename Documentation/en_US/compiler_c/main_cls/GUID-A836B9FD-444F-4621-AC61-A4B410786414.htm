@@ -1,0 +1,174 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions">
+<meta name="DC.subject" content="intrinsics, Advanced Encryption Standard (AES) Implementation, _mm_aesdec_si128, _mm_aesdeclast_si128, _mm_aesenc_si128, _mm_aesenclast_si128, _mm_aesimc_si128, _mm_aeskeygenassist_si128, carry-less multiplication instruction, _mm_clmulepi64_si128">
+<meta name="keywords" content="intrinsics, Advanced Encryption Standard (AES) Implementation, _mm_aesdec_si128, _mm_aesdeclast_si128, _mm_aesenc_si128, _mm_aesenclast_si128, _mm_aesimc_si128, _mm_aeskeygenassist_si128, carry-less multiplication instruction, _mm_clmulepi64_si128">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A356B71-771C-4D38-A480-29B3C0BC9EBB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-0C925789-53BB-48AA-BC34-5F159F1F4610.htm#GUID-0C925789-53BB-48AA-BC34-5F159F1F4610">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A836B9FD-444F-4621-AC61-A4B410786414">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_aes_intrinsics"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A836B9FD-444F-4621-AC61-A4B410786414">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-FC2AAAE4-246F-4C0B-930B-3508CED1B40A"> 
+      <p>The prototypes for the Carry-less multiplication intrinsic and the AES intrinsics are defined in the 
+        <span class="filepath">wmmintrin.h</span>file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BFCB7C16-D921-4789-BD08-8B8E64EFD9F3"><h2 class="sectiontitle">Carry-less Multiplication Intrinsic</h2> 
+       
+      <p>The single general purpose block encryption intrinsic description is provided below. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C2677091-79EE-4484-B72C-38D597626CFC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_clmulepi64_si128(__m128i v1, __m128i v2, const int imm8);</span></p></div> 
+      <p>Performs a carry-less multiplication of one quadword of 
+        <samp class="codeph">v1</samp> by one quadword of 
+        <samp class="codeph">v2</samp>, and returns the result. The 
+        <samp class="codeph">imm8</samp> value is used to determine which quadwords of 
+        <samp class="codeph">v1</samp> and 
+        <samp class="codeph">v2</samp> should be used. 
+      </p>
+ 
+      <p>Corresponding Instruction: 
+        <span class="keyword">PCLMULQDQ</span> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1A528221-CFB7-4B8C-B7FC-2E1966D57F5A"><h2 class="sectiontitle">Advanced Encryption Standard Intrinsics</h2> 
+       
+      <p>The AES intrinsics are described below. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-45CCE64C-2C18-4F1D-8209-3FBFBF6B6ABD"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_aesdec_si128(__m128i v, __m128i rkey);</span></p></div> 
+      <p>Performs one round of an AES decryption flow using the Equivalent Inverse Cipher operating on a 128-bit data (state) from 
+        <samp class="codeph">v</samp> with a 128-bit round key from 
+        <samp class="codeph">rkey.</samp> 
+      </p>
+ 
+      <p>Corresponding Instruction: 
+        <span class="keyword">AESDEC</span> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FEDD7342-08F7-454C-8012-81C6CEF7ED9B"></div>
+ 
+    <div class="section" id="GUID-44FAD218-C8B9-4B19-8C78-AEC0A06C901C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_aesdeclast_si128(__m128i v, __m128i rkey);</span></p></div> 
+      <p>Performs the last round of an AES decryption flow using the Equivalent Inverse Cipher operating on a 128-bit data (state) from 
+        <samp class="codeph">v</samp> with a 128-bit round key from 
+        <samp class="codeph">rkey</samp>. 
+      </p>
+ 
+      <p>Corresponding Instruction: 
+        <span class="keyword">AESDECLAST</span> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F68D8906-7AD4-4FE1-BEE0-7ECEF06746A3"></div>
+ 
+    <div class="section" id="GUID-D96FCF77-2300-4A32-AF08-D33944DF1B21"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_aesenc_si128(__m128i v, __m128i rkey); 
+          </span></p></div> 
+      <p> Performs one round of an AES encryption flow operating on a 128-bit data (state) from 
+        <samp class="codeph">v</samp> with a 128-bit round key from 
+        <samp class="codeph">rkey.</samp> 
+      </p>
+ 
+      <p>Corresponding Instruction:<span class="keyword">AESENC</span> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-87962ED8-1E6C-474D-8D7C-CB2B1B59FE10"></div>
+ 
+    <div class="section" id="GUID-6FB80E39-E5C0-4ADA-B25F-4D554E6DEAB7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_aesenclast_si128(__m128i v, __m128i rkey);</span></p></div> 
+      <p>Performs the last round of an AES encryption flow operating on a 128-bit data (state) from 
+        <samp class="codeph">v</samp> with a 128-bit round key from 
+        <samp class="codeph">rkey</samp>. 
+      </p>
+ 
+      <p>Corresponding Instruction: 
+        <span class="keyword">AESENCLAST</span> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3413A79E-2C47-4A73-AB44-5B50E66EF40F"></div>
+ 
+    <div class="section" id="GUID-3BA852B4-FF9B-462B-A783-E7C59A4D6D90"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_aesimc_si128(__m128i v);</span></p></div> 
+      <p>Performs the InvMixColumn transformation on a 128-bit round key from<samp class="codeph">v</samp>and returns the result. 
+      </p>
+ 
+      <p>Corresponding Instruction: 
+        <span class="keyword">AESIMC</span> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4C0E8629-21DF-4FE1-8D2E-03384379A417"></div>
+ 
+    <div class="section" id="GUID-DC12839B-9613-443C-8775-EAC9FF29C6A0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_aeskeygenassist_si128(__m128i ckey, const int rcon);</span></p></div> 
+      <p>Assists in AES round key generation using an 8-bit Round Constant (RCON) specified in rcon operating on 128 bits of data specified in ckey and returns the result. 
+      </p>
+ 
+      <p>Corresponding Instruction: 
+        <span class="keyword">AESKEYGENASSIST</span> 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3A356B71-771C-4D38-A480-29B3C0BC9EBB.htm">Intrinsics for Advanced Encryption Standard Implementation</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-0C925789-53BB-48AA-BC34-5F159F1F4610.htm#GUID-0C925789-53BB-48AA-BC34-5F159F1F4610">Overview: Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

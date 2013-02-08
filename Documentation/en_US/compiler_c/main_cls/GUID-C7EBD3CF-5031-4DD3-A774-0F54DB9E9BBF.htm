@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="offload-option">
+<meta name="abstract" content="Lets you explicitly specify options to be used for the specified target and tool. This option only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Lets you explicitly specify options to be used for the specified target and tool. This option only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="-offload-option compiler option, global routines and data objects, option specifying options to be used for a specified target and tool, offload compilation, option passing additional options to, Intel&reg; MIC Architecture features">
+<meta name="keywords" content="-offload-option compiler option, global routines and data objects, option specifying options to be used for a specified target and tool, offload compilation, option passing additional options to, Intel&reg; MIC Architecture features">
+<meta name="DC.Relation" scheme="URI" content="GUID-BC7CFC27-8FDC-4FC2-AADC-8F4CBD2DC6A0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-50430C80-FB84-4CDB-B473-53A075ECC73B.htm#GUID-50430C80-FB84-4CDB-B473-53A075ECC73B">
+<meta name="DC.Relation" scheme="URI" content="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm#GUID-2077C232-DB36-4D54-9429-57F4660AB4BB">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C7EBD3CF-5031-4DD3-A774-0F54DB9E9BBF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>offload-option</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_offload_option"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_offload_option"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C7EBD3CF-5031-4DD3-A774-0F54DB9E9BBF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">offload-option</h1>
+
+  <!--Lets you explicitly specify options to be used for the specified target and tool. This option only applies to Intel&reg; MIC Architecture.-->
+  
+  <div><p>Lets you explicitly specify options to be used for the specified target and tool. This option only applies to Intel&reg; MIC Architecture.</p>
+
+<div class="section" id="GUID-D88F033F-D989-492C-BF79-2C5474481A4A"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong> Compiler &gt; Command Line &gt; Additional Options for MIC Offload Compiler</strong>  (tool compiler)</p>
+<p class="ide"><strong> Archiver Command Line &gt; Additional Options for MIC Offload Archiver</strong>  (tool ar)</p>
+
+
+<p class="ide">OS X: 
+								None</p>
+</div>
+
+    <div class="section" id="GUID-2F636CB5-5011-4BFF-992A-A068C25FC153"><h2>Architectures</h2>
+      <p>Intel&reg; 64 architecture, targeting Intel&reg; MIC Architecture</p>
+
+    </div>
+
+    <div class="section" id="GUID-02E8DCD1-D45B-4E60-A9A4-6816B8414F0B"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-offload-option</span><span class="sep">,</span><span class="var">target</span><span class="sep">,</span><span class="var">tool</span><span class="sep">,</span><span class="delim">"</span><span class="var">option-list</span><span class="delim">"</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-B0E6D5A5-4994-458A-B451-E8FF3AB9E973"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>target</var></p></td>
+
+<td valign="top" class="noborder">
+<p>Is the target architecture. The only supported value for this argument is <span class="keyword">mic</span>.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>tool</var></p></td>
+
+<td valign="top" class="noborder">
+<p>Is the tool that the option-list is associated with.  It can be one of the following values: <span class="keyword">ld</span>, <span class="keyword">as</span>, or <span class="keyword">compiler</span>.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>option-list</var></p></td>
+
+<td valign="top" class="noborder">
+<p>Is one or more options that are specific to the tool.  The quotation mark delimiters are required. Each  option in the <var>option-list</var> must be separated by a space. </p>
+<p>For tool <span class="keyword">compiler</span>, use compiler-specific options; for tool <span class="keyword">ld</span>, use linker-specific options;  for tool <span class="keyword">as</span>, use assembler-specific options. </p>
+</td>
+
+</tr>
+</table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-8238564A-F8B1-4778-B84F-3EFD7CA9BE04"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not pass additional options to the separate tools on the target architecture.</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-59076671-37C7-4A99-B0A5-21B825DCAB43"><h2>Description</h2>
+      <p>This option lets you explicitly specify options to be used for the specified target and tool. It can be specified multiple times on the command line.</p>
+<p>When building a heterogeneous application, the driver passes all compiler options specified on the command-line to the host compilation and only certain options to the offload compilation. To see a list of options passed to the offload compilation, specify option <span class="option">–watch=mic-cmd</span>.</p>
+<p>If you want to pass additional options to the offload compilation, or you would like to override the command line options passed to offload compilation, you must use option <span class="option">-offload-option</span> to specify the additional or overriding options.</p>
+
+    <div class="Note"><h3 class="NoteTipHead">Note</h3><p>If you specify the options <span class="option">I</span>, <span class="option">L</span>, <span class="option">D</span>, or <span class="option">U</span> with the <span class="option">-offload-option</span> option, they override any other <span class="option">I</span>, <span class="option">L</span>, <span class="option">D</span>, and <span class="option">U</span> options that are automatically passed from host to offload compilation.</p>
+<p>To achieve the overriding effect, the <span class="option">I</span>, <span class="option">L</span>, <span class="option">D</span>, and <span class="option">U</span> options specified using <span class="option">-offload-option</span> are placed ahead of the <span class="option">I</span>, <span class="option">L</span>, <span class="option">D</span>, and <span class="option">U</span> options automatically copied over from the host compilation. All other options specified using <span class="option">-offload-option</span> are placed after the options copied over from host to offload compilation.</p>
+</div></div>
+
+    <div class="section" id="GUID-A5DE925D-551E-4A63-963A-10E0F96ADED8"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  <div class="example"><h2>Example</h2><p> The following shows a valid example for the <span class="keyword">compiler</span> tool:</p>
+<pre>-offload-option,mic,compiler, "-O3 -diag-disable 1234 –vec-report2"</pre><p>The following shows a valid example for the <span class="keyword">ld</span> tool:</p>
+<pre>-offload-option,mic,ld,"-lmylib -L/my/path"</pre><p>The following shows a valid example for the <span class="keyword">as</span> tool:</p>
+<pre>-offload-option,mic,as,"&lt;assembler options&gt;"</pre><p>The following example causes the offload compilation to search <samp class="codeph">-I/my_dir/mic/include</samp> first, and to use <samp class="codeph">-DMY_DEFINE=20</samp> because they override the previously mentioned <samp class="codeph">-I/my_dir/include</samp> and <samp class="codeph">-DMY_DEFINE=10</samp>. The compiler also passes <samp class="codeph">-L/my_dir/mic/lib -L/my_dir/lib</samp> to the offload link step:</p>
+<pre>icc -offload-option,mic,compiler, "-I/my_dir/include -L/my_dir/lib -DMY_DEFINE=10 -I/my_dir/mic/include -DMY_DEFINE=20" -offload-option,mic,ld, "-L/my_dir/mic/lib" hello.c</pre><p>The following example demonstrates how options specified in -offload-option override options automatically passed from host compilation to offload compilation:</p>
+<pre>-offload-option,mic,compiler,”-O3 -DMY_DEFINE=MIC” -DMY_DEFINE=HOST -O2</pre><p><samp class="codeph">-DMY_DEFINE=HOST -O2</samp> will be used for the host compilation. However, <samp class="codeph">-DMY_DEFINE=MIC -O3</samp> will override <samp class="codeph">-O2</samp> and <samp class="codeph">-DMY_DEFINE=HOST</samp> for the offload compilation.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BC7CFC27-8FDC-4FC2-AADC-8F4CBD2DC6A0.htm">Offload Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-50430C80-FB84-4CDB-B473-53A075ECC73B.htm#GUID-50430C80-FB84-4CDB-B473-53A075ECC73B">
+<span class="option">watch</span></a>  compiler option</div>
+<div><a href="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm#GUID-2077C232-DB36-4D54-9429-57F4660AB4BB"><span class="option">no-offload</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

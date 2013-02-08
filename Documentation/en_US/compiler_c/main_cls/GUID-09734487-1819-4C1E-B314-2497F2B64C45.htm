@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="x, Qx">
+<meta name="abstract" content="Tells the compiler which processor features it may target, including which instruction sets and optimizations it may generate.">
+<meta name="description" content="Tells the compiler which processor features it may target, including which instruction sets and optimizations it may generate.">
+<meta name="DC.subject" content="/Qx compiler option, -x compiler option, code, option generating specialized and optimized, feature-specific code, option generating and optimizing, processor features, option telling which to target">
+<meta name="keywords" content="/Qx compiler option, -x compiler option, code, option generating specialized and optimized, feature-specific code, option generating and optimizing, processor features, option telling which to target">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B5554896-8329-49D1-BE66-532D93DEAFFE.htm#GUID-B5554896-8329-49D1-BE66-532D93DEAFFE">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D">
+<meta name="DC.Relation" scheme="URI" content="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61">
+<meta name="DC.Relation" scheme="URI" content="GUID-F6DED8D3-769D-47AF-9C13-09A8DD4C8907.htm#GUID-F6DED8D3-769D-47AF-9C13-09A8DD4C8907">
+<meta name="DC.Relation" scheme="URI" content="GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1.htm#GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>x, Qx</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_x_lcase"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_x_lcase"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">x, Qx</h1>
+<!--Tells the compiler which processor features it may target, including which instruction sets and optimizations it may generate.--><div><p>Tells the compiler which processor features it may target, including which instruction sets and optimizations it may generate.</p>
+
+<div class="section" id="GUID-F6B95DA7-E881-4331-AFB5-1CA8B4396D3B"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Code Generation &gt; Intel Processor-Specific Optimization</strong></p>
+
+<p class="ide">Linux: 
+								<strong>Code Generation &gt; Intel Processor-Specific Optimization</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Code Generation &gt; Intel Processor-Specific Optimization</strong></p>
+</div>
+<div class="section" id="GUID-85244CEE-6F72-4117-A68E-69C9D5FD481C"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-F29C5626-6F49-4638-9D4F-421F63834B67"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-x</span><span class="var">code</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qx</span><span class="var">code</span></p></td></tr></table></div>
+<div class="section" id="GUID-47DA4EF0-AC04-4E14-A565-4394089F6BDD"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>code</var></p></td>
+<td valign="top" class="noborder"><p> <span><span>Indicates to the compiler a feature set that it may target, including which instruction sets and optimizations it may generate.</span></span> Many of the following descriptions refer to Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) and Supplemental Streaming SIMD Extensions (Intel&reg; SSSE). Possible values are:</p>
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">CORE-AVX2</span></p></td>
+
+<td valign="top" class="noborder"><p>May generate Intel&reg; Advanced Vector Extensions 2 (Intel&reg; AVX2), Intel&reg; AVX, SSE4.2, SSE4.1, SSE3, SSE2, SSE, and SSSE3 instructions for Intel&reg; processors.  Optimizes for Intel&reg; processors that support Intel&reg; AVX2 instructions.</p>
+</td>
+</tr>
+
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">CORE-AVX-I</span></p></td>
+
+<td valign="top" class="noborder"><p>May generate <span>Float-16 conversion instructions and </span>the RDRND instruction, Intel&reg; Advanced Vector Extensions (Intel&reg; AVX), Intel&reg; SSE4.2, SSE4.1, SSE3, SSE2, SSE, and SSSE3 instructions for Intel&reg; processors. Optimizes for Intel&reg; processors that support <span>Float-16 conversion instructions and </span>the RDRND instruction.</p>
+</td>
+</tr>
+
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">AVX</span></p></td>
+
+<td valign="top" class="noborder"><p>May generate Intel&reg; Advanced Vector Extensions (Intel&reg; AVX), Intel&reg; SSE4.2, SSE4.1, SSE3, SSE2, SSE, and SSSE3 instructions for Intel&reg; processors. Optimizes for Intel processors that support Intel&reg; AVX instructions. </p>
+</td>
+</tr>
+
+<tr> <td valign="top" width="30%" class="noborder"><p><span class="keyword">SSE4.2</span></p></td>
+
+<td valign="top" class="noborder"><p>May generate Intel&reg; SSE4 Efficient Accelerated String and Text Processing instructions, Intel&reg; SSE4 Vectorizing Compiler and Media Accelerator, and Intel&reg; SSE3, SSE2, SSE, and SSSE3 instructions for Intel&reg; processors. Optimizes for Intel processors that support Intel&reg; SSE4.2 instructions.</p>
+</td>
+</tr>
+
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">SSE4.1</span></p></td>
+<td valign="top" class="noborder"><p> May generate Intel&reg; SSE4 Vectorizing Compiler and Media Accelerator instructions for Intel&reg; processors. May generate Intel&reg;, SSE3, SSE2, SSE, and SSSE3 instructions for Intel processors that support Intel&reg; SSE4.1 instructions.</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">SSE3_ATOM</span></p></td>
+
+<td valign="top" class="noborder"><p>This option setting is deprecated. It has the same effect as specifying <span class="keyword">SSSE3_ATOM</span>.</p>
+</td>
+</tr>
+
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">SSSE3_ATOM</span></p></td>
+
+<td valign="top" class="noborder"><p>May generate MOVBE instructions for Intel&reg; processors, depending on the setting of option <span class="option">-minstruction</span> (Linux* OS and OS X*) or <span class="option">/Qinstruction</span> (Windows* OS). May also generate SSSE3, Intel&reg; SSE3, SSE2, and SSE instructions for Intel processors. Optimizes for Intel processors that support MOVBE instructions.</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">SSSE3</span></p></td>
+
+<td valign="top" class="noborder"><p> <span><span>May generate SSSE3 and Intel&reg; SSE3, SSE2, and SSE instructions for Intel&reg; processors. Optimizes for Intel processors that support SSSE3 instructions.</span></span> For OS X* systems, this value is only supported on Intel&reg; 64 architecture. This replaces value T, which is deprecated.</p>
+</td>
+</tr>
+
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">SSE3</span></p></td>
+<td valign="top" class="noborder"><p> <span><span>May generate Intel&reg; SSE3, SSE2, and SSE instructions for Intel&reg; processors. Optimizes for Intel processors that support  Intel&reg; SSE3 instructions.</span></span> For OS X* systems, this value is only supported on IA-32 architecture. This replaces value P, which is deprecated.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">SSE2</span></p></td>
+<td valign="top" class="noborder"><p>  <span><span>May generate Intel&reg; SSE2 and SSE instructions for Intel&reg; processors. Optimizes for Intel processors that support Intel&reg; SSE2 instructions.</span></span>  This value is not available on OS X*  systems.
+ <span>This replaces value <span class="keyword">N</span>, which is deprecated.</span></p>
+</td>
+</tr></table>
+
+
+<p> You can also specify
+<span class="keyword">Host</span>. For more information, see option <span class="option">-xHost</span> (Linux* OS and OS X*) or <span class="option">/QxHost</span> (Windows* OS).</p>
+
+
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9B25C3B4-7869-45A0-A337-77C011AA395A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>Windows* systems: None<br>Linux* systems: None<br>OS X* systems using IA-32 architecture: <span class="option">SSE3</span><br>OS X* systems using Intel&reg; 64 architecture: <span class="option">SSSE3</span></p></td>
+<td valign="top" class="noborder"><p> On Windows systems, if neither <span class="option">/Qx</span> nor <span class="option">/arch</span> is specified, the
+default is <span class="option">/arch:SSE2</span>.</p>
+
+<p> On Linux systems, if neither <span class="option">-x</span> nor <span class="option">-m</span> is specified, the default
+is <span class="option">-msse2</span>.</p>
+
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-56417FC7-3B1A-43FA-833D-DF7A2A99C97C"><h2>Description</h2>
+<p>This option tells the compiler which processor features it may target, including which instruction sets and optimizations it may generate. It also enables optimizations in addition to Intel feature-specific optimizations. </p>
+
+<p>The specialized code generated by this option may only run on a subset of Intel&reg; processors.</p>
+
+<p>The resulting executables created from these option <var>code</var> values can only be run on
+Intel&reg; processors  that support the
+indicated instruction set.</p>
+
+<p>The binaries produced by these <var>code</var> values will run on
+Intel&reg; processors that support the  specified
+features.</p>
+
+<p>Do not use <var>code</var> values to create binaries that will execute on a processor that is not compatible with the targeted processor. The resulting program may fail with an illegal instruction exception or display other unexpected behavior. </p>
+<p>Compiling the <span>function main()</span> with any of the <var>code</var> values produces binaries that display a fatal run-time error if they are executed on unsupported processors, including all non-Intel processors. </p>
+
+<p>Compiler options <span class="option">m</span> and <span class="option">arch</span> produce binaries that should run on processors not made by Intel that implement the same capabilities as the corresponding Intel&reg; processors.</p>
+<p> Previous value O is deprecated and has been replaced by option <span class="option">-msse3</span> (Linux* OS and OS X*) and option <span class="option">/arch:SSE3</span> (Windows* OS).</p>
+<p>Previous values W and K are deprecated.  The details on replacements are as follows:</p>
+<ul type="disc" id="GUID-F680A8E3-906E-453E-AE79-73C9666ED579"><li><p> OS X systems: On these systems, there is no exact replacement for W or K. You can upgrade to the default option <span class="option">-msse3</span> (IA-32 architecture) or option <span class="option">-mssse3</span> (Intel&reg; 64 architecture).</p>
+</li>
+<li><p> Windows and Linux systems: The replacement for W is <span class="option">-msse2</span> (Linux OS) or <span class="option">/arch:SSE2</span> (Windows OS). There is no exact replacement for K. However, on Windows systems, <span class="option">/QxK</span> is interpreted as <span class="option">/arch:IA32</span>; on Linux systems,
+<span class="option">-xK</span> is interpreted as <span class="option">-mia32</span>. You can also do one of the following:  </p>
+<ul type="disc" id="GUID-09CF6773-1247-41C9-A446-CCFCEB5EDBFC"><li><p>Upgrade to option <span class="option">-msse2</span> (Linux OS) or option <span class="option">/arch:SSE2</span> (Windows OS). This will produce one code path that is specialized for Intel&reg; SSE2. It will not run on earlier processors.</p>
+</li>
+<li><p>Specify the two option combination <span class="option">-mia32 -axSSE2</span> (Linux OS) or <span class="option">/arch:IA32 /QaxSSE2</span> (Windows OS). This combination will produce an executable that runs on any processor with IA-32 architecture but with an additional specialized Intel&reg; SSE2 code path.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>The <span class="option">-x</span> and <span class="option">/Qx</span> options enable additional optimizations not enabled with options <span class="option">-m</span> or <span class="option">/arch</span> (nor with options <span class="option">–ax</span> and <span class="option">/Qax</span>). </p>
+<p> On Windows* systems, options <span class="option">/Qx</span>
+ and /arch are mutually exclusive.
+If both are specified, the compiler uses the last one specified and
+generates a warning. Similarly, on Linux* and OS X* systems, options <span class="option">-x</span>
+ and <span class="option">-m</span>
+ are mutually
+exclusive. If both are specified, the compiler uses the last one
+specified and generates a warning.
+</p>
+
+<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d24169e415"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d24169e415 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+
+</div>
+
+<div class="section" id="GUID-AF7D11A9-E06C-424C-ACA5-1502C590E2C1"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B5554896-8329-49D1-BE66-532D93DEAFFE.htm#GUID-B5554896-8329-49D1-BE66-532D93DEAFFE"><span class="option">xHost</span>, <span class="option">QxHost</span></a>  compiler option</div>
+<div><a href="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D"><span class="option">ax</span>, <span class="option">Qax</span></a>  compiler option</div>
+<div><a href="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61"><span class="option">arch</span></a>  compiler option</div>
+<div><a href="GUID-F6DED8D3-769D-47AF-9C13-09A8DD4C8907.htm#GUID-F6DED8D3-769D-47AF-9C13-09A8DD4C8907"><span class="option">march</span></a>  compiler option</div>
+<div><a href="GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1.htm#GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1"><span class="option">minstruction</span>, <span class="option">Qinstruction</span></a>  compiler option</div>
+<div><a href="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3"><span class="option">m</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

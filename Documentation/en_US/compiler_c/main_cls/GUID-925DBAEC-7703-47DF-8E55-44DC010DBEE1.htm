@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="rcd, Qrcd">
+<meta name="abstract" content="Enables fast float-to-integer conversions.">
+<meta name="description" content="Enables fast float-to-integer conversions.">
+<meta name="DC.subject" content="/Qrcd compiler option, -rcd compiler option, float-to-integer conversion, option enabling fast">
+<meta name="keywords" content="/Qrcd compiler option, -rcd compiler option, float-to-integer conversion, option enabling fast">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-925DBAEC-7703-47DF-8E55-44DC010DBEE1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>rcd, Qrcd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_rcd"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_rcd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-925DBAEC-7703-47DF-8E55-44DC010DBEE1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">rcd, Qrcd</h1>
+<!--Enables fast float-to-integer conversions.--><div><p>Enables fast float-to-integer conversions.</p>
+
+<div class="section" id="GUID-99D6AEE8-226E-477F-AB70-BCB9F670D3B3"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-E6C4519E-FBA3-4D9E-B932-903728B5CFFB"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-7BE578ED-105B-4E8E-AC72-3DF43D126DB7"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-rcd</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qrcd</span></p></td></tr></table></div>
+<div class="section" id="GUID-9B1A9C33-430F-40B5-A824-0C1EFB1B6796"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-0BE571D7-14D1-4E26-8C6E-F4145EF54B80"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Floating-point values are truncated when a conversion to an integer is involved. </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-794F313D-21CE-4FAC-802B-61E5E4D7002A"><h2>Description</h2><p>This option enables fast float-to-integer conversions. It can improve the performance of code that requires floating-point-to-integer conversions.</p>
+<p>The system default floating-point rounding mode is round-to-nearest. However, the <span>C</span> language requires floating-point values to be truncated when a conversion to an integer is involved. To do this, the compiler must change the rounding mode to truncation before each floating-point-to-integer conversion and change it back afterwards.</p>
+<p>This option disables the change to truncation of the rounding mode for all floating-point calculations, including floating point-to-integer conversions. This option can improve performance, but floating-point conversions to integer will not conform to <span>C</span> semantics.</p>
+</div>
+
+<div class="section" id="GUID-9D48EDD7-6135-42F6-BB1D-34F87F37A5B3"><h2>Alternate Options</h2><p>Linux and OS X: None</p>
+<p>Windows: <span class="option">/QIfist</span> (this is a <a href="GUID-C9E68060-09BC-4203-B77F-04FB89AE284C.htm#GUID-C9E68060-09BC-4203-B77F-04FB89AE284C">deprecated</a> option)
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

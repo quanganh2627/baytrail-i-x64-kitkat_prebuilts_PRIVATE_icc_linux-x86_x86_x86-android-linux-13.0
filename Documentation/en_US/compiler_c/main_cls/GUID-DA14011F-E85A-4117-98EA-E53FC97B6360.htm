@@ -1,0 +1,680 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Miscellaneous Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, miscellaneous operations, movemask_ps, movelh_ps, movehl_ps, unpackhi_ps, shuffle_ps, unpacklo_ps, move_ss, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, miscellaneous operations, movemask_ps, movelh_ps, movehl_ps, unpackhi_ps, shuffle_ps, unpacklo_ps, move_ss, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6C34DD71-0BC9-42E1-A89D-4858434F2EAB.htm#GUID-6C34DD71-0BC9-42E1-A89D-4858434F2EAB">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DA14011F-E85A-4117-98EA-E53FC97B6360">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Miscellaneous Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_misc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DA14011F-E85A-4117-98EA-E53FC97B6360">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Miscellaneous Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-94A23F92-692D-482D-86F0-0E54DC92237F"> 
+      <p>The prototypes for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics for miscellaneous operations are in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. R, R0, R1, R2 and R3 represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A2366A61-BBF4-4F12-A5CC-1D4871C5FB13"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3B542569-E588-4234-8285-34417E213D68" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d748236e76"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d748236e82"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d748236e88"> 
+                <p>Corresponding<br>Intel&reg; SSE Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_shuffle_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Shuffle 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">SHUFPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_unpackhi_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Unpack High 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">UNPCKHPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_unpacklo_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Unpack Low 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">UNPCKLPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_move_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Set low word, pass in three high values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">MOVSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_movehl_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Move High to Low 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">MOVHLPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_movelh_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Move Low to High 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">MOVLHPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e76 "> 
+                <p><span class="option"> _mm_movemask_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d748236e82 "> 
+                <p>Create four-bit mask 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d748236e88 "> 
+                <p><span class="keyword">MOVMSKPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E3949D42-64F3-4DEC-85B3-F030398A7893"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_shuffle_ps(__m128 a, __m128 b, unsigned int imm8)</span></p></div> 
+      <p>Selects four specific SP FP values from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>, based on the mask 
+        <span class="keyword">imm8</span>. The mask must be an immediate. See 
+        <a href="GUID-6C34DD71-0BC9-42E1-A89D-4858434F2EAB.htm#GUID-6C34DD71-0BC9-42E1-A89D-4858434F2EAB">Macro Function for Shuffle Using Intel&reg; Streaming SIMD Extensions</a> for a description of the shuffle semantics. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5EEB8CD5-916A-48CB-BD83-81D73FE50431"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_unpackhi_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Selects and interleaves the upper two SP FP values from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-795F9EA9-F4E7-4FA9-9355-801E56C531F9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E61ED9EF-3D58-4FCC-BD90-B29FB3C79B10" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e337"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e343"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e349"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d748236e355"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e337 "> 
+                <p><span class="keyword">a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e343 "> 
+                <p><span class="keyword">b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e349 "> 
+                <p><span class="keyword">a3</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d748236e355 "> 
+                <p><span class="keyword">b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-097E8AB4-6DCD-46EA-BBB1-7D0A3BC3F446"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_unpacklo_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Selects and interleaves the lower two SP FP values from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6EA91634-44D0-4BA4-BCEC-D04C5E9C03DE"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6F7DEC9A-FD3B-46A0-811C-A54E61D75EE4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e436"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e442"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e448"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d748236e454"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e436 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e442 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e448 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d748236e454 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1ACF69A5-7A89-4C78-B593-8B3094367DEE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_move_ss( __m128 a, __m128 b)</span></p></div> 
+      <p>Sets the low word to the SP FP value of 
+        <span class="keyword">b</span>. The upper three SP FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6D93F124-9E31-411F-A2DD-CF1553FCAC41"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-76541651-0DA9-4396-A8D0-C82084101890" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e534"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e540"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e546"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d748236e552"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e534 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e540 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e546 "> 
+                <p><span class="keyword">a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d748236e552 "> 
+                <p><span class="keyword">a3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1DAB3522-507E-4242-977C-E107A73EA6AA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_movehl_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Moves the upper two SP FP values of 
+        <span class="keyword">b</span> to the lower two SP FP values of the result. The upper two SP FP values of 
+        <span class="keyword">a</span> are passed through to the result. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B077A13A-E94D-43AB-AC42-F086103867F2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-104061E9-E738-4336-BAEB-1F4737280518" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e632"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e638"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e644"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d748236e650"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e632 "> 
+                <p><span class="keyword">b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e638 "> 
+                <p><span class="keyword">b3</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e644 "> 
+                <p><span class="keyword">a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d748236e650 "> 
+                <p><span class="keyword">a3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6FE2CF1B-A02F-4128-AAB4-51A91BA4984F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_movelh_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Moves the lower two SP FP values of 
+        <span class="keyword">b</span> to the upper two SP FP values of the result. The lower two SP FP values of 
+        <span class="keyword">a</span> are passed through to the result. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DEC850C4-FB7A-43EF-8D89-2F231F2FCFE0"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-76D90F70-355C-4F80-AF73-D1B2177F5781" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e731"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e737"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d748236e743"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d748236e749"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e731 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e737 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d748236e743 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d748236e749 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C051B52D-0435-41E5-A5BB-86320A3FFCC2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_movemask_ps(__m128 a)</span></p></div> 
+      <p>Creates a 4-bit mask from the most significant bits of the four SP FP values. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8C5F0171-19F2-401F-8BB5-871768D4EE9A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3633FE9F-A2A4-4C13-BFC5-64E31133EAF3" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d748236e820"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d748236e820 "> 
+                <p><span class="keyword">sign(a3)&lt;&lt;3 | sign(a2)&lt;&lt;2 | sign(a1)&lt;&lt;1 | sign(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-6C34DD71-0BC9-42E1-A89D-4858434F2EAB.htm#GUID-6C34DD71-0BC9-42E1-A89D-4858434F2EAB"> Macro Function for Shuffle Using Intel&reg; Streaming SIMD Extensions 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_srai_epi16/32">
+<meta name="abstract" content="Arithmetic shift of word/doubleword elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is VPSRAW or VPSRAD.">
+<meta name="description" content="Arithmetic shift of word/doubleword elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is VPSRAW or VPSRAD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic shift operations, _mm256_srai_epi16 (VPSRAW), _mm256_srai_epi32 (VPSRAD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic shift operations, _mm256_srai_epi16 (VPSRAW), _mm256_srai_epi32 (VPSRAD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-2FFBCA2C-1D40-4D37-AC27-349524DBB8A8.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4C88B470-E860-4AA0-9372-56DDE0421FA5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_srai_epi16/32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intref_avx2_srai"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="_mm256_srai_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="_mm256_srai_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4C88B470-E860-4AA0-9372-56DDE0421FA5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_srai_epi16/32</span></h1>
+
+
+<!--Arithmetic shift of word/doubleword elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is  VPSRAW  or  VPSRAD .--><div><p>Arithmetic shift of word/doubleword elements to right according to specified number. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPSRAW</samp> or <samp class="codeph">VPSRAD</samp>.</p>
+
+
+<div class="section" id="GUID-BD258061-9995-44AE-A93D-3A72842A6595"><h2>Syntax</h2>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_srai_epi16(__m256i s1, const int count);</span></p></td></tr></table>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_srai_epi32(__m256i s1, const int count);</span></p></td></tr></table>
+  
+</div>
+
+
+<div class="section" id="GUID-032541CF-E864-4800-88D4-C3745679730B"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>count</var></p></td>
+
+      <td valign="top" class="noborder"><p>8-bit immediate used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-608DDD16-62AB-4F95-B1F9-1D878AABD8C6"><h2>Description</h2>
+
+<p>Performs an arithmetic shift of 16-bit [word] or 32-bit [doubleword] elements within a 128-bit lane of source vector <var>s1</var> to the right by the number of bits specified in <var>count</var>. The empty low-order bytes are cleared (set to all '<span>0</span>'). If the value specified by <var>count</var> is greater than 15 or 31, the destination vector is set to all '<span>0</span>'. The <var>count</var> argument is an 8-bit immediate.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-54953209-C973-419D-A6EF-2D19A7016D13"><h2>Returns</h2><p> Result of the right-shift operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2FFBCA2C-1D40-4D37-AC27-349524DBB8A8.htm">Intrinsics for Arithmetic Shift Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

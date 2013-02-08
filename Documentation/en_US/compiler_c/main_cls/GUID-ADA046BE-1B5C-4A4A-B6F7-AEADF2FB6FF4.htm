@@ -1,0 +1,108 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="cilk_sync">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, cilk_sync">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, cilk_sync">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F0892FF-830C-45A9-B342-641D282DAF2A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-ADA046BE-1B5C-4A4A-B6F7-AEADF2FB6FF4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>cilk_sync</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_sync"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-ADA046BE-1B5C-4A4A-B6F7-AEADF2FB6FF4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">cilk_sync</h1>
+ 
+   
+  <div> 
+	 <p>The keyword name is 
+		<span class="keyword">_Cilk_sync</span>. The header file 
+		<span class="filepath">&lt;cilk/cilk.h&gt;</span> defines macros that provide names with simpler conventions (in this case, 
+		<span class="keyword">cilk_sync</span>). This document uses the names as defined in 
+		<span class="filepath">cilk.h</span>. 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">cilk_sync</span> statement indicates that the current function cannot continue in parallel with its spawned children. After the children all complete, the current function can continue. 
+	 </p>
+ 
+	 <p>The syntax is as follows: 
+	 </p>
+ 
+	 <p> 
+		<pre>cilk_sync;</pre> 
+	 </p>
+ 
+	 <p> 
+		<span class="keyword">cilk_sync</span> only syncs with children spawned by this function. Children of other functions are not affected. 
+	 </p>
+ 
+	 <p>There is an implicit 
+		<span class="keyword">cilk_sync</span> at the end of every function and every 
+		<samp class="codeph">try</samp> block that contains a 
+		<span class="keyword">cilk_spawn</span>. The sync is needed for these reasons: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-E044E4B8-10BA-49A0-B58B-A14F2B86B0EE"> 
+		<li> 
+		  <p>To ensure that program resource use does not grow out of proportion to the program's parallelism. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>To ensure that a race-free parallel program has the same behavior as the corresponding serial program. An ordinary non-spawn call to a function works the same regardless of whether the called function spawns internally. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>There will be no strands left running that might have side effects or fail to free resources. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The called function will have completed all operations when it returns. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>The implicit cilk_sync occurs 
+		<em>after</em> destructors are invoked. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F0892FF-830C-45A9-B342-641D282DAF2A.htm">Intel&reg; Cilk&#8482; Plus Keywords</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

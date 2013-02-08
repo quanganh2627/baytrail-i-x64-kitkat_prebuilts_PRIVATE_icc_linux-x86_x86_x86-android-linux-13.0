@@ -1,0 +1,208 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fimf-precision, Qimf-precision">
+<meta name="abstract" content="Lets you specify a level of accuracy (precision) that the compiler should use when determining which math library functions to use.">
+<meta name="description" content="Lets you specify a level of accuracy (precision) that the compiler should use when determining which math library functions to use.">
+<meta name="DC.subject" content="-fimf-precision compiler option, /Qimf-precision compiler option, math library functions, option specifying a level of accuracy for">
+<meta name="keywords" content="-fimf-precision compiler option, /Qimf-precision compiler option, math library functions, option specifying a level of accuracy for">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B.htm#GUID-DC3C7856-118C-4D81-B630-7D27F931C04B">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<meta name="DC.Relation" scheme="URI" content="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE.htm#GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+<meta name="DC.Relation" scheme="URI" content="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316.htm#GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A4F4F35-1495-4154-8AD5-238E8C68CE9B.htm#GUID-0A4F4F35-1495-4154-8AD5-238E8C68CE9B">
+<meta name="DC.Relation" scheme="URI" content="GUID-07DFDBD8-6FF9-4862-A240-E9BC437E2A20.htm#GUID-07DFDBD8-6FF9-4862-A240-E9BC437E2A20">
+<meta name="DC.Relation" scheme="URI" content="GUID-1D11B099-72A0-4DD0-A0F7-BA050887B639.htm#GUID-1D11B099-72A0-4DD0-A0F7-BA050887B639">
+<meta name="DC.Relation" scheme="URI" content="GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A.htm#GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fimf-precision, Qimf-precision</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fimf_precision"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fimf_precision"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fimf-precision, Qimf-precision</h1>
+<!--Lets you specify a level of accuracy (precision) that the compiler should use when determining which math library functions to use.--><div><p>Lets you specify a level of accuracy (precision) that the compiler should use when determining which math library functions to use.</p>
+
+
+<div class="section" id="GUID-3DC3B994-7D73-4DEA-B1B1-01795C582B88"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-F55A4216-C090-4613-B29D-34832A94C222"><h2>Architectures</h2><p>All</p>
+</div>
+<div class="section" id="GUID-AF328BAF-7064-4A32-875E-5B965D35C426"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fimf-precision</span><span class="delim">[</span><span class="oper">=</span><span class="var">value</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qimf-precision</span><span class="delim">[</span><span class="oper">:</span><span class="var">value</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-B6CB39AD-C141-4377-B660-9DAAFFDFB532"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>value</var></p></td>
+<td valign="top" class="noborder"><p>Is one of the following values denoting the desired accuracy: </p>
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">high</span></p></td>
+
+<td valign="top" class="noborder"><p>This is equivalent to max-error = 0.6.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">medium</span></p></td>
+
+<td valign="top" class="noborder"><p>This is equivalent to max-error = 4; this is the default setting if the option is specified and <var>value</var> is omitted.</p>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">low</span></p></td>
+
+<td valign="top" class="noborder"><p>This is equivalent to accuracy-bits = 11 for single-precision functions; accuracy-bits = 26 for double-precision functions.</p>
+
+
+</td>
+
+</tr>
+</table>
+<p> In the above explanations, max-error
+means option  <span class="option">-fimf-max-error</span> (Linux* OS and OS X*) or
+<span class="option">/Qimf-max-error</span> (Windows* OS);  accuracy-bits means option <span class="option">-fimf-accuracy-bits</span> (Linux* OS and OS X*) or <span class="option">/Qimf-accuracy-bits</span> (Windows* OS).</p>
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>funclist</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional list of one or more math library functions to which the attribute should be applied. If you specify more than one function, they must be separated with commas.  Precision-specific variants like sin and sinf are considered different functions, so you would need to use <span class="option">-fimf-precision=high:sin,sinf</span> (or <span class="option">/Qimf-precision:high:sin,sinf</span>) to specify high precision for both the single-precision and double-precision sine functions. </p>
+<p>You also can specify the symbol /f to denote single-precision divides, symbol / to denote double-precision divides, symbol /l to denote extended-precision divides, and symbol /q to denote quad-precision divides. For example you can specify <span class="option">-fimf-precision=low:/</span> or <span class="option">/Qimf-precision:low:/</span> and <span class="option">-fimf-precision=low:/f</span> or <span class="option">/Qimf-precision:low:/f</span>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-6610DC4B-50CD-4867-93B3-5BA9F8B4FDD2"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>medium</p></td>
+<td valign="top" class="noborder"><p>The compiler uses medium precision when calling math library functions. Note that other options can affect precision; see below for details.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-EACBF7AA-115F-4D57-B923-B80C6A9DCD06"><h2>Description</h2>
+<p>This option lets you specify a level of accuracy (precision) that the compiler should use when determining which math library functions to use. </p>
+<p>This option can be used to improve run-time performance if reduced accuracy is sufficient for the application, or it can be used to increase the accuracy of math library functions selected by the compiler.</p>
+<p>In general, using a lower precision can improve run-time performance and using a higher precision may reduce run-time performance.</p>
+<p>If you need to define the accuracy for a math function of a certain precision, specify the function name of the precision that you need.  For example, if you want double precision, you can specify :sin; if you want single precision, you can specify :sinf, as  in <span class="option">-fimf-precision=low:sin</span>  or<span class="option"> /Qimf-precision:low:sin</span>, or <span class="option">-fimf-precision=high:sqrtf</span> or <span class="option">/Qimf-precision:high:sqrtf</span>.</p>
+<p>If you do not specify any function names, then the setting applies to all functions (and to all precisions). However, as soon as you specify an individual function name, the setting applies only to the function of corresponding precision. So, for example, sinf applies only to the single-precision sine function, sin applies only to the double-precision sine function, sinl applies only to the extended-precision sine function, etc. </p>
+<p>There are three options you can use to express the maximum relative error.  They are as follows:</p>
+<ul type="disc" id="GUID-60964791-083D-4707-92AD-903F4699BB80"><li><p><span class="option">-fimf-precision</span> (Linux* OS and OS X*) or <span class="option">/Qimf-precision</span> (Windows* OS)</p>
+</li>
+<li><p><span class="option">-fimf-max-error</span> (Linux* OS and OS X*) or <span class="option">/Qimf-max-error</span> (Windows* OS)</p>
+</li>
+<li><p><span class="option">-fimf-accuracy-bits</span> (Linux OS and OS X*) or <span class="option">/Qimf-accuracy-bits</span> (Windows OS)</p>
+</li>
+</ul>
+<p>If more than one of these options are specified, the default value for the maximum relative error is determined by the last one specified on the command line.</p>
+<p>If none of the above options are specified, the default values for the maximum relative error are determined by the setting of the following options:</p>
+<ul type="disc" id="GUID-C4D9A3A2-542D-4ADA-B796-69793AFF4148"><li><p><span class="option">-fast-transcendentals</span> (Linux OS and OS X) or 
+
+ <span class="option">/Qfast-transcendentals</span> (Windows OS)
+
+</p>
+</li>
+<li><p><span class="option">-prec-div</span> (Linux OS and OS X) or <span class="option">/Qprec-div</span> (Windows OS)
+
+</p>
+</li>
+<li><p><span class="option">-prec-sqrt
+
+</span> (Linux OS and OS X) or <span class="option">/Qprec-sqrt</span> (Windows OS)</p>
+</li>
+<li><p><span class="option">-fp-model</span> (Linux OS and OS X) or <span class="option">/fp</span> (Windows OS)</p>
+</li>
+</ul>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Many routines in libraries LIBM (Math Library) and SVML (Short Vector Math Library) are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+</div><p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d470612e290"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d470612e290 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+</div>
+
+<div class="section" id="GUID-7ED548DC-02A6-4641-AA68-6A5CB33F8BB4"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B.htm#GUID-DC3C7856-118C-4D81-B630-7D27F931C04B"><span class="option">fimf-absolute-error, Qimf-absolute-error</span></a>  compiler option</div>
+<div><a href="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<span class="option">fimf-accuracy-bits, Qimf-accuracy-bits</span></a>  compiler option</div>
+<div><a href="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE.htm#GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+<span class="option">fimf-arch-consistency, Qimf-arch-consistency</span>
+</a>  compiler option</div>
+<div><a href="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316.htm#GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<span class="option">fimf-domain-exclusion, Qimf-domain-exclusion</span></a>  compiler option</div>
+<div><a href="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<span class="option">fimf-max-error, Qimf-max-error</span></a>  compiler option</div>
+<div><a href="GUID-0A4F4F35-1495-4154-8AD5-238E8C68CE9B.htm#GUID-0A4F4F35-1495-4154-8AD5-238E8C68CE9B">
+<span class="option">fast-transcendentals, Qfast-transcendentals</span></a>  compiler option</div>
+<div><a href="GUID-07DFDBD8-6FF9-4862-A240-E9BC437E2A20.htm#GUID-07DFDBD8-6FF9-4862-A240-E9BC437E2A20">
+<span class="option">prec-div, Qprec-div</span></a>  compiler option</div>
+<div><a href="GUID-1D11B099-72A0-4DD0-A0F7-BA050887B639.htm#GUID-1D11B099-72A0-4DD0-A0F7-BA050887B639">
+<span class="option">prec-sqrt, Qprec-sqrt</span></a>  compiler option</div>
+<div><a href="GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A.htm#GUID-63514789-6BE7-4FA8-9389-F3B618A2EE1A">
+<span class="option">fp-model, fp</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

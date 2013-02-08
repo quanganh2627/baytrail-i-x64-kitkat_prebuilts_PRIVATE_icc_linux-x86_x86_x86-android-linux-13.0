@@ -1,0 +1,717 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="OpenMP* Run-time Library Routines">
+<meta name="DC.subject" content="DO constructs, numbers, OMP directives, run-time library routines, dynamic information, threads, endian data, routines overriding, execution environment routines, explicit-shape arrays, OpenMP* header, libraries, OpenMP* run-time routines, library functions, lock routines, overflow, call to a runtime library routine, parallelism, report generation, OpenMP* run-time, timing, subroutines in the OpenMP* run-time library, threshold control for auto-parallelization, OpenMP* routines for, user functions, dynamic libraries">
+<meta name="keywords" content="DO constructs, numbers, OMP directives, run-time library routines, dynamic information, threads, endian data, routines overriding, execution environment routines, explicit-shape arrays, OpenMP* header, libraries, OpenMP* run-time routines, library functions, lock routines, overflow, call to a runtime library routine, parallelism, report generation, OpenMP* run-time, timing, subroutines in the OpenMP* run-time library, threshold control for auto-parallelization, OpenMP* routines for, user functions, dynamic libraries">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740.htm#GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D3FC1F0B-DD99-4176-B9B5-56EEE72E81A7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Run-time Library Routines</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_libr"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_libr"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D3FC1F0B-DD99-4176-B9B5-56EEE72E81A7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Run-time Library Routines</h1>
+ 
+   
+  <div> 
+	 <p>OpenMP* provides several run-time library routines to help you manage your program in parallel mode. Many of these run-time library routines have corresponding environment variables that can be set as defaults. The run-time library routines let you dynamically change these factors to assist in controlling your program. In all cases, a call to a run-time library routine overrides any corresponding environment variable. 
+	 </p>
+ 
+	 <p>This topic provides a summary of the OpenMP run-time library routines. See 
+		<a href="GUID-DC73701E-F863-46CE-B17B-79CA2657630B.htm#GUID-DC73701E-F863-46CE-B17B-79CA2657630B">OpenMP* Support Overview</a> for additional resources; refer to the OpenMP API Version 
+		<span>3.1</span> specification for detailed information about using these routines. 
+	 </p>
+ 
+	 <p>Include the appropriate declarations of the routines by adding a statement similar to the following in your source code: 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-26DB993B-7156-4414-AEFF-8CBB37B86AB4" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" id="d734717e112"> 
+				  <p>Example 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="cellrowborder" valign="top" headers="d734717e112 "> 
+				  <pre>#include &lt;omp.h&gt;</pre> 
+				</td>
+ 
+			 </tr>
+ 
+			 </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>The header files are provided in the 
+		<span class="filepath">../include</span> (Linux* and Mac OS* X) or 
+		<span class="filepath">..\include</span> (Windows*) directory of your compiler installation. 
+	 </p>
+ 
+	 <p>The following tables specify the interfaces to these routines. (The names for the routines are in user name space.) 
+	 </p>
+ 
+	 <div class="section" id="GUID-B1B9D7A9-9E88-4153-BBBB-591285CF6EC3"><h2 class="sectiontitle">Execution Environment Routines</h2> 
+		 
+		<p>Use these routines to monitor and influence threads and the parallel environment. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A4F58F58-46EE-4756-9B03-45370B9F0142" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="60%" id="d734717e164"> 
+					 <p>Function 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="40%" id="d734717e170"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_in_final(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns TRUE if called within a final task region; otherwise returns FALSE. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">void omp_set_num_threads(int nthreads)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Sets the number of threads to use for subsequent parallel regions created by the calling thread. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_num_threads(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the number of threads that are being used in the current parallel region. 
+					 </p>
+ 
+					 <p>This function does not necessarily return the value inherited by the calling thread from the 
+						<span class="keyword">omp_set_num_threads()</span> function. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_max_threads(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the number of threads available to subsequent parallel regions created by the calling thread. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_thread_num(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the thread number of the calling thread, within the context of the current parallel region. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_num_procs(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the number of processors available to the program. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_in_parallel(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns 
+						<span class="keyword">TRUE</span> (non zero) if called within the dynamic extent of a parallel region executing in parallel; otherwise returns 
+						<span class="keyword">FALSE</span> (an integer value of zero). 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">void omp_set_dynamic(int<var>dynamic_threads</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Enables or disables dynamic adjustment of the number of threads used to execute a parallel region. If 
+						<var>dynamic_threads</var> is 
+						<span class="keyword">TRUE</span>, dynamic threads are enabled. If 
+						<var>dynamic_threads</var> is 
+						<span class="keyword">FALSE</span>, dynamic threads are disabled. Dynamics threads are disabled by default. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_dynamic(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns 
+						<span class="keyword">TRUE</span> if dynamic thread adjustment is enabled, otherwise returns 
+						<span class="keyword">FALSE</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">void omp_set_nested(int<var>nested</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Enables or disables nested parallelism. If 
+						<var>nested</var> is 
+						<span class="keyword">TRUE</span>, nested parallelism is enabled. If 
+						<var>nested</var> is 
+						<span class="keyword">FALSE</span>, nested parallelism is disabled. Nested parallelism is disabled by default. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_nested(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns 
+						<span class="keyword">TRUE</span> if nested parallelism is enabled, otherwise returns 
+						<span class="keyword">FALSE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">void omp_set_schedule(omp_sched_t kind,int modifier)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Determines the schedule of a worksharing loop that is applied when '<samp class="codeph">runtime</samp>' is used as schedule kind. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">void omp_get_schedule(omp_sched_t *kind,int *modifier)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the schedule of a worksharing loop that is applied when the '<samp class="codeph">runtime</samp>' schedule is used. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_thread_limit(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the maximum number of simultaneously executing threads in an OpenMP* program. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">void omp_set_max_active_levels(int max_active_levels)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Limits the number of nested active parallel regions. The call is ignored if negative 
+						<span class="keyword">max_active_levels</span> specified. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_max_active_levels(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the maximum number of nested active parallel regions. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_active_level(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the number of nested, active parallel regions enclosing the task that contains the call. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_level(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the number of nested parallel regions (whether active or inactive) enclosing the task that contains the call, not including the implicit parallel region. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_ancestor_thread_num(int level)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the thread number of the ancestor at a given nest level of the current thread. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="60%" headers="d734717e164 "> 
+					 <p><samp class="codeph">int omp_get_team_size(int level)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="40%" headers="d734717e170 "> 
+					 <p>Returns the size of the thread team to which the ancestor of the given level belongs. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				</tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-4D97057B-F286-4ADE-8320-7192C1C358DE"><h2 class="sectiontitle"><span>Lock Routines</span></h2> 
+		 
+		<p>Use these routines to affect OpenMP locks. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4FA32CAF-6DAF-4301-9F83-6E3C6193E09C" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d734717e609"> 
+					 <p>Function 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d734717e615"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_init_lock(omp_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Initializes the lock associated with 
+						<var>lock</var> for use in subsequent calls. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_destroy_lock(omp_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Causes the lock specified by 
+						<var>lock</var> to become undefined or uninitialized. 
+						</p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_set_lock(omp_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Forces the executing thread to wait until the lock associated with 
+						<var>lock</var> is available. The thread is granted ownership of the lock when it becomes available. 
+						</p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_unset_lock(omp_lock_t 
+						  <var>lock</var><span class="keyword">)</span></samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Releases the executing thread from ownership of the lock associated with 
+						<var>lock</var>. The behavior is undefined if the executing thread does not own the lock associated with 
+						<var>lock</var>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">int omp_test_lock(omp_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Attempts to set the lock associated with 
+						<var>lock</var>. If successful, returns 
+						<span class="keyword">TRUE</span>, otherwise returns 
+						<span class="keyword">FALSE</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_init_nest_lock(omp_nest_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Initializes the nested lock associated with 
+						<var>lock</var> for use in the subsequent calls. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_destroy_nest_lock(omp_nest_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Causes the nested lock associated with 
+						<var>lock</var> to become undefined or uninitialized. 
+						</p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_set_nest_lock(omp_nest_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Forces the executing thread to wait until the nested lock associated with 
+						<var>lock</var> is available. If the thread already owns the lock, then the lock nesting count is incremented.</p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">void omp_unset_nest_lock(omp_nest_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Releases the executing thread from ownership of the nested lock associated with 
+						<var>lock</var> if the nesting count is zero; otherwise, the nesting count is decremented. Behavior is undefined if the executing thread does not own the nested lock associated with 
+						<var>lock</var>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e609 "> 
+					 <p><samp class="codeph">int omp_test_nest_lock(omp_nest_lock_t 
+						  <var>lock</var>)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e615 "> 
+					 <p>Attempts to set the nested lock specified by 
+						<var>lock</var>. If successful, returns the nesting count, otherwise returns zero. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-C1AE7855-AFB9-412C-B152-BA2C0B4280F9"><h2 class="sectiontitle">Timing Routines</h2> 
+		 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FF484B13-28B4-4243-B708-0666C6FC38D6" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d734717e888"> 
+					 <p>Function 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d734717e894"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e888 "> 
+					 <p><samp class="codeph">double omp_get_wtime(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e894 "> 
+					 <p>Returns a double precision value equal to the elapsed wall clock time (in seconds) relative to an arbitrary reference time. The reference time does not change during program execution. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e888 "> 
+					 <p><samp class="codeph">double omp_get_wtick(void)</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d734717e894 "> 
+					 <p>Returns a double precision value equal to the number of seconds between successive clock ticks. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">OpenMP* Library Support</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740.htm#GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">Intel Extension Routines to OpenMP* 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

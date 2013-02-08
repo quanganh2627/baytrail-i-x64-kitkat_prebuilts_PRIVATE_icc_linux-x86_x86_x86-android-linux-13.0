@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Language Support for Auto-parallelization">
+<meta name="DC.subject" content="Auto-parallelization, language support">
+<meta name="keywords" content="Auto-parallelization, language support">
+<meta name="DC.Relation" scheme="URI" content="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5C5B651F-F94D-4070-BB55-6087CFC5902E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Language Support for Auto-parallelization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_support_c"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_support_c"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5C5B651F-F94D-4070-BB55-6087CFC5902E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Language Support for Auto-parallelization</h1>
+
+
+<div>
+<p>This topic addresses specific C++  language features that better help to parallelize code.  </p>
+<div class="section" id="GUID-80C6D394-CFA1-41FA-A883-93BB628EA617"><h2 class="sectiontitle">Annotating Functions with Declarations</h2><p>Annotating functions with the declaration
+  <samp class="codeph">__declspec(concurrency_safe(<var>cost(cycles) </var>| <var>profitable</var>))</samp> (for Windows* OS) or the <samp class="codeph">__attribute__(concurrency_safe(<var>cost(cycles)</var> | <var>profitable</var>))</samp> (for Linux* OS) guides the compiler to parallelize more loops and straight-line code.</p>
+<p>Using the <samp class="codeph">concurrency_safe</samp> attribute indicates to the compiler that there are no unaffected side-effects and no illegal (or improperly synchronized) memory access interfences  among multiple invocations of the annotated function or between an invocation of this annotated function and other statements in the program, if they are executed concurrently.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>For every function that is annotated with the <samp class="codeph">concurrency_safe</samp> attribute, it is your responsibility to ensure that its side effects (if any) are acceptable (or expected), and the memory access interferences are properly synchronized.</p>
+</div>
+<p>The <var>cost</var> clause specifies the execution cycles of the annotated function for the compiler to perform parallelization profitability analysis while compiling its enclosing loops or blocks.
+The <var>profitable</var> clause indicates that the loops or blocks that contain calls to the annotated function are profitable to parallelize. </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>The value of <var>cycles</var> is a 2-byte unsigned integer (unsigned short), its maximal value is 2^16-1. If the cycle count is greater than 2^16-1, the user should use <var>profitable</var> clause.</p>
+</div>
+<p>The following example illustrates the use of this declaration.</p>
+ 
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7ED70680-7BF3-445F-8C26-25E8DCB1B1CE" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d288990e95">Example using __declspec(concurrency_safe(cost(cycles) | profitable)) </th>
+</tr>
+</thead>
+
+<tbody><tr><td class="cellrowborder" valign="top" width="NaN%" headers="d288990e95 ">
+<pre>#define N 10</pre>
+<pre>#define M 40</pre>
+<pre>#define NValue N</pre>
+<pre>&nbsp;</pre>
+<pre>#if defined(COSTLOW)</pre><pre>&nbsp;</pre>
+<pre>// The function cost is ~5 cycles, the loop calling "foo" will not be parallellized
+</pre>
+<pre>__declspec(concurrency_safe(cost(5)))</pre>
+<pre>#elif defined(COSTHIGH)</pre><pre>&nbsp;</pre>
+<pre>// The function cost is ~100 cycles, so the loop calling "foo" will be paralleized
+&nbsp;</pre>
+<pre>__declspec(concurrency_safe(cost(200)))</pre>
+<pre>#elif defined(PROFITABLE)</pre><pre>&nbsp;</pre>
+<pre>// The function is profitable to be executed in parallel, so the loop calling "foo"</pre>
+<pre>// should be paralleized.</pre><pre>&nbsp;</pre>
+<pre>__declspec(concurrency_safe(profitable))</pre>
+<pre>#endif</pre><pre>&nbsp;</pre>
+<pre>__declspec(noinline) </pre>
+<pre>int foo(float A[], float B[])</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; N; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;B[i] = A[i];</pre>
+<pre>&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;return N;</pre>
+<pre>}</pre><pre>&nbsp;</pre>
+<pre>int testp(float A[], float B[], float* In[], float* Out[])</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;&nbsp;int i, j;</pre>
+<pre>&nbsp;&nbsp;&nbsp;for (i = 0; i &lt; M; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo (A, B);</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; N; j++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Out[i][j] = In[i][j] + (NValue*j);</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;}</pre>
+<pre>&nbsp;&nbsp;&nbsp;return N;</pre>
+<pre>}</pre><pre>&nbsp;</pre>
+<pre>[C:/temp] icl -c -DCOSTLOW -Qparallel -Qpar-report2 -Qansi-alias v.cpp</pre>
+<pre>C:\temp\v.cpp(28): (col. 3) remark: loop was not parallelized: insufficient computational work.</pre><pre>&nbsp;</pre>
+<pre>[C:/temp] icl -c -DCOSTHIGH -Qparallel -Qpar-report -Qansi-alias v.cpp</pre> 
+<pre>C:\temp\v.cpp(28): (col. 3) remark: LOOP WAS AUTO-PARALLELIZED.</pre><pre>&nbsp;</pre>
+<pre>[C:/temp] icl -c -DPROFITABLE -Qparallel -Qpar-report -Qansi-alias v.cpp</pre>
+<pre>C:\temp\v.cpp(28): (col. 3) remark: LOOP WAS AUTO-PARALLELIZED.</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">Automatic Parallelization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

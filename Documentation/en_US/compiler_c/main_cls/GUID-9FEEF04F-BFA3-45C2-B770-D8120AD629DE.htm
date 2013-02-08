@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Details about MMX&#8482; Technology Intrinsics">
+<meta name="DC.subject" content="intrinsics, MMX&#8482; Technology, data types, registers">
+<meta name="keywords" content="intrinsics, MMX&#8482; Technology, data types, registers">
+<meta name="DC.Relation" scheme="URI" content="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9FEEF04F-BFA3-45C2-B770-D8120AD629DE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Details about MMX&#8482; Technology Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mmx_details"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9FEEF04F-BFA3-45C2-B770-D8120AD629DE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Details about MMX&#8482; Technology Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-58457692-73C5-4701-9371-79A51173E5FC"> 
+      <p>The MMX&#8482; technology instructions use the following features: 
+      </p>
+ 
+      <ul type="disc" id="GUID-CBD51B70-236C-47E9-9975-059AF5363FD5"> 
+        <li> 
+          <p>Registers – Enable packed data of up to 128 bits in length for optimal single-instruction multiple data (SIMD) processing. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Data Types – Enable packing of up to 16 elements of data in one register. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D81B363B-7975-4F77-9C60-DB4629B25D2E"><h2 class="sectiontitle">Registers</h2> 
+       
+      <p>The MMX&#8482; instructions use eight 64-bit registers (<span class="keyword">mm0</span> to 
+        <span class="keyword">mm7</span>) which are aliased on the floating-point stack registers. 
+      </p>
+ 
+      <p>Because each of these registers can hold more than one data element, the processor can process more than one data element simultaneously. This processing capability is also known as single-instruction multiple data (SIMD) processing. 
+      </p>
+ 
+      <p>For each computational and data manipulation instruction in the new extension sets, there is a corresponding C intrinsic that implements that instruction directly. This frees you from managing registers and assembly programming. Further, the compiler optimizes the instruction scheduling so that your executable runs faster. 
+      </p>
+ 
+
+    </div>
+ 
+    <div class="section" id="GUID-64814473-E0E8-44C0-A919-AEB68AB89DE7"><h2 class="sectiontitle">Data Types</h2> 
+       
+      <p>Intrinsic functions use four new C data types as operands, representing the new registers that are used as the operands to these intrinsic functions. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EA90D223-CBF6-486B-BDB4-6B61473DDBE4"><h2 class="sectiontitle">__m64 Data Type</h2> 
+       
+      <p>The 
+        <span class="keyword">__m64</span> data type is used to represent the contents of an MMX register, which is the register that is used by the MMX&#8482; technology intrinsics. The 
+        <span class="keyword">__m64</span> data type can hold eight 8-bit values, four 16-bit values, two 32-bit values, or one 64-bit value. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0C38E1FC-3D4F-4B21-9B34-FAE31093258A"><h2 class="sectiontitle">Data Types Usage Guidelines</h2> 
+       
+      <p>These data types are not basic ANSI C data types. You must observe the following usage restrictions: 
+      <ul type="disc" id="GUID-ACEF1482-EAF4-4602-8C10-4B054BF53D80"> 
+        <li> 
+          <p>Use data types only on either side of an assignment, as a return value, or as a parameter. You cannot use it with other arithmetic expressions (+, -, etc). 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use data types as objects in aggregates, such as unions, to access the byte elements and structures. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use data types only with the respective intrinsics described in this documentation. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">MMX&#8482; Technology Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Efficient Data Types">
+<meta name="DC.subject" content="data types, efficiency, efficient data types">
+<meta name="keywords" content="data types, efficiency, efficient data types">
+<meta name="DC.Relation" scheme="URI" content="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A20222DD-712A-4025-A112-FE9B6E9D78AB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Efficient Data Types</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_use_efc_type"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A20222DD-712A-4025-A112-FE9B6E9D78AB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Using Efficient Data Types</h1>
+
+
+
+
+<div>
+
+<p>In cases where more than one data type can be used for a variable, consider selecting the data types based on the following hierarchy, listed from most to least efficient: </p>
+
+
+<ul type="disc" id="GUID-E838385E-7506-44C7-93B9-BB8FE9FC0263">
+  <li><p>char</p>
+</li>
+
+  <li><p>short</p>
+</li>
+
+  <li><p>int</p>
+</li>
+
+  <li><p>long</p>
+</li>
+
+  <li><p>long long</p>
+</li>
+
+  <li><p>float</p>
+</li>
+
+  <li><p>double</p>
+</li>
+
+  <li><p>long double</p>
+</li>
+
+</ul>
+
+
+<p>However, keep in mind that in an arithmetic expression, you should avoid mixing integer and floating-point data.</p>
+
+<p>You can use integer data types (int, int long, etc.) in loops to improve floating point performance. Convert the data type to integer data types, process the data, then convert the data to the old type.</p>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-2445ECA5-73C8-4A93-A50D-674EEF8473DF.htm">Tuning Performance</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="par-threshold, Qpar-threshold">
+<meta name="abstract" content="Sets a threshold for the auto-parallelization of loops.">
+<meta name="description" content="Sets a threshold for the auto-parallelization of loops.">
+<meta name="DC.subject" content="auto-parallelizer, option setting threshold for loops, /Qpar-threshold compiler option, -par-threshold compiler option">
+<meta name="keywords" content="auto-parallelizer, option setting threshold for loops, /Qpar-threshold compiler option, -par-threshold compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DF76C47C-AE1D-43B8-A414-51FCD6DF13E3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>par-threshold, Qpar-threshold</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_par_threshold"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_par_threshold"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DF76C47C-AE1D-43B8-A414-51FCD6DF13E3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">par-threshold, Qpar-threshold</h1>
+<!--Sets a threshold for the auto-parallelization of loops. --><div><p>Sets a threshold for the auto-parallelization of loops. </p>
+
+<div class="section" id="GUID-F118ECB4-CDBE-48F7-A834-A49D67D80D30"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Optimization &gt; Auto-Parallelization Threshold</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Optimization &gt; Auto-Parallelization Threshold</strong></p>
+</div>
+<div class="section" id="GUID-A3F4FCAA-AEEC-40A0-A8C4-39479F4743C6"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-44474907-8580-4139-9E73-D777340F8C2B"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-par-threshold</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-threshold</span><span class="delim">[[</span><span class="oper">:]</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-D14ADB8B-7699-4D99-BAF6-D76AA8E7B136"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is an integer whose value is the threshold for the auto-parallelization of loops. Possible values are 0 through 100.</p>
+<p>If <var>n</var> is 0, loops get auto-parallelized always, regardless of computation work volume.</p>
+<p>If <var>n</var> is 100, loops get auto-parallelized when performance gains are predicted based on the compiler analysis data. Loops get auto-parallelized only if profitable parallel execution is almost certain.</p>
+<p>The intermediate 1 to 99 values represent the percentage probability for profitable speed-up. For example, <var>n</var>=50 directs the compiler to parallelize only if there is a 50% probability of the code speeding up if executed in parallel.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-DE8AC8CE-14C0-4AE2-BF26-7C14CFF6903C"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-par-threshold100</span> <br><span> or<span class="option">/Qpar-threshold100</span></span></p></td>
+<td valign="top" class="noborder"><p>Loops get auto-parallelized only if profitable parallel execution is almost certain. This is also the default if you do not specify <var>n</var>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-226A18D2-112F-47C1-8570-6B76CACA20B4"><h2>Description</h2><p>This option sets a threshold for the auto-parallelization of loops based on the probability of profitable execution of the loop in parallel. To use this option, you must also specify <span class="option">-parallel</span> (Linux* OS and OS X*) or <span class="option">/Qparallel</span> (Windows* OS).</p>
+<p>This option is useful for loops whose computation work volume cannot be determined at compile-time. The threshold is usually relevant when the loop trip count is unknown at compile-time. </p>
+<p>The compiler applies a heuristic that tries to balance the overhead of creating multiple threads versus the amount of work available to be shared amongst the threads.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This option may behave differently on Intel&reg; microprocessors than on non-Intel microprocessors.</p>
+</div></div>
+
+<div class="section" id="GUID-39086A6F-FFF9-4D0D-82A4-9EA658419C31"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

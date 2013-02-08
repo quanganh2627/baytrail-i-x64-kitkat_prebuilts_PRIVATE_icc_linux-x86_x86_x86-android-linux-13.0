@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="mcmodel">
+<meta name="abstract" content="Tells the compiler to use a specific memory model to generate code and store data.">
+<meta name="description" content="Tells the compiler to use a specific memory model to generate code and store data.">
+<meta name="DC.subject" content="memory model, option to use specific, option specifying small or medium, option specifying large, -mcmodel compiler option (Linux* only)">
+<meta name="keywords" content="memory model, option to use specific, option specifying small or medium, option specifying large, -mcmodel compiler option (Linux* only)">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A689F98D-F19E-4DE6-92DA-3FF5FA293937.htm#GUID-A689F98D-F19E-4DE6-92DA-3FF5FA293937">
+<meta name="DC.Relation" scheme="URI" content="GUID-DE6C2019-B79F-46AE-A95F-86FF86895539.htm#GUID-DE6C2019-B79F-46AE-A95F-86FF86895539">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4F6CCA3F-42C1-4DF4-9847-67D43DD9652B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>mcmodel</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_mcmodel"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_mcmodel"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4F6CCA3F-42C1-4DF4-9847-67D43DD9652B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">mcmodel</h1>
+<!--Tells the compiler to use a specific memory model to generate code and store data.--><div><p>Tells the compiler to use a specific memory model to generate code and store data.</p>
+
+<div class="section" id="GUID-EBD6DEB4-8A52-4631-BA8B-72F20ADF8644"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-E77CA0CD-9EDC-45BD-9B8A-B4B1823FC516"><h2>Architectures</h2><p>Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-0E4EA3A4-C163-405C-8C1A-BB866D761BDB"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-mcmodel</span><span class="oper">=</span><span class="var">mem_model</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-5C093464-0273-4C14-AB09-48ABA324076F"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>mem_model</var></p></td>
+<td valign="top" class="noborder"><p>Is the memory model to use. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">small</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to restrict code and data to the first 2GB of address space. All accesses of code and data can be done with Instruction Pointer (IP)-relative addressing.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">medium</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to restrict code to the first 2GB; it places no memory restriction on data. Accesses of code can be done with IP-relative addressing, but accesses of data must be done with absolute addressing.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">large</span></p></td>
+<td valign="top" class="noborder"><p>Places no memory restriction on code or data. All accesses of code and data must be done with absolute addressing.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C4D10646-6ECC-4FAE-B5E9-64523D884B3A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-mcmodel=small</span></p></td>
+<td valign="top" class="noborder"><p>On systems using Intel&reg; 64 architecture, the compiler restricts code and data to the first 2GB of address space. Instruction Pointer (IP)-relative addressing can be used to access code and data.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C77E76E2-DED1-4DC9-B7EE-F79DAA8B61A0"><h2>Description</h2><p>This option tells the compiler to use a specific memory model to generate code and store data. It can affect code size and performance. If your program has <span>global and static</span> data with a total size smaller than 2GB, <span class="option">-mcmodel=small</span> is sufficient. <span>Global and static data</span> larger than 2GB <span>requires</span> <span class="option">-mcmodel=medium</span> or <span class="option">-mcmodel=large</span>. Allocation of memory larger than 2GB can be done with any setting of <span class="option">-mcmodel</span>.</p>
+<p>IP-relative addressing requires only 32 bits, whereas absolute addressing requires 64-bits. IP-relative addressing is somewhat faster. So, the <span class="keyword">small</span> memory model has the least impact on performance.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>When you specify <span class="option">-mcmodel=medium</span> or <span class="option">-mcmodel=large</span>, you must also specify compiler option <span class="option">-shared-intel</span> to ensure that the correct dynamic versions of the Intel run-time libraries are used.</p>
+</div></div>
+
+<div class="section" id="GUID-9AE59AAE-91C3-4DF4-B9E3-FDA27B335E8B"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_1E4DD97631C940D693E9FC0012AB55D0"><a name="EXAMPLE_1E4DD97631C940D693E9FC0012AB55D0"><!-- --></a><h2>Example</h2><p>The following example shows how to compile using <span class="option">-mcmodel</span>:</p>
+<pre>icl -shared-intel -mcmodel=medium -o prog prog.c</pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A689F98D-F19E-4DE6-92DA-3FF5FA293937.htm#GUID-A689F98D-F19E-4DE6-92DA-3FF5FA293937"><span class="option">shared-intel</span></a>  compiler option</div>
+<div><a href="GUID-DE6C2019-B79F-46AE-A95F-86FF86895539.htm#GUID-DE6C2019-B79F-46AE-A95F-86FF86895539"><span class="option">fpic</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

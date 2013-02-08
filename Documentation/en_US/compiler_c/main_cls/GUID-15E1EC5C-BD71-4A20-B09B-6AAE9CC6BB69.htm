@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_shufflehi_epi16">
+<meta name="abstract" content="Shuffles the upper 4 high signed or unsigned words in each 128-bit lane of the source operand according to the shuffle control operand. The low qwords in each of 2 128-bit lanes of the source operand are copied to the corresponding low qwords of the result value. The corresponding Intel&reg; AVX 2 instruction is VPSHUFHW.">
+<meta name="description" content="Shuffles the upper 4 high signed or unsigned words in each 128-bit lane of the source operand according to the shuffle control operand. The low qwords in each of 2 128-bit lanes of the source operand are copied to the corresponding low qwords of the result value. The corresponding Intel&reg; AVX 2 instruction is VPSHUFHW.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, shuffle operations, _mm256_sufflehi_epi16 (VPSHUFHW)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, shuffle operations, _mm256_sufflehi_epi16 (VPSHUFHW)">
+<meta name="DC.Relation" scheme="URI" content="GUID-BD7F8DFD-4D94-47F2-AE27-FF1C2F491535.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-15E1EC5C-BD71-4A20-B09B-6AAE9CC6BB69">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_shufflehi_epi16</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_blend"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blend_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_blend_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-15E1EC5C-BD71-4A20-B09B-6AAE9CC6BB69">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_shufflehi_epi16 </span> </h1>
+
+
+<!-- Shuffles the upper 4 high signed or unsigned words in each 128-bit lane of the source operand according to the shuffle control operand.  The low qwords in each of 2 128-bit lanes of the source operand are copied to the corresponding low qwords of the result value. The corresponding Intel&reg; AVX 2 instruction is  VPSHUFHW .--><div><p> Shuffles the upper 4 high signed or unsigned words in each 128-bit lane of the source operand according to the shuffle control operand.  The low qwords in each of 2 128-bit lanes of the source operand are copied to the corresponding low qwords of the result value. The corresponding Intel&reg; AVX 2 instruction is <span class="option">VPSHUFHW</span>.</p>
+
+
+<div class="section" id="GUID-B7544388-7193-448F-B1D4-6A9FA389A9AD"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_shufflehi_epi16(__m256i val, const int control);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-BA2E6E89-29E7-4F9F-BE10-A6EE766DCFC3"><h2>Arguments</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>val</var></p></td>
+
+<td valign="top" class="noborder"><p>integer source operand</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>control</var></p></td>
+
+<td valign="top" class="noborder"><p>immediate control mask</p>
+</td>
+</tr>
+</table>
+</div>
+
+
+<div class="section" id="GUID-273E19A4-BF41-4564-80CB-83A0A996D703"><h2>Description</h2>
+<p>Shuffles the upper four high signed or unsigned words in each 128-bit lane of the source operand according to the shuffle control operand.  The low qwords in each of two 128-bit lanes of the source operand are copied to the corresponding low qwords of the result value. The shuffle control operand must be an immediate.</p>
+
+<p>Below is the pseudo-code for the intrinsic:</p>
+<pre>RESULT[63:0] &lt;- VAL[63:0]
+RESULT[79:64] &lt;- (VAL &gt;&gt; (CONTROL[1:0] *16))[79:64]
+RESULT[95:80] &lt;- (VAL &gt;&gt; (CONTROL[3:2] * 16))[79:64]
+RESULT[111:96] &lt;- (VAL &gt;&gt; (CONTROL[5:4] * 16))[79:64]
+RESULT[127:112] &lt;- (VAL &gt;&gt; (CONTROL[7:6] * 16))[79:64]
+RESULT[191:128] &lt;- VAL[191:128]
+RESULT[207192] &lt;- (VAL &gt;&gt; (CONTROL[1:0] *16))[207:192]
+RESULT[223:208] &lt;- (VAL &gt;&gt; (CONTROL[3:2] * 16))[207:192]
+RESULT[239:224] &lt;- (VAL &gt;&gt; (CONTROL[5:4] * 16))[207:192]
+
+RESULT[255:240] &lt;- (VAL &gt;&gt; (CONTROL[7:6] * 16))[207:192]
+</pre></div>
+
+
+
+
+<div class="section" id="GUID-6F3B7924-0363-4C17-A9F3-630857B58DED"><h2>Returns</h2><p>Result of the shuffle operation.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BD7F8DFD-4D94-47F2-AE27-FF1C2F491535.htm">Intrinsics for Shuffle Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

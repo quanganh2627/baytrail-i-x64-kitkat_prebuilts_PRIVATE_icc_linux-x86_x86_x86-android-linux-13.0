@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="guide-profile, Qguide-profile">
+<meta name="abstract" content="Specifies a loop profiler data file (or a set of files) when used with option -guide or /Qguide.">
+<meta name="description" content="Specifies a loop profiler data file (or a set of files) when used with option -guide or /Qguide.">
+<meta name="DC.subject" content="/Qguide-profile compiler option, -guide-profile compiler option">
+<meta name="keywords" content="/Qguide-profile compiler option, -guide-profile compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BB1E4E70-96A8-452B-AA33-B7DFD92E6934">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>guide-profile, Qguide-profile</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_guide_profile"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_guide_profile"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BB1E4E70-96A8-452B-AA33-B7DFD92E6934">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">guide-profile, Qguide-profile</h1>
+
+  <!--Specifies a loop profiler data file (or a set of files) when used with option -guide or /Qguide.-->
+  
+  <div><p>Specifies a loop profiler data file (or a set of files) when used with option -guide or /Qguide.</p>
+
+    <div class="section" id="GUID-2A54BBC2-BCE9-41FE-BF39-54938F7D4E08"><h2>IDE Equivalent</h2>
+      None
+
+    </div>
+
+    <div class="section" id="GUID-B3446678-49DA-42BF-8901-91B0ABCCB12A"><h2>Architectures</h2>
+      <p>All</p>
+
+    </div>
+
+    <div class="section" id="GUID-6A06D8CB-58CB-46CF-968C-11A320FF3EA5"><h2>Syntax</h2>
+      <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-guide-profile</span><span class="sep">=</span><span class="var">filename</span><span class="sep">|</span><span class="var">dir</span><span class="delim"> [</span><span class="sep">, </span><span class="delim">[</span><span class="var">filename</span><span class="sep">|</span><span class="var">dir</span><span class="delim">]</span><span class="sep">...</span><span class="delim">]</span></p></td></tr></table>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qguide-profile</span><span class="sep">:</span><span class="var">filename</span><span class="sep">|</span><span class="var">dir</span><span class="delim"> [</span><span class="sep">, </span><span class="delim">[</span><span class="var">filename</span><span class="sep">|</span><span class="var">dir</span><span class="delim">]</span><span class="sep">...</span><span class="delim">]</span></p></td></tr></table></div>
+
+    <div class="section" id="GUID-8AD8FA2C-CF54-4014-B8D4-715094231A96"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p> Is an .xml file created from a loop profiler run.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>dir</var></p></td>
+<td valign="top" class="noborder"><p> Is a directory that contains one or more .xml files from a loop profiler run.</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-1994F0BE-1E86-4541-BC3E-3E05446F0D3A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>When option <span class="option">-guide</span> (Linux* OS and OS X*) or <span class="option">/Qguide</span> (Windows* OS) is specified, the guide region is the whole file or the region specified by option <span class="option">-guide-opts</span> (Linux OS and OS X) or <span class="option">/Qguide-opts</span> (Windows OS).</p>
+</td>
+</tr></table>
+
+      
+    </div>
+
+    <div class="section" id="GUID-682855E7-A501-45D3-B1FB-FDCBBDD1EF2C"><h2>Description</h2>
+      
+    <p> This option specifies a loop profiler data file
+(or a set of files) when used with option <span class="option">-guide</span> (Linux* OS and
+OS X*) or <span class="option">/Qguide</span> (Windows* OS).</p>
+
+<p> This option has no effect unless <span class="option">-guide</span> or
+<span class="option">/Qguide</span> has been specified. Options <span class="option">-guide-profile</span>
+ (Linux OS and OS X) and <span class="option">/Qguide-profile</span>  (Windows OS) help you take advantage of the <span class="option">-guide</span>
+and <span class="option">/Qguide</span> options to more efficiently optimize
+your applications for
+auto parallelism and/or vectorization.</p>
+
+<p> The loop profile data file can be collected by
+using one of the following options:</p>
+
+<a name="UL_59B5C252FE5044008708EE746EE85A26"><!-- --></a><ul type="disc" id="UL_59B5C252FE5044008708EE746EE85A26"><li><p><span class="option">-profile-loops</span> (Linux OS and OS X) or <span class="option">/Qprofile-loops</span> (Windows OS)</p>
+</li>
+<li><p><span class="option">-profile-functions</span> (Linux OS and OS X) or <span class="option">/Qprofile-functions</span> (Windows OS)</p>
+</li>
+</ul>
+<p> When the data is from <span class="option">-profile-loops</span> or
+<span class="option">/Qprofile-loops</span>, the setting of the guide regions will be based
+upon the hottest loops.</p>
+
+<p> When the data is from <span class="option">-profile-functions</span> or
+<span class="option">/Qprofile-functions</span>, the guide region will be the entire function
+containing the hottest functions.</p>
+
+<p> If you specify options <span class="option">-guide-opts</span> and
+<span class="option">-guide-profile</span> (Linux OS and OS X) or options <span class="option">/Qguide-opts</span>
+and <span class="option">/Qguide-profile</span> (Windows OS), the compiler issues an error
+message.</p>
+
+</div>
+
+    <div class="section" id="GUID-C6BCE359-7E52-4063-B8FF-BFFFB8A94851"><h2>Alternate Options</h2>
+      <p>None</p>
+
+    </div>
+
+  </div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B8C60A8C-79E7-415C-B24C-7EB7FF4AADEE.htm">guide, Qguide</a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

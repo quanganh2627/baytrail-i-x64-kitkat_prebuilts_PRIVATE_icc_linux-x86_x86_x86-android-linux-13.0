@@ -1,0 +1,82 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Floating-point Vector Classes">
+<meta name="DC.Relation" scheme="URI" content="GUID-8FAC8E44-EFD8-4A49-95E5-D051DA1C3A05.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-E963EC28-6796-4F92-9A83-E6E509B50A38.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7CC06992-B292-4B88-8801-5B6D365DF4E0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-64663E3C-05FC-4196-96D2-C95004CBC10A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-AC7AB67E-DD61-4D37-AFED-F3154510349F.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BF4F2175-056F-4F01-B797-3F2688AEE700.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F390FEC4-9F7C-4779-AD6C-6CA40CF49CE2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-6581085A-869D-429D-B0FC-673C35A5AE42.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2F5523E3-0B8D-4D7B-BCE2-8DD315030B69.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3059DD1B-2280-4CDB-B7D4-D31AE6C74E74.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-49FD7B9C-7E0D-44B1-8BE5-579CA00E7B0C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-74A76B59-7743-47FC-9609-AE9316E862A0.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F33F65AB-F729-40D7-ACCB-7E39713DFBEE.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-85E122F8-0386-4279-9113-BA20C5527621.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-46702BF1-E9BC-464A-B1D0-5D9CA306A721.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-05750512-8145-437C-824C-77E60D74AECB.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Floating-point Vector Classes</title>
+</head>
+<body id="GUID-EF686988-6F08-4A97-BF69-16E87D9207FA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Floating-point Vector Classes</h1>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-8FAC8E44-EFD8-4A49-95E5-D051DA1C3A05.htm">Intel C++ Class Libraries</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-E963EC28-6796-4F92-9A83-E6E509B50A38.htm">Overview: Floating-point Vector Classes</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-7CC06992-B292-4B88-8801-5B6D365DF4E0.htm">Fvec Notation Conventions</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-64663E3C-05FC-4196-96D2-C95004CBC10A.htm">Data Alignment</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-AC7AB67E-DD61-4D37-AFED-F3154510349F.htm">Conversions</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-BF4F2175-056F-4F01-B797-3F2688AEE700.htm">Constructors and Initialization</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-F390FEC4-9F7C-4779-AD6C-6CA40CF49CE2.htm">Arithmetic Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-6581085A-869D-429D-B0FC-673C35A5AE42.htm">Minimum and Maximum Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-2F5523E3-0B8D-4D7B-BCE2-8DD315030B69.htm">Logical Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-3059DD1B-2280-4CDB-B7D4-D31AE6C74E74.htm">Compare Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-49FD7B9C-7E0D-44B1-8BE5-579CA00E7B0C.htm">Conditional Select Operators for Fvec Classes</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-74A76B59-7743-47FC-9609-AE9316E862A0.htm">Cacheability Support Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-F33F65AB-F729-40D7-ACCB-7E39713DFBEE.htm">Debug Operations</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-85E122F8-0386-4279-9113-BA20C5527621.htm">Load and Store Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-46702BF1-E9BC-464A-B1D0-5D9CA306A721.htm">Unpack Operators</a><br>
+</li>
+<li class="ulchildlink"><a href="GUID-05750512-8145-437C-824C-77E60D74AECB.htm">Move Mask Operators</a><br>
+</li>
+</ul>
+</div>
+
+</body>
+</html>

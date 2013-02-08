@@ -1,0 +1,391 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Compiler Options">
+<meta name="DC.subject" content="compiler options, command-line syntax, option categories, using">
+<meta name="keywords" content="compiler options, command-line syntax, option categories, using">
+<meta name="DC.Relation" scheme="URI" content="GUID-54318F64-F8B3-4583-845E-327E0A5A6978.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA.htm#GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-31EAE8BD-7D6D-40D4-9336-6BE0E266543F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Compiler Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_using_options"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_using_options"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-31EAE8BD-7D6D-40D4-9336-6BE0E266543F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Compiler Options</h1>
+ 
+   
+  <div> 
+    <p>A compiler option is a case-sensitive, command-line expression used to change the compiler's default operation. Compiler options are not required to compile your program, but they are extremely useful in helping you control different aspects of your application, such as: 
+    </p>
+ 
+    <ul type="disc" id="GUID-46403826-5F5F-4896-8F3C-7D8E4092C22A"> 
+      <li> 
+        <p>code generation 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>optimization 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>output file (type, name, location) 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>linking properties 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>size of the executable 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>speed of the executable 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>See Option Categories below for a broader view of the option capabilities included with the Intel&reg; C++ Compiler. 
+    </p>
+ 
+    <div class="section" id="GUID-53FF5A03-C7C9-4D9E-A95A-D2145D2D48B1"><h2 class="sectiontitle">Command-line Syntax</h2> 
+       
+      <p>When you specify compiler options on the command-line, the following syntax applies: 
+      </p>
+ 
+      <pre>icc [options] [@response_file] file1 [file2...]</pre> 
+      <p>where 
+        <var>options</var> represents zero or more compiler options 
+      </p>
+ 
+      <p>where 
+        <var>file</var> is any of the following: 
+      </p>
+ 
+      <ul type="disc" id="GUID-D96C5D86-6B30-4EBF-BB00-CE0C7B441CEB"> 
+        <li> 
+          <p>C or C++ source file (<span class="filepath">.C</span>, 
+            <span class="filepath">.c</span>, 
+            <span class="filepath">.cc</span>, 
+            <span class="filepath">.cpp</span>, 
+            <span class="filepath">.cxx</span>, 
+            <span class="filepath">.c++</span>, 
+            <span class="filepath">.i</span>, 
+            <span class="filepath">.ii</span>). 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>assembly file (<span class="filepath">.s</span>, 
+            <span class="filepath">.S</span>) 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>object file (<span class="filepath">.o</span>) 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>static library (<span class="filepath">.a</span>) 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>If you are compiling just C language sources, invoke the compiler with 
+        <span class="keyword">icc</span>. You should invoke the compiler with 
+        <span class="keyword">icpc</span> if you are compiling just C++ language sources or a combination of C and C++. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C8A49572-A723-404F-BCB8-6500F13F633F"> 
+      <p>The optional 
+        <var>response_file</var> is a text file that lists compiler options you want to include during compilation. See 
+        <a href="GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362.htm#GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362">Using Response Files</a>. 
+      </p>
+ 
+      <p>The compiler reads command-line options from left to right. If your compilation includes competing options, then the compiler uses the one furthest to the right. In other words, "the last one wins." In this example: 
+      </p>
+ 
+      <pre>icc -xP main.c file1.c -xW file2.c</pre> 
+      <p>the compiler sees 
+      <span class="option">-xP</span> and 
+      <span class="option">-xW</span> as two forms of the same option where only one form can be used. Since 
+      <span class="option">-xW</span> is last (furthest to the right), it wins. 
+      </p>
+ 
+      <p>All options specified on the command line are used to compile each file. The compiler will NOT compile individual files with specific options as this example may suggest: 
+      </p>
+ 
+      <pre>icc -O3 main.c file1.c -mp1 file2.c</pre> 
+      <p>It may seem that 
+        <span class="filepath">main.c</span> and 
+        <span class="filepath">file1.c</span> are compiled with 
+      <span class="option">-O3</span>, and 
+      <span class="filepath">file2.c</span> is compiled with the 
+      <span class="option">-mp1</span> option. This is not the case, all files are compiled with both options. 
+      </p>
+ 
+      <p>A rare exception to this rule is the 
+      <span class="option">-x 
+      </span><var>type</var> option: 
+      </p>
+ 
+      <pre>icc -x c file1 -x c++ file2 -x assembler file3</pre> 
+      <p>where the 
+        <var>type</var> argument identifies each file type for the compiler. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1FBD994D-AADB-42BC-82B9-E7E02D8E8A9F"><h2 class="sectiontitle">Default Operation</h2> 
+       
+      <p>The compiler invokes many options by default. For example, the 
+      <span class="option">-O2</span> option is on by default for systems based on IA-32 architecture. In this simple example, the compiler includes 
+      <span class="option">-O2</span> (and the other default options) in the compilation: 
+      </p>
+ 
+      <pre>icc main.c</pre> 
+      <p>See the Compiler Options reference for the default status of each compiler option. 
+      </p>
+ 
+      <p>Each time you invoke the compiler, options listed in the corresponding configuration file (<span><span class="filepath">icc.cfg</span> or 
+          <span class="filepath">icpc.cfg</span></span>) override any competing default options. For example, if your 
+        <span class="filepath">icc.cfg</span> file includes the 
+      <span class="option">-O3</span> option, the compiler will use 
+      <span class="option">-O3</span> rather than the default 
+      <span class="option">-O2</span> option. Use the configuration file to list options for the compiler to use for every compilation. See 
+      <a href="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA.htm#GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">Using Configuration Files</a>. 
+      </p>
+ 
+      <p>Finally, options used on the command-line override any competing options specified elsewhere (default options, options in the configuration file). If you specify 
+      <span class="option">-O1</span> on the command line, this option setting would "win" over competing option defaults and competing options in configuration files<span>, in addition to competing options in the CL environment variable</span>. 
+      </p>
+ 
+      <p>Certain 
+        <span class="keyword">#pragma</span> statements in your source code can override competing options specified on the command line. For example, if a function in your code is preceded by 
+        <span class="keyword">#pragma optimize("", off)</span>, then optimization for that function is turned off, even though 
+      <span class="option">-O2</span> optimization is on by default, 
+      <span class="option">-O3</span> is listed in the configuration file, and 
+      <span class="option">-O1</span> is specified on the command-line for the rest of the program. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0B70E685-D6D4-4F7C-AF9B-05599883A144"><h2 class="sectiontitle">Using Options with Arguments</h2> 
+       
+      <p>Compiler options can be as simple as a single letter, such as 
+      <span class="option">-E</span><span class="option">/E</span>. However, many options accept or require arguments. The 
+      <span class="option">-O</span> option, for example, accepts a single-value argument that the compiler uses to determine the degree of optimization. Other options require at least one argument and can accept multiple arguments. For most options that accept arguments, the compiler will warn you if your option and argument are not recognized. If you specify 
+      <span class="option">-O9</span>, for example, the compiler will issue a warning, ignore the unrecognized 
+      <span class="option">-O9</span> option, and proceed with compilation. 
+      </p>
+ 
+      <p>While the 
+      <span class="option">-O</span> option does not require an argument, there are other options that must include an argument. The 
+      <span class="option">-I</span> option requires an argument that identifies the directory to add to the include file search path. If you use this option without an argument, the compiler will not finish compilation. 
+      </p>
+ 
+      <p>See the Compiler Options reference for a complete description of options and their supported arguments. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-155DBFF2-6E08-4736-AE50-1EDFA2BB389C"><h2 class="sectiontitle">Other Forms of Options</h2> 
+       
+      <p>You can toggle some options on or off by using the negation convention. For example, the 
+      <span class="option">-complex-limited-range</span> option, and many others, include a negation form, 
+      <span class="option">-no-complex-limited-range</span>, to change the state of the option. Since this option is disabled by default, using 
+      <span class="option">-complex-limited-range</span> on the command line would toggle it to the "ON" state. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D41B32C1-EC4B-4C8F-ABC5-FE727675298C"><h2 class="sectiontitle">Option Categories</h2> 
+       
+      <p>When you invoke the Intel&reg; C++ Compiler and specify a compiler option, you have a wide range of choices to influence the compiler's default operation. Intel&reg; Compiler options typically correspond to one or more of the following categories: 
+      </p>
+ 
+      <ul type="disc" id="GUID-B2C56F8D-9237-428E-B630-8422A9A7B228"> 
+        <li> 
+          <p>Advanced Optimization
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Code Generation
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Compatibility
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Component Control
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Data
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Deprecated
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Diagnostics
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Floating Point
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Help
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Inlining
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Interprocedural Optimizations (IPO)
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Language
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Linking/Linker
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Miscellaneous
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>OpenMP* and Parallel Processing
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Optimization
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Output
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Profile Guided Optimization (PGO)
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Preprocessor
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+      <p>To see which options are included in each category, invoke the compiler from the command line with the 
+      <span class="option">-help</span> category option. For example: 
+      </p>
+ 
+      <pre>icc -help codegen</pre> 
+      <p>will print to 
+        <span class="keyword">stdout</span> the names and syntax of the options in the Code Generation category. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54318F64-F8B3-4583-845E-327E0A5A6978.htm">Using the Command Line</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA.htm#GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">Using Configuration files 
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_sll_epi16/32/64">
+<meta name="abstract" content="Logical shift of word/doubleword/quadword elements to left according to specified number. The corresponding Intel&reg; AVX2 instruction is VPSLLW, VPSLLD, or VPSLLQ.">
+<meta name="description" content="Logical shift of word/doubleword/quadword elements to left according to specified number. The corresponding Intel&reg; AVX2 instruction is VPSLLW, VPSLLD, or VPSLLQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, logical shift operations, _mm256_sll_epi16 (VPSLLW), _mm256_sll_epi32 (VPSLLD), _mm256_sll_epi64 (VPSLLQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, logical shift operations, _mm256_sll_epi16 (VPSLLW), _mm256_sll_epi32 (VPSLLD), _mm256_sll_epi64 (VPSLLQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-25C533AB-7324-496E-8A43-092BAB83125F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-D910DB44-1326-475C-821A-EF6286D5EC06">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_sll_epi16/32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_sll"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sll_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sll_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sll_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-D910DB44-1326-475C-821A-EF6286D5EC06">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_sll_epi16/32/64 </span></h1>
+
+
+<!--Logical shift of word/doubleword/quadword elements to left according to specified number. The corresponding Intel&reg; AVX2 instruction is  VPSLLW ,  VPSLLD , or  VPSLLQ .--><div><p>Logical shift of word/doubleword/quadword elements to left according to specified number. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPSLLW</samp>, <samp class="codeph">VPSLLD</samp>, or <samp class="codeph">VPSLLQ</samp>.</p>
+
+
+<div class="section" id="GUID-CA1792C9-98D3-432F-8AE1-33118785C55D"><h2>Syntax</h2>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sll_epi16(__m256i s1, __m128i count);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sll_epi32(__m256i s1, __m128i count);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sll_epi64(__m256i s1, __m128i count);</span></p></td></tr></table>
+  
+</div>
+
+
+<div class="section" id="GUID-766BFA68-DFFC-4689-954D-6CADB0E535CB"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>count</var></p></td>
+
+      <td valign="top" class="noborder"><p>128-bit memory location used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-524F1AA8-863A-4952-9F4C-2ADB75930006"><h2>Description</h2>
+
+<p>Performs logical shift of bits in the individual data elements (16-bit word, 32-bit doubleword, or 64-bit quadword) in source vector <var>s1</var> to the left by the number of bits specified in <var>count</var>. The empty low-order bytes are cleared (set to all '<span>0</span>'). If the value specified by <var>count</var> is greater than 15/31/63 (depending on the intrinsic being used), the destination vector is set to all '<span>0</span>'. </p>
+<p>The <var>count</var> argument is a 128-bit memory location. Note that only the first 64-bits of a 128-bit count operand are checked to compute the count.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-F805B63B-AF6A-4561-AC22-11476DDCE281"><h2>Returns</h2><p> Result of the left-shift operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-25C533AB-7324-496E-8A43-092BAB83125F.htm">Intrinsics for Logical Shift Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

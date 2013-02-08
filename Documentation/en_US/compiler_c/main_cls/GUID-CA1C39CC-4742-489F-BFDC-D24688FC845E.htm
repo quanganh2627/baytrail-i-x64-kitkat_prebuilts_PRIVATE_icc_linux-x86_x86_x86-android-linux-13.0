@@ -1,0 +1,346 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Convert a C/C++ Program">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, converting a program">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, converting a program">
+<meta name="DC.Relation" scheme="URI" content="GUID-9AC25C75-112B-4136-82D8-96348475602E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CA1C39CC-4742-489F-BFDC-D24688FC845E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Convert a C/C++ Program</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_convertcpp"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CA1C39CC-4742-489F-BFDC-D24688FC845E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Convert a C/C++ Program</h1>
+ 
+   
+  <div> 
+	 <p>The sequence of steps to create a parallel program using Intel&reg; Cilk&#8482; Plus is as follows: 
+	 </p>
+ 
+	 <p> 
+	 <ol id="GUID-D471FA05-C9EC-43CE-B89B-81CD1E651FAC"> 
+		<li> 
+		  <p>Typically, you start with a serial 
+			 <span><span>C/C++</span></span> program that implements the basic functions or algorithms that you want to parallelize. Ensure that the serial program is correct. Any bugs in the serial program will occur in the parallel program, but they will be more difficult to identify and fix. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Identify the program regions that will benefit from parallel operation. Operations that are relatively long-running and which can be performed independently are prime candidates. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Use the three keywords to identify tasks that can execute in parallel: 
+		  </p>
+ 
+		  <ul type="disc" id="GUID-9139AF23-A364-4377-9AF7-6469A110DC11"> 
+			 <li> 
+				<p><span class="keyword">_Cilk_spawn</span>(or, 
+				  <span class="keyword">cilk_spawn</span>, if your program includes 
+				  <span class="filepath">&lt;cilk/cilk.h&gt;</span>) indicates a call to a function (a child) that can proceed in parallel with the caller (the parent). 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p><span class="keyword">_Cilk_sync</span> (or, 
+				  <span class="keyword">cilk_sync</span>, if your program includes 
+				  <span class="filepath">&lt;cilk/cilk.h&gt;</span>) indicates that all spawned children must complete before proceeding. 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p><span class="keyword">_Cilk_for 
+				  </span>(or, 
+				  <span class="keyword">cilk_for</span>, if your program includes 
+				  <span class="filepath">&lt;cilk/cilk.h&gt;</span>) identifies a loop for which all iterations can execute in parallel. 
+				</p>
+ 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+		<li> Build the program: 
+		  <ul type="disc" id="GUID-5E185DC3-6D3F-44FC-AEB0-0AF66BAF2C38"> 
+			 <li> 
+				<p><strong>Windows* OS:</strong> Use either the icl command-line tool or compile within Microsoft Visual Studio*. If using Visual Studio*, make sure that you have selected 
+				  <b class="uicontrol">Use Intel C++</b> from the project context menu. 
+				</p>
+ 
+			 </li>
+ 
+			 <li> 
+				<p><strong>Linux* OS and OS X*:</strong> Use the 
+				  <span class="filepath">icc</span> command. 
+				</p>
+ 
+			 </li>
+ 
+		  </ul>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Run the program. If there are no 
+			 <a href="GUID-778EAE45-702F-49E7-9225-A7B817F8AC56.htm">Race Conditions</a>, the parallel program produces the same result as the serial program. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Correct any race conditions with reducers or locks, or recode to resolve conflicts. 
+		  </p>
+ 
+		</li>
+ 
+	 </ol>
+ 
+	 </p>
+ 
+	 <p>A walk-through of this process follows, using a sort program as an example. 
+	 </p>
+ 
+	 <p><strong>Start with a Serial Program</strong> 
+	 </p>
+ 
+	 <p>The following demonstrates how to use write an Intel&reg; Cilk&#8482; Plus program by parallelizing a simple implementation of Quicksort. 
+	 </p>
+ 
+	 <p>The function name 
+		<samp class="codeph"><span><span>parallel_qsort</span></span></samp> avoids confusion with the Standard C Library 
+		<samp class="codeph">qsort</samp> function. Some lines in the example are removed here, but line numbers are preserved. 
+	 </p>
+ 
+	 <pre>  9 #include &lt;algorithm&gt;
+ 10
+ 11 #include &lt;iostream&gt;
+ 12 #include &lt;iterator&gt;
+ 13 #include &lt;functional&gt;
+ 14
+ 15
+ 16 // Sort the range between begin and end. "end" is one  
+ 17 // past the final element in the range. This is pure
+ 18 // C++ code before Intel&reg; Cilk&#8482; Plus conversion.
+ 19
+ 20
+ 21 void parallel_qsort(int * begin, int * end)
+ 22 {
+ 23    if (begin != end) {
+ 24       --end; // Exclude last element (pivot)
+ 25       int * middle = std::partition(begin, end,
+ 26            std::bind2nd(std::less&lt;int&gt;(),*end));
+ 27  
+ 28       std::swap(*end,*middle); // pivot to middle
+ 29       parallel_qsort(begin, middle);
+ 30       parallel_qsort(++middle, ++end); // Exclude pivot
+ 31    }
+ 32 }
+ 33
+ 34 // A simple test harness
+ 35 int qmain(int n)
+ 36 {
+ 37    int *a = new int[n];
+ 38
+ 39    for (int i = 0; i &lt; n; ++i)
+ 40       a[i] = i;
+ 41
+ 42    std::random_shuffle(a, a + n);
+ 43    std::cout &lt;&lt; "Sorting " &lt;&lt; n &lt;&lt; " integers"  
+                 &lt;&lt; std::endl;
+ 44
+ 45    parallel_qsort(a, a + n);
+ 48
+ 49   // Confirm that a is sorted and that each element
+      // contains the index.
+ 50   for (int i = 0; i &lt; n-1; ++i) {
+ 51     if ( a[i] &gt;= a[i+1] || a[i] != i ) {
+ 52        std::cout &lt;&lt; "Sort failed at location i="  
+                     &lt;&lt; i &lt;&lt; " a[i] = "
+ 53                  &lt;&lt; a[i] &lt;&lt; " a[i+1] = " &lt;&lt; a[i+1]  
+                     &lt;&lt; std::endl;
+ 54        delete[] a;
+ 55        return 1;
+ 56      }
+ 57   }
+ 58   std::cout &lt;&lt; "Sort succeeded." &lt;&lt; std::endl;
+ 59   delete[] a;
+ 60   return 0;
+ 61 }
+ 62
+ 63 int main(int argc, char* argv[])
+ 64 {
+ 65    int n = 10*1000*1000;
+ 66    if (argc &gt; 1)
+ 67       n = std::atoi(argv[1]);
+ 68
+ 69    return qmain(n);
+ 70 }
+</pre> 
+	 <p> 
+		<strong>Parallelism using _Cilk_spawn</strong> 
+	 </p>
+ 
+	 <p>You are now ready to introduce parallelism into the 
+		<samp class="codeph">qsort</samp> program. 
+	 </p>
+ 
+	 <p>The 
+		<span class="keyword">_Cilk_spawn</span> keyword indicates that a function (the child) may be executed in parallel with the code that follows the 
+		<span class="keyword">_Cilk_spawn</span> statement (the parent). The keyword allows but does not require parallel operation. Intel&reg; Cilk&#8482; Plus dynamically determines which operations are executed in parallel when multiple processors are available. The 
+		<span class="keyword">_Cilk_sync</span> statement indicates that the function may not continue until all preceding 
+		<span class="keyword">_Cilk_spawn</span> requests in the same function have completed. 
+		<span class="keyword">_Cilk_sync</span> does not affect parallel strands spawned in other functions. 
+	 </p>
+ 
+	 <pre>21 void parallel_qsort(int * begin, int * end)
+ 22 {
+ 23    if (begin != end) {
+ 24      --end; // Exclude last element (pivot)
+ 25      int * middle = std::partition(begin, end,
+ 26                 std::bind2nd(std::less&lt;int&gt;(),*end));
+ 27
+ 28      std::swap(*end,*middle); // pivot to middle
+ 29      <strong>_Cilk_spawn</strong> parallel_qsort(begin, middle);
+ 30      parallel_qsort(++middle, ++end); // Exclude pivot
+ 31      <strong>_Cilk_sync</strong>;
+ 32    }
+ 33  }
+</pre> 
+	 <p> The previous example can be rewritten to use a simpler form of the keywords. Include the header file 
+		<span class="filepath">&lt;cilk/cilk.h&gt;</span>, which defines macros that provide names in lowercase, without the initial underscore. The following shows the simpler naming convention of 
+		<span class="keyword">cilk_spawn</span> and 
+		<span class="keyword">cilk_sync</span>. This naming convention is used throughout this section. 
+	 </p>
+ 
+	 <pre> 19 #include &lt;cilk/cilk.h&gt;
+
+ 21 void parallel_qsort(int * begin, int * end)
+ 22 {
+ 23    if (begin != end) {
+ 24        --end; // Exclude last element (pivot)
+ 25        int * middle = std::partition(begin, end,
+ 26             std::bind2nd(std::less&lt;int&gt;(),*end));
+ 27
+ 28       std::swap(*end, *middle); // pivot to middle
+ 29       <strong>cilk_spawn</strong> parallel_qsort(begin, middle);
+ 30       parallel_qsort(++middle, ++end); // Exclude pivot
+ 31       <strong>cilk_sync</strong>;
+ 32     }
+ 33 }
+</pre> 
+	 <p>In either example, the statement in line 29 spawns a recursive invocation of 
+		<samp class="codeph"><span><span>parallel_qsort</span></span></samp> that can execute asynchronously. Thus, when 
+		<samp class="codeph"><span><span>parallel_qsort</span></span></samp> is called again in line 30, the call at line 29 may not have completed. The 
+		<span class="keyword">cilk_sync</span> statement at line 31 indicates that this function will not continue until all 
+		<span class="keyword">cilk_spawn</span> requests in the same function have completed. 
+	 </p>
+ 
+	 <p>There is an implicit 
+		<span class="keyword">cilk_sync</span> at the end of every function that waits until all tasks spawned in the function have returned, so the 
+		<span class="keyword">cilk_sync</span> at line 31 is redundant, but included here for clarity. 
+	 </p>
+ 
+	 <p>The above change implements a typical divide and conquer strategy for parallelizing recursive algorithms. At each level of recursion, two-way parallelism occurs; the parent strand (line 29) continues executing the current function, while a child strand executes the other recursive call. This recursion can expose quite a lot of parallelism. 
+	 </p>
+ 
+	 <p> 
+		<strong>Execute and Test</strong> 
+	 </p>
+ 
+	 <p>With these changes, you can now build and execute the Intel&reg; Cilk&#8482; Plus version of the 
+		<samp class="codeph">qsort</samp> program. Build and run the program as done in the previous example: 
+	 </p>
+ 
+	 <p> Linux* OS and OS X*: 
+		<samp class="codeph">icc qsort.cpp -o qsort</samp> 
+	 </p>
+ 
+	 <p> Windows* OS Command Line: 
+		<samp class="codeph">icl qsort.cpp</samp> 
+	 </p>
+ 
+	 <p> Windows Visual Studio*: Build the Release configuration. 
+	 </p>
+ 
+	 <p>Run 
+		<samp class="codeph">qsort</samp> from the command line; for example, on Windows* OS: 
+	 </p>
+ 
+	 <pre> &gt;qsort
+ Sorting 10000000 integers
+ Sort succeeded.
+</pre> 
+	 <p> 
+		<strong>Observe speed up on a multicore system</strong> 
+	 </p>
+ 
+	 <p>By default, an Intel&reg; Cilk&#8482; Plus program queries the operating system and uses all available cores. 
+		<span><span>(Additionally, on systems that support simultaneous multithreading on each core, Intel&reg; Cilk&#8482; Plus uses all available hardware threads.)</span></span> You can control the number of workers by setting the 
+		<span class="keyword">CILK_NWORKERS</span> environment variable. 
+	 </p>
+ 
+	 <p>Run 
+		<samp class="codeph">qsort</samp> using one and then two cores. On a system with two or more cores, you should expect to see that the second run takes about half as long as the first run. 
+	 </p>
+ 
+	 <p> Linux* OS and OS X*: 
+	 </p>
+ 
+	 <pre>$CILK_NWORKERS=1 ./qsort
+Sorting 10000000 integers
+Sort succeeded.
+$CILK_NWORKERS=2 ./qsort
+Sorting 10000000 integers
+Sort succeeded.
+</pre> 
+	 <p> Windows* OS Command Line: 
+	 </p>
+ 
+	 <pre>&gt;set CILK_NWORKERS=1
+&gt;qsort
+Sorting 10000000 integers
+Sort succeeded.
+&gt;set CILK_NWORKERS=2
+&gt;qsort
+Sorting 10000000 integers
+Sort succeeded.
+</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9AC25C75-112B-4136-82D8-96348475602E.htm">Introduction</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

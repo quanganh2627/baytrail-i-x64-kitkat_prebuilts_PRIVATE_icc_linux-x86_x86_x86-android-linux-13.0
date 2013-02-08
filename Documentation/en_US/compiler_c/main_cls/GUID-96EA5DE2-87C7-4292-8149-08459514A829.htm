@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intrinsics for Broadcast Operations">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, broadcast operations, Advanced Vector Extensions 2, AVX2">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, broadcast operations, Advanced Vector Extensions 2, AVX2">
+<meta name="DC.Relation" scheme="URI" content="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F6261358-BC75-42F9-A3A9-CAB1514646E2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-132123A3-9705-4045-9537-9C956FF46552.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-D2F24E57-B9F2-41A2-9514-B3E896B2E669.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4A3077A7-2865-4B66-9745-22CC0CDF38FD.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EADA5A90-4D75-4DD1-AC0B-1B5362CB4CBA.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A9AA6768-35FC-431C-8707-7CE7243A1B00.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9772763F-D7D8-462B-8DA0-F7169C9EC47F.htm">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-96EA5DE2-87C7-4292-8149-08459514A829">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Broadcast Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_bk_avx2_broadcast"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-96EA5DE2-87C7-4292-8149-08459514A829">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Broadcast Operations</h1>
+ 
+   
+  <div> 
+    <p></p>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9E84F9C5-1711-4F59-8742-8F9DF283A472.htm">Intrinsics for Intel&reg; Advanced Vector Extensions 2</a></div>
+</div>
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><a href="GUID-F6261358-BC75-42F9-A3A9-CAB1514646E2.htm">_mm_broadcastss_ps, _mm256_broadcastss_ps</a><br>
+ Take the low packed single-precision floating-point data element from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VBROADCASTSS</span>.</li>
+<li class="ulchildlink"><a href="GUID-132123A3-9705-4045-9537-9C956FF46552.htm">_mm256_broadcastsd_pd</a><br>
+ Takes the low packed double-precision floating-point data element from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VBROADCASTSD</span>.</li>
+<li class="ulchildlink"><a href="GUID-D2F24E57-B9F2-41A2-9514-B3E896B2E669.htm">_mm_broadcastb_epi8, _mm256_broadcastb_epi8</a><br>
+ Take byte elements from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VPBROADCASTB</span>.</li>
+<li class="ulchildlink"><a href="GUID-4A3077A7-2865-4B66-9745-22CC0CDF38FD.htm">_mm_broadcastw_epi16, _mm256_broadcastw_epi16</a><br>
+ Take word elements from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VPBROADCASTW</span>.</li>
+<li class="ulchildlink"><a href="GUID-EADA5A90-4D75-4DD1-AC0B-1B5362CB4CBA.htm">_mm_broadcastd_epi32, _mm256_broadcastd_epi32</a><br>
+ Take doublewords from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VPBROADCASTD</span>.</li>
+<li class="ulchildlink"><a href="GUID-A9AA6768-35FC-431C-8707-7CE7243A1B00.htm">_mm_broadcastq_epi64, _mm256_broadcastq_epi64</a><br>
+ Take qwords from the source operand and broadcast to all elements of the result vector. The corresponding Intel&reg; AVX2 instruction is <span class="option">VPBROADCASTQ</span>.</li>
+<li class="ulchildlink"><a href="GUID-9772763F-D7D8-462B-8DA0-F7169C9EC47F.htm">_mm256_broadcastsi128_si256</a><br>
+  Takes 128-bit data from the source operand and broadcasts it to all 128-bit elements of the result 256-bit vector. The corresponding Intel&reg; AVX2 instructions are <span class="option">VBROADCASTI128</span> and <span class="option">VPERM2I128</span>.</li>
+</ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="C++ Classes and Intel&reg; Many Integrated Core (Intel&reg; MIC) SIMD Operations">
+<meta name="DC.subject" content="classes, C++ and Intel&reg; Many Integrated Core (Intel&reg; MIC) SIMD operations, SIMD operations, C++ and Intel&reg; Many Integrated Core (Intel&reg; MIC) classes">
+<meta name="keywords" content="classes, C++ and Intel&reg; Many Integrated Core (Intel&reg; MIC) SIMD operations, SIMD operations, C++ and Intel&reg; Many Integrated Core (Intel&reg; MIC) classes">
+<meta name="DC.Relation" scheme="URI" content="GUID-EC1C055D-88A9-4CAD-96E5-3047CB99FAC2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A.htm#GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41.htm#GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F45BCA79-BFE3-4809-AFF2-3BD4BA7F3D12">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>C++ Classes and Intel&reg; Many Integrated Core (Intel&reg; MIC) SIMD Operations</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_class_cpp_simd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F45BCA79-BFE3-4809-AFF2-3BD4BA7F3D12">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">C++ Classes and Intel&reg; Many Integrated Core (Intel&reg; MIC) SIMD Operations</h1>
+ 
+   
+  <div> 
+    <p>This topic only applies to Intel&reg; MIC Architecture. 
+    </p>
+ 
+    <p>The use of C++ classes for Intel&reg; Many Integrated Core (Intel&reg; MIC) SIMD operations is based on the concept of operating on arrays, or vectors of data, in parallel. 
+    </p>
+ 
+    <p>Consider the addition of two vectors, 
+      <samp class="codeph">A</samp> and 
+      <samp class="codeph">B</samp>, where each vector contains four elements. Using the integer vector (<samp class="codeph">Ivec</samp>) class, the elements 
+      <samp class="codeph">A[i]</samp> and 
+      <samp class="codeph">B[i]</samp> from each array are summed as shown in the following example. 
+    </p>
+ 
+    <div class="section" id="GUID-780D0167-0602-4103-9ADB-336DB296ECB9"><h2 class="sectiontitle">Typical Method of Adding Elements Using a Loop </h2> 
+       
+      <p> 
+        <pre>
+short a[16], b[16], c[16];
+for (i=0; i&lt;16; i++) /* needs sixteen iterations */
+c[i] = a[i] + b[i]; /* returns c[0], c[1], c[2], c[3], …, c[15] */
+</pre> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D18D9885-F73A-4037-887D-AD54A5CDE023"><h2 class="sectiontitle">SIMD Method of Adding Elements Using Ivec Classes</h2> 
+       
+      <p>The following example shows the same results using one operation with 
+        <samp class="codeph">Ivec</samp> Classes. 
+      </p>
+ 
+      <pre>
+sIs32vec16 ivecA, ivecB, ivec C; /*needs one iteration */
+ivecC = ivecA + ivecB; /*returns ivecC0, ivecC1, ivecC2, ivecC3 */ 
+</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-71E3DFA0-D61A-4396-BF94-F89713C3D7D8"><h2 class="sectiontitle">Available Classes </h2> 
+       
+      <p>These C++ classes provide parallelism, which is not easily implemented using typical mechanisms of C++. The following table provides details of these class libraries. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-102EE8D2-5993-4BA7-AC5D-222D062DC245" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e110">Instruction Set 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e113">Class 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e116">Signedness 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e119">Data Type 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e122">Size 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e126">Elements 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="NaN%" id="d841846e129">Header File 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" rowspan="7" valign="top" width="NaN%" headers="d841846e110 ">Intel&reg; MIC 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph">F64vec8 
+                </samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">signed 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph"> double</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">64 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">8 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph"> F32vec16</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">signed 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph"> double</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">32 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">16 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph"> M512</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">unspecified 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph"> __m512</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">512 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">1 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph"> I64vec8</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">unspecified 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph"> long int</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">64 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">8 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph"> I32vec16</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">unspecified 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph">int</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">32 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">16 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph"> Is32vec16</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">signed 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph">int</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">32 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">16 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e113 "><samp class="codeph"> Iu32vec16</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e116 ">unsigned 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e119 "><samp class="codeph">int</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e122 ">32 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e126 ">16 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="NaN%" headers="d841846e129 "><samp class="codeph"> micvec.h</samp> 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>Most classes contain similar functionality for all data types and are represented by all available intrinsics. However, some capabilities do not translate from one data type to another without suffering from poor performance, and are therefore excluded from individual classes. 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>Intrinsics that take immediate values and cannot be expressed easily in classes are not implemented. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+    <div class="section" id="GUID-2A6786E4-CB6D-4AD9-89B7-1003A7CD98EE"><h2 class="sectiontitle">Accessing the Classes Using a Header File</h2> 
+       
+      <p> The required class header files are installed in the include directory with the compiler. To enable the classes, use the 
+        <samp class="codeph">#include</samp> directive in your program file as shown below: 
+        <pre> #include &lt;micvec.h&gt;</pre> 
+      </p>
+ 
+      <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+        <p>You can enable these classes within native code or offloaded code that is written to contain target-specific code. 
+        </p>
+ 
+      </div> 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EC1C055D-88A9-4CAD-96E5-3047CB99FAC2.htm">Intel&reg; MIC C++ Class Libraries</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A.htm#GUID-3CAD7D5E-A8B5-4BA6-A270-D248D9186B8A">About Building Native Intel&reg; MIC Architecture Applications 
+        </a></div>
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code Using a Pragma 
+        </a></div>
+<div><a href="GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41.htm#GUID-D255E9D9-DB52-41D8-944D-32F124CCFB41">Writing Target-Specific Code with _Cilk_offload 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,1633 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Setting Environment Variables">
+<meta name="DC.subject" content="environment variables, for Linux* OS and OS X*">
+<meta name="keywords" content="environment variables, for Linux* OS and OS X*">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Setting Environment Variables</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_env_vars1_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Setting Environment Variables</h1>
+ 
+   
+  <div> 
+	 <p>You can customize your system environment by specifying paths where the compiler searches for certain files such as libraries, include files, and configuration files, and certain settings. 
+	 </p>
+ 
+	 <div class="section" id="GUID-EE0C3A41-56C9-4F5C-ABFC-9813B3FB8E8C"><h2 class="sectiontitle">Compiler Environment Variables</h2> 
+		 
+		<p>The Intel&reg; C++ Compiler supports the following environment variables on Linux* OS and, unless otherwise stated, OS X*: 
+		</p>
+ 
+		
+<div class="tablenoborder"><a name="TABLE_CPP_ENVARS_LINMAC"><!-- --></a><table cellpadding="4" summary="" id="TABLE_CPP_ENVARS_LINMAC" frame="border" border="1" cellspacing="0" rules="all"> 
+			  
+			  
+			 <thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" align="left" valign="top" width="30%" id="d776138e60"> 
+					 <p>Environment<br>Variable 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" align="left" valign="top" width="70%" id="d776138e68"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">CILK_NWORKERS</span> (Linux* OS) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the number of worker threads to use in an Intel&reg; Cilk&#8482; Plus program. 
+					 </p>
+ 
+					 <p>See 
+						<a href="GUID-85B8EB6D-A49C-4D44-B58E-88DCA85FBE23.htm">Set Worker Count</a>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">GCCROOT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the location of the gcc binaries. Set this variable only when the compiler cannot locate the gcc binaries when using the 
+					 <span class="option">-gcc-name</span> option. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">GXX_INCLUDE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the location of the gcc headers. Set this variable to specify the locations of the GCC installed files when the compiler does not find the needed values as specified by the use of the 
+					 <span class="option">-gcc-name=</span><var>&lt;directory-name&gt;</var><span class="option">/gcc</span> option. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">GXX_ROOT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the location of the gcc binaries. Set this variable to specify the locations of the GCC installed files when the compiler does not find the needed values as specified by the use of the 
+					 <span class="option">-gcc-name=</span><var>&lt;directory-name&gt;</var><span class="option">/gcc</span> option. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">IA32ROOT</span> (IA-32 architecture and Intel&reg; 64 architecture) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Points to the directories containing the include and library files for a non-standard installation structure. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">ICCCFG</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the configuration file for customizing compilations when invoking the compiler using 
+						<span class="keyword">icc</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">ICPCCFG</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the configuration file for customizing compilations when invoking the compiler using 
+						<span class="keyword">icpc</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">INTEL_CHKP_REPORT_MODE</span> (Linux* OS) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Changes the pointer checker reporting mode at runtime. 
+					 </p>
+ 
+					 <p>See 
+						<a href="GUID-B8D77890-54DC-4FB9-BD1E-6C55CC8F03DF.htm">Finding and Reporting Out-of-Bounds Errors</a>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">INTEL_LICENSE_FILE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the location for the Intel license file. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">LD_LIBRARY_PATH (Linux* OS)</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the location for shared objects. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">PATH</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the directories the system searches for binary executable files. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">PROF_DIR</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 ">Specifies the directory where profiling files (files with extensions 
+					 <span class="filepath">.dyn</span>, 
+					 <span class="filepath">.dpi</span>, 
+					 <span class="filepath">.spi</span> and so forth) are stored. The default is to store the 
+					 <span class="filepath">.dyn</span> files in the source directory of the file containing the first executed instrumented routine in the binary compiled with the 
+					 <span class="option">prof-gen 
+					 </span> option. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">PROF_DPI</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 ">Name for the 
+					 <span class="filepath">.dpi</span> file. The default is 
+					 <span class="filepath">pgopti.dpi</span>. 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">TMP</span> 
+					 </p>
+ 
+					 <p><span class="keyword">TMPDIR</span> 
+					 </p>
+ 
+					 <p><span class="keyword">TEMP</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the location for temporary files. If none of these are specified, the compiler stores temporary files in 
+						<span class="filepath">/tmp</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				<td class="cellrowborder" colspan="2" valign="top" headers="d776138e60 d776138e68 "><strong>Intel&reg; MIC Architecture Environment Variables</strong> 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p><span class="keyword">MIC_ENV_PREFIX</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Used to control environment variables passed to the coprocessor. 
+				  </p>
+ 
+				  <p>By default, all environment variables set on the host are passed to the coprocessor. Setting 
+					 <span class="keyword">MIC_ENV_PREFIX</span> passes only environment variables that have a prefix of the value of this variable. For example, setting 
+					 <samp class="codeph">setenv MIC_ENV_PREFIX=MIC</samp> passes only environment variables that have a prefix of 
+					 <samp class="codeph">MIC</samp>. 
+				  </p>
+ 
+				  <p> 
+					 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+						<p>The 
+						  <span class="keyword">MIC_LD_LIBRARY_PATH</span> variable is not stripped and passed to the coprocessor, so you cannot use 
+						  <samp class="codeph">MIC_ENV_PREFIX=MIC</samp> to change the 
+						  <span class="keyword">LD_LIBRARY_PATH</span> on the coprocessor. 
+						</p>
+ 
+					 </div> 
+				  </p>
+ 
+				  <p>For information on passing environment variables to a particular coprocessor, and on passing multiple environment variables to one or all coprocessors, see 
+					 <a href="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8.htm#GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">Setting Environment Variables on the CPU to Modify the Coprocessor's Execution Environment</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">MIC_HOST_LOG</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>A string containing the file name to output traces from the host. 
+				  </p>
+ 
+				  <p><strong>Default:</strong> None 
+				  </p>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">MIC_HOST_LOG=/home/user/app/host.log</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p><span class="keyword">MIC_LD_LIBRARY_PATH</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Specifies the location for target shared objects. 
+					 <span class="keyword">LD_LIBRARY_PATH</span> specifies the location for host objects. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">MIC_PROXY_IO</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) the proxy of stderr and stdout, and specifies whether the process wants I/O proxy support between the host and coprocessor. 
+				  </p>
+ 
+				  <p><strong>Default:</strong> 
+					 <span class="keyword">1</span> 
+				  </p>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">MIC_PROXY_IO=0</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">MIC_SEP_MONITOR</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) SEP at offload regions. 
+				  </p>
+ 
+				  <p><strong>Default:</strong> 
+					 <span class="keyword">0</span> 
+				  </p>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">MIC_SEP_MONITOR=1</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">MIC_STACKSIZE</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Specifies the stack size of the main thread for the offload. This value is typically much larger than the stack size for individual threads. It corresponds to what you would set with 
+					 <span class="keyword">ulimit</span> 
+				  <span class="option">-s</span> (BASH shell) or 
+				  <span class="keyword">limit stacksize</span> (C shell) if you were running natively on either the coprocessor or the host. 
+				  </p>
+ 
+				  <p>Set this variable to 
+					 <samp class="codeph"><var>integer</var>B|K|M|G|T</samp>, where: 
+				  </p>
+ 
+				  <a name="d80972e255"><!-- --></a><ul type="disc" id="d80972e255"> 
+					 <li> 
+						<p><var>B</var> = bytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>K</var> = kilobytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>M</var> = megabytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>G</var> = gigabytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>T</var> = terabytes 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  <p><strong>Default: 
+					 </strong> 
+					 <span class="keyword">12M</span> 
+				  </p>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">MIC_STACKSIZE=16M</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">MIC_USE_2MB_BUFFERS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Use 2M pages for (size &gt; MIC_USE_2MB_BUFFERS). Pointer-based variables whose runtime length exceeds the value of this variable will be allocated in large pages. 
+				  </p>
+ 
+				  <p>Set this variable to 
+					 <samp class="codeph"><var>integer</var>B|K|M|G|T</samp>, where: 
+				  </p>
+ 
+				  <a name="d80972e340"><!-- --></a><ul type="disc" id="d80972e340"> 
+					 <li> 
+						<p><var>B</var> = bytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>K</var> = kilobytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>M</var> = megabytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>G</var> = gigabytes 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><var>T</var> = terabytes 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">MIC_USE_2MB_BUFFERS=64K</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">OFFLOAD_DEVICES</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Restricts the offload process to use only the coprocessors specified as the value of the variable. 
+				  </p>
+ 
+				  <p>Set this variable to a comma separated list of coprocessor device numbers in the range 0 to 
+					 <var>number_of_devices_in_the_system</var>-1, where 0 is the first coprocessor in the system, and 
+					 <var>number_of_devices_in_the_system</var>-1 is the last coprocessor in the system. 
+				  </p>
+ 
+				  <p> Coprocessors available for offloading are numbered logically. The function 
+					 <span class="keyword">_Offload_number_of_devices()</span> 
+					  returns the number of available coprocessors. Coprocessor indices that you use in the 
+					 <samp class="codeph">target</samp> specifier of the offload 
+					 <span>pragmas</span> 
+					  are in the range 0 to 
+					 <var>number_of_devices_in_the_system</var>-1. 
+				  </p>
+ 
+				  <p><strong>Default:</strong> The offload process uses all devices.
+				  </p>
+ 
+				  <p><strong> Example:</strong> OFFLOAD_DEVICES = 1,2 
+				  </p>
+ 
+				  <p>On a system with more than two coprocessors installed, this setting enables the application to use only coprocessors 1 and 2. Offloads to coprocessors 0 or 1 are performed on the first and second physical coprocessors. Offloads to target numbers higher than 1 wrap-around so that all offloads remain within coprocessors 0 and 1. The function 
+					 <span class="keyword">_Offload_number_of_devices()</span> 
+					  executed on a coprocessor return 0 or 1, when the offload is running on the first or second coprocessor. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">OFFLOAD_INIT</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p>Specifies a hint to the offload runtime when to initialize coprocessors. 
+				  </p>
+ 
+				  <p>Supported values: 
+				  <a name="d80972e470"><!-- --></a><ul type="disc" id="d80972e470"> 
+					 <li> 
+						<p><samp class="codeph">on_start</samp>: All available coprocessors are initialized before entering main. 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">on_offload</samp>: The coprocessor is initialized immediately before the first offload to it. Initialization is done only on the coprocessor that handles the offload. 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">on_offload_all</samp>: All available coprocessors are initialized immediately before the first offload in an application. 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  </p>
+ 
+				  <p><strong>Default:</strong> 
+					 <samp class="codeph">on_offload_all</samp> 
+				  </p>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">OFFLOAD_INIT=on_start</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				<td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+				  <p> 
+					 <span class="keyword">OFFLOAD_REPORT</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+				  <p> Controls printing offload execution time, in seconds, and the amount of data transferred, in bytes. This environment variable is equivalent to using the 
+					 <span class="keyword">__Offload_report</span> API. 
+				  </p>
+ 
+				  <p>Supported values: 
+				  <a name="d80972e537"><!-- --></a><ul type="disc" id="d80972e537"> 
+					 <li> 
+						<p><samp class="codeph">1</samp>: Produces a report about time taken. 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">2</samp>: In additon to the information produced at value 1, adds the amount of data transferred between the CPU and the coprocessor. 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p><samp class="codeph">3</samp>: In addition to the information produced at value 2, gives additional details on offload activity, including device initialization, and individual variable transfers. 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  </p>
+ 
+				  <p><strong>Default:</strong> None 
+				  </p>
+ 
+				  <p><strong> Example:</strong> 
+					 <samp class="codeph">OFFLOAD_REPORT=1</samp> 
+				  </p>
+ 
+				  <p>See also 
+					 <a href="GUID-DE4441B3-C716-4E80-8511-15FA8ED8B0EE.htm"> __Offload_report</a>. 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" colspan="2" valign="top" headers="d776138e60 d776138e68 "><strong>OpenMP* Environment Variables (OMP_) and Extensions (KMP_) 
+					 </strong> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_AFFINITY</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Enables run-time library to bind threads to physical processing units. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> none 
+					 
+					 </p>
+ 
+					 <p> 
+        <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>This environment variable is available for both Intel&reg; and non-Intel microprocessors, but it may perform additional optimizations for Intel&reg; microprocessors than it performs for non-Intel microprocessors. 
+          </p>
+ 
+        </div> 
+        </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_ALL_THREADS</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Limits the number of simultaneously executing threads in an OpenMP* program. If this limit is reached and another native operating system thread encounters OpenMP* API calls or constructs, then the program may abort with an error message. If this limit is reached at the time an OpenMP parallel region begins, a one-time warning message may be generated indicating that the number of threads in the team was reduced, but the program will continue execution. 
+					 </p>
+ 
+					 <p>This environment variable is only used for programs compiled with 
+					 <span class="option">openmp</span> option . 
+					 </p>
+ 
+					 <p><strong>Default:</strong> No enforced limit 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_BLOCKTIME</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Sets the time, in milliseconds, that a thread should wait, after completing the execution of a parallel region, before sleeping. 
+					 </p>
+ 
+					 <p>Use the optional character suffixes: 
+						<var>s</var> (seconds), 
+						<var>m</var> (minutes), 
+						<var>h</var> (hours), or 
+						<var>d</var> (days) to specify the units. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 200 milliseconds 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_CPUINFO_FILE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Specifies an alternate file name for file containing machine topology description. The file must be in the same format as 
+						<span class="filepath">/proc/cpuinfo</span>. 
+					 </p>
+ 
+					 <p> 
+        <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>This environment variable is available for both Intel&reg; and non-Intel microprocessors, but it may perform additional optimizations for Intel&reg; microprocessors than it performs for non-Intel microprocessors. 
+          </p>
+ 
+        </div> 
+        </p>
+ 
+					 <p><strong>Default:</strong> None 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_DETERMINISTIC_REDUCTIONS</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) the use of a specific ordering of the reduction operations for implementing the reduction clause for an OpenMP* parallel region. This has the effect that, for a given number of threads, in a given parallel region, for a given data set and reduction operation, a floating point reduction done for an OpenMP reduction clause will have a consistent floating point result from run to run, since round-off errors will be identical. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 
+						<span class="keyword">0</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_DYNAMIC_MODE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Selects the method used to determine the number of threads to use for a parallel region when 
+						<span class="keyword">OMP_DYNAMIC</span><span class="keyword">=true</span>. 
+					 </p>
+ 
+					 <p><strong>Possible values:</strong> (<var>asat 
+						</var> | 
+						<var>load_balance 
+						</var> | 
+						<var>thread_limit 
+						</var>), where, 
+					 <ul type="disc" id="GUID-CFE1F3EE-67C1-40E9-8F1E-6F6EC7FA3601"> 
+						<li id="LI_D1B5C4502F9E4A019003C197D92653B8"><a name="LI_D1B5C4502F9E4A019003C197D92653B8"><!-- --></a> 
+						  <p><var>asat</var>: estimates number of threads based on parallel start time; 
+						  </p>
+ 
+						</li>
+ 
+						<li id="LI_C08E7719AB9A4720B20068172992BC4A"><a name="LI_C08E7719AB9A4720B20068172992BC4A"><!-- --></a> 
+						  <p><var>load_balance</var>: tries to avoid using more threads than available execution units on the machine; 
+						  </p>
+ 
+						</li>
+ 
+						<li id="LI_D31EC5EBF49D4A98A27DFBA302886652"><a name="LI_D31EC5EBF49D4A98A27DFBA302886652"><!-- --></a> 
+						  <p><var>thread_limit</var>: tries to avoid using more threads than total execution units on the machine. 
+						  </p>
+ 
+						</li>
+ 
+					 </ul>
+ 
+					 </p>
+ 
+					 <p><strong>Default (IA-32 architecture):</strong> 
+						<var>load_balance 
+						</var> (on all supported OSes) 
+					 </p>
+ 
+					 <p><strong>Default (Intel&reg; MIC architecture):</strong><var>thread_limit 
+						</var> (on supported OSes) 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_INHERIT_FP_CONTROL</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) the copying of the floating point control settings of the master thread to the floating point control settings of the OpenMP* worker threads at the start of each parallel region. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 
+						<span class="keyword">1</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_LIBRARY</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Selects the OpenMP run-time library execution mode. The values for this variable are 
+						<var>serial</var>, 
+						<var>turnaround</var>, or 
+						<var>throughput 
+						</var>. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 
+						<var>throughput 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_MONITOR_STACKSIZE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Sets the number of bytes to allocate for the monitor thread, which is used for book-keeping during program execution. 
+					 </p>
+ 
+					 <p>Use the optional suffixes: 
+						<span class="keyword">b</span> (bytes), 
+						<span class="keyword">k</span> (kilobytes), 
+						<span class="keyword">m</span> (megabytes), 
+						<span class="keyword">g</span> (gigabytes), or 
+						<span class="keyword">t</span> (terabytes) to specify the units. 
+					 </p>
+ 
+					 <p> 
+						<strong>Default:</strong> max (32k, system minimum thread stack size) 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_SETTINGS</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) the printing of OpenMP run-time library environment variables during program execution. Two lists of variables are printed: user-defined environment variables settings and effective values of variables used by OpenMP run-time library. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 0 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_STACKSIZE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Sets the number of bytes to allocate for each OpenMP* thread to use as its private stack. Recommended size is 16m. Use the optional suffix 
+						<var>b</var> (bytes), 
+						<var>k</var> (kilobytes), 
+						<var>m</var> (megabytes), 
+						<var>g</var> (gigabytes), or 
+						<var>t</var> (terabytes) to specify the allocation. This variable does not affect the native operating system threads created by the user program nor the thread executing the sequential part of an OpenMP* program or parallel programs created using 
+						<a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">[Q]parallel</span></a> . 
+					 </p>
+ 
+					 <p><strong>Default (IA-32 architecture):</strong> 2m 
+					 </p>
+ 
+					 <p><strong>Default Intel&reg; 64 architecture):</strong> 4m. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">KMP_VERSION</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) the printing of OpenMP run-time library version information during program execution. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> disabled. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_DYNAMIC</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="top" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>) the dynamic adjustment of the number of threads. 
+					 </p>
+ 
+					 <p><strong>Default: 
+						</strong><span class="keyword">0</span> 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph"> export OMP_DYNAMIC=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_MAX_ACTIVE_LEVELS</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Limits the number of simultaneously executing threads in an OpenMP program. 
+					 </p>
+ 
+					 <p>If this limit is reached and another native operating system thread encounters OpenMP API calls or constructs, the program can abort with an error message. If this limit is reached when an OpenMP parallel region begins, a one-time warning message might be generated indicating that the number of threads in the team was reduced, but the program will continue. 
+					 </p>
+ 
+					 <p>This environment variable is only used for programs compiled with the following options: 
+						<a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">[Q]parallel</span></a> and 
+						<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">[Q]openmp</span></a>. 
+					 </p>
+ 
+					 <p><span class="keyword">omp_get_thread_limit()</span> routine returns the value of the limit. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> No enforced limit 
+					 </p>
+ 
+					 <p><strong>Related environment variable:</strong> 
+						<span class="keyword">KMP_ALL_THREADS</span>. 
+						<span class="keyword">OMP_THREAD_LIMIT</span> overrides 
+						<span class="keyword">KMP_ALL_THREADS</span>. 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_MAX_ACTIVE_LEVELS=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_PLACES</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p> An explicit ordered list of places specified as either an abstract name describing a set of places or an explicit list of places described by nonnegative numbers. An exclusion operator “!” can also be used to exclude the number or place immediately following the operator. 
+					 </p>
+ 
+					 <p>For 
+						<strong>explicit lists</strong>, the meaning of the numbers and how the numbering is done for a list of nonnegative numbers are implementation defined. Generally, the numbers represent the smallest unit of execution exposed by the execution environment, typically a hardware thread. 
+					 </p>
+ 
+					 <p> Intervals can be specified using the 
+						<samp class="codeph">&lt;lower-bound&gt;</samp> : 
+						<samp class="codeph">&lt;length&gt;</samp> : 
+						<samp class="codeph">&lt;stride&gt;</samp> notation to represent the following list of numbers: 
+						<pre>“&lt;lower-bound&gt;, 
+&lt;lower-bound&gt; + &lt;stride&gt;, 
+..., 
+&lt;lower-bound&gt; +(&lt;length&gt;-1)*&lt;stride&gt;.”</pre> When 
+						<samp class="codeph">&lt;stride&gt;</samp> is omitted, a unit stride is assumed. Intervals can specify numbers within a place as well as sequences of places. 
+						<pre># EXPLICIT LIST EXAMPLE
+setenv OMP_PLACES "{0,1,2,3},{4,5,6,7},{8,9,10,11},{12,13,14,15}"
+setenv OMP_PLACES "{0:4},{4:4},{8:4},{12:4}"
+setenv OMP_PLACES "{0:4}:4:4"</pre> 
+					 </p>
+ 
+					 <p> The 
+						<strong>abstract names</strong> listed below should be understood by the execution and runtime environment: 
+					 <ul type="disc" id="GUID-8E74EFA9-22EA-4C94-A098-655F07B5F4A7"> 
+						<li id="LI_9AF9F57F3E924212A8E383D4980206A1"><a name="LI_9AF9F57F3E924212A8E383D4980206A1"><!-- --></a><samp class="codeph">threads</samp>: Each place corresponds to a single hardware thread on the target machine. 
+						</li>
+ 
+						<li id="LI_12C5101022D944DAACD74138F8B33513"><a name="LI_12C5101022D944DAACD74138F8B33513"><!-- --></a><samp class="codeph">cores</samp>: Each place corresponds to a single core (having one or more hardware threads) on the target machine. 
+						</li>
+ 
+						<li id="LI_3B9532127C414836A1E0D257F7C0FA55"><a name="LI_3B9532127C414836A1E0D257F7C0FA55"><!-- --></a><samp class="codeph">sockets</samp>: Each place corresponds to a single socket (consisting of one or more cores) on the target machine. 
+						</li>
+ 
+					 </ul>
+ 
+					 </p>
+ 
+					 <p>When requesting fewer places or more resources than available on the system, the determination of which resources of type 
+						<samp class="codeph">abstract_name</samp> are to be included in the place list is implementation defined. The precise definitions of the abstract names are implementation defined. An implementation may also add abstract names as appropriate for the target platform. The abstract name may be appended by a positive number in parentheses to denote the length of the place list to be created, that is: 
+						<samp class="codeph">abstract_name(<var>num-places</var>)</samp>. 
+						<pre># ABSTRACT NAMES EXAMPLE
+setenv OMP_PLACES threads
+setenv OMP_PLACES threads(4)</pre> 
+					 </p>
+ 
+					 <p> 
+						<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+						  <p>OMP_PLACES environment variable: if any numerical values cannot be mapped to a processor on the target platform the behavior is implementation defined. The behavior is also implementation defined when the OMP_PLACES environment variable is defined using an abstract name. 
+						  </p>
+ 
+						</div> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_NESTED</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">1</span>) or disables (<span class="keyword">0</span>)nested parallelism. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 
+						<span class="keyword">0</span> 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_NESTED=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_NUM_THREADS</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Sets the maximum number of threads to use for OpenMP* parallel regions if no other value is specified in the application. 
+					 </p>
+ 
+					 <p>This environment variable applies to both 
+						<a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">[Q]parallel</span></a> and 
+						<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">[Q]openmp</span></a>. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> Number of processors visible to the operating system. 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_NUM_THREADS=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_PROC_BIND</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Enables (<span class="keyword">true</span>) or disables (<span class="keyword">false</span>) the binding of threads to processor contexts. If enabled, this is the same as specifying 
+						<span class="keyword">KMP_AFFINITY</span>=<var>scatter</var>. If disabled, this is the same as specifying 
+						<span class="keyword">KMP_AFFINITY</span>=<var>none</var>. 
+					 </p>
+ 
+					 <p>If both 
+						<span class="keyword">OMP_PROC_BIND</span> and 
+						<span class="keyword">KMP_AFFINITY</span> are specified, 
+						<span class="keyword">KMP_AFFINITY</span> settings take precedence. 
+						<span class="keyword">GOMP_CPU_AFFINITY</span> also takes precedence over 
+						<span class="keyword">OMP_PROC_BIND</span>. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 
+						<span class="keyword">false</span> 
+					 </p>
+ 
+					 <p> 
+						<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+						  <p>This environment variable is not supported on the OS X* operating system. 
+						  </p>
+ 
+						</div> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_SCHEDULE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Sets the run-time schedule type and an optional chunk size. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> 
+						<span class="keyword">STATIC</span>, no chunk size specified 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_SCHEDULE="kind[,chunk_size]"</samp> 
+					 </p>
+ 
+					 <p> 
+        <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>This environment variable is available for both Intel&reg; and non-Intel microprocessors, but it may perform additional optimizations for Intel&reg; microprocessors than it performs for non-Intel microprocessors. 
+          </p>
+ 
+        </div> 
+        </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_STACKSIZE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Sets the number of bytes to allocate for each OpenMP thread to use as the private stack for the thread. Recommended size is 16M. 
+					 </p>
+ 
+					 <p>Use the optional suffixes: 
+						<var>B</var> (bytes), 
+						<var>K</var> (Kilobytes), 
+						<var>M</var> (Megabytes), 
+						<var>G</var> (Gigabytes), or 
+						<var>T</var> (Terabytes) to specify the units. If value is specified without suffix, the size is assumed to be 
+						<var>K</var> (Kilobytes). 
+					 </p>
+ 
+					 <p>This variable does not affect the native operating system threads created by the user program nor the thread executing the sequential part of an OpenMP program or parallel programs created using 
+						<a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">[Q]parallel</span></a>. 
+					 </p>
+ 
+					 <p><span class="keyword">kmp_{set,get}_stacksize_s()</span> routines set/retrieve the value. 
+						<span class="keyword">kmp_set_stacksize_s()</span> routine must be called from sequential part, before first parallel region is created. Otherwise, calling 
+						<span class="keyword">kmp_set_stacksize_s()</span> has no effect. 
+					 </p>
+ 
+					 <p><strong>Default (IA-32 architecture):</strong> 2M 
+					 </p>
+ 
+					 <p><strong>Default (Intel&reg; 64 architecture): 
+						</strong> 4M 
+					 </p>
+ 
+					 <p><strong>Related environment variables:</strong> 
+						<span class="keyword">KMP_STACKSIZE</span> (overrides 
+						<span class="keyword">OMP_STACKSIZE</span>). 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_STACKSIZE=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_THREAD_LIMIT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Limits the number of simultaneously executing threads in an OpenMP* program. 
+					 </p>
+ 
+					 <p>If this limit is reached and another native operating system thread encounters OpenMP* API calls or constructs, the program can abort with an error message. If this limit is reached when an OpenMP parallel region begins, a one-time warning message might be generated indicating that the number of threads in the team was reduced, but the program will continue. 
+					 </p>
+ 
+					 <p>This environment variable is only used for programs compiled with the following options: 
+						<a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">[Q]parallel</span></a> and 
+						<a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">[Q]openmp</span></a>. 
+					 </p>
+ 
+					 <p>omp_get_thread_limit() routine returns the value of the limit. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> No enforced limit 
+					 </p>
+ 
+					 <p><strong>Related environment variable:</strong> 
+						<span class="keyword">KMP_ALL_THREADS</span> (overrides 
+						<span class="keyword">OMP_THREAD_LIMIT</span>). 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_THREAD_LIMIT=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">OMP_WAIT_POLICY</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Decides whether threads spin (active) or sleep (passive) while they are waiting. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> Passive 
+					 </p>
+ 
+					 <p><strong>Example syntax:</strong> 
+						<samp class="codeph">export OMP_WAIT_POLICY=value</samp> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" colspan="2" align="left" valign="middle" headers="d776138e60 d776138e68 "> 
+					 <p><strong>GNU* Environment Variables and Extensions</strong> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">CPATH</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies path to include directory for C/C++ compilations. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">C_INCLUDE_PATH</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies path to include directory for C compilations. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">CPLUS_INCLUDE_PATH</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies path to include directory for C++ compilations. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">DEPENDENCIES_OUTPUT</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies how to output dependencies for make based on the non-system header files processed by the compiler. System header files are ignored in the dependency output. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">GCC_EXEC_PREFIX</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies alternative names for the linker (<span class="keyword">ld</span>) and assembler (<span class="keyword">as</span>). 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">GOMP_CPU_AFFINITY</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies a list of OS processor IDs. 
+					 </p>
+ 
+					 <p><strong>Default:</strong> Affinity is disabled 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">GOMP_STACKSIZE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>This environment variable is a GNU extension recognized by the Intel&reg; OpenMP* compatibility library. 
+					 </p>
+ 
+					 <p><span class="keyword">OMP_STACKSIZE</span> overrides 
+						<span class="keyword">GOMP_STACKSIZE</span>. 
+						<span class="keyword">KMP_STACKSIZE</span> overrides 
+						<span class="keyword">OMP_STACKSIZE</span> and 
+						<span class="keyword">GOMP_STACKSIZE</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">LIBRARY_PATH</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies a colon-separated list of directories, much like 
+						<span class="keyword">PATH</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">SUNPRO_DEPENDENCIES</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>This variable is the same as 
+						<span class="keyword">DEPENDENCIES_OUTPUT</span>, except that system header files are not ignored. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" colspan="2" align="left" valign="middle" headers="d776138e60 d776138e68 "><strong>PGO Environment Variables 
+					 </strong> 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">INTEL_PROF_DUMP_CUMULATIVE</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>When using interval profile dumping (initiated by 
+						<span class="keyword">INTEL_PROF_DUMP_INTERVAL</span> or the function 
+						<span class="keyword">_PGOPTI_Set_Interval_Prof_Dump</span>) during the execution of an instrumented user application, allows creation of a single 
+						<span class="filepath">.dyn</span> file to contain profiling information instead of multiple 
+						<span class="filepath">.dyn</span> files. If not set, executing an instrumented user application creates a new 
+						<span class="filepath">.dyn</span> file for each interval. Setting this environment variable is useful for applications that do not terminate or those that terminate abnormally (bypass the normal exit code). 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">INTEL_PROF_DUMP_INTERVAL</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Initiates interval profile dumping in an instrumented user application. This environment variable may be used to initiate Interval Profile Dumping in an instrumented application. 
+					 </p>
+
+						
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">PROF_DIR</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Specifies the directory in which dynamic information files are created. This variable applies to all three phases of the profiling process. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">PROF_DUMP_INTERVAL</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Deprecated; use 
+						<span class="keyword">INTEL_PROF_DUMP_INTERVAL</span> instead. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="middle"> 
+				  <td class="cellrowborder" align="left" valign="middle" width="30%" headers="d776138e60 "> 
+					 <p><span class="keyword">PROF_NO_CLOBBER</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" align="left" valign="middle" width="70%" headers="d776138e68 "> 
+					 <p>Alters the feedback compilation phase slightly. By default, during the feedback compilation phase, the compiler merges data from all dynamic information files and creates a new 
+						<span class="filepath">pgopti.dpi</span> file if the 
+						<span class="filepath">.dyn</span> files are newer than an existing 
+						<span class="filepath">pgopti.dpi</span> file. 
+					 </p>
+ 
+					 <p>When this variable is set the compiler does not overwrite the existing 
+						<span class="filepath">pgopti.dpi</span> file. Instead, the compiler issues a warning. You must remove the 
+						<span class="filepath">pgopti.dpi</span> file if you want to use additional dynamic information files. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

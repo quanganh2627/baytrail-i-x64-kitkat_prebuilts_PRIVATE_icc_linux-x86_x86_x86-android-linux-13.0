@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Modifying Your makefile">
+<meta name="DC.subject" content="makefiles, modifying">
+<meta name="keywords" content="makefiles, modifying">
+<meta name="DC.Relation" scheme="URI" content="GUID-54286E58-FE02-4F8D-B280-3BA2AADB2B4D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-3C074E87-7CDD-4ECB-9A17-1457FA28E148.htm#GUID-3C074E87-7CDD-4ECB-9A17-1457FA28E148">
+<meta name="DC.Relation" scheme="URI" content="GUID-07B17693-FE53-4605-89C8-567C5F9A8EED.htm#GUID-07B17693-FE53-4605-89C8-567C5F9A8EED">
+<meta name="DC.Relation" scheme="URI" content="GUID-D61B9FD6-981E-4516-AE35-7A5CC90EF829.htm#GUID-D61B9FD6-981E-4516-AE35-7A5CC90EF829">
+<meta name="DC.Relation" scheme="URI" content="GUID-F4210147-81E1-4EF4-854D-885BD5EC8CA6.htm#GUID-F4210147-81E1-4EF4-854D-885BD5EC8CA6">
+<meta name="DC.Relation" scheme="URI" content="GUID-603F2191-6FC2-4EE6-8B94-55C7CAD72D2E.htm#GUID-603F2191-6FC2-4EE6-8B94-55C7CAD72D2E">
+<meta name="DC.Relation" scheme="URI" content="GUID-B54072EA-7ED4-4B09-AB04-717AFD7CE7E7.htm#GUID-B54072EA-7ED4-4B09-AB04-717AFD7CE7E7">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2513D955-A18B-44C4-88E6-104FC801E6FB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Modifying Your makefile</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_port_make"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_port_make"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2513D955-A18B-44C4-88E6-104FC801E6FB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Modifying Your makefile</h1>
+ 
+   
+  <div> 
+    <p>If you use makefiles to build your gcc application, you need to change the value for the 
+      <span class="keyword">GCC</span> compiler variable to use the Intel&reg; C++ compiler. You may also want to review the options specified by 
+      <span class="keyword">CFLAGS</span>. A simple example follows:
+    </p>
+ 
+    <div class="section" id="GUID-9C01B6D1-D854-48C3-82BC-11C945FC5945"><h2 class="sectiontitle">gcc makefile</h2> 
+       
+      <pre># Use gcc compiler 
+CC = gcc 
+# Compile-time flags 
+CFLAGS = -O2 -std=c99 
+all: area_app 
+area_app: area_main.o area_functions.o
+&nbsp;&nbsp;&nbsp;&nbsp;$(CC) area_main.o area_functions.o -o area 
+area_main.o: area_main.c
+&nbsp;&nbsp;&nbsp;&nbsp;$(CC) -c $(CFLAGS) area_main.c 
+area_functions.o: area_functions.c
+&nbsp;&nbsp;&nbsp;&nbsp;$(CC) -c -fno-asm $(CFLAGS) area_functions.c 
+clean:
+&nbsp;&nbsp;&nbsp;&nbsp;rm -rf *o area</pre> 
+    </div>
+ 
+    <div class="section" id="GUID-7B902E85-09DC-468A-837E-2C79F53CE9CE"><h2 class="sectiontitle">Modified makefile for Intel Compiler</h2> 
+       
+      <pre># Use Intel C compiler 
+CC = icc 
+# Compile-time flags 
+CFLAGS = -std=c99 
+all: area-app 
+area-app: area_main.o area_functions.o
+&nbsp;&nbsp;&nbsp;&nbsp;$(CC) area_main.o area_functions.o -o area 
+area_main.o: area_main.c
+&nbsp;&nbsp;&nbsp;&nbsp;$(CC) -c $(CFLAGS) area_main.c 
+area_functions.o: area_functions.c
+&nbsp;&nbsp;&nbsp;&nbsp;gcc -c -O2 -fno-asm $(CFLAGS) area_functions.c 
+clean:
+&nbsp;&nbsp;&nbsp;&nbsp;rm -rf *o area</pre> 
+      <p>If your gcc code includes features that are not supported with the Intel&reg; C++ compiler, such as compiler options, language extensions, macros, pragmas, etc., you can compile those sources separately with gcc if necessary.
+      </p>
+ 
+      <p>In the above makefile, 
+        <span class="filepath">area_functions.c</span> is an example of a source file that includes features unique to gcc. Since the Intel compiler uses the 
+      <span class="option">-O2</span> compiler option by default and gcc's default is 
+      <span class="option">-O0</span>, we instruct gcc to compile with 
+      <span class="option">-O2</span>. We also include the 
+      <span class="option">-fno-asm</span> switch from the original makefile since this switch is not supported with the Intel compiler. With the modified makefile, the output of 
+      <samp class="codeph">make</samp> is:
+      </p>
+ 
+      <p><samp class="codeph">icc -c -std=c99 area_main.c</samp><br><samp class="codeph">gcc -c -O2 -fno-asm -std=c99 area_functions.c</samp><br><samp class="codeph">icc area_main.o area_functions.o -o area</samp>
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-54286E58-FE02-4F8D-B280-3BA2AADB2B4D.htm">Porting Applications</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-3C074E87-7CDD-4ECB-9A17-1457FA28E148.htm#GUID-3C074E87-7CDD-4ECB-9A17-1457FA28E148">Equivalent Macros
+        </a></div>
+<div><a href="GUID-07B17693-FE53-4605-89C8-567C5F9A8EED.htm#GUID-07B17693-FE53-4605-89C8-567C5F9A8EED">Equivalent Environment Variables
+        </a></div>
+<div><a href="GUID-D61B9FD6-981E-4516-AE35-7A5CC90EF829.htm#GUID-D61B9FD6-981E-4516-AE35-7A5CC90EF829">Compiler Options for Interoperability
+        </a></div>
+<div><a href="GUID-F4210147-81E1-4EF4-854D-885BD5EC8CA6.htm#GUID-F4210147-81E1-4EF4-854D-885BD5EC8CA6">Support for gcc and g++ Language Extensions
+        </a></div>
+<div><a href="GUID-603F2191-6FC2-4EE6-8B94-55C7CAD72D2E.htm#GUID-603F2191-6FC2-4EE6-8B94-55C7CAD72D2E">Predefined Macros
+        </a></div>
+<div><a href="GUID-B54072EA-7ED4-4B09-AB04-717AFD7CE7E7.htm#GUID-B54072EA-7ED4-4B09-AB04-717AFD7CE7E7">gcc Builtin Functions
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

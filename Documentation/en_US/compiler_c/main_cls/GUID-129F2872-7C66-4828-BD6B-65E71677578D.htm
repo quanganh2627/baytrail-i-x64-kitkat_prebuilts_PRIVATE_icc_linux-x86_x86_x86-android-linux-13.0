@@ -1,0 +1,925 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="New Options">
+<meta name="DC.subject" content="compiler options, new">
+<meta name="keywords" content="compiler options, new">
+<meta name="DC.Relation" scheme="URI" content="GUID-705E5C05-7324-4B74-A7A0-60A26B8D600E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-129F2872-7C66-4828-BD6B-65E71677578D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>New Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="options_ref_new_opts"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.options_ref_new_opts"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-129F2872-7C66-4828-BD6B-65E71677578D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">New Options</h1>
+ 
+   
+  <div> 
+	 <div class="section" id="GUID-3F9A8CF3-6410-4E6D-A64E-9B685C921615"> 
+		<p>This topic lists the options that provide new functionality in this release. 
+		</p>
+ 
+		<p>Some compiler options are only available on certain systems, as indicated by these labels: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3C8ECBC1-12AD-4394-A1BE-6306A68156A2" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+				<tr> 
+				  <th class="noborder" align="left" valign="top" width="20%" id="d50212e52"> 
+					 <p>Label 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="noborder" align="left" valign="top" width="80%" id="d50212e58"> 
+					 <p>Meaning 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e52 "> 
+					 <p>i32 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="80%" headers="d50212e58 "> 
+					 <p>The option is available on systems using IA-32 architecture. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e52 "> 
+					 <p>i64em 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="80%" headers="d50212e58 "> 
+					 <p>The option is available on systems using Intel&reg; 64 architecture<span> and Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture)</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				</tbody>
+ 
+		  </table>
+</div>
+ 
+		<p>If no label appears, the option is available on all supported systems. 
+		</p>
+ 
+		<p>If "only" appears in the label, the option is only available on the identified system. 
+		</p>
+ 
+		<p>For more details on the options, refer to the individual option descriptions. 
+		</p>
+ 
+		<p>For information on conventions used in this table, see 
+		  <a href="GUID-0B991C05-2FB5-4C8C-A97A-6EBBD4705798.htm#GUID-0B991C05-2FB5-4C8C-A97A-6EBBD4705798">Notational Conventions</a>. 
+		</p>
+ 
+		<p>New compiler options are listed in tables below: 
+		</p>
+ 
+		<ul type="disc" id="GUID-2FDEE79A-961C-4383-9CB7-F57D07837885"> 
+		  <li> 
+			 <p>The first table lists new options that are available on Windows* systems. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>The second table lists new options that are available on Linux* and OS X* systems. If an option is only available on one of these operating systems, it is labeled. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-547605AB-6A03-42FB-96C0-63787136C8AE"> 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1BBAF14F-208E-4171-9864-26196582F3B1" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+				<tr> 
+				  <th class="noborder" align="left" valign="top" width="20%" id="d50212e151"> 
+					 <p>Windows* OS Options 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="noborder" align="left" valign="top" width="60%" id="d50212e157"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="noborder" align="left" valign="top" width="20%" id="d50212e163"> 
+					 <p>Default 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/check:keyword</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Checks for certain conditions at run time. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qcheck-pointers:keyword</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Determines whether the compiler checks bounds for memory access through pointers. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p><span class="option">/Qcheck-pointers:none</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qcheck-pointers-dangling:keyword</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Determines whether the compiler checks for dangling pointer references. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p><span class="option">/Qcheck-pointers-dangling:none</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qcheck-pointers-undimensioned[-]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Determines whether the compiler checks bounds for memory access through arrays that are declared without dimensions. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p><span class="option">/Qcheck-pointers-undimensioned-</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qdiag-enable:sc-enums</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Tells static analysis to treat enumeration variables as known values equal to any one of the associated enumeration literals. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qdiag-enable:sc-mode</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Enables static analysis diagnostics and lets you specify the analysis mode. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qdiag-enable:sc-single-file</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Tells static analysis to process each file individually. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qextend-arguments:n</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Controls how scalar integer arguments are extended in calls to unprototyped and varargs functions. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p><span class="option">/Qextend-arguments:32</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qgcc-dialect:ver</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Enables support for a language dialect that is compatible with the gcc compiler, while maintaining link compatibility with Windows* OS. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/Qguide-profile:filename | dir [, [filename | dir]...]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p> Specifies a loop profiler data file (or a set of files) when used with option<span class="option"> /Qguide</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e151 "> 
+					 <p><span class="option">/watch[:keyword]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e157 "> 
+					 <p>Tells the compiler to display certain information to the console output window. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e163 "> 
+					 <p><span class="option">/nowatch</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-0A400684-9C39-462A-8E90-8778CB612A19"> 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-143178B4-78D0-4190-B822-E42D76741BF0" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+				<tr> 
+				  <th class="noborder" align="left" valign="top" width="20%" id="d50212e455"> 
+					 <p>Linux* OS and OS X* Options 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="noborder" align="left" valign="top" width="60%" id="d50212e461"> 
+					 <p>Description 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="noborder" align="left" valign="top" width="20%" id="d50212e467"> 
+					 <p>Default 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-check=keyword</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Checks for certain conditions at run time. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-check-pointers=keyword</span> (Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Determines whether the compiler checks bounds for memory access through pointers. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-check-pointers=none</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-check-pointers-dangling=keyword</span> (Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Determines whether the compiler checks for dangling pointer references. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-check-pointers-dangling=none</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-[no-]check-pointers-undimensioned</span>(Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Determines whether the compiler checks bounds for memory access through arrays that are declared without dimensions. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-check-pointers-undimensioned</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-clang-name=name</span> (OS X* only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Specifies the name of the Clang compiler that should be used to set up the environment for C compilations. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-clangxx-name=name</span> (OS X* only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Specifies the name of the Clang++ compiler that should be used to set up the environment for C++ compilations. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-debug [no]macros</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Determines whether the compiler emits debugging information for C/C++ macros. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-debug nomacros</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-debug [no]pubnames</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Determines whether the compiler generates a DWARF debug_pubnames section. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-debug nopubnames</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-diag-enable sc-enums</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Tells static analysis to treat enumeration variables as known values equal to any one of the associated enumeration literals. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-diag-enable sc-mode</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Enables static analysis diagnostics and lets you specify the analysis mode. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-diag-enable sc-single-file</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Tells static analysis to process each file individually. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-fextend-arguments=n</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Controls how scalar integer arguments are extended in calls to unprototyped and varargs functions. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-fextend-arguments=32</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-fgnu89-inline</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Tells the compiler to use C89 semantics for inline functions when in C99 mode. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-f[no-]stack-protector-all</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Enables or disables stack overflow security checks including functions. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-fno-stack-protector-all</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-grecord-gcc-switches</span> (Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Causes the command line options that were used to invoke the compiler to be appended to the DW_AT_producer attribute in DWARF debugging information. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-guide-profile=filename | dir [, [filename | dir]...]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p> Specifies a loop profiler data file (or a set of files) when used with option 
+					 <span class="option">-guide</span>. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-mmic</span> (i64em; Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Builds an application that runs natively on Intel&reg; MIC Architecture. This option only applies to Intel&reg; MIC Architecture. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-no-offload</span> (i64em; Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Causes the compiler to ignore language constructs for offloading. This option only applies to Intel&reg; MIC Architecture. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-offload-attribute-target=target-name</span> (i64em; Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Causes the compiler to flag every global routine and global data object in the source file with the offload attribute "target(mic)". This option only applies to Intel&reg; MIC Architecture. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-offload-option, target, tool, "option-list"</span> (i64em; Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Lets you explicitly specify options to be used for the specified target and tool. This option only applies to Intel&reg; MIC Architecture. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">--sysroot</span> (Linux* OS only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Specifies the root directory where headers and libraries are located. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p>OFF 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-use-clang-env</span> (OS X* only) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Enables the use of the Clang environment. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-no-use-clang-env</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e455 "> 
+					 <p><span class="option">-watch[=keyword]</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="60%" headers="d50212e461 "> 
+					 <p>Tells the compiler to display certain information to the console output window. 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="noborder" valign="top" width="20%" headers="d50212e467 "> 
+					 <p><span class="option">-nowatch</span> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-705E5C05-7324-4B74-A7A0-60A26B8D600E.htm">Overview of Compiler Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

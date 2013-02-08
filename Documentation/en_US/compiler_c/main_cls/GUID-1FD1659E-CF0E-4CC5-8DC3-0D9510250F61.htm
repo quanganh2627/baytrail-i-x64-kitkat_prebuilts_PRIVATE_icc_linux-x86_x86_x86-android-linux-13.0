@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="finstrument-functions, Qinstrument-functions">
+<meta name="abstract" content="Determines whether function entry and exit points are instrumented.">
+<meta name="description" content="Determines whether function entry and exit points are instrumented.">
+<meta name="DC.subject" content="/Qinstrument-functions compiler option, -finstrument-functions compiler option, function entry and exit points, option determining instrumentation of">
+<meta name="keywords" content="/Qinstrument-functions compiler option, -finstrument-functions compiler option, function entry and exit points, option determining instrumentation of">
+<meta name="DC.Relation" scheme="URI" content="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1FD1659E-CF0E-4CC5-8DC3-0D9510250F61">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>finstrument-functions, Qinstrument-functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_finstrument_functions"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_finstrument_functions"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1FD1659E-CF0E-4CC5-8DC3-0D9510250F61">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">finstrument-functions, Qinstrument-functions</h1>
+<!--Determines whether  function  entry and exit points are instrumented.--><div><p>Determines whether <span>function</span> entry and exit points are instrumented.</p>
+
+<div class="section" id="GUID-6AC8E82A-D690-40A1-99CE-B076D0F6861D"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-47BA136D-B410-456F-B9FB-9AD209350FA7"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-A265909E-D1DD-4AFC-8443-B0BDEEB54366"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-finstrument-functions</span></p><p><span class="kwd">-fno-instrument-functions</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qinstrument-functions</span></p><p><span class="kwd">/Qinstrument-functions-</span></p></td></tr></table></div>
+<div class="section" id="GUID-4EAAFD4C-9686-4C08-936B-67B630E12EF1"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-354839B4-EFEE-427C-9FBB-F5588C948C48"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-fno-instrument-functions</span><br> <span>or<span class="option">/Qinstrument-functions-</span></span></p></td>
+<td valign="top" class="noborder"><p><span>Function</span> entry and exit points are not instrumented.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-BE9B2D8D-04DD-49E9-9106-3ACE850BFF5B"><h2>Description</h2><p>This option determines whether <span>function</span> entry and exit points are instrumented. It may increase execution time.</p>
+<p>The following profiling functions are called with the address of the current <span>function</span> and the address of where the <span>function</span> was called (its "call site"):</p>
+<ul type="disc" id="GUID-2391C5EF-0C24-427D-BBBF-40A7F4D8FE46"> <li><p>This function is called upon <span>function</span> entry:</p>
+ <ul type="circle" class="circle" id="GUID-88465DC5-3D37-40A4-8BF1-114C2AF2EFDD"> <li><pre>void __cyg_profile_func_enter (void *this_fn,</pre> <pre>void *call_site);</pre> </li>
+ </ul>
+ </li>
+ <li><p>This function is called upon <span>function</span> exit:</p>
+ <ul type="circle" class="circle" id="GUID-74934E4A-DE98-46A5-AACF-69321B7E2EA4"> <li><pre>void __cyg_profile_func_exit (void *this_fn,</pre> <pre>void *call_site);</pre> </li>
+ </ul>
+ </li>
+</ul>
+<p>These functions can be used to gather more information, such as profiling information or timing information. Note that it is the user's responsibility to provide these profiling functions.</p>
+<p>If you specify <span class="option">-finstrument-functions</span> (Linux* OS and OS X*) or <span class="option">/Qinstrument-functions</span> (Windows* OS), <span>function</span> inlining is disabled. If you specify <span class="option">-fno-instrument-functions</span> or <span class="option">/Qinstrument-functions-</span>, inlining is not disabled.</p>
+<p>On Linux and OS X systems, you can use the following attribute to stop an individual function from being instrumented:</p>
+<pre>__attribute__((__no_instrument_function__))</pre><p>It also stops inlining from being disabled for that individual function.</p>
+<p>This option is provided for compatibility with gcc.</p>
+</div>
+
+<div class="section" id="GUID-E3AEC589-FB56-4989-8D05-4AE26277F6FD"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm">Profile Guided Optimization (PGO) Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

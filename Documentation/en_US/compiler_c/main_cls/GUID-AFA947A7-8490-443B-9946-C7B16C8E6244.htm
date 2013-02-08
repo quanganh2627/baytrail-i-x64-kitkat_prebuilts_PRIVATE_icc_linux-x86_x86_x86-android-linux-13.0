@@ -1,0 +1,2148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Miscellaneous Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, miscellaneous operations, unpackhi_epi32, unpacklo_epi8, unpacklo_epi16, unpacklo_epi32, unpacklo_epi64, movepi64_pi64, shuffle_pd, movemask_pd, unpacklo_pd, unpackhi_pd, move_epi64, unpackhi_epi64, movpi64_pi64, extract_epi16, shuffle_epi32, insert_epi16, shufflelo_epi16, packus_epi16, packs_epi32, packs_epi16, shufflehi_epi16, unpackhi_epi16, movemask_epi8, unpackhi_epi8, Intel&reg; Streaming SIMD Extensions 2, miscellaneous intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, miscellaneous operations, unpackhi_epi32, unpacklo_epi8, unpacklo_epi16, unpacklo_epi32, unpacklo_epi64, movepi64_pi64, shuffle_pd, movemask_pd, unpacklo_pd, unpackhi_pd, move_epi64, unpackhi_epi64, movpi64_pi64, extract_epi16, shuffle_epi32, insert_epi16, shufflelo_epi16, packus_epi16, packs_epi32, packs_epi16, shufflehi_epi16, unpackhi_epi16, movemask_epi8, unpackhi_epi8, Intel&reg; Streaming SIMD Extensions 2, miscellaneous intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-7CD76E4D-5690-4CBE-A0FB-C9719E2490FC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AFA947A7-8490-443B-9946-C7B16C8E6244">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Miscellaneous Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_misc"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AFA947A7-8490-443B-9946-C7B16C8E6244">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Miscellaneous Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-884E0101-3D94-4FEE-97A0-155F4A990DC9"> 
+      <p> Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for miscellaneous operations are listed in the following table followed by descriptions. 
+      </p>
+ 
+      <p>The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ED669057-6201-4209-834B-B5BBB21BC55F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FEC7C860-523F-427A-84BB-40629AA8D106" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d577138e112"> 
+                <p>Intrinsic 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d577138e118"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d577138e124"> 
+                <p>Corresponding Intel&reg; SSE 2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_packs_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Packed Saturation 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PACKSSWB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_packs_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Packed Saturation 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PACKSSDW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_packus_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Packed Saturation 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PACKUSWB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_extract_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Extraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PEXTRW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_insert_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Insertion 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PINSRW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_movemask_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Mask Creation 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PMOVMSKB</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_shuffle_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Shuffle 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PSHUFD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_shufflehi_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Shuffle 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PSHUFHW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_shufflelo_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Shuffle 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PSHUFLW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpackhi_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKHBW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpackhi_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKHWD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpackhi_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKHDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpackhi_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKHQDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpacklo_epi8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKLBW</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpacklo_epi16</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKLWD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpacklo_epi32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKLDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpacklo_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">PUNPCKLQDQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_movepi64_pi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Move 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">MOVDQ2Q</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_movpi64_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Move 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">MOVDQ2Q</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_move_epi64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Move 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">MOVQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpackhi_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">UNPCKHPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_unpacklo_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Interleave 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">UNPCKLPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_movemask_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Create mask 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">MOVMSKPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e112 "> 
+                <p><span class="option"> _mm_shuffle_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d577138e118 "> 
+                <p>Select values 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d577138e124 "> 
+                <p><span class="keyword">SHUFPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DA2EAE18-4D9F-4349-9DE7-56CE42031E4F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_packs_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Packs the 16 signed 16-bit integers from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> into 8-bit integers and saturates. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-43234243-9758-4DBC-A077-E451CC6D6CED"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8F65F058-F4E2-4268-85ED-FAD4621723A6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e775"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e781"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e787"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e793"> 
+                <p>R8 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e799"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="16.666666666666664%" id="d577138e806"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e775 "> 
+                <p><span class="keyword">Signed Saturate(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e781 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e787 "> 
+                <p><span class="keyword">Signed Saturate(a7)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e793 "> 
+                <p><span class="keyword">Signed Saturate(b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e799 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="16.666666666666664%" headers="d577138e806 "> 
+                <p><span class="keyword">Signed Saturate(b7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AD6FB8D1-AA9C-4A96-8589-295ED534AC7B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_packs_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Packs the eight signed 32-bit integers from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> into signed 16-bit integers and saturates. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-429C1F48-0FCA-4172-92C9-D55E73E67203"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AD8A61DF-4720-4F76-8843-35A2F1D37A48" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e906"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e912"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e918"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e924"> 
+                <p>R4 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e930"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="16.666666666666664%" id="d577138e937"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e906 "> 
+                <p><span class="keyword">Signed Saturate(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e912 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e918 "> 
+                <p><span class="keyword">Signed Saturate(a3)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e924 "> 
+                <p><span class="keyword">Signed Saturate(b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e930 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="16.666666666666664%" headers="d577138e937 "> 
+                <p><span class="keyword">Signed Saturate(b3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-42D20AF3-30BC-42A4-9CBE-1CC447632F3E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_packus_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Packs the 16 signed 16-bit integers from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> into 8-bit unsigned integers and saturates. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-55F4F4ED-0416-4F68-B55E-50BDF9825E81"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CD012F3C-FC94-4D54-8EF5-8B5C7CC84025" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e1036"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e1042"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e1048"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e1054"> 
+                <p>R8 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="16.666666666666664%" id="d577138e1060"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="16.666666666666664%" id="d577138e1067"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e1036 "> 
+                <p><span class="keyword">Unsigned Saturate(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e1042 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e1048 "> 
+                <p><span class="keyword">Unsigned Saturate(a7)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e1054 "> 
+                <p><span class="keyword">Unsigned Saturate(b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="16.666666666666664%" headers="d577138e1060 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="16.666666666666664%" headers="d577138e1067 "> 
+                <p><span class="keyword">Unsigned Saturate(b15)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3EBF4E6F-0DB8-432F-AB74-5E68CDB4FFFB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_extract_epi16(__m128i a, int imm)</span></p></div> 
+      <p>Extracts the selected signed or unsigned 16-bit integer from 
+        <span class="keyword">a</span> and zero extends. The selector 
+        <span class="keyword">imm</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-83EE2349-489E-461D-9CB3-16383B173809"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-76828E41-12CF-4406-82B9-30F1ABA809F4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d577138e1157"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d577138e1157 "> 
+                <p><span class="keyword">(imm == 0) ? a0: ( (imm == 1) ? a1: ... (imm==7) ? a7)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-80085633-9758-4E5A-A7AF-E49DEF732E6C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_insert_epi16(__m128i a, int b, int imm)</span></p></div> 
+      <p>Inserts the least significant 16 bits of 
+        <span class="keyword">b</span> into the selected 16-bit integer of 
+        <span class="keyword">a</span>. The selector 
+        <span class="keyword">imm</span> must be an immediate. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-39E9BB80-4B37-4730-AE14-9B2863B8E5F8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CA6327F3-7E0F-45D6-BA4B-1A452C218776" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e1217"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e1223"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e1229"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d577138e1235"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e1217 "> 
+                <p><span class="keyword">(imm == 0) ? b : a0;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e1223 "> 
+                <p><span class="keyword">(imm == 1) ? b : a1;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e1229 "> 
+                <p><span class="keyword">...</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d577138e1235 "> 
+                <p><span class="keyword">(imm == 7) ? b : a7;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-718B770C-848F-4480-914A-745590DCE5D2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_movemask_epi8(__m128i a)</span></p></div> 
+      <p>Creates a 16-bit mask from the most significant bits of the 16 signed or unsigned 8-bit integers in 
+        <span class="keyword">a</span> and zero extends the upper bits. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9D73B046-864B-4B06-AE3D-BA1FF6CEF3CD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F53D2D76-575B-4A4B-B444-4F7C3AB319ED" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d577138e1309"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d577138e1309 "> 
+                <p><span class="keyword">a15[7] &lt;&lt; 15 | a14[7] &lt;&lt; 14 | ... a1[7] &lt;&lt; 1 | a0[7]</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-87B39A1D-4CB3-4E13-8EB3-D133B3332395"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_shuffle_epi32(__m128i a, int imm)</span></p></div> 
+      <p>Shuffles the four signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> as specified by 
+        <span class="keyword">imm</span>. The shuffle value, 
+        <span class="keyword">imm</span>, must be an immediate. See 
+        <a href="GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200.htm#GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200"> Macro Function for Shuffle</a> for a description of shuffle semantics. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8516A3AB-DD36-49DE-ADD7-0483F94D5E34"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_shufflehi_epi16(__m128i a, int imm)</span></p></div> 
+      <p>Shuffles the upper four signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> as specified by 
+        <span class="keyword">imm</span>. The shuffle value, 
+        <span class="keyword">imm</span>, must be an immediate. See 
+        <a href="GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200.htm#GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200"> Macro Function for Shuffle</a> for a description of shuffle semantics. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7E2BFACE-1AAA-4A1B-A179-B105C34ABAC1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_shufflelo_epi16(__m128i a, int imm)</span></p></div> 
+      <p>Shuffles the lower four signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> as specified by 
+        <span class="keyword">imm</span>. The shuffle value, 
+        <span class="keyword">imm</span>, must be an immediate. See<a href="GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200.htm#GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200"> Macro Function for Shuffle</a> for a description of shuffle semantics. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4BB71C08-F36E-4288-AB3D-887BBF564544"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpackhi_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the upper eight signed or unsigned 8-bit integers in 
+        <span class="keyword">a</span> with the upper eight signed or unsigned 8-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D7FCF6A1-76BE-4519-BD16-DEC174DF71BA"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0550B910-11BF-46F1-BFBE-2421EB8C0D81" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1447"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1453"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1459"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1465"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1471"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1478"> 
+                <p>R14 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="14.285714285714285%" id="d577138e1484"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1447 "> 
+                <p><span class="keyword">a8 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1453 "> 
+                <p><span class="keyword">b8</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1459 "> 
+                <p><span class="keyword">a9</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1465 "> 
+                <p><span class="keyword">b9</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1471 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1478 "> 
+                <p><span class="keyword">a15</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="14.285714285714285%" headers="d577138e1484 "> 
+                <p><span class="keyword">b15</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-72F1BF6B-E347-4D0C-8BF6-D7BEFA556FB6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpackhi_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the upper four signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> with the upper four signed or unsigned 16-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-15881904-471E-4A7E-8C39-08C236EAE10F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-314B84EE-B93E-4012-AA73-9A4B52E85D7E" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1590"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1596"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1602"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1608"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1614"> 
+                <p>R4 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1621"> 
+                <p>R5 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1627"> 
+                <p>R6 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="14.285714285714285%" id="d577138e1633"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1590 d577138e1633 "> 
+                <p><span class="keyword">a4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1596 "> 
+                <p><span class="keyword">b4</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1602 "> 
+                <p><span class="keyword">a5</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1608 "> 
+                <p><span class="keyword">b5</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1614 "> 
+                <p><span class="keyword">a6</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1621 "> 
+                <p><span class="keyword">b6</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1627 "> 
+                <p><span class="keyword">a7</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="14.285714285714285%" headers="d577138e1590 d577138e1633 "> 
+                <p><span class="keyword">b7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AF62FFEA-932C-459F-8791-D50212B24F92"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpackhi_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the upper two signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> with the upper two signed or unsigned 32-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B52EEBA8-3A9E-4C1B-9DF1-92E89E466AAD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8B59338B-10EB-4995-A322-822F4079B496" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e1746"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e1752"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e1758"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d577138e1764"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e1746 "> 
+                <p><span class="keyword">a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e1752 "> 
+                <p><span class="keyword">b2 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e1758 "> 
+                <p><span class="keyword">a3</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d577138e1764 "> 
+                <p><span class="keyword">b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0B19C72C-E84E-4FBA-9806-CF7CBBB195A4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpackhi_epi64(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the upper signed or unsigned 64-bit integer in 
+        <span class="keyword">a</span> with the upper signed or unsigned 64-bit integer in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C4DD0334-F9BF-4C57-96F7-7EC9DE4D8CB9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-545D43C3-618E-40A7-B274-46791ECC268F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d577138e1843"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d577138e1849"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d577138e1843 "> 
+                <p><span class="keyword">a1 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d577138e1849 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-42879961-01FF-4533-A780-405D990E182D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpacklo_epi8(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the lower eight signed or unsigned 8-bit integers in 
+        <span class="keyword">a</span> with the lower eight signed or unsigned 8-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-240CBC8B-B3D1-4FFB-8001-AC47C90B5686"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BC2376CC-D1B2-45EA-A3E6-FB1F6287445D" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1916"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1922"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1928"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1934"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1940"> 
+                <p>... 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="14.285714285714285%" id="d577138e1947"> 
+                <p>R14 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="14.285714285714285%" id="d577138e1953"> 
+                <p>R15 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1916 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1922 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1928 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1934 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1940 "> 
+                <p>... 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="14.285714285714285%" headers="d577138e1947 "> 
+                <p><span class="keyword">a7</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="14.285714285714285%" headers="d577138e1953 "> 
+                <p><span class="keyword">b7</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-67594FC7-D371-4E77-82D4-95AC0818A684"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpacklo_epi16(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the lower four signed or unsigned 16-bit integers in 
+        <span class="keyword">a</span> with the lower four signed or unsigned 16-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FD10CE69-E86E-47BA-9A70-04A6146449B5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-68945E70-09FD-40C3-9CD1-D09A775DACCB" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2060"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2066"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2072"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2078"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2084"> 
+                <p>R4 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2091"> 
+                <p>R5 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="12.5%" id="d577138e2097"> 
+                <p>R6 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="12.5%" id="d577138e2103"> 
+                <p>R7 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2060 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2066 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2072 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2078 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2084 "> 
+                <p><span class="keyword">a2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2091 "> 
+                <p><span class="keyword">b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="12.5%" headers="d577138e2097 "> 
+                <p><span class="keyword">a3</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="12.5%" headers="d577138e2103 "> 
+                <p><span class="keyword">b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B0451588-2904-4436-B255-6AF02705102E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpacklo_epi32(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the lower two signed or unsigned 32-bit integers in 
+        <span class="keyword">a</span> with the lower two signed or unsigned 32-bit integers in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-16588088-31A6-4613-8B6A-EF42D8C7212A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E309436B-B629-4D75-8FB6-CD4C9979B6DA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e2217"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e2223"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d577138e2229"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d577138e2235"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e2217 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e2223 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d577138e2229 "> 
+                <p><span class="keyword">a1 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d577138e2235 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DA8C0D7F-2780-4719-9B30-3DE92E380BCC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_unpacklo_epi64(__m128i a, __m128i b)</span></p></div> 
+      <p>Interleaves the lower signed or unsigned 64-bit integer in 
+        <span class="keyword">a</span> with the lower signed or unsigned 64-bit integer in 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AE245700-FF3A-41C7-8700-E36E70B81945"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-77BC70CF-D57F-40F2-BA40-3BA9B9BD1CB3" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d577138e2313"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d577138e2319"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d577138e2313 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d577138e2319 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AB01E92E-9F45-48A7-AE8B-CBB4666504AA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m64 _mm_movepi64_pi64(__m128i a)</span></p></div> 
+      <p>Returns the lower 64 bits of 
+        <span class="keyword">a</span> as an 
+      <span class="option">__m64</span> type. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D6D4B174-DA95-42B0-B900-FBE882F7A758"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BE90D817-A924-49FE-B3BB-F9BEA619457C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d577138e2380"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d577138e2380 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5A7E2E04-5297-415D-8FA7-8DA654860438"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_movpi64_pi64(__m64 a)</span></p></div> 
+      <p>Moves the 64 bits of 
+        <span class="keyword">a</span> to the lower 64 bits of the result, zeroing the upper bits. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E7A8151D-881C-48EF-A1D5-8AB3F56ACFA2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1CB3C212-C6FE-4F7E-A292-3D8771E00AC6" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d577138e2432"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d577138e2438"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d577138e2432 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d577138e2438 "> 
+                <p><span class="keyword">0X0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4B8B03D2-1266-4578-BE74-5AFE828BD1E5"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_move_epi64(__m128i a)</span></p></div> 
+      <p>Moves the lower 64 bits of 
+        <span class="keyword">a</span> to the lower 64 bits of the result, zeroing the upper bits. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-40D2270B-BEFA-48AF-834B-B37CBD56E045"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-40AD88C4-E6D1-4632-9096-72CC5DA8F269" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d577138e2497"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d577138e2503"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d577138e2497 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d577138e2503 "> 
+                <p><span class="keyword">0X0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0F0E59BA-BFE5-486C-90EB-99585A0D32C4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_unpackhi_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Interleaves the upper DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1DE8EBEE-5073-4684-B850-4224C34C4DA5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AB46C298-5A01-4A1D-836C-59FB843082EC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d577138e2565"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d577138e2571"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d577138e2565 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d577138e2571 "> 
+                <p><span class="keyword">b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8B00D8E4-8994-47D3-89EF-9876FD2CE1BB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_unpacklo_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Interleaves the lower DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E7276F4F-66F4-40E2-88AF-5BD0820F1CEA"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AF7AB941-332D-4799-9F56-A934F900ADED" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d577138e2634"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d577138e2640"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d577138e2634 "> 
+                <p><span class="keyword">a0 
+                  </span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d577138e2640 "> 
+                <p><span class="keyword">b0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-34C7B7DD-E70B-4C73-AC87-AD06DF39F8C9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_movemask_pd(__m128d a)</span></p></div> 
+      <p>Creates a two-bit mask from the sign bits of the two DP FP values of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3CCA9846-16D8-479E-B7B9-F031698F2237"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-48C33FA6-1D74-44EF-919F-039B9CFD990A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d577138e2698"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d577138e2698 "> 
+                <p><span class="keyword">sign(a1) &lt;&lt; 1 | sign(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F0536377-CDCB-4254-8987-FDFEDBA9318A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_shuffle_pd(__m128d a, __m128d b, int i)</span></p></div> 
+      <p>Selects two specific DP FP values from 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>, based on the mask 
+        <span class="keyword">i</span>. The mask must be an immediate. See 
+        <a href="GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200.htm#GUID-C4DC42DC-056A-458C-BCB9-701E96E4D200"> Macro Function for Shuffle</a> for a description of the shuffle semantics. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7CD76E4D-5690-4CBE-A0FB-C9719E2490FC.htm">Miscellaneous Functions and Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

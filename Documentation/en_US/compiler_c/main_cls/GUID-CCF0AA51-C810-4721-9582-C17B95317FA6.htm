@@ -1,0 +1,88 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Overview: Using a Pragma">
+<meta name="DC.subject" content="code, target-specific, __MIC__, target-specific code, writing">
+<meta name="keywords" content="code, target-specific, __MIC__, target-specific code, writing">
+<meta name="DC.Relation" scheme="URI" content="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">
+<meta name="DC.Relation" scheme="URI" content="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CCF0AA51-C810-4721-9582-C17B95317FA6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Using a Pragma</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_ovrvw_usage_pragma"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CCF0AA51-C810-4721-9582-C17B95317FA6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Using a 
+	 <span>Pragma</span></h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>This programming model is suitable when the data exchanged between the CPU and the coprocessor consists of scalars, arrays, and 
+		<span>structs</span> that can be copied from one variable to another using a simple 
+		<samp class="codeph">memcpy</samp>. 
+	 </p>
+ 
+	 <p>Data that flows between the CPU and the coprocessor must have a flat structure. 
+	 </p>
+ 
+	 <p>Data that is created and used entirely on the CPU, or used entirely within the offloaded regions, can be arbitrarily complex, including multi-dimensional arrays, 
+		<span>C++ classes of any types, 
+		</span>and any composition of data structures using pointers, arrays and 
+		<span>structs</span>. 
+	 </p>
+ 
+	 <p> 
+		<span>In this model, y</span>ou control the data transfer between the CPU and the coprocessor. The data transfer consists of densely packed data structures. You can select the data to be transferred at the point of offload, without needing to declare or allocate it in any special way. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">Offload Using a Pragma</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">offload 
+		  </a>  
+		  </div>
+<div><a href="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462.htm">offload_attribute 
+		  </a>  
+		  </div>
+<div><a href="GUID-F66EEDA2-2FB9-4952-A8FC-E997F92DDF0A.htm">offload_transfer 
+		  </a>  
+		  </div>
+<div><a href="GUID-89A57D4E-CBA3-43FA-8DD3-613863531A8E.htm">offload_wait 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

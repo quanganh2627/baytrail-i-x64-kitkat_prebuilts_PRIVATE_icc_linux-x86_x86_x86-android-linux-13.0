@@ -1,0 +1,206 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Introduction to Intel's valarray Implementation">
+<meta name="DC.subject" content="Library extensions, valarray implementation">
+<meta name="keywords" content="Library extensions, valarray implementation">
+<meta name="DC.Relation" scheme="URI" content="GUID-5A68F6C7-FB59-4CB7-8D1A-714B40697A07.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A2AEF527-422D-4B7C-A411-6B9CE4D0DBC7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Introduction to Intel's valarray Implementation</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_valarray_intro"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A2AEF527-422D-4B7C-A411-6B9CE4D0DBC7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Introduction to Intel's valarray Implementation</h1>
+ 
+   
+  <div> 
+    <p>The Intel&reg; Compiler provides a high performance implementation of specialized one-dimensional valarray operations for the C++ standard STL valarray container. 
+    </p>
+ 
+    <p> The standard C++ valarray template consists of array/vector operations for high performance computing. These operations are designed to exploit high performance hardware features such as parallelism and achieve performance benefits. 
+    </p>
+ 
+    <p>Intel's valarray implementation uses the Intel&reg; Integrated Performance Primitives (IPP), which is part of the 
+       product. Make sure you select IPP when you install the 
+       product. 
+    </p>
+ 
+    <p>The valarray implementation consists of a replacement header, 
+      <samp class="codeph">&lt;valarray&gt;,</samp> that provides a specialized high performance implementation for the following operators and types: 
+    </p>
+ 
+    <p> 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1A3F70A0-8E21-4AE0-B9FA-8935D3CE1A72" frame="border" border="1" cellspacing="0" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" align="left" valign="top" width="43.859649122807014%" id="d532315e61"> 
+              <p>Operator 
+              </p>
+ 
+            </th>
+ 
+            <th class="cellrowborder" align="left" valign="top" width="56.14035087719298%" id="d532315e67"> 
+              <p>Valarrays of Type 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="43.859649122807014%" headers="d532315e61 "> 
+              <p> abs, acos, acosh, asin, asinh, atan, atan2, atanh, cbrt, cdfnorm, ceil, cos, cosh, erf, erfc, erfinv, exp, expm1, floor, hypot, inv, invcbrt, invsqrt, ln, log, log10, log1p, nearbyint, pow, pow2o3, pow3o2, powx, rint, round, sin, sinh, sqrt, tan, tanh, trunk 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="56.14035087719298%" headers="d532315e67 "> 
+              <p> float, double 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="43.859649122807014%" headers="d532315e61 "> 
+              <p> add, conj, div, mul, mulbyconj, mul, sub 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="56.14035087719298%" headers="d532315e67 "> 
+              <p>Ipp32fc, Ipp64fc 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="43.859649122807014%" headers="d532315e61 "> 
+              <p> addition, subtraction, division, multiplication 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="56.14035087719298%" headers="d532315e67 "> 
+              <p> float, double 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="43.859649122807014%" headers="d532315e61 "> 
+              <p> bitwise or, and, xor 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="56.14035087719298%" headers="d532315e67 "> 
+              <p> (all unsigned) char, short, int 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="43.859649122807014%" headers="d532315e61 "> 
+              <p> min, max, sum 
+              </p>
+ 
+            </td>
+ 
+            <td class="cellrowborder" valign="top" width="56.14035087719298%" headers="d532315e67 "> 
+              <p> signed or short/signed int, float, double 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+    </p>
+ 
+    <p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d532315e169"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d532315e169 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-5A68F6C7-FB59-4CB7-8D1A-714B40697A07.htm">Intel's valarray implementation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

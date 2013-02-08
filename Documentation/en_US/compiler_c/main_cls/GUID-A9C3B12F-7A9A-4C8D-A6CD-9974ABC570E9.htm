@@ -1,0 +1,381 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Details of Intel&reg; Advanced Vector Extensions Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, overview, Advanced Vector Extensions, AVX">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, overview, Advanced Vector Extensions, AVX">
+<meta name="DC.Relation" scheme="URI" content="GUID-64E5BFBB-FE9E-47CB-82A7-76C2AD57ED9C.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106.htm#GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Details of Intel&reg; Advanced Vector Extensions Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_details"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A9C3B12F-7A9A-4C8D-A6CD-9974ABC570E9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Details of Intel&reg; Advanced Vector Extensions Intrinsics</h1>
+ 
+   
+  <div> 
+    <p>The Intel&reg; Advanced Vector Extensions (Intel&reg; AVX) intrinsics map directly to the Intel&reg; AVX instructions and other enhanced 128-bit single-instruction multiple data processing (SIMD) instructions. The Intel&reg; AVX instructions are architecturally similar to extensions of the existing Intel&reg; 64 architecture-based vector streaming SIMD portions of Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) instructions, and double-precision floating-point portions of Intel&reg; SSE2 instructions. However, Intel&reg; AVX introduces the following architectural enhancements: 
+    </p>
+ 
+    <ul type="disc" id="GUID-00376084-5BBD-469B-8155-87ECD7C4259D"> 
+      <li>Support for 256-bit wide vectors and SIMD register set. 
+      </li>
+ 
+      <li> Instruction syntax support three and four operand syntax, to improve instruction programming flexibility and efficiency for new instruction extensions. 
+      </li>
+ 
+      <li> Enhancement of legacy 128-bit SIMD instruction extensions to support three-operand syntax and to simplify compiler vectorization of high-level language expressions. 
+      </li>
+ 
+      <li> Instruction encoding format using a new prefix (referred to as VEX) to provide compact, efficient encoding for three-operand syntax, vector lengths, compaction of legacy SIMD prefixes and REX functionality. 
+      </li>
+ 
+      <li> Intel&reg; AVX data types allow packing of up to 32 elements in a register if bytes are used. The number of elements depends upon the element type: eight single-precision floating point types or four double-precision floating point types. 
+      </li>
+ 
+    </ul>
+ 
+    <div class="section" id="GUID-F727ACCF-E093-479B-AC9F-57C9469D52DB"><h2 class="sectiontitle">Intel&reg; Advanced Vector Extensions Registers</h2> 
+       
+      <p>Intel&reg; AVX adds 16 registers (<span class="keyword">YMM0-YMM15</span>), each 256 bits wide, aliased onto the 16 SIMD (<span class="keyword">XMM0-XMM15</span>) registers. The Intel&reg; AVX new instructions operate on the 
+        <span class="keyword">YMM</span> registers. Intel&reg; AVX extends certain existing instructions to operate on the 
+        <span class="keyword">YMM</span> registers, defining a new way of encoding up to three sources and one destination in a single instruction. 
+      </p>
+ 
+      <div class="fignone" id="GUID-9D4A65FA-9DD4-4568-AEB6-E1E0E4F51D6A"><img src="GUID-8DAC22EA-7F3B-4E07-A1B4-D1705CA09E58-low.jpg" width="583" height="252"> 
+      </div>
+ 
+      <p>Because each of these registers can hold more than one data element, the processor can process more than one data element simultaneously. This processing capability is also known as single-instruction multiple data processing (SIMD). 
+      </p>
+ 
+      <p>For each computational and data manipulation instruction in the new extension sets, there is a corresponding C intrinsic that implements that instruction directly. This frees you from managing registers and assembly programming. Further, the compiler optimizes the instruction scheduling so that your executable runs faster. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3BA29F6E-5113-422A-8CA2-829891F98CAC"><h2 class="sectiontitle">Intel&reg; Advanced Vector Extensions Types</h2> 
+       
+      <p>The Intel&reg; AVX intrinsic functions use three new C data types as operands, representing the new registers used as operands to the intrinsic functions. These are the<span class="keyword"> __m256</span> , 
+        <span class="keyword">__m256d</span>, and the 
+        <span class="keyword">__m256i</span> data types. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">__m256</span> data type is used to represent the contents of the extended SSE register - the YMM register, used by the Intel&reg; AVX intrinsics. The 
+        <span class="keyword">__m256</span> data type can hold eight 32-bit floating-point values. 
+      </p>
+ 
+      <p>The<span class="keyword"> __m256d</span> data type can hold four 64-bit double precision floating-point values. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">__m256i 
+        </span>data type can hold thirty-two 8-bit, sixteen 16-bit, eight 32-bit, or four 64-bit integer values. 
+      </p>
+ 
+      <p>The compiler aligns the 
+        <span class="keyword">__m256</span>, 
+        <span class="keyword">__m256d</span>, and 
+        <span class="keyword">__m256i</span> local and global data to 32-byte boundaries on the stack. To align 
+        <span class="keyword">integer</span>, 
+        <span class="keyword">float</span>, or 
+        <span class="keyword">double</span> arrays, use the 
+      <span class="option">declspec align</span> statement as follows: 
+      </p>
+ 
+      <p> 
+        <pre>typedef struct __declspec(align(32)) { float f[8]; } __m256;</pre> 
+        <pre>typedef struct __declspec(align(32)) { double d[4]; } __m256d;</pre> 
+        <pre>typedef struct __declspec(align(32)) { int i[8]; } __m256i;</pre> 
+      </p>
+ 
+      <p>The Intel&reg; AVX intrinsics also use SSE2 data types like 
+        <span class="keyword">__m128</span>, 
+        <span class="keyword">__m128d</span>, and 
+        <span class="keyword">__m128i</span> for some operations. See 
+        <a href="GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106.htm#GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106">Details of Intrinsics</a> topic for more information. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7443D21A-AC9F-419F-BA47-66D8B6930368"><h2 class="sectiontitle">VEX Prefix Instruction Encoding Support for Intel&reg; AVX</h2> 
+       
+      <p>Intel&reg; AVX introduces a new prefix, referred to as VEX, in the Intel&reg; 64 and IA-32 instruction encoding format. Instruction encoding using the VEX prefix provides several capabilities: 
+      <ul type="disc" id="GUID-3C4C35C2-6113-4D19-9B86-FD0E032824FE"> 
+        <li>direct encoding of a register operand within the VEX prefix 
+        </li>
+ 
+        <li>efficient encoding of instruction syntax operating on 128-bit and 256-bit register sets 
+        </li>
+ 
+        <li>compaction of REX prefix functionality 
+        </li>
+ 
+        <li>compaction of SIMD prefix functionality and escape byte encoding 
+        </li>
+ 
+        <li>providing relaxed memory alignment requirements for most VEX-encoded SIMD numeric and data processing instruction semantics with memory operand as compared to instructions encoded using SIMD prefixes 
+        </li>
+ 
+      </ul>
+ 
+      </p>
+ 
+      <p>The VEX prefix encoding applies to SIMD instructions operating on YMM registers, XMM registers, and in some cases with a general-purpose register as one of the operands. The VEX prefix is not supported for instructions operating on MMX&#8482; or x87 registers. 
+      </p>
+ 
+      <p>It is recommended to use Intel&reg; AVX intrinsics with 
+      <span class="option">/QxAVX</span> (on Windows* operating systems) or 
+      <span class="option">-xAVX</span> (on Linux* operating systems) options because their corresponding instructions are encoded with the VEX-prefix. The 
+      <span class="option">/QxAVX</span> or 
+      <span class="option">-xAVX</span> option forces other packed instructions to be encoded with VEX too. As a result there are less number of performance stalls due to AVX to legacy SSE code transitions. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9C9B3C68-E97A-4F50-AE68-3D4FBD8E2C9F"><h2 class="sectiontitle">Naming and Usage Syntax</h2> 
+       
+      <p>Most Intel&reg; AVX intrinsic names use the following notational convention: 
+      </p>
+ 
+      <p> 
+        <pre>_mm256_&lt;intrin_op&gt;_&lt;suffix&gt;(&lt;data type&gt; &lt;parameter1&gt;, &lt;data type&gt; &lt;parameter2&gt;, &lt;data type&gt; &lt;parameter3&gt;) </pre> 
+      </p>
+ 
+      <p>The following table explains each item in the syntax. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6AC98DE1-D2B8-436A-A0DF-C1C9B70358F1" frame="border" border="1" cellspacing="0" rules="all"> 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"> 
+                <samp class="codeph">_mm256/_mm128</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%">Prefix representing the size of the result. Usually, this corresponds to the Intel&reg; AVX vector register size of 256 bits, but certain comparison and conversion intrinsics yield a 128-bit result. 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"><samp class="codeph">&lt;intrin_op&gt;</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%">Indicates the basic operation of the intrinsic; for example, add for addition and sub for subtraction. 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"><samp class="codeph">&lt;suffix&gt;</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%">Denotes the type of data the instruction operates on. The first one or two letters of each suffix denote whether the data is packed (p), extended packed (ep), or scalar (s). The remaining letters and numbers denote the type, with notation as follows: 
+                <ul type="disc" id="GUID-7E9F652B-46F1-4F9A-B07F-68E3C46A7F42"> 
+                  <li> s single-precision floating point 
+                  </li>
+ 
+                  <li> d double-precision floating point 
+                  </li>
+ 
+                  <li> i128 signed 128-bit integer 
+                  </li>
+ 
+                  <li> i64 signed 64-bit integer 
+                  </li>
+ 
+                  <li> u64 unsigned 64-bit integer 
+                  </li>
+ 
+                  <li> i32 signed 32-bit integer 
+                  </li>
+ 
+                  <li> u32 unsigned 32-bit integer 
+                  </li>
+ 
+                  <li> i16 signed 16-bit integer 
+                  </li>
+ 
+                  <li> u16 unsigned 16-bit integer 
+                  </li>
+ 
+                  <li> i8 signed 8-bit integer 
+                  </li>
+ 
+                  <li> u8 unsigned 8-bit integer 
+                  </li>
+ 
+                  <li> ps packed single-precision floating point 
+                  </li>
+ 
+                  <li> pd packed double-precision floating point 
+                  </li>
+ 
+                  <li> sd scalar double-precision floating point 
+                  </li>
+ 
+                  <li> epi32 extended packed 32-bit integer 
+                  </li>
+ 
+                  <li> si256 scalar 256-bit integer 
+                  </li>
+ 
+                </ul>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"><samp class="codeph">&lt;data type&gt;</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%">Parameter data types: 
+                <samp class="codeph">__m256</samp>, 
+                <samp class="codeph">__m256d</samp>,<samp class="codeph"> __m256i</samp>, 
+                <samp class="codeph">__m128</samp>, 
+                <samp class="codeph">__m128d</samp>, 
+                <samp class="codeph">__m128i</samp>, 
+                <samp class="codeph">const</samp> 
+                <samp class="codeph">int</samp>, 
+                <samp class="codeph">etc.</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"><samp class="codeph">&lt;parameter1&gt;</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%">Represents a source vector register: 
+                <samp class="codeph">m1/s1/a</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"><samp class="codeph">&lt;parameter2&gt;</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%">Represents another source vector register: 
+                <samp class="codeph">m2/s2/b</samp> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="15.94896331738437%"><samp class="codeph">&lt;parameter3&gt;</samp> 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="84.05103668261563%"> 
+                <p>Represents an integer value: 
+                  <samp class="codeph">mask/select/offset 
+                  </samp> 
+                </p>
+ 
+                <p>The third parameter is an integer value whose bits represent a conditionality based on which the intrinsic performs an operation. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+    <div class="example"><h2 class="sectiontitle">Example Usage</h2> 
+       
+      <pre>extern __m256d _mm256_add_pd(__m256d m1, __m256d m2);</pre> 
+      <p>where, 
+      </p>
+ 
+      <dl id="GUID-05A1664E-1119-400E-BFF2-3F81D64CB70A"> 
+         
+          <dt class="dlterm">add 
+          </dt>
+ 
+          <dd>indicates that an addition operation must be performed 
+          </dd>
+ 
+         
+         
+          <dt class="dlterm">pd 
+          </dt>
+ 
+          <dd>indicates packed double-precision floating-point value 
+          </dd>
+ 
+         
+      </dl>
+ 
+      <p>The packed values are represented in right-to-left order, with the lowest value used for scalar operations. Consider the following example operation: 
+      </p>
+ 
+      <p> 
+        <pre>double a[4] = {1.0, 2.0, 3.0, 4.0};
+__m256d t = _mm256_load_pd(a);</pre> 
+      </p>
+ 
+      <p>The result is the following: 
+      </p>
+ 
+      <p> 
+        <pre>__m256d t = _mm256_set_pd(4.0, 3.0, 2.0, 1.0);</pre> 
+      </p>
+ 
+      <p>In other words, the 
+        <span class="keyword">YMM</span> register that holds the value 
+        <samp class="codeph">t 
+        </samp>appears as follows: 
+      </p>
+ 
+      <div class="fignone" id="GUID-4247C1C3-8379-46DE-B559-58EC1B88ED77"><img src="GUID-37551013-74CE-4842-AF87-0E3612E24EC6-low.jpg"> 
+      </div>
+ 
+      <p>The<span class="q">"scalar"</span> element is 1.0. Due to the nature of the instruction, some intrinsics require their arguments to be immediates (constant integer literals). 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-64E5BFBB-FE9E-47CB-82A7-76C2AD57ED9C.htm">Intrinsics for Intel&reg; Advanced Vector Extensions</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106.htm#GUID-014B2DB6-B363-4CEB-97EC-74CD6A018106">Details of Intrinsics (general) 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

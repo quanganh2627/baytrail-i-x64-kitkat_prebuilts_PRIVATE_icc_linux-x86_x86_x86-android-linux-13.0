@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="align">
+<meta name="abstract" content="Determines whether variables and arrays are naturally aligned.">
+<meta name="description" content="Determines whether variables and arrays are naturally aligned.">
+<meta name="DC.subject" content="-align compiler option">
+<meta name="keywords" content="-align compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F3D2D6CB-D3F7-4FCC-A893-BD3CD24E7DA8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>align</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_align"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_align"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F3D2D6CB-D3F7-4FCC-A893-BD3CD24E7DA8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">align</h1>
+<!--Determines whether variables and arrays are naturally aligned. --><div><p>Determines whether variables and arrays are naturally aligned. </p>
+
+<div class="section" id="GUID-EA70B05E-1294-4CFD-B175-B077BEC86F06"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-1B611B3B-CEAA-44BB-9729-22BF55DAD58A"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-178B084D-FC89-4115-9B05-0DEBC50A08B5"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-align</span></p><p><span class="kwd">-noalign</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-C89F8E46-3C81-4715-88BE-79A7A7F3EA04"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-4F3DA20C-10AF-46F2-AEB9-EE52D16262C5"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Variables and arrays are aligned according to the gcc model, which means they are aligned to 4-byte boundaries.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-0AD30075-5526-4FDD-8826-48E845DAFE65"><h2>Description</h2><p>This option determines whether variables and arrays are naturally aligned. Option <span class="option">-align</span> forces the following natural alignment:</p>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CB9B2BF0-BFCC-4FF5-BE3E-820A558C3F03" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"><tr><th class="noborder" align="left" valign="top" width="50%" id="d837529e76"><p>Type</p>
+</th>
+<th class="noborder" align="left" valign="top" width="50%" id="d837529e79"><p>Alignment</p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="noborder" valign="top" width="50%" headers="d837529e76 "><p><span class="keyword">double</span></p>
+</td>
+<td class="noborder" valign="top" width="50%" headers="d837529e79 "><p>8 bytes</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="50%" headers="d837529e76 "><p><span class="keyword">long long</span></p>
+</td>
+<td class="noborder" valign="top" width="50%" headers="d837529e79 "><p>8 bytes</p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="50%" headers="d837529e76 "><p><span class="keyword">long double</span></p>
+</td>
+<td class="noborder" valign="top" width="50%" headers="d837529e79 "><p>16 bytes</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you are not interacting with system libraries or other libraries that are compiled without <span class="option">-align</span>, this option can improve performance by reducing misaligned accesses. </p>
+<div class="Note"><h3 class="NoteTipHead">Caution</h3><p>If you are interacting with system libraries or other libraries that are compiled without <span class="option">-align</span>, your application may not perform as expected.</p>
+</div></div>
+
+<div class="section" id="GUID-AA5AD460-84BC-4F37-AD36-1D69D49460E7"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

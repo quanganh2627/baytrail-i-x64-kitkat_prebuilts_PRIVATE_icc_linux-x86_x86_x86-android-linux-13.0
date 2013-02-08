@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="ipo-S, Qipo-S">
+<meta name="abstract" content="Tells the compiler to optimize across multiple files and generate a single assembly file.">
+<meta name="description" content="Tells the compiler to optimize across multiple files and generate a single assembly file.">
+<meta name="DC.subject" content="optimization, option generating single assembly file from multiple files, /Qipo-S compiler option, -ipo-S compiler option">
+<meta name="keywords" content="optimization, option generating single assembly file from multiple files, /Qipo-S compiler option, -ipo-S compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>ipo-S, Qipo-S</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_ipo_s"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_ipo_s"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7E9D1246-3877-4745-AF64-FDE874BA5299">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">ipo-S, Qipo-S</h1>
+<!--Tells the compiler to optimize across multiple files and generate a single assembly file.--><div><p>Tells the compiler to optimize across multiple files and generate a single assembly file.</p>
+
+<div class="section" id="GUID-62FC7E23-1304-4D46-96CD-B1FC646C9D1C"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-481F6FC9-5D3F-4232-BF96-3DF23526B775"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-8D2092CE-3F42-4A13-8E83-E80562632E83"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-ipo-S</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qipo-S</span></p></td></tr></table></div>
+<div class="section" id="GUID-376E6BBB-5DAD-4C63-8196-2CAF8A02D446"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-793B8C14-9E23-4D53-8CC8-9262F7891C3A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>The compiler does not generate a multifile assembly file.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-EF8B29F4-C4CF-479C-8D98-D46BCA505510"><h2>Description</h2><p>This option tells the compiler to optimize across multiple files and generate a single assembly file (named ipo_out.s on Linux* and OS X* systems; ipo_out.asm
+ on Windows* systems). </p>
+<p>It performs the same optimizations as <span class="option">-ipo</span> (Linux* OS and OS X*) or <span class="option">/Qipo</span> (Windows* OS), but compilation stops before the final link stage, leaving an optimized assembly file that can be used in further link steps.</p>
+</div>
+
+<div class="section" id="GUID-14643A85-ADB6-4673-BECB-547BB1E8F7CC"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C774BC96-8334-4765-998F-1C53F995B331.htm">Interprocedural Optimization (IPO) Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">ipo</span>, <span class="option">Qipo</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Move Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, integer move operations, cvtsi32_si128, cvtsi128_si64, cvtsi64_si128, cvtsi128_si32, Intel&reg; Streaming SIMD Extensions 2, integer move intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, integer move operations, cvtsi32_si128, cvtsi128_si64, cvtsi64_si128, cvtsi128_si32, Intel&reg; Streaming SIMD Extensions 2, integer move intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CA07DE5F-9DD1-4435-B0D3-8D6B15277666">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Move Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_int_move"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CA07DE5F-9DD1-4435-B0D3-8D6B15277666">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Move Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-7DDFA38A-BFBB-4CAF-B6FB-FD95FC2C6194"> 
+      <p>The Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for integer move operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in registers. The information about what is placed in each register appears in the tables below, in the detailed explanation of each intrinsic. 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span>, 
+        <span class="keyword">R1</span>, 
+        <span class="keyword">R2</span> and 
+        <span class="keyword">R3</span> represent the registers in which results are placed. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-13B9FD5F-E1B0-4792-997E-270181A98160"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AD944CB2-F974-4740-AE2F-26932171C734" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d707106e86"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d707106e92"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d707106e98"> 
+                <p>Corresponding Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e86 "> 
+                <p><span class="option"> _mm_cvtsi32_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e92 "> 
+                <p>Move and zero 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d707106e98 "> 
+                <p><span class="keyword">MOVD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e86 "> 
+                <p><span class="option">_mm_cvtsi64_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e92 "> 
+                <p>Move and zero 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d707106e98 "> 
+                <p><span class="keyword">MOVQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e86 "> 
+                <p><span class="option"> _mm_cvtsi128_si32</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e92 "> 
+                <p>Move lowest 32 bits 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d707106e98 "> 
+                <p><span class="keyword">MOVD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e86 "> 
+                <p><span class="option"> _mm_cvtsi128_si64</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d707106e92 "> 
+                <p>Move lowest 64 bits 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d707106e98 "> 
+                <p><span class="keyword">MOVQ</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F6F080DA-6D1C-469B-83B7-2813FDA4CEB3"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cvtsi32_si128(int a)</span></p></div> 
+      <p>Moves 32-bit integer 
+        <span class="keyword">a</span> to the least significant 32 bits of an 
+      <span class="option">__m128i</span> object. Zeroes the upper 96 bits of the 
+      <span class="option">__m128i</span> object. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-670ED4FF-81B1-4E78-BDBD-250F58F80D44"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6E3C69A5-002D-49C2-969F-F8024B18ED0A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d707106e246"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d707106e252"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d707106e258"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d707106e264"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d707106e246 "> 
+                <p><span class="keyword">a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d707106e252 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d707106e258 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d707106e264 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AE37EE36-760E-4790-A0F3-7D08BEA93DFC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128i _mm_cvtsi64_si128(__int64 a)</span></p></div> 
+      <p>Moves 64-bit integer 
+        <span class="keyword">a</span> to the lower 64 bits of an 
+      <span class="option">__m128i</span> object, zeroing the upper bits. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1E5A0A65-3564-44C5-99CA-2ABA4BACA35E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CC712C6D-CE77-4320-A3E7-80D0205786C5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d707106e343"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d707106e349"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d707106e343 "> 
+                <p><span class="keyword">a</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d707106e349 "> 
+                <p><span class="keyword">0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5F14B88B-1F63-46CB-A10B-8E021200D529"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_cvtsi128_si32(__m128i a)</span></p></div> 
+      <p>Moves the least significant 32 bits of 
+        <span class="keyword">a</span> to a 32-bit integer. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D461C85A-FAF8-4E83-9111-301CE14348A8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A03B5FC7-7DE5-4061-A9BE-A696C0F43392" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d707106e407"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d707106e407 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DAEC7918-E5D5-4975-9CFA-B62E43C7DE96"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__int64 _mm_cvtsi128_si64(__m128i a)</span></p></div> 
+      <p>Moves the lower 64 bits of 
+        <samp class="codeph"><span class="keyword">a</span> 
+        </samp>to a 64-bit integer. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4A5D18DD-E26D-4123-BE37-1B9D137BDADD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B0AEB363-6A08-4B00-86F5-220AF65AB9DC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d707106e459"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d707106e459 "> 
+                <p><span class="keyword">a0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-03A4C328-E416-4969-889E-BB87DD6ACD06.htm">Integer Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,2891 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Deprecated and Removed Compiler Options">
+<meta name="DC.subject" content="removed compiler options, deprecated compiler options, compiler options, deprecated and removed">
+<meta name="keywords" content="removed compiler options, deprecated compiler options, compiler options, deprecated and removed">
+<meta name="DC.Relation" scheme="URI" content="GUID-705E5C05-7324-4B74-A7A0-60A26B8D600E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C9E68060-09BC-4203-B77F-04FB89AE284C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Deprecated and Removed Compiler Options</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="options_ref_deprecated"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.options_ref_deprecated"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C9E68060-09BC-4203-B77F-04FB89AE284C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Deprecated and Removed Compiler Options</h1>
+ 
+   
+  <div> 
+	 <p>This topic lists deprecated and removed compiler options and suggests replacement options, if any are available. 
+	 </p>
+ 
+	 <p>For more information on compiler options, see the detailed descriptions of the individual options. For example, for more information on 
+  <span class="option">-ax</span> (Linux* OS and OS X*) or 
+  <span class="option">/Qax</span> (Windows* OS), or 
+  <span class="option">-x</span> (Linux* OS and OS X*) or 
+  <span class="option">/Qx</span> (Windows* OS), see the compiler option description. 
+  </p>
+ 
+  <div class="section" id="GUID-38B0F9D4-D796-4DE6-8745-E5D972C21504"><h2 class="sectiontitle">Deprecated Options</h2> 
+	  
+	 <p>Occasionally, compiler options are marked as "deprecated." Deprecated options are still supported in the current release, but are planned to be unsupported in future releases. 
+	 </p>
+ 
+	 <p>The following options are deprecated in this release of the compiler: 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-3E3BAE10-F039-461F-B887-835310354F87"> 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AF2285D7-87BB-456D-A75D-F95556932833" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+			 <tr> 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e83"> 
+				  <p>Linux* OS and OS X* Options 
+				  </p>
+ 
+				</th>
+ 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e89"> 
+				  <p>Suggested Replacement 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-A-</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-undef</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-axK</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>No exact replacement; upgrade to 
+				  <span class="option">-msse2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-axN</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>Linux* OS: 
+				  <span class="option">-axSSE2</span><br>OS X*: None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-axP</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>Linux* OS: 
+				  <span class="option">-axSSE3</span><br>OS X* on IA-32 architecture: 
+				  <span class="option">-axSSE3</span> 
+				  <br>OS X* on Intel&reg; 64 architecture: None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-axS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-axSSE4.1 
+				  </span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-axT</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>Linux* OS: 
+				  <span class="option">-axSSSE3</span><br>OS X* on IA-32 architecture: None 
+				  <br>OS X* on Intel&reg; 64 architecture: 
+				  <span class="option">-axSSSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-axW</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p> 
+				  <span class="option">-msse2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-check-uninit</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-check=uninit</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-diag-enable sv[&lt;n&gt;]</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-enable sc[&lt;n&gt;]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-diag-enable sv-include</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-enable sc-include</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-fms-dialect</span> (only deprecated on OS X*) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-i-dynamic</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-shared-intel</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-i-static</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-static-intel</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-Kc++</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-x c++</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-march=pentiumii</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-march=pentiumiii</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-march=pentium3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-mcpu</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-mtune</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-msse</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-mia32</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-openmp-link</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-openmpP</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-openmp</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-openmpS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-openmp-stubs</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-use-asm</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+
+
+
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-wd</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-disable</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-we</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-error</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-wn</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-error-limit</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-wo</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-once id[,id,...]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-wr</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-remark</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-ww</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-diag-warning</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xH</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-xSSE4.2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xK</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>No exact replacement; upgrade to 
+				  <span class="option">-msse2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xN</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>Linux* OS: 
+				  <span class="option">-xSSE2</span><br>OS X*: None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xO</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-msse3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xP</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>Linux* OS: 
+				  <span class="option">-xSSE3</span><br>OS X* on IA-32 architecture: 
+				  <span class="option">-xSSE3</span> 
+				  <br>OS X* on Intel&reg; 64 architecture: None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-xSSE4.1</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xSSE3_ATOM</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-xSSSE3_ATOM</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xT</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p>Linux* OS: 
+				  <span class="option">-xSSSE3</span><br>OS X* on IA-32 architecture: None 
+				  <br>OS X* on Intel&reg; 64 architecture: 
+				  <span class="option">-xSSSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e83 "> 
+				  <p><span class="option">-xW</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e89 "> 
+				  <p><span class="option">-msse2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-9E8DD064-E647-4AC4-95F1-6AACB40BB849"> 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FD917E55-40DF-4223-A646-5981F30AE7EC" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+			 <tr> 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e849"> 
+				  <p>Windows* OS Options 
+				  </p>
+ 
+				</th>
+ 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e855"> 
+				  <p>Suggested Replacement 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/arch:SSE</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/arch:IA32</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Fm</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Fr</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/FR</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Ge</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Gs0</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/GX</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/EHsc</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Gy</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/GZ</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/RTC1</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/H</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QA-</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/u</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxH</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QaxSSE4.2 
+				  </span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxK</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>Upgrade to 
+				  <span class="option">/arch:SSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxN</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QaxSSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxP</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QaxSSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QaxSSE4.1 
+				  </span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxT</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QaxSSSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QaxW</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/arch:SSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qdiag-enable:sv[&lt;n&gt;]</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-enable:sc[&lt;n&gt;]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qdiag-enable:sv-include</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-enable:sc-include</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QIfist</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span><span class="option">/Qrcd</span></span></p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Quse-asm</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+
+
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qwd</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-disable</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qwe</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-error</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qwn</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-error-limit:&lt;n&gt;</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qwo</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-once</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qwr</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-remark</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Qww</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Qdiag-warning</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxH</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QxSSE4.2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxK</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>Upgrade to 
+				  <span class="option">/arch:SSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxN</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QxSSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxO</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/arch:SSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxP</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QxSSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxS</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QxSSE4.1</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxSSE3_ATOM</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QxSSSE3_ATOM</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxT</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/QxSSSE3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/QxW</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/arch:SSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Yd</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p><span class="option">/Z7</span>, 
+				  <span class="option">/Zi</span>, or<span class="option">/Zl</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Ze</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e849 "> 
+				  <p><span class="option">/Zg</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e855 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>Deprecated options are not limited to this list. 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-2DA39FF1-411F-4FE8-812C-F38DEE36E9BA"><h2 class="sectiontitle">Removed Options</h2> 
+	  
+	 <p>Some compiler options are no longer supported and have been removed. If you use one of these options, the compiler issues a warning, ignores the option, and then proceeds with compilation. 
+	 </p>
+ 
+	 <p>This version of the compiler no longer supports the following compiler options: 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-A3F75511-2AED-472D-A256-1E38962DD778"> 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E7985E08-E0CB-40D9-9AB8-77ECDDB0CB27" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+			 <tr> 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e1619"> 
+				  <p>Linux* OS and OS X* Options 
+				  </p>
+ 
+				</th>
+ 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e1625"> 
+				  <p>Suggested Replacement 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-0f_check</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-alias-args</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fargument-alias</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-axB</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-axSSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-axi</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-axM</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-c99</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-std=c99</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-create-pch</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-pch-create</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-cxxlib-gcc[=dir]</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-cxxlib[=dir]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-cxxlib-icc</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-diag-sv</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-diag-enable sc[&lt;n&gt;]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-diag-sv-error</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-diag-disable warning</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-diag-sv-include</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-diag-enable sc-include</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-diag-sv-level</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-diag-sv-sup</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-diag-disable &lt;v&gt;[,&lt;v2,...]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-export</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-export-dir</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-F</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-P</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-falign-stack=mode</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None; this option is only removed on OS X* 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-fdiv_check</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-fp</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fno-omit-frame-pointer</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-fpstkchk</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fp-stack-check</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-func-groups</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-prof-func-groups</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-fvisibility=internal</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fvisibility=hidden</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-fwritable-strings</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-inline-debug-info</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-debug inline-debug-info</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-ipo-obj</span> (and 
+				  <span class="option">-ipo_obj</span>) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-Knopic, -KNOPIC</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fpic</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-Kpic, -KPIC</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fpic</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-mp</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fp-model</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-no-alias-args</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-fargument-noalias</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-no-c99</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-std=c89</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-no-cpprt</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-no-cxxlib</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-nobss-init</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-no-bss-init</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-norestrict</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-no-restrict</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-Ob</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-inline-level</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-openmp-lib legacy</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-openmp-profile</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-opt-report-level</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-opt-report</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-prefetch</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-opt-prefetch</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-prof-format-32</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-prof-gen-sampling</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-prof-genx</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-prof-gen=srcpos</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-qp</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-p</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-rct</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-shared-libcxa</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-shared-libgcc</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-ssp</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-static-libcxa</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-static-libgcc</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-syntax</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "><span><span class="option">-fsyntax-only</span></span></td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-tpp1</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-tpp2</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-mtune=itanium2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-tpp5</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-tpp6</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-tpp7</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-mtune=pentium4</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-tprofile</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-use-pch</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-pch-use</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-xB</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p><span class="option">-xSSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-xi</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1619 "> 
+				  <p><span class="option">-xM</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e1625 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-FC059D87-C9FE-4C7E-B4B6-4DA5BEE0CAF1"> 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C8ED866A-75C1-480C-8ED8-EB58F8CB22A9" frame="void" border="1" rules="none" cellspacing="2"><thead align="left"> 
+			 <tr> 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e2714"> 
+				  <p>Windows* OS Options 
+				  </p>
+ 
+				</th>
+ 
+				<th class="noborder" align="left" valign="top" width="50%" id="d695429e2720"> 
+				  <p>Suggested Replacement 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/debug:parallel</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/G5</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/G6 
+				  </span>(or<span class="option"> /GB</span>) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/G7</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Gf</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/GF</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/ML[d]</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p> Upgrade to /MT[d] 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Og</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/O1</span>, 
+				  <span class="option">/O2</span>, or 
+				  <span class="option">/O3</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Op</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <span>/fp:precise</span></td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/QaxB</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/QaxSSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qaxi</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/QaxM</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qc99</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qstd=c99</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qdiag-sv</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qdiag-enable:sc[&lt;n&gt;]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qdiag-sv-error</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qdiag-disable:warning</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qdiag-sv-include</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qdiag-enable:sc-include</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qdiag-sv-level</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qdiag-sv-sup</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qdiag-disable:&lt;v&gt;[,&lt;v2,...]</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qfpstkchk</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qfp-stack-check</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/QIfdiv</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qinline-debug-info</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/debug:inline-debug-info</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qipo-obj</span> (and 
+				  <span class="option">/Qipo_obj</span>) 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/QI0f</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qmspp</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qopenmp-lib:legacy</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qopenmp-link</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qopenmp-profile</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qopt-report-level</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qopt-report</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qprefetch</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qopt-prefetch</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qprof-format-32</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qprof-gen-sampling</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qprof-genx</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/Qprof-gen=srcpos</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qrct</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qssp</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qtprofile</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qvc6</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qvc7</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qvc7.1</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qvc8</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/QxB</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p><span class="option">/QxSSE2</span> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Qxi</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/QxM</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/YX</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "> 
+				  <p>None 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2714 "> 
+				  <p><span class="option">/Zd</span> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="noborder" valign="top" width="50%" headers="d695429e2720 "><span class="option">/debug:minimal</span> 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>Removed options are not limited to these lists. 
+	 </p>
+ 
+  </div>
+ 
+  <p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d695429e3524"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d695429e3524 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-705E5C05-7324-4B74-A7A0-60A26B8D600E.htm">Overview of Compiler Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

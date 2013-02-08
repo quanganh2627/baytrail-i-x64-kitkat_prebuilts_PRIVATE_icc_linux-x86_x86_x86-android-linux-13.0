@@ -1,0 +1,208 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30753)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30753">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30753">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-69AC4064-A307-4FDC-9347-7845DFD32D77">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30753)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30753"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30753"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-69AC4064-A307-4FDC-9347-7845DFD32D77">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30753)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-5A66BF08-61BC-4E82-9CE9-8EE75B366994"><h2 class="sectiontitle">Message</h2><p>Convert array of struct "%s" into a new struct whose fields are arrays of the corresponding fields in the original struct. This improves performance due to better data locality. </p>
+</div>
+
+
+<div class="section" id="GUID-16DE1F92-00B8-4EA6-9197-3F0227366D0C"><h2 class="sectiontitle">Advice</h2>
+<p>You should apply full peeling to a class or structure.  This is done by splitting a class or structure into separate fields. This should improve performance by better utilizing the processor cache. This message is generated only when the entire application is built with Interprocedural Optimization (IPO). This transformation requires that you change all access to any peeled structure and its fields in the entire application. In some cases, it may not be easy to change source code to apply full peeling. </p>
+</div>
+
+
+<div class="section" id="GUID-14E6F8DE-59F7-4AEF-AFC2-C41EAD5565E2"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>// peel.c</pre>
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>#include &lt;stdlib.h&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>#define N 100000</pre>
+<pre>int a[N];</pre>
+<pre>double b[N];</pre>
+<pre>struct S3 {</pre>
+<pre>    int *pi;</pre>
+<pre>    double d;</pre>
+<pre>    int j;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>struct S3 *sp;</pre>
+<pre>&nbsp;</pre>
+<pre>void init_hot_s3_i()</pre>
+<pre>{</pre>
+<pre>&nbsp;</pre>
+<pre>    int ii = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        sp[ii].pi = &amp;a[ii];</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>void init_hot_s3_d()</pre>
+<pre>{</pre>
+<pre>    int ii = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        sp[ii].d = b[ii];</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>void init_hot_s3_j()</pre>
+<pre>{</pre>
+<pre>    int ii = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        sp[ii].j = 0;</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>void dump_s3()</pre>
+<pre>{</pre>
+<pre>    int ii;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        printf("i= %d ", *(sp[ii].pi));</pre>
+<pre>        printf("d= %g \n", sp[ii].d);</pre>
+<pre>        printf("j= %g \n", sp[ii].j);</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>main()</pre>
+<pre>{</pre>
+<pre>&nbsp;</pre>
+<pre>   sp = (struct S3 *)calloc(N, sizeof(struct S3));</pre>
+<pre>   init_hot_s3_i();</pre>
+<pre>   init_hot_s3_d();</pre>
+<pre>   init_hot_s3_j();</pre>
+<pre>   dump_s3();</pre>
+<pre>}</pre>
+</div>
+
+
+<p>In this case, the compiler tells you to convert struct "S3".</p>
+
+<p>If you determine it is safe to do so, you can modify the program code as follows:</p>
+
+
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>#include &lt;stdlib.h&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>#define N 100000</pre>
+<pre>int a[N];</pre>
+<pre>double b[N];</pre>
+<pre>struct S3 {</pre>
+<pre>    int *pi;</pre>
+<pre>};</pre>
+<pre>struct new_d {</pre>
+<pre>    double d;</pre>
+<pre>};</pre>
+<pre>struct new_j {</pre>
+<pre>    int j;</pre>
+<pre>};</pre>
+
+
+
+<pre>&nbsp;</pre>
+<pre>struct S3 *sp;</pre>
+<pre>struct new_d *sp_d;</pre>
+<pre>struct new_j *sp_j;</pre><pre>&nbsp;</pre>
+<pre>void init_hot_s3_i()</pre>
+<pre>{</pre>
+<pre>&nbsp;</pre>
+<pre>    int ii = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        sp[ii].pi = &amp;a[ii];</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>void init_hot_s3_d()</pre>
+<pre>{</pre>
+<pre>    int ii = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        sp[ii].d = b[ii];</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>void init_hot_s3_j()</pre>
+<pre>{</pre>
+<pre>    int ii = 0;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        sp[ii].j = 0;</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>void dump_s3()</pre>
+<pre>{</pre>
+<pre>    int ii;</pre>
+<pre>&nbsp;</pre>
+<pre>    for (ii = 0; ii &lt; N; ii++) {</pre>
+<pre>        printf("i= %d ", *(sp[ii].pi));</pre>
+<pre>        printf("d= %g \n", sp[ii].d);</pre>
+<pre>        printf("j= %g \n", sp[ii].j);</pre>
+<pre>    }</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>main()</pre>
+<pre>{</pre>
+<pre>&nbsp;</pre>
+<pre>   sp = (struct S3 *)calloc(N, sizeof(struct S3));</pre>
+<pre>   init_hot_s3_i();</pre>
+<pre>   init_hot_s3_d();</pre>
+<pre>   init_hot_s3_j();</pre>
+<pre>   dump_s3();</pre>
+<pre>}</pre>
+
+
+<div class="section" id="GUID-A419F455-8881-4986-AC16-73C4CB90F3B0"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the restructured code satisfies the original program semantics.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

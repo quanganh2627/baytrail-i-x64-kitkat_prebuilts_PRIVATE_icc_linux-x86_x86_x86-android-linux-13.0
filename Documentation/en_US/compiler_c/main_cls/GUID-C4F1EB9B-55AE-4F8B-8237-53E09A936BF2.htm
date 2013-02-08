@@ -1,0 +1,201 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Calling Functions on the CPU to Modify the Coprocessor's Execution Environment">
+<meta name="DC.subject" content="environment, controlling coprocessor, APIs for coprocessor, OpenMP, coprocessor functions, multiple coprocessors, declaring target number, declaring target type">
+<meta name="keywords" content="environment, controlling coprocessor, APIs for coprocessor, OpenMP, coprocessor functions, multiple coprocessors, declaring target number, declaring target type">
+<meta name="DC.Relation" scheme="URI" content="GUID-F86235AD-B920-4729-A50B-CD7D198AF7DF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8.htm#GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C4F1EB9B-55AE-4F8B-8237-53E09A936BF2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Calling Functions on the CPU to Modify the Coprocessor's Execution Environment</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_setting_env_via_apicalls"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C4F1EB9B-55AE-4F8B-8237-53E09A936BF2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Calling Functions on the CPU to Modify the Coprocessor's Execution Environment</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>Some CPU APIs have offload equivalents, each of which take two additional arguments to specify the target type and target number, defined by the following arguments: 
+	 </p>
+ 
+	 <table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><td valign="top"> 
+			 <p><var>target_type</var> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p><var> target_type</var> is static. It is recommended to use the following pre-defined default: 
+			 </p>
+ 
+			 <p><samp class="codeph">DEFAULT_TARGET_TYPE</samp> 
+			 </p>
+ 
+			 </td>
+ 
+		</tr>
+<tr><td valign="top"> 
+			 <p><var>target_number</var> 
+			 </p>
+</td>
+<td valign="top"> 
+			 <p>The specific coprocessor to target. 
+			 </p>
+ 
+			 <p>An expression whose value is interpreted as follows: 
+			 </p>
+ 
+			 <dl id="GUID-E670DDBF-3CF3-41E0-9540-68BB3455CA12"> 
+		  <dt class="dlterm"><samp class="codeph">-1</samp></dt>
+<dd> 
+				<p> This value specifies execution on the
+target. The runtime system chooses the specific target.
+Execution on the CPU is not allowed. If the correct target hardware needed to run
+the offloaded program is not available on the system, the program
+fails with an error message.</p>
+
+</dd>
+ 
+		   
+		  <dt class="dlterm"><samp class="codeph">&gt;=0</samp></dt>
+<dd> 
+				<p id="d68860e207"><a name="d68860e207"><!-- --></a>A value greater than
+				  or equal to zero specifies execution on a specific target. The <span>number of the </span>specific
+				  target is determined as follows: 
+				</p>
+ 
+				<p id="d68860e213"><a name="d68860e213"><!-- --></a><samp class="codeph"><var>target</var>=<var>target-number</var>
+					 % 
+					 <var>number_of_targets</var></samp> 
+				</p>
+<p> If the correct target hardware needed to run the offloaded program is not available on the system, the program fails with an error message.</p>
+</dd>
+ 
+		   
+		  <dt class="dlterm"><samp class="codeph">&lt;-1</samp></dt>
+<dd> 
+				<p id="d68860e234"><a name="d68860e234"><!-- --></a>This value is reserved. 
+				</p>
+ 
+			 </dd>
+ 
+		   
+		</dl>
+ 
+			 <p>For example, in a
+		  system with four targets: 
+		</p>
+ 
+			 <ul type="disc" id="GUID-70087A73-E30C-4700-9DBD-F518D56FE9A6"> 
+		  <li> 
+			 <p>specifying 2 or 6 tells the runtime systems to
+				execute the code on target 2, because both 
+				<samp class="codeph">2 % 4</samp> and 
+				<samp class="codeph">6 % 4</samp> equal 
+				<samp class="codeph">2</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Specifying 1000 tells the runtime systems to
+				execute the code on target 0, because 
+				<samp class="codeph">1000 % 4 = 0</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+</td>
+ 
+		</tr>
+</table>
+ 
+	 <p>The 
+		<span class="filepath">offload.h</span> header file defines all the function calls that can be made from the CPU to affect the coprocessor's environment. 
+	 </p>
+ 
+	 <p> This topic uses the CPU API 
+		<span class="keyword">omp_set_num_threads</span> and its offload variations as an example. 
+	 </p>
+ 
+	 <div class="section" id="GUID-111F849C-6D7B-4121-A84A-FF3639971FA4"><h2 class="sectiontitle">Example</h2> 
+		 
+		<table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><th valign="bottom" align="left" id="d687334e197"> CPU API</th>
+ 
+		  </tr>
+<tr><td valign="top" headers="d687334e197"> 
+				<pre>void omp_set_num_threads (int num_threads);</pre></td>
+ 
+		  </tr>
+</table>
+ 
+		<table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder"><tr><th valign="bottom" align="left" id="d687334e212">Offload API</th>
+ 
+		  </tr>
+<tr><td valign="top" headers="d687334e212"> 
+				<pre>void omp_set_num_threads_target (TARGET_TYPE target_type, int target_number, int num_threads);</pre></td>
+ 
+		  </tr>
+</table>
+ 
+		<pre>#include "offload.h"
+#include "omp.h"
+
+int main()
+{
+        int value, result;
+
+        value = 66;
+        omp_set_num_threads_target(TARGET_MIC, 0, value);
+        #pragma offload target(mic) out(result)
+        #pragma omp parallel
+        #pragma omp master
+        result = omp_get_num_threads();
+
+        printf("Number of threads on target %d\n", result);
+        if (result != value) {
+          printf("failed1 result=%d, value=%d\n", result, value);
+          return 1;
+        }
+        return 0;
+}</pre> 
+	 </div>
+ 
+	 </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F86235AD-B920-4729-A50B-CD7D198AF7DF.htm">Controlling the Coprocessor's Execution Environment</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8.htm#GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">Setting Environment Variables on the CPU to Modify the Coprocessor... 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

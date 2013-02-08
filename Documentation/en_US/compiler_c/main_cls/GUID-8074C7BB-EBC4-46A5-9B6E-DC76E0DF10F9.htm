@@ -1,0 +1,233 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Rules for Using _Cilk_shared and _Cilk_offload">
+<meta name="DC.subject" content="_Cilk_shared, _Cilk_offload">
+<meta name="keywords" content="_Cilk_shared, _Cilk_offload">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8074C7BB-EBC4-46A5-9B6E-DC76E0DF10F9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Rules for Using _Cilk_shared and _Cilk_offload</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_rules_4_shared_offload"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8074C7BB-EBC4-46A5-9B6E-DC76E0DF10F9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Rules for Using _Cilk_shared and _Cilk_offload</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>Follow these rules for using 
+		<span class="keyword">_Cilk_shared</span> and 
+		<span class="keyword">_Cilk_offload 
+		</span> for correct execution. In most cases the compiler issues diagnostics for incorrect usage. 
+	 </p>
+ 
+	 <div class="section" id="GUID-8694DC64-D1C3-4E25-9D7D-D97E83993FF7"><h2 class="sectiontitle">Correct and Permitted Usage</h2> 
+		 
+		<ul type="disc" id="GUID-FAC7D030-BF48-4021-B2BC-CE9CB14104B0"> 
+		  <li> 
+			 <p>When applied to a C++ class, all member functions are shared and all objects of that class type are shared. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>On static fields of a class. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Assigning pointer-to-shared to pointer-to-non-shared. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Assigning the address of a shared variable to a shared pointer. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>The named function called by 
+				<samp class="codeph"><span class="keyword">_Cilk_offload 
+				  </span> 
+				  <var>func</var></samp> must be marked 
+				<span class="keyword">_Cilk_shared</span> and must have external linkage. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>The function pointer in 
+				<samp class="codeph"><span class="keyword">_Cilk_offload 
+				  </span> 
+				  <var>indirect-call</var></samp> must be of the type 
+				<samp class="codeph">pointer-to-shared</samp>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Shared functions whose address is taken must have external linkage. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Pointer arguments passed to an offloaded function call must be pointer-to-shared. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Global variables referenced within 
+				<span class="keyword">_Cilk_offload _Cilk_for</span> must have the attribute 
+				<span class="keyword">_Cilk_shared</span>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Functions called from 
+				<span class="keyword">_Cilk_offload _Cilk_for</span> must be shared. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Pointers referenced within 
+				<span class="keyword">_Cilk_offload _Cilk_for</span> must be pointers to shared variables. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> Global variables referenced inside functions marked 
+				<span class="keyword">_Cilk_shared</span> must have the attribute 
+				<span class="keyword">_Cilk_shared</span>. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-C28AFEBC-6C13-40DE-AD16-16FBBAC1ECBC"><h2 class="sectiontitle">Incorrect and Non-permitted Usage</h2> 
+		 
+		<ul type="disc" id="GUID-BCF93DAB-9282-44F7-A306-28A24E6AFCD1"> 
+		  <li> 
+			 <p><span class="keyword">_Cilk_shared</span> on a field of a structure is not allowed. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">_Cilk_shared</span> on static variables is not allowed. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p><span class="keyword">_Cilk_shared</span> on variables local to a function is not allowed. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Assigning pointer-to-non-shared to pointer-to-shared is not allowed. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-CE995FDB-84E1-4AF7-BF01-6D3292473C21"><h2 class="sectiontitle">Example</h2> 
+		 
+		<p>This example demonstrates incorrect usage of 
+		  <span class="keyword">_Cilk_shared</span>. The code attempts to declare a 
+		  <span class="keyword">_Cilk_shared</span> object, 
+		  <samp class="codeph">mark</samp>, local to a function. 
+		</p>
+ 
+		<pre>#pragmaoffload_attribute(push, _Cilk_shared)
+#include &lt;vector&gt;
+#include "tbb/concurrent_vector.h"
+#pragma offload_attribute(pop, _Cilk_shared)
+
+class _Cilk_shared Thing
+{
+public:
+  Thing(void) { m_size = 100; }
+  void work();
+  int m_size;
+};
+
+void Thing::work() {
+  std::vector&lt;bool&gt; mark(m_size);    // Error
+  tbb::concurrent_vector&lt; std::pair&lt;unsigned int, unsigned int&gt; &gt; m_hits(m_size);
+}
+</pre> 
+		<p>In this example of correct usage, the object 
+		  <samp class="codeph">mark</samp> has been allocated statically, and its usage modified slightly. 
+		</p>
+ 
+		<pre>#include &lt;vector&gt;
+#include "tbb/concurrent_vector.h"
+
+_Cilk_shared std::vector&lt;bool&gt; mark;
+_Cilk_shared tbb::concurrent_vector&lt; std::pair&lt;unsigned int, unsigned int&gt; &gt; m_hits;
+
+class _Cilk_shared Thing
+{
+public:
+  Thing(void) { m_size = 100; }
+  void work();
+  int m_size;
+};
+
+void Thing::work() {
+  mark.resize(m_size);
+  m_hits.resize(m_size);
+}
+</pre> 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BAA71B4-CE59-4A07-B612-DF217CFF0532.htm">Offload Using Shared Virtual Memory</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

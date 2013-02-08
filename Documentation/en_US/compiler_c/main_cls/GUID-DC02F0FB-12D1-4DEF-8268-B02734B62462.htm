@@ -1,0 +1,144 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="offload_attribute">
+<meta name="abstract" content="Specifies that all functions and variables declared subsequent to the pragma are available on the coprocessor. This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="description" content="Specifies that all functions and variables declared subsequent to the pragma are available on the coprocessor. This pragma only applies to Intel&reg; MIC Architecture.">
+<meta name="DC.subject" content="offload_attribute pragma, pragma, offload_attribute">
+<meta name="keywords" content="offload_attribute pragma, pragma, offload_attribute">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>offload_attribute</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optref_offload_attr_pragma"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body class="pagebreak" id="GUID-DC02F0FB-12D1-4DEF-8268-B02734B62462">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">offload_attribute</h1>
+
+<!--Specifies that all functions and variables declared subsequent to the pragma are available on the coprocessor. This pragma only applies to Intel&reg; MIC Architecture.-->
+
+<div><p>Specifies that all functions and variables declared subsequent to the pragma are available on the coprocessor. This pragma only applies to Intel&reg; MIC Architecture.</p>
+
+
+<div class="section" id="GUID-B9AA0C7C-26F9-4AA8-971E-B0D248F29CCF"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma offload_attribute</span><span class="delim">(</span><span class="delim">[</span><span class="kwd">push</span><span class="delim">, ]</span><span class="kwd"> target</span><span class="delim">(</span><span class="var">target-name</span><span class="delim">)</span><span class="delim">)</span></p><p><span class="kwd">#pragma offload_attribute</span><span class="delim">(</span><span class="delim"></span><span class="kwd">pop</span><span class="sep">|</span><span class="delim">{</span><span class="kwd">target</span><span class="delim">(</span><span class="kwd">none</span><span class="delim">)</span><span class="delim">}</span><span class="delim">)</span></p></td></tr></table>
+</div>
+
+<div class="section" id="ARGUMENTS_OFFLOAD_ATTR"><a name="ARGUMENTS_OFFLOAD_ATTR"><!-- --></a><h2>Arguments</h2>
+<dl id="GUID-6D09242F-30C8-403E-9ED3-834377346C95"><dt class="dlterm"><samp class="codeph"><var>target-name</var></samp></dt>
+<dd><p>The name of the target.</p>
+<p>The implementation pre-defines an identifier that represents the target (<samp class="codeph">mic</samp>).</p>
+</dd>
+
+<dt class="dlterm"><samp class="codeph">push</samp></dt>
+<dd><p>Turns on the pragma. Pushes <var>target-name</var> onto an internal compiler stack. All subsequent functions and variables are targeted for Intel&reg; MIC Architecture until the statement <samp class="codeph">#pragma offload_attribute (pop, target(<var>target-name</var>))</samp> or until the end of the compilation unit.</p>
+<p>Default.</p>
+</dd>
+
+<dt class="dlterm"><samp class="codeph">pop</samp></dt>
+<dd><p>Turns off the pragma. Removes <var>target-name</var> from the top of the internal compiler stack.</p>
+</dd>
+
+<dt class="dlterm"><samp class="codeph">none</samp></dt>
+<dd><p>Using none for the target-name turns off the pragma.</p>
+</dd>
+
+
+</dl>
+
+</div>
+
+
+<div class="section" id="DESCRIPTION_OFFLOAD_ATTR"><a name="DESCRIPTION_OFFLOAD_ATTR"><!-- --></a><h2>Description</h2>
+
+<p>This pragma specifies that all functions and variables declared subsequent to the pragma are available on the coprocessor.</p>
+<p>This pragma enables you to avoid the need to put target attributes or target <samp class="codeph">declspec</samp>s on individual declarations.</p>
+<p>To turn on the pragma, specify <samp class="codeph">push</samp> and <var>target-name</var>, or specify only a <var>target-name</var>. <samp class="codeph">push</samp> pushes <var>target-name</var> onto a stack. If you don't specify <samp class="codeph">push</samp>, the compiler does not remember the state before the push.</p>
+<p>If you specify <samp class="codeph">push</samp>, <samp class="codeph">pop</samp> turns off the pragma.</p>
+<p>If you don't specify <samp class="codeph">push</samp>, then specifying <samp class="codeph">none</samp> for <var>target-name</var> effectively turns off the pragma.</p>
+</div>
+
+
+<div class="section" id="GUID-CC6F542D-65B9-41E9-93E9-7A56D15F9940"><h2>Example</h2><p>In the following example, all functions and variables between the <samp class="codeph">push</samp> and <samp class="codeph">pop</samp> statements are targets for the coprocessor.</p>
+<pre>// Push mic target onto the stack.
+#pragma offload_attribute (push, target (mic))
+
+// Functions and variables.
+...
+
+// Remove mic target from the stack, return to previous state.
+#pragma offload_attribute (pop) </pre><p>In the following example, all functions and variables between the<samp class="codeph"> target(mic)</samp> and <samp class="codeph">target(none)</samp> statements are targets for the coprocessor.</p>
+<pre>// Change target architecture to mic, Do not place target on stack.
+#pragma offload_attribute (target (mic)) 
+
+// Functions and variables.
+...                                
+
+// Change target architecture to none, turning off pragma.
+#pragma offload_attribute (target(none))</pre><p>In the following example, both class A and class B get the <samp class="codeph">target(mic)</samp> attribute.</p>
+<p>All data members of the classes, both those added by the user such as the data member <samp class="codeph">av</samp>, as well as the internal data members created by the compiler, such as their virtual function tables, get the <samp class="codeph">target(mic)</samp> attribute, because they are enclosed within the <samp class="codeph">offload_attribute</samp> pragma region. </p>
+<p>Notice that the <samp class="codeph">target(mic)</samp> or the <samp class="codeph">_Cilk_shared</samp> attribute on a class is not inherited, therefore the classes need to be individually marked either explicitly in their definition or through the push/pop mechanism.</p>
+<p> Also notice that for the correct offloading of member functions via virtual dispatch, all classes in the hierarchy must be marked with the <samp class="codeph">target(mic)</samp> or <samp class="codeph">_Cilk_shared</samp> attribute.</p>
+<pre>fileA.h
+
+#include &lt;vector&gt;
+
+class A {
+...
+private:
+std::vector&lt;int&gt; av;
+};
+
+
+
+fileB.cpp
+
+#pragma offload_attribute (push,target(mic)) #include "fileA.h"
+class B : public A {
+...
+};
+#pragma offload_attribute (pop)</pre><p>In the following example, class C and the contents of namespace A in the original definition get the <samp class="codeph">target(mic)</samp> attribute because they are enclosed with the <samp class="codeph">offload_attribute</samp> pragma. However, the namespace U itself does not get marked with the
+attribute.</p>
+
+<p>Consequently, class D and the contents of the extended namespace
+U do not get the <samp class="codeph">target(mic)</samp> attribute because they are not
+enclosed with the <samp class="codeph">offload_attribute</samp> pragma.</p>
+<pre>#pragma offload_attribute (push,target(mic)) namespace U { class C { ...
+};
+...
+} // original definition of namespace U
+#pragma offload_attribute (pop)
+
+namespace U {
+class D {
+...
+};
+...
+} // extended namespace U</pre></div>
+</div>
+
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

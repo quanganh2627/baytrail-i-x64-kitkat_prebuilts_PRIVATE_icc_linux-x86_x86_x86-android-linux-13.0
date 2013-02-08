@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Response Files">
+<meta name="DC.subject" content="response files">
+<meta name="keywords" content="response files">
+<meta name="DC.Relation" scheme="URI" content="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA.htm#GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Response Files</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_resp_files_comm"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_resp_files_comm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EA4DC01B-91A3-45B2-9F6B-57228F898362">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Using Response Files</h1>
+
+
+
+
+<div>
+<p>Use response files to specify options used during particular compilations. Response files are invoked as an option on the command line. Options in a response file are inserted in the command line at the point where the response file is invoked.</p>
+
+
+<div class="section" id="GUID-6A7308BE-94EB-40E3-AFAE-C34DA6AC3BB0"><h2 class="sectiontitle">Sample Response Files</h2>
+
+
+<pre># response file: response1.txt</pre>
+<pre># compile with these options</pre>
+<pre><span class="option">-w0</span></pre>
+<pre># end of response1 file</pre>
+<pre># response file: response2.txt</pre>
+<pre># compile with these options</pre>
+<pre><span class="option">-O0</span></pre>
+<pre># end of response2 file</pre>
+
+<p>Use response files to decrease the time spent entering command-line options and to ensure consistency by automating command-line entries. Use individual response files to maintain options for specific projects.</p>
+
+<p>Any number of options or file names can be placed on a line in a response file. Several response files can be referenced in the same command line.</p>
+
+<p>The following example shows how to specify a response file on the command line:</p>
+
+<pre>icpc @response1.txt prog1.cpp @response2.txt prog2.cpp</pre>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>An "@" symbol must precede the name of the response file on the command line.</p>
+</div>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0A864821-14D8-4C94-8330-EDB1E3A83B40.htm">Compilation</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA.htm#GUID-A9831327-FFAD-4573-BFCC-22EF81EB9DDA">Using Configuration Files</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

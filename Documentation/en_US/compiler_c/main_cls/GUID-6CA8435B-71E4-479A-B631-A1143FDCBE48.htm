@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Guided Auto Parallelism Overview">
+<meta name="DC.subject" content="guided auto parallelism, overview, parallelism, parallelization, program loops">
+<meta name="keywords" content="guided auto parallelism, overview, parallelism, parallelization, program loops">
+<meta name="DC.Relation" scheme="URI" content="GUID-6BB02481-A703-49F5-8B52-0678190FEBBF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD.htm#GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD">
+<meta name="DC.Relation" scheme="URI" content="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7">
+<meta name="DC.Relation" scheme="URI" content="GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231.htm#GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231">
+<meta name="DC.Relation" scheme="URI" content="GUID-3006DD2C-6A29-4289-8583-6596BAA8A98D.htm#GUID-3006DD2C-6A29-4289-8583-6596BAA8A98D">
+<meta name="DC.Relation" scheme="URI" content="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm#GUID-226DE90E-D4C8-420B-B560-0997839D17C4">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6CA8435B-71E4-479A-B631-A1143FDCBE48">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Guided Auto Parallelism Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_gap_ovw"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_gap_ovw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6CA8435B-71E4-479A-B631-A1143FDCBE48">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Guided Auto Parallelism Overview</h1>
+ 
+   
+  <div> 
+	 <p>The guided auto parallelism feature of the Intel&reg; compiler is a tool that offers selective advice to improve the performance of serially coded applications by suggesting changes that will take advantage of the compiler’s ability to automatically vectorize and parallelize your code as well as improve the efficiency of data operations. Despite having the words “auto parallelism” in its name, this tool does not require you to implement threaded code in order to improve the execution performance of your code nor does it require that your code is already threaded or parallel code. 
+	 </p>
+ 
+	 <p>You need not use any advanced optimization techniques such as inter-procedural analysis or profile-guided feedback to use this feature. Using the 
+  <span class="option">-guide</span> (Linux*) or 
+  <span class="option">/Qguide</span> (Windows*) set of options in addition to the compiler options you normally use is sufficient to enable the guided auto parallelism feature, with the requirement that you must compile with 
+  <span class="option">-O2</span> (Linux*) or 
+  <span class="option">/O2</span> (Windows*) or higher optimization levels. The compiler does not generate any object files or executables during the guided auto parallelism run. 
+  </p>
+ 
+  <p>In debug mode (<span class="option">/Zi</span> on Windows, 
+  <span class="option">-g</span> on Linux), the compiler's optimization level defaults to 
+  <span class="option">/Od</span> (on Windows*) or 
+  <span class="option">–Od</span> (on Linux*); thus 
+  <span class="option">/O2</span> or 
+  <span class="option">-O2</span> (or a higher level optimization) must be specified explicitly on the command-line. 
+  </p>
+ 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+	 <p>You can use the 
+	 <span class="option">-diag-disable</span> or 
+	 <span class="option">/Qdiag-disable</span> option along with the 
+	 <span class="option">-guide</span> or 
+	 <span class="option">/Qguide 
+	 </span>option to direct the compiler to suppress specific diagnostic messages; for example, the options: 
+	 <span class="option">/Qguide, /Qdiag-disable:30534</span> tells the compiler not to emit the 30534 diagnostic. The 
+	 <span class="option">-diag-disable</span> or 
+	 <span class="option">/Qdiag-disable</span> mechanism works the same way as it does for compiler-warnings. 
+	 </p>
+ 
+  </div> 
+  <p>If you decide to follow the advice offered by the guided auto parallelism tool by making the suggested code changes and/or using the suggested compiler options, you must then recompile the program without the<span class="option"> -guide</span> or 
+  <span class="option">/Qguide</span> options. 
+  </p>
+ 
+  <p>Any advice generated by the compiler when using the guided auto parallelism tool is optional; you can either implement it or reject it. The advice typically falls under three broad categories: 
+  <ul type="disc" id="GUID-4388C3C8-AAB0-4543-8389-410C0224A870"> 
+	 <li><strong>Advice for source modifications:</strong> the compiler advices you to make source changes that are localized to a loop-nest or a routine. For example, the tool may recommend that you use a local-variable for the upper-bound of a loop (instead of a class member) or that you should initialize a local variable unconditionally at the top of the loop-body, or you may be told to add the 
+		<span class="keyword">restrict</span> keyword to pointer-arguments of a function definition (if it is appropriate). 
+	 </li>
+ 
+	 <li><strong> Advice to apply pragmas:</strong> the compiler advises you to apply a new pragma on a certain loop-level if the pragma semantics can be satisfied (you must verify this). In many cases, you may be able to apply the pragma (thus implicitly asserting new program/loop properties) that the compiler can then take advantage of to perform enhanced optimizations. 
+	 </li>
+ 
+	 <li><strong>Advice to add compiler options:</strong> the compiler advises you to add command-line options that assert new properties; for example, you may be asked to use 
+  <span class="option">/Qansi-alias</span> or 
+  <span class="option">/Qalias-args</span> (on Windows*) or 
+  <span class="option">-ansi-alias</span> or 
+  <span class="option">-fargument-alias</span> (on Linux*) compiler options. 
+  <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+	 <p>These suggested compiler options apply to the entire file. It is your responsibility to check that the properties asserted by these options are valid for the entire file, and not just the loop in question. 
+	 </p>
+ 
+  </div> 
+  </li>
+ 
+  </ul>
+ 
+  </p>
+ 
+  <p>If you use guided auto parallelism options along with 
+  <span class="option">–parallel</span> (Linux*) or<span class="option"> /Qparallel</span> (Windows*), the compiler may suggest options to further parallelize your application. The compiler may also offer advice on enabling other optimizations, such as vectorization of your application. 
+  </p>
+ 
+  <p>If you use the guided auto parallelism options without enabling auto parallelism (that is, without using 
+  <span class="option">–parallel</span> or 
+  <span class="option">/Qparallel</span> options) then the compiler may only suggest enabling optimizations such as vectorization for your application. This approach is recommended when you wish to improve the performance of a single-threaded code without the use of parallelization or when you want to improve the performance of threaded applications that do not rely on the compiler for auto parallelism. 
+  </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6BB02481-A703-49F5-8B52-0678190FEBBF.htm">Guided Auto Parallelism</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD.htm#GUID-7AF4E91E-3448-4F33-8408-7E5855138DAD">Using Guided Auto Parallelism 
+		  </a></div>
+<div><a href="GUID-7213D408-A27B-429F-8612-64A00F7274A7.htm#GUID-7213D408-A27B-429F-8612-64A00F7274A7"><span class="option">diag</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231.htm#GUID-1972B1CB-72C3-4BF7-ACE8-3F635A664231"><span class="option">ansi-alias</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-3006DD2C-6A29-4289-8583-6596BAA8A98D.htm#GUID-3006DD2C-6A29-4289-8583-6596BAA8A98D"><span class="option">fargument-alias</span> compiler option 
+		  </a> &nbsp; 
+		  </div>
+<div><a href="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm#GUID-226DE90E-D4C8-420B-B560-0997839D17C4"><span class="option">g</span> compiler option 
+		  </a> &nbsp; 
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

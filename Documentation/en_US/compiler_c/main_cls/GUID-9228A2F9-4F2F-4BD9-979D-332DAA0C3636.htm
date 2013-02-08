@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compare Intrinsics for Floating Point Vectors">
+<meta name="DC.Relation" scheme="URI" content="GUID-18067B0B-220C-4916-99A8-F712F2509089.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9228A2F9-4F2F-4BD9-979D-332DAA0C3636">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compare Intrinsics for Floating Point Vectors</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_vcmppd_vcmpps"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9228A2F9-4F2F-4BD9-979D-332DAA0C3636">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Compare Intrinsics for Floating Point Vectors</h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>The intrinsic functions to perform compare operations between 512-bit floating point vectors are 
+      <samp class="codeph">VCMPPS</samp> and 
+      <samp class="codeph">VCMPPD</samp> for float32 and float64 vectors respectively. 
+    </p>
+ 
+    <p>These instructions must comply with 3.1.1.1 of the DX10 specifications, which says: 
+    </p>
+ 
+    <ul type="disc" id="GUID-B100B141-4BD3-4B6A-ABAE-3715A5F76296"> 
+      <li> 
+        <p>The comparisons 
+          <samp class="codeph">EQ</samp>, 
+          <samp class="codeph">GT</samp>, 
+          <samp class="codeph">GE</samp>, 
+          <samp class="codeph">LT</samp>, and 
+          <samp class="codeph">LE</samp>; when either or both operands are NaN, returns 
+          <span>FALSE</span>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Comparisons ignore the sign of 0 (so +0 equals -0). 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>The comparison 
+          <samp class="codeph">NE</samp>, when either or both operands is NaN, returns 
+          <span>TRUE</span>. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Comparisons of any non-NaN value against +/-∞ return the correct result. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Also from the DX10 specifications: 
+    </p>
+ 
+    <ul type="disc" id="GUID-DE20B1B6-FD95-4EBC-B681-087BD2BDCDA1"> 
+      <li> 
+        <p>Denorms are flushed before comparison (original source registers are untouched). 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>+0 equals -0. Comparison with NaN returns false. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Infinity of like signs, are considered equals. Infinity values of either sign are considered ordered values. 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-18067B0B-220C-4916-99A8-F712F2509089.htm">Compare Operations between Floating Point Vectors</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

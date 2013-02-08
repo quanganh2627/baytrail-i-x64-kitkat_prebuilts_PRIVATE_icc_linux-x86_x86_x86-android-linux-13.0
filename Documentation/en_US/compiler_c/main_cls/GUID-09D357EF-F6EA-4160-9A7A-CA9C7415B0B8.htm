@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30526)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30526">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30526">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CCB85B2C-EB11-4438-B9B7-7E4EC6894537.htm#GUID-CCB85B2C-EB11-4438-B9B7-7E4EC6894537">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-09D357EF-F6EA-4160-9A7A-CA9C7415B0B8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30526)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30526"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30526"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-09D357EF-F6EA-4160-9A7A-CA9C7415B0B8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30526)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-1B0B0B54-1D1B-4466-8D76-D30D4813B270"><h2 class="sectiontitle">Message</h2><p>To parallelize the loop at line %d, annotate the routine %s with %s.</p>
+</div>
+
+
+<div class="section" id="GUID-5B0BE52A-B16D-46B0-A931-158B1E4A082E"><h2 class="sectiontitle">Advice</h2>
+<p>If the loop contains a call to a function, the compiler cannot parallelize the loop without more information about the function being called.</p>
+<p>However, if the function being called in the loop is <span>a const function</span> or <span>a concurrency-safe function,</span>  then the call does not inhibit parallelization of the loop. </p>
+</div>
+
+
+<div class="section" id="GUID-C264DF46-58FC-4969-AC4A-C5CD44858D8D"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>#define N 10000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>int bar(int);</pre>
+<pre>void foo(){</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0;i&lt;N;i++){</pre>
+<pre>    A[i] = B[i] * bar(i);</pre>
+<pre>  }</pre>
+<pre>}</pre>
+</div>
+
+
+<p>In this case, the compiler does not parallelize the loop because it is not safe to do so without further information about routine <samp class="codeph">bar</samp>, which is being called.</p>
+<p>If you determine it is safe to do so, you can modify the program code as follows:</p>
+
+<pre>#define N 10000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>__declspec(const) int bar(int);</pre>
+<pre>void foo(){</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0;i&lt;N;i++){</pre>
+<pre>    A[i] = B[i] * bar(i);</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+<p>The following is another way the code can be modified if it is safe to do so:</p>
+
+<pre>#define N 10000</pre>
+<pre>double A[N], B[N];</pre>
+<pre>__declspec(concurrency_safe(profitable)) int bar(int);</pre>
+<pre>void foo(){</pre>
+<pre>  int i;</pre>
+<pre>  for (i=0;i&lt;N;i++){</pre>
+<pre>    A[i] = B[i] * bar(i);</pre>
+<pre>  }</pre>
+<pre>}</pre><div class="section" id="GUID-75751FCB-99CC-4D31-91B3-02CF26846906"><h2 class="sectiontitle">Verify</h2>
+
+
+<p>Make sure the routine satisfies the semantics of this annotation. A weaker annotation that can achieve a similar effect is <span>__declspec(concurrency_safe(profitable)</span>.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-CCB85B2C-EB11-4438-B9B7-7E4EC6894537.htm#GUID-CCB85B2C-EB11-4438-B9B7-7E4EC6894537">GAP Message (Diagnostic ID 30528)</a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

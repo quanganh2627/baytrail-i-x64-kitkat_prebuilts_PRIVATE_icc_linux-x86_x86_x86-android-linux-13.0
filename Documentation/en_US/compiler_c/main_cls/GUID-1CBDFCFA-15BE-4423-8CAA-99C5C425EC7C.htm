@@ -1,0 +1,1138 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Arithmetic Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, FP arithmetic operations, add_pd, sub_sd, sub_pd, mul_sd, div_pd, sqrt_sd, sqrt_pd, min_sd, min_pd, max_sd, max_pd, mul_pd, div_sd, add_sd, Intel&reg; Streaming SIMD Extensions 2, FP arithmetic intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, FP arithmetic operations, add_pd, sub_sd, sub_pd, mul_sd, div_pd, sqrt_sd, sqrt_pd, min_sd, min_pd, max_sd, max_pd, mul_pd, div_sd, add_sd, Intel&reg; Streaming SIMD Extensions 2, FP arithmetic intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-458C5D9E-4688-4E7F-A7D7-0BFB5B756485.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1CBDFCFA-15BE-4423-8CAA-99C5C425EC7C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Arithmetic Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_fp_arithmetic"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1CBDFCFA-15BE-4423-8CAA-99C5C425EC7C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Arithmetic Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-25392CFD-3F20-44C7-9FB4-012638EC2CF5"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for floating-point arithmetic operations are listed in this topic. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in a register. The information about what is placed in each register appears in the tables below, in the detailed explanation for each intrinsic. For each intrinsic, the resulting register is represented by 
+        <span class="keyword">R0</span> and 
+        <span class="keyword">R1</span>, where 
+        <span class="keyword">R0</span> and 
+        <span class="keyword">R1</span> each represent one piece of the result register. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BD834C80-0EDE-4D73-8789-3E97DC41A06C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-73522A74-8EDC-47B8-9671-EF5B590E3236" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d84400e106"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d84400e112"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d84400e118"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_add_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">ADDSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_add_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">ADDPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_sub_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">SUBSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_sub_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">SUBPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_mul_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">MULSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_mul_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">MULPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_div_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Division 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">DIVSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_div_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Division 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">DIVPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_sqrt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Computes Square Root 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">SQRTSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_sqrt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Computes Square Root 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">SQRTPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_min_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Computes Minimum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">MINSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_min_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Computes Minimum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">MINPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_max_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Computes Maximum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">MAXSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e106 "> 
+                <p><span class="option"> _mm_max_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d84400e112 "> 
+                <p>Computes Maximum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d84400e118 "> 
+                <p><span class="keyword">MAXPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BDD10275-8A21-4A9C-BFE9-6F800C75A3D1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_add_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Adds the lower double-precision FP (floating-point) values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>; the upper double-precision FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-51C81D1E-A5B1-44C3-8BC6-6F440BB434D8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CAA66F7F-B882-4DC2-8C7C-52FE8BCAA3C8" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e518"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e524"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e518 "> 
+                <p><span class="keyword">a0 + b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e524 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-35E6D855-FAA9-4719-BC24-BBA8623A9B02"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_add_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Adds the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-032B04AC-E93F-43A0-902E-6044D5D03C6C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1378D550-1F68-4A9C-B422-8858E6212C7E" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e587"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e593"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e587 "> 
+                <p><span class="keyword">a0 + b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e593 "> 
+                <p><span class="keyword">a1 + b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E5E67531-629F-4B56-94A0-015B74FCDB9B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_sub_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Subtracts the lower DP FP value of 
+        <span class="keyword">b</span> from 
+        <span class="keyword">a</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EFF3C293-6EE1-4B19-AC20-400887C7BBB7"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-79D8D715-243D-495A-8545-0CA0DEA1FDBE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e658"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e664"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e658 "> 
+                <p><span class="keyword">a0 - b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e664 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CD278991-53C7-4702-A35D-ECF660D13139"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_sub_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Subtracts the two DP FP values of 
+        <span class="keyword">b</span> from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2E169F30-65C0-4371-9074-63E9F12A7248"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CAD85652-D061-40DE-BF4E-ABC420F910CB" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e726"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e732"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e726 "> 
+                <p><span class="keyword">a0 - b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e732 "> 
+                <p><span class="keyword">a1 - b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-778E80FD-719E-4359-B90B-1CFB05F3A6DB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_mul_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Multiplies the lower DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. The upper DP FP is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2A8F83A4-B70A-4355-A7EE-73254863FF8D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8BF53D82-F0B2-48C1-BD12-3F19A1977816" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e798"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e804"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e798 "> 
+                <p><span class="keyword">a0 * b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e804 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-89585C4E-3C48-451B-A8D8-007362028D4F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_mul_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Multiplies the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-79DF97FF-7E9E-4E18-B6E7-8841F92634E9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F798DC93-9D3E-45AC-AC41-749E736F6DE7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e866"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e872"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e866 "> 
+                <p><span class="keyword">a0 * b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e872 "> 
+                <p><span class="keyword">a1 * b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1ECD77A8-4227-4ACC-9C3C-C950E381C185"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_div_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Divides the lower DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2105B327-45EB-41B7-A821-CC9F588061DA"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1B58DEAF-5ECF-45A8-93B2-50F01165BD60" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e937"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e943"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e937 "> 
+                <p><span class="keyword">a0 / b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e943 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-71D6A24B-DF14-4360-BA06-2F43EC09AAE1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_div_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Divides the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4FE2D3CA-9670-4685-96DF-2C02DF2361FB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C579AF2A-601D-496C-A268-192DC93C86FF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e1006"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e1012"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e1006 "> 
+                <p><span class="keyword">a0 / b0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e1012 "> 
+                <p><span class="keyword">a1 / b1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-69AD424C-6CCB-44AB-9361-4FA010265358"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_sqrt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Computes the square root of the lower DP FP value of 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-01ADEB33-C126-4F12-977B-CA4E8C90C22F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-12582F10-54FA-4C8E-9DEA-AE7172AF1FAF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e1074"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e1080"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e1074 "> 
+                <p><span class="keyword">sqrt(b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e1080 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BF450D92-3B37-4049-A755-B946E15F025E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_sqrt_pd(__m128d a)</span></p></div> 
+      <p>Computes the square roots of the two DP FP values of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F5324BEA-B89F-47E1-A5CD-3C584F9748FC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F06146E4-53C4-4C73-B1E4-C46583DE32DA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e1139"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e1145"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e1139 "> 
+                <p><span class="keyword">sqrt(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e1145 "> 
+                <p><span class="keyword">sqrt(a1)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D9812D67-E56A-4FC8-92B5-D3A32422ADC9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_min_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Computes the minimum of the lower DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BB2726FB-B18F-4C1E-A843-CAA7297CB2B3"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-207B9518-B6C6-4213-BCA9-D39430140954" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e1211"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e1217"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e1211 "> 
+                <p><span class="keyword">min (a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e1217 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-498EE753-0799-47B8-9036-64A8A33EAC91"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_min_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Computes the minima of the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-20D97A22-9EAA-4614-9284-E23792B85124"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0B8F1DE9-C4E0-4611-9A28-4D4CE114E778" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e1279"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e1285"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e1279 "> 
+                <p><span class="keyword">min (a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e1285 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C45FDDA4-5032-4F0F-A416-F67BB926D387"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_max_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Computes the maximum of the lower DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2DCC4FEB-20B8-4B4D-B613-82285EED895A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-58AFC705-444E-4334-AF14-685243050A55" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d84400e1350"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d84400e1356"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d84400e1350 "> 
+                <p><span class="keyword">max (a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d84400e1356 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9C891449-C20A-45C4-9622-E0D4CA0B55F9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_max_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Computes the maxima of the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-033B10F1-8401-4C80-8B19-7E95CB19F9DF"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-054B69A9-F327-4A7C-94E6-800A553AB18B" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50.73891625615763%" id="d84400e1419"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="49.26108374384236%" id="d84400e1425"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50.73891625615763%" headers="d84400e1419 "> 
+                <p><span class="keyword">max (a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="49.26108374384236%" headers="d84400e1425 "> 
+                <p><span class="keyword">max (a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-458C5D9E-4688-4E7F-A7D7-0BFB5B756485.htm">Floating-point Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

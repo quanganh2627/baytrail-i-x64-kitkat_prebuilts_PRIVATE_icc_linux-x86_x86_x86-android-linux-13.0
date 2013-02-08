@@ -1,0 +1,209 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30538)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30538">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30538">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-95976E75-18AF-4A0E-8C66-B6E62A4CF7E6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30538)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30538"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30538"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-95976E75-18AF-4A0E-8C66-B6E62A4CF7E6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30538)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-DCF3A175-7028-44BB-A688-59E686A50E0D"><h2 class="sectiontitle">Message</h2><p>Moving the block of code that consists of a function-call (line %d), if-condition (line %d), and an early return (line %d) to outside the loop may enable parallelization of the loop at line %d. </p>
+</div>
+
+
+<div class="section" id="GUID-11F8FE27-E980-427B-929D-2309A6266340"><h2 class="sectiontitle">Advice</h2>
+<p>You should move the function call and an associated return from inside the loop (perhaps by inserting them before the loop) to help parallelize the loop. </p>
+<p>This kind of function-leading-to-return inside a loop usually handles some error-condition inside the loop. If this error check can be done before starting the execution of the loop without changing the program semantics, the compiler may be able to parallelize the loop thus improving performance.</p>
+</div>
+
+
+<div class="section" id="GUID-6598EFDD-20F9-42D5-8A91-772E750E839B"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>extern int num_nodes;</pre>
+<pre>typedef struct TEST_STRUCT {</pre>
+<pre>    // Coordinates of city1</pre>
+<pre>    float latitude1;</pre>
+<pre>    float longitude1;</pre>
+<pre>&nbsp;</pre>
+<pre>    // Coordinates of city2</pre>
+<pre>    float latitude2;</pre>
+<pre>    float longitude2;</pre>
+<pre>} test_struct;</pre>
+<pre>&nbsp;</pre>
+<pre>extern int *mark_larger;</pre>
+<pre>extern float *distances, **matrix;</pre>
+<pre>extern test_struct** nodes;</pre>
+<pre>extern test_struct ***files;</pre>
+<pre>extern void init_node(test_struct *node, int i);</pre>
+<pre>extern void process_nodes(void);</pre>
+<pre>float compute_max_distance(void);</pre>
+<pre>&nbsp;</pre>
+<pre>extern int check_error_condition(int width);</pre>
+<pre>&nbsp;</pre>
+<pre>#include &lt;math.h&gt;</pre>
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>void process_nodes(int width)</pre>
+<pre>{</pre>
+<pre>  float const R = 3964.0;</pre>
+<pre>  float temp, lat1, lat2, long1, long2, result, pat2;</pre>
+<pre>  int m, j, temp1 = num_nodes;</pre>
+<pre>&nbsp;</pre>
+<pre>      nodes = files[0];</pre>
+<pre>      m = 1;</pre>
+<pre>&nbsp;</pre>
+<pre>#pragma loop count min(4)</pre>
+<pre>#pragma parallel</pre>
+<pre>      for (int k=0; k &lt; temp1; k++) {</pre>
+<pre>&nbsp;</pre>
+<pre>	        if (check_error_condition(width)) {</pre>
+<pre>	            return;</pre>
+<pre>	        }</pre>
+<pre>&nbsp;</pre>
+<pre>         lat1 = nodes[k]-&gt;latitude1;</pre>
+<pre>	        lat2 = nodes[k]-&gt;latitude2;</pre>
+<pre>&nbsp;</pre>
+<pre>	        long1 = nodes[k]-&gt;longitude1;</pre>
+<pre>	        long2 = nodes[k]-&gt;longitude2;</pre>
+<pre>&nbsp;</pre>
+<pre>	        // Compute the distance between the two cities</pre>
+<pre>	        temp = sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * </pre>
+<pre>	                                              cos(long1-long2);</pre>
+<pre>	        result = 2.0 * R * atan(sqrt((1.0-temp)/(1.0+temp)));</pre>
+<pre>&nbsp;</pre> 
+<pre>	        pat2 = 0;</pre>
+<pre>	        for(j=0; j&lt;width; j++) {</pre>
+<pre>	          pat2 += distances[j];</pre>
+<pre>	          matrix[k][j] = distances[k]+j;</pre>
+<pre>	        }</pre>
+<pre>	        // Store the distance computed in the distances array</pre>
+<pre>	        if (result &gt; distances[k]) {</pre>
+<pre>	            distances[k] = result + pat2;</pre>
+<pre>	        }</pre>
+<pre>      }</pre>
+<pre>}</pre>
+
+</div>
+
+
+
+
+<p>In this case, the compiler is unable to parallelize the loop at line 38. </p>
+<p>If you determine it is safe to do so, you can modify the above code as follows:</p>
+
+<pre>extern int num_nodes;</pre>
+<pre>typedef struct TEST_STRUCT {</pre>
+<pre>    // Coordinates of city1</pre>
+<pre>    float latitude1;</pre>
+<pre>    float longitude1;</pre>
+<pre>&nbsp;</pre>
+<pre>    // Coordinates of city2</pre>
+<pre>    float latitude2;</pre>
+<pre>    float longitude2;</pre>
+<pre>} test_struct;</pre>
+<pre>&nbsp;</pre>
+<pre>extern int *mark_larger;</pre>
+<pre>extern float *distances, **matrix;</pre>
+<pre>extern test_struct** nodes;</pre>
+<pre>extern test_struct ***files;</pre>
+<pre>extern void init_node(test_struct *node, int i);</pre>
+<pre>extern void process_nodes(void);</pre>
+<pre>float compute_max_distance(void);</pre>
+<pre>&nbsp;</pre>
+<pre>extern int check_error_condition(int width);</pre>
+<pre>&nbsp;</pre>
+<pre>#include &lt;math.h&gt;</pre>
+<pre>#include &lt;stdio.h&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>void process_nodes(int width)</pre>
+<pre>{</pre>
+<pre>  float const R = 3964.0;</pre>
+<pre>  float temp, lat1, lat2, long1, long2, result, pat2;</pre>
+<pre>  int m, j, temp1 = num_nodes;</pre>
+<pre>&nbsp;</pre>
+<pre>      nodes = files[0];</pre>
+<pre>      m = 1;</pre>
+<pre>&nbsp;</pre>
+<pre>      if (check_error_condition(width)) {</pre>
+<pre>	  return;</pre>
+<pre>      }</pre>
+<pre>&nbsp;</pre>
+<pre>#pragma loop count min(4)</pre>
+<pre>#pragma parallel</pre>
+<pre>      for (int k=0; k &lt; temp1; k++) {</pre>
+<pre>&nbsp;</pre>
+
+<pre>         lat1 = nodes[k]-&gt;latitude1;</pre>
+<pre>	        lat2 = nodes[k]-&gt;latitude2;</pre>
+<pre>&nbsp;</pre>
+<pre>	        long1 = nodes[k]-&gt;longitude1;</pre>
+<pre>	        long2 = nodes[k]-&gt;longitude2;</pre>
+<pre>&nbsp;</pre>
+<pre>	        // Compute the distance between the two cities</pre>
+<pre>	        temp = sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * </pre>
+<pre>	                                              cos(long1-long2);</pre>
+<pre>	        result = 2.0 * R * atan(sqrt((1.0-temp)/(1.0+temp)));</pre>
+<pre>&nbsp;</pre> 
+<pre>	        pat2 = 0;</pre>
+<pre>	        for(j=0; j&lt;width; j++) {</pre>
+<pre>	          pat2 += distances[j];</pre>
+<pre>	          matrix[k][j] = distances[k]+j;</pre>
+<pre>	        }</pre>
+<pre>	        // Store the distance computed in the distances array</pre>
+<pre>	        if (result &gt; distances[k]) {</pre>
+<pre>	            distances[k] = result + pat2;</pre>
+<pre>	        }</pre>
+<pre>      }</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-647E33B2-7D39-40F6-B2D1-008AC31F8826"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the function call does not rely on any computation inside the loop and that restructuring the code as suggested above, retains the original program semantics.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

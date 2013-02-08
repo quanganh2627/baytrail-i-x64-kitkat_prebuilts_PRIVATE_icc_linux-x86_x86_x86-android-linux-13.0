@@ -1,0 +1,2764 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Compare Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE2, FP compare operations, ucomineq_sd, ucomige_sd, comigt_sd, ucomieq_sd, comige_sd, comineq_sd, comile_sd, ucomilt_sd, comilt_sd, ucomigt_sd, ucomile_sd, comieq_sd, cmpnle_pd, cmpngt_pd, cmpord_sd, cmpnge_sd, cmpngt_sd, cmpnle_sd, cmpnlt_sd, cmpunord_sd, cmpge_sd, cmpnge_pd, cmpgt_sd, cmpeq_sd, cmplt_sd, cmple_sd, cmpneq_sd, cmplt_pd, cmpeq_pd, cmpnlt_pd, cmpneq_pd, cmpunord_pd, cmpord_pd, cmpge_pd, cmpgt_pd, cmple_pd, Intel&reg; Streaming SIMD Extensions 2, FP compare intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE2, FP compare operations, ucomineq_sd, ucomige_sd, comigt_sd, ucomieq_sd, comige_sd, comineq_sd, comile_sd, ucomilt_sd, comilt_sd, ucomigt_sd, ucomile_sd, comieq_sd, cmpnle_pd, cmpngt_pd, cmpord_sd, cmpnge_sd, cmpngt_sd, cmpnle_sd, cmpnlt_sd, cmpunord_sd, cmpge_sd, cmpnge_pd, cmpgt_sd, cmpeq_sd, cmplt_sd, cmple_sd, cmpneq_sd, cmplt_pd, cmpeq_pd, cmpnlt_pd, cmpneq_pd, cmpunord_pd, cmpord_pd, cmpge_pd, cmpgt_pd, cmple_pd, Intel&reg; Streaming SIMD Extensions 2, FP compare intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-458C5D9E-4688-4E7F-A7D7-0BFB5B756485.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-86292A8A-A198-4FF3-BA96-D98C5DD3FE2A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compare Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse2_fp_comparison"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-86292A8A-A198-4FF3-BA96-D98C5DD3FE2A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1"> Compare Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-90C85876-6F8A-40A3-B490-AD655A764D6C"> 
+      <p>Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2) intrinsics for floating-point comparision operations are listed in the following table. The prototypes for Intel&reg; SSE2 intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> header file. 
+      </p>
+ 
+      <p>Each comparison intrinsic performs a comparison of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. For the packed form, the two double-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are compared, and a 128-bit mask is returned. For the scalar form, the lower double-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are compared, and a 64-bit mask is returned; the upper double-precision FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+      <p>The mask is set to 
+        <span class="keyword">0xffffffffffffffff</span> for each element where the comparison is true, and set to 
+        <span class="keyword">0x0</span> where the comparison is false. The 
+        <span class="keyword">r</span> following the instruction name indicates that the operands to the instruction are reversed in the actual implementation. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in a register. The information about what is placed in each register appears in the tables below, in the detailed explanation for each intrinsic. For each intrinsic, the resulting register is represented by 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span> and 
+        <span class="keyword">R1</span>, where 
+        <span class="keyword">R</span>, 
+        <span class="keyword">R0</span> and 
+        <span class="keyword">R1</span> each represent one piece of the result register. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-90A7CFCC-EFDC-46C4-934D-82163D35D8EE"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-A56BF271-4993-4F86-88AB-17E6A221F8AA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d439700e194"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d439700e200"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d439700e206"> 
+                <p>Corresponding<br>Intel&reg; SSE2 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpeq_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPEQPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmplt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLTPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmple_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLEPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpgt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLTPDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpge_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLEPDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpord_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Ordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPORDPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpunord_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Unordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPUNORDPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpneq_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Inequality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNEQPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpnlt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLTPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpnle_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLEPD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpngt_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLTPDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpnge_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLEPDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpeq_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPEQSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmplt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLTSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmple_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLESD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpgt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLTSDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpge_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPLESDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpord_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Ordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPORDSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpunord_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Unordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPUNORDSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpneq_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Inequality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNEQSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpnlt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLTSD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpnle_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLESD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpngt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLTSDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_cmpnge_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">CMPNLESDr</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_comieq_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">COMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_comilt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">COMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_comile_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">COMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_comigt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">COMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_comige_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">COMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_comineq_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">COMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_ucomieq_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Equality 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">UCOMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_ucomilt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">UCOMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_ucomile_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">UCOMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_ucomigt_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">UCOMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_ucomige_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">UCOMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e194 "> 
+                <p><span class="option"> _mm_ucomineq_sd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d439700e200 "> 
+                <p>Not Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d439700e206 "> 
+                <p><span class="keyword">UCOMISD</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7DF605D6-0A18-4F7D-8781-3EE93BC08939"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpeq_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for equality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5F08D088-B04A-4B16-96A9-8FBCFA7A42A2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-592EEF37-7D3B-4488-ABCE-BE079D4E821D" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1157"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1163"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1157 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1163 "> 
+                <p><span class="keyword">(a1 == b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AB6C5B14-A379-4AF0-93EE-61B0CB8E93AB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmplt_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2E52718D-F4BF-41A5-8348-14E140F2BE68"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-6D9F139B-59CF-4B1B-9985-D5CC977B80BC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1232"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1238"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1232 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1238 "> 
+                <p><span class="keyword">(a1 &lt; b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2D281B25-0E9F-4CC1-BFD8-5C92A2F77E9C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmple_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for a less than or equal to b. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-167CD6CC-D809-40F7-A461-FB1E53797EA7"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4A9C79BA-4AC1-4061-AD30-3CCD9EDEEA8F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1300"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1306"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1300 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1306 "> 
+                <p><span class="keyword">(a1 &lt;= b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B647D60D-2C31-4EC6-9FA6-A005B67B240F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpgt_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EF10F1F1-A8A9-4711-864A-E83EFD5625A8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CDB1ACC3-6CCE-475F-B56F-33A55EDE9CAC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1374"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1380"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1374 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1380 "> 
+                <p><span class="keyword">(a1 &gt; b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5CBEE143-7E37-487C-AFF7-97F1563FACD6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpge_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than or equal to 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4045D9EF-502F-443F-936A-9071E1403CE5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C7C646EF-87C2-46B1-AC16-F608765A49D0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1449"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1455"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1449 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1455 "> 
+                <p><span class="keyword">(a1 &gt;= b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FB02AF9B-9042-49CD-8E03-0C24B247F30D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpord_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for ordered. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9B946948-AAB5-4C57-9E7A-37D092238FA6"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7107CDAD-0AC9-4FE1-9886-850B055263B5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1517"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1523"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1517 "> 
+                <p><span class="keyword">(a0 ord b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1523 "> 
+                <p><span class="keyword">(a1 ord b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-49B301C7-63CB-4B72-8ED8-6AF9E2215152"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpunord_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for unordered. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-22C07170-CE3F-4BE8-8F04-4D2B425D0287"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-83053F7C-B844-4671-9EC3-CCAA7E45E7F1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1585"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1591"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1585 "> 
+                <p><span class="keyword">(a0 unord b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1591 "> 
+                <p><span class="keyword">(a1 unord b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B793D9B6-5E9B-4B04-9DAE-51F098A20DC4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpneq_pd ( __m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for inequality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-384E6E8E-3B64-474E-A00C-F7D725A3E4FC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B42D94D1-B602-4878-8F67-7DF5D9FD5E91" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1654"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1660"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1654 "> 
+                <p><span class="keyword">(a0 != b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1660 "> 
+                <p><span class="keyword">(a1 != b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EC91BFF5-0F81-4C69-A144-1C1D21D88307"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpnlt_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not less than 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B95BDA16-BBAC-4939-9049-7CCE537E7DF7"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4B6C13FB-46C7-4685-B711-9531DA8ADD49" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1728"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1734"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1728 "> 
+                <p><span class="keyword">!(a0 &lt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1734 "> 
+                <p><span class="keyword">!(a1 &lt; b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3FB1F602-4AA4-43F2-8B95-15484736DFB2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpnle_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not less than or equal to 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E427C1B0-8487-4398-B78A-695F38F1AFB7"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7BFC37DC-BA40-4F63-86AB-024C80C4C059" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1802"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1808"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1802 "> 
+                <p><span class="keyword">!(a0 &lt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1808 "> 
+                <p><span class="keyword">!(a1 &lt;= b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2D3C5B40-BC2A-463F-B422-36689E10DA80"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpngt_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not greater than 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DCB5F60F-A047-435E-8E8C-E84116C4A6D4"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2D3F9285-EB0C-41DC-97C8-10C5C8998E36" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1877"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1883"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1877 "> 
+                <p><span class="keyword">!(a0 &gt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1883 "> 
+                <p><span class="keyword">!(a1 &gt; b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9645480A-E85F-4BB8-BFB8-38ADEFE82727"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpnge_pd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the two DP FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not greater than or equal to 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DCFE77ED-4E87-40F3-8E30-08CFB2737D7F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8594489C-A510-4D54-ADEC-1D5828D115AF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e1951"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e1957"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e1951 "> 
+                <p><span class="keyword">!(a0 &gt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e1957 "> 
+                <p><span class="keyword">!(a1 &gt;= b1) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5E7ACB02-E9E2-47CB-A612-88A2C5896FC7"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpeq_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for equality. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D8BC4FAB-78C8-4CA2-9088-F804EF46C67C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4BB14B59-A02B-4D0C-A131-6A3B613DC823" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2022"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2028"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2022 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2028 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D414F628-A893-469E-965D-F88C2502BB17"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmplt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6208EC75-8079-4812-8173-53899DA53EE6"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BC9AB221-690E-408A-86E9-54D407517430" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2100"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2106"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2100 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2106 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7218EDAB-B4B7-4D23-9BCA-6CE7273C4E00"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmple_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than or equal to 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-945DE0F9-25D3-4E99-8FA2-E4B125A00213"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2A94A4DF-7EE9-4EA3-97F8-5E06B41442BE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2177"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2183"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2177 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2183 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DE3E2A0D-7CDC-4749-8C0D-D1ED2E4CB1D4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpgt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6C6EBABF-FE32-4F65-B770-B9B3CCF76391"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8A8BE2B3-8BDD-4FC0-AB41-5F95F0A03CE9" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2254"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2260"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2254 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2260 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E6DBACD6-3F22-40EC-A515-AC2666389671"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpge_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than or equal to 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2C17DFFB-41BD-4EFF-8989-9355E63A018C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D5D6AAE9-B525-411E-80D3-39834074D1E7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2330"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2336"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2330 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2336 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BF9C1FA4-0CFD-42E3-98ED-40E5E6D2A8EE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpord_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for ordered. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-26EFDABC-F3DB-41C3-BE7C-BBC8F7B5FA85"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-42205124-922B-454D-8AA0-E5939A5BA592" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2401"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2407"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2401 "> 
+                <p><span class="keyword">(a0 ord b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2407 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2E89F9A1-319B-4E42-B33B-16F7CBABA92A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpunord_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for unordered. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4B413BCF-2FA4-4AE0-B14C-253682856FCD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1A77365D-34C0-4490-A3D2-666339DDE3A1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2472"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2478"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2472 "> 
+                <p><span class="keyword">(a0 unord b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2478 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5F68A74D-7B68-4DDD-949A-87EE65DF1D68"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpneq_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for inequality. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9F99FF71-7897-421A-B9F2-D3F7DA0CDC36"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C7956FCB-DE54-4A4B-B562-885D7EB176E1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2544"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2550"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2544 "> 
+                <p><span class="keyword">(a0 != b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2550 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3EF74A47-0AF2-4AAB-A5AD-E36CD0C68E3A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpnlt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not less than 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A4C3B9EF-D10F-4001-AD4A-0560D1B21517"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-58825E12-6FDB-48D7-9279-2F4034037F66" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2621"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2627"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2621 "> 
+                <p><span class="keyword">!(a0 &lt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2627 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-071786F7-4328-4439-90C8-0354E9F98559"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpnle_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not less than or equal to 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-73B49152-3BFC-4B84-AD84-296F8172CB70"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0016DE51-EE81-4B20-8351-3F133A2C6C24" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2698"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2704"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2698 "> 
+                <p>!(a0 &lt;= b0) ? 0xffffffffffffffff : 0x0&amp;#9; 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2704 "> 
+                <p> a1 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A1F11977-62D3-45A5-B1A5-C545855DD17B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpngt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not greater than 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-11D160BF-AAB4-43DA-963A-7E1CEB6F981A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C8F9F82E-8976-4EF8-8AEA-9D97897F263C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2772"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2778"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2772 "> 
+                <p><span class="keyword">!(a0 &gt; b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2778 "> 
+                <p><span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DD83AB9E-A49B-477A-9EFB-911A830C58AC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128d _mm_cmpnge_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not greater than or equal to 
+        <span class="keyword">b</span>. The upper DP FP value is passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-14989230-1B3F-42B3-826C-E1CF74489819"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C14E4CB9-2EA4-4DBC-9339-67D17463EEF9" frame="hsides" border="1" rules="all"> 
+           
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d439700e2852"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d439700e2858"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d439700e2852 "> 
+                <p> 
+                  <span class="keyword">!(a0 &gt;= b0) ? 0xffffffffffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d439700e2858 "> 
+                <p> 
+                  <span class="keyword">a1</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-38DB9A35-154C-44BC-9433-68D8A5F4AA64"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comieq_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-803CDFDB-43C6-49A8-9213-95C8D7C1BA1C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F6BC0C9A-668C-4B8C-9058-A29641A32057" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e2937"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e2937 "> 
+                <p> 
+                  <span class="keyword">(a0 == b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A9E09EDF-725A-4BAA-AB0E-6B386F3EC67E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comilt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-819611FA-B290-450A-9E5C-64C2D64DCCCB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-94BB176D-750E-439A-BDEC-287657C8E1F3" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3007"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3007 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ABA0EBF0-A3BC-4042-B830-93ABC46ABDDC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comile_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for a less than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8A022449-A371-472C-9CD7-01B969703064"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F299318B-2AAA-4F87-B0CD-6E69E304F027" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3072"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3072 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A53CA38B-8F13-47FD-BC32-06D709A477B0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comigt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-832DA142-0D65-48DF-B15C-654118B77073"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C1688299-B01F-4BBB-BDA0-A7711A33835D" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3141"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3141 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AC74DBEF-67E1-49BC-A474-C47D0BDE9048"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comige_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-63218195-1535-45F5-AC49-7E13179F9F89"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-27C464CD-D257-4241-B86B-B12261897C0B" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3211"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3211 "> 
+                <p> 
+                  <span class="keyword">(a0 &gt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2497A9CB-F9F6-4E13-9767-8307EA9A48A9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comineq_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are not equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-36BD0AE0-9A0C-4D70-AAE3-5134C1635877"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FBC65322-58F2-4373-8F1D-F35EF69BE4AF" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3281"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3281 "> 
+                <p><span class="keyword">(a0 != b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D5B9AC5D-3886-418D-ACAC-AAEC1876F023"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomieq_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-02F045C8-A2A5-4F0C-8651-518F025C5679"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EC95B70E-D46E-421D-BDF8-CBADFD329F71" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3350"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3350 "> 
+                <p><span class="keyword">(a0 == b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-55D199DE-A590-489F-9694-91D55DC8BC38"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomilt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BDB0FA53-07A1-4A21-B648-B29701EF6B7C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FDFA0C18-BDBE-41BF-B549-C0971AA2E7C1" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3420"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3420 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B57DD27D-BE27-405C-BD1E-CA01203AEA49"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomile_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for a less than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8B9C049E-8EE2-4AE0-9C03-E4F72BAC6E18"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0A26E346-5587-47EE-9DDB-6D735ED35A3A" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3485"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3485 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9F1912BD-48CB-4B55-80C2-132985D957D5"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomigt_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for a greater than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-66C1A80E-22BC-4A89-BAD8-A43D5675346A"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DC5D2B35-E62C-4CD0-BEDD-87FB432969EE" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3550"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3550 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F029972B-5239-4A9F-91A8-7E75F250CADE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomige_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CCF853A8-B908-4EF8-A1D2-65AF70FFF7BD"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-94F11888-CC1E-4580-A8B0-061D12EC76D4" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3620"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3620 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5238E285-DD38-44B2-BBF1-045EEE23947A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomineq_sd(__m128d a, __m128d b)</span></p></div> 
+      <p>Compares the lower DP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are not equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3A3C2E77-737B-4A8A-AE01-6F1A387710CB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E8B9B2FC-65F1-4707-8704-7664DF0B00BE" frame="hsides" border="1" rules="all"> 
+           
+          <thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" width="100%" id="d439700e3689"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+ 
+          </thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" width="100%" headers="d439700e3689 "> 
+                <p><span class="keyword">(a0 != b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-458C5D9E-4688-4E7F-A7D7-0BFB5B756485.htm">Floating-point Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

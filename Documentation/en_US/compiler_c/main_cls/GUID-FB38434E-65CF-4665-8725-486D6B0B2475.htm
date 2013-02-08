@@ -1,0 +1,254 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="OpenMP* Examples">
+<meta name="DC.subject" content="OMP directives, OpenMP* Fortran directives, examples of, difference operators, endian data, using OpenMP*, shared scalars, user functions, OpenMP*">
+<meta name="keywords" content="OMP directives, OpenMP* Fortran directives, examples of, difference operators, endian data, using OpenMP*, shared scalars, user functions, OpenMP*">
+<meta name="DC.Relation" scheme="URI" content="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FB38434E-65CF-4665-8725-486D6B0B2475">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Examples</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_mpex"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_mpex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FB38434E-65CF-4665-8725-486D6B0B2475">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">OpenMP* Examples</h1>
+
+
+
+
+<div>
+<p>The following examples show how to use several OpenMP* features.</p>
+
+
+<div class="section" id="GUID-0FA1EBED-4595-4615-A678-BAC6D103E600"><h2 class="sectiontitle">A Simple Difference Operator</h2>
+
+<p>This example shows a simple parallel loop where the amount of work in each iteration is different. Dynamic scheduling is used to improve load balancing.</p>
+
+<p>The <span class="keyword">for</span> has a <span class="keyword">nowait</span> because there is an implicit barrier at the end of the parallel region. </p>
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-054CC01B-D50A-472E-A813-C4B335A0A039" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" valign="top" width="100%" id="d872664e76"><p>Example</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" width="100%" headers="d872664e76 ">
+
+<pre>void for1(float a[], float b[], int n)</pre>
+<pre>{</pre>
+<pre>  int i, j;</pre>
+<pre>  #pragma omp parallel shared(a,b,n)</pre>
+<pre>  {</pre>
+<pre>   #pragma omp for schedule(dynamic,1) private (i,j) nowait</pre>
+<pre>    for (i = 1; i &lt; n; i++)</pre>
+<pre>       for (j = 0; j &lt; i; j++)</pre>
+<pre>         b[j + n*i] = (a[j + n*i] + a[j + n*(i-1)]) / 2.0;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+
+
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+<div class="section" id="GUID-1F23B64D-47D3-4BAC-AE82-3F2138F6A648"><h2 class="sectiontitle">Two Difference Operators: <span>for</span> Loop Version</h2>
+
+<p>The example uses two parallel loops fused to reduce fork/join overhead. The first <span class="keyword">for</span> directive has a <span class="keyword">nowait</span> clause because all the data used in the second loop is different than all the data used in the first loop.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9BFF9D62-820C-4E23-AB1D-C0DF98B8322C" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" width="NaN%" id="d872664e153"><p>Example</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" width="NaN%" headers="d872664e153 ">
+
+<pre>void for2(float a[], float b[], float c[], float d[],</pre>
+<pre>          int n, int m)</pre>
+<pre>{</pre>
+<pre>  int i, j;</pre>
+<pre>  #pragma omp parallel shared(a,b,c,d,n,m) private(i,j)</pre>
+<pre>  {</pre>
+<pre>    #pragma omp for schedule(dynamic,1) nowait</pre>
+<pre>    for (i = 1; i &lt; n; i++)</pre>
+<pre>      for (j = 0; j &lt; i; j++)</pre>
+<pre>        b[j + n*i] = ( a[j + n*i] + a[j + n*(i-1)] )/2.0;</pre>
+<pre>    #pragma omp for schedule(dynamic,1) nowait</pre>
+<pre>    for (i = 1; i &lt; m; i++)</pre>
+<pre>      for (j = 0; j &lt; i; j++)</pre>
+<pre>        d[j + m*i] = ( c[j + m*i] + c[j + m*(i-1)] )/2.0;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+
+
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+<div class="section" id="GUID-C1620D4C-F83B-4C12-BC6B-B03E012859C6"><h2 class="sectiontitle">Two Difference Operators: <span>sections</span> Version</h2>
+
+<p>The example demonstrates the use of the <span class="keyword">sections</span> directive. The logic is identical to the preceding <span class="keyword">for</span> example, but uses <span class="keyword">sections</span> instead of <span class="keyword">for</span>. Here the speedup is limited to 2 because there are only two units of work whereas in the example above there are <samp class="codeph">n-1 + m-1</samp> units of work.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8000D141-5097-43AF-8BE6-CAE952DB1424" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" valign="top" width="100%" id="d872664e254"><p>Example</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" width="100%" headers="d872664e254 ">
+
+<pre>void sections1(float a[], float b[], float c[], float d[],</pre>
+<pre>int n, int m)</pre>
+<pre>{</pre>
+<pre>  int i, j;</pre>
+<pre>  #pragma omp parallel shared(a,b,c,d,n,m) private(i,j)</pre>
+<pre>  {</pre>
+<pre>    #pragma omp sections nowait</pre>
+<pre>    {</pre>
+<pre>      #pragma omp section</pre>
+<pre>       for (i = 1; i &lt; n; i++)</pre>
+<pre>         for (j = 0; j &lt; i; j++)</pre>
+<pre>           b[j + n*i] = ( a[j + n*i] + a[j + n*(i-1)] )/2.0;</pre>
+<pre>      #pragma omp section</pre>
+<pre>       for (i = 1; i &lt; m; i++)</pre>
+<pre>         for (j = 0; j &lt; i; j++)</pre>
+<pre>           d[j + m*i] = ( c[j + m*i] + c[j + m*(i-1)] )/2.0;</pre>
+<pre>     }</pre>
+<pre>   }</pre>
+<pre>}</pre>
+
+</td>
+
+</tr>
+
+
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+<div class="section" id="GUID-6877136D-FEF1-4D6C-8AC8-39852543E1E9"><h2 class="sectiontitle">Updating a Shared Scalar</h2>
+
+<p>This example demonstrates how to use a <span class="keyword">single</span> construct to update an element of the shared array <span class="keyword">a</span>. The optional nowait after the first loop is omitted because it is necessary to wait at the end of the loop before proceeding into the <span class="keyword">single</span> construct.</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4157FEA3-8E31-42EC-9D45-ED37F735B050" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" valign="top" width="100%" id="d872664e357"><p>Example</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+<td class="cellrowborder" valign="top" width="100%" headers="d872664e357 ">
+
+<pre>void sp_1a(float a[], float b[], int n)</pre>
+<pre>{</pre>
+<pre>  int i;</pre>
+<pre>  #pragma omp parallel shared(a,b,n) private(i)</pre>
+<pre>  {</pre>
+<pre>    #pragma omp for</pre>
+<pre>      for (i = 0; i &lt; n; i++)</pre>
+<pre>        a[i] = 1.0 / a[i];</pre>
+<pre>      #pragma omp single</pre>
+<pre>        a[0] = MIN( a[0], 1.0 );</pre>
+<pre>      #pragma omp for nowait</pre>
+<pre>      for (i = 0; i &lt; n; i++)</pre>
+<pre>      b[i] = b[i] / a[i];</pre>
+<pre>   }</pre>
+<pre>}</pre>
+
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">OpenMP* Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

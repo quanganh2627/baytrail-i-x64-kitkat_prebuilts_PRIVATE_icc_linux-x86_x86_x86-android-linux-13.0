@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Intrinsics for Converting Half Floats">
+<meta name="DC.subject" content="intrinsics, half-float conversion, _cvtsh_ss, _cvtss_sh, _mm_cvtph_ps, _mm_cvtps_ph">
+<meta name="keywords" content="intrinsics, half-float conversion, _cvtsh_ss, _cvtss_sh, _mm_cvtph_ps, _mm_cvtps_ph">
+<meta name="DC.Relation" scheme="URI" content="GUID-F75D10D7-8740-4D3F-B2EC-144C85CCC729.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A90DF672-7FB2-444A-BB2D-3E2C03E64268.htm#GUID-A90DF672-7FB2-444A-BB2D-3E2C03E64268">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-23C8FF6D-3D66-4961-A3A0-E2A7DC874304">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intrinsics for Converting Half Floats</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intref_halffloat_intrinsics"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-23C8FF6D-3D66-4961-A3A0-E2A7DC874304">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intrinsics for Converting Half Floats</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-A665B6EE-A19A-4F19-A203-8E655223C7DF"> 
+      <p>There are four intrinsics for converting half-floats to 32-bit floats and 32-bit floats to half-floats. The prototypes for these half-float conversion intrinsics are in the 
+        <span class="filepath">emmintrin.h</span> file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-97993684-D8E6-4F44-AB5B-0E6F4D9DDB50"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">float _cvtsh_ss(unsigned short x, int imm);</span></p></div> 
+      <p>This intrinsic takes a half-float value, 
+        <samp class="codeph">x</samp>, and converts it to a 32-bit float value, which is returned. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1AF73A07-2A62-49E1-9221-072C9C1A7E98"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">unsigned short _cvtss_sh(float x, int imm); 
+          </span></p></div> 
+      <p>This intrinsic takes a 32-bit float value,<samp class="codeph"> x</samp>, and converts it to a half-float value, which is returned. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3A669585-8EFD-4B4E-B42E-4C92C10033F2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd"> __m128 _mm_cvtph_ps(__m128i x, int imm);</span></p></div> 
+      <p>This intrinsic takes four packed half-float values and converts them to four 32-bit float values, which are returned. The upper 64-bits of 
+        <samp class="codeph">x</samp> are ignored. The lower 64-bits are taken as four 16-bit float values for conversion. 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D8D26C0D-679C-4970-BD3C-B451A9EBE019"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd"> __m128i _mm_cvtps_ph(_m128 x, int imm);</span></p></div> 
+      <p>This intrinsic takes four packed 32-bit float values and converts them to four half-float values, which are returned. The upper 64-bits in the returned result are all zeros. The lower 64-bits contain the four packed 16-bit float values. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-F75D10D7-8740-4D3F-B2EC-144C85CCC729.htm">Intrinsics for Converting Half Floats</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A90DF672-7FB2-444A-BB2D-3E2C03E64268.htm#GUID-A90DF672-7FB2-444A-BB2D-3E2C03E64268">Overview: Intrinsics to convert half-float types 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

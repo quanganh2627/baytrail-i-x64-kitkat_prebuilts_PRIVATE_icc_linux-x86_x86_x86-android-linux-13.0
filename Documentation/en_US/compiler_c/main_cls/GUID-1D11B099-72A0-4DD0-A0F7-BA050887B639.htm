@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="prec-sqrt, Qprec-sqrt">
+<meta name="abstract" content="Improves precision of square root implementations.">
+<meta name="description" content="Improves precision of square root implementations.">
+<meta name="DC.subject" content="floating-point precision, option improving for square root, /Qprec-sqrt compiler option, -prec-sqrt compiler option">
+<meta name="keywords" content="floating-point precision, option improving for square root, /Qprec-sqrt compiler option, -prec-sqrt compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1D11B099-72A0-4DD0-A0F7-BA050887B639">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>prec-sqrt, Qprec-sqrt</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_prec_sqrt"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_prec_sqrt"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1D11B099-72A0-4DD0-A0F7-BA050887B639">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">prec-sqrt, Qprec-sqrt</h1>
+<!--Improves precision of square root implementations.--><div><p>Improves precision of square root implementations.</p>
+
+<div class="section" id="GUID-316736B7-56DF-498C-B7F2-4707D633C9CB"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-2E83C067-397C-4395-AAA8-46924FFE3D58"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-187EFB91-9F08-45B2-B270-4E54D8AB4944"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-prec-sqrt</span></p><p><span class="kwd">-no-prec-sqrt</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qprec-sqrt</span></p><p><span class="kwd">/Qprec-sqrt-</span></p></td></tr></table></div>
+<div class="section" id="GUID-ECCE92EF-1EC6-4A38-A94B-3367F470C2F3"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-AE7384EF-2FE4-42E8-A6C9-1EF2377B650B"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-prec-sqrt</span> <br><span> or <span class="option">/Qprec-sqrt-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses a faster but less precise implementation of square root.</p>
+<p>However, the default is <span class="option">-prec-sqrt</span><span> or <span class="option">/Qprec-sqrt</span></span> if any of the following options are specified: <span><span class="option">/Od</span>, <span class="option">/fp:precise</span>, or <span class="option">/Qprec</span> on Windows* systems; </span><span class="option">-O0</span>  or <span class="option">-mp1</span> on Linux* and OS X* systems. 
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-64292230-B665-4FED-AC3F-06C3E7B1D2F9"><h2>Description</h2><p>This option improves precision of square root implementations. It has a slight impact on speed. </p>
+<p>This option inhibits any optimizations that can adversely affect the precision of a square root computation. The result is fully precise square root implementations, with some loss of performance.</p>
+</div>
+
+<div class="section" id="GUID-6B4024C4-5708-4896-A7F3-455E3A956E13"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

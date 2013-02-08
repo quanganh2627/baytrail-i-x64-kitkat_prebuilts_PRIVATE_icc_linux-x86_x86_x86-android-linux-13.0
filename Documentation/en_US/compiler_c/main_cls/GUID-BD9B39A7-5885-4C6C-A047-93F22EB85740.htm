@@ -1,0 +1,525 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Intel Extension Routines to OpenMP*">
+<meta name="DC.subject" content="Intel&reg; extension routines, OpenMP* Fortran directives, Intel extensions for, endian data, and OpenMP* extension routines, execution mode, libraries, OpenMP* run-time routines, library functions, Intel extension, maintainability, allocation, report generation, synchronization, thread sleep time">
+<meta name="keywords" content="Intel&reg; extension routines, OpenMP* Fortran directives, Intel extensions for, endian data, and OpenMP* extension routines, execution mode, libraries, OpenMP* run-time routines, library functions, Intel extension, maintainability, allocation, report generation, synchronization, thread sleep time">
+<meta name="DC.Relation" scheme="URI" content="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Intel Extension Routines to OpenMP*</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_exrt"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_exrt"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Intel Extension Routines to OpenMP*</h1>
+ 
+   
+  <div> 
+	 <p>The Intel&reg; Compiler implements the following group of routines as extensions to the OpenMP* run-time library:
+	 </p>
+ 
+	 <ul type="disc" id="GUID-17550F6E-F888-4F51-9DF0-A7165774E698"> 
+		<li>
+		  <p>Getting and setting the execution environment
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p>Getting and setting stack size for parallel threads
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p>Memory allocation
+		  </p>
+
+		</li>
+ 
+		<li>
+		  <p>Getting and setting thread sleep time for the throughput execution mode
+		  </p>
+
+		</li>
+ 
+	 </ul>
+ 
+	 <p>The Intel extension routines described in this section can be used for low-level tuning to verify that the library code and application are functioning as intended. These routines are generally not recognized by other OpenMP-compliant compilers, which may cause the link stage to fail in the other compiler. These OpenMP routines require that you use the 
+		<a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">-openmp-stubs</span></a> (Linux* and Mac OS* X) or 
+		<a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">/Qopenmp-stubs</span></a> (Windows*) command-line option to execute.
+	 </p>
+ 
+	 <p>See 
+		<a href="GUID-D3FC1F0B-DD99-4176-B9B5-56EEE72E81A7.htm#GUID-D3FC1F0B-DD99-4176-B9B5-56EEE72E81A7">OpenMP* Run-time Library Routines</a> for details about including support for these declarations in your source, and see 
+		<a href="GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7.htm#GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7">OpenMP* Support Libraries</a> for detailed information about execution environment (mode).
+	 </p>
+ 
+	 <p>In most cases, environment variables can be used in place of the extension library routines. For example, the stack size of the parallel threads may be set using the 
+		<span class="keyword">OMP_STACKSIZE</span> environment variable rather than the 
+		<span class="keyword">kmp_set_stacksize_s()</span> library routine.
+	 </p>
+
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>A run-time call to an Intel extension routine takes precedence over the corresponding environment variable setting.
+		</p>
+
+	 </div> 
+	 <div class="section" id="GUID-068215BB-414D-4F0D-8D81-0148AD6FD98A"><h2 class="sectiontitle">Execution Environment Routines</h2> 
+		 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B6C83704-353E-46E4-99C6-F1E27FB5D3C0" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e153">
+					 <p>Function
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e159">
+					 <p>Description
+					 </p>
+
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e153 ">
+					 <p><samp class="codeph">void kmp_set_defaults(char const *)</samp>
+					 </p>
+ 
+					 </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e159 ">
+					 <p>Sets OpenMP environment variables defined as a list of variables separated by "|" in the argument.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e153 ">
+					 <p><samp class="codeph">void kmp_set_library_throughput()</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e159 ">
+					 <p>Sets execution mode to throughput, which is the default. Allows the application to determine the runtime environment. Use in multi-user environments.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e153 ">
+					 <p><samp class="codeph">void kmp_set_library_turnaround()</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e159 ">
+					 <p>Sets execution mode to turnaround. Use in dedicated parallel (single user) environments.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e153 ">
+					 <p><samp class="codeph">void kmp_set_library_serial()</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e159 ">
+					 <p>Sets execution mode to serial.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e153 ">
+					 <p><samp class="codeph">void kmp_set_library(int)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e159 ">
+					 <p>Sets execution mode indicated by the value passed to the function. Valid values are:
+					 </p>
+ 
+					 <ul type="disc" id="GUID-F4BDF2FB-6274-44DE-AF15-0473A53EF241"> 
+						<li>
+						  <p>1 - serial mode
+						  </p>
+
+						</li>
+ 
+						<li>
+						  <p>2 - turnaround mode
+						  </p>
+
+						</li>
+ 
+						<li>
+						  <p>3 - throughput mode
+						  </p>
+
+						</li>
+ 
+					 </ul>
+ 
+					 <p>Call this routine before the first parallel region is executed.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e153 ">
+					 <p><samp class="codeph">int kmp_get_library()</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e159 ">
+					 <p>Returns a value corresponding to the current execution mode: 1 (serial), 2 (turnaround), or 3 (throughput).
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-375929C6-4AD6-4FAE-961D-B81489B3A180"><h2 class="sectiontitle">Stack Size</h2> 
+		 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-96139BFB-2D7D-42B2-9083-5508490FE778" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e315">
+					 <p>Function
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e321">
+					 <p>Description
+					 </p>
+
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e315 ">
+					 <p><samp class="codeph">size_t kmp_get_stacksize_s()</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e321 ">
+					 <p>Returns the number of bytes that will be allocated for each parallel thread to use as its private stack. This value can be changed with 
+						<span class="keyword">kmp_set_stacksize_s()</span> routine, prior to the first parallel region or via the 
+						<span class="keyword">KMP_STACKSIZE</span> environment variable.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e315 ">
+					 <p><samp class="codeph">int kmp_get_stacksize()</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e321 ">
+					 <p>Provided for backwards compatibility only. Use 
+						<span class="keyword">kmp_get_stacksize_s()</span> routine for compatibility across different families of Intel processors.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e315 ">
+					 <p><samp class="codeph">void kmp_set_stacksize_s(size_t<var>size</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e321 ">
+					 <p>Sets to 
+						<var>size</var> the number of bytes that will be allocated for each parallel thread to use as its private stack. This value can also be set via the 
+						<span class="keyword">KMP_STACKSIZE</span> environment variable. In order for 
+						<span class="keyword">kmp_set_stacksize_s()</span> to have an effect, it must be called before the beginning of the first (dynamically executed) parallel region in the program.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e315 ">
+					 <p><samp class="codeph">void kmp_set_stacksize(int 
+						  <var>size</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e321 ">
+					 <p>Provided for backward compatibility only. Use 
+						<samp class="codeph">kmp_set_stacksize_s()</samp> for compatibility across different families of Intel processors.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-0B5413A8-80DF-45C0-9021-3FC30568FBEE"><h2 class="sectiontitle">Memory Allocation</h2> 
+		 
+		<p>The Intel&reg; compiler implements a group of memory allocation routines as an extension to the OpenMP* run-time library to enable threads to allocate memory from a heap local to each thread. These routines are: 
+		  <span><span class="keyword">kmp_malloc()</span>, 
+			 <span class="keyword">kmp_calloc()</span>, and 
+			 <span class="keyword">kmp_realloc()</span></span>.
+		</p>
+ 
+		<p>The memory allocated by these routines must also be freed by the 
+		  <span class="keyword">kmp_free()</span> routine. While it is legal for the memory to be allocated by one thread and freed by a different thread, this mode of operation has a slight performance penalty.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-49F400F9-2597-46F2-8C88-1FBA89D89539" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e464">
+					 <p>Function
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e470">
+					 <p>Description
+					 </p>
+
+				  </th>
+ 
+				</tr>
+ 
+			 </thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e464 ">
+					 <p><samp class="codeph">void* kmp_malloc(size_t<var>size</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e470 ">
+					 <p>Allocate memory block of 
+						<var>size</var> bytes from thread-local heap.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e464 ">
+					 <p><samp class="codeph">void* kmp_calloc(size_t 
+						  <var>nelem</var>, size_t 
+						  <var>elsize</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e470 ">
+					 <p>Allocate array of 
+						<var>nelem</var> elements of size 
+						<var>elsize</var> from thread-local heap.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e464 ">
+					 <p><samp class="codeph">void* kmp_realloc(void*<var>ptr</var>, size_t 
+						  <var>size</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e470 ">
+					 <p>Reallocate memory block at address 
+						<var>ptr</var> and 
+						<var>size</var> bytes from thread-local heap.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e464 ">
+					 <p><samp class="codeph">void* kmp_free(void*<var>ptr</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e470 ">
+					 <p>Free memory block at address 
+						<var>ptr</var> from thread-local heap.
+					 </p>
+ 
+					 <p>Memory must have been previously allocated with 
+						<span><span class="keyword">kmp_malloc()</span>, 
+						  <span class="keyword">kmp_calloc()</span>, or 
+						  <span class="keyword">kmp_realloc()</span></span>.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6060162C-476F-468F-A6EC-948D2205C7F0"><h2 class="sectiontitle">Thread Sleep Time</h2> 
+		 
+		<p>In the throughput 
+		  <a href="GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7.htm#GUID-4B60BCA6-1948-4EB0-A9F3-D56AA1C683F7">OpenMP* Support Libraries</a>, threads wait for new parallel work at the ends of parallel regions, and then sleep, after a specified period of time. This time interval can be set by the 
+		  <span class="keyword">KMP_BLOCKTIME</span> environment variable or by the 
+		  <span class="keyword">kmp_set_blocktime()</span> function.
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-35AA054C-38E8-4B5F-A0C0-D75C398EB3BE" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+			 <thead align="left"> 
+				<tr valign="top"> 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e629">
+					 <p>Function
+					 </p>
+
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="50%" id="d628252e635">
+					 <p>Description
+					 </p>
+
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e629 ">
+					 <p><samp class="codeph">int kmp_get_blocktime(void)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e635 ">
+					 <p>Returns the number of milliseconds that a thread should wait, after completing the execution of a parallel region, before sleeping, as set either by the 
+						<span class="keyword">KMP_BLOCKTIME</span> environment variable or by 
+						<span class="keyword">kmp_set_blocktime()</span>.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+				<tr valign="top"> 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e629 ">
+					 <p><samp class="codeph">void kmp_set_blocktime(int 
+						  <var>msec</var>)</samp>
+					 </p>
+
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="50%" headers="d628252e635 ">
+					 <p>Sets the number of milliseconds that a thread should wait, after completing the execution of a parallel region, before sleeping. This routine affects the block time setting for the calling thread and any OpenMP team threads formed by the calling thread. The routine does not affect the block time for any other threads.
+					 </p>
+
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+
+		  </table>
+</div>
+ 
+	 </div>
+ 
+  </div>
+
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A0AF81AB-DBE9-4F21-B8B7-FE3988DB5F6D.htm">OpenMP* Library Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

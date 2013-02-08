@@ -1,0 +1,245 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="std, Qstd">
+<meta name="abstract" content="Tells the compiler to conform to a specific language standard.">
+<meta name="description" content="Tells the compiler to conform to a specific language standard.">
+<meta name="DC.subject" content="-std compiler option, /Qstd compiler option, C++0x, option enabling support of, C++11, c99">
+<meta name="keywords" content="-std compiler option, /Qstd compiler option, C++0x, option enabling support of, C++11, c99">
+<meta name="DC.Relation" scheme="URI" content="GUID-DD52D6C3-D274-4209-A0D1-4AB93F58C48B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-080E90C8-1199-4A0D-8715-3BD04E7BBE08">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>std, Qstd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_std"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_std"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-080E90C8-1199-4A0D-8715-3BD04E7BBE08">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">std, Qstd</h1>
+<!--Tells the compiler to conform to a specific language standard.--><div><p>Tells the compiler to conform to a specific language standard.</p>
+
+<div class="section" id="GUID-60FF0E42-BCCF-49C9-868F-1934F6208292"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								<strong>Language &gt; Enable C++0x Support </strong></p>
+<p class="ide"><strong>Language &gt; Enable C99 Support</strong></p>
+
+
+<p class="ide">Linux: 
+								<strong>Language &gt; ANSI Conformance</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Language &gt; C ANSI Conformance</strong></p>
+</div>
+<div class="section" id="GUID-DD461F92-7475-4621-A2B1-FB8D8D107721"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-F637F8BF-CFF6-4384-BCD4-B3240E69BA96"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-std=</span><span class="var">val</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qstd=</span><span class="var">val</span></p></td></tr></table></div>
+<div class="section" id="GUID-344D6880-28DC-4D35-830A-2C197D1B9B1C"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>val</var></p></td>
+
+<td valign="top" class="noborder"><p>Specifies the specific language standard to conform to. Possible values are:</p>
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">c89</span></p></td>
+
+<td valign="top" class="noborder"><p>Conforms to the ISO/IEC 9899:1990 International Standard. This value is only available on Linux* OS and OS X*.</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">c99</span></p></td>
+
+<td valign="top" class="noborder">
+<p>Conforms to The ISO/IEC 9899:1999 International Standard.</p>
+
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">c9x</span></p></td>
+
+<td valign="top" class="noborder">
+<p>This value is equivalent to specifying value <span class="keyword">c99</span>. This value is only available on Linux* OS and OS X*.</p>
+
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">gnu89</span></p></td>
+
+<td valign="top" class="noborder"><p>Conforms to ISO C90 plus GNU* extensions. This value is only available on Linux* OS and OS X*.</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">gnu99</span></p></td>
+
+<td valign="top" class="noborder"><p>Conforms to ISO C99 plus GNU* extensions. This value is only available on Linux* OS and OS X*.</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">gnu++98</span></p></td>
+<td valign="top" class="noborder"><p>Conforms to the 1998 ISO C++ standard plus GNU extensions. This value is only available on Linux* OS and OS X*.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">c++0x</span></p></td>
+<td valign="top" class="noborder"><p>Enables support for the following <span><span>C++11 (formerly known as C++0x)</span></span> features:</p>
+<ul type="disc" id="GUID-098AFB1B-6835-4372-B27E-677428827434"><li><p>Atomic types and operations</p>
+</li>
+<li><p>Scoped enumeration types</p>
+
+</li>
+<li><p>Defaulted and deleted functions</p>
+
+
+</li>
+<li><p>Rvalue references</p>
+
+</li>
+<li><p>Empty macro arguments</p>
+</li>
+
+<li><p>Variadic macros</p>
+</li>
+
+<li><p>Type <span class="keyword">long long</span></p>
+</li>
+
+<li><p>Trailing comma in <span class="keyword">enum</span> definition</p>
+</li>
+
+<li><p>Concatenation of mixed-width string literals</p>
+</li>
+
+<li><p>Extended friend declarations</p>
+</li>
+
+<li><p>Use of "<span class="keyword">&gt;&gt;</span>" to close two template argument lists</p>
+</li>
+
+<li><p>Relaxed rules for use of "typename"</p>
+</li>
+
+<li><p>Relaxed rules for disambiguation using the "template" keyword</p>
+</li>
+
+<li><p>"extern template" to suppress instantiation of an entity</p>
+</li>
+
+<li><p>"auto" type specifier</p>
+</li>
+
+<li><p>decltype operator</p>
+</li>
+
+<li><p>static_assert</p>
+</li>
+
+<li><p>compliant __func__</p>
+</li>
+
+<li><p>lambda expressions</p>
+</li>
+
+<li><p>character types char16_t and char32_t to store UTF-16 and UTF-32 encoding values, respectively</p>
+</li>
+
+<li><p>template aliases</p>
+</li>
+
+<li><p>variadic templates</p>
+</li>
+
+<li><p>nullptr</p>
+</li>
+
+<li><p>late-specified return types as defined in gcc proposal N2541</p>
+</li>
+
+<li><p>default template arguments for function templates</p>
+</li>
+
+<li><p>standard attributes as defined in gcc proposal N2761</p>
+</li>
+
+<li><p>new style SFINAE as defined in gcc proposal N2634</p>
+</li>
+<li><p>noexcept</p>
+</li>
+<li><p> explicit conversion functions (N2437)</p>
+</li>
+<li><p> general initializer lists (partial)</p>
+</li>
+<li><p> generalized constant expressions (partial)</p>
+</li>
+<li><p> use of "this" in late-specified return types (N3282)</p>
+</li>
+<li><p>range based for loops</p>
+</li>
+</ul>
+</td>
+
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">gnu++0x</span></p></td>
+
+<td valign="top" class="noborder"><p>This value is equivalent to specifying value <span class="keyword">c++0x</span>. This value is only available on Linux* OS and OS X*.</p>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section" id="GUID-338F4C2A-560C-4338-8ACF-C4B022A7C865"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-std=gnu89</span> (default for C)</p></td>
+<td valign="top" class="noborder"><p>Conforms to ISO C90 plus GNU extensions.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-std=gnu++98</span> (default for C++)</p></td>
+<td valign="top" class="noborder"><p>Conforms to the 1998 ISO C++ standard plus GNU* extensions.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">/Qstd</span></p></td>
+<td valign="top" class="noborder"><p>  OFF. Note that a subset of C++11 features is enabled by default for compatibility with a particular version of Microsoft Visual Studio* C++, so you only need to specify <span class="option">/Qstd=c++0x</span> if you want additional C++11 functionality beyond what Microsoft provides.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-58658890-C827-4A9D-976F-B55F4DF1040D"><h2>Description</h2><p>This option tells the compiler to conform to a specific language standard.</p>
+<p>On Windows* OS, you can only specify values <span class="keyword">c99</span> and <span class="keyword">c++0x</span>.</p>
+</div>
+
+<div class="section" id="GUID-60CAC40F-91C9-4622-97EA-0026C7DF388F"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DD52D6C3-D274-4209-A0D1-4AB93F58C48B.htm">Language Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

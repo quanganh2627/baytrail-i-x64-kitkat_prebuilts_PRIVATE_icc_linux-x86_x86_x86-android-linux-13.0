@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Homogeneous General-Computational Operations Functions">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.subject" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, homogeneous general-computational operations, round_integral_nearest_even, round_integral_nearest_away, round_integral_zero, round_integral_positive, round_integral_negative, round_integral_exact, next_up, next_down, rem, minnum, maxnum, minnum_mag, maxnum_mag, scalbn, ilogb">
+<meta name="keywords" content="Intel&reg; IEEE 754-2008 Binary Floating-Point Conformance Library, homogeneous general-computational operations, round_integral_nearest_even, round_integral_nearest_away, round_integral_zero, round_integral_positive, round_integral_negative, round_integral_exact, next_up, next_down, rem, minnum, maxnum, minnum_mag, maxnum_mag, scalbn, ilogb">
+<meta name="DC.Relation" scheme="URI" content="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6F49E2DF-39CA-4349-BDCE-1BB698C9072F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Homogeneous General-Computational Operations Functions</title>
+</head>
+<body id="GUID-6F49E2DF-39CA-4349-BDCE-1BB698C9072F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+  <h1 class="topictitle1">Homogeneous General-Computational Operations Functions</h1>
+
+  <!---->
+  <div><p></p>
+<p>Many routines in the libbfp754 library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+<p>The Intel&reg; IEEE 754-2008 Binary Conformance Library supports the following functions for homogeneous general-computational operations:</p>
+<div class="section" id="ROUND_INTEGRAL_NEAREST_EVEN"><a name="ROUND_INTEGRAL_NEAREST_EVEN"><!-- --></a><h2 class="sectiontitle"> round_integral_nearest_even</h2>
+
+<p><strong>Description:</strong> The function rounds floating-point number <samp class="codeph">x</samp> to its nearest integral value, with the halfway (tied) case rounding to even.</p>
+
+
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_round_integral_nearest_even(float x);</samp><br><samp class="codeph">double __binary64_round_integral_nearest_even(double x);</samp></p>
+
+</div>
+<div class="section" id="ROUND_INTEGRAL_NEAREST_AWAY"><a name="ROUND_INTEGRAL_NEAREST_AWAY"><!-- --></a><h2 class="sectiontitle"> round_integral_nearest_away</h2><p><strong>Description:</strong> The function rounds floating-point number <samp class="codeph">x</samp> to its nearest integral value, with the halfway (tied) case rounding away from zero.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_round_integral_nearest_away(float x);</samp><br><samp class="codeph">double __binary64_round_integral_nearest_away(double x);</samp></p>
+</div>
+<div class="section" id="ROUND_INTEGRAL_ZERO"><a name="ROUND_INTEGRAL_ZERO"><!-- --></a><h2 class="sectiontitle"> round_integral_zero</h2><p><strong>Description:</strong> The function rounds floating-point number <samp class="codeph">x</samp> to the closest integral value toward zero.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_round_integral_zero(float x);</samp><br><samp class="codeph">double __binary64_round_integral_zero(double x);</samp></p>
+</div>
+<div class="section" id="ROUND_INTEGRAL_POSITIVE"><a name="ROUND_INTEGRAL_POSITIVE"><!-- --></a><h2 class="sectiontitle"> round_integral_positive</h2><p><strong>Description:</strong> The function rounds floating-point number <samp class="codeph">x</samp> to the closest integral value toward positive infinity.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_round_integral_positive(float x);</samp><br><samp class="codeph">double __binary64_round_integral_positive(double x);</samp></p>
+</div>
+<div class="section" id="ROUND_INTEGRAL_NEGATIVE"><a name="ROUND_INTEGRAL_NEGATIVE"><!-- --></a><h2 class="sectiontitle"> round_integral_negative</h2><p><strong>Description:</strong> The function rounds floating-point number <samp class="codeph">x</samp> to the closest integral value toward negative infinity.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_round_integral_negative(float x);</samp><br><samp class="codeph">double __binary64_round_integral_negative(double x);</samp></p>
+</div>
+<div class="section" id="ROUND_INTEGRAL_EXACT"><a name="ROUND_INTEGRAL_EXACT"><!-- --></a><h2 class="sectiontitle"> round_integral_exact</h2><p><strong>Description:</strong> The function rounds floating-point number <samp class="codeph">x</samp> to the closest integral value according to the rounding-direction applicable.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_round_integral_exact(float x);</samp><br><samp class="codeph">double __binary64_round_integral_exact(double x);</samp></p>
+</div>
+<div class="section" id="NEXT_UP"><a name="NEXT_UP"><!-- --></a><h2 class="sectiontitle"> next_up</h2><p><strong>Description:</strong>The function returns the least floating-point number in the same format as <samp class="codeph">x</samp> that is greater than <samp class="codeph">x</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_next_up(float x);</samp><br><samp class="codeph">double __binary64_next_up(double x);</samp></p>
+</div>
+<div class="section" id="NEXT_DOWN"><a name="NEXT_DOWN"><!-- --></a><h2 class="sectiontitle"> next_down</h2><p><strong>Description:</strong> The function returns the largest floating-point number in the same format as <samp class="codeph">x</samp> that is less than <samp class="codeph">x</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_next_down(float x);</samp><br><samp class="codeph">double __binary64_next_down(double x);</samp></p>
+</div>
+<div class="section" id="REM"><a name="REM"><!-- --></a><h2 class="sectiontitle">  rem</h2><p><strong>Description:</strong> The function returns the remainder of <samp class="codeph">x</samp> and <samp class="codeph">y</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_rem(float x, float y);</samp><br><samp class="codeph">double __binary64_rem(double x, double y);</samp></p>
+</div>
+<div class="section" id="MINNUM"><a name="MINNUM"><!-- --></a><h2 class="sectiontitle">  minnum</h2><p><strong>Description:</strong> The function returns the minimal value of <samp class="codeph">x</samp> and <samp class="codeph">y</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_minnum(float x, float y);</samp><br><samp class="codeph">double __binary64_minnum(double x, double y);</samp></p>
+</div>
+<div class="section" id="MAXNUM"><a name="MAXNUM"><!-- --></a><h2 class="sectiontitle">  maxnum</h2><p><strong>Description:</strong> The function returns the maximal value of <samp class="codeph">x</samp> and <samp class="codeph">y</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_maxnum(float x, float y);</samp><br><samp class="codeph">double __binary64_maxnum(double x, double y);</samp></p>
+</div>
+<div class="section" id="MINNUM_MAG"><a name="MINNUM_MAG"><!-- --></a><h2 class="sectiontitle">  minnum_mag</h2><p><strong>Description:</strong> The function returns the minimal absolute value of <samp class="codeph">x</samp> and <samp class="codeph">y</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_minnum_mag(float x, float y);</samp><br><samp class="codeph">double __binary64_minnum_mag(double x, double y);</samp></p>
+</div>
+<div class="section" id="MAXNUM_MAG"><a name="MAXNUM_MAG"><!-- --></a><h2 class="sectiontitle"> maxnum_mag</h2><p><strong>Description:</strong> The function returns the maximal absolute value of <samp class="codeph">x</samp> and <samp class="codeph">y</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_maxnum_mag(float x, float y);</samp><br><samp class="codeph">double __binary64_maxnum_mag(double x, double y);</samp></p>
+</div>
+<div class="section" id="SCALBN"><a name="SCALBN"><!-- --></a><h2 class="sectiontitle">  scalbn</h2><p><strong>Description:</strong> The function computes <em>x</em> X <em>2</em><sup><em>n</em></sup> for integer value <samp class="codeph">n</samp>.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">float __binary32_scalbn(float x, int n);</samp><br><samp class="codeph">double __binary64_scalbn(double x, int n);</samp></p>
+</div>
+<div class="section" id="ILOGB"><a name="ILOGB"><!-- --></a><h2 class="sectiontitle">    ilogb</h2><p><strong>Description:</strong> The function returns the exponent part of <samp class="codeph">x</samp> as integer.</p>
+<p><strong>Calling interface:</strong><br><samp class="codeph">int __binary32_ilogb(float x);</samp><br><samp class="codeph">int __binary64_ilogb(double x);</samp></p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-BCBC835E-526E-4C9D-A82C-25CAF9108E0A.htm">Function List</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

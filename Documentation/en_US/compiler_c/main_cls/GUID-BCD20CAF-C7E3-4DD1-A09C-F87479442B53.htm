@@ -1,0 +1,81 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Special Cases">
+<meta name="DC.subject" content="setjmp, longjmp, jmpbuf, jump, input/output, private variables, variables, thread-private, thread-private variables, i/o on the coprocessor">
+<meta name="keywords" content="setjmp, longjmp, jmpbuf, jump, input/output, private variables, variables, thread-private, thread-private variables, i/o on the coprocessor">
+<meta name="DC.Relation" scheme="URI" content="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-BCD20CAF-C7E3-4DD1-A09C-F87479442B53">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Special Cases</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_special_cases"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-BCD20CAF-C7E3-4DD1-A09C-F87479442B53">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Special Cases</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <div class="section" id="GUID-9673E466-0473-4E89-BDA4-E7053F4E6F66"><h2 class="sectiontitle">setjmp and longjmp</h2> 
+		 
+		<p><samp class="codeph">setjmp</samp> saves function state and 
+		  <samp class="codeph">longjmp</samp> resumes execution from a saved state. Saved state cannot be transported between the CPU and the target. 
+		</p>
+ 
+		<p> If you use 
+		  <samp class="codeph">setjmp</samp> in the offloaded code, the corresponding 
+		  <samp class="codeph">longjmp</samp> must also happen on the target within the same offload. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-6519CBFC-253E-4111-8145-23ACCC6E7B51"><h2 class="sectiontitle">Thread-private variables</h2> 
+		 
+		<p>Thread-private variables are supported only with the<span> pragma</span>-based programming model, using 
+		  <samp class="codeph">copyin</samp> and 
+		  <samp class="codeph">copyout</samp>. They are not supported with the shared virtual memory model. 
+		</p>
+ 
+		<p>When a statement is offloaded, thread-private variable values from the CPU thread that does the offload are copied to the target, and then copied back when default in and out are in effect. Copies of thread-private variables in other CPU threads are not modified. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">Programming for Intel&reg; MIC Architecture</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F.htm#GUID-392F7939-278C-4EE7-BAE3-55F9AB42759F">Writing Target-Specific Code 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

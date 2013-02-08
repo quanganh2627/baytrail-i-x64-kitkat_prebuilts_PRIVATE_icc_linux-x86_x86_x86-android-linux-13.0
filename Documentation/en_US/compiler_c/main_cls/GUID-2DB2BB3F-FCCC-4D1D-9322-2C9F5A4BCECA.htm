@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Restricted Transactional Memory Overview">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.Relation" scheme="URI" content="GUID-DF2BFA5A-47E3-45C8-8B2F-061B85AFEF6D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-54A84479-DEC6-4D2F-9895-46D278EDA820.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2DB2BB3F-FCCC-4D1D-9322-2C9F5A4BCECA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Restricted Transactional Memory Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_bk_rtm"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2DB2BB3F-FCCC-4D1D-9322-2C9F5A4BCECA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Restricted Transactional Memory Overview</h1>
+ 
+  <!-- 
+  --> 
+   
+  <div><p> 
+  </p>
+ 
+    <p>Restricted Transactional Memory (RTM) provides a software interface for transactional execution. RTM provides three new instructions— 
+      <samp class="codeph">XBEGIN</samp>, 
+      <samp class="codeph">XEND</samp>, and 
+      <samp class="codeph">XABORT</samp>—for programmers to start, commit, and abort transactional execution. 
+    </p>
+ 
+    <p>The programmer uses the 
+      <samp class="codeph">XBEGIN</samp> instruction to specify the start of the transactional code region and the 
+      <samp class="codeph">XEND</samp> instruction to specify the end of the transactional code region. The 
+      <samp class="codeph">XBEGIN</samp> instruction takes an operand that provides a relative offset to the fallback instruction address if the RTM region could not be successfully executed transactionally. 
+    </p>
+ 
+    <p>A processor may abort RTM transactional execution for many reasons. The hardware automatically detects transactional abort conditions and restarts execution from the fallback instruction address with the architectural state corresponding to that at the start of the 
+      <samp class="codeph">XBEGIN</samp> instruction and the EAX register updated to describe the abort status. 
+    </p>
+ 
+    <p>The 
+      <samp class="codeph">XABORT</samp> instruction allows programmers to abort the execution of an RTM region explicitly. The 
+      <samp class="codeph">XABORT</samp> instruction takes an 8-bit immediate argument that is loaded into the EAX register becoming available to software following an RTM abort. 
+    </p>
+ 
+    <p>RTM instructions do not have any data memory location associated with them. While the hardware provides no guarantees as to whether an RTM region will ever successfully commit transactionally, most transactions that follow the recommended guidelines are expected to successfully commit transactionally. 
+    </p>
+ 
+    <p>Programmers must always provide an alternative code sequence in the fallback path to guarantee the code completes execution. This may be as simple as acquiring a lock and executing the specified code region non-transactionally. Further, a transaction that always aborts on a given implementation may complete transactionally on a future implementation. Therefore, programmers must ensure the code paths for the transactional region and the alternative code sequence are functionally tested. 
+    </p>
+ 
+    <div class="section" id="GUID-3C1430A3-E732-45BE-BC01-9873412BD948"><h2 class="sectiontitle">Detection of RTM Support</h2> 
+       
+      <p>A processor supports RTM execution if CPUID.07H.EBX.RTM [bit 11] = 1. An application must check if the processor supports RTM before it uses the RTM instructions (<samp class="codeph">XBEGIN</samp>, 
+        <samp class="codeph">XEND</samp>, 
+        <samp class="codeph">XABORT</samp>). These instructions will generate a 
+        <span>#UD</span> exception when used on a processor that does not support RTM. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C4AB705E-0BDA-4648-882B-54EF4C957E50"><h2 class="sectiontitle">RTM Abort Status Definition</h2> 
+       
+      <p>RTM uses the EAX register to communicate abort status to software. Following an RTM abort the EAX register has the following definition. 
+      </p>
+ 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9E4E3979-F161-4824-AD4A-3072B2490243" frame="border" border="1" cellspacing="0" rules="all"> 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><strong>EAX register bit position</strong> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"><strong>Meaning</strong> 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>0</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>Set if abort caused by 
+                  <samp class="codeph">XABORT</samp> instruction. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>1</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>If set, the transaction may succeed on a retry. This bit is always clear if bit 0 is set. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>2</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>Set if another logical processor conflicted with a memory address that was part of the transaction that aborted. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>3</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>Set if an internal buffer overflowed. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>4</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>Set if a debug breakpoint was hit. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>5</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>Set if an abort occurred during execution of a nested transaction. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>23:6</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p>Reserved. 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" rowspan="1" colspan="1" align="left" valign="top"><var>31:24</var> 
+              </td>
+ 
+              <td class="cellrowborder" rowspan="1" colspan="1" valign="top"> 
+                <p><samp class="codeph">XABORT</samp> argument (only valid if bit '0' set, otherwise reserved). 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p>The EAX abort status for RTM only provides the cause for aborts. It does not by itself encode whether an abort or commit occurred for the RTM region. The value of EAX can be '<span>0</span>' following an RTM abort. For example, a CPUID instruction when used inside an RTM region causes a transactional abort and may not satisfy the requirements for setting any of the EAX bits. This may result in an EAX value of '<span>0</span>'. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0A33F4FD-687F-4FC0-829D-273CECD04AF2"><h2 class="sectiontitle">RTM Memory Ordering</h2> 
+       
+      <p>A successful RTM commit causes all memory operations in the RTM region to appear to execute atomically. A successfully committed RTM region consisting of an 
+        <samp class="codeph">XBEGIN</samp> followed by an 
+        <samp class="codeph">XEND</samp>, even with no memory operations in the RTM region, has the same ordering semantics as a 
+        <samp class="codeph">LOCK</samp> prefixed instruction. The 
+        <samp class="codeph">XBEGIN</samp> instruction does not have fencing semantics. However, if an RTM execution aborts, all memory updates from within the RTM region are discarded and never made visible to any other logical processor. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DF2BFA5A-47E3-45C8-8B2F-061B85AFEF6D.htm">Intrinsics for Restricted Transactional Memory Operations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-54A84479-DEC6-4D2F-9895-46D278EDA820.htm"> Intel&reg; Transactional Synchronization Extensions Programming Considerations
+        </a>     </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

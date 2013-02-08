@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Setting the FTZ and DAZ Flags">
+<meta name="DC.subject" content="/Qftz compiler option, FTZ flag, DAZ flag, MXCSR register, -ftz compiler option">
+<meta name="keywords" content="/Qftz compiler option, FTZ flag, DAZ flag, MXCSR register, -ftz compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1659EAE1-583E-44EE-BDEA-7C68C46061C7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Setting the FTZ and DAZ Flags</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="fpops_set_ftz_daz"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1659EAE1-583E-44EE-BDEA-7C68C46061C7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Setting the FTZ and DAZ Flags</h1>
+ 
+   
+  <div> 
+    <p>In Intel&reg; processors, the flush-to-zero (FTZ) and denormals-are-zero (DAZ) flags in the 
+      <span class="keyword">MXCSR</span> register are used to control floating-point calculations. Intel&reg; SSE and Intel&reg; AVX instructions, including scalar and vector instructions, benefit from enabling the FTZ and DAZ flags respectively. Floating-point computations using these Intel&reg; SSE and Intel&reg; AVX instructions are accelerated when the FTZ and DAZ flags are enabled and thus the performance of the application improves. 
+    </p>
+ 
+    <p>You can use the 
+  <span class="option">-ftz</span> (Linux* and OS X*) or 
+  <span class="option">/Qftz</span> (Windows*) option to flush denormal results to zero when the application is in the gradual underflow mode. This option may improve performance if the denormal values are not critical to your application's behavior. The 
+  <span class="option">-ftz</span> and 
+  <span class="option">/Qftz</span> options, when applied to the main program, set the FTZ and the DAZ hardware flags. The 
+  <span class="option">-no-ftz</span> and<span class="option"> /Qftz-</span> options leave the flags as they are. 
+  </p>
+ 
+  <p>The following table describes how the compiler processes denormal values based on the status of the FTZ and DAZ flags: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B8B8F479-05F3-4D0D-9DDB-BE673E0F1114" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="20%" id="d67334e93"> 
+            <p>Flag 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="30%" id="d67334e99"> 
+            <p>When set to ON, the compiler... 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="30%" id="d67334e105"> 
+            <p>When set to OFF, the compiler... 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="20%" id="d67334e111"> 
+            <p>Supported on 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d67334e93 "> 
+            <p>FTZ (flush-to-zero) 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d67334e99 "> 
+            <p>Sets denormal results from floating-point calculations to zero 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d67334e105 "> 
+            <p>Does not change the denormal results 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d67334e111 "> 
+            <p>Intel&reg; 64 architectures, and some IA-32 architectures 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="20%" headers="d67334e93 "> 
+            <p>DAZ (denormals-are-zero) 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d67334e99 "> 
+            <p>Treats denormal values used as input to floating-point instructions as zero 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="30%" headers="d67334e105 "> 
+            <p>Does not change the denormal instruction inputs 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="20%" headers="d67334e111 "> 
+            <p>Intel&reg; 64 architecture and some IA-32 architecture 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <ul type="disc" id="GUID-C26099B3-0041-4576-9261-35BAF264C9CA"> 
+    <li>FTZ and DAZ are not supported on all IA-32 architectures. The FTZ flag is supported only on IA-32 architectures that support Intel&reg; SSE instructions. 
+    </li>
+ 
+    <li>On 
+      systems based on the IA-32 and Intel&reg; 64 architectures, FTZ only applies to Intel&reg; SSE and Intel&reg; AVX instructions. Hence, if your application happens to generate denormals using x87 instructions, FTZ does not apply. 
+    </li>
+ 
+    <li> 
+      <p>DAZ and FTZ flags are not compatible with IEEE Standard 754, so you should only consider enabling them when strict compliance to the IEEE standard is not required. 
+      </p>
+ 
+    </li>
+ 
+  </ul>
+ 
+  <p>Options 
+  <span class="option">-ftz</span> and 
+  <span class="option">/Qftz</span> are performance options. Setting these options does not guarantee that all denormals in a program are flushed to zero. They only cause denormals generated at run-time to be flushed to zero. 
+  </p>
+ 
+  <p>On Intel&reg;64 and IA-32 systems, the compiler, by default, inserts code into the main routine to set the FTZ and DAZ flags. When<span class="option"> -ftz 
+  </span>or<span class="option"> /Qftz</span> option is used on IA-32 systems with the option 
+  <span class="option">–msse2 
+  </span>or 
+  <span class="option">/arch:sse2</span>, the compiler will insert code to conditionally set FTZ/DAZ flags based on a run-time processor check. The 
+  <span class="option">-no-ftz</span> (Linux* and OS X*) or 
+  <span class="option">/Qftz-</span> (Windows) will prevent the compiler from inserting any code that might set FTZ or DAZ flags. 
+  </p>
+ 
+  <p>When 
+  <span class="option">-ftz</span> or 
+  <span class="option">/Qftz</span> is used in combination with an Intel&reg; SSE-enabling option on systems based on the IA-32 architecture (for example, 
+  <span class="option">-msse2</span> or 
+  <span class="option">/arch:sse2</span>), the compiler will insert code in the main routine to set FTZ and DAZ. When 
+  <span class="option">-ftz</span> or 
+  <span class="option">/Qftz</span> is used without such an option, the compiler will insert code to conditionally set FTZ/DAZ based on a run-time processor check. 
+  <span class="option">-no-ftz</span> (Linux and OS X) or 
+  <span class="option">/Qftz-</span> (Windows) will prevent the compiler from inserting any code that might set FTZ or DAZ. 
+  </p>
+ 
+  <p>The 
+  <span class="option">-ftz</span> or 
+  <span class="option">/Qftz</span> option only has an effect when the main program is being compiled. It sets the FTZ/DAZ mode for the process. The initial thread and any threads subsequently created by that process will operate in the FTZ/DAZ mode. 
+  </p>
+ 
+  <p>On systems based on the IA-32 and Intel&reg; 64 architectures, every optimization option 
+  <span class="option">O</span> level, except 
+  <span class="option">O0</span>, sets 
+  <span class="option">-ftz</span> and 
+  <span class="option">/Qftz</span>. 
+  </p>
+ 
+  <p>If this option produces undesirable results of the numerical behavior of your program, you can turn the FTZ/DAZ mode off by using 
+  <span class="option">-no-ftz</span> or 
+  <span class="option">/Qftz-</span> in the command line while still benefiting from the O3 optimizations. 
+  </p>
+ 
+  <p>You can set the flags manually with the following macros: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B1FA24ED-BD65-479D-ADBF-23DA445D961C" frame="border" border="1" cellspacing="0" rules="all"> 
+       
+       
+      <thead align="left"> 
+        <tr> 
+          <th class="cellrowborder" align="left" valign="top" width="50%" id="d67334e303"> 
+            <p>Feature 
+            </p>
+ 
+          </th>
+ 
+          <th class="cellrowborder" align="left" valign="top" width="50%" id="d67334e309"> 
+            <p>Examples 
+            </p>
+ 
+          </th>
+ 
+        </tr>
+ 
+      </thead>
+ 
+      <tbody> 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d67334e303 "> 
+            <p>Enable FTZ 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d67334e309 "> 
+            <p> 
+              <pre>_MM_SET_FLUSH_ZERO_MODE(_MM_FLUSH_ZERO_ON)</pre> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+        <tr> 
+          <td class="cellrowborder" valign="top" width="50%" headers="d67334e303 "> 
+            <p>Enable DAZ 
+            </p>
+ 
+          </td>
+ 
+          <td class="cellrowborder" valign="top" width="50%" headers="d67334e309 "> 
+            <p> 
+              <pre>_MM_SET_DENORMALS_ZERO_MODE(_MM_DENORMALS_ZERO_ON)</pre> 
+            </p>
+ 
+          </td>
+ 
+        </tr>
+ 
+      </tbody>
+ 
+    </table>
+</div>
+ 
+  <p>The prototypes for these macros are in 
+    <span class="filepath">xmmintrin.h</span> (FTZ) and 
+    <span class="filepath">pmmintrin.h</span> (DAZ). 
+  </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-91B303B0-EA81-4FBA-AF32-3259FEE76703.htm">Understanding Floating-point Operations</a></div>
+</div>
+<div class="See Also"><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

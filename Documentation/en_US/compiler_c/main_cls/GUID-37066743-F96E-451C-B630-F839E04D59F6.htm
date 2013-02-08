@@ -1,0 +1,111 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30534)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30534">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30534">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-37066743-F96E-451C-B630-F839E04D59F6">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30534)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30534"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30534"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-37066743-F96E-451C-B630-F839E04D59F6">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30534)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-A25612A6-78F2-446A-9304-5F4859396C5D"><h2 class="sectiontitle">Message</h2><p>Add %s option for better type-based disambiguation analysis by the compiler if appropriate (the option will apply for the entire compilation). This will improve optimizations for the loop at line %d. </p>
+</div>
+
+
+<div class="section" id="GUID-F97611A3-FA89-454E-8D68-6EBCC8B3EE00"><h2 class="sectiontitle">Advice</h2>
+<p>Use option <span class="option">-ansi-alias</span> (Linux* OS and OS X*) or <span class="option">/Qansi-alias</span> (Windows* OS) for the specified file. This option will help the compiler to optimize the loop at the specified line. You must verify that the ANSI rules are followed for the entire file. gcc assumes this property by default in default setting O2; the Intel compiler does not. This option is particularly useful for C++ programs since it enables type-based disambiguation between pointers and other elemental datatypes (that in turn enables optimizations such as vectorization and parallelization).</p>
+<p>Option <span class="option">-ansi-alias</span> (Linux* OS and OS X*) and <span class="option">/Qansi-alias</span> (Windows* OS) enable or disable use of ANSI aliasing rules optimizations, and assert that the program adheres to these rules.</p>
+<p>ANSI-aliasing rules are described in the Standards documentation:</p>
+<ul type="disc" id="GUID-F887DA4F-DD5A-4E39-8BA6-0449BD0E8FE5"><li><p>C: ISO/IEC 9899, chapter 6.5 paragraph 7</p>
+</li>
+<li><p>C++: ISO/IEC 14882, chapter 3.10, paragraph 15</p>
+</li>
+</ul>
+</div>
+
+
+<div class="section" id="GUID-ED3BD9A4-6263-411B-95AC-45155E6FB5F3"><h2 class="sectiontitle">Example </h2>
+
+<p>Consider the following: </p>
+
+<pre>#include &lt;stddef.h&gt;</pre>
+<pre>&nbsp;</pre>
+<pre>template&lt;typename T&gt;</pre>
+<pre>class blocked_range {</pre>
+<pre>    T my_begin;</pre>
+<pre>    T my_end;</pre>
+<pre>public:</pre>
+<pre>    blocked_range();</pre>
+<pre>    T begin() const {return my_begin;}</pre>
+<pre>    T end() const {return my_end;}</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>class ApplyMatAdd {</pre>
+<pre>    double *const A, *const B, *const C;</pre>
+<pre>    const size_t size;</pre>
+<pre>public:</pre>
+<pre>    ApplyMatAdd(double *A_, double *B_, double *C_, size_t size_) : A(A_), B(B_), C(C_), size(size_) {}</pre>
+<pre>    void operator()( const blocked_range&lt;size_t&gt;&amp; range ) const;</pre>
+<pre>};</pre>
+<pre>&nbsp;</pre>
+<pre>void ApplyMatAdd::operator()( const blocked_range&lt;size_t&gt;&amp; range ) const {</pre>
+<pre>    for (size_t i=range.begin(); i&lt;range.end(); ++i) {</pre>
+<pre>        for (size_t j=0; j&lt;size; ++j) {</pre>
+<pre>            C[i*size + j] = A[i*size + j] + B[i*size + j];</pre>
+<pre>        }</pre>
+<pre>    }</pre>
+<pre>}</pre>
+</div>
+
+
+
+<p>In this case, the compiler is unable to vectorize the innermost loop at setting O2, the default. </p>
+<p>If you determine it is safe to do so, you can compile the above example with option <span class="option">-ansi-alias</span> or <span class="option">/Qansi-alias</span>, which enables vectorization of the innermost loop.</p>
+<div class="section" id="GUID-535D1366-B2E5-431D-95F7-02DD0BBFC9E0"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the semantics of this option are obeyed for the entire compilation.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

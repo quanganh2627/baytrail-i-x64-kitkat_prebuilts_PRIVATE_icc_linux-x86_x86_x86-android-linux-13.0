@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="finline-functions">
+<meta name="abstract" content="Enables function inlining for single file compilation.">
+<meta name="description" content="Enables function inlining for single file compilation.">
+<meta name="DC.subject" content="interprocedural optimizations, option enabling for single file compilation, -finline-functions compiler options">
+<meta name="keywords" content="interprocedural optimizations, option enabling for single file compilation, -finline-functions compiler options">
+<meta name="DC.Relation" scheme="URI" content="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596">
+<meta name="DC.Relation" scheme="URI" content="GUID-49F9D684-3A73-42B3-B4A5-7DCAB4B56DBC.htm#GUID-49F9D684-3A73-42B3-B4A5-7DCAB4B56DBC">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9C9993B8-8396-4F9F-AEE9-6F687A45AFFA">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>finline-functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_finline_functions"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_finline_functions"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9C9993B8-8396-4F9F-AEE9-6F687A45AFFA">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">finline-functions</h1>
+<!--Enables function inlining for single file compilation.--><div><p>Enables function inlining for single file compilation.</p>
+
+<div class="section" id="GUID-037D444A-636D-496A-934C-CF4C40DE6971"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-2C72A77C-76F9-48D1-98D5-7B07A06C39C5"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-134599B9-BD1D-4AFD-856D-9F91E68E4CE1"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-finline-functions</span></p><p><span class="kwd">-fno-inline-functions</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+<div class="section" id="GUID-7BD4E47B-F352-4B18-9423-290A9F62CA8D"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-8E32FE57-F030-45AD-A982-43F54FF9CEBE"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-finline-functions</span></p></td>
+<td valign="top" class="noborder"><p>Interprocedural optimizations occur. However, if you specify <span class="option">-O0</span>, the default is OFF.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9B410D50-CAB3-4F75-A123-C12F9AE560EA"><h2>Description</h2><p>This option enables function inlining for single file compilation. </p>
+<p>It enables the compiler to perform inline function expansion for calls to functions defined within the current source file.</p>
+<p>The compiler applies a heuristic to perform the function expansion. To specify the size of the function to be expanded, use the <span class="option">-finline-limit</span> option.</p>
+</div>
+
+<div class="section" id="GUID-615DDC5D-AA42-47E2-B7E2-5AB55903172A"><h2>Alternate Options</h2><p>Linux and OS X: <span class="option">-inline-level=2</span></p>
+<p>Windows: <span class="option">/Ob2</span></p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D4FE32CF-410A-447B-B600-F5074018BB43.htm">Inlining Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">ip</span>, <span class="option">Qip</span></a>  compiler option</div>
+<div><a href="GUID-49F9D684-3A73-42B3-B4A5-7DCAB4B56DBC.htm#GUID-49F9D684-3A73-42B3-B4A5-7DCAB4B56DBC"><span class="option">finline-limit</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_reduce_min_epu32/_mm512_mask_reduce_min_epu32">
+<meta name="abstract" content="Determines the element with minimum scalar value in an unsigned integer vector. There is no corresponding instruction. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Determines the element with minimum scalar value in an unsigned integer vector. There is no corresponding instruction. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_reduce_min_epu32, _mm512_mask_reduce_min_epu32">
+<meta name="keywords" content="_mm512_reduce_min_epu32, _mm512_mask_reduce_min_epu32">
+<meta name="DC.Relation" scheme="URI" content="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-674AF8C5-8B53-452E-B2B1-BB18C0F3F374">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_reduce_min_epu32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_reduce_min_epu32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-674AF8C5-8B53-452E-B2B1-BB18C0F3F374">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_reduce_min_epu32/_mm512_mask_reduce_min_epu32</h1>
+<!--Determines the element with minimum scalar value in an unsigned integer vector. There is no corresponding instruction.  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Determines the element with minimum scalar value in an unsigned integer vector. There is no corresponding instruction. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+
+<div class="section" id="GUID-06D0BDCF-5393-4C33-90A5-3935CE1919EE"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern unsigned int __cdecl _mm512_reduce_min_epu32(_m512i v2);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern unsigned int __cdecl _mm512_mask_reduce_min_epu32(__mmask16 k1, _m512i v2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-77889D09-C922-411A-B5F5-128F5CCF898A"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+      <td valign="top" class="noborder"><p> 32-bit unsigned integer vector in which to determine the minimum value </p>
+</td>
+
+    </tr>
+
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+      <td valign="top" class="noborder"><p> Writemask; only those elements of the source vector with corresponding bit set to one in the 
+<samp class="codeph">k1</samp> mask are computed and stored in the result</p>
+</td>
+
+    </tr></table>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-C484C95D-00EC-4974-A309-FB1AF0F2B4B4"><h2>Description</h2>
+<p>Determines the element with minimum value in the 32-bit unsigned integer vector 
+<samp class="codeph">v2</samp>.</p>
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing. Elements in 
+<samp class="codeph">v2</samp> with corresponding bit clear in 
+<samp class="codeph">k1</samp> are copied as is to the resulting vector.</p>
+
+
+</div>
+<div class="section" id="GUID-4FC694EA-E863-4AED-83B4-3F1B4F5EC6FE"><h2>Returns</h2>
+<p>Returns the result of the operation.</p>
+</div>
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">Reduction Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

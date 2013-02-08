@@ -1,0 +1,165 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="fimf-absolute-error, Qimf-absolute-error">
+<meta name="abstract" content="Defines the maximum allowable absolute error for math library function results.">
+<meta name="description" content="Defines the maximum allowable absolute error for math library function results.">
+<meta name="DC.subject" content="-fimf-absolute-error compiler option, /Qimf-absolute-error compiler option, absolute error, option defining for math library function results">
+<meta name="keywords" content="-fimf-absolute-error compiler option, /Qimf-absolute-error compiler option, absolute error, option defining for math library function results">
+<meta name="DC.Relation" scheme="URI" content="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079">
+<meta name="DC.Relation" scheme="URI" content="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE.htm#GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+<meta name="DC.Relation" scheme="URI" content="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316.htm#GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<meta name="DC.Relation" scheme="URI" content="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486">
+<meta name="DC.Relation" scheme="URI" content="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>fimf-absolute-error, Qimf-absolute-error</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_fimf_absolute_error"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_fimf_absolute_error"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DC3C7856-118C-4D81-B630-7D27F931C04B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">fimf-absolute-error, Qimf-absolute-error</h1>
+<!--Defines the maximum allowable absolute error for math library function results.--><div><p>Defines the maximum allowable absolute error for math library function results.</p>
+
+
+<div class="section" id="GUID-E161BF1E-04EE-4922-8C6F-721B7049031D"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-B1741FF1-AED6-4339-9004-630BE6D81326"><h2>Architectures</h2><p>All</p>
+</div>
+<div class="section" id="GUID-F0DE45E3-EE62-4789-939F-281FBB3E75AC"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-fimf-absolute-error</span><span class="oper">=</span><span class="var">value</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qimf-absolute-error</span><span class="oper">:</span><span class="var">value</span><span class="delim">[</span><span class="oper">:</span><span class="var">funclist</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-0EF67C05-BBAF-4F38-A9B9-0CF00FF5D8BD"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>value</var></p></td>
+<td valign="top" class="noborder"><p>Is a positive, floating-point number. Errors in math library function results may exceed the maximum relative error (max-error) setting if the absolute-error is less than or equal to <var>value</var>.</p>
+<p> The format for the number is [digits] [.digits] [ { e | E
+}[sign]digits]</p>
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>funclist</var></p></td>
+<td valign="top" class="noborder"><p>Is an optional list of one or more math library functions to which the attribute should be applied. If you specify more than one function, they must be separated with commas.  Precision-specific variants like sin and sinf are considered different functions, so you would need to use <span class="option">-fimf-absolute-error=0.00001:sin,sinf</span> (or<span class="option"> /Qimf-absolute-error:0.00001:sin,sinf</span>) to specify the maximum allowable absolute error for both the single-precision and double-precision sine functions. </p>
+<p>You also can specify the symbol /f to denote single-precision divides, symbol / to denote double-precision divides, symbol /l to denote extended-precision divides, and symbol /q to denote quad-precision divides. For example you can specify  <span class="option">-fimf-absolute-error=0.00001:/</span> or <span class="option">/Qimf-absolute-error: 0.00001:/</span>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C5F5683C-AF7E-4783-A58B-9BA85D0E3A19"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> Zero ("0")</p></td>
+<td valign="top" class="noborder"> <p> An absolute-error setting of 0 means that the function is bound by the relative error setting. This is the default behavior.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-B637A1E5-ED55-4339-A164-71621E8C9EE3"><h2>Description</h2><p>This option defines the maximum allowable absolute error for math library function results.</p>
+<p>This option can improve run-time performance, but it may decrease the accuracy of results.</p>
+
+<p> This option only affects functions that have
+zero as a possible return value, such as log, sin, asin,
+etc.</p>
+
+<p> The relative error requirements for a
+particular function are determined by options that set the maximum relative error (max-error)
+and precision. The return value from a function must have a
+relative error less than the max-error value, or an absolute error
+less than the absolute-error value.</p>
+
+<p> If you need to define the accuracy for a math function of a certain
+precision, specify the function name of the precision that you
+need. For example, if you want double precision, you can specify
+:sin; if you want single precision, you can specify :sinf, as
+in <span class="option">-fimf-absolute-error=0.00001:sin</span> or
+<span class="option">/Qimf-absolute-error:0.00001:sin</span>, or <span class="option">-fimf-absolute-error=0.00001:sqrtf</span> or
+<span class="option">/Qimf-absolute-error:0.00001:sqrtf</span>.</p>
+
+<p> If you do not specify any function names, then
+the setting applies to all functions (and to all precisions).
+However, as soon as you specify an individual function name, the
+setting applies only to the function of corresponding
+precision. So, for example, sinf applies only to the single-precision sine
+function, sin applies only to the
+double-precision sine
+function, sinl applies only to the
+extended-precision sine
+function, etc.</p>
+
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Many routines in libraries LIBM (Math Library) and SVML (Short Vector Math Library) are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors.</p>
+</div><p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d761185e170"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d761185e170 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+</div>
+
+<div class="section" id="GUID-DA928950-BBB1-4999-9CE5-1650FF9FA874"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6515772B-2F90-4187-BB88-852938B88A58.htm">Floating-Point Options</a></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1A20CE73-31FA-4AA5-8D90-58C5A0209C52.htm">Data Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079.htm#GUID-2D1BF7E0-A19C-46AC-B2F6-B08139840079"><span class="option">fimf-accuracy-bits, Qimf-accuracy-bits</span></a>  compiler option</div>
+<div><a href="GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE.htm#GUID-D5921FE2-3942-4CD8-B183-85F003AFE9AE">
+<span class="option">fimf-arch-consistency, Qimf-arch-consistency</span></a>  compiler option</div>
+<div><a href="GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316.htm#GUID-0ADDE233-4E78-4AEC-B35A-79C580D70316">
+<span class="option">fimf-domain-exclusion, Qimf-domain-exclusion</span></a>  compiler option</div>
+<div><a href="GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486.htm#GUID-A3259CB4-4111-47CD-8E14-5D0CC3D4E486"><span class="option">fimf-max-error, Qimf-max-error</span></a>  compiler option</div>
+<div><a href="GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3.htm#GUID-8B4176A9-E645-4581-AF32-CEF3F2054EF3"><span class="option">fimf-precision, Qimf-precision</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

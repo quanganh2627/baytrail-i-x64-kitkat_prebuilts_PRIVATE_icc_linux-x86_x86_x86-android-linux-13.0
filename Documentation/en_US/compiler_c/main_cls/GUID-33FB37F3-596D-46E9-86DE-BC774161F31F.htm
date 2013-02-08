@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Glossary">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, glosssary">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, glosssary">
+<meta name="DC.Relation" scheme="URI" content="GUID-44B505B6-01AF-4865-8DF4-AF851F51DDA1.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-33FB37F3-596D-46E9-86DE-BC774161F31F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Glossary</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_glossary"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-33FB37F3-596D-46E9-86DE-BC774161F31F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Glossary</h1>
+
+<div>
+<div class="section" id="GUID-86AB9863-4934-495F-BA1B-F4105CCE762E">
+
+<p>The Glossary is an alphabetical list of important terms used in
+this programmer's guide and gives brief explanations and
+definitions.</p>
+
+
+<strong>atomic
+</strong><p>Indivisible. An  instruction sequence executed by a  strand is atomic if
+it appears at any moment to any other strand as if either no
+instructions in the sequence have been executed or all instructions
+in the sequence have been executed.</p>
+
+
+<strong>chip multiprocessor</strong>
+<p>A general-purpose  multiprocessor implemented as a single
+ multicore
+chip.</p>
+
+
+
+
+<strong>cilk_for
+</strong><p>A keyword that indicates a  for loop whose iterations can be executed
+independently in parallel.</p>
+
+
+<strong>cilk_spawn
+</strong><p>A keyword that indicates that the named subroutine can
+execute independently and in parallel with the caller.</p>
+
+
+<strong>cilk_sync
+</strong><p>A keyword that indicates that all functions spawned
+within the current function must complete before statements
+following the  cilk_sync can be executed.</p>
+
+
+<strong>commutative operation
+</strong><p>An operation (op), over a type (T), is commutative
+if  a op b = b op
+a for any two objects,  a and  b, of type  T. Integer addition and set union are
+commutative, but string concatenation is not.</p>
+
+
+
+
+<strong>concurrent agent</strong><p>A processor, process, thread, or other entity that executes a program instruction potentially simultaneously with other similar concurrent agents. </p>
+<strong>core
+</strong><p>A single  processor unit of a  multicore chip. The
+terms "processor" and "CPU" are often used in place of "core",
+although industry usage varies.</p>
+
+
+<strong>CPU
+</strong><p>"Central Processing Unit"; a synonym for " core", or a single
+ processor of a
+ multicore
+chip.</p>
+
+
+<strong>critical section</strong>
+<p>The code executed by a  strand while holding a  lock.</p>
+
+
+<strong>critical-path length</strong>
+<p>See  span.</p>
+
+
+<strong>data race</strong>
+<p>A  race
+condition that occurs when two or more parallel
+strands, holding no  lock in common, access the same memory
+location and at least one of the strands performs a write. Compare
+with  determinacy
+race.</p>
+
+
+<strong>deadlock</strong>
+<p>A situation when two or more  strand instances are each waiting for
+another to release a resource, and the "waiting-for" relation forms
+a cycle so that none can ever proceed.</p>
+
+
+<strong>determinacy race
+</strong><p>A  race
+condition that occurs when two parallel strands
+access the same memory location and at least one  strand performs a
+write.</p>
+
+
+<strong>determinism</strong>
+<p>The property of a program when it behaves identically from run
+to run when executed on the same inputs. Deterministic programs are
+usually easier to debug.</p>
+
+
+<strong>distributed memory
+</strong><p>Computer storage that is partitioned among several  processors. A
+distributed-memory  multiprocessor is a computer in which
+processors must send messages to remote processors to access data
+in remote processor memory. Contrast with  shared memory.</p>
+
+
+<strong>execution time
+</strong><p>How long a program takes to execute on a given computer system.
+Also called  running
+time.</p>
+
+
+<strong>false sharing
+</strong><p>The situation that occurs when two strands access different
+memory locations residing on the same cache block, thereby
+contending for the cache block.</p>
+
+
+<strong>global variable</strong>
+<p>A variable that is bound outside of all local scopes. See also
+ nonlocal
+variable.</p>
+
+
+<strong>hyperobject
+</strong><p>A linguistic construct supported by the Intel&reg; Cilk&#8482; Plus runtime that allows
+many strands to coordinate in updating a shared variable or data
+structure independently by providing each strand a different  view of the
+hyperobject to different strands at the same time.<span>Supported hyperobjects include reducers and holders</span>.</p>
+
+
+<strong>instruction
+</strong><p>A single operation executed by a  processor.</p>
+
+
+<strong>linear speedup
+</strong><p> Speedup
+proportional to the  processor count. See also  perfect linear
+speedup.</p>
+
+
+<strong>lock</strong>
+<p>A synchronization mechanism for providing  atomic operation by
+limiting concurrent access to a resource. Important operations on
+locks include acquire (lock) and release (unlock). Many locks are
+implemented as a  mutex, whereby only one  strand can hold the
+lock at any time.</p>
+
+
+<strong>lock contention</strong>
+<p>The situation wherein multiple strands vie for the same  lock.</p>
+
+
+<strong>multicore</strong>
+<p>A semiconductor chip containing more than one  processor core.</p>
+
+
+<strong>multiprocessor</strong>
+<p>A computer containing multiple general-purpose  processors.</p>
+
+
+<strong>mutex
+</strong><p>A "mutually exclusive"  lock that only one  strand can acquire
+at a time, thereby ensuring that only one strand executes the  critical section
+protected by the mutex at a time. Windows* OS supports several
+types of locks, including the  <span class="keyword">CRITICAL_SECTION</span>. Linux* OS supports
+Pthreads  <span class="keyword">pthread_mutex_t objects</span>.</p>
+
+
+<strong>nondeterminism</strong>
+<p>The property of a program when it behaves differently from run
+to run when executed on exactly the same inputs. Nondeterministic
+programs are usually hard to debug.</p>
+
+
+<strong>nonlocal variable
+</strong><p>A program variable that is bound outside of the scope of the
+function, method, or class in which it is used. In Intel&reg; Cilk&#8482; Plus programs,
+this term refers to variables with a scope outside a
+ <span class="keyword">cilk_for</span>
+loop.</p>
+
+
+<strong>parallel loop
+</strong><p>A  for loop
+all of whose iterations can be run independently in parallel. The
+ <span class="keyword">cilk_for</span> keyword designates a parallel loop.</p>
+
+
+<strong>parallelism</strong>
+<p>The ratio of  work to  span, which is the largest  speedup an
+application could possibly attain when run on an infinite number of
+processors.</p>
+
+
+<strong>perfect linear speedup</strong>
+<p> Speedup
+equal to the  processor count. See also  linear speedup.</p>
+
+
+<strong>process</strong>
+<p>A concurrent agent that has its own address space and is managed by the operating system. Memory can be shared among processes only through the use of explicit operating system calls.</p>
+
+
+<strong>processor</strong>
+<p>A processor implements the logic to execute program instructions
+sequentially; the term " core" is used as a synonym. </p>
+
+
+<strong>race condition</strong>
+<p>A source of  nondeterminism whereby the result of a
+concurrent computation depends on the timing or relative order of
+the execution of instructions in each individual  strand.</p>
+
+
+<strong>receiver
+</strong><p>A variable to receive the result of the function call.</p>
+
+
+<strong>reducer
+</strong><p>A  hyperobject with a defined (usually
+associative)  <span class="keyword">reduce()</span> binary operator which the  Intel&reg; Cilk&#8482; Plus runtime system
+uses to combine the each  view of each separate  strand.</p>
+
+
+<strong>response time</strong>
+<p>The time it takes to execute a computation from the time a human
+user provides an input to the time the user gets the result.</p>
+
+
+<strong>running time</strong>
+<p>How long a program takes to execute on a given computer system.
+Also called  execution
+time.</p>
+
+
+<strong>scale down</strong>
+<p>The ability of a parallel application to run efficiently on one
+or a small number of processors.</p>
+
+
+<strong>scale out</strong>
+<p>The ability to run multiple copies of an application efficiently
+on a large number of processors.</p>
+
+
+<strong>scale up
+</strong><p>The ability of a parallel application to run efficiently on a
+large number of  processors. See also  linear speedup.</p>
+
+
+<strong>sequential consistency</strong>
+<p>The memory model for concurrency wherein the effect of  concurrent agents is
+as if their operations on  shared memory were interleaved in a global
+order consistent with the orders in which each agent executed
+them.</p>
+
+
+<strong>serial execution
+</strong><p>Execution of the  serialization of an Intel&reg; Cilk&#8482; Plus program.</p>
+
+
+<strong>serial semantics</strong>
+<p>The behavior of an Intel&reg; Cilk&#8482; Plus program when executed as the  serialization of the
+program.</p>
+
+
+<strong>serialization</strong>
+<p>The C/C++ program that results from stubbing out the Intel&reg; Cilk&#8482; Plus keywords of
+a  program, where  <span class="keyword">cilk_spawn</span> and  <span class="keyword">cilk_sync</span> are elided and  <span class="keyword">cilk_for</span> is replaced
+with an ordinary  <span class="keyword">for</span>. The serialization can be used for
+debugging and, in the case of a converted C/C++ program, will
+behave exactly as the original C/C++ program. The term "serial elision" is used in some of the
+literature. Also, see "serial semantics."</p>
+
+
+<strong>shared memory</strong>
+<p>Computer storage that is shared among several processors. A
+shared-memory  multiprocessor is a computer in which each
+ processor can
+directly address any memory location. Contrast with  distributed
+memory.</p>
+
+
+<strong>span
+</strong><p>The theoretically fastest execution time for a parallel program
+when run on an infinite number of  processors, discounting overheads for
+communication and scheduling. Often denoted by  T<sub>∞</sub> in the literature, and sometimes called
+ critical-path
+length.</p>
+
+
+<strong>spawn</strong>
+<p>To call a function without waiting for it to return, as in a
+normal call. The caller can continue to execute in parallel with
+the called function. See also  cilk_spawn.</p>
+
+
+<strong>speedup</strong>
+<p>How many times faster a program is when run in parallel than
+when run on one  processor. Speedup can be computed by
+dividing the running time  T <sub>P</sub> of the program
+on  P processors by its running
+time  T<sub>1</sub> on one
+processor.</p>
+
+
+<strong>strand</strong>
+<p>A  serial chain of instructions containing no spawns, syncs, returns from spawn, or other parallel control.</p>
+
+
+<strong>sync</strong>
+<p>To wait for a set of  spawned
+functions to return before proceeding. The current function is
+dependent upon the spawned functions and cannot proceed in parallel
+with them. See also  cilk_sync.</p>
+
+
+<strong>thread
+</strong><p>A  concurrent agent that shares an address space with other threads within the same process. Scheduling of threads is typically managed by the
+operating system.</p>
+
+
+<strong>throughput
+</strong><p>A number of operations performed per unit time.</p>
+
+
+<strong>view
+</strong><p>The state of a  hyperobject as seen by a given  strand.</p>
+
+
+<strong>work</strong>
+<p>The running time of a program when run on one  processor, sometimes
+denoted by  T<sub>1</sub>.</p>
+
+
+<strong>work stealing</strong>
+<p>A scheduling strategy where processors post parallel work
+locally and, when a  processor runs out of local work, it
+steals work from another processor. Work-stealing schedulers are
+notable for their efficiency, because they incur no communication
+or synchronization overhead when there is ample  parallelism. The
+ Intel&reg; Cilk&#8482; Plus runtime
+system employs a work-stealing scheduler.</p>
+
+
+<strong>worker
+</strong><p>A  concurrent agent that executes the instructions in one strand, possibly at the same time that another worker executes instructions in a parallel strand. Workers are managed by the 
+Intel&reg; Cilk&#8482; Plus runtime
+system's  work
+stealing scheduler. A worker is implemented as an operating system thread.</p>
+
+
+
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44B505B6-01AF-4865-8DF4-AF851F51DDA1.htm">Intel&reg; Cilk&#8482; Plus</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

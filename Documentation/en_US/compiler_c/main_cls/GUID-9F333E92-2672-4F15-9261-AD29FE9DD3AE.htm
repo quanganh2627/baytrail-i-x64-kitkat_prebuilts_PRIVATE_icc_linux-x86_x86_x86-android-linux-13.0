@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Redistributing Libraries When Deploying Applications">
+<meta name="DC.subject" content="redistributable package, redistributing libraries, libraries, redistributing, deploying applications, distributing applications, applications, deploying">
+<meta name="keywords" content="redistributable package, redistributing libraries, libraries, redistributing, deploying applications, distributing applications, applications, deploying">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9F333E92-2672-4F15-9261-AD29FE9DD3AE">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Redistributing Libraries When Deploying Applications</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_redistribute_libs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_redistribute_libs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9F333E92-2672-4F15-9261-AD29FE9DD3AE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Redistributing Libraries When Deploying Applications</h1>
+ 
+   
+  <div> 
+    <p>When you deploy your application to systems on which the Intel&reg; Compiler is not installed, you need to redistribute certain Intel libraries to which your application is linked. You can do so in one of the following ways: 
+    </p>
+ 
+    <ul type="disc" id="GUID-8CA1A366-7F1D-41B5-A3D8-B776710008F1"> 
+      <li> 
+        <p>Statically link your application. 
+        </p>
+ 
+        <p>An application built with statically-linked libraries eliminates the need to distribute runtime libraries with the application executable. By linking the application to the static libraries, you are not dependent on the Intel&reg; Fortran or C/C++ dynamic shared libraries. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Dynamically link your application. 
+        </p>
+ 
+        <p>If you must build your application with dynamically linked (or shared) compiler libraries, you should address the following concerns: 
+        <ul type="disc" id="GUID-76D9A45D-D6A0-481C-95EA-17F1C7AA7C42"> 
+          <li> 
+            <p>You must build your application with shared or dynamic libraries that are redistributable. 
+            </p>
+ 
+          </li>
+ 
+          <li> 
+            <p>Pay careful attention to the directory where the redistributables are installed and how the OS finds them. 
+            </p>
+ 
+          </li>
+ 
+          <li> 
+            <p>You should determine which shared or dynamic libraries your application needs. 
+            </p>
+ 
+          </li>
+ 
+        </ul>
+ 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>The information here is only introductory. See the following article at the Intel&reg; Software Network Knowledge Base (<a href="http://software.intel.com/en-us/articles/tools" target="_blank">http://software.intel.com/en-us/articles/tools</a>) for everything you need to know to redistribute these libraries. 
+    </p>
+ 
+    <p><em>Redistribution of Application Binaries Built for Linux*</em> (<a href="http://software.intel.com/en-us/articles/redistribution-of-application-binaries-built-for-linux/" target="_blank">http://software.intel.com/en-us/articles/redistribution-of-application-binaries-built-for-linux</a>) 
+    </p>
+ 
+    <p>The redistributable library installation package is available at: 
+    </p>
+ 
+    <p><em>Redistributable libraries for the Intel&reg; C++ and Fortran Composer XE for Linux*</em> (<a href="http://software.intel.com/en-us/articles/redistributable-libraries-for-the-intel-c-and-fortran-composer-xe-for-linux/" target="_blank">(http://software.intel.com/en-us/articles/redistributable-libraries-for-the-intel-c-and-fortran-composer-xe-for-linux</a>) 
+    </p>
+ 
+    </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3A53CF9C-68A3-45B4-B049-B3334B2C4004.htm">Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

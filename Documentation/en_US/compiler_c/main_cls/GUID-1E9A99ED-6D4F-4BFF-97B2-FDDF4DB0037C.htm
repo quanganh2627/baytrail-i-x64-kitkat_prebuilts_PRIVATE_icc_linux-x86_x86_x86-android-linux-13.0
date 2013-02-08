@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Programming Example">
+<meta name="DC.subject" content="example, offload code, sample, offload code, code example, offload">
+<meta name="keywords" content="example, offload code, sample, offload code, code example, offload">
+<meta name="DC.Relation" scheme="URI" content="GUID-EC1C055D-88A9-4CAD-96E5-3047CB99FAC2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1E9A99ED-6D4F-4BFF-97B2-FDDF4DB0037C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Programming Example</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_class_ex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1E9A99ED-6D4F-4BFF-97B2-FDDF4DB0037C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Programming Example</h1>
+ 
+   
+  <div> 
+    <p>This topic only applies to Intel&reg; MIC Architecture. 
+    </p>
+ 
+    <p>This sample program, 
+      <span class="filepath">sample.c</span>, uses the 
+      <samp class="codeph">F32vec16</samp> class to average the elements of an 80 element floating point array. 
+    </p>
+ 
+    <p>To generate the object file 
+      <span class="filepath">a.out</span>, which only runs on Intel&reg; MIC Architecture, compile the following code with the following command: 
+    </p>
+ 
+    <pre>icc -mmic sample.c
+</pre> 
+    <p></p>
+ 
+    <p> 
+      <pre>
+
+// Include Vector Class Definitions 
+
+#include &lt;micvec.h&gt; 
+#include &lt;stdio.h&gt; 
+ 
+#define SIZE 80 
+ 
+// Global variables 
+float result; 
+__declspec(align(64)) float array[SIZE]; 
+ 
+//***************************************************** 
+// Function: Add80ArrayElements 
+// Add all the elements of a 80 element array 
+//***************************************************** 
+ 
+void Add80ArrayElements (F32vec16 *array, float *result) 
+{ 
+   F32vec16 vec0, vec1; 
+  vec0 = _mm512_load_ps((char*)array); // Load array's first 16 floats 
+ 
+   //***************************************************** 
+   // Add all elements of the array, 16 elements at a time 
+   //****************************************************** 
+ 
+   vec0 += array[1]; // Add elements 17-32 
+   vec0 += array[2]; // Add elements 33-48 
+   vec0 += array[3]; // Add elements 49-64 
+   vec0 += array[4]; // Add elements 65-80 
+ 
+   //***************************************************** 
+   // Add all elements in resulting vector 
+   //****************************************************** 
+ 
+    *result = _mm512_reduce_add_ps(vec0);
+} 
+ 
+int main(int argc, char *argv[]) 
+{ 
+   int i; 
+   // Initialize the array 
+   for (i=0; i &lt; SIZE; i++) { 
+      array[i] = (float) i; 
+   } 
+ 
+   // Call function to add all array elements 
+   Add80ArrayElements ((F32vec16*)array, &amp;result); 
+ 
+   // Print average array element value 
+   printf ("Average of all array values = %f\n", result/80.); 
+   printf ("The correct answer is %f\n\n\n", 39.5);
+   return 0;
+}
+</pre> 
+    </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-EC1C055D-88A9-4CAD-96E5-3047CB99FAC2.htm">Intel&reg; MIC C++ Class Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

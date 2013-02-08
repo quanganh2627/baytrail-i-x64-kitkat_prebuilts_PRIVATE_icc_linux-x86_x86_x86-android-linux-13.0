@@ -1,0 +1,100 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_sub_epi8/16/32/64">
+<meta name="abstract" content="Subtracts signed/unsigned packed 8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is VPSUBB, VPSUBW, VPADDD, or VPSUBQ.">
+<meta name="description" content="Subtracts signed/unsigned packed 8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is VPSUBB, VPSUBW, VPADDD, or VPSUBQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_sub_epi8 (VPSUBB), _mm256_sub_epi16 (VPSUBW), _mm256_sub_epi32 (VPSUBD), _mm256_sub_epi64 (VPSUBQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, arithmetic operations, _mm256_sub_epi8 (VPSUBB), _mm256_sub_epi16 (VPSUBW), _mm256_sub_epi32 (VPSUBD), _mm256_sub_epi64 (VPSUBQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C2BF2037-4FBC-42BB-96A9-47412B53A022">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_sub_epi8/16/32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_sub"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sub_epi8"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sub_epi16"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sub_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_sub_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C2BF2037-4FBC-42BB-96A9-47412B53A022">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_sub_epi8/16/32/64 </span></h1>
+
+
+<!--Subtracts signed/unsigned packed  8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is  VPSUBB ,  VPSUBW ,  VPADDD , or  VPSUBQ .--><div><p>Subtracts signed/unsigned packed  8/16/32/64-bit integer data elements of two vectors. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPSUBB</span>, <span class="keyword">VPSUBW</span>, <span class="keyword">VPADDD</span>, or <span class="keyword">VPSUBQ</span>.</p>
+
+
+<div class="section" id="GUID-21324D81-4520-403F-B379-7EB9E9F274A4"><h2>Syntax</h2>
+  
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sub_epi8(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sub_epi16(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sub_epi32(__m256i s1, __m256i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256i _mm256_sub_epi64(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-BA05292C-4F89-42CF-A3F5-9EAFE9F18EA9"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>integer source vector used for the operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-4AC0BE6A-7C03-4659-973E-AD2ECCEC7CAD"><h2>Description</h2>
+
+<p>Subtracts packed signed/unsigned 8-, 16-, 32-, or 64-bit integers of the second source vector <var>s2</var> from corresponding bits of the first source vector <var>s1</var> and stores the packed integer result in the destination vector. When an individual result is too large to be represented in 8/16/32/64 bits (overflow), the result is wrapped around and the low 8/16/32/64 bits are written to the destination vector (that is, the carry is ignored).</p>
+<p>You must control the range of values operated upon to prevent undetected overflow conditions.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-90163766-8E2C-449C-B24A-892DC2D45DFB"><h2>Returns</h2><p> Result of the subtraction operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7F4F8F86-40FB-473D-836E-FC3F845ED84F.htm">Intrinsics for Arithmetic Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

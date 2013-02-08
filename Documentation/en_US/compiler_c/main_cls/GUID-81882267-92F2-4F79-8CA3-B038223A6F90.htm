@@ -1,0 +1,162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Capabilities of C++ SIMD Classes">
+<meta name="DC.subject" content="Class Libraries, capabilities of C++ SIMD classes">
+<meta name="keywords" content="Class Libraries, capabilities of C++ SIMD classes">
+<meta name="DC.Relation" scheme="URI" content="GUID-D91FE4A8-A3A6-4000-B33E-E8D007FCC671.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-81882267-92F2-4F79-8CA3-B038223A6F90">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Capabilities of C++ SIMD Classes</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cppref_class_capab"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-81882267-92F2-4F79-8CA3-B038223A6F90">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Capabilities of C++ SIMD Classes</h1>
+ 
+   
+  <div> 
+    <p>The fundamental capabilities of each C++ SIMD class include: 
+    </p>
+ 
+    <ul type="disc" id="GUID-3C0979DC-8894-4003-8073-F42FE430CF48"> 
+      <li> 
+        <p>computation 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>horizontal data motion 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>branch compression/elimination 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>caching hints 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>Understanding each of these capabilities and how they interact is crucial to achieving desired results. 
+    </p>
+ 
+    <div class="section" id="GUID-6EBC346E-2274-4347-91D3-EC43F842461E"><h2 class="sectiontitle">Computation</h2> 
+       
+      <p>The SIMD C++ classes contain vertical operator support for most arithmetic operations, including shifting and saturation. 
+      </p>
+ 
+      <p>Computation operations include: 
+        <span class="keyword">+</span>, 
+        <span class="keyword">-</span>, 
+        <span class="keyword">*</span>, 
+        <span class="keyword">/</span>, reciprocal ( 
+        <span class="keyword">rcp</span> and 
+        <span class="keyword">rcp_nr</span> ), square root (<span class="keyword">sqrt</span>), reciprocal square root ( 
+        <span class="keyword">rsqrt</span> and 
+        <span class="keyword">rsqrt_nr</span> ). 
+      </p>
+ 
+      <p>Operations 
+        <span class="keyword">rcp</span> and 
+        <span class="keyword">rsqrt</span> are approximating instructions with very short latencies that produce results with at least 12 bits of accuracy. You may get different answer if used on non-Intel processors. Operations 
+        <span class="keyword">rcp_nr</span> and 
+        <span class="keyword">rsqrt_nr</span> use software refining techniques to enhance the accuracy of the approximations, with a minimal impact on performance. (The "<span class="keyword">nr</span>" stands for Newton-Raphson, a mathematical technique for improving performance using an approximate result.) 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-32BA6049-EFB7-416A-B7B6-6139F43EEC29"><h2 class="sectiontitle">Horizontal Data Support</h2> 
+       
+      <p>The C++ SIMD classes provide horizontal support for some arithmetic operations. The term "horizontal" indicates computation across the elements of one vector, as opposed to the vertical, element-by-element operations on two different vectors. 
+      </p>
+ 
+      <p>The 
+        <span class="keyword">add_horizontal</span>, 
+        <span class="keyword">unpack_low</span> and 
+        <span class="keyword">pack_sat</span> functions are examples of horizontal data support. This support enables certain algorithms that cannot exploit the full potential of SIMD instructions. 
+      </p>
+ 
+      <p>Shuffle intrinsics are another example of horizontal data flow. Shuffle intrinsics are not expressed in the C++ classes due to their immediate arguments. However, the C++ class implementation enables you to mix shuffle intrinsics with the other C++ functions. For example: 
+      </p>
+ 
+      <p> 
+        <pre>F32vec4 fveca, fvecb, fvecd;</pre> 
+        <pre>fveca += fvecb;</pre> 
+        <pre>fvecd = _mm_shuffle_ps(fveca,fvecb,0);</pre> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1A3534D3-F457-483D-9667-92F2DBB451F0"><h2 class="sectiontitle">Branch Compression/Elimination</h2> 
+       
+      <p>Branching in SIMD architectures can be complicated and expensive. The SIMD C++ classes provide functions to eliminate branches, using logical operations, max and min functions, conditional selects, and compares. Consider the following example: 
+      </p>
+ 
+      <p> 
+        <pre>short a[4], b[4], c[4];
+for (i=0; i&lt;4; i++)</pre> 
+        <pre>c[i] = a[i] &gt; b[i] ? a[i] : b[i];</pre> 
+      </p>
+ 
+      <p>This operation is independent of the value of 
+        <span class="keyword">i</span>. For each 
+        <span class="keyword">i</span>, the result could be either 
+        <span class="keyword">A</span> or 
+        <span class="keyword">B</span> depending on the actual values. A simple way of removing the branch altogether is to use the 
+        <span class="keyword">select_gt</span> function, as follows: 
+      </p>
+ 
+      <p> 
+        <pre>Is16vec4 a, b, c</pre> 
+        <pre>c = select_gt(a, b, a, b)</pre> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-96F3B22D-DF1D-46B8-98B6-346D59C86D27"><h2 class="sectiontitle">Caching Hints</h2> 
+       
+      <p>Streaming SIMD Extensions provide prefetching and streaming hints. Prefetching data can minimize the effects of memory latency. Streaming hints allow you to indicate that certain data should not be cached. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D91FE4A8-A3A6-4000-B33E-E8D007FCC671.htm">Introduction to the Class Libraries</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

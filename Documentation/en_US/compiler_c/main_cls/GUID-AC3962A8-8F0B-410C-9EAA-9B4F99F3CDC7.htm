@@ -1,0 +1,193 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Overview: Heterogeneous Programming">
+<meta name="DC.subject" content="heterogeneous programming, overview">
+<meta name="keywords" content="heterogeneous programming, overview">
+<meta name="DC.Relation" scheme="URI" content="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-CCF0AA51-C810-4721-9582-C17B95317FA6.htm#GUID-CCF0AA51-C810-4721-9582-C17B95317FA6">
+<meta name="DC.Relation" scheme="URI" content="GUID-37231246-8111-45DF-9AAF-727A8543C021.htm#GUID-37231246-8111-45DF-9AAF-727A8543C021">
+<meta name="DC.Relation" scheme="URI" content="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">
+<meta name="DC.Relation" scheme="URI" content="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505.htm#GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505">
+<meta name="DC.Relation" scheme="URI" content="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3.htm#GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3">
+<meta name="DC.Relation" scheme="URI" content="GUID-D0B37F5D-6420-4F25-9D66-CBCD677AD1BA.htm#GUID-D0B37F5D-6420-4F25-9D66-CBCD677AD1BA">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-AC3962A8-8F0B-410C-9EAA-9B4F99F3CDC7">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Heterogeneous Programming</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_ovrvw_offload_programming"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-AC3962A8-8F0B-410C-9EAA-9B4F99F3CDC7">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Heterogeneous Programming</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <div class="section" id="GUID-825F635C-1B51-414B-B399-A878CCA983EB"><h2 class="sectiontitle">About Heterogeneous Programming</h2> 
+		 
+		<p>The Intel&reg; Composer XE includes language extensions that simplify writing parallel programs that can offload sections to run on the Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture). 
+		</p>
+ 
+		<p>Execution begins on the host CPU and, based on user-defined code, some sections are offloaded to the coprocessor. 
+		</p>
+ 
+		<p>Heterogeneous programming must deal with two differences from traditional CPU programming: 
+		</p>
+ 
+		<ul type="disc" id="GUID-A6083D03-61CD-4ACF-B298-0A94C333B1EB"> 
+		  <li> 
+			 <p> The instruction sets on the CPU and the coprocessor are similar, but not identical. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>The host CPU and the coprocessor do not share common system memory. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-2D71B8F1-8E26-4D6E-AE22-2211E9CCD761"><h2 class="sectiontitle"> Programming Models</h2> 
+		 
+		<p>The compiler supports the following programming models, which differ in their approach to dealing with the lack of shared system memory: 
+		</p>
+ 
+		<ul type="disc" id="GUID-AD504127-9293-4E09-9B77-6AACEBFEAE26"> 
+		  <li> 
+			 <p>A non-shared memory model. 
+			 </p>
+ 
+			 <p>This model uses the pragma 
+				<samp class="codeph">offload</samp>, and other pragmas with the prefix 
+				<samp class="codeph">offload_</samp>. 
+			 </p>
+ 
+			 <p>This model is appropriate for dealing with flat data structures such as scalars, arrays and structs that are bit-wise copyable. 
+			 </p>
+ 
+			 <p>Data in this model is copied back and forth between the CPU and the coprocessor around regions of offloaded code. The data selected for transfer is a combination of variables implicitly transferred because they are lexically referenced within offload constructs, and variables explicitly listed in clauses in the pragma. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>A virtual-shared memory model. 
+			 </p>
+ 
+			 <p>This model uses 
+				<span class="keyword">_Cilk_shared</span> and 
+				<span class="keyword">_Cilk_offload</span> keywords. 
+			 </p>
+ 
+			 <p>This model is appropriate for dealing with complex pointer-based data structures, such as linked lists, trees and the like. 
+			 </p>
+ 
+			 <p>This model uses a software implementation of virtual memory that is shared between the CPU and the coprocessor. You either declare data to be exchanged during offloads as shared, or if the data is dynamic, it is allocated using special 
+				<span class="keyword">alloc</span> and 
+				<span class="keyword">free</span> calls. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>You can use both models of offloading in a single program. However, the data manipulated by the two models should be distinct. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-CDB996A3-79BA-47A0-91E0-86708020BF53"> 
+		<p><span>In both models, specifying</span> that a construct should run on the coprocessor does not guarantee that it will. The presence of an Intel&reg; MIC Architecture-based subsystem and its availability at the offload point determines if the offload succeeds. When an offload fails, the construct may execute on the host CPU. 
+		</p>
+ 
+		<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d567626e153"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d567626e153 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9343EDD8-D883-4773-AF5D-ABC78F8A58D2.htm">Programming for Intel&reg; MIC Architecture</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-CCF0AA51-C810-4721-9582-C17B95317FA6.htm#GUID-CCF0AA51-C810-4721-9582-C17B95317FA6">Overview: Using a 
+			 <span>Pragma</span></a></div>
+<div><a href="GUID-37231246-8111-45DF-9AAF-727A8543C021.htm#GUID-37231246-8111-45DF-9AAF-727A8543C021">Overview: Using Shared Virtual Memory 
+		  </a></div>
+<div><a href="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">offload 
+		  </a>  
+		  </div>
+<div><a href="GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505.htm#GUID-C08B75CC-8DD1-4F94-AD1C-B2CF85E6F505">_Cilk_offload
+		  </a>  
+		  </div>
+<div><a href="GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3.htm#GUID-7F9271AC-214F-4214-AEF9-FC8BB1FE42F3">_Cilk_shared
+		  </a>  
+		  </div>
+<div><a href="GUID-D0B37F5D-6420-4F25-9D66-CBCD677AD1BA.htm#GUID-D0B37F5D-6420-4F25-9D66-CBCD677AD1BA">Restrictions on Offloaded Code 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

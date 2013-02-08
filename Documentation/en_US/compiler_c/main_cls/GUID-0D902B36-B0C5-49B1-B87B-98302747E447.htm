@@ -1,0 +1,98 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="GAP Message (Diagnostic ID 30525)">
+<meta name="DC.subject" content="guided auto-parallelism messages, diagnostic id 30525">
+<meta name="keywords" content="guided auto-parallelism messages, diagnostic id 30525">
+<meta name="DC.Relation" scheme="URI" content="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0D902B36-B0C5-49B1-B87B-98302747E447">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>GAP Message (Diagnostic ID 30525)</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_tpc_gap_msg30525"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_tpc_gap_msg30525"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0D902B36-B0C5-49B1-B87B-98302747E447">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">GAP Message (Diagnostic ID 30525)</h1>
+
+
+
+<div>
+<div class="section" id="GUID-80D8FD25-9B57-45D1-9CD8-1BE28584E63C"><h2 class="sectiontitle">Message</h2><p>Insert a "%s loop count min(%d)" statement right before the loop at line %d to parallelize the loop.</p>
+</div>
+
+
+<div class="section" id="GUID-09D06A14-5CD9-45B6-ACF3-8FFD77F0FAAB"><h2 class="sectiontitle">Advice</h2>
+<p>Add <span>"#pragma loop count"</span> before the specified loop. This <span>pragma</span> indicates the minimum trip count (that is, the number of iterations) of the loop that enables the parallelization of the loop.</p>
+<p>The minimum trip count required to parallelize the loop may differ depending on the  target architecture, and this will be reflected in the message generated.</p>
+</div>
+
+
+<div class="section" id="GUID-25559CA7-4B4F-4525-A905-A1870E9C89FF"><h2 class="sectiontitle">Example</h2>
+
+<p>Consider the following: </p>
+
+<pre>#define N 10000</pre>
+<pre>float A[N], B[N];</pre>
+<pre>&nbsp;</pre>
+<pre>void foo(int n)</pre>
+<pre>{</pre>
+<pre>  int i;</pre>
+<pre>  for (i =0; i &lt; n; i++) {</pre>
+<pre>      A[i] = A[i] + B[i] * B[i] + 1.5;</pre>
+<pre>  }</pre><pre>}</pre>
+</div>
+
+
+<p>In this case, the compiler may not parallelize the loop because it is not sure that n is large enough for the parallelization to be beneficial. If you determine it is safe to do so, you can add the pragma as follows:</p>
+
+<pre>#define N 10000</pre>
+<pre>float A[N], B[N];</pre>
+<pre>&nbsp;</pre>
+<pre>void foo(int n)</pre>
+<pre>{</pre>
+<pre>  int i;</pre>
+<pre>#pragma loop count min(128)</pre>
+<pre>  for (i =0; i &lt; n; i++) {</pre>
+<pre>      A[i] = A[i] + B[i] * B[i] + 1.5;</pre>
+<pre>  }</pre>
+<pre>}</pre>
+
+<div class="section" id="GUID-B391EA2B-FD85-4FC1-9B5A-97ED13832933"><h2 class="sectiontitle">Verify</h2>
+
+<p>Make sure that the loop has the minimum number of iterations, as specified in the diagnostic message.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-025FEE44-41F5-4608-B077-9A041B8DADFF.htm">Guided Auto Parallelism Messages</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

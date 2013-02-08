@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Granularity">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, granularity">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, granularity">
+<meta name="DC.Relation" scheme="URI" content="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-597712C6-D312-4FAF-A231-6951BB3915D1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Granularity</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_granular"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-597712C6-D312-4FAF-A231-6951BB3915D1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Granularity</h1>
+
+<div>
+<p>Divide and conquer is an effective parallelization strategy,
+creating a good mix of large and small sub-problems. The
+work-stealing scheduler can allocate chunks of work efficiently to
+the cores, provided that there are not too many very large chunks
+or too many very small chunks. If the work is divided into just a
+few large chunks, there may not be enough parallelism to keep all
+the cores busy. If the chunks are too small, then scheduling
+overhead may overwhelm the advantages of parallelism.</p>
+
+<p>Granularity can be an issue with parallel programs using  <span class="keyword">cilk_for</span> or <span class="keyword">cilk_spawn</span>. If you
+are using  <span class="keyword">cilk_for</span>, you can control the granularity
+by setting the grain size of the loop. In addition, if you have nested
+loops, the nature of your computation will determine whether you
+achieve the best performance using  <span class="keyword">cilk_for</span> for inner or outer loops, or
+both. If you are using  <span class="keyword">cilk_spawn</span>, be careful not to spawn very
+small chunks of work. While the overhead of  <span class="keyword">cilk_spawn</span> is
+relatively small, performance will suffer if you spawn very small
+amounts of work.</p>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

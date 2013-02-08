@@ -1,0 +1,194 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="march">
+<meta name="abstract" content="Tells the compiler to generate code for processors that support certain features.">
+<meta name="description" content="Tells the compiler to generate code for processors that support certain features.">
+<meta name="DC.subject" content="code, option generating for specified CPU, CPU, option generating code for specified, -march compiler option">
+<meta name="keywords" content="code, option generating for specified CPU, CPU, option generating code for specified, -march compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B5554896-8329-49D1-BE66-532D93DEAFFE.htm#GUID-B5554896-8329-49D1-BE66-532D93DEAFFE">
+<meta name="DC.Relation" scheme="URI" content="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45">
+<meta name="DC.Relation" scheme="URI" content="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D">
+<meta name="DC.Relation" scheme="URI" content="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61">
+<meta name="DC.Relation" scheme="URI" content="GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1.htm#GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F6DED8D3-769D-47AF-9C13-09A8DD4C8907">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>march</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_march"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_march"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-F6DED8D3-769D-47AF-9C13-09A8DD4C8907">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">march</h1>
+<!--Tells the compiler to generate code for processors that support certain features. --><div><p>Tells the compiler to generate code for processors that support certain features. </p>
+
+<div class="section" id="GUID-3AD8CD75-159B-4BA3-9F8B-AD15BA3579D5"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-F6C83A2A-FC8C-4A03-B8E9-157FFECCE727"><h2>Architectures</h2><p>IA-32, Intel&reg; 64 architecture</p>
+</div>
+
+<div class="section" id="GUID-A89F5DD3-E4FF-4CBA-AF7D-53C5B774A6BB"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-march</span><span class="oper">=</span><span class="var">processor</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table></div>
+
+<div class="section" id="GUID-C6D921A6-72AA-4AA2-B1EF-8F2C282693C8"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><var>processor</var></p></td>
+<td valign="top" class="noborder"><p> Indicates to the compiler the code it may generate. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse">
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">core-avx2</span></p></td>
+<td valign="top" class="noborder"><p> Generates code for processors that support Intel&reg; Advanced Vector Extensions 2 (Intel&reg; AVX2), Intel&reg; AVX, SSE4.2, SSE4.1, SSE3, SSE2, SSE, and SSSE3 instructions.</p>
+
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">core-avx-i</span></p></td>
+<td valign="top" class="noborder"><p>  Generates code for processors that support <span>Float-16 conversion instructions and </span>the RDRND instruction, Intel&reg; Advanced Vector Extensions (Intel&reg; AVX), Intel&reg; SSE4.2, SSE4.1, SSE3, SSE2, SSE, and SSSE3 instructions.</p>
+</td>
+</tr>
+
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">corei7-avx</span></p></td>
+<td valign="top" class="noborder"><p>   Generates code for processors that support Intel&reg; Advanced Vector Extensions (Intel&reg; AVX), Intel&reg; SSE4.2, SSE4.1, SSE3, SSE2, SSE, and SSSE3 instructions.</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">corei7</span></p></td>
+<td valign="top" class="noborder"><p>   Generates code for processors that support Intel&reg; SSE4 Efficient Accelerated String and Text Processing instructions. May also generate code for Intel&reg; SSE4 Vectorizing Compiler and Media Accelerator, Intel&reg; SSE3, SSE2, SSE, and SSSE3 instructions.</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">atom</span></p></td>
+<td valign="top" class="noborder"><p>  Generates code for processors that support MOVBE instructions, depending on the setting of option <span class="option">-minstruction</span> (Linux* OS and OS X*) or<span class="option"> /Qinstruction</span> (Windows* OS). May also generate code for SSSE3 instructions and  Intel&reg; SSE3, SSE2, and SSE instructions.</p>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">core2</span></p></td>
+<td valign="top" class="noborder"><p>Generates code for the Intel&reg; Core&#8482; 2 processor family.</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentium-m</span><br>
+<span class="keyword">pentium4</span>
+<br>
+<span class="keyword">pentium3</span>
+</p></td>
+<td valign="top" class="noborder"><p>Generates code for Intel&reg; Pentium&reg; processors. Value <span class="keyword">pentium3</span> is only available on Linux* OS.</p>
+
+</td>
+</tr>
+</table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C4006850-AB58-4A01-85B6-6B31D81048C1"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr>
+<td valign="top" width="30%" class="noborder"><p><span class="keyword">pentium4</span></p></td>
+<td valign="top" class="noborder"><p> If no architecture option is specified, value <span class="keyword">pentium4</span> is used by the compiler to generate code.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-D39CB4F1-3E0A-4F19-89F3-F457E5B2352C"><h2>Description</h2><p>This option tells the compiler to generate code for processors that support certain features.</p>
+<p>Specifying <span class="option">-march=pentium4</span> sets <span class="option">-mtune=pentium4</span>.</p>
+<p>For compatibility, a number of historical <var>processor</var> values are also supported, but the generated code will not differ from the default.</p>
+
+<p> 
+	 
+<div class="tablenoborder"><a name="d48e18"><!-- --></a><table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		   
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d851689e200"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+</thead>
+ 
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d851689e200 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+ 
+				  <p> Notice revision #20110804 
+				  </p>
+				  
+
+				  </td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 </p>
+
+</div>
+
+<div class="section" id="GUID-043B1A14-426A-4278-92BA-2A5301318EE7"><h2>Alternate Options</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-march=pentium3</span></p></td>
+<td valign="top" class="noborder"><p>Linux: <span class="option">-xSSE</span> </p>
+<p>OS X: None
+</p>
+
+<p>Windows: None</p>
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-march=pentium4</span>
+<br><span><span class="option">-march=pentium-m</span></span></p></td>
+<td valign="top" class="noborder"><p>Linux: <span class="option">-xSSE2</span></p>
+<p>OS X: None
+</p>
+
+<p>Windows: None</p>
+
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-march=core2</span></p></td>
+<td valign="top" class="noborder"><p>Linux: <span class="option">-xSSSE3</span></p>
+<p>OS X: None
+</p>
+<p>Windows:   None</p>
+
+
+</td>
+</tr></table>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FA527539-702B-4CF7-A17B-3A4B765C009D.htm">Code Generation Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B5554896-8329-49D1-BE66-532D93DEAFFE.htm#GUID-B5554896-8329-49D1-BE66-532D93DEAFFE"><span class="option">xHost</span>, <span class="option">QxHost</span></a>  compiler option</div>
+<div><a href="GUID-09734487-1819-4C1E-B314-2497F2B64C45.htm#GUID-09734487-1819-4C1E-B314-2497F2B64C45"><span class="option">x</span>, <span class="option">Qx</span></a>  compiler option</div>
+<div><a href="GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D.htm#GUID-2D881A91-C5D7-4DDD-84B1-FB9D0D597F4D"><span class="option">ax</span>, <span class="option">Qax</span></a>  compiler option</div>
+<div><a href="GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61.htm#GUID-4096E831-F7A4-4B3A-A74E-D104CC647C61"><span class="option">arch</span></a>  compiler option</div>
+<div><a href="GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1.htm#GUID-B359F2CA-E45A-4070-BF08-4BC001CC12E1"><span class="option">minstruction</span>, <span class="option">Qinstruction</span></a>  compiler option</div>
+<div><a href="GUID-B4670EED-D317-46D4-9635-618B36C827C3.htm#GUID-B4670EED-D317-46D4-9635-618B36C827C3"><span class="option">m</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

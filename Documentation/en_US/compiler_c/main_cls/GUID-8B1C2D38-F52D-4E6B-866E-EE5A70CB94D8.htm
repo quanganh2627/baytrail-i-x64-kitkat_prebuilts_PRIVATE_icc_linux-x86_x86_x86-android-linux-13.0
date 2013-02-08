@@ -1,0 +1,229 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Test Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE4, test operations, _mm_testz_si128, _mm_testc_si128, _mm_testnzc_si128, Intel&reg; Streaming SIMD Extensions 4, test intrinsics">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE4, test operations, _mm_testz_si128, _mm_testc_si128, _mm_testnzc_si128, Intel&reg; Streaming SIMD Extensions 4, test intrinsics">
+<meta name="DC.Relation" scheme="URI" content="GUID-1BFB4ADA-FFE9-4D0F-A6D6-24F69B7EC69C.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8B1C2D38-F52D-4E6B-866E-EE5A70CB94D8">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Test Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse41_test"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8B1C2D38-F52D-4E6B-866E-EE5A70CB94D8">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Test Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-191E8589-0B2D-4308-A99F-EBBF4EBEDF86"> 
+      <p>These Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE4) intrinsics perform packed integer 128-bit comparisons. The prototypes for these intrinsics are in the 
+        <span class="filepath">smmintrin.h</span> file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EB052594-2778-4F50-B5D3-E5DF3C9DC94D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-192217BD-B7BF-4278-98CD-E7450E3AD5DC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d469360e65"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d469360e71"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d469360e77"> 
+                <p>Corresponding 
+                  <br>Intel&reg; SSE4 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d469360e65 "> 
+                <p><span class="option"> _mm_testz_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d469360e71 ">Checks for all zeros in specified bits of a 128-bit value 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d469360e77 "> 
+                <p><samp class="codeph">PTEST</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d469360e65 "> 
+                <p><span class="option"> _mm_testc_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d469360e71 ">Checks for all ones in specified bits of a 128-bit value 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d469360e77 "> 
+                <p><samp class="codeph">PTEST</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d469360e65 "> 
+                <p><span class="option"> _mm_testnzc_si128</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d469360e71 "> Checks for at least one '0' and at least one '1' in the specified bits of a 128-bit value 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d469360e77 "> 
+                <p><samp class="codeph">PTEST</samp> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A10970A8-5A68-4639-8416-CE8151A09F16"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_testz_si128 (__m128i s1, __m128i s2)</span></p></div> 
+      <p> Returns '<span>1</span>' if the bitwise AND operation on 
+        <samp class="codeph">s1</samp> and 
+        <samp class="codeph">s2</samp> results in all zeros, else returns '<span>0</span>'. That is, 
+      </p>
+ 
+      <p> 
+        <pre>_mm_testz_si128 := ( (s1 &amp; s2) == 0 ? 1 : 0 )</pre> 
+      </p>
+ 
+      <p>This intrinsic checks if the 
+        <samp class="codeph">ZF</samp> flag equals '<span>1</span>' as a result of the instruction 
+        <samp class="codeph">PTEST 
+          <var>s1</var>, 
+          <var>s2</var></samp>. For example, it allows you to check if all set bits in 
+        <var>s2</var> (mask) are zeros in 
+        <var>s1</var>. 
+      </p>
+ 
+      <p>Corresponding instruction: 
+        <samp class="codeph">PTEST</samp> 
+      </p>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3AC6A9AD-4EAC-4DFB-9E2E-4F9539D30003"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_testc_si128 (__m128i s1, __m128i s2)</span></p></div> 
+      <p>Returns '<span>1</span>' if the bitwise AND operation on 
+        <var>s2</var> and logical NOT 
+        <var>s1</var> results in all zeros, else returns '<span>0</span>'. That is, 
+      </p>
+ 
+      <p> 
+        <pre>_mm_testc_si128 := ( (~s1 &amp; s2) == 0 ? 1 : 0 )</pre> 
+      </p>
+ 
+      <p>This intrinsic checks if the 
+        <samp class="codeph">CF</samp> flag equals '<span>1</span>' as a result of the instruction 
+        <samp class="codeph">PTEST 
+          <var>s1</var>, 
+          <var>s2</var></samp>. For example it allows you to check if all set bits in 
+        <var>s2</var> (mask) are also set in 
+        <var>s1</var>. 
+      </p>
+ 
+      <p>Corresponding instruction: 
+        <samp class="codeph">PTEST</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-25D53D1E-E546-4D38-A70D-7FF13CC99A09"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_testnzc_si128 (__m128i s1, __m128i s2)</span></p></div> 
+      <p>Returns '<span>1</span>' if the following conditions are true: bitwise operation of 
+        <var>s1</var> AND 
+        <var>s2</var> does not equal all zeros and bitwise operation of NOT 
+        <var>s1</var> AND 
+        <var>s2</var> does not equal all zeros, otherwise returns '<span>0</span>'. That is, 
+      </p>
+ 
+      <p> 
+        <pre>_mm_testnzc_si128 := ( ( (s1 &amp; s2) != 0 &amp;&amp; (~s1 &amp; s2) != 0 ) ? 1 : 0 )</pre> 
+      </p>
+ 
+      <p>This intrinsic checks if both the 
+        <samp class="codeph">CF</samp> and 
+        <samp class="codeph">ZF</samp> flags are not '<span>1</span>' as a result of the instruction 
+        <samp class="codeph">PTEST 
+          <var>s1</var>, 
+          <var>s2</var></samp>. For example, it allows you to check that the result has both zeros and ones in 
+        <var>s1</var> on positions specified as set bits in 
+        <var>s2</var> (mask). 
+      </p>
+ 
+      <p>Corresponding instruction: 
+        <samp class="codeph">PTEST</samp> 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1BFB4ADA-FFE9-4D0F-A6D6-24F69B7EC69C.htm">Vectorizing Compiler and Media Accelerators</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

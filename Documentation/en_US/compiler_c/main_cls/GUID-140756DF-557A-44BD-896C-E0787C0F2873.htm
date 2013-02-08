@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_hypot_pd, _mm256_hypot_pd">
+<meta name="abstract" content="Computes the length of the hypotenuse of a right angled triangle. Vector variant of hypot(x) function for a 128-bit/256-bit vector argument of float64 values.">
+<meta name="description" content="Computes the length of the hypotenuse of a right angled triangle. Vector variant of hypot(x) function for a 128-bit/256-bit vector argument of float64 values.">
+<meta name="DC.subject" content="intrinsics, SVML, exponential functions, _mm_hypot_pd, _mm256_hypot_pd">
+<meta name="keywords" content="intrinsics, SVML, exponential functions, _mm_hypot_pd, _mm256_hypot_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-DEB8B19C-E7A2-432A-85E4-D5648250188E.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-140756DF-557A-44BD-896C-E0787C0F2873">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_hypot_pd, _mm256_hypot_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_svml_hypot_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-140756DF-557A-44BD-896C-E0787C0F2873">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span> _mm_hypot_pd</span>, <span>_mm256_hypot_pd</span>
+</h1>
+
+
+<!--Computes the length of the hypotenuse of a right angled triangle. Vector variant of hypot(x) function for a 128-bit/256-bit vector argument of float64 values. --><div><p>Computes the length of the hypotenuse of a right angled triangle. Vector variant of hypot(x) function for a 128-bit/256-bit vector argument of float64 values. </p>
+
+
+<div class="section" id="GUID-C243A86B-771B-4D00-8415-0AC6A2F88EF8"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128d _mm_hypot_pd(__m128d v1, __m128d v2);</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m256d _mm256_hypot_pd(__m256d v1, __m256d v2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-EF55A8AB-EBE4-4FB1-934B-160DB9CDC7D4"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>v1</var></p></td>
+
+      <td valign="top" class="noborder"><p>vector with float64 values </p>
+</td>
+
+    </tr> 
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+      <td valign="top" class="noborder"><p>vector with float64 values </p>
+</td>
+
+    </tr> 
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-BBA0E82F-1BBD-40F4-8AA6-006E7A958C23"><h2>Description</h2>
+<p>Computes the length of the hypotenuse of a right angled triangle with sides <var>v1</var> and <var>v2</var>, defined by:
+<pre>sqrt (<var>v1</var><sup>2</sup> + <var>v2</var><sup>2</sup>)</pre>
+</p>
+</div>
+
+
+<div class="section" id="GUID-42315988-A4A6-44AC-87A8-BBE7C638390A"><h2>Returns</h2><p>
+128-bit/256-bit vector with the result of the operation.
+
+</p>
+
+
+<p><div class="Note"><h3 class="NoteTipHead">Note</h3> 
+          <p>Many routines in the SVML library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+          </p>
+ 
+        </div></p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DEB8B19C-E7A2-432A-85E4-D5648250188E.htm">Intrinsics for Exponential Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

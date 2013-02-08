@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions">
+<meta name="DC.subject" content="intrinsics, Advanced Encryption Standard (AES) Implementation, overview, carry-less multiplication instruction">
+<meta name="keywords" content="intrinsics, Advanced Encryption Standard (AES) Implementation, overview, carry-less multiplication instruction">
+<meta name="DC.Relation" scheme="URI" content="GUID-3A356B71-771C-4D38-A480-29B3C0BC9EBB.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0C925789-53BB-48AA-BC34-5F159F1F4610">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_aes_overview"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0C925789-53BB-48AA-BC34-5F159F1F4610">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Intrinsics for Carry-less Multiplication Instruction and Advanced Encryption Standard Instructions </h1>
+ 
+   
+  <div> 
+    <p>The Intel&reg; C++ Compiler provides intrinsics to enable carry-less multiplication and encryption based on Advanced Encryption Standard (AES) specifications. The carry-less multiplication intrinsic corresponds to a single new instruction, 
+      <samp class="codeph">PCLMULQDQ</samp>. The AES extension intrinsics correspond to AES extension intructions. 
+    </p>
+ 
+    <p>The AES extension instructions and the 
+      <samp class="codeph">PCLMULQDQ</samp> instruction follow the same system software requirements for 
+      <span class="keyword">XMM</span> state support and single-instruction multiple data (SIMD) floating-point exception support as Intel&reg; Streaming SIMD Extensions 2 (Intel&reg; SSE2), Intel&reg; Streaming SIMD Extensions 3 (Intel&reg; SSE3), Intel Supplemental Streaming SIMD Extensions 3 (SSSE3), and Intel&reg; Streaming SIMD Extensions 4 (Intel&reg; SSE4) extensions. 
+    </p>
+ 
+    <p>Intel&reg;64 processors using 32nm processing technology support the AES extension instructions as well as the 
+      <samp class="codeph">PCLMULQDQ</samp> instruction. 
+    </p>
+ 
+    <div class="section" id="GUID-9FB3E013-72BB-44C8-A101-D2AC87423AB6"><h2 class="sectiontitle">AES Encryption and Cryptographic Processing</h2> 
+       
+      <p>AES encryption involves processing 128-bit input data (plaintext) through a finite number of iterative operation, referred to as "AES round", into a 128-bit encrypted block (ciphertext). Decryption follows the reverse direction of iterative operation using the "equivalent inverse cipher" instead of the "inverse cipher". 
+      </p>
+ 
+      <p>The cryptographic processing at each round involves two input data, one is the "state", the other is the "round key". Each round uses a different "round key". The round keys are derived from the cipher key using a "key schedule" algorithm. The "key schedule" algorithm is independent of the data processing of encryption/decryption, and can be carried out independently from the encryption/decryption phase. 
+      </p>
+ 
+      <p>The AES standard supports cipher key of sizes 128, 192, and 256 bits. The respective cipher key sizes corresponds to 10, 12, and 14 rounds of iteration. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CB5B90B1-C7EB-48E8-90EF-EA0E648FADB5"><h2 class="sectiontitle">Carry-less Multiplication Instruction and AES Extension Instructions</h2> 
+       
+      <p>A single instruction, 
+        <samp class="codeph">PCLMULQDQ</samp>, performs carry-less multiplication for two binary numbers that are up to 64-bit wide. 
+      </p>
+ 
+      <p>The AES extensions provide: 
+      </p>
+ 
+      <ul type="disc" id="GUID-19B3CA1E-C284-4419-B4F1-4E5CBAB7F7C8"> 
+        <li>two instructions to accelerate AES rounds on encryption (<samp class="codeph">AESENC</samp> and 
+          <samp class="codeph">AESENCLAST</samp>) 
+        </li>
+ 
+        <li>two instructions for AES rounds on decryption using the equivalent inverse cipher (<samp class="codeph">AESDEC</samp> and 
+          <samp class="codeph">AESENCLAST</samp>) 
+        </li>
+ 
+        <li>instructions for the generation of key schedules (<samp class="codeph">AESIMC</samp> and 
+          <samp class="codeph">AESENCLAST</samp>) 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D926265F-C6CA-4011-B2C7-FAD3D969A290"><h2 class="sectiontitle">Detecting Support for Using Instructions</h2> 
+       
+      <p>Before any application attempts to use the 
+        <samp class="codeph">PCLMULQDQ</samp> or the AES extension instructions, it must first detect if the instructions are supported by the processor. 
+      </p>
+ 
+      <p>To detect support for the 
+        <samp class="codeph">PCLMULQDQ</samp> instruction, your application must check the following: 
+      </p>
+ 
+      <pre>CPUID.01H:ECX.PCLMULQDQ[bit 1] = 1.</pre> 
+      <p>To detect support for the AES extension instructions, your application must check the following: 
+      </p>
+ 
+      <pre>CPUID.01H:ECX.AES[bit 25] = 1.</pre> 
+      <p>Operating systems that support handling of the SSE state also support applications that use AES extension instruction and the 
+        <samp class="codeph">PCLMULQDQ</samp> instruction. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3A356B71-771C-4D38-A480-29B3C0BC9EBB.htm">Intrinsics for Advanced Encryption Standard Implementation</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

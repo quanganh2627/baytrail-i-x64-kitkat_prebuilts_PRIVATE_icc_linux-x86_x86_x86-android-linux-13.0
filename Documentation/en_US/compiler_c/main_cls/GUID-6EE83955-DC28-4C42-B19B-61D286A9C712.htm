@@ -1,0 +1,188 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Using Holders - An Example">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, holders">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, holders">
+<meta name="DC.Relation" scheme="URI" content="GUID-7C85AD0C-7208-4457-B734-ADEEE736B208.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6EE83955-DC28-4C42-B19B-61D286A9C712">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Using Holders - An Example</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_holder_ex"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6EE83955-DC28-4C42-B19B-61D286A9C712">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Using Holders - An Example</h1>
+ 
+   
+  <div> 
+	 <p>This example illustrates use of a holder. 
+	 </p>
+ 
+	 <p> Function 
+		<samp class="codeph">compute()</samp> is a complex function that computes a value using a memoized algorithm, storing intermediate results in a hash table. 
+		<samp class="codeph">compute()</samp> calls several other functions, each of which calls several other functions, all of which share a global hash table. In all, there are over a dozen functions with a total of about sixty references to the hash table. 
+	 </p>
+ 
+	 <pre>hash_table&lt;int, X&gt; memos;
+void h(const X&amp; x);  // Uses memos
+double compute(const X&amp; x)
+{
+    memos.clear();
+    // ...
+    memos[i] = x;
+    ...
+    g(i); // Uses memos
+    // ...
+    std::for_each(c.begin(), c.end(), h); // Call h for each element of c
+ }
+ int main()
+ {
+    const std::size_t ARRAY_SIZE = 1000000;
+    extern X myArray[ARRAY_SIZE];
+    for (std::size_t i = 0; i &lt; ARRAY_SIZE;++i)
+    {
+        compute(myArray[i]);
+ 	  }
+ }
+</pre> 
+	 <p>To use Intel&reg; Cilk&#8482; Plus in the above example, replace the 
+		<samp class="codeph">for</samp> loop in 
+		<samp class="codeph">main</samp> with a 
+		<samp class="codeph">cilk_for</samp>. 
+	 </p>
+ 
+	 <p>Although the hash table is cleared on entry to each call to 
+		<samp class="codeph">compute()</samp>, and although the values stored in the hash table are no longer used after 
+		<samp class="codeph">compute()</samp> returns, the use of the hash table as a global variable prevents 
+		<samp class="codeph">compute()</samp> from being called safely in parallel. One way to remedy this is to make 
+		<samp class="codeph">memos</samp> a private variable within the 
+		<samp class="codeph">cilk_for</samp> loop and pass it down to the actual computation, so that each loop iteration has its own private copy: 
+	 </p>
+ 
+	 <pre>
+cilk_for (std::size_t i = 0; i &lt; ARRAY_SIZE; ++i)
+{
+    hash_table&lt;int,X&gt; memos;
+    compute(myArray[i], memos);
+}
+</pre> 
+	 <p>This approach requires changing the signature of 
+		<samp class="codeph">compute, h, g</samp> and every other function that references 
+		<samp class="codeph">memos</samp> as well as any function that calls those functions. This change to 
+		<samp class="codeph">compute</samp> and other functions might expose an implementation detail that was not part of the original abstract interface. In addition, the function 
+		<samp class="codeph">h</samp> is called through a templated algorithm, 
+		<samp class="codeph">for_each</samp>, which requires a fixed interface. Finally, there is constructor and destructor overhead for 
+		<samp class="codeph">hash_table</samp> each time through the loop. 
+	 </p>
+ 
+	 <p>The alternative approach is to replace 
+		<samp class="codeph">memos</samp> with a holder. The holder will be available to all of the functions involved, but will not cause a race between parallel loop iterations. For this to work, you need to replace each use of the 
+		<samp class="codeph">memos</samp> variable with use of the holder: 
+	 </p>
+ 
+	 <pre> 
+cilk::holder&lt;hash_table&lt;int, X&gt; &gt; memos_h;
+void h(const X x); // Uses memos_h
+double compute(const X&amp; x)
+{
+    memos_h().clear(); // operator() used to dereference the holder
+    // ...
+    memos_h()[i] = x; // operator() used to dereference the holder
+    ...
+    g(i); // Uses memos_h
+    // ...
+    std::for_each(c.begin(), c.end(), h); // Call h for each element of c
+ }
+</pre> 
+	 <p> In the above, each reference to the holder must be modified with an empty pair of parentheses. This syntax is needed because there is no facility in C++ for a "smart reference" that would allow 
+		<samp class="codeph">memos_h</samp> to be a perfect replacement for 
+		<samp class="codeph">memos</samp>. One way that a user can avoid this syntax change is to wrap the holder in a class that has the same interface as 
+		<samp class="codeph">hash_table</samp> but redirects all calls to the holder: 
+	 </p>
+ 
+	 <pre>
+template &lt;typename K, typename V&gt;
+class hash_table_holder
+{
+private:
+    cilk::holder&lt;hash_table&lt;K, V&gt; &gt; m_holder;
+public:
+    void clear() { m_holder().clear(); }
+    V&amp; operator[](const K&amp; x) { return m_holder()[x]; }
+    std::size_t size() const { return m_holder().size(); }
+    // etc. ...
+ };
+</pre> 
+	 <p>Using the above wrapper, the original code can be left unchanged except for replacing 
+		<samp class="codeph">hash_table</samp> with 
+		<samp class="codeph">hash_table_holder</samp>'' and replacing 
+		<samp class="codeph">for</samp> with 
+		<samp class="codeph">cilk_for</samp>: 
+	 </p>
+ 
+	 <pre>
+hash_table_holder&lt;int, X&gt; memos;
+void h(const X&amp; x); // Uses memos
+double compute(const X&amp; x)
+ {
+    memos.clear(); // Calls hash_table_holder::clear().
+    // ...
+ }
+</pre> 
+	 <p>All of the changes shown above have no benefit over the use of thread-local storage (except, perhaps for portability). However, consider the case where one of the functions uses 
+		<samp class="codeph">cilk_spawn</samp>: 
+	 </p>
+ 
+	 <pre>
+void h(const X&amp; x)
+{
+    Y y = x.nested();
+    double d, w;
+    if (y)
+    {
+       w = cilk_spawn compute_width(y); // May use 'memos'
+       d = compute_depth(y); // Does not use 'memos'
+       cilk_sync;
+       compute(y); // recursive call. Uses 'memos'
+    }
+ }
+</pre> 
+	 <p>In the above, the view of the holder within 
+		<samp class="codeph">compute_width</samp> is the same as the view on entry to 
+		<samp class="codeph">h</samp>. More importantly, the view of the holder within the recursive call to 
+		<samp class="codeph">compute</samp> is the same as the view on entry to 
+		<samp class="codeph">h</samp>, even if a different worker is executing the recursive call. Thus, the holder view within an Intel&reg; Cilk&#8482; Plus program has benefits not achieved using thread-local storage. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-7C85AD0C-7208-4457-B734-ADEEE736B208.htm">Holders</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Double-precision Floating-point Vector Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE3, float64 vector intrinsics, movedup_pd, loaddup_pd, hsub_pd, hadd_pd, addsub_pd, Intel&reg; Streaming SIMD Extensions 3">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE3, float64 vector intrinsics, movedup_pd, loaddup_pd, hsub_pd, hadd_pd, addsub_pd, Intel&reg; Streaming SIMD Extensions 3">
+<meta name="DC.Relation" scheme="URI" content="GUID-C661F93F-A2F3-4D87-A304-89EA33243D8A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6C7D58DF-EEF8-46DE-8362-684355BBC64C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Double-precision Floating-point Vector Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse3_dpfp_vector"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6C7D58DF-EEF8-46DE-8362-684355BBC64C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Double-precision Floating-point Vector Intrinsics </h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-F81FF3F7-8A37-4262-9DEC-98FEA4E35E95"> 
+      <p>The double-precision floating-point intrinsics listed here are designed for the Intel&reg; Pentium&reg; 4 processor with Streaming SIMD Extensions 3 (Intel&reg; SSE3). 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in the registers 
+        <span class="keyword">R0</span> and 
+        <span class="keyword">R1.</span> 
+      </p>
+ 
+      <p>The prototypes for these intrinsics are in the 
+        <span class="filepath">pmmintrin.h</span> header file. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A8E480A2-4681-4A3D-A6BE-2467C50FA400"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-62986340-A0F4-4638-97FD-67DAD88DE086" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d337637e82"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d337637e88"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d337637e94"> 
+                <p>Corresponding Intel&reg; SSE3 Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e82 "> 
+                <p><span class="option"> _mm_addsub_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e88 "> 
+                <p>Subtract and add 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d337637e94 "> 
+                <p><samp class="codeph">ADDSUBPD</samp>
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e82 "> 
+                <p><span class="option"> _mm_hadd_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e88 "> 
+                <p>Add 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d337637e94 "> 
+                <p><samp class="codeph">HADDPD</samp>
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e82 "> 
+                <p><span class="option"> _mm_hsub_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e88 "> 
+                <p>Subtract 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d337637e94 "> 
+                <p><samp class="codeph">HSUBPD</samp>
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e82 "> 
+                <p><span class="option"> _mm_loaddup_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e88 "> 
+                <p>Duplicate 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d337637e94 "> 
+                <p><samp class="codeph">MOVDDUP</samp>
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e82 "> 
+                <p><span class="option"> _mm_movedup_pd</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d337637e88 "> 
+                <p>Duplicate 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d337637e94 "> 
+                <p><samp class="codeph">MOVDDUP</samp>
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-29B10BBF-45D8-4D55-BB9E-017F47933CFD"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128d _mm_addsub_pd(__m128d a, __m128d b);</span></p></div> 
+      <p>Adds upper vector element while subtracting lower vector element. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-982AA8B1-F7FC-4AA9-A718-BDCEB4A00FEE"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-33B98DAA-A622-4AC5-A8AA-FA2207D23591" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d337637e256"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d337637e262"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d337637e256 "> 
+                <p><span class="keyword">a0 - b0;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d337637e262 "> 
+                <p><span class="keyword">a1 + b1;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4F34A5FE-2961-4388-B6AA-7D4D0ACD0B2A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128d _mm_hadd_pd(__m128d a, __m128d b);</span></p></div> 
+      <p>Adds adjacent vector elements. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-497AF380-68FB-4ED5-9028-BF04C21DA155"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7A92802C-21CC-4EBD-8971-BFD048FC01EC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d337637e319"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d337637e325"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d337637e319 "> 
+                <p><span class="keyword">a0 + a1;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d337637e325 "> 
+                <p><span class="keyword">b0 + b1;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F2363641-9323-454E-B619-5240BBE8BEB6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128d _mm_hsub_pd(__m128d a, __m128d b);</span></p></div> 
+      <p>Subtracts adjacent vector elements. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-04446643-A602-4131-ABF4-2D43B12E6483"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AE1366D2-8C71-4D02-AE92-F79FE23ECCA4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d337637e381"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d337637e387"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d337637e381 "> 
+                <p><span class="keyword">a0 - a1;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d337637e387 "> 
+                <p><span class="keyword">b0 - b1;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B74DC98B-C80D-4158-A170-7362EF068342"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128d _mm_loaddup_pd(double const * dp);</span></p></div> 
+      <p>Duplicates a double value into upper and lower vector elements. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5D2299EE-E94A-46FB-BA23-206EFE545E03"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9E55E1AE-BF55-4339-818C-78F3A1E00EE8" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d337637e443"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d337637e449"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d337637e443 "> 
+                <p><span class="keyword">*dp;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d337637e449 "> 
+                <p><span class="keyword">*dp;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6AA19792-8688-4A45-AB87-5D15C4E9BF96"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">extern __m128d _mm_movedup_pd(__m128d a);</span></p></div> 
+      <p>Duplicates lower vector element into upper vector element. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C982AFE9-BA0A-4A3F-9977-061BF4D5AE43"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8B1205B0-478D-43A9-9BE4-7AA2D53E28AE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="50%" id="d337637e506"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="50%" id="d337637e512"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="50%" headers="d337637e506 "> 
+                <p><span class="keyword">a0;</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="50%" headers="d337637e512 "> 
+                <p><span class="keyword">a0;</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C661F93F-A2F3-4D87-A304-89EA33243D8A.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions 3 (Intel&reg; SSE3)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

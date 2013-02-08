@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="diag-file-append, Qdiag-file-append">
+<meta name="abstract" content="Causes the results of diagnostic analysis to be appended to a file.">
+<meta name="description" content="Causes the results of diagnostic analysis to be appended to a file.">
+<meta name="DC.subject" content="-diag-file-append compiler option, /Qdiag-file-append compiler option">
+<meta name="keywords" content="-diag-file-append compiler option, /Qdiag-file-append compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD.htm#GUID-B4596977-3872-4FA2-80E8-28C01AF299FD">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>diag-file-append, Qdiag-file-append</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_diag_file_append"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_diag_file_append"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-6F94AF08-0746-42EF-A7E1-834CB4098B59">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">diag-file-append, Qdiag-file-append</h1>
+<!--Causes the results of diagnostic analysis to be appended to a file.--><div><p>Causes the results of diagnostic analysis to be appended to a file.</p>
+
+<div class="section" id="GUID-03F34572-E93A-4E21-AFAB-8DED46823058"><h2>IDE Equivalent</h2> None
+</div>
+<div class="section" id="GUID-C08C30CF-AE8A-4B6F-821A-E5898A1C6F8C"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-5D0111CA-3351-4BFB-8822-40DDCB4CC919"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-diag-file-append</span><span class="delim">[</span><span class="oper">=</span><span class="var">filename</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qdiag-file-append</span><span class="delim">[</span><span class="oper">:</span><span class="var">filename</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-7C9EBDA9-86B6-417F-B87A-FB0F4EA978F5"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p><var>filename</var></p></td>
+<td valign="top" class="noborder"><p>Is the name of the file to be appended to. It can include a path.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C7CEEC85-22FD-4E81-A648-F6278A5FCA8A"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr> <td valign="top" width="30%" class="noborder"><p>OFF</p></td>
+<td valign="top" class="noborder"><p>Diagnostic messages are output to <span class="keyword">stderr</span>.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-25CE6808-2702-4B59-BD14-D1C7743097C0"><h2>Description</h2><p>This option causes the results of diagnostic analysis to be appended to a file. If you do not specify a path, the driver will look for <var>filename</var> in the current working directory. </p>
+<p>If <var>filename</var> is not found, then a new file with that name is created in the current working directory. If the name specified for file conflicts with a source file name provided in the command line, the name of the file is <var>name-of-the-first-source-file.diag</var>.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>If you specify <span class="option">-diag-file-append</span> (Linux OS) or <span class="option">/Qdiag-file-append</span> (Windows OS) and you also specify <span class="option">-diag-file</span> (Linux OS) or <span class="option">/Qdiag-file</span> (Windows OS), the last option specified on the command line takes precedence.</p>
+</div></div>
+
+<div class="section" id="GUID-349360CB-84F7-4A66-97FE-7B69F7B1B4FA"><h2>Alternate Options</h2><p>None</p>
+</div>
+
+<div class="example" id="EXAMPLE_D6E7802B23634DC1A74C287D5B3FF7F0"><a name="EXAMPLE_D6E7802B23634DC1A74C287D5B3FF7F0"><!-- --></a><h2>Example</h2><p>The following example shows how to cause diagnostic analysis to be appended to a file named <var>my_diagnostics.txt</var>:</p>
+<pre>-diag-file-append=my_diagnostics.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Linux systems</pre><pre>/Qdiag-file-append:my_diagnostics.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! Windows systems</pre></div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9857535C-1B90-4B72-B945-F3D6F9ED88CB.htm">Compiler Diagnostic Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-B4596977-3872-4FA2-80E8-28C01AF299FD.htm#GUID-B4596977-3872-4FA2-80E8-28C01AF299FD"><span class="option">diag-file</span>, <span class="option">Qdiag-file</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

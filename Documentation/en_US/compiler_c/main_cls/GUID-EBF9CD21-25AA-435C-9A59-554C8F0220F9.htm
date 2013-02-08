@@ -1,0 +1,97 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_gmin_pd/ _mm512_mask_gmin_pd">
+<meta name="abstract" content="Determines the minimum of float64 vectors. Corresponding instruction is VGMINPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Determines the minimum of float64 vectors. Corresponding instruction is VGMINPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_gmin_pd, _mm512_mask_gmin_pd">
+<meta name="keywords" content="_mm512_gmin_pd, _mm512_mask_gmin_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-D5E8FCC8-C5B5-46DE-B4C7-690E5105D69B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-EBF9CD21-25AA-435C-9A59-554C8F0220F9">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_min_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_gmin_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-EBF9CD21-25AA-435C-9A59-554C8F0220F9">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_gmin_pd/ _mm512_mask_gmin_pd</h1>
+<!--Determines the minimum of float64 vectors. Corresponding instruction is  VGMINPD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Determines the minimum of float64 vectors. Corresponding instruction is <samp class="codeph">VGMINPD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-BC686C8B-2E09-4B4A-858A-EF84A70D7BA5"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_gmin_pd(_m512d v2, _m512d v3);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern _m512d __cdecl _mm512_mask_gmin_pd(_m512d v1_old, __mmask8 k1, _m512d v2, _m512d v3);</span></p></td></tr></table></div>
+<div class="section" id="GUID-89923B03-B64C-429C-BB07-F450A5D6F9E9"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float64 vector to determine the minimum values
+(first source operand)</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v3</var></p></td>
+
+<td valign="top" class="noborder">float64 vector to determine the minimum values
+(second source operand)</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-52231085-7095-4687-9431-2EA8A9322C86"><h2>Description</h2>
+<p>Determines the minimum value of each pair of corresponding elements in float64 vector 
+<samp class="codeph">v2</samp> and float64 vector 
+<samp class="codeph">v3</samp>.</p>
+<p>
+<samp class="codeph">FpMin()</samp> returns the smaller of the two float64 arguments, following IEEE in general, and specifically following this from the DX10 spec:</p>
+<p>
+<samp class="codeph">dest = src0 &lt; src1 ? src0 : src1</samp>
+</p>
+<p>NaN has special handling: If one source operand is NaN, then the other source operand is returned (choice made per-component). If both are NaN, then the quietized NaN from the first source (here 
+<samp class="codeph">v2</samp>) is returned. This conforms to new IEEE 754R rules.</p>
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing.</p>
+</div>
+<div class="section" id="GUID-207BBEFA-3BCA-4CEE-8647-D1F8B7380269"><h2>Returns</h2><p>Returns the result of the operation.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D5E8FCC8-C5B5-46DE-B4C7-690E5105D69B.htm">Intrinsics to Determine Minimum and Maximum Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

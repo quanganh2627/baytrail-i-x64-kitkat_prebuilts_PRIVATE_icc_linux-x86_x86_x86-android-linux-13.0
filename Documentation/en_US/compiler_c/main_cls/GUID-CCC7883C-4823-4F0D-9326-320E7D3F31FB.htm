@@ -1,0 +1,61 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, performance considerations">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, performance considerations">
+<meta name="DC.Relation" scheme="URI" content="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-CCC7883C-4823-4F0D-9326-320E7D3F31FB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_perf_consid"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-CCC7883C-4823-4F0D-9326-320E7D3F31FB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1">Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</h1>
+
+<div>
+<p>Parallel programs have numerous additional performance
+considerations and opportunities for tuning and improvement.</p>
+
+<p>In general, the Intel&reg; Cilk&#8482; Plus runtime uses processor resources
+efficiently using a scheduling algorithm called work stealing. The
+work stealing algorithm is designed to minimize the number of times
+that work is moved from one processor to another.</p>
+
+<p>Additionally, the algorithm ensures that space use is bounded
+linearly by the number of workers. In other words, an Intel&reg; Cilk&#8482; Plus program
+running on N workers will use no more than N times the amount of
+memory that is used when running on one worker.</p>
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-3BD3EA2E-3A54-4081-8092-3FB8B5048ED2.htm">Performance Considerations for Intel&reg; Cilk&#8482; Plus Programs</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

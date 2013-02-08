@@ -1,0 +1,126 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Resetting the Dynamic Profile Counters">
+<meta name="DC.subject" content="PGO API, _PGOPTI_Prof_Reset, counters for dynamic profile, dynamic information, resetting profile counters, profile-guided optimization, resetting dynamic profile counters, profile-optimized code, resetting dynamic counters for, report generation, dynamic profile counters, value-profiling">
+<meta name="keywords" content="PGO API, _PGOPTI_Prof_Reset, counters for dynamic profile, dynamic information, resetting profile counters, profile-guided optimization, resetting dynamic profile counters, profile-optimized code, resetting dynamic counters for, report generation, dynamic profile counters, value-profiling">
+<meta name="DC.Relation" scheme="URI" content="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2E953163-934A-430B-9AC9-D826B78E3BBF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Resetting the Dynamic Profile Counters</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pigs_res"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pigs_res"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2E953163-934A-430B-9AC9-D826B78E3BBF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Resetting the Dynamic Profile Counters</h1>
+ 
+   
+  <div> 
+	 <p>The 
+		<span class="keyword">_PGOPTI_Prof_Reset()</span> function resets the dynamic profile counters. The prototype of the function call is listed below. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1A644ADA-FB81-4FF6-A309-A4CFBDA6FEF9" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="top"> 
+				<th class="cellrowborder" align="left" valign="top" id="d148170e69"> 
+				  <p>Syntax 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="top"> 
+				<td class="cellrowborder" valign="top" headers="d148170e69 "> 
+				  <p><samp class="codeph">void _PGOPTI_Prof_Reset(void);</samp> 
+				  </p>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+	 <p>This function is now deprecated. See 
+		<a href="GUID-13554ADB-C3BF-48CE-B32F-B4492AF2BCA6.htm#GUID-13554ADB-C3BF-48CE-B32F-B4492AF2BCA6">_PGOPTI_Prof_Reset_All()</a> function, which can be used instead. 
+	 </p>
+ 
+	 <p>One of the activities performed under profile-guided optimization is value-profiling. With value-profiling, the compiler inserts instrumentation to obtain a sample of the variable values in the program. Based upon this sampling, the compiler optimizes the user's code using frequently observed values. 
+	 </p>
+ 
+	 <p>In effect, during a run of an instrumented executable, the segment maintained for each routine executed during that run stores the following information: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-FE2D3EE7-5253-40D7-B59F-C2B41DDAB3CD"> 
+		<li> 
+		  <p>Number of times each basic block in the routine is executed 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Specific values observed at each data point undergoing value-profiling 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Number of times each of these values are observed 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>When the 
+		<span class="keyword">_PGOPTI_Prof_Reset()</span> function is called, the basic block execution count for each basic block is set to 0, and the value-profiling information is reset to indicate that no values were observed at any data point. 
+	 </p>
+ 
+	 <div class="section" id="GUID-E0D4594E-5A57-4917-9431-8F7F0F5EAC1F"><h2 class="sectiontitle">Recommended Usage</h2> 
+		 
+		<p>Use this function to clear the profile counters prior to collecting profile information on a section of the instrumented application. See the example under 
+		  <a href="GUID-5E246BF8-678C-4839-BAC2-C1DDCDF366D0.htm#GUID-5E246BF8-678C-4839-BAC2-C1DDCDF366D0">Dumping Profile Information</a>. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A66FC711-A2EE-40F0-AD38-E218A896DBED.htm">PGO API Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

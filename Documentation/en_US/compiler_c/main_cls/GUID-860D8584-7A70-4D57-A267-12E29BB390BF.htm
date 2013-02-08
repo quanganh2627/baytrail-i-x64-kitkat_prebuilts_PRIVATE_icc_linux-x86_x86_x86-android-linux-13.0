@@ -1,0 +1,133 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Working with Enabled and Non-Enabled Modules">
+<meta name="DC.subject" content="pointer checker, working with enabled and non-enabled modules">
+<meta name="keywords" content="pointer checker, working with enabled and non-enabled modules">
+<meta name="DC.Relation" scheme="URI" content="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-860D8584-7A70-4D57-A267-12E29BB390BF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Working with Enabled and Non-Enabled Modules</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_ptrchk_work_wmods"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_ptrchk_work_wmods"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-860D8584-7A70-4D57-A267-12E29BB390BF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Working with Enabled and Non-Enabled Modules</h1>
+ 
+   
+  <div> 
+	 <p>An enabled module is a module compiled with the pointer checker option enabled while a non-enabled module is a module compiled with this compiler option disabled. 
+	 </p>
+ 
+	 <p> If you write a pointer to memory or return a pointer from a non-enabled module, the pointer may get incorrect bounds information. If you use this pointer with the incorrect bounds information in an enabled module, the pointer checker will report an incorrect out-of-bounds error because the bounds do not correspond to the pointer. 
+	 </p>
+ 
+	 <p>To minimize this issue, the pointer checker stores a copy of the pointer along with the bounds information. When the pointer is loaded into memory, the value of the pointer is compared with the value of the pointer copy. If these two values match, the bounds information is assumed to be correct and is then used. However, if the two values do not match, the bounds are set to allow access to any memory. 
+	 </p>
+ 
+	 <p>The pointer checker can still report an out-of-bounds error if a pointer from a non-enabled module matches the pointer copy stored with the bounds information. 
+	 </p>
+ 
+	 <p> For example, consider the case where you create the following pointer by using a run-time library function from a non-enabled module: 
+		<pre>p = my_realloc(p, old_size + 100);</pre> 
+	 </p>
+ 
+	 <p>If the memory allocator can simply extend the memory allocated to 
+		<samp class="codeph">p</samp>, and then returns the same pointer, an enabled module could use this pointer with the old bounds information. The pointer checker then reports an out-of-bounds error because this feature does not know about the extension created by the 
+		<span class="keyword">realloc()</span> function. 
+	 </p>
+ 
+	 <p>To prevent incorrect out-of-bounds errors when you have both enabled and non-enabled modules, do one of the following: 
+	 <ul type="disc" id="GUID-14890413-3761-456B-975A-0CEA20464115"> 
+		<li> 
+		  <p>Remove the bounds information from the pointer by using the 
+			 <span class="keyword">__chkp_kill_bounds()</span> intrinsic function 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Set the correct bounds information by using the 
+			 <span class="keyword">__chkp_make_bounds()</span> intrinsic function in an enabled module. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <div class="section" id="GUID-E2F8631F-A547-4EBF-AE6C-E0FDE9299247"><h2 class="sectiontitle">Removing the bounds information</h2> 
+		 
+		<p>When you remove the bounds information, you disable pointer checking on this pointer. 
+		</p>
+ 
+		<p>For example, you can remove the bounds information by using the 
+		  <span class="keyword">__chkp_kill_bounds()</span> intrinsic function. 
+		</p>
+ 
+		<pre>void * unknown_pointer_returning_function()
+{
+
+   // Code
+
+   // Use the intrinsic function in the return pointer
+   return __chkp_kill_bounds(the_ptr);
+
+}</pre> 
+	 </div>
+ 
+	 <div class="section" id="GUID-E914D572-80E8-4A08-BB40-81EBC5F29A5A"><h2 class="sectiontitle">Setting the correct bounds information</h2> 
+		 
+		<p>You can use the 
+		  <span class="keyword">__chkp_make_bounds()</span> intrinsic function to set the correct bounds information for a pointer. 
+		</p>
+ 
+	 </div>
+ 
+	 <p>For example, you use the Windows* OS 
+		<span class="keyword">HeapAlloc()</span> function to create a pointer. Since this operating system function is from a non-enabled module, the pointer from this function will not have the correct bounds information. 
+	 </p>
+ 
+	 <p>To get a pointer with the correct bounds information, use the 
+		<span class="keyword">__chkp_make_bounds()</span> intrinsic function in the return value: 
+		<pre>void * myalloc(size_t size)
+{
+
+   return __chkp_make_bounds(HeapAlloc(MyHeap, flags, size), size);
+
+}</pre> 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-CE499FDC-4B3B-4FC1-9916-C4900AA05C45.htm">Using the Pointer Checker</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

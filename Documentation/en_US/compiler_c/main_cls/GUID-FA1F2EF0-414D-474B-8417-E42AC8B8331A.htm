@@ -1,0 +1,1856 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Arithmetic Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, arithmetic operations, rcp_ps, rcp_ss, max_ps, rsqrt_ss, rsqrt_ps, min_ss, min_ps, max_ss, add_ps, add_ss, div_ss, div_ps, sqrt_ss, sqrt_ps, mul_ss, sub_ss, mul_ps, sub_ps, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, arithmetic operations, rcp_ps, rcp_ss, max_ps, rsqrt_ss, rsqrt_ps, min_ss, min_ps, max_ss, add_ps, add_ss, div_ss, div_ps, sqrt_ss, sqrt_ps, mul_ss, sub_ss, mul_ps, sub_ps, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-FA1F2EF0-414D-474B-8417-E42AC8B8331A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Arithmetic Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_arithmetic"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-FA1F2EF0-414D-474B-8417-E42AC8B8331A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Arithmetic Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-3A42526F-DF0F-48D5-9DD8-57E1FB394E07"> 
+      <p>The prototypes for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics for arithmetic operations are in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in a register. This register is illustrated for each intrinsic with R0-R3. R0, R1, R2 and R3 each represent one of the four 32-bit pieces of the result register. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8363701C-E88C-46DF-AF5A-E97014D7DB84"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-858C422F-4DE9-4997-8400-6C7801D50C4C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e98"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e104"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e110"> 
+                <p>Corresponding<br>Intel&reg; SSE Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_add_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">ADDSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_add_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Addition 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">ADDPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_sub_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">SUBSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_sub_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Subtraction 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">SUBPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_mul_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">MULSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_mul_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Multiplication 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">MULPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_div_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Division 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">DIVSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_div_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Division 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">DIVPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_sqrt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Squared Root 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">SQRTSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_sqrt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Squared Root 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">SQRTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_rcp_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Reciprocal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">RCPSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_rcp_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Reciprocal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">RCPPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_rsqrt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Reciprocal Squared Root 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">RSQRTSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_rsqrt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Reciprocal Squared Root 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">RSQRTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_min_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Computes Minimum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">MINSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_min_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Computes Minimum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">MINPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_max_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Computes Maximum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">MAXSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e98 "> 
+                <p><span class="option"> _mm_max_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e104 "> 
+                <p>Computes Maximum 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e110 "> 
+                <p><span class="keyword">MAXPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DC8E7A64-D119-4AD8-ACC5-91FE4BDC37D2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_add_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Adds the lower single-precision, floating-point (FP) values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>; the upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-235FE285-FE19-414F-ADB1-9DB1C03FDEFC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3AF99204-0413-417B-87C6-E17B865F4FD5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e613"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e619"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e625"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e631"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e613 "> 
+                <p>a0 + b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e619 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e625 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e631 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-07935B70-D88E-447D-AF6A-25D53E34A8AC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_add_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Adds the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FA6F5993-72B1-4EBF-869B-DFFB69703027"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-20F1C393-01B7-4BB5-A3FD-B36538129D0F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e704"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e710"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e716"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e722"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e704 "> 
+                <p>a0 +b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e710 "> 
+                <p><span class="keyword">a1 + b1</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e716 "> 
+                <p><span class="keyword">a2 + b2</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e722 "> 
+                <p><span class="keyword">a3 + b3</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-380203F5-B029-4A69-88C6-21944F9AA61B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_sub_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Subtracts the lower single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. The upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5470A7CB-7A06-439E-882C-EBD3C9199596"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-222B5CC6-3977-4A9D-AEE0-B31BD47BA423" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e803"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e809"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e815"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e821"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e803 "> 
+                <p>a0 - b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e809 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e815 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e821 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-434A241D-F42E-4E35-8A83-2AA109C10D66"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_sub_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Subtracts the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D948CD89-D837-44C6-A5C9-C317A768619E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5F968674-FA6C-4D7B-9483-8526BB2DC2BA" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e893"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e899"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e905"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e911"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e893 "> 
+                <p>a0 - b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e899 "> 
+                <p>a1 - b1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e905 "> 
+                <p>a2 - b2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e911 "> 
+                <p>a3 - b3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AD7593A4-09D8-4957-BD8B-D61DD7160295"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_mul_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Multiplies the lower single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>; the upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-04565D27-538E-45C1-B5DA-808540EC2250"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3652F739-A3C7-4E23-8D65-4206F609E71F" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e987"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e993"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e999"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1005"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e987 "> 
+                <p>a0 * b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e993 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e999 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1005 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A2B8AA8D-D6A9-45EB-B7FC-D08A98333FAC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_mul_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Multiplies the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3E214F55-6596-4F00-9A3B-7AAA5A455B11"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-871E147A-DEE5-468D-B029-A6C245E819A3" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1077"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1083"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1089"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1095"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1077 "> 
+                <p>a0 * b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1083 "> 
+                <p>a1 * b1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1089 "> 
+                <p>a2 * b2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1095 "> 
+                <p>a3 * b3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9DE1C29F-C673-447A-89AD-95E753903E44"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_div_ss(__m128 a, __m128 b )</span></p></div> 
+      <p>Divides the lower single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>; the upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-693D1C25-2729-49F4-A85A-A79FEA0A4BB8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FCDCC966-F306-46D3-B6EC-8084DB3BC50A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1170"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1176"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1182"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1188"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1170 "> 
+                <p>a0 / b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1176 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1182 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1188 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A3D28BF1-D401-4540-A1AF-7BEF97564023"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_div_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Divides the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-12A37923-4944-4CDC-9176-F27E9D8348DC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CBAEDA19-BC25-44D5-B7C0-7650BD4A5554" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1261"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1267"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1273"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1279"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1261 "> 
+                <p>a0 / b0 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1267 "> 
+                <p>a1 / b1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1273 "> 
+                <p>a2 / b2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1279 "> 
+                <p>a3 / b3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7011F7A3-22FA-4082-956F-FFA213BF60C2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_sqrt_ss(__m128 a)</span></p></div> 
+      <p>Computes the square root of the lower single-precision FP value of 
+        <span class="keyword">a</span> ; the upper three single-precision FP values are passed through. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A4A44153-32A1-4AFC-9649-BCD7270203D9"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8CC2D377-458E-4215-86FD-46DCD4184BFF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1348"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1354"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1360"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1366"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1348 "> 
+                <p><span class="keyword">sqrt(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1354 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1360 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1366 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A4F3DB81-A83A-43CD-B5E0-D8E44E86E10D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_sqrt_ps(__m128 a)</span></p></div> 
+      <p>Computes the square roots of the four single-precision FP values of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-20D71F70-6EFE-4762-BD29-C4F589EF8580"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2BE2039E-A9FC-48A3-8BF8-8C47F06A518C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1437"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1443"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1449"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1455"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1437 "> 
+                <p><span class="keyword">sqrt(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1443 "> 
+                <p><span class="keyword">sqrt(a1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1449 "> 
+                <p><span class="keyword">sqrt(a2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1455 "> 
+                <p><span class="keyword">sqrt(a3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1FB4FB58-1F0F-448C-B004-CD366D44A55E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_rcp_ss(__m128 a)</span></p></div> 
+      <p>Computes the approximation of the reciprocal of the lower single-precision FP value of 
+        <span class="keyword">a</span>; the upper the single-precision FP values are passed through. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EFAC756E-A2B0-452C-8D19-76965E4180D3"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EBA321D1-C0BB-4929-9CDA-5D56583B87F7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1533"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1539"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1545"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1551"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1533 "> 
+                <p><span class="keyword">recip(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1539 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1545 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1551 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2A7FA6FF-DDF1-404D-A85A-9F48D861677A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_rcp_ps(__m128 a)</span></p></div> 
+      <p>Computes the approximations of reciprocals of the four single-precision FP values of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-899CD367-70BD-492F-91CF-A380EF457898"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2B2C1430-FC4D-435F-BBB4-19CF560944FC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1622"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1628"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1634"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1640"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1622 "> 
+                <p><span class="keyword">recip(a0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1628 "> 
+                <p><span class="keyword">recip(a1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1634 "> 
+                <p><span class="keyword">recip(a2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1640 "> 
+                <p><span class="keyword">recip(a3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-32388DBE-70CF-47B0-9708-3AD6638DF75C"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_rsqrt_ss(__m128 a)</span></p></div> 
+      <p>Computes the approximation of the reciprocal of the square root of the lower single-precision FP value of 
+        <span class="keyword">a</span>; the upper three single-precision FP values are passed through. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-283722A2-D191-4ABE-B9C1-7A5BA8D9C197"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C7F1B751-5062-4A48-A72E-AAB88529CDD0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1717"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1723"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1729"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1735"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1717 "> 
+                <p><span class="keyword">recip(sqrt(a0))</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1723 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1729 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1735 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B72643CC-4C66-4C34-84C6-DC64D1FA455F"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_rsqrt_ps(__m128 a)</span></p></div> 
+      <p>Computes the approximations of the reciprocals of the square roots of the four single-precision FP values of 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C30D214D-3402-4518-A085-5361DE9086E4"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F959A9F5-7F36-4371-BA22-D368ABDEA0D0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1807"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1813"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1819"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1825"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1807 "> 
+                <p><span class="keyword">recip(sqrt(a0))</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1813 "> 
+                <p><span class="keyword">recip(sqrt(a1))</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1819 "> 
+                <p><span class="keyword">recip(sqrt(a2))</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1825 "> 
+                <p><span class="keyword">recip(sqrt(a3))</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D8A93F9B-8DE1-4C34-9DAB-FD00C4386E60"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_min_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the minimum of the lower single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>; the upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-62265AC8-9D64-4331-BDF4-C51048E47A92"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-28625F51-B0BC-4664-9FFD-EB91FF4E2BC4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e1908"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1914"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e1920"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e1926"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e1908 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1914 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e1920 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e1926 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B9C2B6CB-1DDB-4BAC-9680-A424E0DD3665"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_min_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the minimum of the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-58B38DE8-2A45-45AD-A16F-E133A39F1F14"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-54FB4678-33B2-4945-8546-E788165485CE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e2000"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e2006"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e2012"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e2018"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e2000 "> 
+                <p><span class="keyword">min(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e2006 "> 
+                <p><span class="keyword">min(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e2012 "> 
+                <p><span class="keyword">min(a2, b2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e2018 "> 
+                <p><span class="keyword">min(a3, b3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-AE1F9FA8-5298-42DF-8D79-5BAA4E3E6D8E"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_max_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the maximum of the lower single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>; the upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-926ED5E2-6681-4F16-A6D4-9B3785C22004"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B114303C-5C2A-4A8A-9E5F-B8145823A0A2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e2102"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e2108"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e2114"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e2120"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e2102 "> 
+                <p><span class="keyword">max(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e2108 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e2114 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e2120 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D123EEB7-A242-482D-AA3D-8FE834A8F7EE"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_max_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Computes the maximum of the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6A6B11CE-3B1A-4894-82A5-1F04414658D2"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3002A2DD-92A4-4ACB-9492-FD24A27E79AF" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" id="d863496e2194"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e2200"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" id="d863496e2206"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" id="d863496e2212"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" headers="d863496e2194 "> 
+                <p><span class="keyword">max(a0, b0)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e2200 "> 
+                <p><span class="keyword">max(a1, b1)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" headers="d863496e2206 "> 
+                <p><span class="keyword">max(a2, b2)</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" headers="d863496e2212 "> 
+                <p><span class="keyword">max(a3, b3)</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

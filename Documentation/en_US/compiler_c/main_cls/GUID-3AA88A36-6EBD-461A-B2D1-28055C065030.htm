@@ -1,0 +1,200 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Updating a Project to Use the Intel&reg; C++ Compiler">
+<meta name="DC.subject" content="GCC* project, updating to use the Intel&reg; C++ compiler, Intel&reg; C++ project, updating to use current compiler version">
+<meta name="keywords" content="GCC* project, updating to use the Intel&reg; C++ compiler, Intel&reg; C++ project, updating to use current compiler version">
+<meta name="DC.Relation" scheme="URI" content="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3AA88A36-6EBD-461A-B2D1-28055C065030">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Updating a Project to Use the Intel&reg; C++ Compiler</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_update_gcc_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_update_icc_gcc_e"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3AA88A36-6EBD-461A-B2D1-28055C065030">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Updating a Project to Use the Intel&reg; C++ Compiler</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-5E5D80AB-BC80-45E7-B27F-76DF2D955E4F"><h2 class="sectiontitle">Updating a GCC* Project to Use the Intel&reg; C++ compiler</h2> 
+       
+      <p>You can update a GCC* Project to use the Intel&reg; C++ Compiler while preserving GCC* options and other settings in the original project. After updating the project, you can use the 
+        <b class="uicontrol">Project Update</b> menu to choose between the Intel&reg; C++ compiler and GCC* compiler. 
+      </p>
+ 
+      <p>To update an existing GCC* project to use Intel&reg; C++ Compiler, start Eclipse* and follow these steps: 
+      </p>
+ 
+      <ol id="GUID-E9461E99-1399-4A79-B7CB-0F9B5E4234AF"> 
+        <li>Open the desired GCC* project and select it. 
+        </li>
+ 
+        <li>Select 
+          <span><b class="uicontrol">Intel Tools</b> 
+             &gt; <b class="uicontrol">Update Projects</b> 
+             &gt; <b class="uicontrol">Use Intel&reg; C++ Compiler</b></span>. 
+        </li>
+ 
+        <li>The 
+          <b class="uicontrol">Project Update</b> dialog box appears: 
+          <p><img src="GUID-88A56B36-7364-4584-9F30-0C9D5DBBB0D6-low.jpg" width="537" height="420"> 
+          </p>
+ 
+          <p> 
+          <ul type="disc" id="GUID-231D79A3-DDA9-4DAF-8FC7-CE2C2FCEB9B7"> 
+            <li>Select or deselect the configurations to update using the checkbox at the beginning of each row. Use 
+              <b class="uicontrol">Select All</b> or 
+              <b class="uicontrol">Deselect All</b> to select or deselect all configurations. 
+            </li>
+ 
+            <li>By default, CDT saves the original configuration after the update. To disable this behavior, uncheck the 
+              <b class="uicontrol">Keep</b> checkbox. 
+            </li>
+ 
+            <li>Rename the new configuration by clicking it in the 
+              <b class="uicontrol">New Intel Configuration</b> column. The 
+              <b class="uicontrol">Overwrite</b> field indicates whether a configuration with that same name already exists and whether the existing configuration will be overwritten by the update. If the named configuration does not exist, the field displays and error (<img src="GUID-6E31AA9D-18CE-4838-9673-82A43ED2CD3D-low.jpg" width="15" height="15">). If the named configuration exists, the field displays a checkmark (<img src="GUID-E7242687-E91E-4047-8D7E-501E5946560B-low.jpg" width="13" height="13">). Unchecking the box results in a message warning for any conflicts. 
+            </li>
+ 
+            <li>To get brief tooltips, place the cursor on column headers. 
+            </li>
+ 
+            <li>If multiple versions of the Intel&reg; C++ Compiler are installed, click 
+              <b class="uicontrol">Next</b> to select a compiler for use with the new configuration. By default, the most recent Intel&reg; C++ Compiler is used. 
+            </li>
+ 
+          </ul>
+ 
+          </p>
+ 
+        </li>
+ 
+      </ol>
+ 
+      <p>When a project is successfully updated, the menu item 
+        <b class="uicontrol">Use GCC</b> appears under 
+        <span><b class="uicontrol">Intel Tools</b> 
+           &gt; <b class="uicontrol">Update Projects</b></span>. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-1E65C245-B293-4D50-8B53-572F7566C57B"><h2 class="sectiontitle">Updating an Existing Intel&reg; C++ compiler project</h2> 
+       
+      <p>Existing Intel&reg; C++ compiler project settings can be updated to use the current version of the compiler. When the compiler updates, 
+        <b class="uicontrol">Tools</b> options and other settings are preserved. 
+      </p>
+ 
+      <p>To update an older project to use the current compiler, do the following: 
+      </p>
+ 
+      <ol id="GUID-C3B1822E-1816-4B97-BD78-2C1F4ACC5B0C"> 
+        <li> 
+          <p><b class="uicontrol">Open</b> the project. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Select 
+            <span><b class="uicontrol">Intel Tools</b> &gt; <b class="uicontrol">Update Project</b> 
+               &gt; <b class="uicontrol">Update to the Latest Intel&reg; C++ Compiler</b></span>. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>The 
+            <strong>Project Update 
+            </strong>dialog box appears. 
+          </p>
+ 
+          <p> 
+          <ul type="disc" id="GUID-B81254BC-1B0A-45E1-89DB-19F98B7AB8C4"> 
+            <li>Select or deselect the configurations to update using the checkbox at the beginning of each row. Use 
+              <b class="uicontrol">Select All</b> or 
+              <b class="uicontrol">Deselect All</b> to select or deselect all configurations. 
+            </li>
+ 
+            <li>By default, CDT saves the original configuration after the update. To disable this behavior, uncheck the 
+              <b class="uicontrol">Keep</b> checkbox. 
+            </li>
+ 
+            <li>Rename the new configuration by clicking it in the 
+              <b class="uicontrol">New Intel Configuration</b> column. The 
+              <b class="uicontrol">Overwrite</b> field indicates whether a configuration with that same name already exists and whether the existing configuration will be overwritten by the update. If the named configuration does not exist, the field displays 
+              <img src="GUID-6E31AA9D-18CE-4838-9673-82A43ED2CD3D-low.jpg" width="15" height="15">. If the named configuration exists, the field displays a checkmark 
+              <img src="GUID-E7242687-E91E-4047-8D7E-501E5946560B-low.jpg" width="13" height="13">. Unchecking this box will result in a message warning of any conflicts. 
+            </li>
+ 
+            <li>To get brief tips, place the cursor on column headers. 
+            </li>
+ 
+            <li>If multiple versions of the Intel&reg; C++ Compiler are installed, click 
+              <strong>Next</strong> to select the compiler for the new configuration. By default, the most recent Intel&reg; C++ Compiler is used. 
+            </li>
+ 
+          </ul>
+ 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Click 
+            <strong>Finish</strong>. A confirmation box indicates success. 
+          </p>
+ 
+        </li>
+ 
+      </ol>
+ 
+      <p>The 
+        <span class="filepath">.cproject</span> file is a hidden file used to keep project information. When updating a project, the original 
+        <span class="filepath">.cproject</span> file is backed up and a log file is created in the Eclipse* project directory. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CA404469-B126-46F2-BC1E-07AFFFE965A9"><h2 class="sectiontitle">Switching Between Compilers</h2> 
+       
+      <p>When the 
+        <b class="uicontrol">Use GCC</b> or 
+        <b class="uicontrol">Use Intel&reg; C++ Compiler</b> menu items are selected, CDT prompts for active configuration selection. Choose the configuration and click 
+        <b class="uicontrol">OK</b>. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E49D211B-6AD1-4D81-9D02-B2DCCE58DC54.htm">Using Eclipse*</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

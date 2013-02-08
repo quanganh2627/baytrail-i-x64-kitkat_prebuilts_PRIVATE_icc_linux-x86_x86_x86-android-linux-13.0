@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_swizzle_epi32/ _mm512_mask_swizzle_epi32">
+<meta name="abstract" content="Performs a swizzle transformation on a 32-bit integer vector. There is no corresponding instruction for this intrinsic. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Performs a swizzle transformation on a 32-bit integer vector. There is no corresponding instruction for this intrinsic. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_swizzle_epi32, _mm512_mask_swizzle_epi32">
+<meta name="keywords" content="_mm512_swizzle_epi32, _mm512_mask_swizzle_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-E903C1C4-A361-4D12-9A3A-DD1047B4A2A3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5AAF7509-5EAB-44E5-A524-CB79142F556C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_swizzle_epi32/ _mm512_mask_swizzle_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_swizzle_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_mask_swizzle_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5AAF7509-5EAB-44E5-A524-CB79142F556C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_swizzle_epi32/ _mm512_mask_swizzle_epi32</h1>
+<!-- Performs a swizzle transformation on a 32-bit integer vector.  There is no corresponding instruction for this intrinsic.  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p> Performs a swizzle transformation on a 32-bit integer vector.  There is no corresponding instruction for this intrinsic. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-94F05A99-636B-4A05-8366-F8EAADC9C9E6"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __m512i  __cdecl _mm512_swizzle_epi32(__m512i v, _MM_SWIZZLE_ENUM s);
+</span></p></td></tr></table>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __m512i  __cdecl _mm512_mask_swizzle_epi32(__m512i v1_old, __mmask16 k1, __m512i v,
+                                              _MM_SWIZZLE_ENUM s);</span></p></td></tr></table></div>
+<div class="section" id="GUID-BD512C51-8FEA-4A48-A6D8-F9DB6DD12ADC"><h2>Parameters</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v</var></p></td>
+
+<td valign="top" class="noborder"><p>Source vector for swizzle process 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>s</var></p></td>
+
+<td valign="top" class="noborder"><p>Swizzle parameter; may take one of the following values: 
+    <a name="d89e449"><!-- --></a><ul type="disc" id="d89e449"> 
+      <li><samp class="codeph">_MM_SWIZ_REG_NONE</samp> - hgfe dcba - No operation 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_DCBA</samp> - hgfe dcba - No operation 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_CDAB</samp> - ghef cdab - Swap pairs 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_BADC</samp> - fehg badc - Swap with two-away 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_AAAA</samp> - eeee aaaa - Broadcast a element 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_BBBB</samp> - ffff bbbb - Broadcast b element 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_CCCC</samp> - gggg cccc - Broadcast c element 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_DDDD</samp> - hhhh dddd - Broadcast d element 
+      </li>
+ 
+      <li><samp class="codeph">_MM_SWIZ_REG_DACB</samp> - hfeg dbac - Cross-product 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result 
+      </span></td>
+</tr>
+</table>
+</div>
+<div class="section" id="GUID-2AE19E8C-3E5F-4EF6-933D-6804BCC93DD5"><h2>Description</h2>
+<p>Performs a swizzle transformation. It is used to permute elements in each 4-element lane of a 32-bit vector according to the swizzle parameter, <var>s</var>. The swizzle parameter 
+specifies the order of elements in each lane.  The <samp class="codeph">DCBA</samp> swizzle parameter specifies no reordering. For example, if the elements of a source vectors are <samp class="codeph">ponm lkji hgfe dcba</samp>, such as <samp class="codeph">v[0]=a, v[1]=b, v[2]=c, …, v[15]=p</samp> then the result of <samp class="codeph">y=_mm512_swizzle_epi32(v, _MM_SWIZ_REG_<strong>BADC</strong>)</samp> is a vector with all elements permuted, as follows: <samp class="codeph">nmpo jilk fehg badc</samp> <samp class="codeph">(y[0]=c, y[1]=d, y[2]=a, …, y[15]=n)</samp>.</p>
+<p>If the swizzle parameter is, for example, <samp class="codeph">_MM_SWIZ_REG_BBBB</samp> then the resulting vector for the input vector from previous example is <samp class="codeph">nnnn jjjj ffff bbbb</samp>.</p>
+<p> The masked variant has two additional arguments : <samp class="codeph">v1_old</samp> and <samp class="codeph">k1</samp>. Only those elements in the source vector <var>v</var> with the corresponding bit set in vector mask <samp class="codeph">k1</samp> are used for computing. Those elements of vector <var>v</var> with the corresponding bit clear in vector mask <samp class="codeph">k1</samp> are not used in the computation. Instead, the corresponding element from <samp class="codeph">v1_old</samp> is copied to the resulting vector.</p>
+</div>
+<div class="section" id="GUID-960E1E32-25CA-42BC-A542-831661DF76F7"><h2 class="sectiontitle">Typical Usage</h2><p>
+<samp class="codeph"> _mm512_add_epi32(v2,  _mm512_swizzle_epi32(v3, _MM_SWIZ_</samp>
+<samp class="codeph">REG</samp>
+<samp class="codeph">_DACB));</samp>
+</p>
+</div>
+<div class="section" id="GUID-C1D0E7BD-A972-4820-BD75-6FB8DBC00CFF"><h2>Returns</h2><p>Returns the result of the swizzle operation on an int32 vector.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E903C1C4-A361-4D12-9A3A-DD1047B4A2A3.htm">Shuffle Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

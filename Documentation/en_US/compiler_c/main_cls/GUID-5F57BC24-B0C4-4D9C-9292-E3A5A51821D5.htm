@@ -1,0 +1,154 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_getmant_pd/ _mm512_mask_getmant_pd">
+<meta name="abstract" content="Extract float64 normalized mantissas. Corresponding instruction is VGETMANTPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Extract float64 normalized mantissas. Corresponding instruction is VGETMANTPD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_getmant_pd, _mm512_mask_getmant_pd">
+<meta name="keywords" content="_mm512_getmant_pd, _mm512_mask_getmant_pd">
+<meta name="DC.Relation" scheme="URI" content="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5F57BC24-B0C4-4D9C-9292-E3A5A51821D5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_getmant_pd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_getmant_pd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5F57BC24-B0C4-4D9C-9292-E3A5A51821D5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_getmant_pd/ _mm512_mask_getmant_pd</h1>
+
+
+<!--Extract float64 normalized mantissas. Corresponding instruction is 
+ VGETMANTPD . 
+
+ This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture). 
+--><div><p>Extract float64 normalized mantissas. Corresponding instruction is 
+<samp class="codeph">VGETMANTPD</samp>. 
+
+<span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span>
+</p>
+
+
+<div class="section" id="GUID-E975CE2A-04E6-405B-9BEC-5701358A9F0D"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __m512d __cdecl _mm512_getmant_pd(__m512d v2, _MM_MANTISSA_NORM_ENUM i, _MM_MANTISSA_SIGN_ENUM s);</span></p></td></tr></table>
+
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">
+extern __m512d __cdecl _mm512_mask_getmant_pd(__m512d v1_old, __mmask8 k1, __m512d v2, _MM_MANTISSA_NORM_ENUM i, _MM_MANTISSA_SIGN_ENUM s);</span></p></td></tr></table></div>
+
+
+<div class="section" id="GUID-7A0D54E8-B028-486B-A963-5FD642C1212F"><h2>Parameters</h2>
+<table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v2</var></p></td>
+
+<td valign="top" class="noborder">float64 vector used for the extract operation
+</td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>v1_old</var></p></td>
+
+<td valign="top" class="noborder"><span> Source vector that retains old values of the destination vector; the resulting vector gets corresponding elements from 
+        <samp class="codeph">v1_old</samp> for zero mask bits</span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>k1</var></p></td>
+
+<td valign="top" class="noborder"><span>Writemask; only those elements of the source vectors with corresponding bit set to '<span>1</span>' in the 
+        <samp class="codeph">k1</samp> mask are computed and stored in the result; elements in the result vector corresponding to zero bit in 
+        <samp class="codeph">k1</samp> are copied from corresponding elements of vector 
+        <samp class="codeph">v1_old</samp> 
+      </span></td>
+</tr>
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>i</var></p></td>
+
+<td valign="top" class="noborder"><p>Interval constants for mantissa extraction, where 
+      <samp class="codeph">_MM_MANTISSA_NORM_ENUM</samp> takes one of the following values: 
+    <a name="d89e710"><!-- --></a><ul type="disc" id="d89e710"> 
+      <li><samp class="codeph">_MM_MANT_NORM_1_2</samp> - interval [1, 2) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_MANT_NORM_p5_2</samp> - interval [1.5, 2) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_MANT_NORM_p5_1</samp> - interval [1.5, 1) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_MANT_NORM_p75_1p5</samp> - interval [0.75, 1.5) 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="30%" class="noborder"><p><var>s</var></p></td>
+
+<td valign="top" class="noborder"><p>Sign constants for mantissa extraction, where 
+      <samp class="codeph">_MM_MANTISSA_SIGN_ENUM</samp> takes one of the following values: 
+    <a name="d89e739"><!-- --></a><ul type="disc" id="d89e739"> 
+      <li><samp class="codeph"> _MM_MANT_SIGN_src</samp> - sign = sign(SRC) 
+      </li>
+ 
+      <li><samp class="codeph">_MM_MANT_SIGN_zero</samp> - sign = 0 
+      </li>
+ 
+      <li><samp class="codeph">_MM_MANT_SIGN_nan</samp> - DEST = NaN if sign(SRC) = 1 
+      </li>
+ 
+    </ul>
+ 
+    </p>
+</td>
+</tr>
+
+</table>
+</div>
+<div class="section" id="GUID-09D27658-2195-41E8-92BF-E0782F72EF98"><h2>Description</h2>
+<p>Extracts float64 normalized mantissas from vector 
+<samp class="codeph">v2</samp> elements.</p>
+
+
+<p>The masked variant has one additional argument: 
+<samp class="codeph">k1</samp>. Only those elements in the source registers with the corresponding bit set in vector mask 
+<samp class="codeph">k1</samp> are used for computing.</p>
+</div>
+
+
+<div class="section" id="GUID-2AB99D2A-B99E-4791-9EAB-5A746428F85C"><h2>Returns</h2>
+<p>Returns the result of the extract operation.</p>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-93CB2019-6FDE-4DAA-B65E-73F730377F6A.htm">Miscellaneous Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

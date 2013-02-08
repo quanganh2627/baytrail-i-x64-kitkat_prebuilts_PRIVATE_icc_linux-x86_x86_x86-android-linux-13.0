@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="distribute_point">
+<meta name="abstract" content="Instructs the compiler to prefer loop distribution at the location indicated.">
+<meta name="description" content="Instructs the compiler to prefer loop distribution at the location indicated.">
+<meta name="DC.subject" content="pragma distribute_point">
+<meta name="keywords" content="pragma distribute_point">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-03B94EAB-70E2-4B45-B275-D73FD76961A0">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>distribute_point</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_distribute_point"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-03B94EAB-70E2-4B45-B275-D73FD76961A0">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>distribute_point</span></h1>
+
+<!--Instructs the compiler to prefer loop distribution at the location indicated.-->
+
+
+
+<div><p>Instructs the compiler to prefer loop distribution at the location indicated.</p>
+
+<div class="section" id="GUID-BEC4280B-02EB-43BF-A286-15A3257A3A57"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma distribute_point
+</span></p></td></tr></table></div>
+<div class="section" id="GUID-69AC9C4F-2E3D-444F-853A-2E024138C43E"><h2>Arguments</h2><p>None</p>
+</div>
+
+<div class="section" id="GUID-B0772511-458A-4432-80DD-D2A4363EE76E"><h2>Description</h2>
+<p>The <span class="keyword">distribute_point</span> pragma is used to suggest to the compiler to split large loops into smaller ones; this is particularly useful in cases where optimizations like  vectorization cannot take place due to excessive register usage. </p>
+
+<ul type="disc" id="GUID-15453918-61EA-4399-8DCB-5BA3471F928D">
+ <li><p>When the pragma is placed inside a loop, the compiler distributes the loop at that point. All loop-carried dependencies are ignored.</p>
+</li>
+
+ <li><p>When inside the loop, pragmas cannot be placed within an <span class="keyword">if</span> statement.</p>
+</li>
+
+ <li><p>When the pragma is placed outside the loop, the compiler distributes the loop based on an internal heuristic. The compiler determines where to distribute the loops and observes data dependency. If the pragmas are placed inside the loop, the compiler supports multiple instances of the pragma.</p>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="section" id="GUID-AC5DFA6A-1287-40AE-A213-05C9BE7E28BD"><h2>Example</h2>
+<p><strong>Example 1: Using distribute_point
+ pragma outside the loop</strong></p>
+
+<p>The following example uses the <samp class="codeph">distribute_point</samp> pragma outside the loop.</p>
+
+<pre>#define NUM 1024</pre>
+<pre>void loop_distribution_pragma1(</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double a[NUM], double b[NUM], double c[NUM],</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x[NUM], double y[NUM], double z[NUM] )</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;int i;</pre>
+<pre>&nbsp;&nbsp;// Before distribution or splitting the loop</pre>
+<pre>&nbsp;&nbsp;#pragma distribute_point</pre>
+<pre>&nbsp;&nbsp;for (i=0; i&lt; NUM; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;a[i] = a[i] + i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;b[i] = b[i] + i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;c[i] = c[i] + i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;x[i] = x[i] + i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;y[i] = y[i] + i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;z[i] = z[i] + i;</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+<p><strong>Example 2: Using distribute_point
+ pragma inside the loop</strong></p>
+
+<p>The following example uses the <span class="keyword">distribute_point</span> pragma inside the loop.</p>
+
+<pre>#define NUM 1024</pre>
+<pre>void loop_distribution_pragma2(</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double a[NUM], double b[NUM], double c[NUM],</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x[NUM], double y[NUM], double z[NUM] )</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;int i;</pre>
+<pre>&nbsp;&nbsp;// After distribution or splitting the loop.</pre>
+<pre>&nbsp;&nbsp;for (i=0; i&lt; NUM; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;a[i] = a[i] +i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;b[i] = b[i] +i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;c[i] = c[i] +i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;#pragma distribute_point</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;x[i] = x[i] +i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;y[i] = y[i] +i;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;z[i] = z[i] +i;</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+<p><strong>Example 3: Using distribute_point
+pragma inside and outside the loop</strong></p>
+
+<p>The following example shows how to use the <span class="keyword">distribute_point</span> pragma, first outside the loop and then inside the loop.</p>
+
+<pre>void dist1(int a[], int b[], int c[], int d[])</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;#pragma distribute_point</pre>
+<pre>// Compiler will automatically decide where to</pre>
+<pre>// distribute. Data dependency is observed.</pre>
+<pre>&nbsp;&nbsp;for (int i=1; i&lt;1000; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;b[i] = a[i] + 1;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;c[i] = a[i] + b[i];</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;d[i] = c[i] + 1;</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+<pre>&nbsp;</pre>
+<pre>void dist2(int a[], int b[], int c[], int d[])</pre>
+<pre>{</pre>
+<pre>&nbsp;&nbsp;for (int i=1; i&lt;1000; i++) {</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;b[i] = a[i] + 1;</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;#pragma distribute_point</pre>
+<pre>// Distribution will start here,</pre>
+<pre>// ignoring all loop-carried dependency.</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;c[i] = a[i] + b[i];</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;d[i] = c[i] + 1;</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+</div>
+
+
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+</body>
+</html>

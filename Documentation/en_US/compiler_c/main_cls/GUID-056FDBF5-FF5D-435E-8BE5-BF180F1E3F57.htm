@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="nofusion">
+<meta name="abstract" content="Prevents a loop from fusing with adjacent loops.">
+<meta name="description" content="Prevents a loop from fusing with adjacent loops.">
+<meta name="DC.subject" content="nofusion">
+<meta name="keywords" content="nofusion">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-056FDBF5-FF5D-435E-8BE5-BF180F1E3F57">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>nofusion</title>
+</head>
+<body id="GUID-056FDBF5-FF5D-435E-8BE5-BF180F1E3F57">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>nofusion</span></h1>
+
+<!-- Prevents a loop from fusing with adjacent loops.-->
+
+<div><p> Prevents a loop from fusing with adjacent loops.</p>
+
+
+
+<div class="section" id="GUID-A911FC38-765E-4228-98C7-0FD8EACD1D0F"><h2>Syntax</h2>
+<table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> #pragma nofusion</span><span class="var"></span></p></td></tr></table>
+</div>
+
+
+
+<div class="section" id="GUID-F2D44795-4F43-49BC-89D4-CE7DA94CCAEF"><h2>Description</h2>
+<p><samp class="codeph">#pragma nofusion</samp> lets you fine tune your
+program on a loop-by-loop basis. This pragma should be placed immediately
+before the loop that should not be
+fused.</p>
+
+</div>
+
+
+<div class="section" id="GUID-367F0831-AF78-404F-B157-9D0E1CEB9B99"><h2 class="sectiontitle">Example:</h2><pre>#define SIZE 1024
+
+int sub ()
+{
+int B[SIZE], A[SIZE];
+           
+  int i, j, k=0;
+  for(j=0; j&lt;SIZE; j++)
+    A[j] = A[j] + B[j];
+#pragma nofusion
+  for (i=0; i&lt;SIZE; i++)
+    k += A[i] + 1;
+  
+  return k;
+}
+</pre></div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

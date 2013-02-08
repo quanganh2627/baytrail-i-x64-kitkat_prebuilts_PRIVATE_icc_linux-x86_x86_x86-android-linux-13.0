@@ -1,0 +1,181 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Enabling Auto-parallelization">
+<meta name="DC.subject" content="auto-parallelization, enabling, environment variables, endian data, for auto-parallelization">
+<meta name="keywords" content="auto-parallelization, enabling, environment variables, endian data, for auto-parallelization">
+<meta name="DC.Relation" scheme="URI" content="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-7D509D35-4132-411A-9B2D-502F88670468">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Enabling Auto-parallelization</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_qpar_thr"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_qpar_thr"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-7D509D35-4132-411A-9B2D-502F88670468">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">Enabling Auto-parallelization </h1>
+
+
+
+
+<div>
+<p>To enable the auto-parallelizer, use the <a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">-parallel</span></a> (Linux* and OS X*) or <a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">/Qparallel</span></a> (Windows*) option. This option detects parallel loops capable of being executed safely in parallel and automatically generates multi-threaded code for these loops.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3>
+<p>You might need to set the <span class="keyword">KMP_STACKSIZE</span> environment variable to an appropriately large size to enable parallelization with this option. Using the <span class="option">-parallel</span> (Linux) or the <span class="option">/Qparallel</span> (Windows) option enables parallelization for both Intel&reg; microprocessors and non-Intel microprocessors. The resulting executable may get additional performance gain on Intel microprocessors than on non-Intel microprocessors. The parallelization can also be affected by certain options, such as <span class="option">/arch</span> or <span class="option">/Qx</span> (Windows) or <span class="option">-m</span> or <span class="option">-x</span> (Linux and OS X).</p>
+</div>
+<p> An example of the command using auto-parallelization is as follows:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-3279E779-BE60-4E3D-B46B-2F97ED3B679A" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" width="30.03003003003003%" id="d402581e103"><p>Operating System</p>
+</th>
+
+  <th class="cellrowborder" align="left" valign="top" width="69.96996996996997%" id="d402581e107"><p>Description</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="30.03003003003003%" headers="d402581e103 "><p>Linux and OS X</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="69.96996996996997%" headers="d402581e107 "><p><samp class="codeph">icc -c -parallel prog.cpp</samp></p>
+</td>
+
+</tr>
+
+
+<tr valign="top">
+  <td class="cellrowborder" valign="top" width="30.03003003003003%" headers="d402581e103 "><p>Windows</p>
+</td>
+
+  <td class="cellrowborder" valign="top" width="69.96996996996997%" headers="d402581e107 "><p><samp class="codeph">icl /c /Qparallel prog.cpp</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>Auto-parallelization uses two specific <span>pragmas</span>, <span class="keyword">#pragma parallel</span> and <span class="keyword">#pragma noparallel</span>.</p>
+
+
+<p>The format of an auto-parallelization compiler <span>pragma</span> is:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-91EEBCBE-D06D-487D-A4DC-891BCB4367E4" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d402581e168"><p>Syntax</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d402581e168 "><p><samp class="codeph">&lt;prefix&gt; &lt;pragma&gt;</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>where <samp class="codeph">&lt;prefix&gt;</samp> indicates:<ul type="disc" id="GUID-F4FBA4C0-768E-4399-AEA9-F655CC114201">
+		<li><p><samp class="codeph">#pragma</samp></p>
+</li>
+</ul>
+
+
+  
+    
+  
+</p>
+
+
+<p>The <samp class="codeph">&lt;prefix&gt;</samp> is followed by the <span>pragma</span> name, as in:</p>
+
+
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1E7F95AC-CEF5-4DBE-B3C8-3204693C198D" width="100%" frame="border" border="1" cellspacing="0" rules="all">
+
+<thead align="left">
+<tr valign="top">
+  <th class="cellrowborder" align="left" valign="top" id="d402581e216"><p>Syntax</p>
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+<tr valign="top">
+  <td class="cellrowborder" valign="top" headers="d402581e216 "><p><samp class="codeph">#pragma parallel</samp></p>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<p>The <span><span class="keyword">#pragma parallel</span> pragma</span> instructs the compiler to ignore dependencies that it assumes may exist and which would prevent correct parallelization in the immediately following loop. However, if dependencies are proven, they are not ignored. In addition, <span class="keyword">parallel [always]</span> overrides the compiler heuristics that
+estimate the likelihood that parallelization of a loop increases performance. It allows a loop to be parallelized even if
+the compiler thinks parallelization may not improve performance.
+If the <span class="keyword">ASSERT</span> keyword is added, as in <samp class="codeph">#pragma parallel [always [assert]]</samp>, the compiler generates an error-level assertion message saying that the compiler analysis and cost model indicate that the loop cannot be parallelized.
+</p>
+
+<p>The <span class="keyword">#pragma noparallel</span> <span>pragma</span> disables auto-parallelization. </p>
+
+
+
+
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">Automatic Parallelization</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

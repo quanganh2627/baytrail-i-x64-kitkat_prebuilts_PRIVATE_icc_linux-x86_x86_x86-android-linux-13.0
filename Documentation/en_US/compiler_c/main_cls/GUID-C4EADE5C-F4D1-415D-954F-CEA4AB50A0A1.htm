@@ -1,0 +1,3200 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="Compare Intrinsics">
+<meta name="DC.subject" content="intrinsics, Intel&reg; SSE, compare operations, ucomineq_ss, ucomige_ss, ucomigt_ss, ucomile_ss, ucomilt_ss, ucomieq_ss, cmpnle_ss, cmpord_ps, cmpord_ss, cmpnge_ps, cmpngt_ps, cmpunord_ss, cmpnle_ps, cmpnge_ss, cmpngt_ss, cmpunord_ps, comineq_ss, comige_ss, comigt_ss, comile_ss, comilt_ss, comieq_ss, cmpnlt_ps, cmpgt_ps, cmpnlt_ss, cmpneq_ps, cmpneq_ss, cmpge_ss, cmpge_ps, cmple_ps, cmpgt_ss, cmple_ss, cmplt_ps, cmplt_ss, cmpeq_ps, cmpeq_ss, Intel&reg; Streaming SIMD Extensions">
+<meta name="keywords" content="intrinsics, Intel&reg; SSE, compare operations, ucomineq_ss, ucomige_ss, ucomigt_ss, ucomile_ss, ucomilt_ss, ucomieq_ss, cmpnle_ss, cmpord_ps, cmpord_ss, cmpnge_ps, cmpngt_ps, cmpunord_ss, cmpnle_ps, cmpnge_ss, cmpngt_ss, cmpunord_ps, comineq_ss, comige_ss, comigt_ss, comile_ss, comilt_ss, comieq_ss, cmpnlt_ps, cmpgt_ps, cmpnlt_ss, cmpneq_ps, cmpneq_ss, cmpge_ss, cmpge_ps, cmple_ps, cmpgt_ss, cmple_ss, cmplt_ps, cmplt_ss, cmpeq_ps, cmpeq_ss, Intel&reg; Streaming SIMD Extensions">
+<meta name="DC.Relation" scheme="URI" content="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C4EADE5C-F4D1-415D-954F-CEA4AB50A0A1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compare Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_sse_comparison"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C4EADE5C-F4D1-415D-954F-CEA4AB50A0A1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Compare Intrinsics</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-F327C21F-A1CA-48E7-87DE-A071037CDC69"> 
+      <p>The prototypes for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) intrinsics for comparision operations are in the 
+        <span class="filepath">xmmintrin.h</span> header file. 
+      </p>
+ 
+      <p>Each comparison intrinsic performs a comparison of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span>. For the packed form, the four single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are compared, and a 128-bit mask is returned. For the scalar form, the lower single-precision FP values of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are compared, and a 32-bit mask is returned; the upper three single-precision FP values are passed through from 
+        <span class="keyword">a</span>. The mask is set to 
+        <span class="keyword">0xffffffff</span> for each element where the comparison is true and 
+        <span class="keyword">0x0</span> where the comparison is false. 
+      </p>
+ 
+      <p>The results of each intrinsic operation are placed in a register. This register is illustrated for each intrinsic with R or R0-R3. R0, R1, R2 and R3 each represent one of the four 32-bit pieces of the result register. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-ADF5F88B-2C25-4FB1-BC4E-C67BA91AE565"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-58BDC4E4-54A6-40CB-8FB4-26B894351863" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="33%" id="d675746e170"> 
+                <p>Intrinsic Name 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="33%" id="d675746e176"> 
+                <p>Operation 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="34%" id="d675746e182"> 
+                <p>Corresponding<br>Intel&reg; SSE Instruction 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpeq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPEQSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpeq_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPEQPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmplt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLTSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmplt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmple_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLESS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmple_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLEPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpgt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLTSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpgt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpge_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLESS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpge_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPLEPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpneq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNEQSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpneq_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNEQPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpnlt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLTSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpnlt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpnle_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLESS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpnle_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLEPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpngt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLTSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpngt_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLTPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpnge_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLESS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpnge_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPNLEPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpord_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Ordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPORDSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpord_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Ordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPORDPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpunord_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Unordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPUNORDSS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_cmpunord_ps</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Unordered 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">CMPUNORDPS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_comieq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">COMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_comilt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">COMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_comile_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">COMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_comigt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">COMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_comige_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">COMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_comineq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">COMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_ucomieq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">UCOMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_ucomilt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">UCOMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_ucomile_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Less Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">UCOMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_ucomigt_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">UCOMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_ucomige_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Greater Than or Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">UCOMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e170 "> 
+                <p><span class="option"> _mm_ucomineq_ss</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="33%" headers="d675746e176 "> 
+                <p>Not Equal 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="34%" headers="d675746e182 "> 
+                <p><span class="keyword">UCOMISS</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-87377219-29C6-4579-A9E3-B45904CACA13"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 __cdecl _mm_cmpeq_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for equality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B6F03AF6-71C7-42A9-846B-919DB964E149"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2A8F5B99-58FE-4630-B98F-D39489D7A291" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1129"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1135"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1141"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1147"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1129 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1135 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1141 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1147 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6A356A43-A901-44D0-AF4C-AE4EBE3C90D2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpeq_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for equality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3F3E2FEA-E267-4BAF-98AB-47E684195224"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2BABB2AD-EF3C-4670-8B63-7030D6FBF1BC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1216"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1222"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1228"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1234"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1216 "> 
+                <p><span class="keyword">(a0 == b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1222 "> 
+                <p><span class="keyword">(a1 == b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1228 "> 
+                <p><span class="keyword">(a2 == b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1234 "> 
+                <p><span class="keyword">(a3 == b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3EE9A839-D8DD-4706-803F-2582948AF60B"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmplt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for less-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-78E57270-6D99-44AB-9E1C-572A64E241BC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4F21B71C-AD32-4B31-9701-875B1452DF8A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1308"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1314"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1320"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1326"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1308 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1314 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1320 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1326 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7BC7CABE-0D77-4BE6-A48F-45E9BEA67E44"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmplt_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for less-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-685F7B61-40DB-47D7-8649-D167DC13BB89"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-96288C88-3A32-4F2C-A536-E1E9923E69A5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1394"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1400"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1406"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1412"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1394 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1400 "> 
+                <p><span class="keyword">(a1 &lt; b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1406 "> 
+                <p><span class="keyword">(a2 &lt; b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1412 "> 
+                <p><span class="keyword">(a3 &lt; b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-55ED4BE6-529A-4BAE-9EAF-05B8BF5122D9"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmple_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for less-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6A12DDA1-8490-43B2-9FD6-953B615A6D96"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5DFE213F-3ED0-4960-AF4E-3C37EDFB306C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1487"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1493"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1499"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1505"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1487 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1493 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1499 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1505 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-014263F0-E221-46FD-9A73-1C3079C710E6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmple_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for less-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-3D848307-0068-4852-B1F0-8886C7E1C0CF"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8A20FB0B-BEF4-4528-872F-4B2CDC358ACE" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1573"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1579"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1585"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1591"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1573 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1579 "> 
+                <p><span class="keyword">(a1 &lt;= b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1585 "> 
+                <p><span class="keyword">(a2 &lt;= b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1591 "> 
+                <p><span class="keyword">(a3 &lt;= b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-CEF35B44-DB52-4DF9-AC3D-908FAFD1E606"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpgt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for greater-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-534968F0-48F0-4DEB-8D29-E3D513E1CA05"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-91273BFD-F7AE-48DD-AD39-02527CECB3E1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1665"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1671"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1677"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1683"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1665 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1671 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1677 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1683 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-7A4CBD71-994C-432F-9F70-F34937593406"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpgt_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for greater-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C362DCF5-1834-4171-8ED6-6F65068477C3"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C7662C76-C5B8-49EB-8A88-AE6B343B7DC4" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1752"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1758"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1764"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1770"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1752 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1758 "> 
+                <p><span class="keyword">(a1 &gt; b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1764 "> 
+                <p><span class="keyword">(a2 &gt; b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1770 "> 
+                <p><span class="keyword">(a3 &gt; b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-10ACB0C0-84F8-4F39-A38C-93A6175269B6"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpge_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for greater-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0B60E6ED-2596-4462-A426-FE018F29742D"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-82BF5FED-4DDB-44FC-9AEC-DF03B6EF997C" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1844"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1850"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1856"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1862"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1844 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1850 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1856 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1862 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BC5B8862-C1AE-4911-A801-CDE5C3070266"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpge_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for greater-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2920C278-9F3B-4E84-972F-B0E054E2A071"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-7068C57A-1F5D-46D5-92E5-308CF5A59C02" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1930"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1936"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e1942"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e1948"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1930 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1936 "> 
+                <p><span class="keyword">(a1 &gt;= b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e1942 "> 
+                <p><span class="keyword">(a2 &gt;= b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e1948 "> 
+                <p><span class="keyword">(a3 &gt;= b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-918597BA-4611-417D-B767-3CE4F71215F1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpneq_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for inequality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E42852FD-A64E-4D85-B8D6-5B77EF29D021"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E647A39C-EB3D-4C65-90C0-0E6631883B63" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2023"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2029"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2035"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2041"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2023 "> 
+                <p><span class="keyword">(a0 != b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2029 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2035 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2041 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-75267595-0847-4F9D-8C87-95ED21054C4D"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpneq_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for inequality. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-90562F75-6734-4892-A404-97A303CE5B17"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-69C085C5-783C-40AE-B777-87EA0FCA7801" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2109"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2115"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2121"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2127"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2109 "> 
+                <p><span class="keyword">(a0 != b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2115 "> 
+                <p><span class="keyword">(a1 != b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2121 "> 
+                <p><span class="keyword">(a2 != b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2127 "> 
+                <p><span class="keyword">(a3 != b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FAE2006E-BD70-43C5-BF85-2ACAEDDF1CAC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpnlt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-less-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-45DC348E-ACA3-4353-88B2-FDEE6EF175E4"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-586810FA-8EED-4098-82D8-B70BD7DE9355" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2201"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2207"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2213"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2219"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2201 "> 
+                <p><span class="keyword">!(a0 &lt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2207 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2213 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2219 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4FB2CE70-7493-40C8-9A13-6DF227575670"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpnlt_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-less-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-254FF10E-CA53-4CA0-BBC6-D0150C50C3CA"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-D9A12A29-0A97-4BB0-A70D-8FB39906C2A7" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2288"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2294"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2300"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2306"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2288 "> 
+                <p><span class="keyword">!(a0 &lt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2294 "> 
+                <p><span class="keyword">!(a1 &lt; b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2300 "> 
+                <p><span class="keyword">!(a2 &lt; b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2306 "> 
+                <p><span class="keyword">!(a3 &lt; b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A80EEBE6-DAAB-4A60-83BE-28EC030E83EC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpnle_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-less-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-62A03EB2-4F67-4207-999F-36002B53E7AB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-B20A2FB8-B870-439A-A9AC-7713BCA5AE98" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2380"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2386"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2392"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2398"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2380 "> 
+                <p><span class="keyword">!(a0 &lt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2386 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2392 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2398 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D159172C-1927-427C-A134-352BA7063DC2"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpnle_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-less-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-314DAB31-3245-4A58-A413-4A76A8BF8DF6"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C40DADB2-C0E7-487B-B611-393706C5FBFC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2466"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2472"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2478"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2484"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2466 "> 
+                <p><span class="keyword">!(a0 &lt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2472 "> 
+                <p><span class="keyword">!(a1 &lt;= b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2478 "> 
+                <p><span class="keyword">!(a2 &lt;= b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2484 "> 
+                <p><span class="keyword">!(a3 &lt;= b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9FED8A83-82FA-4667-A10C-6ABC2D47D7B4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpngt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-greater-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0AA445D7-D34C-4232-AA65-CA2BA44801BC"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DEAF78AA-4A10-42F1-A875-2E8D56537A9A" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2559"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2565"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2571"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2577"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2559 "> 
+                <p><span class="keyword">!(a0 &gt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2565 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2571 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2577 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-96F163FB-7248-40A4-9EFB-798F5554F726"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpngt_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-greater-than. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-BCE52C3F-E37B-45D6-BB2E-E5C4239D9B53"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-8C466AE1-C096-4CDE-A678-2245A683C532" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2645"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2651"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2657"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2663"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2645 "> 
+                <p><span class="keyword">!(a0 &gt; b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2651 "> 
+                <p><span class="keyword">!(a1 &gt; b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2657 "> 
+                <p><span class="keyword">!(a2 &gt; b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2663 "> 
+                <p><span class="keyword">!(a3 &gt; b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DF09F2C1-7D03-4088-B826-7720F35ED4DC"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpnge_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-greater-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-04B3DC79-63C4-4428-A0F3-1D703F837F62"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2DD99DC8-C022-4B76-BFB0-4D2B072D0043" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2737"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2743"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2749"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2755"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2737 "> 
+                <p><span class="keyword">!(a0 &gt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2743 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2749 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2755 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5AE4EBC3-31FB-433B-8C7B-263B421BB1CA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpnge_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for not-greater-than-or-equal. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A86DA34A-2FAC-4F91-9025-5D1B385BCD8E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-E3AD45C2-F68B-4947-A641-6A302635F39E" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2824"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2830"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2836"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2842"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2824 "> 
+                <p><span class="keyword">!(a0 &gt;= b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2830 "> 
+                <p><span class="keyword">!(a1 &gt;= b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2836 "> 
+                <p><span class="keyword">!(a2 &gt;= b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2842 "> 
+                <p><span class="keyword">!(a3 &gt;= b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-286A1C30-0F23-4D30-BAEC-EF33F2765291"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpord_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for ordered. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-490003FD-3F47-45BC-B7A8-F5EE04371768"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-03C5E547-4323-4919-87C0-268DBD405F57" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2916"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2922"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e2928"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e2934"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2916 "> 
+                <p><span class="keyword">(a0 ord? b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2922 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e2928 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e2934 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9F6E1206-7FC6-4373-86EE-EDE76849D643"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpord_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for ordered. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-8007460B-1B27-4F87-8AB7-A50E45A7AA64"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-495E40C5-510E-4D69-B8E4-599B7D81A656" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3002"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3008"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3014"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e3020"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3002 "> 
+                <p><span class="keyword">(a0 ord? b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3008 "> 
+                <p><span class="keyword">(a1 ord? b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3014 "> 
+                <p><span class="keyword">(a2 ord? b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e3020 "> 
+                <p><span class="keyword">(a3 ord? b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-0B8518E5-BCA1-4F11-B04D-097F921392FA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpunord_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for unordered. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B5052F0A-1347-46BD-8227-45273DD9D0BB"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BF24D731-BB47-4C92-A552-EA6BAAEDC551" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3095"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3101"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3107"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e3113"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3095 "> 
+                <p><span class="keyword">(a0 unord? b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3101 "> 
+                <p>a1 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3107 "> 
+                <p>a2 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e3113 "> 
+                <p>a3 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-6FE18F4B-F983-4566-B073-838E44D01C48"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">__m128 _mm_cmpunord_ps(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares for unordered. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-341054C3-6A12-4F1F-9EE0-0D6B862D068C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AC456F2C-B925-463E-BC8A-5C21D6C568F2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3181"> 
+                <p>R0 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3187"> 
+                <p>R1 
+                </p>
+ 
+              </th>
+ 
+              <th class="cellrowborder" valign="top" width="25%" id="d675746e3193"> 
+                <p>R2 
+                </p>
+ 
+              </th>
+ 
+              <th class="row-nocellborder" valign="top" width="25%" id="d675746e3199"> 
+                <p>R3 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3181 "> 
+                <p><span class="keyword">(a0 unord? b0) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3187 "> 
+                <p><span class="keyword">(a1 unord? b1) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="cellrowborder" valign="top" width="25%" headers="d675746e3193 "> 
+                <p><span class="keyword">(a2 unord? b2) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+              <td class="row-nocellborder" valign="top" width="25%" headers="d675746e3199 "> 
+                <p><span class="keyword">(a3 unord? b3) ? 0xffffffff : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-FF08732E-F38C-4C95-8BF8-729ECB5D7FDB"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comieq_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2EDD93BF-B176-49AA-974A-FBA6159B2E5B"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-BCBBD297-3466-429E-AF02-7D47F8602291" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3289"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3289 "> 
+                <p><span class="keyword">(a0 == b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-B0A39DD6-DE32-4AC2-BA55-B91FB6129BEA"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comilt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A611C666-F200-45F9-B90E-3BA2BF7D7FF0"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-71656848-A2FA-4869-90FB-C3E56E8CC811" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3356"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3356 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F8972D8B-B650-4E96-8001-1474181FFE89"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comile_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-DA3E34B7-96EB-4E1E-BD17-F6281D33D8C6"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-71A2E465-46EF-4C99-8EBC-C2110FE79BE2" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3422"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3422 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A1BBDFFA-08B9-44DF-8195-7810EA23F9DD"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comigt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-EF138CE3-0AE2-41D3-915B-9DE3AD92E5D8"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-330F9912-879D-4E02-A30E-D974B85410A1" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3488"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3488 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A4D820E3-0B81-461F-9CCD-F0407B9FF9B1"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comige_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-D98DE75D-EA6D-498B-BDCA-C522B0B4C60F"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1D89C926-40A6-4AB5-8F6A-C0D22271872E" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3555"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3555 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5A0F1C1F-92A3-45A7-B37A-F89E6F6EA2D4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_comineq_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are not equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-A6254216-3D18-40F8-A126-ECC7BD951EB0"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-CC726C18-22A1-425A-BBFA-5F47EFA7AFB3" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3621"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3621 "> 
+                <p><span class="keyword">(a0 != b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-E59C8DE6-DDE1-4717-972F-4696A243184A"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomieq_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F087DB01-2B73-4185-A319-33D5E9503E2E"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9BF36FD0-D31C-45EA-8D70-5CB742821AA0" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3687"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3687 "> 
+                <p><span class="keyword">(a0 == b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-4E7F51DC-3E92-43D9-BF85-43524958C1F0"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomilt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-9DA5B55E-3FF6-4301-9F2C-F763D4FA7179"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-AF79E374-285B-4C14-A82A-068FA42163C5" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3754"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3754 "> 
+                <p><span class="keyword">(a0 &lt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5A32AAF6-8317-4CC0-ADCE-CFD160B1EBC4"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomile_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> less than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is less than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-2E557046-D1D5-4915-8485-E981030E446C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-F148525A-1433-4939-A39F-3D24794EAE1D" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3820"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3820 "> 
+                <p><span class="keyword">(a0 &lt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-16235D0C-815E-4203-9BD7-D40CE0AE4D16"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomigt_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C6F3D9FE-3EB0-4D56-BF3A-F2126704ED3C"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C7F42A51-9CED-4576-83CA-ABA682C95606" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3886"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3886 "> 
+                <p><span class="keyword">(a0 &gt; b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-5C84521B-4BA5-4B05-9B41-B01FAA052E90"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomige_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> greater than or equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> is greater than or equal to 
+        <span class="keyword">b</span>, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-46E1E948-0E67-4B5A-AAA2-303E4FAE7C26"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-5F342692-4AE0-49FA-AE7D-DA81A203CA9D" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e3953"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e3953 "> 
+                <p><span class="keyword">(a0 &gt;= b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+      <p></p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-81E1EC21-E97A-470D-837C-C14909160502"> 
+      <div class="dlsyntaxpara"><p class="dlsyntaxpara"><span class="kwd">int _mm_ucomineq_ss(__m128 a, __m128 b)</span></p></div> 
+      <p>Compares the lower SP FP value of 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> for 
+        <span class="keyword">a</span> not equal to 
+        <span class="keyword">b</span>. If 
+        <span class="keyword">a</span> and 
+        <span class="keyword">b</span> are not equal, 1 is returned. Otherwise, 0 is returned. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-70528A7F-4A6D-45C5-B23A-D822B9110DC5"> 
+      
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-0946F182-151C-418E-9029-1D6154E27ABC" frame="hsides" border="1" rules="all"><thead align="left"> 
+            <tr> 
+              <th class="row-nocellborder" valign="top" id="d675746e4019"> 
+                <p>R 
+                </p>
+ 
+              </th>
+ 
+            </tr>
+</thead>
+ 
+          <tbody> 
+            <tr> 
+              <td class="row-nocellborder" valign="top" headers="d675746e4019 "> 
+                <p><span class="keyword">r := (a0 != b0) ? 0x1 : 0x0</span> 
+                </p>
+ 
+              </td>
+ 
+            </tr>
+ 
+          </tbody>
+ 
+        </table>
+</div>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-720916AE-F9FF-4F9A-9627-432BB7A51D51.htm">Intrinsics for Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

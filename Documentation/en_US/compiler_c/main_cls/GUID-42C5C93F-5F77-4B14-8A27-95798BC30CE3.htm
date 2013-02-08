@@ -1,0 +1,153 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Profile-Guided Optimizations Overview">
+<meta name="DC.subject" content="PGO, dynamic information, general compiler directives, for profile-guided optimization, high performance programming, inlining, instrumentation, program, interprocedural optimizations, optimizations, overview of, profile-guided, profile-guided optimization, overview, usage model, vectorizing, loops">
+<meta name="keywords" content="PGO, dynamic information, general compiler directives, for profile-guided optimization, high performance programming, inlining, instrumentation, program, interprocedural optimizations, optimizations, overview of, profile-guided, profile-guided optimization, overview, usage model, vectorizing, loops">
+<meta name="DC.Relation" scheme="URI" content="GUID-9C4692D9-BBDE-4F36-95B1-58295EAFA5B5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-42C5C93F-5F77-4B14-8A27-95798BC30CE3">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Profile-Guided Optimizations Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_pgo_ovw"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_pgo_ovw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-42C5C93F-5F77-4B14-8A27-95798BC30CE3">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Profile-Guided Optimizations Overview</h1>
+ 
+   
+  <div> 
+	 <p>Profile-guided Optimization (PGO) improves application performance by reorganizing code layout to reduce instruction-cache problems, shrinking code size, and reducing branch mispredictions. PGO provides information to the compiler about areas of an application that are most frequently executed. By knowing these areas, the compiler is able to be more selective and specific in optimizing the application. 
+	 </p>
+ 
+	 <p>PGO consists of three phases or steps. 
+	 </p>
+ 
+	 <ol id="GUID-FF3C1E0D-EC6A-4A5D-8CC3-688B6423BF76"> 
+		<li> 
+		  <p>Step one is to instrument the program. In this phase, the compiler creates and links an instrumented program from your source code and special code from the compiler. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Step two is to run the instrumented executable. Each time you execute the instrumented code, the instrumented program generates a dynamic information file, which is used in the final compilation. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Step three is a final compilation. When you compile a second time, the dynamic information files are merged into a summary file. Using the summary of the profile information in this file, the compiler attempts to optimize the execution of the most heavily traveled paths in the program. 
+		  </p>
+ 
+		</li>
+ 
+	 </ol>
+ 
+	 <p><img src="GUID-DFB41B62-B513-45A1-8F63-8E4D9106E051-low.jpg"> 
+	 </p>
+ 
+	 <p>See 
+		<a href="GUID-87339BCB-7547-4633-93EB-E11EF55906AA.htm#GUID-87339BCB-7547-4633-93EB-E11EF55906AA">Profile-guided Optimization Options</a> for information about the supported options and 
+		<a href="GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F.htm#GUID-B5DF6C43-542E-4C9D-8AB2-A951E0DFD45F">Profile an Application</a> for specific details about using PGO from the command line. 
+	 </p>
+ 
+	 <p> PGO provides the following benefits: 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-DEEE9F53-C123-44F0-AD7D-061C1C96B9EC"> 
+		<li> 
+		  <p>Use profile information for register allocation to optimize the location of spill code. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Improve branch prediction for indirect function calls by identifying the most likely targets. (Some processors have longer pipelines, which improves branch prediction and translates into high performance gains.) 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>Detect and do not vectorize loops that execute only a small number of iterations, reducing the run time overhead that vectorization might otherwise add. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p><a href="GUID-F72F0700-46DA-4FB7-9B73-6ADC12F9D086.htm#GUID-F72F0700-46DA-4FB7-9B73-6ADC12F9D086">Interprocedural optimization (IPO)</a> and PGO can affect each other; using PGO can often enable the compiler to make better decisions about 
+		<a href="GUID-00D25374-54FB-444D-A694-6189634C0B25.htm#GUID-00D25374-54FB-444D-A694-6189634C0B25">inline function expansion</a>, which increases the effectiveness of interprocedural optimizations. Unlike other optimizations, such as those strictly for size or speed, the results of IPO and PGO vary. This variability is due to the unique characteristics of each program, which often include different profiles and different opportunities for optimizations. 
+	 </p>
+ 
+	 <div class="section" id="GUID-463440B2-C3EE-4212-9940-FBD792B4C1F3"><h2 class="sectiontitle">Performance Improvements with PGO</h2> 
+		 
+		<p>PGO works best for code with many frequently executed branches that are difficult to predict at compile time. An example is the code with intensive error-checking in which the error conditions are false most of the time. The infrequently executed (cold) error-handling code can be relocated so the branch is rarely predicted incorrectly. Minimizing cold code interleaved into the frequently executed (hot) code improves instruction cache behavior. 
+		</p>
+ 
+		<p>When you use PGO, consider the following guidelines: 
+		</p>
+ 
+		<ul type="disc" id="GUID-E7C790BC-B6FD-48E0-8E06-764131159FE3"> 
+		  <li> 
+			 <p>Minimize changes to your program after you execute the instrumented code and before feedback compilation. During feedback compilation, the compiler ignores dynamic information for functions modified after that information was generated. (If you modify your program the compiler issues a warning that the dynamic information does not correspond to a modified function.) 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Repeat the instrumentation compilation if you make many changes to your source files after execution and before feedback compilation. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Know the sections of your code that are the most heavily used. If the data set provided to your program is very consistent and displays similar behavior on every execution, then PGO can probably help optimize your program execution. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p>Different data sets can result in different algorithms being called. The difference can cause the behavior of your program to vary for each execution. In cases where your code behavior differs greatly between executions, PGO may not provide noticeable benefits. If it takes multiple data sets to accurately characterize application performance then execute the application with all data sets then merge the dynamic profiles; this technique should result in an optimized application. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+		<p>You must insure that the benefit of the profiled information is worth the effort required to maintain up-to-date profiles. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-9C4692D9-BBDE-4F36-95B1-58295EAFA5B5.htm">Profile-Guided Optimization (PGO)</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

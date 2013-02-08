@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="OpenMP* Support Overview">
+<meta name="DC.Relation" scheme="URI" content="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-DC73701E-F863-46CE-B17B-79CA2657630B">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>OpenMP* Support Overview</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_openmp_over"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_openmp_over"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-DC73701E-F863-46CE-B17B-79CA2657630B">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">OpenMP* Support Overview</h1>
+ 
+   
+  <div> 
+    <p>The Intel&reg; compiler 
+      <span>introduces support for</span> the OpenMP* Version 
+      <span>3.1</span> API specification. For the complete 
+      <span>C++</span> language specification for OpenMP, see the OpenMP Application Program Interface Version 
+      <span>3.1</span> specification, which is available from the OpenMP web site (http://www.openmp.org/, click the Specifications link). 
+      <span><span>The descriptions of OpenMP language characteristics in this documentation will often use terms defined in the specifications.</span></span> 
+    </p>
+
+
+    <p>OpenMP provides symmetric multiprocessing (SMP) with the following major features: 
+    </p>
+ 
+    <ul type="disc" id="GUID-38AF2AEF-520E-441B-A084-DB52AA20CBD5"> 
+      <li> 
+        <p>Relieves the user from having to deal with the low-level details of iteration space partitioning, data sharing, and thread creation, scheduling, and synchronization. 
+        </p>
+ 
+      </li>
+ 
+      <li> 
+        <p>Provides benefit of performance available from shared memory multiprocessor and multi-core processor systems on all supported Intel architectures, including those processors with Intel&reg; Hyper-Threading Technology (Intel&reg; HT Technology). 
+        </p>
+ 
+      </li>
+ 
+    </ul>
+ 
+    <p>The compiler performs transformations to generate multithreaded code based on a developer's placement of OpenMP directives in the source program making it easy to add threading to existing software. The Intel compiler supports all of the current industry-standard OpenMP directives and compiles parallel programs annotated with OpenMP directives. 
+    </p>
+ 
+    <p>The compiler provides Intel-specific extensions to the OpenMP Version 
+      <span>3.1</span> specification including 
+      <a href="GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740.htm#GUID-BD9B39A7-5885-4C6C-A047-93F22EB85740">run-time library routines</a> and 
+      <a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">environment variables</a>. However, these extensions are only supported by the Intel compilers. A summary of the compiler options that apply to OpenMP* appears in 
+      <a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm#GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5">OpenMP* Options Quick Reference</a>. 
+    </p>
+ 
+    <p>Options that support OpenMP* are available for both Intel&reg; and non-Intel microprocessors but these options may perform additional optimizations on Intel&reg; microprocessors than they perform on non-Intel microprocessors. The list of major, user-visible OpenMP* constructs and features that may perform differently on Intel&reg; vs. non-Intel microprocessors includes: locks (internal and user visible), the SINGLE construct, barriers (explicit and implicit), parallel loop scheduling, reductions, memory allocation, and thread affinity and binding. 
+    </p>
+ 
+    <div class="section" id="GUID-1AB6DD01-97D5-4DD7-8234-7BE209A49A88"><h2 class="sectiontitle">Parallel Processing with OpenMP</h2> 
+       
+      <p>To compile with OpenMP, you need to prepare your program by annotating the code with OpenMP directives 
+        . The Intel compiler processes the program and internally produces a multithreaded version of the code which is then compiled. The output is an executable with the parallelism implemented by threads that execute parallel regions or constructs. 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-C42AE4A4-B2D5-435C-9D8A-26A9A3B67C27"><h2 class="sectiontitle">Using Other Compilers</h2> 
+       
+      <p>The OpenMP specification does not define interoperability of multiple implementations; therefore, the OpenMP implementation supported by other compilers and OpenMP support in Intel compilers might not be interoperable. Even if you compile and build the entire application with one compiler, be aware that different compilers might not provide OpenMP source compatibility that would allow you to compile and link the same set of application sources with a different compiler and get the expected parallel execution results. 
+      </p>
+ 
+      <p>Intel compilers include two sets of OpenMP libraries, as described in 
+        <a href="GUID-BAD5FFB7-D761-45CA-B539-E041CD0486E9.htm#GUID-BAD5FFB7-D761-45CA-B539-E041CD0486E9">OpenMP Source Compatibility and Interoperability with Other Compilers</a>. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-28F19C15-D059-4709-AE63-E5CC30543210.htm">OpenMP* Support</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

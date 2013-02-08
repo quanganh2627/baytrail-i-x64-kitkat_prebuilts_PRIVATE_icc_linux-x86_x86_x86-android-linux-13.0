@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Overview: Reduction Intrinsics">
+<meta name="DC.subject" content="intrinsics, reduction, overview">
+<meta name="keywords" content="intrinsics, reduction, overview">
+<meta name="DC.Relation" scheme="URI" content="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-BBFF1AF1-B17C-4D3F-83FD-0B6106D113DC.htm#GUID-BBFF1AF1-B17C-4D3F-83FD-0B6106D113DC">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-071B49E5-0F68-49C8-B030-018E7ABFC2F1">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Overview: Reduction Intrinsics</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_reduction_ovrvw"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-071B49E5-0F68-49C8-B030-018E7ABFC2F1">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Overview: Reduction Intrinsics </h1>
+ 
+   
+  <div> 
+    <p><span>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+    </p>
+ 
+    <p>Reduction intrinsics perform arithmetic operations on all elements of a source vector and return a scalar value. There are 14 reduction intrinsics. Their prototypes are available in the 
+      <span class="filepath">immintrin.h</span> header file. 
+    </p>
+ 
+    <p>To use the reduction intrinsics across all types, you can use the type cast intrinsics. The example below illustrates the usage. The 
+      <samp class="codeph">__cdecl _mm512_setzero_pd()</samp> reduction intrinsic sets all the elements of a float64 vector to zero. To set all other vector types to zero, do the following: 
+    </p>
+ 
+    <pre>#ifdef _m512_TYPED
+
+#define __cdecl _mm512_setzero_pd() __cdecl _mm512_castps_pd(__cdecl _mm512_setzero())
+#define __cdecl _mm512_setzero_ps() __cdecl _mm512_setzero()
+#define __cdecl _mm512_setzero_epi32() __cdecl _mm512_castps_si512(__cdecl _mm512_setzero())
+
+#else
+
+#define __cdecl _mm512_setzero_pd() __cdecl _mm512_setzero()
+#define __cdecl _mm512_setzero_ps() __cdecl _mm512_setzero()
+#define __cdecl _mm512_setzero_epi32() __cdecl _mm512_setzero()
+
+#endif</pre> 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DA61D17B-D39C-4B5A-A422-A242FC65935B.htm">Reduction Intrinsics</a></div>
+</div>
+<div><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-BBFF1AF1-B17C-4D3F-83FD-0B6106D113DC.htm#GUID-BBFF1AF1-B17C-4D3F-83FD-0B6106D113DC">Using Type Cast Intrinsics 
+        </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

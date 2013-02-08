@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_mask_i32gather_epi32, _mm256_mask_i32gather_epi32">
+<meta name="abstract" content="Gathers 2/4 doubleword values from memory referenced by the given base address, dword indices, and scale, using the given dword mask values. The corresponding Intel&reg; AVX2 instruction is VPGATHERDD.">
+<meta name="description" content="Gathers 2/4 doubleword values from memory referenced by the given base address, dword indices, and scale, using the given dword mask values. The corresponding Intel&reg; AVX2 instruction is VPGATHERDD.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, GATHER operations, _mm_mask_i32gather_epi32 (VPGATHERDD), _mm256_mask_i32gather_epi32 (VPGATHERDD)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, GATHER operations, _mm_mask_i32gather_epi32 (VPGATHERDD), _mm256_mask_i32gather_epi32 (VPGATHERDD)">
+<meta name="DC.Relation" scheme="URI" content="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-5C3CBF79-BAFF-451A-9585-2FF699EE651F">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_mask_i32gather_epi32, _mm256_mask_i32gather_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_mask_i32gather_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm256_mask_i32gather_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-5C3CBF79-BAFF-451A-9585-2FF699EE651F">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1">_mm_mask_i32gather_epi32, _mm256_mask_i32gather_epi32</h1>
+<!--Gathers  2/4 doubleword values from memory referenced by the given base address, dword indices, and scale, using the given dword mask values. The corresponding Intel&reg; AVX2 instruction is  VPGATHERDD .--><div><p>Gathers  2/4 doubleword values from memory referenced by the given base address, dword indices, and scale, using the given dword mask values. The corresponding Intel&reg; AVX2 instruction is <samp class="codeph">VPGATHERDD</samp>.</p>
+
+
+<div class="section" id="GUID-028B9EFA-9C1C-41AF-BC8E-9783517A5652"><h2>Syntax</h2>
+  
+
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m128i _mm_mask_i32gather_epi32(__m128i def_vals, int const * base, __m128i vindex, __m128i vmask, const int scale);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd"> extern __m256i _mm256_mask_i32gather_epi32(__m256i def_vals, int const * base, __m256i vindex, __m256i vmask, const int scale);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-AB71C1FD-67CB-4F3F-9E09-7FFBDD30A5FC"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>def_val </var>  </p></td>
+
+      <td valign="top" class="noborder"><p> the vector of dword values copied to the destination when the corresponding element of the vector mask is '<span>0</span>'.</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var> base </var></p></td>
+
+      <td valign="top" class="noborder"><p>  the base address used to reference the loaded dword elements.</p>
+</td>
+
+    </tr>
+	<tr>
+      <td valign="top" width="30%" class="noborder"><p><var>   vindex </var></p></td>
+
+      <td valign="top" class="noborder"><p>the vector of dword indices used to reference the loaded dword elements.</p>
+</td>
+
+    </tr>
+ 	<tr><td valign="top" width="30%" class="noborder"><p><var>vmask     </var></p></td>
+<td valign="top" class="noborder"><p> the vector of dword elements used as a vector mask; only the most significant bit of each dword is used as a mask.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><var>scale </var></p></td>
+	<td valign="top" class="noborder"><p> 32-bit scale used to address the loaded dword elements; it is multiplied by the corresponding element from '<var>vindex</var>'.</p>
+</td>
+</tr></table>
+
+	</div>
+
+
+<div class="section" id="GUID-5733DBE3-6D81-4B33-BD9B-8A4607DA29FC"><h2>Description</h2>
+<p>The intrinsics conditionally loads 2/4 doubleword values from memory   referenced by the given base address, dword indices and scale, and using the given dword mask values.</p>
+
+<p>Below is the pseudo-code for the intrinsics:</p>
+<p><samp class="codeph">_mm_mask_i32gather_epi32()</samp>:</p>
+<pre>result[31:0] = (vmask[31]==1) ? (mem[base+vindex[31:0]*scale]) : (def_vals[31:0]);
+result[63:32] = (vmask[63]==1) ? (mem[base+vindex[63:32]*scale]) : (def_vals[63:32]);
+result[95:64] = (vmask[95]==1) ? (mem[base+vindex[95:64]*scale]) : (def_vals[95:64]);
+result127:96] = (vmask[127]==1) ? (mem[base+vindex[127:96]*scale]) : (def_vals[127:96]);</pre><p><samp class="codeph">_mm256_mask_i32gather_epi32()</samp>:</p>
+<pre>result[31:0] = (vmask[31]==1) ? (mem[base+vindex[31:0]*scale]) : (def_vals[31:0]);
+result[63:32] = (vmask[63]==1) ? (mem[base+vindex[63:32]*scale]) : (def_vals[63:32]);
+result[95:64] = (vmask[95]==1) ? (mem[base+vindex[95:64]*scale]) : (def_vals[95:64]);
+result127:96] = (vmask[127]==1) ? (mem[base+vindex[127:96]*scale]) : (def_vals[127:96]);
+result[159:128] = (vmask[159]==1) ? (mem[base+vindex[159:128]*scale]) : (def_vals[159:128]);
+result[191:160] = (vmask[191]==1) ? (mem[base+vindex[191:160]*scale]) : (def_vals[191:160]);
+result[223:192] = (vmask[223]==1) ? (mem[base+vindex[223:192]*scale]) : (def_vals[223:192]);
+result[255:224] = (vmask[255]==1) ? (mem[base+vindex[255:224]*scale]) : (def_vals[255:224]);</pre></div>
+
+
+
+
+<div class="section" id="GUID-7C010D1E-8ECA-4062-93FC-D3BF47F63E7B"><h2>Returns</h2><p>A 128/256 vector with
+conditionally gathered integer32 values.</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D99FBCFC-55F5-4140-8C1A-C19FF6E063CC.htm">Intrinsics for GATHER Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

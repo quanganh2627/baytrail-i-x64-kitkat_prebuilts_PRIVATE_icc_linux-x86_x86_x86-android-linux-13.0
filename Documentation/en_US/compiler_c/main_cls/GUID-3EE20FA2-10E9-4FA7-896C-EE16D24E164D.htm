@@ -1,0 +1,183 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Exporting Makefiles">
+<meta name="DC.subject" content="Eclipse* integration, exporting makefiles">
+<meta name="keywords" content="Eclipse* integration, exporting makefiles">
+<meta name="DC.Relation" scheme="URI" content="GUID-FB79D190-9180-4683-B960-21DEB54668D4.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-A1A79415-652F-423F-B90A-CF320F91F959.htm#GUID-A1A79415-652F-423F-B90A-CF320F91F959">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3EE20FA2-10E9-4FA7-896C-EE16D24E164D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Exporting Makefiles</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_exp_make_cl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_exp_make_cl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3EE20FA2-10E9-4FA7-896C-EE16D24E164D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Exporting Makefiles</h1>
+ 
+   
+  <div> 
+    <p>Eclipse* can build a makefile that includes Intel&reg; compiler options for created 
+      <strong>Executables, Shared Libraries, or Static Library Projects</strong>. See 
+      <a href="GUID-A1A79415-652F-423F-B90A-CF320F91F959.htm#GUID-A1A79415-652F-423F-B90A-CF320F91F959">Setting Options for a Project or File</a>. When the project is complete, export the makefile and project source files to another directory, then build the project from the command line using 
+      <samp class="codeph">make</samp>. 
+    </p>
+ 
+    <div class="section" id="GUID-F0EDB0DC-7410-4893-82DD-4A9306E90A8B"><h2 class="sectiontitle">Exporting makefiles</h2> 
+       
+      <p>To export the makefile: 
+      </p>
+ 
+      <ol id="GUID-22DF96DA-979E-40F6-B383-89561953F2BE"> 
+        <li> 
+          <p>Select the project in the Eclipse* 
+            <b class="uicontrol">Project Explorer</b> view. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Select 
+            <span><b class="uicontrol">File</b> 
+               &gt; <b class="uicontrol">Export</b></span> to launch the 
+            <b class="uicontrol">Export Wizard</b>. 
+          </p>
+ 
+          <p>The 
+            <b class="uicontrol">Export</b> dialog box opens, showing the 
+            <b class="uicontrol">Select</b> screen. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Select 
+            <span><b class="uicontrol">General</b> 
+               &gt; <b class="uicontrol">File system</b></span>, then click 
+            <strong>Next.</strong> 
+          </p>
+ 
+          <p>The 
+            <b class="uicontrol">File System</b> screen opens. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Check both the 
+            <b class="uicontrol">hello_world</b> and 
+            <b class="uicontrol">Release</b> directories in the left-hand pane. Ensure all project sources are also checked in the right-hand pane. 
+            <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+              <p>Some files in the right-hand pane may be deselected, such as the 
+                <span class="filepath">hello_world.o</span> object file and the 
+                <span class="filepath">hello_world.exe</span> executable. However, 
+                <b class="uicontrol">Create directory structure for files</b> in the 
+                <b class="uicontrol">Options</b> section must also be selected to successfully create the export directory. This also applies to project files in the 
+                <span class="filepath">hello_world</span> directory. 
+              </p>
+ 
+            </div> 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use the 
+            <b class="uicontrol">Browse</b> button to target the export to an existing directory. Eclipse* can create a new directory for full paths entered in the 
+            <b class="uicontrol">To directory</b> text box. If, for example, 
+            <span class="filepath">/code/makefile</span> is specified as the export directory, Eclipse* creates two new sub-directories: 
+          </p>
+ 
+          <ul type="circle" class="circle" id="GUID-C8DF4168-97D6-43F7-A996-C7C78B09878C"> 
+            <li> 
+              <p><span class="filepath">/code/makefile/hello_world</span> 
+              </p>
+ 
+            </li>
+ 
+            <li> 
+              <p><span class="filepath">/code/makefile/hello_world/Release</span> 
+              </p>
+ 
+            </li>
+ 
+          </ul>
+ 
+        </li>
+ 
+        <li> 
+          <p>Click 
+            <b class="uicontrol">Finish</b> to complete the export. 
+          </p>
+ 
+        </li>
+ 
+      </ol>
+ 
+    </div>
+ 
+    <div class="section" id="GUID-F681A34F-A3C0-4D69-85C5-23DEEE2F8935"><h2 class="sectiontitle">Running make</h2> 
+       
+      <p>In a terminal window, change to the 
+        <span class="filepath">/cpp/hello_world/Release</span> directory, then run 
+        <span class="keyword">make</span> by typing: 
+        <samp class="codeph">make clean all</samp>.
+      </p>
+ 
+      <p>You should see the following output: 
+      </p>
+ 
+      <pre>rm -rf  ./hello_world.o  ./hello_world.d  hello_world
+
+Building file: ../hello_world.c
+
+Invoking: Intel IA-32 C Compiler
+icc -MMD -MP -MF "hello_world.d" -MT "hello_world.d" -c -o "hello_world.o" "../hello_world.c"
+
+Finished building: ../hello_world.c
+
+Building target: hello_world
+Invoking: Intel IA-32 C Linker
+icc  -o "hello_world"  ./hello_world.o
+Finished building target: hello_world</pre> 
+      <p>This generates the 
+        <span class="filepath">hello_world.exe</span> executable in the same directory. 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-FB79D190-9180-4683-B960-21DEB54668D4.htm">Make Files</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-A1A79415-652F-423F-B90A-CF320F91F959.htm#GUID-A1A79415-652F-423F-B90A-CF320F91F959">Setting Options for a Project or File 
+        </a> </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

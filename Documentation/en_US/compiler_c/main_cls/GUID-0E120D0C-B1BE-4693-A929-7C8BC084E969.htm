@@ -1,0 +1,96 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm_sllv_epi32/64">
+<meta name="abstract" content="Logical shift of word/doubleword elements in a 128-bit vector to left according variable values. The corresponding Intel&reg; AVX2 instruction is VPSLLVD or VPSLLVQ.">
+<meta name="description" content="Logical shift of word/doubleword elements in a 128-bit vector to left according variable values. The corresponding Intel&reg; AVX2 instruction is VPSLLVD or VPSLLVQ.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX2, logical shift operations, _mm_sllv_epi16 (VPSLLVD), _mm_sllv_epi32 (VPSLLVQ)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX2, logical shift operations, _mm_sllv_epi16 (VPSLLVD), _mm_sllv_epi32 (VPSLLVQ)">
+<meta name="DC.Relation" scheme="URI" content="GUID-25C533AB-7324-496E-8A43-092BAB83125F.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0E120D0C-B1BE-4693-A929-7C8BC084E969">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm_sllv_epi32/64</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx2_sllv_128"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm_sllv_epi32"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp._mm_sllv_epi64"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-0E120D0C-B1BE-4693-A929-7C8BC084E969">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm_sllv_epi32/64 </span></h1>
+
+
+<!--Logical shift of word/doubleword elements in a 128-bit vector to left according variable values. The corresponding Intel&reg; AVX2 instruction is  VPSLLVD  or  VPSLLVQ .--><div><p>Logical shift of word/doubleword elements in a 128-bit vector to left according variable values. The corresponding Intel&reg; AVX2 instruction is <span class="keyword">VPSLLVD</span> or <samp class="codeph">VPSLLVQ</samp>.</p>
+
+
+<div class="section" id="GUID-13AEFF56-BC7D-423A-9CA4-B1108C0ABD44"><h2>Syntax</h2>
+    <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128i _mm_sllv_epi32(__m128i s1, __m128i s2);</span></p></td></tr></table>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern __m128i _mm_sllv_epi64(__m128i s1, __m128i s2);</span></p></td></tr></table>
+  
+</div>
+
+
+<div class="section" id="GUID-4CF3C97F-0064-4AB7-9C3C-06DD25A9BFCE"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>128-bit integer source vector used for the operation</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>128-bit integer source vector providing variable values for shift operation</p>
+</td>
+
+    </tr>
+ </table>
+
+</div>
+
+
+<div class="section" id="GUID-F2457980-E276-4013-B35B-2D42F5FB0BEA"><h2>Description</h2>
+
+<p>Performs  a logical shift of 32 or 64 bits (doublewords, or quadword) in the individual data elements in source vector <var>s1</var> to the left by the count value of corresponding data elements in source vector <var>s2</var>. As the bits in the data elements are shifted left, the empty low-order bits are cleared (set to '<span>0</span>').</p>
+<p>The count values are specified individually in each data element of the second source vector. If the unsigned integer value specified in the respective data element of the second source vector is greater than 31 (for a doubleword), or 63 (for a quadword), then the destination data elements are set to  '<span>0</span>'.</p>
+</div>
+
+
+
+
+<div class="section" id="GUID-895DA632-8CBD-47B2-AE4A-166485A3E79D"><h2>Returns</h2><p> Result of the left-shift operation.
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-25C533AB-7324-496E-8A43-092BAB83125F.htm">Intrinsics for Logical Shift Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

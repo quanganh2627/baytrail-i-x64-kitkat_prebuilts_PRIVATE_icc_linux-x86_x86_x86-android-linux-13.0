@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Balanced Affinity Type">
+<meta name="DC.subject" content="Enter index keyword">
+<meta name="keywords" content="Enter index keyword">
+<meta name="DC.Relation" scheme="URI" content="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4">
+<meta name="DC.Relation" scheme="URI" content="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">
+<meta name="DC.Relation" scheme="URI" content="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8.htm#GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8FCD3720-6F73-429C-AE65-7144ED0B991A">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Balanced Affinity Type</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_omp_balanced_affinity_type"></MSHelp:Keyword>
+</xml>
+</head>
+<body id="GUID-8FCD3720-6F73-429C-AE65-7144ED0B991A">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Balanced Affinity Type</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>The affinity type 
+		<samp class="codeph">balanced</samp> is particularly useful on the Intel&reg; MIC Architecture. It is not supported for the CPU. 
+	 </p>
+ 
+	 <p>Under this setting, the OpenMP* runtime places threads on separate cores until all cores have at least one thread, similar to the 
+		<samp class="codeph">scatter</samp> type. However, when the runtime must use multiple hardware thread contexts on the same core, the 
+		<samp class="codeph">balanced</samp> type ensures that the OpenMP* thread numbers are close to each other, which 
+		<samp class="codeph">scatter</samp> does not do. 
+	 </p>
+ 
+	 <p>The following diagrams illustrate the allocation of six OpenMP* threads across a 3-core system with the 
+		<samp class="codeph">compact</samp>, 
+		<samp class="codeph">scatter</samp>, and 
+		<samp class="codeph">balanced</samp> affinity types. 
+	 </p>
+ 
+	 <div class="fignone" id="GUID-6B4F8691-87E5-4682-B163-9394B2DB295E"><span class="figcap">Allocation with the 
+		  <samp class="codeph">compact</samp> affinity type</span> 
+		<br><div class="imagecenter"><img src="GUID-2C931C25-C241-4399-9F89-E8DB99DA62A3-low.gif" align="center"></div><br> 
+	 </div>
+ 
+	 <p>On the Intel&reg; MIC Architecture, it is normally beneficial to use cores before threads, so the 
+		<samp class="codeph">compact</samp> affinity type is unlikely to yield the best results, because it leaves cores unused. 
+	 </p>
+ 
+	 <div class="fignone" id="GUID-B4D6C6ED-FD45-4B3B-88FA-71FFDF342951"><span class="figcap">Allocation with the 
+		  <samp class="codeph">scatter</samp> affinity type</span> 
+		<br><div class="imagecenter"><img src="GUID-46473C32-3622-4232-8132-375E68E52A72-low.gif" align="center"></div><br> 
+	 </div>
+ 
+	 <p>The thread allocation under 
+		<samp class="codeph">scatter</samp> is likely to be better than 
+		<samp class="codeph">compact</samp>, because it uses cores before threads. However, 
+		<samp class="codeph">scatter</samp> allocates thread IDs such that threads with IDs in close numerical proximity are on different cores, and therefore do not share caches. Because threads with neighboring IDs often operate on closely related data, placing them on different cores is unlikely to be the best way to allocate them. 
+	 </p>
+ 
+	 <div class="fignone" id="GUID-3BD3C6A4-C385-4602-93A4-6658F520E761"><span class="figcap">Allocation with 
+		  <samp class="codeph">balanced</samp> affinity type</span> 
+		<br><div class="imagecenter"><img src="GUID-21E60950-A946-4B32-A000-A9E1CC0BCBA4-low.gif" align="center"></div><br> 
+	 </div>
+ 
+	 <p>The thread allocation under 
+		<samp class="codeph">balanced</samp> is balanced over the cores and the threads allocated to a core are neighbors of each other. Therefore, cache utilization should be efficient if the threads access data that is near in store. 
+	 </p>
+ 
+	 <div class="fignone" id="GUID-BE12E74D-EDFC-4E00-9F29-9120878556DA"><span class="figcap">Allocation with 
+		  <samp class="codeph">balanced</samp> affinity type for 9 OpenMP* threads</span> 
+		<br><div class="imagecenter"><img src="GUID-F14B236E-A223-407D-B1A3-FC575A5225C1-low.gif" align="center"></div><br> 
+	 </div>
+ 
+	 <p>Tuning affinity is a complicated and machine specific process. Using the 
+		<samp class="codeph">balanced</samp> affinity type is a reasonable starting point on the Intel&reg; MIC Architecture. 
+	 </p>
+ 
+	 <p>The 
+		<samp class="codeph">balanced</samp> affinity type is supported and recognized by the OpenMP* runtime on the Intel&reg; MIC Architecture only. It is not supported and is ignored for the CPU. 
+	 </p>
+ 
+	 <p>Using the 
+		<samp class="codeph">balanced</samp> type with the environment variable 
+		<span class="keyword">KMP_AFFINITY</span> propagates to the coprocessor when 
+		<span class="keyword">MIC_ENV_PREFIX</span> is not set. However, this generates the following runtime warning on the CPU: 
+	 </p>
+ 
+	 <p>coprocessor 
+		<samp class="codeph">OMP: Warning #58: KMP_AFFINITY: parameter invalid, ignoring "balanced"</samp> 
+	 </p>
+ 
+	 <p> To set the 
+		<samp class="codeph">balanced</samp> affinity type for only the Intel&reg; MIC Architecture environment, assign a specific prefix using the 
+		<samp class="codeph">MIC_ENV_PREFIX=<var>prefix</var></samp> and then set 
+		<samp class="codeph"><var>prefix</var>_KMP_AFFINITY</samp> with 
+		<samp class="codeph">balanced</samp>. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-AEA3E08D-D38E-45BD-999F-C04D0137B608.htm">OpenMP* Considerations</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4.htm#GUID-8BA55F4A-D5AE-4E27-8C25-058B68D280A4">Thread Affinity Interface 
+		  </a></div>
+<div><a href="GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1.htm#GUID-E1EC94AE-A13D-463E-B3C3-6D7A7205F5A1">Setting Environment Variables 
+		  </a></div>
+<div><a href="GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8.htm#GUID-2AC46928-5E8F-42CF-A23C-2B42BA24CEF8">Setting Environment Variables on the CPU to Modify the Coprocessors Execution Environment 
+		  </a></div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

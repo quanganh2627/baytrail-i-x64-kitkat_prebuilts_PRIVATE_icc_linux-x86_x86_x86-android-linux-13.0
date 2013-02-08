@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="openmp-lib, Qopenmp-lib">
+<meta name="abstract" content="Lets you specify an OpenMP* run-time library to use for linking.">
+<meta name="description" content="Lets you specify an OpenMP* run-time library to use for linking.">
+<meta name="DC.subject" content="/Qopenmp-lib compiler option, -openmp-lib compiler option, OpenMP* run-time library, option specifying">
+<meta name="keywords" content="/Qopenmp-lib compiler option, -openmp-lib compiler option, OpenMP* run-time library, option specifying">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7">
+<meta name="DC.Relation" scheme="URI" content="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-2B9DCE08-359F-4B17-B466-CD7177DE67D2">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>openmp-lib, Qopenmp-lib</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_openmp_lib"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_openmp_lib"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-2B9DCE08-359F-4B17-B466-CD7177DE67D2">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">openmp-lib, Qopenmp-lib</h1>
+<!--Lets you specify an OpenMP* run-time library to use for linking.--><div><p>Lets you specify an OpenMP* run-time library to use for linking.</p>
+
+<div class="section" id="GUID-79625F22-0A59-4E79-A896-7B83F2B7F436"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-50AE44DE-F013-4B60-A1F8-202F1819E4EA"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-A4D6428C-5F37-43E2-B4B1-956B330B7C98"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-openmp-lib=</span><span class="var">type</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qopenmp-lib:</span><span class="var">type</span></p></td></tr></table></div>
+<div class="section" id="GUID-DA2ADB6F-EFA7-4567-82FD-3A02BCADFE02"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>type</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the type of library to use; it implies compatibility levels. Currently, the only possible value is:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">compat</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to use the compatibility OpenMP* run-time library (libiomp). This setting provides compatibility with object files created using Microsoft* and GNU* compilers.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-11EAB6A0-3C05-4671-B474-F71C8A2561A0"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-openmp-lib=compat</span> <br><span> or<span class="option">/Qopenmp-lib:compat</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses the compatibility OpenMP* run-time library (libiomp).</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-9E6B2A78-AB94-4B32-A14C-57A1DF25EBA8"><h2>Description</h2><p>This option lets you specify an OpenMP* run-time library to use for linking.</p>
+<p>The compatibility OpenMP run-time libraries are compatible with object files created using the Microsoft* OpenMP run-time library (vcomp) or the GNU OpenMP run-time library (libgomp).</p>
+<p>To use the compatibility OpenMP run-time library, compile and link your application using the <span class="option">-openmp-lib=compat</span>  (Linux* OS) or <span class="option">/Qopenmp-lib:compat</span> (Windows* OS) option. To use this option, you must also specify one of the following compiler options:</p>
+<ul type="disc" id="GUID-159F2352-8913-4F47-AEB4-1AF99B7F270D"><li><p>Linux* OS: <span class="option">-openmp</span>  or <span class="option">-openmp-stubs</span></p>
+</li>
+<li><p>Windows* OS: <span class="option">/Qopenmp</span> or <span class="option">/Qopenmp-stubs</span></p>
+</li>
+</ul>
+<p>On Windows* systems, the compatibility OpenMP* run-time library lets you combine OpenMP* object files compiled with the Microsoft* C/C++ compiler with OpenMP* object files compiled with the Intel&reg; C, Intel&reg; C++, or Intel&reg; Fortran compilers. The linking phase results in a single, coherent copy of the run-time library.</p>
+<p>On Linux* systems, the compatibility Intel OpenMP* run-time library lets you combine OpenMP* object files compiled with the GNU* gcc or gfortran compilers with similar OpenMP* object files compiled with the Intel&reg; C, Intel&reg; C++, or Intel&reg; Fortran compilers. The linking phase results in a single, coherent copy of the run-time library.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>The compatibility OpenMP run-time library is not compatible with object files created using versions of the Intel compilers earlier than 10.0.</p>
+</div></div>
+
+<div class="section" id="GUID-D676A48C-3319-4ECB-9BB5-C3114B2200CE"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7.htm#GUID-4AC3D696-F9A5-4064-A34A-A948300B80C7"><span class="option">openmp</span>, <span class="option">Qopenmp</span></a>  compiler option</div>
+<div><a href="GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D.htm#GUID-148D30AE-28FD-4F64-A404-E19D6C1CC94D"><span class="option">openmp-stubs</span>, <span class="option">Qopenmp-stubs</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="EMMS Usage Guidelines">
+<meta name="DC.subject" content="intrinsics, MMX&#8482; Technology, EMMS instruction, using, EMMS Instruction">
+<meta name="keywords" content="intrinsics, MMX&#8482; Technology, EMMS instruction, using, EMMS Instruction">
+<meta name="DC.Relation" scheme="URI" content="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-25F7C870-B385-4E15-9FD8-42038D4A2B1C">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>EMMS Usage Guidelines</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mmx_emms_usage"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-25F7C870-B385-4E15-9FD8-42038D4A2B1C">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">EMMS Usage Guidelines</h1>
+ 
+   
+  <div> 
+    <div class="section" id="GUID-29F2E22A-C97E-471B-B959-44746E626D27"> 
+      <p>Here are guidelines for when to use the EMMS instruction: 
+      </p>
+ 
+      <ul type="disc" id="GUID-1024CC69-8C1B-41F3-9A58-DC1BED89D30C"> 
+        <li> 
+          <p>Use 
+            <span class="keyword">_mm_empty()</span> after an MMX&#8482; instruction if the next instruction is a floating-point (FP) instruction. For example, you should use the EMMS instruction before performing calculations on 
+            <span class="keyword">float</span>, 
+            <span class="keyword">double</span> or 
+            <span class="keyword">long double</span>. You must be aware of all situations in which your code generates an MMX&#8482; instruction: 
+          <ul type="disc" id="GUID-0A3E6104-76FF-4703-917C-840AF94E5B8B"> 
+            <li> 
+              <p>when using an MMX&#8482; technology intrinsic 
+              </p>
+ 
+            </li>
+ 
+            <li> 
+              <p>when using Intel&reg; Streaming SIMD Extensions (Intel&reg; SSE) integer intrinsics that use the 
+                <span class="keyword">__m64</span> data type 
+              </p>
+ 
+            </li>
+ 
+            <li> 
+              <p>when referencing an 
+                <span class="keyword">__m64</span> data type variable 
+              </p>
+ 
+            </li>
+ 
+            <li> 
+              <p>when using an MMX&#8482; instruction through inline assembly 
+              </p>
+ 
+            </li>
+ 
+          </ul>
+ 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use different functions for operations that use floating point instructions and those that use MMX&#8482; instructions. This action eliminates the need to empty the multimedia state within the body of a critical loop. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Use 
+            <span class="keyword"> _mm_empty()</span> during runtime initialization of 
+            <span class="keyword">__m64</span> and FP data types. This ensures resetting the register between data type transitions. 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>Do not use 
+            <span class="keyword"> _mm_empty()</span> before an MMX&#8482; instruction, since using 
+            <span class="keyword"> _mm_empty()</span> before an MMX&#8482; instruction incurs an operation with no benefit (no-op). 
+          </p>
+ 
+        </li>
+ 
+        <li> 
+          <p>See the Correct Usage and Incorrect Usage coding examples in the following table. 
+          </p>
+ 
+        </li>
+ 
+      </ul>
+ 
+    </div>
+ 
+    
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9D5E5F13-E3CA-40FE-BB09-AAEFDEF35C1A" frame="hsides" border="1" rules="all"> 
+         
+         
+        <thead align="left"> 
+          <tr> 
+            <th class="cellrowborder" valign="top" width="50%" id="d111938e150"> 
+              <p>Incorrect Usage 
+              </p>
+ 
+            </th>
+ 
+            <th class="row-nocellborder" valign="top" width="50%" id="d111938e156"> 
+              <p>Correct Usage 
+              </p>
+ 
+            </th>
+ 
+          </tr>
+ 
+        </thead>
+ 
+        <tbody> 
+          <tr> 
+            <td class="cellrowborder" valign="top" width="50%" headers="d111938e150 "> 
+              <p><span class="option">__m64 x = _m_paddd(y, z);</span> 
+              </p>
+<br> 
+              <p><span class="option">float f = init();</span> 
+              </p>
+ 
+            </td>
+ 
+            <td class="row-nocellborder" valign="top" width="50%" headers="d111938e156 "> 
+              <p><span class="option">__m64 x = _m_paddd(y, z);</span> 
+              </p>
+<br> 
+              <p><span class="option">float f = ( _mm_empty(), init());</span> 
+              </p>
+ 
+            </td>
+ 
+          </tr>
+ 
+        </tbody>
+ 
+      </table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-96CFDB4E-9C93-4A48-9B50-693F6BF14EA5.htm">MMX&#8482; Technology Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

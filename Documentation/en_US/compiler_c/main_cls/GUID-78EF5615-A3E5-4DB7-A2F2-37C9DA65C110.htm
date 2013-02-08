@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="par-runtime-control, Qpar-runtime-control">
+<meta name="abstract" content="Generates code to perform run-time checks for loops that have symbolic loop bounds.">
+<meta name="description" content="Generates code to perform run-time checks for loops that have symbolic loop bounds.">
+<meta name="DC.subject" content="-par-runtime-control compiler option, /Qpar-runtime-control compiler option, loops, option performing run-time checks for">
+<meta name="keywords" content="-par-runtime-control compiler option, /Qpar-runtime-control compiler option, loops, option performing run-time checks for">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-78EF5615-A3E5-4DB7-A2F2-37C9DA65C110">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>par-runtime-control, Qpar-runtime-control</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_par_runtime_control"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_par_runtime_control"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-78EF5615-A3E5-4DB7-A2F2-37C9DA65C110">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">par-runtime-control, Qpar-runtime-control</h1>
+<!--Generates code to perform run-time checks for loops that have symbolic loop bounds.--><div><p>Generates code to perform run-time checks for loops that have symbolic loop bounds.</p>
+
+<div class="section" id="GUID-6A631EAA-B0AF-4F32-823C-99D4FD52EBE4"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-F381B78D-BB50-4488-B6BD-4509ADD006DB"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-DD85413B-D5B2-49CD-8023-B9D44EF6772A"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-par-runtime-control</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">-no-par-runtime-control</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-runtime-control</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p><p><span class="kwd">/Qpar-runtime-control-</span></p></td></tr></table></div>
+<div class="section" id="GUID-238E53AC-963A-4E65-A216-30F0397D23E7"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is a  a value denoting what kind of runtime checking to perform. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">0</span></p></td>
+<td valign="top" class="noborder"><p> Performs no runtime check based on auto-parallelization. This is the same as specifying <span class="option">-no-par-runtime-control</span> (Linux* OS and OS X*) or <span class="option">/Qpar-runtime-control-</span> (Windows* OS).</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+<td valign="top" class="noborder"><p> Generates runtime check code under conservative mode. This is the default if you do not specify <var>n</var>.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+<td valign="top" class="noborder"><p> Generates runtime check code under heuristic mode.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">3</span></p></td>
+<td valign="top" class="noborder"><p> Generates runtime check code under aggressive mode.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-12F2356C-E15E-4766-8FC0-1163643FE885"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-no-par-runtime-control</span><br><span> or<span class="option">/Qpar-runtime-control-</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses default heuristics when checking loops.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-71782C6F-16DD-4EC0-99FF-CBB79827C66D"><h2>Description</h2><p>This option generates code to perform run-time checks for loops that have symbolic loop bounds. </p>
+<p>If the granularity of a loop is greater than the parallelization threshold, the loop will be executed in parallel.</p>
+<p>If you do not specify this option, the compiler may not parallelize loops with symbolic loop bounds if the compile-time granularity estimation of a loop can not ensure it is beneficial to parallelize the loop.</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>This option may behave differently on Intel&reg; microprocessors than on non-Intel microprocessors.</p>
+</div></div>
+
+<div class="section" id="GUID-79146B37-C24D-463B-99CC-D02C4154C9B0"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

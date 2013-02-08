@@ -1,0 +1,162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Safety, Correctness, and Performance">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, reducer considerations">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, reducer considerations">
+<meta name="DC.Relation" scheme="URI" content="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-64FD8B58-54C6-47A6-9E69-DBA9B23E6496">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Safety, Correctness, and Performance</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_reducers_safe"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-64FD8B58-54C6-47A6-9E69-DBA9B23E6496">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Safety, Correctness, and Performance</h1>
+ 
+   
+  <div> 
+	 <p>When developing your program, be aware of the following safety, correctness, and performance considerations. 
+	 </p>
+ 
+	 <p><strong> The Reducer and the View</strong> 
+	 </p>
+ 
+	 <p> A reducer manages instances of a view; code in a parallel reduction computation updates the view instance for the current parallel strand. The current view instance is accessed by dereferencing the reducer: 
+		<samp class="codeph">*r = *r 
+		  <em>OP</em> a</samp>. 
+	 </p>
+ 
+	 <p>In other words, you can think of the reducer as being like a (smart) pointer to the view. 
+	 </p>
+ 
+	 <p> Some library reducers also allow the operation to be applied to the reducer itself, without the * operator:<samp class="codeph"> r = r 
+		  <em>OP</em> a</samp>. This notation is still supported for backward-compatibility reasons, but it obscures the fact that a view-lookup operation is taking place. New code should always access the view by dereferencing the reducer: 
+		<samp class="codeph">*reducer</samp>. 
+	 </p>
+ 
+	 <p> 
+		<strong>Safety</strong> 
+	 </p>
+ 
+	 <p> If a properly written reducer is used as described above, no data races will occur between accesses to the reducer's view in different parallel strands. 
+	 </p>
+ 
+	 <p> 
+		<strong> Floating-Point Operations</strong> 
+	 </p>
+ 
+	 <p> Floating-point arithmetic operations are not strictly associative because of overflow, underflow, and loss of precision resulting from the way that floating-point numbers are represented in a computer. This is a consideration that potentially affects any optimization that reassociates floating-point arithmetic, including reducers. 
+	 </p>
+ 
+	 <p> Before using a floating-point reducer, you should carefully consider the characteristics of your data and what the possible effects on the results may be. 
+	 </p>
+ 
+	 <p> 
+		<strong> Initial and Final Values</strong> 
+	 </p>
+ 
+	 <p> You can specify an initial value for a reducer with an argument to the reducer constructor, or you can set its initial value by calling the reducer 
+		<samp class="codeph">set_value()</samp> function. If you do not give a reducer an initial value, the default value of its data type will be used. Note that this is not necessarily the same as its identity value. 
+	 </p>
+ 
+	 <p> You can retrieve the final value of the computation by calling the reducer 
+		<samp class="codeph">get_value()</samp> function after the computation is complete. 
+	 </p>
+ 
+	 <p> 
+		<samp class="codeph">get_value()</samp> and 
+		<samp class="codeph">set_value()</samp> always access the view instance of the current strand. You can call them in the middle of a parallel computation, but the results will almost always be meaningless. The best policy is to use 
+		<samp class="codeph">set_value()</samp> only to initialize a reducer, and 
+		<samp class="codeph">get_value()</samp> only to retrieve its final value. 
+	 </p>
+ 
+	 <p> 
+		<strong> Permitted Operations</strong> 
+	 </p>
+ 
+	 <p> A reducer computes the correct result in a parallel computation (in other words, the same result as the serial computation) because its reduction operation is associative. Reassociating a non-associative computation will lead to undesired results. In other words, the only modifications that are permitted on a reducer's view are updates using its reduction operation ( 
+		<samp class="codeph">view = view 
+		  <em>OP</em> value</samp> ), or something that is semantically equivalent. (For example, permissible operations on an addition reducer include 
+		<samp class="codeph">view = view + value</samp> ,<samp class="codeph"> view += value</samp> (equivalent to 
+		<samp class="codeph">view = view + value</samp> ), 
+		<samp class="codeph">view++</samp> (equivalent to 
+		<samp class="codeph">view = view + 1</samp> ), and 
+		<samp class="codeph">view = view - value</samp> (equivalent to 
+		<samp class="codeph">view = view + (- value))</samp> .) 
+	 </p>
+ 
+	 <p> All library reducer classes enforce this restriction: 
+		<samp class="codeph">view = view * value</samp> or 
+		<samp class="codeph">view = value - view</samp> won't even compile if 
+		<samp class="codeph">view</samp> is the view of an addition reducer. Custom reducer classes may or may not enforce similar restrictions. If you use a reducer class that does not syntactically restrict the operations you can perform on its view, then it is up to you to understand and follow its operator restrictions. 
+	 </p>
+ 
+	 <p>
+	 </p>
+ 
+	 <p>
+	 </p>
+ 
+	 <p> 
+		<strong>Performance</strong> 
+	 </p>
+ 
+	 <p>When used judiciously, reducers can incur little or no runtime performance cost. However, there are some performance considerations to keep in mind: 
+	 </p>
+ 
+	 <p> 
+	 <ul type="disc" id="GUID-B9921121-ADB5-4A36-96AF-188A42289C80"> 
+		<li> There is a small overhead cost for accessing the view of a reducer. Remember that an assignment 
+		  <samp class="codeph">*reducer = *reducer + x</samp> has to access the view twice, while a direct modification such as 
+		  <samp class="codeph">*reducer += x</samp> only accesses it once. 
+		</li>
+ 
+		<li> 
+		  <p>The efficiency of reducers relies on the assumption that creating and merging view instances is cheap. If the identity and reduce operations do not have small constant execution times, then the performance benefits of parallel execution may be lost in the overhead of view management. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>There is some overhead at a 
+			 <span class="keyword">cilk_sync</span> for every reducer in the strands being synched, regardless of whether new views instances were created for them. This can be important if you use many reducers (for example, a large array of reducers). 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-0F63EF23-250C-4093-AB10-822DD1423405.htm">Reducers</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

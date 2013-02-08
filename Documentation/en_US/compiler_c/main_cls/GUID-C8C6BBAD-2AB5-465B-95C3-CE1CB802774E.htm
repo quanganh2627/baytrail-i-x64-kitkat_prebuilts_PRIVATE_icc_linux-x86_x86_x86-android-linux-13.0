@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="par-report, Qpar-report">
+<meta name="abstract" content="Controls the diagnostic information reported by the auto-parallelizer.">
+<meta name="description" content="Controls the diagnostic information reported by the auto-parallelizer.">
+<meta name="DC.subject" content="auto-parallelizer, option controlling level of diagnostics for, /Qpar-report compiler option, -par-report compiler option">
+<meta name="keywords" content="auto-parallelizer, option controlling level of diagnostics for, /Qpar-report compiler option, -par-report compiler option">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C8C6BBAD-2AB5-465B-95C3-CE1CB802774E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>par-report, Qpar-report</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_par_report"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_par_report"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C8C6BBAD-2AB5-465B-95C3-CE1CB802774E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">par-report, Qpar-report</h1>
+<!--Controls the diagnostic information reported by the auto-parallelizer.--><div><p>Controls the diagnostic information reported by the auto-parallelizer.</p>
+
+<div class="section" id="GUID-8AA8CCE9-D57E-43DE-BBA8-D5170674308A"><h2>IDE Equivalent</h2>
+<p class="ide">Windows: 
+								None</p>
+
+<p class="ide">Linux: 
+								<strong>Compilation Diagnostics &gt; Auto-Parallelizer Report</strong></p>
+
+<p class="ide">OS X: 
+								<strong>Diagnostics &gt; Auto-Parallelizer Report</strong></p>
+</div>
+<div class="section" id="GUID-61960BF9-CCA9-4EB3-A7BC-9EBACF185F6D"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-C7D423D2-C831-426A-8C9B-3D77FD7069C9"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-par-report</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-report</span><span class="delim">[</span><span class="var">n</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-7E723545-259D-43E8-9625-13F7476B6258"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is a value denoting which diagnostic messages to report. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">0</span></p></td>
+<td valign="top" class="noborder"><p>Tells the auto-parallelizer to report no diagnostic information.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">1</span></p></td>
+<td valign="top" class="noborder"><p>Tells the auto-parallelizer to report diagnostic messages for loops successfully auto-parallelized. The compiler also issues a "LOOP AUTO-PARALLELIZED" message for parallel loops.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">2</span></p></td>
+<td valign="top" class="noborder"><p>Tells the auto-parallelizer to report diagnostic messages for loops successfully and unsuccessfully auto-parallelized.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">3</span></p></td>
+<td valign="top" class="noborder"><p>Tells the auto-parallelizer to report the same diagnostic messages specified by 2 plus additional information about any proven or assumed dependencies inhibiting auto-parallelization (reasons for not parallelizing).</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-2D5C39F7-5DC3-48C6-B913-06C23E18A281"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-par-report1</span><br><span> or<span class="option">/Qpar-report1</span></span></p></td>
+<td valign="top" class="noborder"><p>If you do not specify <var>n</var>, the compiler displays diagnostic messages for loops successfully auto-parallelized. If you do not specify the option on the command line, the default is to display no messages.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-2F1A66E3-7D5B-47C8-97C4-FF1C290221B3"><h2>Description</h2><p>This option controls the diagnostic information reported by the auto-parallelizer (parallel optimizer). To use this option, you must also specify <span class="option">-parallel</span> (Linux* OS and OS X*) or <span class="option">/Qparallel</span> (Windows* OS).</p>
+<p>If this option is specified on the command line, the report is sent to <span class="keyword">stdout</span>.</p>
+</div>
+
+<div class="section" id="GUID-958FB64E-8296-481D-92BD-626002B6489C"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

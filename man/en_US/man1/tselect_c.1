@@ -1,0 +1,140 @@
+.\" .\" *********************************************************************
+.\" .\" *                                                                   *
+.\" .\" *             Copyright 2005\-2012, Intel Corporation                *
+.\" .\" *                                                                   *
+.\" .\" *                       All Rights Reserved.                        *
+.\" .\" *                                                                   *
+.\" .\" *********************************************************************
+.TH tselect 1 "Intel Corporation" "Copyright(C) 2005\-2012" "Test Prioritization Tool"
+./"
+./" UPdated 6/2007
+./"
+./"===============================================================
+.SH NAME
+tselect \- Invokes the test prioritization tool.
+./"===============================================================
+.SH SYNOPSIS
+.PP
+\fBtselect\fR [\fIoptions\fR] \-dpi_list <\fIfile\fR>
+.PP
+where:
+.IP \(bu 2
+[\fIoptions\fR] represents zero or more tool options (listed below).
+.IP \(bu 2
+\-dpi_list <\fIfile\fR> is a required option used to specify the path to the list file containing the list of the all .dpi files.
+./"===============================================================
+.SH DESCRIPTION
+The test prioritization tool provides software developers with a capability to quickly and easily select and prioritize application tests as application profiles change.
+.PP
+.B Note:
+The complete process of preparing the application for test prioritization tool use is documented in the Key Features section of the Intel(R) Compiler Documentation.
+.PP
+The major features of the test prioritization tool are:
+.IP \(bu 2
+Defining the tests that are most probably affected by the given change set.
+.IP \(bu 2
+Finding a small number of tests that expose defects associated with regressions caused by a change set.
+.IP \(bu 2
+Selecting and prioritizing the tests to achieve a certain level of code coverage in a minimal time.
+./"===============================================================
+.SH OPTIONS
+.TP
+\-dpi_list <file>
+Required. Specifies the name of the file that contains the names of the dynamic profile information files (.dpi). Each line of the file should contain one .dpi name optionally followed by its execution time. The name must uniquely identify the test. 
+.TP
+\-spi <file>
+Sets the pathname of the static profile information file (.spi). Default is pgopti.spi.
+.TP
+\-comp <file>
+Specifies the name of the file that contains the list of files being processed by tselect. Each line of <file> must include one module or dir name. For example: /dev/src, c:\edev\esrc, src.c, src.h are all valid names.
+.TP
+\-cutoff <value>
+Instructs the tool to terminate when the cumulative block coverage reaches a preset percentage, as specified by <value>, of pre\-computed total coverage. <value> must be greater than 0.0, e.g., 99.00. 
+.TP
+\-mintime
+Instructs the tool to minimize testing execution time. Execution time of each test must be provided on the same line of dpi_list file after the test name in dd:hh:mm:ss format.
+.TP
+\-nototal
+Instructs the tool to ignore the pre\-compute total coverage process.
+.TP
+\-o <file>
+Specifies the name of the output report file.
+.TP
+\-verbose
+Instructs the tool to generate more logging information about program progress.
+.TP
+\-help
+Prints options of the test prioritization tool.
+./"===============================================================
+.SH INSTRUCTIONS ON RUNNING THE TEST\-PRIORITIZATION TOOL
+To run the tool:
+.RS
+.IP 1) 4n
+Create the instrumented binary by compiling with \-prof\-genx. The corresponding static profile information file (.spi) will be created automatically.
+.IP 2) 4n
+Remove all .dyn files.
+.IP 3) 4n
+For each test 1, ... , test n do the following:
+.RS
+.IP a) 4n
+Run the instrumented application on one. The dynamic profile information file (.dyn) will be created automatically.
+.IP b) 4n
+Merge the dynamic profile information into the corresponding file (.dpi) by using a profmerge tool.
+.IP c) 4n
+Remove the .dyn file.
+.IP d) 4n
+Provide a list of test files (tests_list).
+.RE
+./"===============================================================
+.SH SEE ALSO
+.PP
+Refer to the \fIUsing Profile\-guided Optimization (PGO)\fR section of \fIKey Features\fR in the \fBIntel(R) Compiler Documentation\fR for detailed information about using this tool.
+./"===============================================================
+.SH COPYRIGHT INFORMATION
+.PP
+INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL(R) PRODUCTS.
+NO LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL
+PROPERTY RIGHTS IS GRANTED BY THIS DOCUMENT. EXCEPT AS PROVIDED IN INTEL\[aq]S TERMS
+AND CONDITIONS OF SALE FOR SUCH PRODUCTS, INTEL ASSUMES NO LIABILITY WHATSOEVER,
+AND INTEL DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY, RELATING TO SALE AND/OR USE
+OF INTEL PRODUCTS INCLUDING LIABILITY OR WARRANTIES RELATING TO FITNESS FOR A
+PARTICULAR PURPOSE, MERCHANTABILITY, OR INFRINGEMENT OF ANY PATENT, COPYRIGHT OR
+OTHER INTELLECTUAL PROPERTY RIGHT. UNLESS OTHERWISE AGREED IN WRITING BY INTEL,
+THE INTEL PRODUCTS ARE NOT DESIGNED NOR INTENDED FOR ANY APPLICATION IN WHICH THE
+FAILURE OF THE INTEL PRODUCT COULD CREATE A SITUATION WHERE PERSONAL INJURY OR
+DEATH MAY OCCUR.
+.PP
+Intel may make changes to specifications and product descriptions at any time,
+without notice. Designers must not rely on the absence or characteristics of any
+features or instructions marked "reserved" or "undefined." Intel reserves these for
+future definition and shall have no responsibility whatsoever for conflicts or
+incompatibilities arising from future changes to them. The information here is
+subject to change without notice. Do not finalize a design with this information.
+.PP
+The products described in this document may contain design defects or errors known
+as errata which may cause the product to deviate from published specifications.
+Current characterized errata are available on request.
+.PP
+Contact your local Intel sales office or your distributor to obtain the latest
+specifications and before placing your product order.
+.PP
+Copies of documents which have an order number and are referenced in this document,
+or other Intel literature, may be obtained by calling 1\-800\-548\-4725, or by visiting
+Intel\[aq]s Web Site.
+.PP
+Intel processor numbers are not a measure of performance. Processor numbers
+differentiate features within each processor family, not across different processor
+families. See http://www.intel.com/products/processor_number for details.
+.PP
+BunnyPeople, Celeron, Celeron Inside, Centrino, Centrino logo, Core Inside, FlashFile,
+i960, InstantIP, Intel, Intel logo, Intel386, Intel486, Intel740, IntelDX2, IntelDX4,
+IntelSX2, Intel Core, Intel Inside, Intel Inside logo, Intel. Leap ahead., Intel. Leap
+ahead. logo, Intel NetBurst, Intel NetMerge, Intel NetStructure, Intel SingleDriver,
+Intel SpeedStep, Intel StrataFlash, Intel Viiv, Intel vPro, Intel XScale, IPLink,
+Itanium, Itanium Inside, MCS, MMX, Oplus, OverDrive, PDCharm, Pentium, Pentium Inside,
+skoool, Sound Mark, The Journey Inside, VTune, Xeon, and Xeon Inside are trademarks of
+Intel Corporation in the U.S. and other countries.
+.PP
+* Other names and brands may be claimed as the property of others.
+.PP
+Copyright (C) 2005\-2012, Intel Corporation. All rights reserved.

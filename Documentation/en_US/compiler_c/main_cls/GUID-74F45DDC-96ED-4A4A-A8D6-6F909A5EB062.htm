@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm512_permutevar_epi32/ _mm512_mask_permutevar_epi32">
+<meta name="abstract" content="Permutes 32-bit blocks of an int32 vector. The corresponding instruction is VPERMD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="description" content="Permutes 32-bit blocks of an int32 vector. The corresponding instruction is VPERMD. This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).">
+<meta name="DC.subject" content="_mm512_permutevar_epi32, _mm512_mask_permutevar_epi32">
+<meta name="keywords" content="_mm512_permutevar_epi32, _mm512_mask_permutevar_epi32">
+<meta name="DC.Relation" scheme="URI" content="GUID-E903C1C4-A361-4D12-9A3A-DD1047B4A2A3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-74F45DDC-96ED-4A4A-A8D6-6F909A5EB062">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm512_permutevar_epi32/ _mm512_mask_permutevar_epi32</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_mic_mm512_mask_permutevar_epi32"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-74F45DDC-96ED-4A4A-A8D6-6F909A5EB062">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+<h1 class="topictitle1">_mm512_permutevar_epi32/ _mm512_mask_permutevar_epi32</h1>
+<!--Permutes 32-bit blocks of an int32 vector. The corresponding instruction is  VPERMD .  This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).--><div><p>Permutes 32-bit blocks of an int32 vector. The corresponding instruction is <samp class="codeph">VPERMD</samp>. <span>This intrinsic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span></p>
+
+<div class="section" id="GUID-3321C211-E241-48DA-9A2D-5A3BC98E42C0"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>Without Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_permutevar_epi32(__m512i v2, __m512i v3);</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p style="margin-top:10pt"><b>With Mask</b></p><p><span class="kwd">extern __m512i __cdecl _mm512_mask_permutevar_epi32(__m512i v1_old, __mmask16 k1, __m512i v2, __m512i v3);</span></p></td></tr></table></div>
+<div class="section" id="GUID-19BC0B4E-F687-4A3D-9AB5-5213E670019E"><h2>Parameters</h2>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-95898885-8653-42D7-82B9-8A20AA7711ED" width="100%" frame="void" border="1" rules="none" cellspacing="2"><tbody><tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<samp class="codeph">v1_old</samp></td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top"> Source vector that retains the old values of the destination vector. The resulting vector gets the corresponding elements from <samp class="codeph">v1_old</samp> for zero mask bits.</td>
+
+</tr>
+<tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<samp class="codeph">v2</samp> </td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top"> An int32 vector containing indices for permutation. </td>
+
+</tr>
+<tr>
+<td class="noborder" valign="top" width="22.88329519450801%"><samp class="codeph">v3</samp></td>
+
+<td class="noborder" valign="top" width="77.11670480549199%">A source int32 vector.  </td>
+
+</tr>
+<tr>
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+
+<samp class="codeph">k1</samp>
+
+</td>
+
+<td class="noborder" rowspan="1" colspan="1" valign="top">
+A writemask. Only  those elements of the source vectors with corresponding bit set to one in the <samp class="codeph">k1</samp> mask are computed and stored in the result.  The elements in the result vector corresponding to the zero bit in <samp class="codeph">k1</samp> are copied from corresponding elements of vector <samp class="codeph">v1_old</samp>.</td>
+
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="GUID-C95C624C-D6FB-4261-BDCB-6D804075D4EB"><h2>Description</h2>
+<p>Permutes 32-bit blocks of int32 vector <samp class="codeph">v3</samp> according to indices in the int32 vector <samp class="codeph">v2</samp>. The <samp class="codeph">i</samp>th element of the result is the <samp class="codeph">j</samp>th element of <samp class="codeph">v3</samp>, where <samp class="codeph">j</samp> is the <samp class="codeph">i</samp>th element of <samp class="codeph">v2</samp>.</p>
+<p>The resulting vector for the masked variant is populated by elements for which the corresponding bit in the writemask vector <samp class="codeph">k1</samp> is set. The remaining elements of the resulting vector for the masked variant are populated by corresponding elements from <samp class="codeph">v1_old</samp>.</p>
+<p>The non-masked variant of the intrinsic is equivalent to the masked variant with full mask (<samp class="codeph">k1=0xffff</samp>).</p>
+</div>
+<div class="section" id="GUID-3D1A9940-A1D3-4347-999E-8C743C1D5B4A"><h2>Returns</h2><p>Returns the result of the permutation.</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-E903C1C4-A361-4D12-9A3A-DD1047B4A2A3.htm">Shuffle Intrinsics</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

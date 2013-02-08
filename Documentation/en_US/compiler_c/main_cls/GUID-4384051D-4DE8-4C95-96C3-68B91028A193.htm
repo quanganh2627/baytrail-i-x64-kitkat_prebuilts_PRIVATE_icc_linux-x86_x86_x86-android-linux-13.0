@@ -1,0 +1,91 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="openmp-threadprivate, Qopenmp-threadprivate">
+<meta name="abstract" content="Lets you specify an OpenMP* threadprivate implementation.">
+<meta name="description" content="Lets you specify an OpenMP* threadprivate implementation.">
+<meta name="DC.subject" content="/Qopenmp-threadprivate compiler option, -openmp-threadprivate compiler option, OpenMP*, option specifying threadprivate">
+<meta name="keywords" content="/Qopenmp-threadprivate compiler option, -openmp-threadprivate compiler option, OpenMP*, option specifying threadprivate">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-4384051D-4DE8-4C95-96C3-68B91028A193">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>openmp-threadprivate, Qopenmp-threadprivate</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_openmp_threadprivate"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_openmp_threadprivate"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-4384051D-4DE8-4C95-96C3-68B91028A193">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">openmp-threadprivate, Qopenmp-threadprivate</h1>
+<!--Lets you specify an OpenMP* threadprivate implementation.--><div><p>Lets you specify an OpenMP* threadprivate implementation.</p>
+
+<div class="section" id="GUID-3D626D4B-7218-4ACA-968F-3AB78AB24FFA"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-84DFF8E1-C60E-40CC-BB95-E516A919716D"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-5A63A51B-C762-48EE-A98F-05B8FCB7933E"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux:</p></td><td valign="top" class="noborder"><p><span class="kwd">-openmp-threadprivate=</span><span class="var">type</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qopenmp-threadprivate:</span><span class="var">type</span></p></td></tr></table></div>
+<div class="section" id="GUID-2FE95C46-4E04-458C-91BF-4AD84E2B7359"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>type</var></p></td>
+<td valign="top" class="noborder"><p>Specifies the type of threadprivate implementation. Possible values are:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">legacy</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to use the legacy OpenMP* threadprivate implementation used in the previous releases of the Intel&reg; compiler. This setting does not provide compatibility with the implementation used by other compilers.  </p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">compat</span></p></td>
+<td valign="top" class="noborder"><p>Tells the compiler to use the compatibility OpenMP* threadprivate implementation  <span>based on applying the __declspec(thread) attribute to each threadprivate variable. The limitations of the attribute on a given platform also apply to the threadprivate implementation.</span> This setting provides compatibility with the implementation provided by the Microsoft* and GNU* compilers.  </p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-D225D285-418D-4507-9C77-73069DC517D6"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">-openmp-threadprivate=legacy</span><br> <span>or<span class="option">/Qopenmp-threadprivate:legacy</span></span></p></td>
+<td valign="top" class="noborder"><p>The compiler uses the legacy OpenMP* threadprivate implementation used in the previous releases of the Intel compiler. </p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-EAD41AD8-7AB1-42CD-9C07-E1F26B65B4F7"><h2>Description</h2><p>This option lets you specify an OpenMP* threadprivate implementation.</p>
+<p>The threadprivate implementation of the legacy OpenMP run-time library may not be compatible with object files created using OpenMP run-time libraries supported in other compilers.</p>
+<p>To use this option, you must also specify one of the following compiler options: </p>
+<ul type="disc" id="GUID-703B38C3-7DB4-4E09-B1FC-2CD4F4B9F71A"><li><p>Linux* OS: <span class="option">-openmp</span> or <span class="option">-openmp-stubs</span></p>
+</li>
+<li><p>Windows* OS: <span class="option">/Qopenmp</span> or <span class="option">/Qopenmp-stubs</span></p>
+</li>
+</ul>
+<p>The value specified for this option is independent of the value used for option <span class="option">-openmp-lib</span> (Linux OS) or <span class="option">/Qopenmp-lib</span> (Windows OS).</p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3><p>On OS X* systems, legacy is the only type of threadprivate supported.  Option <span class="option">-openmp-threadprivate</span>
+is not recognized by the compiler.</p>
+</div>
+</div>
+
+<div class="section" id="GUID-E841C2DA-B371-44C6-A2CD-7FD515B1EE1A"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

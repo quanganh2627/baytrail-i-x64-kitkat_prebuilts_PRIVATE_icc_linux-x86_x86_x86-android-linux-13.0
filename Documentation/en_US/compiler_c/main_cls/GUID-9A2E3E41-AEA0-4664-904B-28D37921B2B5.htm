@@ -1,0 +1,115 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="opt-args-in-regs, Qopt-args-in-regs">
+<meta name="abstract" content="Determines whether calls to routines are optimized by passing parameters in registers instead of on the stack.">
+<meta name="description" content="Determines whether calls to routines are optimized by passing parameters in registers instead of on the stack.">
+<meta name="DC.subject" content="-opt-args-in-regs compiler option, /Qopt-args-in-regs compiler option, routines, option passing parameters in registers">
+<meta name="keywords" content="-opt-args-in-regs compiler option, /Qopt-args-in-regs compiler option, routines, option passing parameters in registers">
+<meta name="DC.Relation" scheme="URI" content="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-9A2E3E41-AEA0-4664-904B-28D37921B2B5">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>opt-args-in-regs, Qopt-args-in-regs</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_opt_args_in_regs"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_opt_args_in_regs"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-9A2E3E41-AEA0-4664-904B-28D37921B2B5">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">opt-args-in-regs, Qopt-args-in-regs</h1>
+<!-- Determines whether calls to routines are optimized by passing  parameters   in registers instead of on the stack.--><div><p> Determines whether calls to routines are optimized by passing <span>parameters </span> in registers instead of on the stack.</p>
+
+<div class="section" id="GUID-DA0CFF5E-4169-45DC-83BB-D63B810032D2"><h2>IDE Equivalent</h2>
+		None
+
+	</div>
+
+<div class="section" id="GUID-6EFC60D2-609F-4E0B-AB9D-8B0EAD711F4C"><h2>Architectures</h2><p>IA-32 architecture</p>
+</div>
+
+<div class="section" id="GUID-B71F274E-A602-4820-BAED-7CE578B5652F"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">-opt-args-in-reg</span><span class="delim">[</span><span class="oper">=</span><span class="var">keyword</span><span class="delim">]</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qopt-args-in-reg</span><span class="delim">[</span><span class="oper">:</span><span class="var">keyword</span><span class="delim">]</span></p></td></tr></table></div>
+<div class="section" id="GUID-E7185A9B-6CF9-4DC1-B7B8-8EE7D50D8738"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="parmname">keyword</span></p></td>
+<td valign="top" class="noborder"><p>Specifies whether the optimization should be performed 
+
+ and under what conditions.
+Possible values are:
+
+</p>
+
+
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">none</span></p></td>
+<td valign="top" class="noborder"><p> The optimization is not performed. No <span>parameters </span>
+ are passed in registers. They are put on the stack.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">seen</span></p></td>
+<td valign="top" class="noborder"><p> Causes <span>parameters </span>
+ to be passed in registers when they are passed to routines whose definition can be seen in the same compilation unit.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">all</span></p></td>
+<td valign="top" class="noborder"><p> Causes <span>parameters </span>
+ to be passed in registers, whether they are passed to routines whose definition can be seen in the same compilation unit, or not. This value is only available on Linux* systems.</p>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-C2FC1F62-5098-4DC2-8266-020059E0EEAB"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p> <span class="option">-opt-args-in-regs=seen</span> <span>or <span class="option">/Qopt-args-in-regs:seen</span></span></p></td>
+<td valign="top" class="noborder"><p><span>Parameters </span>
+are passed in registers when they are passed to routines whose
+definition is seen in the same compilation unit
+</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-189A670D-C98E-4F64-B89B-46681E7AC1CE"><h2>Description</h2><p> This option determines whether calls to
+routines are optimized by passing <span>parameters </span>
+ in registers instead of on the stack. It also indicates the conditions when the optimization
+will be performed.</p>
+
+<p> This option can improve performance for
+Application Binary Interfaces (ABIs) that
+require <span>parameters </span>
+ to be passed in memory and compiled without
+interprocedural optimization (IPO).</p>
+
+<p> Note that on Linux* systems, if <span class="keyword">all</span> is specified, a small
+overhead may be paid when calling "unseen" routines that have not
+been compiled with the same option. This is because the call will
+need to go through a "thunk" to ensure that <span>parameters </span>
+ are placed back on the stack where the callee
+expects them.</p>
+
+</div>
+
+<div class="section" id="GUID-DAC41FBD-2E02-4B8E-A76D-8E37E34F9734"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-ECA922DD-FF3A-4D7D-9183-DBFD7A7A537A.htm">Advanced Optimization Options</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

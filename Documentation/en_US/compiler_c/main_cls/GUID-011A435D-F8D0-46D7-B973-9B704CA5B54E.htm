@@ -1,0 +1,1008 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="C/C++ Calling Conventions">
+<meta name="DC.subject" content="calling conventions, __regcall">
+<meta name="keywords" content="calling conventions, __regcall">
+<meta name="DC.Relation" scheme="URI" content="GUID-56224050-87E4-4F5A-868D-46EF5693E7DB.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>C/C++ Calling Conventions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="bldaps_calling_conv"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.bldaps_calling_conv"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">C/C++ Calling Conventions</h1>
+ 
+   
+  <div> 
+	 <p> There are a number of calling conventions that set the rules on how arguments are passed to a function and how the values are returned from the function. 
+	 </p>
+ 
+	 <div class="section" id="GUID-ED0AA03C-DA8E-4692-9ABF-D9D54106D21B"><h2 class="sectiontitle">Calling Conventions on Windows* OS </h2> 
+		 
+		<p> The following table summarizes the supported calling conventions on Windows* OS: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-EF1FEF64-F7D1-4C4A-B5E6-E19EF737BF1E" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e60"> 
+					 <p><strong> Calling Convention</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e68"> 
+					 <p><strong> Compiler option</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e76"> 
+					 <p><strong> Description</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e60 "> 
+					 <p><var>__cdecl</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e68 "> 
+					 <p><span class="option">/Gd</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e76 "> 
+					 <p>Default calling convention for C/C++ programs. Can be specified on a function with variable arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e60 "> 
+					 <p><var>__clrcall 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e68 "> 
+					 <p>none 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e76 "> 
+					 <p>Calling convention that specifies that a function can only be called from managed code. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e60 "> 
+					 <p><var>__stdcall 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e68 "> 
+					 <p><span class="option">/Gz</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e76 "> 
+					 <p>Standard calling convention used for Win32 API functions. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e60 "> 
+					 <p><var>__fastcall 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e68 "> 
+					 <p><span class="option">/Gr</span> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e76 "> 
+					 <p>Fast calling convention that specifies that arguments are passed in registers rather than on the stack. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e60 "> 
+					 <p><var>__regcall 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e68 "> 
+					 <p><span class="option">/Qregcall 
+					 </span>,which specifies that 
+					 <var>__regcall</var> is the default calling convention for functions in the compilation, unless another calling convention is specified on a declaration 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e76 "> 
+					 <p>Intel Compiler calling convention that specifies that as many arguments as possible are passed in registers; likewise, 
+						<var>__regcall</var> uses registers whenever possible to return values. This calling convention is ignored if specified on a function with variable arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e60 "> 
+					 <p><var>__thiscall 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e68 "> 
+					 <p>none 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e76 "> 
+					 <p>Default calling convention used by C++ member functions that do not use variable arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-FE2E0B79-2FCD-4DC8-8AA2-81EA6970F255"><h2 class="sectiontitle">Calling Conventions on Linux* OS and OS X*</h2> 
+		 
+		<p> The following table summarizes the supported calling conventions on Linux* OS and OS X*: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2F8F7572-24FC-499C-A956-BBB3273125DD" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e262"> 
+					 <p><strong> Calling Convention</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e270"> 
+					 <p><strong> Compiler Option</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e278"> 
+					 <p><strong> Description</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e262 "> 
+					 <p><var> __attribute((cdecl))</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e270 "> 
+					 <p> none 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e278 "> 
+					 <p> Default calling convention for C/C++ programs. Can be specified on a function with variable arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e262 "> 
+					 <p><var> __attribute((stdcall))</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e270 "> 
+					 <p> none 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e278 "> 
+					 <p> Calling convention that specifies the arguments are passed on the stack. Cannot be specified on a function with variable arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e262 "> 
+					 <p><var> __attribute((regparm (number)))</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e270 "> 
+					 <p> none 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e278 "> 
+					 <p> On systems based on IA-32 architecture, the regparm attribute causes the compiler to pass up to 
+						<em>number</em> arguments in registers EAX, EDX, and ECX instead of on the stack. Functions that take a variable number of arguments will continue to pass all of their arguments on the stack. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e262 "> 
+					 <p><var></var><var>__attribute__((regcall)) 
+						</var> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e270 "> 
+					 <p><span class="option">-regcall</span> , which specifies that 
+					 <var>__regcall 
+					 </var> is the default calling convention for functions in the compilation, unless another calling convention is specified on a declaration 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e278 "> 
+					 <p> Intel Compiler calling convention that specifies that as many arguments as possible are passed in registers; likewise, 
+						<var>__regcall</var> uses registers whenever possible to return values. This calling convention is ignored if specified on a function with variable arguments. 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-F7675A83-FA01-44C9-BD69-D49F891F7566"><h2 class="sectiontitle">The __regcall Calling Convention </h2> 
+		 
+		<p> The 
+		  <var>__regcall</var> calling convention is unique to the Intel compiler and requires some additional explanation. 
+		</p>
+ 
+		<p> To use __regcall, place the keyword before a function declaration. For example: 
+		</p>
+ 
+		<p><samp class="codeph">__regcall int foo (int i, int j); 
+		  </samp> 
+		</p>
+ 
+		<p><samp class="codeph">__attribute__((regcall)) foo (int I, int j); 
+		  </samp> (Linux OS and Mac OS X only) 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="AVAILREG"><a name="AVAILREG"><!-- --></a><h2 class="sectiontitle">Available 
+		  <span>__regcall</span> Registers</h2> 
+		 
+		<p> All registers 
+		  <span>in a __regcall function</span> can be used for parameter passing/returning a value, except those that are reserved by the compiler. The following table lists the registers that are available in each register class depending on the default ABI for the compilation. The registers are used in the order shown in the table. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C23AF040-71EF-4094-A005-CA4367AC5652" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e446"> 
+					 <p> 
+						<strong> Register class/Architecture</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e455"> 
+					 <p> 
+						<strong> IA-32</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e464"> 
+					 <p> 
+						<strong> Intel&reg; 64 
+						</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e446 "> 
+					 <p> GPR (see Note 1) 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e455 "> 
+					 <p> EAX, ECX, EDX, EDI, ESI 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e464 "> 
+					 <p> RAX, RCX, RDX, RDI, RSI, R8 - R15 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e446 "> 
+					 <p> FP 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e455 "> 
+					 <p> ST0 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e464 "> 
+					 <p> ST0 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e446 "> 
+					 <p> MMX 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e455 "> 
+					 <p> None 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e464 "> 
+					 <p> None 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e446 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e455 "> 
+					 <p> XMM0 - XMM7 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e464 "> 
+					 <p> XMM0 - XMM15 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e446 "> 
+					 <p> YMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e455 "> 
+					 <p> YMM0 - YMM7 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e464 "> 
+					 <p> YMM0 - YMM15 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> Note 1: On Windows systems based on Intel&reg; 64 architecture, R13 is not used for passing parameters or returning values and should be treated as reserved. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="DATATYPECLASS"><a name="DATATYPECLASS"><!-- --></a><h2 class="sectiontitle"><span>__regcall</span> Data Type Classification</h2> 
+		 
+		<p> Parameters and return values 
+		  <span>for __regcall</span> are classified by data type and are passed in the registers of the classes shown in the following table. 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-C1418D1D-6E69-4BEE-9261-88BC49F700D5" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e612"> 
+					 <p> 
+						<strong> Type (for both unsigned and signed types)</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e621"> 
+					 <p> 
+						<strong> IA-32</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e630"> 
+					 <p> 
+						<strong> Intel&reg; 64 
+						</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> bool, char, int, enum, _Decimal32, long, pointer 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> GPR 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> GPR 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> short, __mmask 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> GPR 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> GPR 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> long long, __int64 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> See Note 3; also see 
+						<a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#STRUCTDATATYPE">Structured Data Type Classification Rules</a> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> GPR 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> _Decimal64 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p>GPR 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> long double 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> FP 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> FP 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> float, double, float128, _Decimal128 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> __m128, __m128i, __m128d 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> __m256, __m256i, __m256d 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> YMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> YMM 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> __m512 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> n/a 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> n/a 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e612 "> 
+					 <p> complex type, struct, union 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e621 "> 
+					 <p> See 
+						<a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#STRUCTDATATYPE">Structured Data Type Classification Rules</a> 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e630 "> 
+					 <p> See 
+						<a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#STRUCTDATATYPE">Structured Data Type Classification Rules</a> 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> Note 2: For the purpose of structured types, the classification of GPR class is used. 
+		</p>
+ 
+		<p> Note 3: On systems based on IA-32 architecture, these 64-bit integer types (long long, __int64) get classified to the GPR class and are passed in two registers, as if they were implemented as a structure of two 32-bit integer fields. 
+		</p>
+ 
+		<p> Types that are smaller in size than registers than registers of their associated class are passed in the lower part of those registers; for example, float is passed in the lower 4 bytes of an XMM register. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="STRUCTDATATYPE"><a name="STRUCTDATATYPE"><!-- --></a><h2 class="sectiontitle"><span>__regcall</span> Structured Data Type Classification Rules </h2> 
+		 
+		<p> Structures/unions and complex types are classified similarly to what is described in the x86_64 ABI, with the following exceptions: 
+		</p>
+ 
+		<ul type="disc" id="GUID-8B9B3E91-0ADD-48F8-890D-E9A9A338FFD7"> 
+		  <li> 
+			 <p>There is no limitation on the overall size of a structure. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> The register classes for basic types are given in 
+				<a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#DATATYPECLASS">Data Type Classifications</a>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> For systems based on the IA-32 architecture, classification is performed on four-bytes. For systems based on other architectures, classification is performed on eight-bytes. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-76F9CD76-51EA-4B6D-8E65-9C11AB52A6AC"><h2 class="sectiontitle"><span>__regcall</span> Placement in Registers or on the Stack </h2> 
+		 
+		<p>After the classification described in 
+		  <a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#DATATYPECLASS">Data Type Classifications</a> and 
+		  <a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#STRUCTDATATYPE">Structured Data Type Classification Rules</a>, 
+		  <span>__regcall</span> parameters and return values are either put into registers specified in 
+		  <a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#AVAILREG">Available Registers</a> or placed in memory, according to the following: 
+		</p>
+ 
+		<ul type="disc" id="GUID-1FD2F6A7-3E06-4934-A312-43AA95D6478C"> 
+		  <li> 
+			 <p> Each chunk (eight bytes on systems based on Intel&reg; 64 architecture or four-bytes on systems based on IA-32 architecture) of a value of Data Type is assigned a register class. If enough registers from 
+				<a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#AVAILREG">Available Registers</a> are available, the whole value is passed in registers, otherwise the value is passed using the stack. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> If the classification were to use one or more register classes, then the registers of these classes from the table in 
+				<a href="GUID-011A435D-F8D0-46D7-B973-9B704CA5B54E.htm#AVAILREG">Available Registers</a> are used, in the order given there. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> 
+			 <p> If no more registers are available in one of the required register classes, then the whole value is put on the stack. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-5BCD4433-849F-46CA-B2A0-DB18B6734C9D"><h2 class="sectiontitle"><span>__regcall</span> Registers that Preserve Their Values </h2> 
+		 
+		<p> The following registers preserve their values across a 
+		  <span>__regcall</span> call, as long as they were not used for passing a parameter or returning a value: 
+		</p>
+ 
+		
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9633D404-B5FD-4250-8421-089F89D299F0" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"> 
+				<tr> 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e993"> 
+					 <p> 
+						<strong> Register class/ABI</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e1002"> 
+					 <p> 
+						<strong> IA-32</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				  <th class="cellrowborder" valign="top" width="NaN%" id="d1995e1011"> 
+					 <p> 
+						<strong> Intel&reg; 64</strong> 
+					 </p>
+ 
+				  </th>
+ 
+				</tr>
+</thead>
+ 
+			 <tbody> 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e993 "> 
+					 <p> GPR 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1002 "> 
+					 <p> ESI, EDI, EBX, EBP, ESP 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1011 "> 
+					 <p> R10 - R15, RBX, RBP, RSP 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e993 "> 
+					 <p> FP 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1002 "> 
+					 <p> None 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1011 "> 
+					 <p> None 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e993 "> 
+					 <p> MMX 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1002 "> 
+					 <p> None 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1011 "> 
+					 <p> None 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e993 "> 
+					 <p> XMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1002 "> 
+					 <p> XMM4 - XMM7 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1011 "> 
+					 <p> XMM8 - XMM15 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+				<tr> 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e993 "> 
+					 <p> YMM 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1002 "> 
+					 <p> XMM4 - XMM7 
+					 </p>
+ 
+				  </td>
+ 
+				  <td class="cellrowborder" valign="top" width="NaN%" headers="d1995e1011 "> 
+					 <p>XMM8 - XMM15 
+					 </p>
+ 
+				  </td>
+ 
+				</tr>
+ 
+			 </tbody>
+ 
+		  </table>
+</div>
+ 
+		<p> All other registers do not preserve their values across this call. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-4ACC68FC-E4FD-461E-A028-379B0EBB9577"><h2 class="sectiontitle"><span>__regcall</span> Decoration </h2> 
+		 
+		<p> Function names used with 
+		  <var>__regcall</var> are decorated. Specifically, they are prepended with 
+		  <var>__regcall__</var> before any further traditional mangling occurs. For example, the function 
+		  <samp class="codeph">foo</samp> would be decorated as follows: 
+		  <samp class="codeph">__regcall__foo</samp>. This helps avoid improper linking with a name following a different calling convention, while allowing the full range of manipulations to be done with 
+		  <samp class="codeph">foo</samp> (such as setting a breakpoint in the debugger). 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-56224050-87E4-4F5A-868D-46EF5693E7DB.htm">Compiler Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

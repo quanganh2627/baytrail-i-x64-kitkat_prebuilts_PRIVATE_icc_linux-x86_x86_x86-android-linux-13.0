@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Enabling Further Loop Parallelization for Multicore Platforms">
+<meta name="DC.subject" content="Intel&reg; Hyper-Threading Technology, parallel loops, thread pools, thread pooling, parallel pragma, private clause, lastprivate clause">
+<meta name="keywords" content="Intel&reg; Hyper-Threading Technology, parallel loops, thread pools, thread pooling, parallel pragma, private clause, lastprivate clause">
+<meta name="DC.Relation" scheme="URI" content="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-9FF30CC8-74BB-48E6-A1A7-D2D67754BDB0.htm#GUID-9FF30CC8-74BB-48E6-A1A7-D2D67754BDB0">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-47365FA2-56A1-48A3-827E-91757AF66192">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Enabling Further Loop Parallelization for Multicore Platforms</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_par_multicore_loops"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_par_multicore_loops"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-47365FA2-56A1-48A3-827E-91757AF66192">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Enabling Further Loop Parallelization for Multicore Platforms</h1>
+ 
+   
+  <div> 
+	 <p>Parallelizing loops for multicore platforms is subject to certain conditions. Three requirements must be met for the compiler to parallelize a loop: 
+	 <ul type="disc" id="GUID-3B8D50F4-9D44-44DB-9F5B-953206EB1A1E"> 
+		<li>The number of iterations must be known before entry into a loop so that the work can be divided in advance. A 
+		  <samp class="codeph">while</samp> loop, for example, usually cannot be made parallel. 
+		</li>
+ 
+		<li>There can be no jumps into or out of the loop. 
+		</li>
+ 
+		<li>The loop iterations must be independent, that is, cross-iteration dependencies must be absent. 
+		</li>
+ 
+	 </ul>
+ 
+	 </p>
+ 
+	 <p>In other words, correct results must not logically depend on the order in which the iterations are executed. There may, however, be slight variations in the accumulated rounding error, as, for example, when the same quantities are added in a different order. In some cases, such as summing an array or other uses of temporary scalars, the compiler may be able to remove an apparent dependency by a simple transformation. 
+	 </p>
+ 
+	 <p>Potential aliasing of pointers or array references is another common impediment to safe parallelization. Two pointers are aliased if both point to the same memory location. The compiler may not be able to determine whether two pointers or array references point to the same memory location. For example, if they depend on function arguments, run-time data, or the results of complex calculations. 
+	 </p>
+ 
+	 <p>If the compiler cannot prove that pointers or array references are safe the compiler will not parallelize the loop, except in limited cases when it is deemed worthwhile to generate alternative code paths to test explicitly for aliasing at run-time. 
+	 </p>
+ 
+	 <p>An alternative way in C to assert that a pointer is not aliased is to use the 
+		<span class="keyword">restrict</span> keyword in the pointer declaration, along with the 
+  <span class="option">-restrict</span> (Linux* OS and OS X*) or 
+  <span class="option">/Qrestrict</span> (Windows* OS) command-line option. The compiler will never parallelize a loop that it can prove to be unsafe. 
+  </p>
+ 
+  <p>If you know parallelizing a particular loop is safe and that potential aliases can be ignored, you can instruct the compiler to parallelize the loop using the 
+	 <span class="keyword">#pragma parallel</span> 
+	 <span> pragma.</span></p>
+ 
+  <div class="section" id="GUID-55422C2C-3981-4088-BDDF-FADA25D71A0D"><h2 class="sectiontitle">Parallelizing Loops with Cross-iteration Dependencies</h2> 
+	  
+	 <p> Before the compiler can auto-parallelize a loop, it must prove that the loop does not have potential cross-iteration dependencies that prevent parallelization. A cross-iteration dependency exists if a memory location is written to in an iteration of a loop and accessed (read from or written to) in another iteration of the loop. Cross-iteration dependencies often occur in loops that access overlapping array ranges, such as a loop that reads from 
+		<samp class="codeph">a[1:100]</samp> and writes to 
+		<samp class="codeph">a[0:99]</samp>. 
+	 </p>
+ 
+	 <p> Sometimes, even though a loop does not have cross-iteration dependencies, the compiler does not have enough information to prove it and does not parallelize the loop. In such cases,you can assist the compiler by providing additional information about the loop using the 
+		<span class="keyword">#pragma parallel</span>. Adding 
+		<span class="keyword">#pragma parallel</span> before a 
+		<samp class="codeph">for</samp> loop informs the compiler that the loop does not have cross-iteration dependencies. Thus, the auto-parallelization analysis ignores potential dependencies that it assumes could exist. However, the compiler may still end up not parallelizing the loop if its heuristics estimate that parallelization is not likely to increase performance of the loop. 
+	 </p>
+ 
+	 <p> The 
+		<span class="keyword">#pragma parallel always</span> 
+		<span> pragma</span> has the same effect to ignore potential dependencies as 
+		<span class="keyword">#pragma parallel</span> 
+		<span> pragma</span>, but it also overrides the compiler heuristics that estimate the likelihood that parallelization of a loop would increase performance. It allows a loop to be parallelized even when the compiler estimates that parallelization might not improve performance. 
+	 </p>
+ 
+	 <p> The 
+		<span class="keyword">#pragma noparallel</span><span>pragma</span> prevents auto-parallelization of the immediately following 
+		<samp class="codeph">for</samp> loop. Unlike 
+		<span class="keyword">#pragma parallel</span>, which is a hint, the 
+		<span>pragma</span><span class="keyword">noparallel</span> is guaranteed to prevent parallelization of the following loop. 
+	 </p>
+ 
+	 <p> These 
+		<span>pragmas</span> take effect only if auto-parallelization is enabled by the option 
+	 <span class="option">/Qparallel</span> (Windows* operating system) or<span class="option"> -parallel 
+	 </span>(Linux* or OS X* operating systems). 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-5D5E60CF-3096-42D9-8E79-03E22DCD429C"><h2 class="sectiontitle">Parallelizing Loops with Private Clauses</h2> 
+	  
+	 <p>When you use the Guided Auto Parallelism feature, the compiler’s auto-parallelizer gives you advice on where to alter your program to enhance parallelization. For instance, you may get advice to check if a condition (that the compiler could not prove) is true, and if true, to insert 
+		<span class="keyword">#pragma parallel</span> in your source code so that the associated loop is parallelized when you recompile. 
+	 </p>
+ 
+	 <p>One condition that the compiler may seek verification for is whether a variable can be privatized. To specify that it is legal for each thread to create a new, private copy (not visible by other threads) of a variable, and replace the original variable in the loop with the new private variable, use the 
+		<span><span class="keyword">#pragma parallel</span> pragma</span> with the 
+		<var>private</var> clause. The 
+		<var>private</var> clause allows you to list scalar and array type variables and specify the number of array elements to privatize. 
+	 </p>
+ 
+	 <p>Use the 
+		<var>firstprivate</var> clause to specify private variables that need to be initialized with the original value before entering the parallel loop. 
+	 </p>
+ 
+	 <p>Use the 
+		<var>lastprivate</var> clause to specify those variables whose value you want to reuse after it exits a parallelized loop. When you use the 
+		<var>lastprivate</var> clause to handle a particular privatized variable, its value is copied to the original variable when it exits from the parallelized loop. 
+	 </p>
+ 
+	 <div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		<p>Do not use the same variable in both 
+		  <var>private</var> and 
+		  <var>lastprivate</var> clauses for the same loop. You will get an error message. 
+		</p>
+ 
+	 </div> 
+  </div>
+ 
+  <div class="section" id="GUID-418EADDA-E23D-4784-B322-84604800DC0B"><h2 class="sectiontitle">Parallelizing Loops with External Function Calls</h2> 
+	  
+	 <p>The compiler can only effectively analyze loops with a relatively simple structure. For example, the compiler cannot determine the thread safety of a loop containing external function calls because it does not know whether the function call might have side effects that introduce dependences. 
+		 You can invoke interprocedural optimization with the 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> (Linux* OS and OS X*) or 
+		<a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> (Windows) compiler option. Using this option gives the compiler the opportunity to analyze the called function for side effects. 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-3A12F14E-3CF6-4808-8549-E92F6E945C92"><h2 class="sectiontitle">Parallelizing Loops with OpenMP*</h2> 
+	  
+	 <p>When the compiler is unable to automatically parallelize loops you know to be parallel, use OpenMP*. OpenMP* is the preferred solution because you, as the developer, understand the code better than the compiler and can express parallelism at a coarser granularity. On the other hand, automatic parallelization can be effective for nested loops, such as those in a matrix multiply. Moderately coarse-grained parallelism results from threading of the outer loop, allowing the inner loops to be optimized for fine-grained parallelism using vectorization or software pipelining. 
+	 </p>
+ 
+  </div>
+ 
+  <div class="section" id="GUID-DF7AD6E7-D68D-4F49-971D-8F41BA8A5E52"><h2 class="sectiontitle">Threshold Parameter to Parallelize Loops</h2> 
+	  
+	 <p>If a loop can be parallelized, it's not always the case that it should be parallelized. The compiler uses a threshold parameter to decide whether to parallelize a loop. The 
+	 <span class="option">-par-threshold</span> (Linux* OS and OS X*) or 
+	 <span class="option">/Qpar-threshold</span> (Windows* OS) compiler option adjusts this behavior. The threshold ranges from 0 to 100, where 0 instructs the compiler to always parallelize a safe loop and 100 instructs the compiler to only parallelize those loops for which a performance gain is highly probable. Use the 
+	 <span class="option">-par-report</span> (Linux* OS and OS X*) or 
+	 <span class="option">/Qpar-report</span> (Windows* OS) compiler option to determine which loops were parallelized. The compiler will also report which loops could not be parallelized indicate a probably reason why it could not be parallelized. See 
+	 <a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm#GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5">OpenMP* and Parallel Processing Options</a> for more information on the using these compiler options. 
+	 </p>
+ 
+  </div>
+ 
+  <p>The following example illustrates using the options in combination. Assume you have the following code: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-462D0A0B-E274-4831-9948-0DF25574E1F1" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr valign="top"> 
+			 <th class="cellrowborder" valign="top" width="100%" id="d220181e296"> 
+				<p>Example code 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" width="100%" headers="d220181e296 "> 
+				<pre>void add (int k, float *a, float *b)</pre> 
+				<pre>{</pre> 
+				<pre>&nbsp;&nbsp;for (int i = 1; i &lt; 10000; i++){</pre> 
+				<pre>&nbsp;&nbsp;&nbsp;a[i] = a[i+k] + b[i];</pre> 
+				<pre>&nbsp;&nbsp;}</pre> 
+				<pre>}</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		  </tbody>
+ 
+	 </table>
+</div>
+ 
+  <p>Entering a command-line compiler command similar to the following will result in the compiler issuing parallelization messages: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-51C86B3B-595D-419B-9F32-BFB3BA8F84AF" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr> 
+			 <th class="cellrowborder" valign="top" width="20%" id="d220181e347"> 
+				<p>Operating System 
+				</p>
+ 
+			 </th>
+ 
+			 <th class="cellrowborder" valign="top" width="80%" id="d220181e353"> 
+				<p>Example Command 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="20%" headers="d220181e347 "> 
+				<p>Linux and OS X 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="80%" headers="d220181e353 "> 
+				<p><samp class="codeph">icpc -c -parallel -par-report3 add.cpp</samp> 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		  <tr> 
+			 <td class="cellrowborder" valign="top" width="20%" headers="d220181e347 "> 
+				<p>Windows 
+				</p>
+ 
+			 </td>
+ 
+			 <td class="cellrowborder" valign="top" width="80%" headers="d220181e353 "> 
+				<p><samp class="codeph">icl /c /Qparallel /Qpar-report3 add.cpp</samp> 
+				</p>
+ 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	 </table>
+</div>
+ 
+  <p>The compiler might report results similar to those listed below: 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-FDC3EB5F-DA36-4E9F-834B-CE39DE6B2117" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr valign="top"> 
+			 <th class="cellrowborder" valign="top" width="100%" id="d220181e412"> 
+				<p>Sample results 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" width="100%" headers="d220181e412 "> 
+				<pre>add.cpp</pre> 
+				<pre>procedure:</pre> 
+				<pre>add serial loop: line 2</pre> 
+				<pre>anti data dependence assumed from line 2 to line 2, due to "a"</pre> 
+				<pre>flow data dependence assumed from line 2 to line 2, due to "a"</pre> 
+				<pre>flow data dependence assumed from line 2 to line 2, due to "a"</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	 </table>
+</div>
+ 
+  <p>Because the compiler does not know the value of 
+	 <var>k</var>, the compiler assumes the iterations depend on each other, for example if 
+	 <var>k</var> equals 
+	 <samp class="codeph">-1</samp>, even if the actual case is otherwise. You can override the compiler by inserting the 
+	 <span class="keyword">#pragma parallel</span><span>pragma</span>. 
+  </p>
+ 
+  
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-2A869EB3-6D7D-404E-84EE-EDF6CEB3069F" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		<thead align="left"> 
+		  <tr valign="top"> 
+			 <th class="cellrowborder" valign="top" width="100%" id="d220181e477"> 
+				<p>Example 
+				</p>
+ 
+			 </th>
+ 
+		  </tr>
+ 
+		</thead>
+ 
+		<tbody> 
+		  <tr valign="top"> 
+			 <td class="cellrowborder" valign="top" width="100%" headers="d220181e477 "> 
+				<pre>void add(int k, float *a, float *b)</pre> 
+				<pre>{</pre> 
+				<pre>&nbsp;&nbsp;#pragma parallel</pre> 
+				<pre>&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; 10000; i++){</pre> 
+				<pre>&nbsp;&nbsp;&nbsp;&nbsp;a[i] = a[i+k] + b[i];</pre> 
+				<pre>&nbsp;&nbsp;&nbsp;}</pre> 
+				<pre>}</pre> 
+			 </td>
+ 
+		  </tr>
+ 
+		</tbody>
+ 
+	 </table>
+</div>
+ 
+  <p>As the developer, it is your responsibility to not call this function with a value of 
+	 <var>k</var> that is less than 10000; passing a value less than 10000 could lead to incorrect results. 
+  </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-06B54325-1C5C-41E7-A9CD-0E3A8542DC05.htm">Automatic Parallelization</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-9FF30CC8-74BB-48E6-A1A7-D2D67754BDB0.htm#GUID-9FF30CC8-74BB-48E6-A1A7-D2D67754BDB0">parallel pragma 
+		  </a> &nbsp;
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

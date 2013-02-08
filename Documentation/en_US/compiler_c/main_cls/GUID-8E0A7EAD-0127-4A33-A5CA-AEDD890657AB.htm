@@ -1,0 +1,331 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Compiler Directed Inline Expansion of Functions">
+<meta name="DC.subject" content="conditional parallel region execution, inline expansion, disabling, inlining, efficient, compiler directed, interprocedural optimizations, user functions">
+<meta name="keywords" content="conditional parallel region execution, inline expansion, disabling, inlining, efficient, compiler directed, interprocedural optimizations, user functions">
+<meta name="DC.Relation" scheme="URI" content="GUID-6608F908-2791-4059-8DD9-936FEAB81936.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-8E0A7EAD-0127-4A33-A5CA-AEDD890657AB">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Compiler Directed Inline Expansion of Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="optaps_ipo_cinl"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.optaps_ipo_cinl"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-8E0A7EAD-0127-4A33-A5CA-AEDD890657AB">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Compiler Directed Inline Expansion of Functions</h1>
+ 
+   
+  <div> 
+	 <p>Without directions from the user, the compiler attempts to estimate what functions should be inlined to optimize application performance. See 
+		<a href="GUID-00D25374-54FB-444D-A694-6189634C0B25.htm#GUID-00D25374-54FB-444D-A694-6189634C0B25">Inline Function Expansion</a> for more information. 
+	 </p>
+ 
+	 <p>The following options are useful in situations where an application can benefit from user function inlining but does not need specific direction about inlining limits. Except where noted, these options are supported on all Intel architectures. 
+	 </p>
+ 
+	 
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-4D148307-C4CC-4465-B8F9-AF1211761311" width="100%" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr valign="middle"> 
+				<th class="cellrowborder" align="left" valign="middle" id="d485166e73"> 
+				  <p>Linux* and OS X* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="middle" id="d485166e79"> 
+				  <p>Windows* 
+				  </p>
+ 
+				</th>
+ 
+				<th class="cellrowborder" align="left" valign="middle" id="d485166e85"> 
+				  <p>Effect 
+				  </p>
+ 
+				</th>
+ 
+			 </tr>
+ 
+		  </thead>
+ 
+		  <tbody> 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d485166e73 "> 
+				  <p><a href="GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668.htm#GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668"><span class="option">-inline-level</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e79 "> 
+				  <p><a href="GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668.htm#GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668"><span class="option">/Ob</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e85 "> 
+				  <p>Specifies the level of inline function expansion. Depending on the value specified, the option can disable or enable inlining. By default, the option enables inlining of any function if the compiler believes the function can be inlined. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-12B534FA-CF5A-4ABE-8D8C-B680813B5F88"> 
+					 <li> 
+						<p><a href="GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668.htm#GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668"><span class="option">-inline-level</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d485166e73 "> 
+				  <p><a href="GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D.htm#GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D"><span class="option">-ip-no-inlining</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e79 "> 
+				  <p><a href="GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D.htm#GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D"><span class="option">/Qip-no-inlining</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e85 "> 
+				  <p>Disables only inlining normally enabled by the following options: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-80507AC7-35C2-452B-AEC4-6905A6F6ADE2"> 
+					 <li> 
+						<p>Linux and OS X: 
+						  <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">-ip</span></a> or 
+						  <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p>Windows: 
+						  <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">/Qip</span></a>, 
+						  <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a>, or 
+						  <a href="GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668.htm#GUID-53B736C9-3A0A-4CC0-931B-1A1EDF7BF668"><span class="option">/Ob2</span></a> 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  <p>No other IPO optimization are disabled. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-B8036ACA-5E92-4B90-AC49-06770CEAE1DB"> 
+					 <li> 
+						<p><a href="GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D.htm#GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D"><span class="option">-ip-no-inlining</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d485166e73 "> 
+				  <p><a href="GUID-CD746A4F-3DAC-4C8B-BA89-5840FBA9AA02.htm#GUID-CD746A4F-3DAC-4C8B-BA89-5840FBA9AA02"><span class="option">-ip-no-pinlining</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e79 "> 
+				  <p><a href="GUID-CD746A4F-3DAC-4C8B-BA89-5840FBA9AA02.htm#GUID-CD746A4F-3DAC-4C8B-BA89-5840FBA9AA02"><span class="option">/Qip-no-pinlining</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e85 "> 
+				  <p>Disables partial inlining normally enabled by the following options: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-6ACA5D7C-06F7-4043-AA17-7C3F8D47A1FC"> 
+					 <li> 
+						<p>Linux and OS X: 
+						  <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">-ip</span></a> or 
+						  <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">-ipo</span></a> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p>Windows: 
+						  <a href="GUID-C23591DC-339A-44EB-B17B-1629CDDF4596.htm#GUID-C23591DC-339A-44EB-B17B-1629CDDF4596"><span class="option">/Qip</span></a> or 
+						  <a href="GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431.htm#GUID-FEF23B3B-D0F6-484F-8DC5-9AB1315A6431"><span class="option">/Qipo</span></a> 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  <p>No other IPO optimization are disabled. 
+				  </p>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-7461E435-9A94-4CDC-900A-407CD466468A"> 
+					 <li> 
+						<p><a href="GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D.htm#GUID-3EC43DC2-6637-42A7-9ADF-8A857664640D"><span class="option">-ip-no-pinlining</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr> 
+				<td class="cellrowborder" valign="top" headers="d485166e73 "> 
+				  <p><a href="GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F.htm#GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F"><span class="option">-fno-builtin</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d485166e79 "> 
+				  <p><a href="GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F.htm#GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F"><span class="option">/Oi-</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="top" headers="d485166e85 "> 
+				  <p>Disables inlining for intrinsic functions. Disables the by-name recognition support of intrinsic functions and the resulting optimizations. Use this option if you redefine standard library routines with your own version and your version of the routine has the same name as the standard library routine. 
+				  </p>
+ 
+				  <p>By default, the compiler automatically inlines (expands) a number of standard and math library functions at the point of the call to that function, which usually results in faster computation. 
+				  </p>
+ 
+				  <p>Many routines in the 
+					 <span class="keyword">libirc</span>, 
+					 <span class="keyword">libm</span>, or 
+					 <span class="keyword">svml</span> library are more highly optimized for Intel microprocessors than for non-Intel microprocessors. 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-64F6466F-7BAF-4158-B5F1-69125ED15778"> 
+					 <li> 
+						<p><a href="GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F.htm#GUID-81910AD8-4558-4C2C-8A40-D7A9AA9E004F"><span class="option">-fno-builtin</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+			 <tr valign="middle"> 
+				<td class="cellrowborder" valign="middle" headers="d485166e73 "> 
+				  <p><a href="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE.htm"><span class="option"> -debug inline-debug-info</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e79 "> 
+				  <p><a href="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0.htm"><span class="option">/debug:inline-debug-info</span></a> 
+				  </p>
+ 
+				</td>
+ 
+				<td class="cellrowborder" valign="middle" headers="d485166e85 "> 
+				  <p>Keeps source information for inlined functions. The additional source code can be used by the Intel&reg; Debugger track the user-defined call stack while using inlining. 
+				  </p>
+ 
+				  <p>To use this option you must also specify an additional option to enable debugging: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-86EECEDF-32BE-4AEF-8018-243A8F02E0E5"> 
+					 <li> 
+						<p>Linux: 
+						  <a href="GUID-226DE90E-D4C8-420B-B560-0997839D17C4.htm#GUID-226DE90E-D4C8-420B-B560-0997839D17C4"><span class="option">-g</span></a> 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p>OS X: This option is not supported. 
+						</p>
+ 
+					 </li>
+ 
+					 <li> 
+						<p>Windows: 
+						  <a href="GUID-561404E6-993E-483A-8A5B-23A06A2E46E0.htm#GUID-561404E6-993E-483A-8A5B-23A06A2E46E0"><span class="option">/debug</span></a> 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				  <p>For more information, see the following topic: 
+				  </p>
+ 
+				  <ul type="disc" id="GUID-05898E6E-0313-49A1-A266-0426D1D4559D"> 
+					 <li> 
+						<p><a href="GUID-DC1D48F9-540D-4517-AEFC-BC7B38DDB0EE.htm"><span class="option">-debug inline-debug-info</span></a> compiler option 
+						</p>
+ 
+					 </li>
+ 
+				  </ul>
+ 
+				</td>
+ 
+			 </tr>
+ 
+		  </tbody>
+ 
+		</table>
+</div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-6608F908-2791-4059-8DD9-936FEAB81936.htm">Inline Expansion of Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

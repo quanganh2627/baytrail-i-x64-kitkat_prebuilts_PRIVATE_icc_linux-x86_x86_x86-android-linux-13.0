@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="simd">
+<meta name="abstract" content="The simd pragma enforces vectorization of loops.">
+<meta name="description" content="The simd pragma enforces vectorization of loops.">
+<meta name="DC.subject" content="pragma simd, Vectorization, simd, vectorization, function annotations">
+<meta name="keywords" content="pragma simd, Vectorization, simd, vectorization, function annotations">
+<meta name="DC.Relation" scheme="URI" content="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-1EA04294-988E-4152-B584-B028FD6FAC48">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>simd</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_pragma_simd"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-1EA04294-988E-4152-B584-B028FD6FAC48">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+<h1 class="topictitle1"><span>simd</span></h1>
+
+<!--The  simd  pragma enforces vectorization of loops.-->
+<div><p>The <span class="keyword">simd</span> pragma enforces vectorization of loops.</p>
+
+<div class="section" id="GUID-54694A36-63AD-483D-A281-72CC8146D109"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">#pragma simd
+</span><span class="delim">[</span><span class="var">clause</span><span class="delim">[ [</span><span class="sep">,</span><span class="delim">]</span><span class="var"> clause</span><span class="delim">]</span><span class="var">...</span><span class="delim">]</span></p></td></tr></table>
+
+
+
+
+</div>
+
+
+<div class="section" id="GUID-11A7D271-1639-48C7-A4D1-6FB51823F997"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr><td valign="top" width="30%" class="noborder"><p><var>clause</var></p></td>
+<td valign="top" class="noborder"><p><var>clause</var> can be any of the following:</p>
+<table cellspacing="0" cellpadding="4" border="0" width="100%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">vectorlength</span>(<var>n1</var>[, <var>n2</var>]...)
+</p></td>
+<td valign="top" class="noborder"><p> <em>n</em> is a vector length (VL). It must be an integer that is a power of 2; the value must be 2, 4, 8, or 16. If you specify more than one <em>n</em>, the vectorizor will choose the VL from the values specified.</p>
+<p> Causes each iteration in the vector loop to execute the computation equivalent to <em>n</em> iterations of scalar loop execution. Multiple <samp class="codeph">vectorlength</samp> clauses are merged as a union. </p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">vectorlengthfor</span>(<var>data type</var>)</p></td>
+<td valign="top" class="noborder"><p><em>data type</em> must be one of built-in integer types (8, 16, 32, or 64bit), pointer types (treated as pointer-sized integer), floating point types (32 or 64bit), or complex types (64bit or 128bit). Otherwise, behavior is undefined.</p>
+<p>Causes each iteration in the vector loop to execute the computation
+equivalent to <em>n</em> iterations of scalar loop execution where
+<em>n</em> is computed from <samp class="codeph">size_of_vector_register</samp>/<samp class="codeph">sizeof(<em>data_type</em>)</samp>.
+</p>
+<p>For example, <samp class="codeph">vectorlengthfor(float)</samp> results in <samp class="codeph">n=4</samp> for SSE2 to SSE4.2 targets (packed float operations available on 128bit XMM registers) and <samp class="codeph">n=8</samp> for AVX target (packed float operations available on 256bit YMM registers). <samp class="codeph">vectorlengthfor(int)</samp> results in <samp class="codeph">n=4</samp> for SSE2 to AVX targets.</p>
+<p><samp class="codeph">vectorlength()</samp> and <samp class="codeph">vectorlengthfor()</samp> clauses are mutually exclusive. In other words, the <samp class="codeph">vectorlengthfor()</samp> clause may not be used with the <samp class="codeph">vectorlength()</samp> clause, and vice versa.</p>
+<p>Behavior for multiple <samp class="codeph">vectorlengthfor</samp> clauses is undefined.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">private</span>(<var>var1</var>[, <var>var2</var>]...)
+</p></td>
+<td valign="top" class="noborder"><p><em> var</em> is a scalar variable.</p>
+<p>Causes each variable to be private to each iteration of a loop.
+Unless the variable appears in <samp class="codeph">firstprivate</samp> clause, the initial value of the
+variable for the particular iteration is undefined. Unless the
+variable appears in <samp class="codeph">lastprivate</samp> clause,
+the value of the variable upon exit of the loop is undefined.
+Multiple <samp class="codeph">private</samp> clauses are merged as a union.<div class="Note"><h3 class="NoteTipHead">Note</h3><p>Execution of the SIMD loop with <samp class="codeph">firtsprivate</samp>/<samp class="codeph">lastprivate</samp> clauses may be different from serial execution of the same code even if the loop fails to vectorize.</p>
+</div></p>
+<p> A variable in a <samp class="codeph">private</samp> clause cannot appear in a <samp class="codeph">linear</samp>, <samp class="codeph">reduction</samp>, <samp class="codeph">firstprivate</samp>, or <samp class="codeph">lastprivate</samp> clause.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">firstprivate</span>(<var>var1</var>[, <var>var2</var>]...)</p></td>
+<td valign="top" class="noborder"><p>Provides a superset of the functionality provided by the <samp class="codeph">private</samp> clause. Variables that appear in a <samp class="codeph">firstprivate</samp> list are subject to <samp class="codeph">private</samp> clause semantics. In addition, its initial value is broadcast to all private instances for each iteration upon entering the SIMD loop.</p>
+<p> A variable in a <samp class="codeph">firstprivate</samp> clause can appear in a <samp class="codeph">lastprivate</samp> clause.</p>
+<p> A variable in a <samp class="codeph">firstprivate</samp> clause cannot appear in a <samp class="codeph">linear</samp>, <samp class="codeph">reduction</samp>, or <samp class="codeph">private</samp> clause.</p>
+
+
+
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">lastprivate</span>(<var>var1</var>[, <var>var2</var>]...)</p></td>
+<td valign="top" class="noborder"><p>Provides a superset of the functionality provided by the <samp class="codeph">private</samp> clause. Variables that appear in a <samp class="codeph">lastprivate</samp> list are subject to <samp class="codeph">private</samp> clause semantics. In addition, when the SIMD loop is exited, each variable has the value that resulted from the sequentially last iteration of the SIMD loop (which may be undefined if the last iteration does not assign to the variable).</p>
+<p> A variable in a <samp class="codeph">lastprivate</samp> clause can appear in a <samp class="codeph">firstprivate</samp>  clause.</p>
+
+<p> A variable in a <samp class="codeph">lastprivate</samp> clause cannot appear in a <samp class="codeph">linear</samp>, <samp class="codeph">reduction</samp>, or <samp class="codeph">private</samp> clause.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p><span class="keyword">linear</span>(<var>var1:step1</var> [<var>,var2:step2</var>]...)
+</p></td>
+<td valign="top" class="noborder"><p><em>var</em> is a scalar variable.</p>
+<p><em>step</em> is a compile-time positive, integer constant expression.</p>
+<p>For each iteration of a scalar loop, <em>var1</em> is incremented by <em>step1</em>, <em>var2</em> is incremented by <em>step2</em>, and so on. Therefore, every iteration of the vector loop increments the variables by VL*step1, VL*step2, …, to VL*stepN, respectively. If more than one step is specified for a <em>var</em>, a compile-time error occurs. Multiple linear clauses are merged as a union.</p>
+<p> A variable in a <samp class="codeph">linear</samp> clause cannot appear in a <samp class="codeph">reduction</samp>, <samp class="codeph">private</samp>, <samp class="codeph">firstprivate</samp>, or <samp class="codeph">lastprivate</samp> clause.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p>  <span class="keyword">reduction</span>(<var>oper:var1</var> [,<var>var2</var>]…)
+</p></td>
+<td valign="top" class="noborder"><p><em>oper</em> is a reduction operator.</p>
+<p><em>var</em> is a scalar variable.</p>
+<p> Applies the vector reduction indicated by <em>oper</em> to <em>var1</em>, <em>var2</em>, …, <em>varN</em>. The <samp class="codeph">simd</samp> pragma may have multiple reduction clauses with the same or different operators. If more than one reduction operator is associated with a
+<em>var</em>, a compile-time error
+occurs.</p>
+<p> A variable in a <samp class="codeph">reduction</samp> clause cannot appear in a <samp class="codeph">linear</samp>, <samp class="codeph">private</samp>, <samp class="codeph">firstprivate</samp>, or <samp class="codeph">lastprivate</samp> clause.</p>
+</td>
+</tr><tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">[no]assert</span>
+</p></td>
+<td valign="top" class="noborder"><p>Directs the compiler to assert or not to assert when the vectorization fails. The default is <samp class="codeph">noassert</samp>. If this clause is specified more than once, a compile-time error
+occurs.
+</p>
+</td>
+</tr>
+<tr><td valign="top" width="30%" class="noborder"><p> <span class="keyword">[no]vecremainder</span>
+</p></td>
+<td valign="top" class="noborder"><p> Instructs the compiler to vectorize or not to vectorize  the remainder loop when the original loop is vectorized. See also: <a href="GUID-2B528C72-29B4-4DBC-8B91-EE4D1A03A850.htm">vector</a> </p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-CD1FF4EB-406F-43A7-A97F-5BF789BB4D36"><h2>Description</h2> 
+<p>The <samp class="codeph"><span class="keyword">simd</span></samp> pragma is used to guide the compiler to vectorize more loops. Vectorization using the <samp class="codeph">simd</samp> pragma complements (but does not replace) the fully automatic approach. </p>
+
+
+
+<p> Without explicit <samp class="codeph">vectorlength()</samp>
+and <samp class="codeph">vectorlengthfor()</samp> clauses, compiler will choose a
+<samp class="codeph">vectorlength</samp> using its own cost model. Misclassification of variables
+into <samp class="codeph">private</samp>, <samp class="codeph">firstprivate</samp>, <samp class="codeph">lastprivate</samp>, <samp class="codeph">linear</samp>, and <samp class="codeph">reduction</samp>, or lack of
+appropriate classification of variables may lead to unintended
+consequences such as runtime failures and/or incorrect result.</p>
+
+
+
+
+
+
+<p> You can only specify a particular variable in at most one instance of a <samp class="codeph">private</samp>, <samp class="codeph">linear</samp>, or <samp class="codeph">reduction</samp> clause.</p>
+<p> If the compiler is unable to vectorize a loop, a warning will be emitted (use assert clause to make it an error).</p>
+<p> If the vectorizer has to stop vectorizing a loop for some reason, the fast floating-point model is used for the SIMD loop.</p>
+<p> The vectorization performed on this loop by the <samp class="codeph">simd</samp> pragma overrides any setting you may specify for options <span class="option">-fp-model</span> (Linux* OS and OS X*) and <span class="option">/fp</span> (Windows* OS) for this loop.</p>
+<p> Note that the <samp class="codeph">simd</samp> pragma may not affect all auto-vectorizable loops. Some of these loops do not have a way to describe the SIMD vector semantics.</p>
+<p> The following restrictions apply to the <samp class="codeph">simd</samp> pragma:</p>
+<ul type="disc" id="GUID-6550BB2E-4E00-470F-A099-1097333B067E"><li><p> The countable loop for the <samp class="codeph">simd</samp> pragma has to conform to the for-loop style of an OpenMP worksharing loop construct. Additionally, the loop control variable must be a signed integer type.</p>
+</li>
+<li><p>The vector values must be signed 8-, 16-, 32-, or 64-bit integers, single or double-precision floating point numbers, or single or double-precision complex numbers.</p>
+</li>
+<li><p> A SIMD loop may contain another loop (<samp class="codeph">for</samp>, <samp class="codeph">while</samp>, <samp class="codeph">do-while</samp>) in it. Goto out of such inner loops are not supported. Break and continue are supported. Note that inlining can create such an inner loop, which may not be obvious at the source level.</p>
+</li>
+<li><p> A SIMD loop performs memory references unconditionally. Therefore, all address computations must result in valid memory addresses, even though such locations may not be accessed if the loop is executed sequentially</p>
+</li>
+</ul>
+
+
+<p> To disable transformations that enables more vectorization, specify options -no-vec -no-simd (Linux* and OS X*) or /Qvec- /Qsimd- (Windows*)</p>
+<p>User-mandated vectorization, also called SIMD vectorization can
+assert or not assert an error if a <samp class="codeph">#pragma simd</samp> annotated loop
+fails to vectorize. By default <samp class="codeph">#pragma simd </samp>is set to <samp class="codeph">noassert</samp>,
+and the compiler will issue a warning if the loop fails to
+vectorize. To direct the compiler to assert an error when the
+<samp class="codeph">#pragma simd</samp> annotated loop fails to vectorize, add the <samp class="codeph">assert</samp>
+clause to the <samp class="codeph">#pragma simd</samp>. If a <samp class="codeph">#pragma simd </samp>annotated loop is not
+vectorized by the compiler, the loop holds its serial semantics.
+</p>
+</div>
+
+
+<div class="section" id="GUID-3903F03B-F6C5-47C7-9780-C2DDE88A5D17"><h2>Example</h2>
+
+<p>Using <samp class="codeph">#pragma simd</samp>.</p>
+<p> In the example, the function <span class="option">add_floats()</span> uses too many unknown pointers for the compiler's automatic runtime independence check optimization to kick-in. The programmer can enforce the vectorization of this loop by using <samp class="codeph">#pragma simd</samp> and avoid the overhead of runtime check:</p>
+
+<pre> void add_floats(float *a, float *b, float *c, float *d, float *e, int n){</pre>
+<pre>&nbsp;&nbsp;int i;</pre><pre>#pragma simd</pre>
+<pre>&nbsp;&nbsp;for (i=0; i&lt;n; i++){</pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;a[i] = a[i] + b[i] + c[i] + d[i] + e[i];</pre>
+<pre>&nbsp;&nbsp;}</pre>
+<pre>}</pre>
+</div>
+
+
+</div>
+
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-C2D70038-AED3-4E15-9B1A-0D9C24D9D714.htm">Intel-Specific Pragma Reference</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+
+
+</body>
+</html>

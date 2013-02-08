@@ -1,0 +1,89 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Deadlocks">
+<meta name="DC.subject" content="Intel&reg; Cilk&#8482; Plus, deadlocks">
+<meta name="keywords" content="Intel&reg; Cilk&#8482; Plus, deadlocks">
+<meta name="DC.Relation" scheme="URI" content="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-C78C1594-0AD2-4286-A4BD-46EF77A8C0C4">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Deadlocks</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cilk_deadlocks"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-C78C1594-0AD2-4286-A4BD-46EF77A8C0C4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Deadlocks</h1>
+ 
+  
+  <div> 
+	 <p>A deadlock can occur when using two or more locks and different strands acquire the locks in different orders. It is possible for two or more strands to become deadlocked when each strand acquires a mutex that the other strand attempts to acquire.
+	 </p>
+ 
+	 <p>Following is a simple example, with two strand fragments, where the aim is to move a list element from one list to another in such a way that the element is always in exactly one of the two lists. 
+		<samp class="codeph">L1</samp> and 
+		<samp class="codeph">L2 
+		</samp>are the two lists, and 
+		<samp class="codeph">sm1</samp> and 
+		<samp class="codeph">sm2</samp> are two 
+		<samp class="codeph">tbb::mutex</samp> objects, protecting 
+		<samp class="codeph">L1</samp> and 
+		<samp class="codeph">L2</samp>, respectively.
+	 </p>
+ 
+	 <pre>// Code Fragment A. Move the beginning of L1 to the end of
+L2.
+sm1.lock();
+sm2.lock();
+L2.push_back(*L1.begin);
+L1.pop_front();
+sm2.unlock();
+sm1.unlock();
+...
+...
+// Code Fragment B. Move the beginning of L2 to the end of L1.
+sm2.lock();
+sm1.lock();
+L1.push_back(*L2.begin);
+L2.pop_front();
+sm2.unlock();
+sm1.unlock();</pre> 
+	 <p>The deadlock would occur if one strand, executing Fragment A, were to lock 
+		<samp class="codeph">sm1</samp> and, in another strand, Fragment B were to lock 
+		<samp class="codeph">sm2</samp> before Fragment A locks 
+		<samp class="codeph">sm2</samp>. Neither strand could proceed.
+	 </p>
+ 
+	 <p>The common solution is to acquire the locks in exactly the same order in both fragments; for example, switch the first two lines in Fragment B. You can release the locks in the opposite order, but doing so is not necessary to avoid deadlocks.
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-DAA9CBEA-BCFA-4105-898A-9D9E913FDB08.htm">Introduction to Using Locks</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

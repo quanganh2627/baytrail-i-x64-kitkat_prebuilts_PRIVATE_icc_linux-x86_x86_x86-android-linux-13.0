@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="Qpar-adjust-stack">
+<meta name="abstract" content="Tells the compiler to generate code to adjust the stack size for a fiber-based main thread.">
+<meta name="description" content="Tells the compiler to generate code to adjust the stack size for a fiber-based main thread.">
+<meta name="DC.subject" content="/Qpar-adjust-stack compiler option, main thread, option adjusting the stack size for">
+<meta name="keywords" content="/Qpar-adjust-stack compiler option, main thread, option adjusting the stack size for">
+<meta name="DC.Relation" scheme="URI" content="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-A476254C-47C6-4526-8009-27BB68433536">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Qpar-adjust-stack</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="option_qpar_adjust_stack"></MSHelp:Keyword>
+<MSHelp:Keyword Index="F" Term="intel.cpp.option_qpar_adjust_stack"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-A476254C-47C6-4526-8009-27BB68433536">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+<h1 class="topictitle1">Qpar-adjust-stack</h1>
+<!--Tells the compiler to generate code to adjust the stack size for a fiber-based main thread.--><div><p>Tells the compiler to generate code to adjust the stack size for a fiber-based main thread.</p>
+
+<div class="section" id="GUID-5C7C2739-DAFE-4053-9000-7C3523B4CAF3"><h2>IDE Equivalent</h2>
+None
+</div>
+<div class="section" id="GUID-DE2EA4D6-BE69-4427-98E8-F8BC9AD82052"><h2>Architectures</h2><p>All</p>
+</div>
+
+<div class="section" id="GUID-9600A082-6DBB-4E2D-9202-2529B0F81FE3"><h2>Syntax</h2><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Linux and OS X:</p></td><td valign="top" class="noborder"><p><span class="kwd">None</span></p></td></tr></table><table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="32%"><p>Windows:</p></td><td valign="top" class="noborder"><p><span class="kwd">/Qpar-adjust-stack:</span><span class="var">n</span></p></td></tr></table></div>
+<div class="section" id="GUID-BF1A1011-E9C5-4EE6-AFDE-1A094CB9BA4F"><h2>Arguments</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><var>n</var></p></td>
+<td valign="top" class="noborder"><p>Is the stack size (in bytes) for the fiber-based main thread. It must be a number equal to or greater than zero.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-CFCAD52E-B66A-44A2-B319-C88115405B6B"><h2>Default</h2><table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" width="30%" class="noborder"><p><span class="option">/Qpar-adjust-stack:0</span></p></td>
+<td valign="top" class="noborder"><p>No adjustment is made to the main thread stack size.</p>
+</td>
+</tr></table>
+</div>
+
+<div class="section" id="GUID-E1D6530B-4655-47B9-B89D-704327DB6442"><h2>Description</h2><p>This option tells the compiler to generate code to adjust the stack size for a fiber-based main thread. This can reduce the stack size of threads.</p>
+<p>For this option to be effective, you must also specify option <span class="option">/Qparallel</span>.</p>
+</div>
+
+<div class="section" id="GUID-8BC7118D-EDCF-4FB3-8A1A-4C20CE8CB2E2"><h2>Alternate Options</h2><p>None</p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-1E91DFFD-D7CD-4AF5-B911-7E5D1CCDBBA5.htm">OpenMP* and Parallel Processing Options</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-29986DD5-C17F-49BB-AC9B-365B077C3909.htm#GUID-29986DD5-C17F-49BB-AC9B-365B077C3909"><span class="option">parallel</span>, <span class="option">Qparallel</span></a>  compiler option</div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>

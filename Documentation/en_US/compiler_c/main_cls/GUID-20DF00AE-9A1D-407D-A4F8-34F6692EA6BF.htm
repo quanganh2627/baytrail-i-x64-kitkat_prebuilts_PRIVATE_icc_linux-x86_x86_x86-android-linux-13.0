@@ -1,0 +1,121 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="Initiating an Offload">
+<meta name="DC.subject" content="initiating an offload, offloading code">
+<meta name="keywords" content="initiating an offload, offloading code">
+<meta name="DC.Relation" scheme="URI" content="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">
+<meta name="DC.Relation" scheme="URI" content="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">
+<meta name="DC.Relation" scheme="URI" content="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-20DF00AE-9A1D-407D-A4F8-34F6692EA6BF">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Initiating an Offload</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.cncpt_multi_card"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-20DF00AE-9A1D-407D-A4F8-34F6692EA6BF">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Initiating an Offload</h1>
+ 
+   
+  <div> 
+	 <p><span id="d67e97"><a name="d67e97"><!-- --></a>This topic only applies to Intel&reg; Many Integrated Core Architecture (Intel&reg; MIC Architecture).</span> 
+          </p>
+ 
+	 <p>You can place the 
+		<span><samp class="codeph">offload</samp> pragma</span> before<span> any statement, including a compound statement. The statement prefixed with the 
+		  <samp class="codeph">offload</samp> pragma can also be an OpenMP* parallel pragma.</span></p>
+ 
+	 <p>For example: 
+	 </p>
+ 
+	 <pre>  #pragma offload target(mic : target_id) \
+                             in(all_Vals : length(MAXSZ)) \
+                             inout(numEs) out(E_vals : length(MAXSZ/2))
+  for (k=0; k &lt; MAXSZ; k++) {
+      if ( all_Vals[k] % 2 == 0 ) {
+         E_vals[numEs] = all_Vals[k];
+         numEs++;
+      }
+  }</pre> 
+	 <p>This code excerpt finds the first ten even numbers and then puts those numbers into an array. At the start 
+		of the code excerpt is the 
+		<span><samp class="codeph">offload</samp> pragma</span>. The compiler builds the code block to run on both the CPU and coprocessor. 
+	 </p>
+ 
+	 <p>While the instruction sets for the host CPU and coprocessors are similar, they do not share the same system memory. This means that the variables used by the code block must exist on both the host CPU and coprocessor. To ensure that they do, the 
+		<span>pragmas</span> 
+		 use specifiers to define the variables to copy between the host CPU and coprocessor. 
+	 </p>
+ 
+	 <ul type="disc" id="GUID-E238081B-8FA1-43B1-9E01-69173F451E1C"> 
+		<li> 
+		  <p>The 
+			 <samp class="codeph">in</samp> specifier defines a variable as strictly an input to the coprocessor. The value is not copied back to the host CPU. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The 
+			 <samp class="codeph">out</samp> specifier defines a variable as strictly an output of the coprocessor. The host CPU does not copy the variable to the coprocessor. 
+		  </p>
+ 
+		</li>
+ 
+		<li> 
+		  <p>The 
+			 <samp class="codeph">inout</samp> specifier defines a variable that is both copied from the host CPU to the coprocessor and back from the coprocessor to the host CPU. 
+		  </p>
+ 
+		</li>
+ 
+	 </ul>
+ 
+	 <p>The 
+		<span>pragma</span> 
+		 also has the 
+		<samp class="codeph">target (mic:<var>target_number</var>)</samp> specifier to direct the code to a specific coprocessor in a system with multiple coprocessors. 
+	 </p>
+ 
+	 <p>Although by default the compiler builds an application that runs on both the host CPU and coprocessor, you can also build the same source code to run on just the CPU, using the 
+		<samp class="codeph">-no-offload</samp> compiler option. 
+	 </p>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-44F5B8E2-8EFD-4C51-ACF8-357900798834.htm">Offload Using a Pragma</a></div>
+</div>
+<div class="See Also"><h2>See Also</h2>
+<div class="linklist">
+<div><a href="GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2.htm#GUID-EAB414FD-40C6-4054-B094-0BA70824E2A2">offload
+		  </a>  
+		  </div>
+<div><a href="GUID-2077C232-DB36-4D54-9429-57F4660AB4BB.htm">no-offload 
+		  </a>  
+		  </div></div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

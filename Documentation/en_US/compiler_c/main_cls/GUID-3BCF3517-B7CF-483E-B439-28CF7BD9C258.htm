@@ -1,0 +1,342 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Special Functions">
+<meta name="DC.subject" content="Math library, Special Functions, annuity library function, compound library function, erf library function, erfc library function, gamma library function, gamma_r library function, j0 library function, j1 library function, jn library function, lgamma library function, lgamma_r library function, tgamma library function, y0 library function, y1 library function, yn library function">
+<meta name="keywords" content="Math library, Special Functions, annuity library function, compound library function, erf library function, erfc library function, gamma library function, gamma_r library function, j0 library function, j1 library function, jn library function, lgamma library function, lgamma_r library function, tgamma library function, y0 library function, y1 library function, yn library function">
+<meta name="DC.Relation" scheme="URI" content="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-3BCF3517-B7CF-483E-B439-28CF7BD9C258">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Special Functions</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="cppref_math_special"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-3BCF3517-B7CF-483E-B439-28CF7BD9C258">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+ 
+  <h1 class="topictitle1">Special Functions</h1>
+ 
+   
+  <div> 
+    <p>Many routines in the Intel math library are more highly optimized for Intel&reg; microprocessors than for non-Intel microprocessors. 
+    </p>
+ 
+    <p>The Intel math library supports the following special functions: 
+    </p>
+ 
+    <div class="section" id="ANNUITY"><a name="ANNUITY"><!-- --></a><h2 class="sectiontitle">annuity</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">annuity</span> function computes the present value factor for an annuity, 
+        <samp class="codeph">(1 - (1+x)<sup>(-y)</sup> ) / x</samp>, where 
+        <samp class="codeph">x</samp> is a rate and 
+        <samp class="codeph">y</samp> is a period. 
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double annuity(double x, double y);</samp><br> 
+        <samp class="codeph">long double annuityl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float annuityf(float x, float y);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="SECTION_D4A8C9C90B9F445B8942BA4ECE54AD66"><a name="SECTION_D4A8C9C90B9F445B8942BA4ECE54AD66"><!-- --></a><h2 class="sectiontitle"> acdfnorminv</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">cdfnorminv</span> function returns the inverse cumulative normal distribution function value. 
+      </p>
+ 
+      <p><strong>errno</strong>:<br>EDOM, for finite or infinite 
+        <samp class="codeph">(x &gt; 1) || (x &lt; 0)</samp><br>ERANGE, for 
+        <samp class="codeph">x = 0 or x = 1</samp> 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph"> double cdfnorminv(double x);</samp><br> 
+        <samp class="codeph">float cdfnorminvf (float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="COMPOUND"><a name="COMPOUND"><!-- --></a><h2 class="sectiontitle">compound</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">compound</span> function computes the compound interest factor, 
+        <samp class="codeph">(1+x)<sup>y</sup></samp>, where 
+        <samp class="codeph">x</samp> is a rate and 
+        <samp class="codeph">y</samp> is a period. 
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for underflow and overflow conditions 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double compound(double x, double y);</samp><br> 
+        <samp class="codeph">long double compoundl(long double x, long double y);</samp><br> 
+        <samp class="codeph">float compoundf(float x, float y);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ERF"><a name="ERF"><!-- --></a><h2 class="sectiontitle">erf</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">erf</span> function returns the error function value. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double erf(double x);</samp><br> 
+        <samp class="codeph">long double erfl(long double x);</samp><br> 
+        <samp class="codeph">float erff(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ERFC"><a name="ERFC"><!-- --></a><h2 class="sectiontitle">erfc</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">erfc</span> function returns the complementary error function value. 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for finite or infinite |x| &gt; 1 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double erfc(double x);</samp><br> 
+        <samp class="codeph">long double erfcl(long double x);</samp><br> 
+        <samp class="codeph">float erfcf(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="ERFINV"><a name="ERFINV"><!-- --></a><h2 class="sectiontitle">erfinv</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">erfinv</span> function returns the value of the inverse error function of x. 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for finite or infinite |x| &gt; 1 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double erfinv(double x);</samp><br> 
+        <samp class="codeph">long double erfinvl(long double x);</samp><br> 
+        <samp class="codeph">float erfinvf(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GAMMA"><a name="GAMMA"><!-- --></a><h2 class="sectiontitle">gamma</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">gamma</span> function returns the value of the logarithm of the absolute value of gamma. 
+      </p>
+ 
+      <p><strong>errno:</strong> ERANGE, for overflow conditions when x is a negative integer. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double gamma(double x);</samp><br> 
+        <samp class="codeph">long double gammal(long double x);</samp><br> 
+        <samp class="codeph">float gammaf(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="GAMMA_R"><a name="GAMMA_R"><!-- --></a><h2 class="sectiontitle">gamma_r</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">gamma_r</span> function returns the value of the logarithm of the absolute value of gamma. The sign of the 
+        <samp class="codeph">gamma</samp> function is returned in the integer 
+        <samp class="codeph">signgam</samp>. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double gamma_r(double x, int *signgam);</samp><br> 
+        <samp class="codeph">long double gammal_r(long double x, int *signgam);</samp><br> 
+        <samp class="codeph">float gammaf_r(float x, int *signgam);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="J0"><a name="J0"><!-- --></a><h2 class="sectiontitle">j0</h2> 
+       
+      <p><strong>Description:</strong> Computes the Bessel function (of the first kind) of 
+        <samp class="codeph">x</samp> with order 0. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double j0(double x);</samp><br> 
+        <samp class="codeph">long double j0l(long double x);</samp><br> 
+        <samp class="codeph">float j0f(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="J1"><a name="J1"><!-- --></a><h2 class="sectiontitle">j1</h2> 
+       
+      <p><strong>Description:</strong> Computes the Bessel function (of the first kind) of 
+        <samp class="codeph">x</samp> with order 1. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double j1(double x);</samp><br> 
+        <samp class="codeph">long double j1l(long double x);</samp><br> 
+        <samp class="codeph">float j1f(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="JN"><a name="JN"><!-- --></a><h2 class="sectiontitle">jn</h2> 
+       
+      <p><strong>Description:</strong> Computes the Bessel function (of the first kind) of 
+        <samp class="codeph">x</samp> with order 
+        <samp class="codeph">n</samp>. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double jn(int n, double x);</samp><br> 
+        <samp class="codeph">long double jnl(int n, long double x);</samp><br> 
+        <samp class="codeph">float jnf(int n, float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LGAMMA"><a name="LGAMMA"><!-- --></a><h2 class="sectiontitle">lgamma</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <samp class="codeph">lgamma</samp> function returns the value of the logarithm of the absolute value of gamma. 
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions, x=0 or negative integers. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double lgamma(double x);</samp><br> 
+        <samp class="codeph">long double lgammal(long double x);</samp><br> 
+        <samp class="codeph">float lgammaf(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="LGAMMA_R"><a name="LGAMMA_R"><!-- --></a><h2 class="sectiontitle">lgamma_r</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">lgamma_r</span> function returns the value of the logarithm of the absolute value of gamma. The sign of the 
+        <samp class="codeph">gamma</samp> function is returned in the integer 
+        <samp class="codeph">signgam</samp>. 
+      </p>
+ 
+      <p><strong>errno</strong>: ERANGE, for overflow conditions, x=0 or negative integers. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double lgamma_r(double x, int *signgam);</samp><br> 
+        <samp class="codeph">long double lgammal_r(long double x, int *signgam);</samp><br> 
+        <samp class="codeph">float lgammaf_r(float x, int *signgam);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="TGAMMA"><a name="TGAMMA"><!-- --></a><h2 class="sectiontitle">tgamma</h2> 
+       
+      <p><strong>Description:</strong> The 
+        <span class="keyword">tgamma</span> function computes the gamma function of x. 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x=0 or negative integers. 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double tgamma(double x);</samp><br> 
+        <samp class="codeph">long double tgammal(long double x);</samp><br> 
+        <samp class="codeph">float tgammaf(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="Y0"><a name="Y0"><!-- --></a><h2 class="sectiontitle">y0</h2> 
+       
+      <p><strong>Description:</strong> Computes the Bessel function (of the second kind) of 
+        <samp class="codeph">x</samp> with order 0. 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt;= 0 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double y0(double x);</samp><br> 
+        <samp class="codeph">long double y0l(long double x);</samp><br> 
+        <samp class="codeph">float y0f(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="Y1"><a name="Y1"><!-- --></a><h2 class="sectiontitle">y1</h2> 
+       
+      <p><strong>Description:</strong> Computes the Bessel function (of the second kind) of 
+        <samp class="codeph">x</samp> with order 1. 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt;= 0 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double y1(double x);</samp><br> 
+        <samp class="codeph">long double y1l(long double x);</samp><br> 
+        <samp class="codeph">float y1f(float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+    <div class="section" id="YN"><a name="YN"><!-- --></a><h2 class="sectiontitle">yn</h2> 
+       
+      <p><strong>Description:</strong> Computes the Bessel function (of the second kind) of 
+        <samp class="codeph">x</samp> with order 
+        <samp class="codeph">n</samp>. 
+      </p>
+ 
+      <p><strong>errno</strong>: EDOM, for x &lt;= 0 
+      </p>
+ 
+      <p><strong>Calling interface:</strong><br> 
+        <samp class="codeph">double yn(int n, double x);</samp><br> 
+        <samp class="codeph">long double ynl(int n, long double x);</samp><br> 
+        <samp class="codeph">float ynf(int n, float x);</samp> 
+      </p>
+ 
+    </div>
+ 
+  </div>
+ 
+  
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-A41317AB-3EE3-4180-A04B-B08E5C80440B.htm">Math Functions</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div> 
+
+</body>
+</html>

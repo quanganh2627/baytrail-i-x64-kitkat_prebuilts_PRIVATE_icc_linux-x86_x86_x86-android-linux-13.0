@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="OptionRef">
+<meta name="DC.Title" content="_mm256_testz_si256">
+<meta name="abstract" content="Performs a packed bit test of two integer vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is VPTEST.">
+<meta name="description" content="Performs a packed bit test of two integer vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is VPTEST.">
+<meta name="DC.subject" content="intrinsics, Intel&reg; AVX, packed test operations, _mm256_testz_si256 (VPTEST)">
+<meta name="keywords" content="intrinsics, Intel&reg; AVX, packed test operations, _mm256_testz_si256 (VPTEST)">
+<meta name="DC.Relation" scheme="URI" content="GUID-D388423A-101E-4DBE-9CA9-54BE82B375B3.htm">
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback">
+<meta name="DC.Creator" content="Intel Corp.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-32EEFB05-A9D8-4F53-9B4A-87119DF2644E">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>_mm256_testz_si256</title>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="intel.cpp.intref_avx_testz_si"></MSHelp:Keyword>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+</xml>
+</head>
+<body id="GUID-32EEFB05-A9D8-4F53-9B4A-87119DF2644E">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; C++ Compiler XE 13.1 User and Reference Guides</em></p>
+
+
+
+
+<h1 class="topictitle1"><span>_mm256_testz_si256</span></h1>
+
+
+<!--Performs a packed bit test of two integer vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is  VPTEST .--><div><p>Performs a packed bit test of two integer vectors to set the ZF flag. The corresponding Intel&reg; AVX instruction is <span class="keyword">VPTEST</span>.</p>
+
+
+<div class="section" id="GUID-375708E6-3D65-450B-8FB0-DD59C8349720"><h2>Syntax</h2>
+  <table cellspacing="0" cellpadding="1" border="0" width="85%" class="syntaxdiagramtbl" style="border-spacing:0; border-collapse:collapse"><tr><td valign="top" class="noborder" width="100%"><p><span class="kwd">extern int _mm256_testz_si256(__m256i s1, __m256i s2);</span></p></td></tr></table>
+</div>
+
+
+<div class="section" id="GUID-8BF7C8D7-3819-4102-B0C5-179B9DDC8109"><h2>Arguments</h2>
+  <table cellspacing="0" cellpadding="4" border="0" width="90%" style="border-spacing:0; border-collapse:collapse">
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s1</var></p></td>
+
+      <td valign="top" class="noborder"><p>first source integer  vector</p>
+</td>
+
+    </tr>
+    <tr>
+      <td valign="top" width="30%" class="noborder"><p><var>s2</var></p></td>
+
+      <td valign="top" class="noborder"><p>second source integer vector</p>
+</td>
+
+    </tr>
+  </table>
+
+</div>
+
+
+<div class="section" id="GUID-D3D8BDEA-C2C8-48D9-82C4-28D7186ABCD5"><h2>Description</h2>
+<p>Allows setting of the ZF flag. The ZF flag is set based on the result of a bitwise AND operation between the first and second source vectors. The corresponding instruction <span class="keyword">VPTEST</span> sets the ZF flag if all the resulting bits are 0. If the resulting bits are non-zeros, the instruction clears the ZF flag.  </p>
+
+</div>
+
+
+
+
+<div class="section" id="GUID-7C086698-49A2-4055-97B3-B11C74CE9592"><h2>Returns</h2><p> Non-zero if ZF flag is set
+</p>
+<p>Zero if the ZF flag is not set
+</p>
+</div>
+</div>
+
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-D388423A-101E-4DBE-9CA9-54BE82B375B3.htm">Intrinsics for Packed Test Operations</a></div>
+</div>
+<div><br clear="all">
+<div class="docfeedback">
+<div><a href="http://www.intel.com/software/products/softwaredocs_feedback" target="_blank">Submit feedback on this help topic 
+		  </a></div></div></div>
+</body>
+</html>
