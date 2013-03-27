@@ -1,6 +1,11 @@
 LOCAL_PATH := /
 
 ifneq ($(call intel-target-need-intel-libraries),)
+
+ifeq ($(strip $(ICC_COMPILER_VERSION)),)
+ICC_COMPILER_VERSION:=13_0
+endif
+
 ifeq ($(ICC_COMPILER_VERSION),13_0)
 include $(CLEAR_VARS)
 LOCAL_SYSTEM_SHARED_LIBRARIES :=
