@@ -331,13 +331,14 @@ a:hover {
 
 
 
-<div id=mainmenu style="width: 250px; height: 299px">
+<div id=mainmenu style="width: 250px; height: 330px">
 <p><b>Contents</b></p>
 	<p><a class="mainmenulinks" href="#using">Using the Intel<font face="Times New Roman">®</font> C++ Compiler as a Stand-Alone Tool</a></p>
 	<p><a class="mainmenulinks" href="#enabling">Enabling the Intel toolchain within the NDK Build System</a></p>
 	<p><a class="mainmenulinks" href="#building">Building a Sample Application with the Intel</a><font face="Times New Roman"><a class="mainmenulinks" href="#using">®</a>
 	</font><a class="mainmenulinks" href="#building">C++ Compiler for Android* OS</a></p>
 	<p><a class="mainmenulinks" href="#running">Running Applications Built with ICC on a Target Device</a></p>
+	<p><a class="mainmenulinks" href="#atom">Building an Application for the Release</a></p>
 	<p><a class="mainmenulinks" href="#eclipse">Using Intel® C++ Compiler for Android* with Eclipse</a></p>
 	<p><a class="mainmenulinks" href="#pgo">Using PGO to Improve Android* OS Application Performance</a></p>
 	<p><a class="mainmenulinks" href="#information">Next Steps</a></p>
@@ -363,10 +364,10 @@ and C++ applications on host Linux* operating systems targeting for the IA-32 ar
 <p> The Intel C++ Compiler  requires a GNU compiler toolchain for the Android OS to work.</p>
 <p>You can fulfill the requirement in one of two ways:</p>
 <ul>
-	<li>Install the Android NDK from
+	<li>Install the Android NDK for 32-bit Linux* OS from
 	<a href="http://developer.android.com/sdk/ndk/index.html">http://developer.android.com/sdk/ndk/index.html</a> (The link refers to the latest version of NDK 
 	- 
-	r8b.) 
+	r8e.) 
 	</li>
 	<li>Use the GNU toolchain which is included in the Android source repository</li>
 </ul>
@@ -380,25 +381,25 @@ the GNU toolchain.
 The correct method depends on whether you use the NDK or the Android* 
 Open Source Project (AOSP) environment.</p>
 <p>Using the NDK environment:</p>
-<P>export NDK= #set to the NDK root directory (example: /export/JB_4.1.1_r4)</P>
+<P>export NDK= #set to the NDK root directory (example: /work/android-ndk-r8e/)</P>
 <P class="Preformatted">
 <span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">
 
 export ANDROID_SYSROOT=$NDK/platforms/android-14/arch-x86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
 export ANDROID_GNU_X86_TOOLCHAIN=$NDK/toolchains/x86-4.6/prebuilt/linux-x86 </span></P>
 <p>Using the AOSP environment:</p>
-<p>export TOPDIR= #set to the AOSP root directory (example: /export/ICS_WW35) </p>
+<p>export TOPDIR= #set to the AOSP root directory (example: /export/JB_WW11) </p>
 <p class="Preformatted">
 <span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">
 
-export ANDROID_SYSROOT=$TOPDIR/prebuilts/ndk/android-ndk-r8b/platforms/android-14/arch-x86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-export ANDROID_GNU_X86_TOOLCHAIN=$TOPDIR/prebuilts/linux-x86/toolchain/i686-android-linux-4.6</span></p>
+export ANDROID_SYSROOT=$TOPDIR/prebuilts/ndk/8/platforms/android-14/arch-x86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+export ANDROID_GNU_X86_TOOLCHAIN=$TOPDIR/prebuilts/gcc/linux-x86/x86/i686-linux-android-4.6</span></p>
 <h3>Setting PATH to Intel Compiler Binaries</h3>
 <p>You must set the PATH environment variable to include a path to Intel C++ 
 Compiler binaries. One method for setting the environment variables quickly is 
 to source the environment script, as shown below:</p>
 <P><span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">
-source iccvars.sh
+source /opt/intel/CCAndroid13.0.0.XXX/bin/iccvars.sh
 </SPAN></P>
 <h2><a name="enabling"></a>Enabling the Intel toolchain within the Android NDK Build System</h2>
 <div id="GUID-E78E910A-CC53-4AF3-8128-BCF0BEB09F4E" class="section">
@@ -409,7 +410,7 @@ source iccvars.sh
 		<p>Install Intel C++ Compiler</p>
 		<li>
 		<p>Set NDK environment variable, for example:<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')"><br>
-		NDK=/work/android-ndk-r8b</span> 
+		NDK=/work/android-ndk-r8e</span> 
  </p>
 		</li>
 		<li>
@@ -421,14 +422,17 @@ source iccvars.sh
 for Android* OS</h2>
 <p>To build a sample application with the Intel compiler, you need to specify the Intel compiler toolchain 
 in the build command. Use the <b>NDK_TOOLCHAIN</b> option and specify &quot;icc&quot;, for example:</p>
-	<p class="Preformatted">NDK_TOOLCHAIN=icc 
+	<p>
+	<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">NDK_TOOLCHAIN=icc 
+	</span> 
 </p>
 <p>&nbsp;</p>
 <p>Here is an example of how to build the application:</p>
 <Ol><li><p>Build the sample hello-jni application from NDK samples: </p>
-<p class="Preformatted"><span lang="EN-US" style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE">cd $NDK/samples/hello-jni&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-ndk-build V=1 -B NDK_TOOLCHAIN=icc APP_ABI=x86 # 
-</SPAN></p>
+<p>
+<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">cd $NDK/samples/hello-jni&nbsp; <br>
+ndk-build V=1 -B NDK_TOOLCHAIN=icc APP_ABI=x86 # </span> 
+</p>
 <p>where:</p>
 		<p><font face="Courier New">V=1</font> 
 <span lang="EN-US" style="font-size: 10.0pt; font-family: Verdana,sans-serif; color: #333333">
@@ -447,7 +451,28 @@ Every binary compiled with the Intel compiler must be able to access these libra
 <span lang="EN-US" style="font-size: 10.0pt; font-family: Verdana,sans-serif; color: #333333">
 One way to provide the access</span> is to add the following line to the jni/Android.mk file for 
 your application:</p>
-<p class="Preformatted">LOCAL_LDFLAGS   := -static-intel</p>
+<p>
+<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">LOCAL_LDFLAGS   := -static-intel</span></p>
+<h2><a name="atom"></a>Building an Application for the Release</h2>
+	<p>By default, NDK is configured to build an application for debugging, and all optimizations are turned off. When the code is ready for deployment, you need to compile it for performance.</p>
+	<p>The first step is switching to the release mode. Add the following line to the Application.mk file:</p>
+	<p>
+	<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">APP_OPTIM:=release</span></p>
+	<p>The second step is compiling for a specific target processor. For example, to build application to run on 
+	the Intel® Atom™ processor, add the following line to the Application.mk file:</p>
+	<p>
+	<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">APP_CFLAGS:=-xSSSE3_ATOM</span></p>
+	<p>The third step is enabling advanced optimizations. For example, to increase 
+	the optimization level, add the following line to the Application.mk file:</p>
+	<p>
+	<span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">APP_CFLAGS:=-xSSSE3_ATOM –O3</span></p>
+	<p>To enable interprocedural optimizations, add the <font face="Courier New">–ipo</font> option to APP_CFLAGS: </p>
+	<p><span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">APP_CFLAGS:=-xSSSE3_ATOM –O3 –ipo </span></p>
+	<p><font face="Courier New">APP_OPTTIM</font> and <font face="Courier New">APP_CFLAGS</font> 
+	can be given as arguments to the <font face="Courier New">ndk-build</font> command. For example:</p>
+	<p><span style="font-size: 10.0pt; line-height: 115%; font-family: Courier New; color: #333333; background: #EEEEEE url('')">ndk-build V=1 -B NDK_TOOLCHAIN=icc APP_ABI=x86 APP_OPTIM:=release APP_CFLAGS=”-xSSSE3_ATOM –O3”</span></p>
+	<p>For further details, refer to the “<i>High-Level Optimizations (HLO)</i>” and “<i>Interprocedural Optimization (IPO)</i>” sections in the 
+	<i>Intel® C++ Compiler XE 13.0 User and Reference Guides</i> supplied with the package.</p>
 <h2><a name="eclipse"></a>Using Intel® C++ Compiler for Android* OS with Eclipse*</h2>
 	<p>To use the Intel® C++ Compiler for Android* OS for building NDK based 
 	applications in Eclipse, you must:</p>
@@ -558,10 +583,30 @@ Compiler on Linux* and Windows* operating systems.</p>
 	described in the product documentation.</p>
 <p>Contact your Intel representative for more information on Intel® System 
 Software Tools for Android* OS.</p>
+<div class="tablenoborder"><a name="d48e18"><!-- --></a>
+<table cellpadding="4" summary="" id="d48e18" frame="border" border="1" cellspacing="0" rules="all"> 
+		  <thead align="left"> 
+			 <tr> 
+				<th class="cellrowborder" align="left" valign="top" width="100%" id="d701367e64"> 
+				  <p id="d48e30"><a name="d48e30"><!-- --></a>Optimization Notice 
+				  </p>
+				</th>
+			 </tr>
+</thead>
+		  <tbody> 
+			 <tr> 
+				<td class="bgcolor(#ccecff)" bgcolor="#ccecff" valign="top" width="100%" headers="d701367e64 "> 
+				  <p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice. 
+				  </p>
+				  <p> Notice revision #20110804 
+				  </p>
+				  </td>
+			 </tr>
+		  </tbody>
+		</table>
+</div>
 <hr>
 <h2><a name="legal">Disclaimer and Legal Information</a></h2>
-
-
 
 <p>
 INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL PRODUCTS. NO 
@@ -624,7 +669,6 @@ http://www.intel.com/products/processor_number</a> for details.
 U.S. and/or other countries.</p>
 
 <p>*Other names and brands may be claimed as the property of others.
-<p>Microsoft, Windows, and the Windows logo are trademarks, or registered trademarks of Microsoft Corporation in the United States and/or other countries.</p>
 <p>Copyright &copy;2013, Intel Corporation. All rights reserved.</p>
 </body>
 

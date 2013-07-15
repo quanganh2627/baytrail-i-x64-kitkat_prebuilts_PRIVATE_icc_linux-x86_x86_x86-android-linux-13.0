@@ -158,9 +158,9 @@ extern "C" {
 #endif
 
 #if (__IMFLONGDOUBLE == 64) || defined(__LONGDOUBLE_AS_DOUBLE)
-    #define LDBL_EPSILON         2.2204460492503131e-16
-    #define LDBL_MAX             1.7976931348623157e+308
-    #define LDBL_MIN             2.2250738585072014e-308
+    #define LDBL_EPSILON         2.2204460492503131e-16L
+    #define LDBL_MAX             1.7976931348623157e+308L
+    #define LDBL_MIN             2.2250738585072014e-308L
     #define LDBL_DIG             15
     #define LDBL_MANT_DIG        53
     #define LDBL_MAX_10_EXP      308
