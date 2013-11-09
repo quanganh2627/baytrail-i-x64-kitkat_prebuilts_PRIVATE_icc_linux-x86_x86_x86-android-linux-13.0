@@ -55,6 +55,10 @@ LOCAL_STRIP_MODULE:=true
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libcilkrts.so)
+# 14.0 compiler has 2 different Cilk Plus RTS: for GNU Stl and STLport shared
+ifeq ($(strip $(LOCAL_SRC_FILES)),libcilkrts.so)
+LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=gnustl/libcilkrts.so)
+endif
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
