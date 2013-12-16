@@ -1,96 +1,55 @@
-LOCAL_PATH := /
-
 ifneq ($(call intel-target-need-intel-libraries),)
+# ICC_LIB* are absolute paths, so LOCAL_PATH is /
+LOCAL_PATH := /
+# if there's ICC compiler configured for some component build,
+# then query the compiler about the paths to libs
 
-ifeq ($(strip $(ICC_COMPILER_VERSION)),)
-ICC_COMPILER_VERSION:=13_0
+ICC_LIBCHKP_SO    := $(call intel-target-compiler-lib,libchkp.so)
+ICC_LIBCILKRTS_SO := $(call intel-target-compiler-lib,libcilkrts.so)
+# ICC may have 2 different Cilk Plus RTS: for GNU Stl and STLport shared
+ifeq ($(strip $(ICC_LIBCILKRTS_SO)),libcilkrts.so)
+ICC_LIBCILKRTS_SO := $(call intel-target-compiler-lib,gnustl/libcilkrts.so)
 endif
-
-ifeq ($(ICC_COMPILER_VERSION),13_0)
-include $(CLEAR_VARS)
-LOCAL_SYSTEM_SHARED_LIBRARIES :=
-LOCAL_MODULE := libimf
-LOCAL_MODULE_SUFFIX:=.so
-LOCAL_STRIP_MODULE:=true
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libimf.so)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_SYSTEM_SHARED_LIBRARIES :=
-LOCAL_MODULE := libintlc
-LOCAL_MODULE_SUFFIX:=.so
-LOCAL_STRIP_MODULE:=true
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libintlc.so)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_SYSTEM_SHARED_LIBRARIES :=
-LOCAL_MODULE := libsvml
-LOCAL_MODULE_SUFFIX:=.so
-LOCAL_STRIP_MODULE:=true
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libsvml.so)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_SYSTEM_SHARED_LIBRARIES :=
-LOCAL_MODULE := libirng
-LOCAL_MODULE_SUFFIX:=.so
-LOCAL_STRIP_MODULE:=true
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libirng.so)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_SYSTEM_SHARED_LIBRARIES :=
-LOCAL_MODULE := libcilkrts
-LOCAL_MODULE_SUFFIX:=.so
-LOCAL_STRIP_MODULE:=true
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libcilkrts.so)
-# 14.0 compiler has 2 different Cilk Plus RTS: for GNU Stl and STLport shared
-ifeq ($(strip $(LOCAL_SRC_FILES)),libcilkrts.so)
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=gnustl/libcilkrts.so)
+ICC_LIBIMF_SO     := $(call intel-target-compiler-lib,libimf.so)
+ICC_LIBINTLC_SO   := $(call intel-target-compiler-lib,libintlc.so)
+ICC_LIBIRNG_SO    := $(call intel-target-compiler-lib,libirng.so)
+ICC_LIBPDBX_SO    := $(call intel-target-compiler-lib,libpdbx.so)
+# ICC may have 2 different PDBX libs: for GNU Stl and STLport shared
+ifeq ($(strip $(ICC_LIBPDBX_SO)),libpdbx.so)
+ICC_LIBPDBX_SO    := $(call intel-target-compiler-lib,gnustl/libpdbx.so)
 endif
-include $(BUILD_PREBUILT)
+ICC_LIBSVML_SO    := $(call intel-target-compiler-lib,libsvml.so)
+
+
+ICC_LIBBFP754_A   := $(call intel-target-compiler-lib,libbfp754.a)
+ICC_LIBDECIMAL_A  := $(call intel-target-compiler-lib,libdecimal.a)
+ICC_LIBIMF_A      := $(call intel-target-compiler-lib,libimf.a)
+ICC_LIBIPGO_A     := $(call intel-target-compiler-lib,libipgo.a)
+ICC_LIBIRC_A      := $(call intel-target-compiler-lib,libirc.a)
+ICC_LIBIRC_S_A    := $(call intel-target-compiler-lib,libirc_s.a)
+ICC_LIBIRNG_A     := $(call intel-target-compiler-lib,libirng.a)
+# Provided by other means
+ICC_LIBSVML_A     :=
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := libimf_s
-LOCAL_MODULE_SUFFIX:=.a
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := STATIC_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libimf.a)
-include $(BUILD_PREBUILT)
+LOCAL_PREBUILT_LIBS :=                       \
+                       $(ICC_LIBCHKP_SO)     \
+                       $(ICC_LIBCILKRTS_SO)  \
+                       $(ICC_LIBIMF_SO)      \
+                       $(ICC_LIBINTLC_SO)    \
+                       $(ICC_LIBIRNG_SO)     \
+                       $(ICC_LIBPDBX_SO)     \
+                       $(ICC_LIBSVML_SO)     \
+                                             \
+                       $(ICC_LIBBFP754_A)    \
+                       $(ICC_LIBDECIMAL_A)   \
+                       $(ICC_LIBIMF_A)       \
+                       $(ICC_LIBIPGO_A)      \
+                       $(ICC_LIBIRC_A)       \
+                       $(ICC_LIBIRC_S_A)     \
+                       $(ICC_LIBIRNG_A)      \
+                       $(ICC_LIBSVML_A)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := libipgo
-LOCAL_MODULE_SUFFIX:=.a
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := STATIC_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libipgo.a)
-include $(BUILD_PREBUILT)
+include $(BUILD_MULTI_PREBUILT)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := libirng_s
-LOCAL_MODULE_SUFFIX:=.a
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := STATIC_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libirng.a)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := libirc
-LOCAL_MODULE_SUFFIX:=.a
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := STATIC_LIBRARIES
-LOCAL_SRC_FILES := $(shell env ANDROID_GNU_X86_TOOLCHAIN=$(ANDROID_GNU_X86_TOOLCHAIN) $(TARGET_ICC) -m32 -print-file-name=libirc.a)
-include $(BUILD_PREBUILT)
-endif
 endif
